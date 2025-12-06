@@ -18,6 +18,7 @@ export interface Profile {
   socials: {
     linkedin: string;
     github: string;
+    email?: string;
   };
   bio: {
     short: string;

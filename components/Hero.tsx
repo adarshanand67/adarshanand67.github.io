@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { getProfile } from "@/lib/api";
-import { Github, Linkedin } from "lucide-react";
+import { Github, Linkedin, Mail } from "lucide-react";
 import profilePic from "@/assets/dp.jpg";
 
 export default async function Hero() {
@@ -72,6 +72,18 @@ export default async function Hero() {
                 </span>
                 <span>GitHub</span>
               </Link>
+              {profile.socials.email && (
+                <Link
+                  className="button bg-white dark:bg-zinc-900 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:border-blue-600 hover:text-blue-600 transition-colors rounded-md px-4 py-2 flex items-center gap-2"
+                  href={`mailto:${profile.socials.email}`}
+                  title={`Email ${profile.name}`}
+                >
+                  <span className="icon">
+                    <Mail className="w-5 h-5" />
+                  </span>
+                  <span>Email</span>
+                </Link>
+              )}
             </ul>
           </section>
         </div>
