@@ -1,8 +1,14 @@
 import Hero from "@/components/Hero";
-import RecentBlogs from "@/components/RecentBlogs";
-import RecentPapers from "@/components/RecentPapers";
 import SectionHeader from "@/components/SectionHeader";
 import { getExperiences, getVolunteering } from "@/lib/api";
+import dynamic from "next/dynamic";
+
+const RecentBlogs = dynamic(() => import("@/components/RecentBlogs"), {
+  loading: () => <p className="text-gray-500">Loading writings...</p>,
+});
+const RecentPapers = dynamic(() => import("@/components/RecentPapers"), {
+  loading: () => <p className="text-gray-500">Loading papers...</p>,
+});
 
 export default async function Home() {
   const experiences = await getExperiences();
