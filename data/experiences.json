@@ -1,38 +1,38 @@
 [
-    {
-        "company": "Trellix",
-        "role": "Software Development Engineer (Full-time)",
-        "duration": "Jul 2025 - Present",
-        "location": "Bengaluru, Karnataka, India",
-        "description": "Preventing unauthorized exfiltration of sensitive corporate data as part of the Data Loss Prevention (Windows) team.",
-        "highlights": []
-    },
-    {
-        "company": "Intel Corporation",
-        "role": "Software Development Engineer (Full-time)",
-        "duration": "Jun 2024 - Jul 2025",
-        "location": "Bengaluru, Karnataka, India",
-        "description": "",
-        "highlights": [
-            "Contributed to Intel SGX Gramine to secure confidential computing workloads (PyTorch, OpenVINO, MySQL, Redis), addressing memory faults and expanding distro support.",
-            "Implemented Intel SGX fuzzing framework resulted in 8+ vulnerability discoveries in Intel SGX TCB with 97% branch coverage.",
-            "Engineered Intel TDX full-disk encryption (FDE) solution supporting multi-VM launch, optimizing image sizes by 30%.",
-            "Led creation of CentOS Virtualization SIG attestation guides for Intel TDX.",
-            "Integrated Post-Quantum Cryptography (PQC) with Intel SGX via Crypto API Toolkit.",
-            "Enhanced LLM Adversarial Robustness Toolkit for evaluating LLM robustness.",
-            "Conducted comprehensive vLLM benchmarking comparing legacy VMs vs Intel TDX Trusted Domains."
-        ]
-    },
-    {
-        "company": "Intel Corporation",
-        "role": "Graduate Technical Intern",
-        "duration": "Jun 2023 - Dec 2023",
-        "location": "Bengaluru, Karnataka, India",
-        "description": "",
-        "highlights": [
-            "Collaborated with FIDO Device Onboarding (FDO) team for Zero-Touch Provisioning of Intel Edge Devices.",
-            "Modernized cryptographic security architecture by implementing OpenSSL 3.0 migration.",
-            "Designed and implemented a POC of Bare Metal Onboarding (BMO) with real-time status monitoring in React."
-        ]
-    }
+  {
+    "company": "Trellix",
+    "role": "Software Development Engineer (Full-time)",
+    "duration": "Jul 2025 - Present",
+    "location": "Bengaluru, Karnataka, India",
+    "description": "Preventing unauthorized exfiltration of sensitive corporate data as part of the Data Loss Prevention (Windows) team.",
+    "highlights": []
+  },
+  {
+    "company": "Intel Corporation",
+    "role": "Software Development Engineer (Full-time)",
+    "duration": "Jun 2024 - Jul 2025",
+    "location": "Bengaluru, Karnataka, India",
+    "description": "",
+    "highlights": [
+      "Contributed to Intel SGX Gramine to secure confidential computing workloads (PyTorch, OpenVINO, MySQL, Redis), addressing memory faults and expanding distro support.",
+      "Implemented Intel SGX fuzzing framework resulted in 8+ vulnerability discoveries in Intel SGX TCB with 97% branch coverage.",
+      "Engineered Intel TDX full-disk encryption (FDE) solution supporting multi-VM launch, optimizing image sizes by 30%.",
+      "Led creation of CentOS Virtualization SIG attestation guides for Intel TDX.",
+      "Integrated Post-Quantum Cryptography (PQC) with Intel SGX via Crypto API Toolkit.",
+      "Enhanced LLM Adversarial Robustness Toolkit for evaluating LLM robustness.",
+      "Conducted comprehensive vLLM benchmarking comparing legacy VMs vs Intel TDX Trusted Domains."
+    ]
+  },
+  {
+    "company": "Intel Corporation",
+    "role": "Graduate Technical Intern",
+    "duration": "Jun 2023 - Dec 2023",
+    "location": "Bengaluru, Karnataka, India",
+    "description": "",
+    "highlights": [
+      "Collaborated with FIDO Device Onboarding (FDO) team for Zero-Touch Provisioning of Intel Edge Devices.",
+      "Modernized cryptographic security architecture by implementing OpenSSL 3.0 migration.",
+      "Designed and implemented a POC of Bare Metal Onboarding (BMO) with real-time status monitoring in React."
+    ]
+  }
 ]

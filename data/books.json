@@ -1,80 +1,80 @@
 [
-    {
-        "title": "The Three-Body Problem",
-        "author": "Cixin Liu"
-    },
-    {
-        "title": "What is Existentialism?",
-        "author": "Simone de Beauvoir",
-        "notes": true
-    },
-    {
-        "title": "White Nights",
-        "author": "Fyodor Dostoevsky",
-        "notes": true
-    },
-    {
-        "title": "Zero to One: Notes on Start Ups",
-        "author": "Peter Thiel"
-    },
-    {
-        "title": "Unlocking Hypergrowth",
-        "author": "Frank Slootman"
-    },
-    {
-        "title": "Think Again",
-        "author": "Adam Grant"
-    },
-    {
-        "title": "The courage to be disliked",
-        "author": "Ichiro Kishimi"
-    },
-    {
-        "title": "The Pragmatic Programmer",
-        "author": "Andrew Hunt"
-    },
-    {
-        "title": "The Joys of Hashing",
-        "author": "Thomas Mailund"
-    },
-    {
-        "title": "Programming Pearls",
-        "author": "Jon Bentley"
-    },
-    {
-        "title": "Pragmatic Thinking and Learning",
-        "author": "Andy Hunt"
-    },
-    {
-        "title": "Deep Work",
-        "author": "Cal Newport"
-    },
-    {
-        "title": "Database Systems",
-        "author": "Hector Garcia-Molina"
-    },
-    {
-        "title": "Database Internals",
-        "author": "Alex Petrov"
-    },
-    {
-        "title": "Concurrency in Go",
-        "author": "Katherine Cox-Buday"
-    },
-    {
-        "title": "Clean Code",
-        "author": "Robert C. Martin"
-    },
-    {
-        "title": "Building Microservices",
-        "author": "Sam Newman"
-    },
-    {
-        "title": "Blitzscaling",
-        "author": "Reid Hoffman"
-    },
-    {
-        "title": "Atomic Habits",
-        "author": "James Clear"
-    }
+  {
+    "title": "The Three-Body Problem",
+    "author": "Cixin Liu"
+  },
+  {
+    "title": "What is Existentialism?",
+    "author": "Simone de Beauvoir",
+    "notes": true
+  },
+  {
+    "title": "White Nights",
+    "author": "Fyodor Dostoevsky",
+    "notes": true
+  },
+  {
+    "title": "Zero to One: Notes on Start Ups",
+    "author": "Peter Thiel"
+  },
+  {
+    "title": "Unlocking Hypergrowth",
+    "author": "Frank Slootman"
+  },
+  {
+    "title": "Think Again",
+    "author": "Adam Grant"
+  },
+  {
+    "title": "The courage to be disliked",
+    "author": "Ichiro Kishimi"
+  },
+  {
+    "title": "The Pragmatic Programmer",
+    "author": "Andrew Hunt"
+  },
+  {
+    "title": "The Joys of Hashing",
+    "author": "Thomas Mailund"
+  },
+  {
+    "title": "Programming Pearls",
+    "author": "Jon Bentley"
+  },
+  {
+    "title": "Pragmatic Thinking and Learning",
+    "author": "Andy Hunt"
+  },
+  {
+    "title": "Deep Work",
+    "author": "Cal Newport"
+  },
+  {
+    "title": "Database Systems",
+    "author": "Hector Garcia-Molina"
+  },
+  {
+    "title": "Database Internals",
+    "author": "Alex Petrov"
+  },
+  {
+    "title": "Concurrency in Go",
+    "author": "Katherine Cox-Buday"
+  },
+  {
+    "title": "Clean Code",
+    "author": "Robert C. Martin"
+  },
+  {
+    "title": "Building Microservices",
+    "author": "Sam Newman"
+  },
+  {
+    "title": "Blitzscaling",
+    "author": "Reid Hoffman"
+  },
+  {
+    "title": "Atomic Habits",
+    "author": "James Clear"
+  }
 ]

@@ -1,4 +1,3 @@
-
 import Link from "next/link";
 import { Github, Linkedin } from "lucide-react";
 import Image from "next/image";
@@ -31,7 +30,21 @@ export default async function Hero() {
             </h3>
             <div className="content text-lg leading-relaxed mb-8">
               {profile.bio.paragraphs.map((paragraph, index) => (
-                <p key={index} className="mb-4" dangerouslySetInnerHTML={{ __html: paragraph.replace("Trellix", `<a href="https://trellix.com" target="_blank" class="text-blue-600 hover:underline">Trellix</a>`).replace("Intel Corporation", `<a href="https://intel.com" target="_blank" class="text-blue-600 hover:underline">Intel Corporation</a>`) }} />
+                <p
+                  key={index}
+                  className="mb-4"
+                  dangerouslySetInnerHTML={{
+                    __html: paragraph
+                      .replace(
+                        "Trellix",
+                        `<a href="https://trellix.com" target="_blank" class="text-blue-600 hover:underline">Trellix</a>`,
+                      )
+                      .replace(
+                        "Intel Corporation",
+                        `<a href="https://intel.com" target="_blank" class="text-blue-600 hover:underline">Intel Corporation</a>`,
+                      ),
+                  }}
+                />
               ))}
             </div>
             <ul className="buttons flex flex-wrap gap-4">
@@ -78,4 +91,3 @@ export default async function Hero() {
     </div>
   );
 }
-
