@@ -56,12 +56,6 @@ export default function Navbar() {
         >
           <div className="navbar-end flex flex-col md:flex-row items-center">
             <Link
-              href="/experience"
-              className="navbar-item px-4 py-2 font-bold text-lg hover:text-primary transition-colors"
-            >
-              Experience
-            </Link>
-            <Link
               href="/blogs"
               className="navbar-item px-4 py-2 font-bold text-lg hover:text-primary transition-colors"
             >

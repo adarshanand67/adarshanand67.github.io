@@ -12,14 +12,10 @@ export default async function Footer() {
             <div className="mb-3 font-bold text-gray-500">
               Writings and Learnings
             </div>
-            <p className="mb-1">
-              <Link
-                href="/experience"
-                className="text-foreground hover:underline"
-              >
-                Experience
-              </Link>
-            </p>
+            <div className="mb-3 font-bold text-gray-500">
+              Writings and Learnings
+            </div>
+            {/* Experience is now on Home, removing specific link or could link to /#experience */}
           </div>
 
           <div>

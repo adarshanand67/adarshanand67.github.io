@@ -16,7 +16,6 @@ describe("Navbar", () => {
 
   it("renders navigation links", () => {
     render(<Navbar />);
-    expect(screen.getByText("Experience")).toBeInTheDocument();
     expect(screen.getByText("Anime Shelf")).toBeInTheDocument();
     expect(screen.getByText("Bookshelf")).toBeInTheDocument();
     expect(screen.getByText("Volunteering")).toBeInTheDocument();

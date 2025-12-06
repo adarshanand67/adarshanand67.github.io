@@ -27,7 +27,6 @@ describe("Footer", () => {
     const component = await Footer();
     render(component);
 
-    expect(screen.getByText("Experience")).toBeInTheDocument();
     expect(screen.getByText("Contact Me")).toBeInTheDocument();
     expect(screen.getByText("Bookshelf")).toBeInTheDocument();
   });
