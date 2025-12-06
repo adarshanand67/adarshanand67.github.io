@@ -58,15 +58,9 @@ export default async function AnimeShelf() {
   return (
     <div className="section container mx-auto px-4 mt-12 mb-12">
       <h1 className="title text-4xl font-bold font-serif mb-8">Anime Shelf</h1>
-      <p className="text-gray-600 mb-8">
-        A collection of anime and movies I&apos;ve watched and enjoyed.
-      </p>
 
       {/* Anime Section */}
       <div className="mb-12">
-        <h2 className="text-3xl font-bold font-serif mb-8 border-b border-gray-200 pb-2">
-          Anime
-        </h2>
 
         {/* Watched Anime */}
         <div className="mb-8">

@@ -9,6 +9,9 @@ const RecentBlogs = dynamic(() => import("@/components/RecentBlogs"), {
 const RecentPapers = dynamic(() => import("@/components/RecentPapers"), {
   loading: () => <p className="text-gray-500">Loading papers...</p>,
 });
+const GitHubStats = dynamic(() => import("@/components/GitHubStats"), {
+  loading: () => <p>Loading stats...</p>,
+});
 
 export default async function Home() {
   const experiences = await getExperiences();
@@ -16,6 +19,8 @@ export default async function Home() {
   return (
     <main className="min-h-screen">
       <Hero />
+      <GitHubStats />
+
       <div className="section container mx-auto px-4 mb-12">
         {/* Experience Section */}
         <div className="mb-16" id="experience">
