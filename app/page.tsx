@@ -4,12 +4,26 @@ import { getExperiences } from "@/lib/api";
 import dynamic from "next/dynamic";
 import FadeIn from "@/components/FadeIn";
 import Image from "next/image";
+import { Skeleton } from "@/components/ui/Skeleton";
 
 const RecentBlogs = dynamic(() => import("@/components/RecentBlogs"), {
-  loading: () => <p className="text-gray-500">Loading writings...</p>,
+  loading: () => (
+    <div className="space-y-4">
+      <Skeleton className="h-24 w-full rounded-xl" />
+      <Skeleton className="h-24 w-full rounded-xl" />
+      <Skeleton className="h-24 w-full rounded-xl" />
+    </div>
+  ),
+  ssr: false,
 });
 const RecentPapers = dynamic(() => import("@/components/RecentPapers"), {
-  loading: () => <p className="text-gray-500">Loading papers...</p>,
+  loading: () => (
+    <div className="space-y-4">
+      <Skeleton className="h-20 w-full rounded-xl" />
+      <Skeleton className="h-20 w-full rounded-xl" />
+    </div>
+  ),
+  ssr: false,
 });
 const GitHubStats = dynamic(() => import("@/components/GitHubStats"), {
   loading: () => <p>Loading stats...</p>,

@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { CommandMenu } from "@/components/CommandMenu";
 
 const assistant = Assistant({
   variable: "--font-assistant",
@@ -37,6 +38,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Navbar />
+          <CommandMenu />
           {children}
           <Footer />
         </ThemeProvider>
