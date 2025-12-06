@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { ThemeToggle } from "./theme-toggle";
+import { Search } from "lucide-react";
 
 export default function Navbar() {
   const [isActive, setIsActive] = useState(false);
@@ -25,9 +26,8 @@ export default function Navbar() {
           </div>
 
           <button
-            className={`navbar-burger burger block md:hidden ${
-              isActive ? "is-active" : ""
-            }`}
+            className={`navbar-burger burger block md:hidden ${isActive ? "is-active" : ""
+              }`}
             aria-label="menu"
             aria-expanded="false"
             data-target="menu"
@@ -50,9 +50,8 @@ export default function Navbar() {
 
         <div
           id="menu"
-          className={`navbar-menu w-full md:block md:w-auto ${
-            isActive ? "block" : "hidden"
-          }`}
+          className={`navbar-menu w-full md:block md:w-auto ${isActive ? "block" : "hidden"
+            }`}
         >
           <div className="navbar-end flex flex-col md:flex-row items-center">
             <Link
@@ -79,6 +78,18 @@ export default function Navbar() {
             >
               Bookshelf
             </Link>
+
+            <button
+              className="navbar-item px-4 py-2 flex items-center gap-2 text-gray-500 hover:text-primary transition-colors"
+              onClick={() => document.dispatchEvent(new Event("open-command-menu"))}
+              aria-label="Search"
+            >
+              <Search className="w-5 h-5" />
+              <span className="hidden lg:inline text-sm font-medium">Search</span>
+              <kbd className="hidden lg:inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground opacity-100">
+                <span className="text-xs">⌘</span>K
+              </kbd>
+            </button>
 
             <div className="navbar-item px-4 py-2">
               <ThemeToggle />

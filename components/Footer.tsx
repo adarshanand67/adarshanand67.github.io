@@ -7,7 +7,12 @@ export default function Footer() {
       <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
         <div className="flex flex-col gap-2 items-center md:items-start">
           <span className="font-serif font-bold text-xl">Adarsh Anand</span>
-          <span className="text-gray-500 text-sm">© {new Date().getFullYear()} All rights reserved.</span>
+          <p className="text-zinc-600 dark:text-zinc-400 text-sm">
+            © {new Date().getFullYear()} Adarsh Anand. All rights reserved.
+          </p>
+          <p className="text-zinc-400 dark:text-zinc-600 text-xs mt-2 hidden md:block">
+            Press <kbd className="font-mono">⌘K</kbd> to navigate
+          </p>
         </div>
 
         <div className="flex items-center gap-6">
