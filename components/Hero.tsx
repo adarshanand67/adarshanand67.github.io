@@ -7,7 +7,6 @@ import profilePic from "@/assets/dp.jpg";
 export default async function Hero() {
   const profile = await getProfile();
 
-
   return (
     <div className="section container mx-auto px-4 mt-12 mb-12">
       <div className="columns is-vcentered flex flex-col md:flex-row items-center gap-8">

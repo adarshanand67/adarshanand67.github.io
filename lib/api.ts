@@ -39,8 +39,6 @@ export interface Experience {
   highlights: string[];
 }
 
-
-
 export interface Paper {
   title: string;
   url: string;
@@ -73,8 +71,6 @@ export async function getProfile(): Promise<Profile> {
 export async function getExperiences(): Promise<Experience[]> {
   return readData<Experience[]>("experiences.json");
 }
-
-
 
 export async function getPapers(): Promise<Paper[]> {
   return readData<Paper[]>("papers.json");

@@ -13,7 +13,6 @@ const RecentPapers = dynamic(() => import("@/components/RecentPapers"), {
 export default async function Home() {
   const experiences = await getExperiences();
 
-
   return (
     <main className="min-h-screen">
       <Hero />
@@ -49,8 +48,6 @@ export default async function Home() {
             ))}
           </div>
         </div>
-
-
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <RecentBlogs />
