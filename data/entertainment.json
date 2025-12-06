@@ -33,7 +33,8 @@
     "title": "Haikyu",
     "type": "Anime",
     "status": "Completed",
-    "notes": "S1,2,3,4"
+    "notes": "S1,2,3,4",
+    "recommended": true
   },
   {
     "title": "Haikyuu!! The Dumpster Battle",
@@ -51,7 +52,8 @@
     "title": "Code Geass: Lelouch of Rebellion",
     "type": "Anime",
     "status": "Completed",
-    "notes": "S1,2"
+    "notes": "S1,2",
+    "recommended": true
   },
   {
     "title": "Cowboy Bebop",
@@ -98,7 +100,8 @@
     "title": "Solo Leveling",
     "type": "Anime",
     "status": "Completed",
-    "notes": "S1,2"
+    "notes": "S1,2",
+    "recommended": true
   },
   {
     "title": "Demon Slayer",

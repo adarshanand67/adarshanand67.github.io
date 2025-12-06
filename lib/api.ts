@@ -57,6 +57,7 @@ export interface EntertainmentItem {
   status: "Watching" | "Completed" | "Planning";
   notes?: string;
   image?: string;
+  recommended?: boolean;
 }
 
 export async function getProfile(): Promise<Profile> {

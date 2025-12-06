@@ -1,4 +1,5 @@
 import { getEntertainment } from "@/lib/api";
+import { Star } from "lucide-react";
 
 export default async function AnimeShelf() {
   const items = await getEntertainment();
@@ -36,8 +37,13 @@ export default async function AnimeShelf() {
                 className="box p-6 rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-zinc-900 shadow-sm hover:shadow-md transition-shadow"
               >
                 <div className="flex justify-between items-start mb-2">
-                  <h3 className="font-bold text-xl">{item.title}</h3>
-                  <span className="text-xs px-2 py-1 rounded-full bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100">
+                  <h3 className="font-bold text-xl flex items-center gap-2">
+                    {item.title}
+                    {item.recommended && (
+                      <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
+                    )}
+                  </h3>
+                  <span className="text-xs px-2 py-1 rounded-full bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100 shrink-0">
                     {item.status}
                   </span>
                 </div>
