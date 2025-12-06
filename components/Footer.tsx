@@ -1,75 +1,25 @@
 import Link from "next/link";
-import { getProfile } from "@/lib/api";
+import WeatherWidget from "./WeatherWidget";
 
-export default async function Footer() {
-  const profile = await getProfile();
-
+export default function Footer() {
   return (
-    <div className="section footer mt-12 bg-background pt-8 pb-12 border-t border-gray-200 dark:border-gray-800">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div>
-            <div className="mb-3 font-bold text-gray-500">
-              Writings and Learnings
-            </div>
-            <div className="mb-3 font-bold text-gray-500">
-              Writings and Learnings
-            </div>
-            {/* Experience is now on Home, removing specific link or could link to /#experience */}
-          </div>
-
-          <div>
-            <div className="mb-3 font-bold text-gray-500">Shelves</div>
-            <p className="mb-1">
-              <Link
-                href="/bookshelf"
-                className="text-foreground hover:underline"
-              >
-                Bookshelf
-              </Link>
-            </p>
-            <p className="mb-1">
-              <Link
-                href="/papershelf"
-                className="text-foreground hover:underline"
-              >
-                Papershelf
-              </Link>
-            </p>
-            <p className="mb-1">
-              <Link
-                href="/animeshelf"
-                className="text-foreground hover:underline"
-              >
-                Anime Shelf
-              </Link>
-            </p>
-          </div>
-
-          <div>
-            <div className="mb-3 font-bold text-gray-500">
-              Legal and Contact
-            </div>
-            <p className="mb-1">
-              <Link href="/" className="text-foreground hover:underline">
-                About me
-              </Link>
-            </p>
-            <p className="mb-1">
-              <a
-                href={`mailto:${profile.socials.linkedin}`}
-                className="text-foreground hover:underline"
-              >
-                Contact Me
-              </a>
-            </p>
-          </div>
+    <footer className="py-12 bg-white dark:bg-black border-t border-gray-100 dark:border-gray-900 mt-auto">
+      <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
+        <div className="flex flex-col gap-2 items-center md:items-start">
+          <span className="font-serif font-bold text-xl">Adarsh Anand</span>
+          <span className="text-gray-500 text-sm">© {new Date().getFullYear()} All rights reserved.</span>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800 text-center text-sm text-gray-500">
-          &copy; {new Date().getFullYear()} {profile.name}. All rights reserved.
+        <div className="flex items-center gap-6">
+          <WeatherWidget />
+          <Link href="https://github.com/adarshanand67" target="_blank" className="text-gray-500 hover:text-black dark:hover:text-white transition-colors">
+            GitHub
+          </Link>
+          <Link href="https://linkedin.com/in/adarshanand67" target="_blank" className="text-gray-500 hover:text-black dark:hover:text-white transition-colors">
+            LinkedIn
+          </Link>
         </div>
       </div>
-    </div>
+    </footer>
   );
 }

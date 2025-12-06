@@ -19,7 +19,6 @@ export default async function Home() {
   return (
     <main className="min-h-screen">
       <Hero />
-      <GitHubStats />
 
       <div className="section container mx-auto px-4 mb-12">
         {/* Experience Section */}
@@ -58,6 +57,9 @@ export default async function Home() {
           <RecentBlogs />
           <RecentPapers />
         </div>
+      </div>
+      <div className="mb-24">
+        <GitHubStats />
       </div>
     </main>
   );
