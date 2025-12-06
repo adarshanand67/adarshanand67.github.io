@@ -79,12 +79,7 @@ export default function Navbar() {
             >
               Bookshelf
             </Link>
-            <Link
-              href="/volunteering"
-              className="navbar-item px-4 py-2 font-bold text-lg hover:text-primary transition-colors"
-            >
-              Volunteering
-            </Link>
+
             <div className="navbar-item px-4 py-2">
               <ThemeToggle />
             </div>

@@ -18,7 +18,6 @@ describe("Navbar", () => {
     render(<Navbar />);
     expect(screen.getByText("Anime Shelf")).toBeInTheDocument();
     expect(screen.getByText("Bookshelf")).toBeInTheDocument();
-    expect(screen.getByText("Volunteering")).toBeInTheDocument();
   });
 
   it("toggles mobile menu on click", () => {
