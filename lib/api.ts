@@ -65,7 +65,7 @@ export interface Blog {
 export interface EntertainmentItem {
   title: string;
   type: "Anime" | "Movie" | "Web Series";
-  status: "Watching" | "Completed" | "Plan to Watch";
+  status: "Watching" | "Completed" | "Planning";
   notes?: string;
   image?: string;
 }

@@ -14,7 +14,7 @@ jest.mock("../lib/api", () => ({
     {
       title: "Test Anime Planned",
       type: "Anime",
-      status: "Plan to Watch",
+      status: "Planning",
       notes: "Note 2",
     },
     {
@@ -26,7 +26,7 @@ jest.mock("../lib/api", () => ({
     {
       title: "Test Movie Planned",
       type: "Movie",
-      status: "Plan to Watch",
+      status: "Planning",
       notes: "Note 4",
     },
   ]),
@@ -48,7 +48,7 @@ describe("AnimeShelf Page", () => {
 
     // Check for section headers
     expect(screen.getAllByText("Watched").length).toBeGreaterThan(0);
-    expect(screen.getAllByText("Plan to Watch").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("Planning").length).toBeGreaterThan(0);
 
     // Check for specific items
     expect(screen.getByText("Test Anime Watched")).toBeInTheDocument();
