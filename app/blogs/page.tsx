@@ -1,16 +1,22 @@
 import Link from "next/link";
 import { getBlogs } from "@/lib/api";
 
+interface Blog {
+  date: string;
+  title: string;
+  slug: string;
+}
+
 export default async function BlogsPage() {
   const blogs = await getBlogs();
 
   // Group blogs by year
-  const blogsByYear = blogs.reduce((acc: Record<string, typeof blogs>, blog: { date: string; title: string; slug: string }) => {
+  const blogsByYear = blogs.reduce((acc: Record<string, Blog[]>, blog: Blog) => {
     const year = blog.date.split("-")[0];
     if (!acc[year]) acc[year] = [];
     acc[year].push(blog);
     return acc;
-  }, {});
+  }, {} as Record<string, Blog[]>);
 
   const years = Object.keys(blogsByYear).sort((a, b) => Number(b) - Number(a));
 
@@ -28,7 +34,7 @@ export default async function BlogsPage() {
         <div key={year} className="mb-8">
           <h2 className="text-xl font-bold mb-4 text-gray-500">## {year}</h2>
           <ul className="space-y-2 text-sm">
-            {blogsByYear[year].map((post: { date: string; title: string; slug: string }) => (
+            {blogsByYear[year].map((post) => (
               <li key={post.slug} className="flex items-baseline gap-2">
                 <span className="text-gray-500 min-w-[80px]">{post.date}</span>
                 <Link

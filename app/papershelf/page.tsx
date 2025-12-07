@@ -1,6 +1,11 @@
 import Link from "next/link";
 import { getPapers } from "@/lib/api";
 
+interface Paper {
+  title: string;
+  url: string;
+}
+
 export default async function Papershelf() {
   const papers = await getPapers();
 
@@ -15,7 +20,7 @@ export default async function Papershelf() {
       </p>
 
       <ul className="space-y-2 text-sm">
-        {papers.map((paper: { title: string; url: string }, index: number) => (
+        {papers.map((paper: Paper, index: number) => (
           <li key={index} className="flex items-start">
             <span className="mr-2 text-gray-500">-</span>
             <Link
