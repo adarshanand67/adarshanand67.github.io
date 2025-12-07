@@ -23,7 +23,7 @@ export default async function Bookshelf() {
   const plannedBooks = books.filter((book: any) => book.status === "Planning");
 
   const BookCard = ({ book, index }: { book: any; index: number }) => {
-    // Use Open Library cover API as fallback
+    // Use Open Library cover API
     const coverUrl =
       book.image ||
       `https://covers.openlibrary.org/b/title/${encodeURIComponent(book.title)}-L.jpg`;
@@ -31,17 +31,8 @@ export default async function Bookshelf() {
     return (
       <SpotlightCard className="h-full flex flex-col p-0">
         <div className="relative w-full aspect-[2/3] bg-gray-100 dark:bg-zinc-800 overflow-hidden">
-          <Image
-            src={coverUrl}
-            alt={book.title}
-            fill
-            className="object-cover"
-            sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
-            onError={(e) => {
-              // Fallback to placeholder if image fails
-              e.currentTarget.style.display = "none";
-            }}
-          />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={coverUrl} alt={book.title} className="w-full h-full object-cover" />
           <div className="absolute inset-0 flex items-center justify-center p-4 text-center">
             <span className="text-gray-400 text-sm font-mono">{book.title}</span>
           </div>
