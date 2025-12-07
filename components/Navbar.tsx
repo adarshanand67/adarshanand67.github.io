@@ -57,25 +57,25 @@ export default function Navbar() {
                 href="/blogs"
                 className="px-3 py-1.5 text-sm text-foreground/80 hover:text-green-600 dark:hover:text-green-400 transition-colors"
               >
-                /blogs
+                Blogshelf
               </Link>
               <Link
                 href="/papershelf"
                 className="px-3 py-1.5 text-sm text-foreground/80 hover:text-green-600 dark:hover:text-green-400 transition-colors"
               >
-                /papers
+                Papershelf
               </Link>
               <Link
                 href="/animeshelf"
                 className="px-3 py-1.5 text-sm text-foreground/80 hover:text-green-600 dark:hover:text-green-400 transition-colors"
               >
-                /anime
+                Animeshelf
               </Link>
               <Link
                 href="/bookshelf"
                 className="px-3 py-1.5 text-sm text-foreground/80 hover:text-green-600 dark:hover:text-green-400 transition-colors"
               >
-                /books
+                Bookshelf
               </Link>
 
               <span className="text-gray-400 mx-1">|</span>
@@ -96,30 +96,31 @@ export default function Navbar() {
           {/* Mobile Menu */}
           <div
             id="menu"
-            className={`md:hidden overflow-hidden transition-all duration-200 ${isActive ? "max-h-64 pb-4" : "max-h-0"
-              }`}
+            className={`md:hidden overflow-hidden transition-all duration-200 ${
+              isActive ? "max-h-64 pb-4" : "max-h-0"
+            }`}
           >
             <div className="flex flex-col gap-1 text-sm">
               <Link href="/blogs" className="py-2 hover:text-green-600 dark:hover:text-green-400">
-                /blogs
+                Blogshelf
               </Link>
               <Link
                 href="/papershelf"
                 className="py-2 hover:text-green-600 dark:hover:text-green-400"
               >
-                /papers
+                Papershelf
               </Link>
               <Link
                 href="/animeshelf"
                 className="py-2 hover:text-green-600 dark:hover:text-green-400"
               >
-                /anime
+                Animeshelf
               </Link>
               <Link
                 href="/bookshelf"
                 className="py-2 hover:text-green-600 dark:hover:text-green-400"
               >
-                /books
+                Bookshelf
               </Link>
               <div className="flex items-center gap-4 pt-2 border-t border-gray-200 dark:border-gray-800">
                 <button
