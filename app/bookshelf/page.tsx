@@ -2,8 +2,7 @@
 
 import booksData from "@/data/books.json";
 import Link from "next/link";
-import { ExternalLink, Star, Search } from "lucide-react";
-import { SpotlightCard } from "@/components/ui/SpotlightCard";
+import { ExternalLink, Search } from "lucide-react";
 import { useState, useMemo, useEffect } from "react";
 
 interface Book {
@@ -19,7 +18,6 @@ interface Book {
 export default function Bookshelf() {
   const books: Book[] = booksData;
   const [searchQuery, setSearchQuery] = useState("");
-  // Ensure we are mounted to avoid hydration mismatch with random values if any
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -40,72 +38,15 @@ export default function Bookshelf() {
     return `https://www.amazon.in/s?k=${searchQuery}`;
   };
 
-  const BookCard = ({ book }: { book: Book }) => {
-    const primaryUrl = book.image;
-    const fallbackUrl = `https://covers.openlibrary.org/b/title/${encodeURIComponent(book.title)}-L.jpg`;
-
-    // We start with primaryUrl if available, otherwise fallback
-    const [imgSrc, setImgSrc] = useState(primaryUrl || fallbackUrl);
-    const [hasError, setHasError] = useState(false);
-
-    return (
-      <SpotlightCard className="h-full flex flex-col p-0">
-        <div className="relative w-full aspect-[2/3] bg-gray-100 dark:bg-zinc-800 overflow-hidden group">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={imgSrc}
-            alt={book.title}
-            className={`w-full h-full object-cover transition-opacity duration-300 ${hasError ? "opacity-50 grayscale" : "opacity-100"}`}
-            onError={() => {
-              if (imgSrc !== fallbackUrl) {
-                setImgSrc(fallbackUrl);
-              } else {
-                setHasError(true); // Both failed
-              }
-            }}
-          />
-          {hasError && (
-            <div className="absolute inset-0 flex items-center justify-center text-center p-2">
-              <span className="text-xs text-gray-500 font-mono">{book.title}</span>
-            </div>
-          )}
-        </div>
-        <div className="p-3 flex flex-col flex-grow">
-          <div className="flex justify-between items-start mb-1 gap-1">
-            <h3 className="font-bold text-xs leading-tight flex items-start gap-1">
-              <span className="line-clamp-2">{book.title}</span>
-              {book.recommended && (
-                <Star className="w-3 h-3 text-yellow-500 fill-yellow-500 shrink-0" />
-              )}
-            </h3>
-          </div>
-          <p className="text-xs text-gray-500 dark:text-gray-400 mb-2">by {book.author}</p>
-          <div className="mt-auto">
-            <Link
-              href={getAmazonSearchUrl(book.title, book.author)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-orange-600 hover:text-orange-700 dark:text-orange-500 text-xs transition-colors"
-            >
-              <ExternalLink className="w-3 h-3" />
-              Amazon
-            </Link>
-          </div>
-        </div>
-      </SpotlightCard>
-    );
-  };
-
   if (!mounted) return null;
 
   return (
-    <div className="section container mx-auto px-4 mt-12 mb-12">
-      <h1 className="title text-4xl font-bold font-serif mb-2">
-        Bookshelf <span className="text-gray-400 text-2xl">({filteredBooks.length})</span>
+    <div className="section container mx-auto px-4 mt-12 mb-12 font-mono">
+      <h1 className="text-3xl font-bold mb-2">
+        <span className="text-gray-500">#</span> Bookshelf
+        <span className="text-gray-500 text-lg ml-2">({filteredBooks.length})</span>
       </h1>
-      <p className="text-gray-600 dark:text-gray-400 mb-6">
-        A collection of books I&apos;ve read and recommend.
-      </p>
+      <p className="text-gray-600 dark:text-gray-400 mb-6 text-sm">$ ls ~/books</p>
 
       {/* Search */}
       <div className="relative mb-6">
@@ -114,7 +55,7 @@ export default function Bookshelf() {
           type="text"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          placeholder="Search books by title or author..."
+          placeholder="Search books..."
           className="w-full pl-10 pr-4 py-2 bg-gray-100 dark:bg-zinc-800 border border-gray-200 dark:border-gray-700 rounded-lg font-mono text-sm focus:outline-none focus:ring-2 focus:ring-green-500 transition-all"
         />
       </div>
@@ -124,9 +65,30 @@ export default function Bookshelf() {
           No books found matching &quot;{searchQuery}&quot;
         </p>
       ) : (
-        <div className="grid grid-cols-4 gap-3">
+        <div className="space-y-2">
           {filteredBooks.map((book, index) => (
-            <BookCard key={index} book={book} />
+            <div
+              key={index}
+              className="border-l-2 border-gray-300 dark:border-gray-700 pl-4 hover:border-green-500 transition-colors"
+            >
+              <div className="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-3">
+                <Link
+                  href={getAmazonSearchUrl(book.title, book.author)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-green-700 dark:text-green-400 hover:underline flex items-center gap-2 group"
+                >
+                  {book.title}
+                  <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                </Link>
+                <span className="text-gray-500 text-sm italic">by {book.author}</span>
+                {book.recommended && (
+                  <span className="text-yellow-500 text-xs px-2 py-0.5 bg-yellow-100 dark:bg-yellow-900/30 rounded-full">
+                    Recommended
+                  </span>
+                )}
+              </div>
+            </div>
           ))}
         </div>
       )}
