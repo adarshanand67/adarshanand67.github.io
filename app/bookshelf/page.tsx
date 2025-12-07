@@ -1,6 +1,9 @@
 import { getBooks } from "@/lib/api";
 import Link from "next/link";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Star } from "lucide-react";
+import Image from "next/image";
+import FadeIn from "@/components/FadeIn";
+import { SpotlightCard } from "@/components/ui/SpotlightCard";
 
 export default async function Bookshelf() {
   const books = await getBooks();
@@ -11,34 +14,126 @@ export default async function Bookshelf() {
     return `https://www.amazon.in/s?k=${searchQuery}`;
   };
 
+  // Generate Open Library cover URL from book title
+  const getBookCoverUrl = (title: string) => {
+    return `https://covers.openlibrary.org/b/title/${encodeURIComponent(title)}-L.jpg`;
+  };
+
+  const readBooks = books.filter((book: any) => book.status === "Completed" || !book.status);
+  const readingBooks = books.filter((book: any) => book.status === "Reading");
+  const plannedBooks = books.filter((book: any) => book.status === "Planning");
+
+  const BookCard = ({ book, index }: { book: any; index: number }) => (
+    <FadeIn delay={index * 0.05} className="h-full">
+      <SpotlightCard className="h-full flex flex-col p-0">
+        <div className="relative w-full aspect-[2/3] bg-gray-100 dark:bg-zinc-800">
+          {book.image ? (
+            <Image
+              src={book.image}
+              alt={book.title}
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
+            />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center p-4 text-center">
+              <span className="text-gray-400 text-sm font-mono">{book.title}</span>
+            </div>
+          )}
+        </div>
+        <div className="p-4 flex flex-col flex-grow">
+          <div className="flex justify-between items-start mb-2 gap-2">
+            <h3 className="font-bold text-base leading-tight flex items-start gap-2">
+              <span className="line-clamp-2">{book.title}</span>
+              {book.recommended && (
+                <Star className="w-4 h-4 text-yellow-500 fill-yellow-500 shrink-0 mt-0.5" />
+              )}
+            </h3>
+          </div>
+
+          <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">by {book.author}</p>
+
+          {book.notes && (
+            <p className="text-xs text-gray-500 dark:text-gray-400 mb-3 line-clamp-2 italic">
+              {book.notes}
+            </p>
+          )}
+
+          <div className="mt-auto pt-2">
+            <Link
+              href={getAmazonSearchUrl(book.title, book.author)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-orange-600 hover:text-orange-700 dark:text-orange-500 dark:hover:text-orange-400 text-sm transition-colors"
+              title={`Search "${book.title}" on Amazon`}
+            >
+              <ExternalLink className="w-3.5 h-3.5" />
+              <span>Amazon</span>
+            </Link>
+          </div>
+        </div>
+      </SpotlightCard>
+    </FadeIn>
+  );
+
   return (
     <div className="section container mx-auto px-4 mt-12 mb-12">
-      <h1 className="title text-4xl font-bold font-serif mb-2">
-        Bookshelf <span className="text-gray-400 text-2xl">({books.length})</span>
-      </h1>
+      <FadeIn>
+        <h1 className="title text-4xl font-bold font-serif mb-2">
+          Bookshelf <span className="text-gray-400 text-2xl">({books.length})</span>
+        </h1>
+        <p className="text-gray-600 dark:text-gray-400 mb-8">
+          A collection of books I&apos;ve read and recommend.
+        </p>
+      </FadeIn>
 
-      <ul className="space-y-3 mt-8">
-        {books.map((book, index) => (
-          <li key={index} className="flex items-baseline gap-2">
-            <span className="mr-2 text-gray-400">•</span>
-            <div className="flex-1 flex items-baseline flex-wrap gap-x-2">
-              {book.notes && <span className="text-red-600">[notes]</span>}
-              <span className="text-green-700 dark:text-green-400 font-medium">{book.title}</span>
-              <span className="text-gray-500">by {book.author}</span>
-              <Link
-                href={getAmazonSearchUrl(book.title, book.author)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-orange-600 hover:text-orange-700 dark:text-orange-500 dark:hover:text-orange-400 text-sm transition-colors"
-                title={`Search "${book.title} by ${book.author}" on Amazon`}
-              >
-                <ExternalLink className="w-3.5 h-3.5" />
-                <span>Amazon</span>
-              </Link>
-            </div>
-          </li>
-        ))}
-      </ul>
+      {/* Read Books */}
+      {readBooks.length > 0 && (
+        <div className="mb-12">
+          <FadeIn>
+            <h2 className="text-2xl font-bold mb-6 border-b border-gray-200 dark:border-gray-800 pb-2">
+              Read <span className="text-gray-400 text-lg">({readBooks.length})</span>
+            </h2>
+          </FadeIn>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {readBooks.map((book: any, index: number) => (
+              <BookCard key={index} book={book} index={index} />
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Currently Reading */}
+      {readingBooks.length > 0 && (
+        <div className="mb-12">
+          <FadeIn>
+            <h2 className="text-2xl font-bold mb-6 border-b border-gray-200 dark:border-gray-800 pb-2">
+              Reading <span className="text-gray-400 text-lg">({readingBooks.length})</span>
+            </h2>
+          </FadeIn>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {readingBooks.map((book: any, index: number) => (
+              <BookCard key={index} book={book} index={index} />
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Planning to Read */}
+      {plannedBooks.length > 0 && (
+        <div className="mb-12">
+          <FadeIn>
+            <h2 className="text-2xl font-bold mb-6 border-b border-gray-200 dark:border-gray-800 pb-2">
+              Planning <span className="text-gray-400 text-lg">({plannedBooks.length})</span>
+            </h2>
+          </FadeIn>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {plannedBooks.map((book: any, index: number) => (
+              <BookCard key={index} book={book} index={index} />
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
