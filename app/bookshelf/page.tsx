@@ -22,57 +22,64 @@ export default async function Bookshelf() {
   const readingBooks = books.filter((book: any) => book.status === "Reading");
   const plannedBooks = books.filter((book: any) => book.status === "Planning");
 
-  const BookCard = ({ book, index }: { book: any; index: number }) => (
-    <SpotlightCard className="h-full flex flex-col p-0">
-      <div className="relative w-full aspect-[2/3] bg-gray-100 dark:bg-zinc-800">
-        {book.image ? (
+  const BookCard = ({ book, index }: { book: any; index: number }) => {
+    // Use Open Library cover API as fallback
+    const coverUrl =
+      book.image ||
+      `https://covers.openlibrary.org/b/title/${encodeURIComponent(book.title)}-L.jpg`;
+
+    return (
+      <SpotlightCard className="h-full flex flex-col p-0">
+        <div className="relative w-full aspect-[2/3] bg-gray-100 dark:bg-zinc-800 overflow-hidden">
           <Image
-            src={book.image}
+            src={coverUrl}
             alt={book.title}
             fill
             className="object-cover"
             sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
+            onError={(e) => {
+              // Fallback to placeholder if image fails
+              e.currentTarget.style.display = "none";
+            }}
           />
-        ) : (
-          <div className="w-full h-full flex items-center justify-center p-4 text-center">
+          <div className="absolute inset-0 flex items-center justify-center p-4 text-center">
             <span className="text-gray-400 text-sm font-mono">{book.title}</span>
           </div>
-        )}
-      </div>
-      <div className="p-4 flex flex-col flex-grow">
-        <div className="flex justify-between items-start mb-2 gap-2">
-          <h3 className="font-bold text-base leading-tight flex items-start gap-2">
-            <span className="line-clamp-2">{book.title}</span>
-            {book.recommended && (
-              <Star className="w-4 h-4 text-yellow-500 fill-yellow-500 shrink-0 mt-0.5" />
-            )}
-          </h3>
         </div>
+        <div className="p-4 flex flex-col flex-grow">
+          <div className="flex justify-between items-start mb-2 gap-2">
+            <h3 className="font-bold text-base leading-tight flex items-start gap-2">
+              <span className="line-clamp-2">{book.title}</span>
+              {book.recommended && (
+                <Star className="w-4 h-4 text-yellow-500 fill-yellow-500 shrink-0 mt-0.5" />
+              )}
+            </h3>
+          </div>
 
-        <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">by {book.author}</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">by {book.author}</p>
 
-        {book.notes && (
-          <p className="text-xs text-gray-500 dark:text-gray-400 mb-3 line-clamp-2 italic">
-            {book.notes}
-          </p>
-        )}
+          {book.notes && (
+            <p className="text-xs text-gray-500 dark:text-gray-400 mb-3 line-clamp-2 italic">
+              {book.notes}
+            </p>
+          )}
 
-        <div className="mt-auto pt-2">
-          <Link
-            href={getAmazonSearchUrl(book.title, book.author)}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 text-orange-600 hover:text-orange-700 dark:text-orange-500 dark:hover:text-orange-400 text-sm transition-colors"
-            title={`Search "${book.title}" on Amazon`}
-          >
-            <ExternalLink className="w-3.5 h-3.5" />
-            <span>Amazon</span>
-          </Link>
+          <div className="mt-auto pt-2">
+            <Link
+              href={getAmazonSearchUrl(book.title, book.author)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-orange-600 hover:text-orange-700 dark:text-orange-500 dark:hover:text-orange-400 text-sm transition-colors"
+              title={`Search "${book.title}" on Amazon`}
+            >
+              <ExternalLink className="w-3.5 h-3.5" />
+              <span>Amazon</span>
+            </Link>
+          </div>
         </div>
-      </div>
-    </SpotlightCard>
-  );
-
+      </SpotlightCard>
+    );
+  };
   return (
     <div className="section container mx-auto px-4 mt-12 mb-12">
       <h1 className="title text-4xl font-bold font-serif mb-2">
