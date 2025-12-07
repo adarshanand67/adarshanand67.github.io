@@ -32,6 +32,11 @@ export default function AnimeShelf() {
   const anime = filteredItems.filter((item) => item.type === "Anime");
   const movies = filteredItems.filter((item) => item.type === "Movie");
 
+  const watchedAnime = anime.filter((item) => item.status === "Completed");
+  const plannedAnime = anime.filter((item) => item.status !== "Completed");
+  const watchedMovies = movies.filter((item) => item.status === "Completed");
+  const plannedMovies = movies.filter((item) => item.status !== "Completed");
+
   const Card = ({ item }: { item: EntertainmentItem }) => (
     <SpotlightCard className="h-full flex flex-col p-0">
       {item.image ? (
@@ -40,13 +45,13 @@ export default function AnimeShelf() {
           <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
         </div>
       ) : (
-        <div className="w-full aspect-[2/3] bg-gradient-to-br from-gray-100 to-gray-200 dark:from-zinc-800 dark:to-zinc-900 flex items-center justify-center p-2">
-          <span className="text-gray-500 dark:text-gray-400 text-xs text-center font-mono leading-tight">
+        <div className="w-full aspect-[2/3] bg-gradient-to-br from-purple-100 to-blue-100 dark:from-zinc-800 dark:to-zinc-900 flex items-center justify-center p-2">
+          <span className="text-gray-600 dark:text-gray-300 text-xs text-center font-mono leading-tight">
             {item.title}
           </span>
         </div>
       )}
-      <div className="p-2 flex flex-col flex-grow">
+      <div className="p-3 flex flex-col flex-grow">
         <div className="flex items-start gap-1 mb-1">
           <h3 className="font-bold text-xs leading-tight line-clamp-2">{item.title}</h3>
           {item.recommended && (
@@ -54,15 +59,8 @@ export default function AnimeShelf() {
           )}
         </div>
         {item.notes && (
-          <p className="text-xs text-gray-500 dark:text-gray-400 line-clamp-1">{item.notes}</p>
+          <p className="text-xs text-gray-500 dark:text-gray-400 line-clamp-2">{item.notes}</p>
         )}
-        <div className="mt-auto pt-1">
-          <span
-            className={`text-xs px-1.5 py-0.5 rounded ${item.status === "Completed" ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100" : "bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-300"}`}
-          >
-            {item.status}
-          </span>
-        </div>
       </div>
     </SpotlightCard>
   );
@@ -77,7 +75,7 @@ export default function AnimeShelf() {
       </p>
 
       {/* Search */}
-      <div className="relative mb-6">
+      <div className="relative mb-8">
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
         <input
           type="text"
@@ -94,33 +92,71 @@ export default function AnimeShelf() {
         </p>
       ) : (
         <>
-          {/* Anime */}
-          {anime.length > 0 && (
-            <div className="mb-12">
-              <h2 className="text-2xl font-bold mb-4 border-b border-gray-200 dark:border-gray-800 pb-2">
-                Anime <span className="text-gray-400 text-lg">({anime.length})</span>
-              </h2>
-              <div className="grid grid-cols-4 gap-3">
-                {anime.map((item, index) => (
-                  <Card key={index} item={item} />
-                ))}
-              </div>
-            </div>
-          )}
+          {/* Anime Section */}
+          <div className="mb-12">
+            <h2 className="text-3xl font-bold font-serif mb-6 border-b border-gray-200 dark:border-gray-800 pb-2">
+              Anime <span className="text-gray-400 text-xl">({anime.length})</span>
+            </h2>
 
-          {/* Movies */}
-          {movies.length > 0 && (
-            <div className="mb-12">
-              <h2 className="text-2xl font-bold mb-4 border-b border-gray-200 dark:border-gray-800 pb-2">
-                Movies <span className="text-gray-400 text-lg">({movies.length})</span>
-              </h2>
-              <div className="grid grid-cols-4 gap-3">
-                {movies.map((item, index) => (
-                  <Card key={index} item={item} />
-                ))}
+            {/* Watched Anime */}
+            {watchedAnime.length > 0 && (
+              <div className="mb-8">
+                <h3 className="text-xl font-bold text-gray-700 dark:text-gray-300 mb-4">Watched</h3>
+                <div className="grid grid-cols-4 gap-3">
+                  {watchedAnime.map((item, index) => (
+                    <Card key={index} item={item} />
+                  ))}
+                </div>
               </div>
-            </div>
-          )}
+            )}
+
+            {/* Planned Anime */}
+            {plannedAnime.length > 0 && (
+              <div>
+                <h3 className="text-xl font-bold text-gray-700 dark:text-gray-300 mb-4">
+                  Planning
+                </h3>
+                <div className="grid grid-cols-4 gap-3">
+                  {plannedAnime.map((item, index) => (
+                    <Card key={index} item={item} />
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Movies Section */}
+          <div className="mb-12">
+            <h2 className="text-3xl font-bold font-serif mb-6 border-b border-gray-200 dark:border-gray-800 pb-2">
+              Movies <span className="text-gray-400 text-xl">({movies.length})</span>
+            </h2>
+
+            {/* Watched Movies */}
+            {watchedMovies.length > 0 && (
+              <div className="mb-8">
+                <h3 className="text-xl font-bold text-gray-700 dark:text-gray-300 mb-4">Watched</h3>
+                <div className="grid grid-cols-4 gap-3">
+                  {watchedMovies.map((item, index) => (
+                    <Card key={index} item={item} />
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Planned Movies */}
+            {plannedMovies.length > 0 && (
+              <div>
+                <h3 className="text-xl font-bold text-gray-700 dark:text-gray-300 mb-4">
+                  Planning
+                </h3>
+                <div className="grid grid-cols-4 gap-3">
+                  {plannedMovies.map((item, index) => (
+                    <Card key={index} item={item} />
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
         </>
       )}
     </div>
