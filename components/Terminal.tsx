@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { toLeetSpeak } from "@/lib/utils/leet";
 
 export default function Terminal() {
     const [lines, setLines] = useState<string[]>([]);
@@ -12,7 +13,7 @@ export default function Terminal() {
         "> ./adarsh_profile.exe",
         "> Initializing SDE protocol...",
         "> Loading modules: C++, Rust, System Design...",
-        "> Access granted: Welcome to my portfolio.",
+        `> ${toLeetSpeak("Access granted: Welcome to my portfolio.")}`,
     ];
 
     useEffect(() => {
