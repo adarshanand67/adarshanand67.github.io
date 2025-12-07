@@ -4,7 +4,7 @@ import booksData from "@/data/books.json";
 import Link from "next/link";
 import { ExternalLink, Star, Search } from "lucide-react";
 import { SpotlightCard } from "@/components/ui/SpotlightCard";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 
 interface Book {
   title: string;
@@ -19,6 +19,12 @@ interface Book {
 export default function Bookshelf() {
   const books: Book[] = booksData;
   const [searchQuery, setSearchQuery] = useState("");
+  // Ensure we are mounted to avoid hydration mismatch with random values if any
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const filteredBooks = useMemo(() => {
     if (searchQuery.trim() === "") return books;
@@ -35,15 +41,34 @@ export default function Bookshelf() {
   };
 
   const BookCard = ({ book }: { book: Book }) => {
-    const coverUrl =
-      book.image ||
-      `https://covers.openlibrary.org/b/title/${encodeURIComponent(book.title)}-L.jpg`;
+    const primaryUrl = book.image;
+    const fallbackUrl = `https://covers.openlibrary.org/b/title/${encodeURIComponent(book.title)}-L.jpg`;
+
+    // We start with primaryUrl if available, otherwise fallback
+    const [imgSrc, setImgSrc] = useState(primaryUrl || fallbackUrl);
+    const [hasError, setHasError] = useState(false);
 
     return (
       <SpotlightCard className="h-full flex flex-col p-0">
-        <div className="relative w-full aspect-[2/3] bg-gray-100 dark:bg-zinc-800 overflow-hidden">
+        <div className="relative w-full aspect-[2/3] bg-gray-100 dark:bg-zinc-800 overflow-hidden group">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={coverUrl} alt={book.title} className="w-full h-full object-cover" />
+          <img
+            src={imgSrc}
+            alt={book.title}
+            className={`w-full h-full object-cover transition-opacity duration-300 ${hasError ? "opacity-50 grayscale" : "opacity-100"}`}
+            onError={() => {
+              if (imgSrc !== fallbackUrl) {
+                setImgSrc(fallbackUrl);
+              } else {
+                setHasError(true); // Both failed
+              }
+            }}
+          />
+          {hasError && (
+            <div className="absolute inset-0 flex items-center justify-center text-center p-2">
+              <span className="text-xs text-gray-500 font-mono">{book.title}</span>
+            </div>
+          )}
         </div>
         <div className="p-3 flex flex-col flex-grow">
           <div className="flex justify-between items-start mb-1 gap-1">
@@ -70,6 +95,8 @@ export default function Bookshelf() {
       </SpotlightCard>
     );
   };
+
+  if (!mounted) return null;
 
   return (
     <div className="section container mx-auto px-4 mt-12 mb-12">

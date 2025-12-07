@@ -65,7 +65,7 @@ async function main() {
   console.log("Seeded Blogs");
 
   // Seed Entertainment
-  const entertainment = await readJson("anime.json");
+  const entertainment = await readJson("entertainment.json");
   await prisma.entertainment.deleteMany();
   for (const item of entertainment) {
     // Map JSON string enums to Prisma enums if needed, or let Prisma handle if strings match
