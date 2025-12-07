@@ -9,16 +9,7 @@ export default function Footer() {
           <p className="mb-2">
             <span className="text-gray-500">$</span> cat ~/footer.txt
           </p>
-          <p className="mb-4">
-            © {new Date().getFullYear()} Adarsh Anand • Inspired by{" "}
-            <Link
-              href="https://arpitbhayani.me"
-              target="_blank"
-              className="text-green-700 dark:text-green-400 hover:underline"
-            >
-              Arpit Bhayani
-            </Link>
-          </p>
+          <p className="mb-4">© {new Date().getFullYear()} Adarsh Anand</p>
           <div className="flex flex-wrap items-center gap-2">
             <span className="text-gray-500">→</span>
             <Link
