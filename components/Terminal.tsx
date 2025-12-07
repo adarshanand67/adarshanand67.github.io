@@ -1,14 +1,22 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
+import { useTheme } from "next-themes";
 import { toLeetSpeak } from "@/lib/utils/leet";
 
 export default function Terminal() {
+  const router = useRouter();
+  const { setTheme } = useTheme();
+
   const [lines, setLines] = useState<string[]>([]);
   const [currentLineIndex, setCurrentLineIndex] = useState(0);
   const [currentText, setCurrentText] = useState("");
   const [isIntroDone, setIsIntroDone] = useState(false);
   const [input, setInput] = useState("");
+  const [history, setHistory] = useState<string[]>([]);
+  const [historyIndex, setHistoryIndex] = useState(-1);
+
   const containerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -19,19 +27,32 @@ export default function Terminal() {
     `> ${toLeetSpeak("Access granted. Type 'help' for commands.")}`,
   ];
 
+  const commands = [
+    "help",
+    "ls",
+    "cd",
+    "open",
+    "clear",
+    "whoami",
+    "date",
+    "theme",
+    "sudo",
+    "rm",
+    "contact",
+    "blogs",
+    "papers",
+    "books",
+    "anime",
+  ];
+
+  const directories = ["blogs", "papers", "books", "anime"];
+
   // Auto-scroll
   useEffect(() => {
     if (containerRef.current) {
       containerRef.current.scrollTop = containerRef.current.scrollHeight;
     }
   }, [lines, currentText, isIntroDone]);
-
-  // Focus input on click
-  const handleTerminalClick = () => {
-    if (isIntroDone) {
-      inputRef.current?.focus();
-    }
-  };
 
   // Intro Typing Effect
   useEffect(() => {
@@ -56,48 +77,179 @@ export default function Terminal() {
     }
   }, [currentText, currentLineIndex, introLines]);
 
-  const handleCommand = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const executeCommand = (cmd: string) => {
+    const parts = cmd.trim().split(/\s+/);
+    const command = parts[0].toLowerCase();
+    const args = parts.slice(1);
+
+    // Add to history
+    setHistory((prev) => [cmd, ...prev]);
+    setHistoryIndex(-1);
+
+    const newLines = [...lines, `$ ${cmd}`];
+
+    switch (command) {
+      case "help":
+        newLines.push(
+          "Available commands:",
+          "  ls              - List directories",
+          "  cd [dir]        - Change directory (navigates site)",
+          "  open [dir]      - Open directory",
+          "  whoami          - Display profile info",
+          "  theme [mode]    - Set theme (light/dark/system)",
+          "  date            - Show current date/time",
+          "  clean / clear   - Clear terminal",
+          "  sudo            - Execute with superuser privileges",
+          "  contact         - Show contact info"
+        );
+        break;
+
+      case "ls":
+        newLines.push(
+          "drwxr-xr-x  blogs/",
+          "drwxr-xr-x  papers/",
+          "drwxr-xr-x  bookshelf/",
+          "drwxr-xr-x  animeshelf/"
+        );
+        break;
+
+      case "cd":
+      case "open":
+        if (args.length === 0) {
+          newLines.push("usage: cd [directory]");
+        } else {
+          const dir = args[0].replace(/\/$/, "").replace("shelf", ""); // relaxed matching
+          const map: Record<string, string> = {
+            blog: "/blogs",
+            blogs: "/blogs",
+            paper: "/papershelf",
+            papers: "/papershelf",
+            book: "/bookshelf",
+            books: "/bookshelf",
+            anime: "/animeshelf",
+            animes: "/animeshelf",
+            home: "/",
+            "~": "/",
+          };
+
+          if (map[dir]) {
+            newLines.push(`Navigating to ${map[dir]}...`);
+            router.push(map[dir]);
+          } else {
+            newLines.push(`Directory not found: ${args[0]}`);
+          }
+        }
+        break;
+
+      case "whoami":
+        newLines.push(
+          "User: Adarsh Anand",
+          "Role: SDE @ Trellix",
+          "Expertise: C++, System Design, Security",
+          "Status: Online"
+        );
+        break;
+
+      case "date":
+        newLines.push(new Date().toString());
+        break;
+
+      case "theme":
+        if (args.length === 0) {
+          newLines.push("usage: theme [light|dark|system]");
+        } else {
+          const mode = args[0].toLowerCase();
+          if (["light", "dark", "system"].includes(mode)) {
+            setTheme(mode);
+            newLines.push(`Theme set to ${mode}`);
+          } else {
+            newLines.push(`Invalid theme: ${mode}. Use light, dark, or system.`);
+          }
+        }
+        break;
+
+      case "sudo":
+        newLines.push("Permission denied: You are not categorized as admin.");
+        break;
+
+      case "rm":
+        if (args.includes("-rf") && args.includes("/")) {
+          newLines.push("Nice try, but I need this website.");
+        } else {
+          newLines.push("Permission denied.");
+        }
+        break;
+
+      case "clear":
+      case "cls":
+        setLines([]);
+        setInput("");
+        return; // Early return to avoid setting lines
+
+      case "contact":
+        newLines.push(
+          "Email: adarshan20302@gmail.com",
+          "LinkedIn: linkedin.com/in/adarshanand67",
+          "GitHub: github.com/adarshanand67"
+        );
+        break;
+
+      case "":
+        break;
+
+      default:
+        newLines.push(`Command not found: ${command}. Type 'help' for options.`);
+    }
+
+    setLines(newLines);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      const cmd = input.trim().toLowerCase();
-      const newLines = [...lines, `$ ${input}`];
-
-      switch (cmd) {
-        case "help":
-          newLines.push(
-            "Available commands:",
-            "  help    - Show this menu",
-            "  whoami  - Display profile info",
-            "  ls      - List shelf directories",
-            "  clear   - Clear terminal",
-            "  contact - Show contact info"
-          );
-          break;
-        case "whoami":
-          newLines.push("Adarsh Anand | SDE @Trellix | Security & Systems Enthusiast");
-          break;
-        case "ls":
-          newLines.push(
-            "drwxr-xr-x  blogs/",
-            "drwxr-xr-x  papers/",
-            "drwxr-xr-x  books/",
-            "drwxr-xr-x  anime/"
-          );
-          break;
-        case "clear":
-          setLines([]);
-          setInput("");
-          return;
-        case "contact":
-          newLines.push("Email: adarshan20302@gmail.com", "LinkedIn: /in/adarshanand67");
-          break;
-        case "":
-          break;
-        default:
-          newLines.push(`Command not found: ${cmd}. Type 'help' for options.`);
-      }
-
-      setLines(newLines);
+      executeCommand(input);
       setInput("");
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      if (history.length > 0 && historyIndex < history.length - 1) {
+        const newIndex = historyIndex + 1;
+        setHistoryIndex(newIndex);
+        setInput(history[newIndex]);
+      }
+    } else if (e.key === "ArrowDown") {
+      e.preventDefault();
+      if (historyIndex > 0) {
+        const newIndex = historyIndex - 1;
+        setHistoryIndex(newIndex);
+        setInput(history[newIndex]);
+      } else if (historyIndex === 0) {
+        setHistoryIndex(-1);
+        setInput("");
+      }
+    } else if (e.key === "Tab") {
+      e.preventDefault();
+      const parts = input.split(" ");
+      const currentWord = parts[parts.length - 1].toLowerCase();
+
+      if (currentWord) {
+        // Find matches in commands or directories
+        const matches = [...commands, ...directories].filter((c) => c.startsWith(currentWord));
+
+        if (matches.length === 1) {
+          // Auto-complete
+          if (parts.length === 1) {
+            setInput(matches[0] + " ");
+          } else {
+            parts[parts.length - 1] = matches[0];
+            setInput(parts.join(" ") + " ");
+          }
+        }
+      }
+    }
+  };
+
+  const handleTerminalClick = () => {
+    if (isIntroDone) {
+      inputRef.current?.focus();
     }
   };
 
@@ -114,7 +266,7 @@ export default function Terminal() {
       </div>
       <div
         ref={containerRef}
-        className="p-4 text-green-400 h-[200px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-transparent"
+        className="p-4 text-green-400 h-[220px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-transparent"
       >
         {lines.map((line, i) => (
           <div key={i} className="mb-1 whitespace-pre-wrap">
@@ -135,7 +287,7 @@ export default function Terminal() {
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              onKeyDown={handleCommand}
+              onKeyDown={handleKeyDown}
               className="bg-transparent border-none outline-none text-green-400 flex-grow"
               autoFocus
               spellCheck={false}
