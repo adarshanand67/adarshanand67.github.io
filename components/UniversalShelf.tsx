@@ -40,6 +40,7 @@ export default function UniversalShelf({ config, initialData }: UniversalShelfPr
     <div className="section container mx-auto px-4 mt-12 mb-12 font-mono">
       <ShelfHeader
         title={config.title}
+        description={config.description}
         count={filteredItems.length}
         command={config.command}
         searchValue={query}

@@ -37,10 +37,11 @@ export default async function Home() {
 
       <div className="section container mx-auto px-4 mb-24">
         {/* Experience Section */}
-        <div className="mb-16" id="experience">
-          <h2 className="title text-3xl font-bold font-serif mb-8 border-b border-gray-200 dark:border-gray-800 pb-4">
-            Experience
+        <div className="mb-16 font-mono" id="experience">
+          <h2 className="text-2xl font-bold mb-2">
+            <span className="text-gray-500">##</span> Experience
           </h2>
+          <p className="text-gray-600 dark:text-gray-400 mb-8 text-sm">$ cat ~/work/history.log</p>
 
           <div className="space-y-8">
             {experiences.map((exp, index) => (

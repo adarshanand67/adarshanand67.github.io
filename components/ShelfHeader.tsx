@@ -4,6 +4,7 @@ import { Search } from "lucide-react";
 
 interface ShelfHeaderProps {
   title: string;
+  description?: string;
   count: number;
   command: string;
   searchValue: string;
@@ -13,6 +14,7 @@ interface ShelfHeaderProps {
 
 export function ShelfHeader({
   title,
+  description,
   count,
   command,
   searchValue,
@@ -25,7 +27,10 @@ export function ShelfHeader({
         <span className="text-gray-500">#</span> {title}
         <span className="text-gray-500 text-lg ml-2">({count})</span>
       </h1>
-      <p className="text-gray-600 dark:text-gray-400 mb-6 text-sm">$ {command}</p>
+      <p className="text-gray-600 dark:text-gray-400 mb-2 text-sm">$ {command}</p>
+      {description && (
+        <p className="text-gray-500 dark:text-gray-500 mb-6 text-sm italic">&gt; {description}</p>
+      )}
 
       {/* Search */}
       <div className="relative mb-6">
