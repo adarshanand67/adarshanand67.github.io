@@ -1,40 +1,42 @@
-```
 const skills = [
-  // Languages
-  "C++",
-  "C",
-  "Rust",
-  "Python",
-  "Assembly",
-  "TypeScript",
-  // Systems
-  "Linux Kernel",
-  "Windows Internals",
-  "Device Drivers",
-  "Memory Management",
-  "Process Scheduling",
-  "IPC & Sockets",
-  // Security
-  "Intel SGX/TDX",
-  "Cryptography",
-  "Fuzzing",
-  "Sanitizers",
-  "Static Analysis",
-  // Tools
-  "GDB",
-  "Valgrind",
-  "Perf",
-  "Docker",
-  "Git",
-  // Infra
-  "PostgreSQL",
-  "Redis",
-  "AWS",
-  "CI/CD",
-  // Web (for balance)
-  "React",
-  "Next.js",
-  "Node.js",
+    // Languages
+    "C++",
+    "Rust",
+    "Python",
+    "TypeScript",
+    // Confidential Computing
+    "Intel SGX",
+    "Intel TDX",
+    "Gramine",
+    // Security & Fuzzing
+    "libFuzzer",
+    "AddressSanitizer",
+    "MemorySanitizer",
+    "RESTler",
+    "OpenSSL",
+    "Post-Quantum Cryptography",
+    "PKCS11",
+    // Data Security
+    "Data Loss Prevention",
+    "Full-Disk Encryption",
+    "Hashicorp Vault",
+    // AI/ML
+    "vLLM",
+    "PyTorch",
+    "OpenVINO",
+    // Infrastructure
+    "Docker",
+    "Redis",
+    "MySQL",
+    "LLVM",
+    // Linux Distros
+    "Ubuntu",
+    "CentOS",
+    "RHEL",
+    // Web
+    "React",
+    "Next.js",
+    "REST APIs",
 ];
 
 export default function TechStack() {
