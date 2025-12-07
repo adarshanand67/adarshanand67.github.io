@@ -33,7 +33,7 @@ export default function RootLayout({
       <body className={`${assistant.variable} ${jetbrains.variable} antialiased`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >
