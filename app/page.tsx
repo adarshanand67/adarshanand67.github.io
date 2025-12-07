@@ -1,11 +1,11 @@
-import Hero from "@/components/Hero";
-import SectionHeader from "@/components/SectionHeader";
+import Hero from "@/components/home/Hero";
+import SectionHeader from "@/components/layout/SectionHeader";
 import { getExperiences } from "@/lib/api";
 import { linkifyTech } from "@/lib/tech-links";
-import TechStack from "@/components/TechStack";
-import RecentBlogs from "@/components/RecentBlogs";
-import RecentPapers from "@/components/RecentPapers";
-import GitHubStats from "@/components/GitHubStats";
+import TechStack from "@/components/home/TechStack";
+import RecentBlogs from "@/components/home/RecentBlogs";
+import RecentPapers from "@/components/home/RecentPapers";
+import GitHubStats from "@/components/widgets/GitHubStats";
 
 export default async function Home() {
   const experiences = await getExperiences();

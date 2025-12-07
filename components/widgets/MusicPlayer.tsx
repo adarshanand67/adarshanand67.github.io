@@ -11,6 +11,14 @@ export default function MusicPlayer() {
 
     // Fallback tracks if one fails (Lofi / Chillhop style)
     const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
+
+    const [mounted, setMounted] = useState(false);
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
+
+
     const PLAYLIST = [
         "https://archive.org/download/tvtunes_30971/One%20Punch%20Man.mp3",
         "https://archive.org/download/fav-mikezillak/Pokemon%20Theme%20-%20Billy%20Crawford.mp3",
@@ -95,6 +103,10 @@ export default function MusicPlayer() {
             setIsMuted(!isMuted);
         }
     };
+
+    if (!mounted) {
+        return null; // Or a placeholder if desired, but null is fine for floating widget
+    }
 
     return (
         <div className="fixed bottom-4 right-4 z-50 font-mono">

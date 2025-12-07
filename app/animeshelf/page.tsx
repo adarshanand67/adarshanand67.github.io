@@ -1,5 +1,5 @@
 import { shelfConfigs } from "@/config/shelves";
-import UniversalShelf from "@/components/UniversalShelf";
+import UniversalShelf from "@/components/shelves/UniversalShelf";
 import { getEntertainment } from "@/lib/api";
 
 export default async function Animeshelf() {

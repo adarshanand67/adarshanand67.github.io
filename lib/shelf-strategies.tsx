@@ -1,4 +1,4 @@
-import { Book, Paper, Blog, EntertainmentItem } from "@/types";
+import { Book, Paper, Blog, EntertainmentItem, Project } from "@/types";
 import { ReactNode } from "react";
 import Link from "next/link";
 import { ExternalLink, Star, Check } from "lucide-react";
@@ -243,6 +243,57 @@ export class BlogListStrategy implements ShelfItemStrategy<Blog> {
   }
 }
 
+// Concrete Strategy: Project List Item
+export class ProjectListStrategy implements ShelfItemStrategy<Project> {
+  renderItem(project: Project, index: number): ReactNode {
+    return (
+      <div
+        key={index}
+        className="border-l-2 border-gray-300 dark:border-gray-700 pl-4 hover:border-green-500 transition-colors"
+      >
+        <Link
+          href={project.link}
+          target="_blank"
+          className="text-xl font-bold text-green-700 dark:text-green-400 hover:underline block mb-2"
+        >
+          {project.title}
+        </Link>
+        <p className="text-gray-700 dark:text-gray-300 mb-2">{project.description}</p>
+        <div className="flex flex-wrap gap-2">
+          {project.tech.map((tech, i) => (
+            <span
+              key={i}
+              className="text-xs font-mono bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 px-2 py-1 rounded"
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  renderList(items: Project[]): ReactNode {
+    if (items.length === 0) return null;
+    return (
+      <div className="space-y-8">
+        {items.map((project, index) => this.renderItem(project, index))}
+      </div>
+    );
+  }
+
+  filter(items: Project[], query: string): Project[] {
+    if (!query) return items;
+    const lowerQuery = query.toLowerCase();
+    return items.filter(
+      (project) =>
+        project.title.toLowerCase().includes(lowerQuery) ||
+        project.description.toLowerCase().includes(lowerQuery) ||
+        project.tech.some((t) => t.toLowerCase().includes(lowerQuery))
+    );
+  }
+}
+
 // Factory to create strategies
 export class ShelfStrategyFactory {
   static getStrategy(type: string): ShelfItemStrategy<any> {
@@ -255,6 +306,8 @@ export class ShelfStrategyFactory {
         return new AnimeCardStrategy();
       case "blog":
         return new BlogListStrategy();
+      case "project":
+        return new ProjectListStrategy();
       default:
         throw new Error(`Unknown shelf type: ${type}`);
     }

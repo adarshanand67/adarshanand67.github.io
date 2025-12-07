@@ -1,5 +1,5 @@
 import Link from "next/link";
-import WeatherWidget from "./WeatherWidget";
+import WeatherWidget from "@/components/widgets/WeatherWidget";
 
 export default function Footer() {
   return (

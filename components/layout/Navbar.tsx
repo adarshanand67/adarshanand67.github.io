@@ -1,12 +1,17 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ThemeToggle } from "./theme-toggle";
 import { Search } from "lucide-react";
 
 export default function Navbar() {
   const [isActive, setIsActive] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <>
@@ -78,6 +83,18 @@ export default function Navbar() {
                 Bookshelf
               </Link>
               <Link
+                href="/projectshelf"
+                className="px-4 py-3 text-base text-foreground/80 hover:text-green-600 dark:hover:text-green-400 hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
+              >
+                Projects
+              </Link>
+              <Link
+                href="/uses"
+                className="px-4 py-3 text-base text-foreground/80 hover:text-green-600 dark:hover:text-green-400 hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
+              >
+                Uses
+              </Link>
+              <Link
                 href="/experience"
                 className="px-4 py-3 text-base text-foreground/80 hover:text-green-600 dark:hover:text-green-400 hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
               >
@@ -91,7 +108,7 @@ export default function Navbar() {
                 onClick={() => document.dispatchEvent(new Event("open-command-menu"))}
                 aria-label="Search"
               >
-                <Search className="w-4 h-4" />
+                {mounted ? <Search className="w-4 h-4" /> : <div className="w-4 h-4" />}
                 <kbd className="text-xs text-gray-500">⌘K</kbd>
               </button>
 
@@ -135,6 +152,20 @@ export default function Navbar() {
                 Bookshelf
               </Link>
               <Link
+                href="/projectshelf"
+                className="py-2 hover:text-green-600 dark:hover:text-green-400"
+                onClick={() => setIsActive(false)}
+              >
+                Projects
+              </Link>
+              <Link
+                href="/uses"
+                className="py-2 hover:text-green-600 dark:hover:text-green-400"
+                onClick={() => setIsActive(false)}
+              >
+                Uses
+              </Link>
+              <Link
                 href="/experience"
                 className="py-2 hover:text-green-600 dark:hover:text-green-400"
                 onClick={() => setIsActive(false)}
@@ -146,7 +177,7 @@ export default function Navbar() {
                   onClick={() => document.dispatchEvent(new Event("open-command-menu"))}
                   className="flex items-center gap-2 text-gray-600 dark:text-gray-400"
                 >
-                  <Search className="w-4 h-4" /> Search
+                  {mounted ? <Search className="w-4 h-4" /> : <div className="w-4 h-4" />} Search
                 </button>
               </div>
             </div>

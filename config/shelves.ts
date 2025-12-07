@@ -3,7 +3,7 @@ export interface ShelfConfig {
   description: string;
   command: string; // CLI command like "ls ~/books"
   searchPlaceholder: string;
-  type: "book" | "paper" | "anime" | "blog";
+  type: "book" | "paper" | "anime" | "blog" | "project";
 }
 
 export const shelfConfigs: Record<string, ShelfConfig> = {
@@ -34,5 +34,12 @@ export const shelfConfigs: Record<string, ShelfConfig> = {
     command: 'find ~/blog -type f -name "*.md"',
     searchPlaceholder: "Search blogs...",
     type: "blog",
+  },
+  projects: {
+    title: "Projects",
+    description: "Open source contributions and personal projects.",
+    command: "ls -la ~/projects",
+    searchPlaceholder: "Search projects...",
+    type: "project",
   }
 };

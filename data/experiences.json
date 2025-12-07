@@ -6,7 +6,12 @@
     "location": "Bengaluru, Karnataka, India",
     "logo": "/assets/logos/trellix.png",
     "description": "Preventing unauthorized exfiltration of sensitive corporate data as part of the Data Loss Prevention (Windows) team.",
-    "highlights": []
+    "highlights": [
+      "Integrated Boldon James classification support in Trellix DLP Endpoint, ensuring successful file classification and policy enforcement without SDK code upgrades.",
+      "Developed comprehensive unit tests for Boldon James classification files `tools/sanity_test` using CPP Unit framework to validate integration stability.",
+      "Configured and validated third-party tags in McAfee ePolicy Orchestrator (ePO) to map Boldon James labels (e.g., 'business', 'confidential') to DLP policies.",
+      "Created PowerShell scripts to automate Registry configuration for Boldon James ConfigManager on endpoints, supporting both 64-bit and WOW6432Node environments."
+    ]
   },
   {
     "company": "Intel Corporation",

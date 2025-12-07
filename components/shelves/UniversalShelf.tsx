@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { ShelfHeader } from "@/components/ShelfHeader";
+import { ShelfHeader } from "@/components/shelves/ShelfHeader";
 import { ShelfConfig } from "@/config/shelves";
 import { ShelfStrategyFactory } from "@/lib/shelf-strategies";
 

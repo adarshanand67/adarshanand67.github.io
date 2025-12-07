@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import { Assistant, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import { CommandMenu } from "@/components/CommandMenu";
+import { ThemeProvider } from "@/components/layout/theme-provider";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
+import { CommandMenu } from "@/components/layout/CommandMenu";
 import { MatrixRain } from "@/components/ui/MatrixRain";
-import BackToTop from "@/components/BackToTop";
-import MusicPlayer from "@/components/MusicPlayer";
+import BackToTop from "@/components/layout/BackToTop";
+import MusicPlayer from "@/components/widgets/MusicPlayer";
 
 const assistant = Assistant({
   variable: "--font-assistant",

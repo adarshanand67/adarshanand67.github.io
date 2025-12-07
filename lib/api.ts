@@ -6,6 +6,8 @@ import experiencesData from "@/data/experiences.json";
 import papersData from "@/data/papers.json";
 import booksData from "@/data/books.json";
 import entertainmentData from "@/data/entertainment.json";
+import projectsData from "@/data/projects.json";
+import usesData from "@/data/uses.json";
 
 // Shared Types
 import type { Profile, Experience, Book, Paper, Blog, EntertainmentItem } from "@/types";
@@ -25,6 +27,14 @@ export async function getPapers() {
 
 export async function getBooks() {
   return booksData;
+}
+
+export async function getProjects() {
+  return projectsData;
+}
+
+export async function getUses() {
+  return usesData;
 }
 
 export async function getEntertainment() {

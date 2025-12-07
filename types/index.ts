@@ -20,6 +20,13 @@ export interface Profile {
   };
 }
 
+export interface Project {
+  title: string;
+  description: string;
+  tech: string[];
+  link: string;
+}
+
 export interface Experience {
   company: string;
   role: string;
