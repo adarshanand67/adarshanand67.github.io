@@ -1,6 +1,7 @@
 import Hero from "@/components/Hero";
 import SectionHeader from "@/components/SectionHeader";
 import { getExperiences } from "@/lib/api";
+import { linkifyTech } from "@/lib/tech-links";
 import dynamic from "next/dynamic";
 import FadeIn from "@/components/FadeIn";
 import Image from "next/image";
@@ -85,14 +86,18 @@ export default async function Home() {
                       </div>
 
                       {exp.description && (
-                        <p className="mb-3 text-gray-700 dark:text-gray-300 leading-relaxed">
-                          {exp.description}
-                        </p>
+                        <p
+                          className="mb-4 text-lg text-gray-700 dark:text-gray-300 leading-relaxed"
+                          dangerouslySetInnerHTML={{ __html: linkifyTech(exp.description) }}
+                        />
                       )}
                       {exp.highlights.length > 0 && (
-                        <ul className="list-disc pl-5 space-y-2 text-gray-600 dark:text-gray-400 text-sm">
+                        <ul className="list-disc pl-5 space-y-3 text-gray-600 dark:text-gray-400">
                           {exp.highlights.map((highlight, idx) => (
-                            <li key={idx}>{highlight}</li>
+                            <li
+                              key={idx}
+                              dangerouslySetInnerHTML={{ __html: linkifyTech(highlight) }}
+                            />
                           ))}
                         </ul>
                       )}
