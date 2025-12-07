@@ -62,20 +62,20 @@ export function CommandMenu() {
                     loop
                 >
                     <div className="flex items-center border-b border-gray-100 dark:border-gray-800 px-3 pb-2 mb-2">
-                        <Search className="w-4 h-4 text-gray-400 mr-2" />
+                        <Search className="w-4 h-4 text-gray-600 dark:text-gray-300 mr-2" />
                         <Command.Input
                             placeholder="Type a command or search..."
-                            className="w-full bg-transparent border-none outline-none text-sm h-8 dark:text-white placeholder:text-gray-400"
+                            className="w-full bg-transparent border-none outline-none text-sm h-8 dark:text-white placeholder:text-gray-600 dark:placeholder:text-gray-400"
                             autoFocus
                         />
                     </div>
 
                     <Command.List className="max-h-[300px] overflow-y-auto overflow-x-hidden px-1 scroll-py-1">
-                        <Command.Empty className="py-6 text-center text-sm text-gray-500">
+                        <Command.Empty className="py-6 text-center text-sm text-gray-700 dark:text-gray-300">
                             No results found.
                         </Command.Empty>
 
-                        <Command.Group heading="Navigation" className="text-xs font-medium text-gray-400 mb-2 px-2">
+                        <Command.Group heading="Navigation" className="text-xs font-medium text-gray-600 dark:text-gray-400 mb-2 px-2">
                             <Command.Item
                                 onSelect={() => runCommand(() => router.push("/"))}
                                 className="flex items-center gap-2 px-2 py-2 rounded-md text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-zinc-800 cursor-pointer aria-selected:bg-gray-100 dark:aria-selected:bg-zinc-800 transition-colors"
@@ -108,7 +108,7 @@ export function CommandMenu() {
 
                         <Command.Separator className="h-px bg-gray-100 dark:bg-gray-800 my-2" />
 
-                        <Command.Group heading="Theme" className="text-xs font-medium text-gray-400 mb-2 px-2">
+                        <Command.Group heading="Theme" className="text-xs font-medium text-gray-600 dark:text-gray-400 mb-2 px-2">
                             <Command.Item
                                 onSelect={() => runCommand(() => setTheme("light"))}
                                 className="flex items-center gap-2 px-2 py-2 rounded-md text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-zinc-800 cursor-pointer aria-selected:bg-gray-100 dark:aria-selected:bg-zinc-800 transition-colors"
@@ -134,7 +134,7 @@ export function CommandMenu() {
 
                         <Command.Separator className="h-px bg-gray-100 dark:bg-gray-800 my-2" />
 
-                        <Command.Group heading="Socials" className="text-xs font-medium text-gray-400 mb-2 px-2">
+                        <Command.Group heading="Socials" className="text-xs font-medium text-gray-600 dark:text-gray-400 mb-2 px-2">
                             <Command.Item
                                 onSelect={() => runCommand(() => window.open("https://github.com/adarshanand67", "_blank"))}
                                 className="flex items-center gap-2 px-2 py-2 rounded-md text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-zinc-800 cursor-pointer aria-selected:bg-gray-100 dark:aria-selected:bg-zinc-800 transition-colors"

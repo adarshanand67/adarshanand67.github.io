@@ -34,11 +34,11 @@ export default async function GitHubStats() {
                                 <ArrowUpRight className="w-5 h-5 text-gray-400 group-hover:text-blue-600 transition-colors" />
                             </div>
 
-                            <p className="text-gray-600 dark:text-gray-400 text-sm mb-6 flex-grow line-clamp-3">
+                            <p className="text-gray-800 dark:text-gray-300 text-sm mb-6 flex-grow line-clamp-3">
                                 {repo.description || "No description available."}
                             </p>
 
-                            <div className="flex items-center gap-4 text-xs text-gray-500 dark:text-gray-500 mt-auto">
+                            <div className="flex items-center gap-4 text-xs text-gray-600 dark:text-gray-400 mt-auto">
                                 <div className="flex items-center gap-1">
                                     <Star className="w-4 h-4" />
                                     <span>{repo.stargazers_count}</span>

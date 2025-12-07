@@ -17,8 +17,10 @@
   "dependencies": {
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
+    "cobe": "^0.6.5",
     "framer-motion": "^12.23.25",
     "isomorphic-dompurify": "^2.33.0",
+    "jsdom": "^27.2.0",
     "lucide-react": "^0.556.0",
     "markdown-to-jsx": "^9.3.2",
     "next": "16.0.7",

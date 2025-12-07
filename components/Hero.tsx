@@ -7,6 +7,7 @@ import { Github, Linkedin, Mail } from "lucide-react";
 import profilePic from "@/assets/dp.jpg";
 import Terminal from "./Terminal";
 import { GlitchText } from "@/components/ui/GlitchText";
+import { LeetText } from "@/components/ui/LeetText";
 
 export default async function Hero() {
   const profile = await getProfile();
@@ -38,17 +39,26 @@ export default async function Hero() {
               {profile.bio.paragraphs.map((paragraph, index) => (
                 <p
                   key={index}
-                  className="mb-4"
                   dangerouslySetInnerHTML={{
-                        `<a href="https://intel.com" target="_blank" class="text-blue-600 hover:underline">Intel Corporation</a>`,
-                      ),
+                    __html: DOMPurify.sanitize(
+                      paragraph
+                        .replace(
+                          "Trellix",
+                          `<a href="https://trellix.com" target="_blank" class="text-blue-600 hover:underline">Trellix</a>`,
+                        )
+                        .replace(
+                          "Intel Corporation",
+                          `<a href="https://intel.com" target="_blank" class="text-blue-600 hover:underline">Intel Corporation</a>`,
+                        ),
+                    ),
                   }}
+                  className="mb-4"
                 />
               ))}
             </div>
             <ul className="buttons flex flex-wrap gap-4 mb-8">
               <Link
-                className="button bg-white dark:bg-zinc-900 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:border-blue-600 hover:text-blue-600 transition-colors rounded-md px-4 py-2 flex items-center gap-2"
+                className="button bg-white dark:bg-zinc-900 border border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-200 hover:border-blue-600 hover:text-blue-600 transition-colors rounded-md px-4 py-2 flex items-center gap-2"
                 href={profile.socials.linkedin}
                 target="_blank"
                 title={`Follow ${profile.name} on LinkedIn`}
@@ -59,7 +69,7 @@ export default async function Hero() {
                 <span>LinkedIn</span>
               </Link>
               <Link
-                className="button bg-white dark:bg-zinc-900 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:border-blue-600 hover:text-blue-600 transition-colors rounded-md px-4 py-2 flex items-center gap-2"
+                className="button bg-white dark:bg-zinc-900 border border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-200 hover:border-blue-600 hover:text-blue-600 transition-colors rounded-md px-4 py-2 flex items-center gap-2"
                 href={profile.socials.github}
                 target="_blank"
                 title={`Follow ${profile.name} on GitHub`}
@@ -71,7 +81,7 @@ export default async function Hero() {
               </Link>
               {profile.socials.email && (
                 <Link
-                  className="button bg-white dark:bg-zinc-900 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:border-blue-600 hover:text-blue-600 transition-colors rounded-md px-4 py-2 flex items-center gap-2"
+                  className="button bg-white dark:bg-zinc-900 border border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-200 hover:border-blue-600 hover:text-blue-600 transition-colors rounded-md px-4 py-2 flex items-center gap-2"
                   href={`mailto:${profile.socials.email}`}
                   title={`Email ${profile.name}`}
                 >
