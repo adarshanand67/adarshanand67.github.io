@@ -53,20 +53,11 @@ export default async function Home() {
                 <div className="relative flex gap-6">
                   {/* Timeline dot */}
                   <div className="relative z-10 flex-shrink-0">
-                    {exp.logo ? (
-                      <div className="relative w-12 h-12 md:w-16 md:h-16 bg-white dark:bg-zinc-900 rounded-full border-2 border-green-500 overflow-hidden">
-                        <Image
-                          src={exp.logo}
-                          alt={`${exp.company} logo`}
-                          fill
-                          className="object-contain p-2"
-                        />
-                      </div>
-                    ) : (
-                      <div className="w-12 h-12 md:w-16 md:h-16 bg-green-500 rounded-full flex items-center justify-center">
-                        <span className="text-white font-bold text-lg">{exp.company[0]}</span>
-                      </div>
-                    )}
+                    <div className="w-12 h-12 md:w-16 md:h-16 bg-green-500 rounded-full flex items-center justify-center">
+                      <span className="text-white font-bold text-lg text-center">
+                        {exp.company[0]}
+                      </span>
+                    </div>
                   </div>
 
                   {/* Content */}
