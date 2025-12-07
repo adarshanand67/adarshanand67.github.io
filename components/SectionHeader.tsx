@@ -7,12 +7,7 @@ interface SectionHeaderProps {
   subtitle?: string;
 }
 
-export default function SectionHeader({
-  title,
-  linkText,
-  linkHref,
-  subtitle,
-}: SectionHeaderProps) {
+export default function SectionHeader({ title, linkText, linkHref, subtitle }: SectionHeaderProps) {
   return (
     <div className="mb-6">
       <h2 className="text-xl md:text-2xl font-bold flex items-center flex-wrap gap-2 text-gray-900 dark:text-gray-100">

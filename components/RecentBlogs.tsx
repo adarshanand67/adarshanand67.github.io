@@ -16,10 +16,7 @@ export default async function RecentBlogs() {
       />
       <ul className="space-y-2">
         {recentPosts.map((post) => (
-          <li
-            key={post.slug}
-            className="flex flex-col md:flex-row md:items-baseline"
-          >
+          <li key={post.slug} className="flex flex-col md:flex-row md:items-baseline">
             <span className="text-gray-500 dark:text-gray-400 font-mono text-sm min-w-[120px] md:mr-2">
               {post.date} :
             </span>

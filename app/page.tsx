@@ -94,7 +94,10 @@ export default async function Home() {
                       {exp.highlights.length > 0 && (
                         <ul className="list-disc pl-5 space-y-3 text-gray-600 dark:text-gray-400">
                           {exp.highlights.map((highlight: string, idx: number) => (
-                            <li key={idx} dangerouslySetInnerHTML={{ __html: linkifyTech(highlight) }} />
+                            <li
+                              key={idx}
+                              dangerouslySetInnerHTML={{ __html: linkifyTech(highlight) }}
+                            />
                           ))}
                         </ul>
                       )}
@@ -125,13 +128,10 @@ export default async function Home() {
 
       <div className="section container mx-auto px-4 mb-24">
         <FadeIn delay={0.5}>
-          <h2 className="title mb-8 font-bold text-3xl font-serif">
-            Let&apos;s talk
-          </h2>
+          <h2 className="title mb-8 font-bold text-3xl font-serif">Let&apos;s talk</h2>
           <p className="text-gray-600 dark:text-gray-400 mb-8 max-w-2xl">
-            I&apos;m always open to discussing new opportunities, interesting
-            projects, or just chatting about tech. Feel free to reach out via
-            LinkedIn or email.
+            I&apos;m always open to discussing new opportunities, interesting projects, or just
+            chatting about tech. Feel free to reach out via LinkedIn or email.
           </p>
           <div className="flex flex-wrap gap-4">
             <a

@@ -17,10 +17,10 @@ export default async function Hero() {
             <span className="text-gray-700 dark:text-gray-300">whoami</span>
           </div>
           <h1 className="title text-4xl md:text-5xl font-bold font-serif mb-4 flex items-center gap-2">
-            Hey, I am <GlitchText text={profile.name.split(" ")[0]} className="text-primary" />
+            <GlitchText text={profile.name} className="text-primary" />
           </h1>
           <h3 className="title text-xl md:text-2xl font-bold text-primary font-serif mb-6">
-            {profile.bio.short}
+            <GlitchText text={profile.bio.short} className="text-primary" />
           </h3>
           <div className="content text-lg leading-relaxed mb-8">
             {profile.bio.paragraphs.map((paragraph: string, index: number) => (
@@ -31,12 +31,12 @@ export default async function Hero() {
                     paragraph
                       .replace(
                         "Trellix",
-                        `<a href="https://trellix.com" target="_blank" class="text-green-700 dark:text-green-400 hover:underline">Trellix</a>`,
+                        `<a href="https://trellix.com" target="_blank" class="text-green-700 dark:text-green-400 hover:underline">Trellix</a>`
                       )
                       .replace(
                         "Intel Corporation",
-                        `<a href="https://intel.com" target="_blank" class="text-green-700 dark:text-green-400 hover:underline">Intel Corporation</a>`,
-                      ),
+                        `<a href="https://intel.com" target="_blank" class="text-green-700 dark:text-green-400 hover:underline">Intel Corporation</a>`
+                      )
                   ),
                 }}
                 className="mb-4"

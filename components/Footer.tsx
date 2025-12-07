@@ -27,10 +27,18 @@ export default function Footer() {
 
         <div className="flex items-center gap-6">
           <WeatherWidget />
-          <Link href="https://github.com/adarshanand67" target="_blank" className="text-gray-500 hover:text-black dark:hover:text-white transition-colors">
+          <Link
+            href="https://github.com/adarshanand67"
+            target="_blank"
+            className="text-gray-500 hover:text-black dark:hover:text-white transition-colors"
+          >
             GitHub
           </Link>
-          <Link href="https://linkedin.com/in/adarshanand67" target="_blank" className="text-gray-500 hover:text-black dark:hover:text-white transition-colors">
+          <Link
+            href="https://linkedin.com/in/adarshanand67"
+            target="_blank"
+            className="text-gray-500 hover:text-black dark:hover:text-white transition-colors"
+          >
             LinkedIn
           </Link>
         </div>

@@ -15,7 +15,7 @@ export default async function AnimeShelf() {
   const watchedMovies = movies.filter((item) => item.status === "Completed");
   const plannedMovies = movies.filter((item) => item.status !== "Completed");
 
-  const Card = ({ item, index }: { item: any, index: number }) => (
+  const Card = ({ item, index }: { item: any; index: number }) => (
     <FadeIn delay={index * 0.05} className="h-full">
       <SpotlightCard className="h-full flex flex-col p-0">
         {item.image ? (
@@ -50,7 +50,9 @@ export default async function AnimeShelf() {
           )}
 
           <div className="mt-auto pt-2">
-            <span className={`text-xs px-2 py-1 rounded-full ${item.status === 'Completed' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100' : 'bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-100'} inline-block`}>
+            <span
+              className={`text-xs px-2 py-1 rounded-full ${item.status === "Completed" ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100" : "bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-100"} inline-block`}
+            >
               {item.status}
             </span>
           </div>
@@ -63,8 +65,7 @@ export default async function AnimeShelf() {
     <div className="section container mx-auto px-4 mt-12 mb-12">
       <FadeIn>
         <h1 className="title text-4xl font-bold font-serif mb-8">
-          Anime Shelf{" "}
-          <span className="text-gray-400 text-2xl">({items.length})</span>
+          Anime Shelf <span className="text-gray-400 text-2xl">({items.length})</span>
         </h1>
         <p className="text-gray-600 mb-8">
           A collection of anime and movies I&apos;ve watched and enjoyed.
@@ -82,9 +83,7 @@ export default async function AnimeShelf() {
         {/* Watched Anime */}
         <div className="mb-8">
           <FadeIn>
-            <h3 className="text-xl font-bold text-gray-700 dark:text-gray-300 mb-4">
-              Watched
-            </h3>
+            <h3 className="text-xl font-bold text-gray-700 dark:text-gray-300 mb-4">Watched</h3>
           </FadeIn>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {watchedAnime.map((item, index) => (
@@ -96,9 +95,7 @@ export default async function AnimeShelf() {
         {/* Planned Anime */}
         <div>
           <FadeIn>
-            <h3 className="text-xl font-bold text-gray-700 dark:text-gray-300 mb-4">
-              Planning
-            </h3>
+            <h3 className="text-xl font-bold text-gray-700 dark:text-gray-300 mb-4">Planning</h3>
           </FadeIn>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {plannedAnime.map((item, index) => (
@@ -119,9 +116,7 @@ export default async function AnimeShelf() {
         {/* Watched Movies */}
         <div className="mb-8">
           <FadeIn>
-            <h3 className="text-xl font-bold text-gray-700 dark:text-gray-300 mb-4">
-              Watched
-            </h3>
+            <h3 className="text-xl font-bold text-gray-700 dark:text-gray-300 mb-4">Watched</h3>
           </FadeIn>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {watchedMovies.map((item, index) => (
@@ -133,9 +128,7 @@ export default async function AnimeShelf() {
         {/* Planned Movies */}
         <div>
           <FadeIn>
-            <h3 className="text-xl font-bold text-gray-700 dark:text-gray-300 mb-4">
-              Planning
-            </h3>
+            <h3 className="text-xl font-bold text-gray-700 dark:text-gray-300 mb-4">Planning</h3>
           </FadeIn>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {plannedMovies.map((item, index) => (

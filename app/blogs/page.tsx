@@ -11,12 +11,15 @@ export default async function BlogsPage() {
   const blogs = await getBlogs();
 
   // Group blogs by year
-  const blogsByYear = blogs.reduce((acc: Record<string, Blog[]>, blog: Blog) => {
-    const year = blog.date.split("-")[0];
-    if (!acc[year]) acc[year] = [];
-    acc[year].push(blog);
-    return acc;
-  }, {} as Record<string, Blog[]>);
+  const blogsByYear = blogs.reduce(
+    (acc: Record<string, Blog[]>, blog: Blog) => {
+      const year = blog.date.split("-")[0];
+      if (!acc[year]) acc[year] = [];
+      acc[year].push(blog);
+      return acc;
+    },
+    {} as Record<string, Blog[]>
+  );
 
   const years = Object.keys(blogsByYear).sort((a, b) => Number(b) - Number(a));
 
@@ -26,9 +29,7 @@ export default async function BlogsPage() {
         <span className="text-gray-500">#</span> Blogshelf
         <span className="text-gray-500 text-lg ml-2">({blogs.length})</span>
       </h1>
-      <p className="text-gray-600 dark:text-gray-400 mb-6 text-sm">
-        $ ls ~/blog --all
-      </p>
+      <p className="text-gray-600 dark:text-gray-400 mb-6 text-sm">$ ls ~/blog --all</p>
 
       {years.map((year) => (
         <div key={year} className="mb-8">

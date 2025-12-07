@@ -14,8 +14,7 @@ export default async function Bookshelf() {
   return (
     <div className="section container mx-auto px-4 mt-12 mb-12">
       <h1 className="title text-4xl font-bold font-serif mb-2">
-        Bookshelf{" "}
-        <span className="text-gray-400 text-2xl">({books.length})</span>
+        Bookshelf <span className="text-gray-400 text-2xl">({books.length})</span>
       </h1>
 
       <ul className="space-y-3 mt-8">

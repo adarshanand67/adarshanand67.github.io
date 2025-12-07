@@ -3,138 +3,138 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 describe("Database Integration Tests", () => {
-    beforeAll(async () => {
-        // Ensure we're connected
-        await prisma.$connect();
+  beforeAll(async () => {
+    // Ensure we're connected
+    await prisma.$connect();
+  });
+
+  afterAll(async () => {
+    await prisma.$disconnect();
+  });
+
+  describe("Profile", () => {
+    it("should fetch profile from database", async () => {
+      const profile = await prisma.profile.findFirst();
+
+      expect(profile).toBeDefined();
+      expect(profile?.name).toBeTruthy();
+      expect(profile?.title).toBeTruthy();
+    });
+  });
+
+  describe("Books", () => {
+    it("should fetch all books", async () => {
+      const books = await prisma.book.findMany();
+
+      expect(Array.isArray(books)).toBe(true);
+      expect(books.length).toBeGreaterThan(0);
     });
 
-    afterAll(async () => {
-        await prisma.$disconnect();
+    it("should have required fields", async () => {
+      const book = await prisma.book.findFirst();
+
+      expect(book).toHaveProperty("title");
+      expect(book).toHaveProperty("author");
+      expect(book).toHaveProperty("notes");
+    });
+  });
+
+  describe("Entertainment", () => {
+    it("should fetch all entertainment items", async () => {
+      const items = await prisma.entertainment.findMany();
+
+      expect(Array.isArray(items)).toBe(true);
+      expect(items.length).toBeGreaterThan(0);
     });
 
-    describe("Profile", () => {
-        it("should fetch profile from database", async () => {
-            const profile = await prisma.profile.findFirst();
+    it("should filter by type", async () => {
+      const anime = await prisma.entertainment.findMany({
+        where: { type: "Anime" },
+      });
 
-            expect(profile).toBeDefined();
-            expect(profile?.name).toBeTruthy();
-            expect(profile?.title).toBeTruthy();
-        });
+      anime.forEach((item) => {
+        expect(item.type).toBe("Anime");
+      });
     });
 
-    describe("Books", () => {
-        it("should fetch all books", async () => {
-            const books = await prisma.book.findMany();
+    it("should filter by recommended", async () => {
+      const recommended = await prisma.entertainment.findMany({
+        where: { recommended: true },
+      });
 
-            expect(Array.isArray(books)).toBe(true);
-            expect(books.length).toBeGreaterThan(0);
-        });
+      recommended.forEach((item) => {
+        expect(item.recommended).toBe(true);
+      });
+    });
+  });
 
-        it("should have required fields", async () => {
-            const book = await prisma.book.findFirst();
+  describe("Experiences", () => {
+    it("should fetch all experiences", async () => {
+      const experiences = await prisma.experience.findMany();
 
-            expect(book).toHaveProperty("title");
-            expect(book).toHaveProperty("author");
-            expect(book).toHaveProperty("notes");
-        });
+      expect(Array.isArray(experiences)).toBe(true);
     });
 
-    describe("Entertainment", () => {
-        it("should fetch all entertainment items", async () => {
-            const items = await prisma.entertainment.findMany();
+    it("should have required fields", async () => {
+      const experience = await prisma.experience.findFirst();
 
-            expect(Array.isArray(items)).toBe(true);
-            expect(items.length).toBeGreaterThan(0);
-        });
+      if (experience) {
+        expect(experience).toHaveProperty("company");
+        expect(experience).toHaveProperty("role");
+        expect(experience).toHaveProperty("duration");
+      }
+    });
+  });
 
-        it("should filter by type", async () => {
-            const anime = await prisma.entertainment.findMany({
-                where: { type: "Anime" },
-            });
+  describe("CRUD Operations", () => {
+    it("should create and delete a test book", async () => {
+      // Create
+      const newBook = await prisma.book.create({
+        data: {
+          title: "Test Book",
+          author: "Test Author",
+          notes: false,
+        },
+      });
 
-            anime.forEach((item) => {
-                expect(item.type).toBe("Anime");
-            });
-        });
+      expect(newBook.title).toBe("Test Book");
+      expect(newBook.id).toBeDefined();
 
-        it("should filter by recommended", async () => {
-            const recommended = await prisma.entertainment.findMany({
-                where: { recommended: true },
-            });
+      // Delete
+      await prisma.book.delete({
+        where: { id: newBook.id },
+      });
 
-            recommended.forEach((item) => {
-                expect(item.recommended).toBe(true);
-            });
-        });
+      // Verify deletion
+      const deleted = await prisma.book.findUnique({
+        where: { id: newBook.id },
+      });
+
+      expect(deleted).toBeNull();
     });
 
-    describe("Experiences", () => {
-        it("should fetch all experiences", async () => {
-            const experiences = await prisma.experience.findMany();
+    it("should update a book", async () => {
+      // Create
+      const book = await prisma.book.create({
+        data: {
+          title: "Update Test",
+          author: "Test Author",
+          notes: false,
+        },
+      });
 
-            expect(Array.isArray(experiences)).toBe(true);
-        });
+      // Update
+      const updated = await prisma.book.update({
+        where: { id: book.id },
+        data: { notes: true },
+      });
 
-        it("should have required fields", async () => {
-            const experience = await prisma.experience.findFirst();
+      expect(updated.notes).toBe(true);
 
-            if (experience) {
-                expect(experience).toHaveProperty("company");
-                expect(experience).toHaveProperty("role");
-                expect(experience).toHaveProperty("duration");
-            }
-        });
+      // Cleanup
+      await prisma.book.delete({
+        where: { id: book.id },
+      });
     });
-
-    describe("CRUD Operations", () => {
-        it("should create and delete a test book", async () => {
-            // Create
-            const newBook = await prisma.book.create({
-                data: {
-                    title: "Test Book",
-                    author: "Test Author",
-                    notes: false,
-                },
-            });
-
-            expect(newBook.title).toBe("Test Book");
-            expect(newBook.id).toBeDefined();
-
-            // Delete
-            await prisma.book.delete({
-                where: { id: newBook.id },
-            });
-
-            // Verify deletion
-            const deleted = await prisma.book.findUnique({
-                where: { id: newBook.id },
-            });
-
-            expect(deleted).toBeNull();
-        });
-
-        it("should update a book", async () => {
-            // Create
-            const book = await prisma.book.create({
-                data: {
-                    title: "Update Test",
-                    author: "Test Author",
-                    notes: false,
-                },
-            });
-
-            // Update
-            const updated = await prisma.book.update({
-                where: { id: book.id },
-                data: { notes: true },
-            });
-
-            expect(updated.notes).toBe(true);
-
-            // Cleanup
-            await prisma.book.delete({
-                where: { id: book.id },
-            });
-        });
-    });
+  });
 });

@@ -7,7 +7,6 @@ jest.mock("../components/Hero", () => {
   return {
     __esModule: true,
     default: () => {
-      // Mock data for testing
       const profile = {
         name: "Adarsh Anand",
         bio: {
@@ -15,14 +14,14 @@ jest.mock("../components/Hero", () => {
           paragraphs: ["Test bio"],
         },
         socials: {
-          linkedin: "https://linkedin.com/test",
-          github: "https://github.com/test",
+          linkedin: "https://linkedin.com/in/adarshanand67",
+          github: "https://github.com/adarshanand67",
         },
       };
 
       return (
         <div data-testid="hero-section">
-          <h1>Hey, I am {profile.name.split(" ")[0]}</h1>
+          <h1>Hey, I am - {profile.name}</h1>
           <h3>{profile.bio.short}</h3>
           <a href={profile.socials.linkedin}>LinkedIn</a>
           <a href={profile.socials.github}>GitHub</a>

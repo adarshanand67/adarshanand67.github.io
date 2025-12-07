@@ -33,17 +33,24 @@ export default function Navbar() {
                 onClick={() => setIsActive(!isActive)}
               >
                 <div className="w-6 h-5 relative flex flex-col justify-between">
-                  <span className={`w-full h-0.5 bg-foreground transition-all duration-300 ${isActive ? "rotate-45 translate-y-2" : ""}`} />
-                  <span className={`w-full h-0.5 bg-foreground transition-all duration-300 ${isActive ? "opacity-0" : ""}`} />
-                  <span className={`w-full h-0.5 bg-foreground transition-all duration-300 ${isActive ? "-rotate-45 -translate-y-2.5" : ""}`} />
+                  <span
+                    className={`w-full h-0.5 bg-foreground transition-all duration-300 ${isActive ? "rotate-45 translate-y-2" : ""}`}
+                  />
+                  <span
+                    className={`w-full h-0.5 bg-foreground transition-all duration-300 ${isActive ? "opacity-0" : ""}`}
+                  />
+                  <span
+                    className={`w-full h-0.5 bg-foreground transition-all duration-300 ${isActive ? "-rotate-45 -translate-y-2.5" : ""}`}
+                  />
                 </div>
               </button>
             </div>
 
             <div
               id="menu"
-              className={`absolute top-16 left-0 right-0 bg-background/95 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 md:static md:bg-transparent md:border-none md:flex md:items-center p-4 md:p-0 transition-all duration-200 ${isActive ? "opacity-100 visible" : "opacity-0 invisible md:visible md:opacity-100"
-                }`}
+              className={`absolute top-16 left-0 right-0 bg-background/95 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 md:static md:bg-transparent md:border-none md:flex md:items-center p-4 md:p-0 transition-all duration-200 ${
+                isActive ? "opacity-100 visible" : "opacity-0 invisible md:visible md:opacity-100"
+              }`}
             >
               <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-1">
                 <Link
