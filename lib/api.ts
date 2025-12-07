@@ -1,8 +1,14 @@
 import { promises as fs } from "fs";
 import path from "path";
-import { prisma } from "@/lib/prisma";
+// Shared Types
+import profileData from "@/data/profile.json";
+import experiencesData from "@/data/experiences.json";
+import papersData from "@/data/papers.json";
+import booksData from "@/data/books.json";
+import entertainmentData from "@/data/entertainment.json";
+import volunteeringData from "@/data/volunteering.json";
 
-// Export types from Prisma
+// Shared Types
 export type {
   Profile,
   Experience,
@@ -10,95 +16,91 @@ export type {
   Paper,
   Blog,
   Entertainment as EntertainmentItem,
-} from "@prisma/client";
+} from "@prisma/client"; // Keep types if generated, or replace with local types if prisma validation fails without DB
 
+// Wrapper to match existing async API
 export async function getProfile() {
-  try {
-    const profile = await prisma.profile.findFirst();
-
-    if (!profile) {
-      console.error("[API] Profile not found in database");
-      throw new Error("Profile not found in database");
-    }
-
-    return {
-      name: profile.name,
-      title: profile.title,
-      pronouns: profile.pronouns,
-      location: profile.location,
-      education: profile.education as any,
-      socials: {
-        linkedin: profile.linkedin,
-        github: profile.github,
-        email: profile.email,
-      },
-      bio: {
-        short: profile.shortBio,
-        paragraphs: profile.bioParagraphs,
-      },
-    };
-  } catch (error) {
-    console.error("[API] Error fetching profile:", error);
-    throw new Error("Failed to fetch profile data");
-  }
+  return profileData;
 }
 
 export async function getExperiences() {
-  try {
-    return await prisma.experience.findMany({
-      orderBy: { id: "asc" },
-    });
-  } catch (error) {
-    console.error("[API] Error fetching experiences:", error);
-    return []; // Return empty array as fallback
-  }
+  return experiencesData;
+}
+
+export async function getVolunteering() {
+  return volunteeringData;
 }
 
 export async function getPapers() {
-  try {
-    return await prisma.paper.findMany({
-      orderBy: { id: "asc" },
-    });
-  } catch (error) {
-    console.error("[API] Error fetching papers:", error);
-    return [];
-  }
+  return papersData;
 }
 
 export async function getBooks() {
-  try {
-    return await prisma.book.findMany({
-      orderBy: { id: "asc" },
-    });
-  } catch (error) {
-    console.error("[API] Error fetching books:", error);
-    return [];
-  }
+  return booksData;
+}
+
+export async function getEntertainment() {
+  return entertainmentData.map((item) => ({
+    ...item,
+    type: item.type === "Web_Series" ? "Web Series" : item.type,
+    image: item.image || null, // Ensure compatibility
+    notes: item.notes || null,
+  })) as any; // Type assertion to bypass strict prisma mismatches if any
+}
+
+function parseFrontmatter(fileContent: string) {
+  const frontmatterRegex = /---\s*([\s\S]*?)\s*---/;
+  const match = frontmatterRegex.exec(fileContent);
+  const frontMatterBlock = match![1];
+  const content = fileContent.replace(frontmatterRegex, "").trim();
+  const frontMatterLines = frontMatterBlock.trim().split("\n");
+  const metadata: Record<string, string> = {};
+
+  frontMatterLines.forEach((line) => {
+    const [key, ...valueArr] = line.split(": ");
+    let value = valueArr.join(": ").trim();
+    value = value.replace(/^['"](.*)['"]$/, "$1"); // Remove quotes
+    metadata[key.trim()] = value;
+  });
+
+  return { data: metadata, content };
 }
 
 export async function getBlogs() {
   try {
-    return await prisma.blog.findMany({
-      orderBy: { date: "desc" },
-    });
+    const postsDirectory = path.join(process.cwd(), "posts");
+
+    // Check if directory exists
+    try {
+      await fs.access(postsDirectory);
+    } catch {
+      return [];
+    }
+
+    const filenames = await fs.readdir(postsDirectory);
+
+    const blogs = await Promise.all(
+      filenames
+        .filter((f) => f.endsWith(".md"))
+        .map(async (filename) => {
+          const filePath = path.join(postsDirectory, filename);
+          const fileContents = await fs.readFile(filePath, "utf8");
+          const { data } = parseFrontmatter(fileContents);
+
+          return {
+            // Mock ID for list keys
+            id: filename,
+            slug: filename.replace(/\.md$/, ""),
+            title: data.title || filename.replace(/\.md$/, ""),
+            date: data.date ? new Date(data.date).toISOString().split("T")[0] : "2024-01-01",
+            excerpt: data.excerpt || "",
+          };
+        })
+    );
+
+    return blogs.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
   } catch (error) {
     console.error("[API] Error fetching blogs:", error);
-    return [];
-  }
-}
-
-export async function getEntertainment() {
-  try {
-    const items = await prisma.entertainment.findMany({
-      orderBy: { id: "asc" },
-    });
-
-    return items.map((item) => ({
-      ...item,
-      type: item.type === "Web_Series" ? "Web Series" : item.type,
-    }));
-  } catch (error) {
-    console.error("[API] Error fetching entertainment:", error);
     return [];
   }
 }
@@ -108,19 +110,9 @@ export async function getPost(slug: string): Promise<string | null> {
     const postsDirectory = path.join(process.cwd(), "posts");
     const fullPath = path.join(postsDirectory, `${slug}.md`);
     const fileContents = await fs.readFile(fullPath, "utf8");
-    return fileContents;
+    const { content } = parseFrontmatter(fileContents);
+    return content;
   } catch (error) {
     return null;
-  }
-}
-
-export async function getVolunteering() {
-  try {
-    const filePath = path.join(process.cwd(), "data", "volunteering.json");
-    const fileContents = await fs.readFile(filePath, "utf8");
-    return JSON.parse(fileContents);
-  } catch (error) {
-    console.error("[API] Error fetching volunteering:", error);
-    return [];
   }
 }
