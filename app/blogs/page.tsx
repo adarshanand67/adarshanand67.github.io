@@ -1,64 +1,47 @@
 import Link from "next/link";
-import { getBlogs, Blog } from "@/lib/api";
+import { getBlogs } from "@/lib/api";
 
-export default async function Blogs() {
+export default async function BlogsPage() {
   const blogs = await getBlogs();
 
   // Group blogs by year
-  const blogsByYear = blogs.reduce(
-    (acc, blog) => {
-      const year = blog.date.split("-")[0] || "Unknown"; // Assuming date format YYYY-MM-DD
-      if (!acc[year]) {
-        acc[year] = [];
-      }
-      acc[year].push(blog);
-      return acc;
-    },
-    {} as Record<string, Blog[]>,
-  );
+  const blogsByYear = blogs.reduce((acc: Record<string, typeof blogs>, blog: { date: string; title: string; slug: string }) => {
+    const year = blog.date.split("-")[0];
+    if (!acc[year]) acc[year] = [];
+    acc[year].push(blog);
+    return acc;
+  }, {});
 
-  // Sort years descending
-  const sortedYears = Object.keys(blogsByYear).sort((a, b) =>
-    b.localeCompare(a),
-  );
+  const years = Object.keys(blogsByYear).sort((a, b) => Number(b) - Number(a));
 
   return (
-    <div className="section container mx-auto px-4 mt-12 mb-12">
-      <h1 className="title text-4xl font-bold font-serif mb-8">
-        Writings <span className="text-gray-400 text-2xl">({blogs.length})</span>
+    <div className="section container mx-auto px-4 mt-12 mb-12 font-mono">
+      <h1 className="text-3xl font-bold mb-2">
+        <span className="text-gray-500">#</span> Blogshelf
+        <span className="text-gray-500 text-lg ml-2">({blogs.length})</span>
       </h1>
+      <p className="text-gray-600 dark:text-gray-400 mb-6 text-sm">
+        $ ls ~/blog --all
+      </p>
 
-      {blogs.length === 0 ? (
-        <p className="text-gray-500 italic">No writings found.</p>
-      ) : (
-        <div className="space-y-8">
-          {sortedYears.map((year) => (
-            <div key={year}>
-              <h2 className="text-2xl font-bold font-serif mb-4 border-b border-gray-200 pb-2 text-gray-700 dark:text-gray-300">
-                {year}
-              </h2>
-              <ul className="space-y-4">
-                {blogsByYear[year].map((post) => (
-                  <li
-                    key={post.slug}
-                    className="flex flex-col md:flex-row md:items-baseline"
-                  >
-                    <span className="text-gray-500 font-mono text-sm min-w-[120px] md:mr-2">
-                      {post.date} :
-                    </span>
-                    <Link
-                      href={`/blogs/${post.slug}`}
-                      className="text-green-700 dark:text-green-400 hover:underline font-medium text-lg"
-                    >
-                      {post.title}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+      {years.map((year) => (
+        <div key={year} className="mb-8">
+          <h2 className="text-xl font-bold mb-4 text-gray-500">## {year}</h2>
+          <ul className="space-y-2 text-sm">
+            {blogsByYear[year].map((post: { date: string; title: string; slug: string }) => (
+              <li key={post.slug} className="flex items-baseline gap-2">
+                <span className="text-gray-500 min-w-[80px]">{post.date}</span>
+                <Link
+                  href={`/blogs/${post.slug}`}
+                  className="text-green-700 dark:text-green-400 hover:underline"
+                >
+                  {post.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
-      )}
+      ))}
     </div>
   );
 }
