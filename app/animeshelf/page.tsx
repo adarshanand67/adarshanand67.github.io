@@ -31,9 +31,9 @@ export default async function AnimeShelf() {
           No Image
         </div>
       )}
-      <div className="p-4 flex flex-col flex-grow">
+      <div className="p-3 flex flex-col flex-grow">
         <div className="flex justify-between items-start mb-2 gap-2">
-          <h3 className="font-bold text-lg leading-tight flex items-start gap-2">
+          <h3 className="font-bold text-xs leading-tight flex items-start gap-2">
             <span className="line-clamp-2">{item.title}</span>
             {item.recommended && (
               <Star className="w-4 h-4 text-yellow-500 fill-yellow-500 shrink-0 mt-1" />
@@ -42,7 +42,7 @@ export default async function AnimeShelf() {
         </div>
 
         {item.notes && (
-          <p className="text-sm text-gray-500 dark:text-gray-400 mb-3 line-clamp-3">{item.notes}</p>
+          <p className="text-xs text-gray-500 dark:text-gray-400 mb-3 line-clamp-3">{item.notes}</p>
         )}
 
         <div className="mt-auto pt-2">
