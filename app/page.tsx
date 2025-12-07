@@ -93,11 +93,8 @@ export default async function Home() {
                       )}
                       {exp.highlights.length > 0 && (
                         <ul className="list-disc pl-5 space-y-3 text-gray-600 dark:text-gray-400">
-                          {exp.highlights.map((highlight, idx) => (
-                            <li
-                              key={idx}
-                              dangerouslySetInnerHTML={{ __html: linkifyTech(highlight) }}
-                            />
+                          {exp.highlights.map((highlight: string, idx: number) => (
+                            <li key={idx} dangerouslySetInnerHTML={{ __html: linkifyTech(highlight) }} />
                           ))}
                         </ul>
                       )}
