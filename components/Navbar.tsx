@@ -46,6 +46,11 @@ export default function Navbar() {
               ~/adarsh
             </Link>
 
+            {/* Mobile: Theme toggle on right */}
+            <div className="md:hidden ml-auto">
+              <ThemeToggle />
+            </div>
+
             {/* Desktop Nav */}
             <div className="hidden md:flex md:items-center md:ml-auto gap-1">
               <Link

@@ -19,7 +19,7 @@ export default function Footer() {
               Arpit Bhayani
             </Link>
           </p>
-          <p className="flex flex-wrap items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2">
             <span className="text-gray-500">→</span>
             <Link
               href="https://github.com/adarshanand67"
@@ -38,7 +38,7 @@ export default function Footer() {
             </Link>
             <span className="text-gray-500">•</span>
             <WeatherWidget />
-          </p>
+          </div>
           <p className="mt-4 text-xs text-gray-500 hidden md:block">
             Press <kbd className="px-1 py-0.5 bg-gray-100 dark:bg-gray-800 rounded">⌘K</kbd> to
             navigate
