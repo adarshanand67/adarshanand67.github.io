@@ -5,9 +5,9 @@ import { ExternalLink } from "lucide-react";
 export default async function Bookshelf() {
   const books = await getBooks();
 
-  // Generate Amazon search URL from book title
-  const getAmazonSearchUrl = (title: string) => {
-    const searchQuery = encodeURIComponent(title);
+  // Generate Amazon search URL from book title and author
+  const getAmazonSearchUrl = (title: string, author: string) => {
+    const searchQuery = encodeURIComponent(`${title} ${author}`);
     return `https://www.amazon.in/s?k=${searchQuery}`;
   };
 
@@ -27,11 +27,11 @@ export default async function Bookshelf() {
               <span className="text-blue-600 font-medium">{book.title}</span>
               <span className="text-gray-500">by {book.author}</span>
               <Link
-                href={getAmazonSearchUrl(book.title)}
+                href={getAmazonSearchUrl(book.title, book.author)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1 text-orange-600 hover:text-orange-700 dark:text-orange-500 dark:hover:text-orange-400 text-sm transition-colors"
-                title={`Search "${book.title}" on Amazon`}
+                title={`Search "${book.title} by ${book.author}" on Amazon`}
               >
                 <ExternalLink className="w-3.5 h-3.5" />
                 <span>Amazon</span>
