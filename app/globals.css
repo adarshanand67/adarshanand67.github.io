@@ -8,23 +8,86 @@
   --color-primary: #fa0000;
   --color-banner: #79102a;
   --font-sans: var(--font-assistant);
-  --font-serif: var(--font-lora);
+  --font-serif: var(--font-mono);
+  /* Hack: Map serif classes to Mono for Hacker vibe */
 }
 
 :root {
   --background: #fef7ec;
   --foreground: #333333;
-  --spotlight-color: rgba(0, 0, 0, 0.05); /* Subtle dark shadow for light mode */
+  --spotlight-color: rgba(0, 0, 0, 0.05);
+  /* Subtle dark shadow for light mode */
 }
 
 .dark {
   --background: #0a0a0a;
   --foreground: #ededed;
-  --spotlight-color: rgba(255, 255, 255, 0.15); /* Subtle light glow for dark mode */
+  --spotlight-color: rgba(255, 255, 255, 0.15);
+  /* Subtle light glow for dark mode */
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-assistant), sans-serif;
+}
+
+@keyframes glitch-1 {
+  0% {
+    transform: translate(0);
+  }
+
+  20% {
+    transform: translate(-2px, 2px);
+  }
+
+  40% {
+    transform: translate(-2px, -2px);
+  }
+
+  60% {
+    transform: translate(2px, 2px);
+  }
+
+  80% {
+    transform: translate(2px, -2px);
+  }
+
+  100% {
+    transform: translate(0);
+  }
+}
+
+@keyframes glitch-2 {
+  0% {
+    transform: translate(0);
+  }
+
+  20% {
+    transform: translate(2px, -2px);
+  }
+
+  40% {
+    transform: translate(2px, 2px);
+  }
+
+  60% {
+    transform: translate(-2px, -2px);
+  }
+
+  80% {
+    transform: translate(-2px, 2px);
+  }
+
+  100% {
+    transform: translate(0);
+  }
+}
+
+.animate-glitch-1 {
+  animation: glitch-1 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+}
+
+.animate-glitch-2 {
+  animation: glitch-2 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
 }

@@ -4,13 +4,16 @@ import { getProfile } from "@/lib/api";
 import { Github, Linkedin, Mail } from "lucide-react";
 import profilePic from "@/assets/dp.jpg";
 import Terminal from "./Terminal";
+import { GlitchText } from "@/components/ui/GlitchText";
+import { MatrixRain } from "@/components/ui/MatrixRain";
 
 export default async function Hero() {
   const profile = await getProfile();
 
   return (
-    <div className="section container mx-auto px-4 mt-12 mb-12">
-      <div className="columns is-vcentered flex flex-col md:flex-row items-center gap-8">
+    <div className="section container mx-auto px-4 mt-12 mb-12 relative">
+      <MatrixRain />
+      <div className="columns is-vcentered flex flex-col md:flex-row items-center gap-8 relative z-10">
         <div className="column is-5 is-hidden-tablet md:hidden">
           <div className="image is-256x256 w-64 h-64 relative rounded-full overflow-hidden mx-auto">
             <Image
@@ -25,8 +28,8 @@ export default async function Hero() {
         </div>
         <div className="column is-7 w-full md:w-7/12">
           <section>
-            <h1 className="title text-4xl md:text-5xl font-bold font-serif mb-4">
-              Hey, I am {profile.name.split(" ")[0]}
+            <h1 className="title text-4xl md:text-5xl font-bold font-serif mb-4 flex items-center gap-2">
+              Hey, I am <GlitchText text={profile.name.split(" ")[0]} className="text-primary" />
             </h1>
             <h3 className="title text-xl md:text-2xl font-bold text-primary font-serif mb-6">
               {profile.bio.short}

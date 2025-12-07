@@ -58,7 +58,7 @@ export default function Navbar() {
               href="/blogs"
               className="navbar-item px-4 py-2 font-bold text-lg hover:text-primary transition-colors"
             >
-              Writings
+              Blogshelf
             </Link>
             <Link
               href="/papershelf"
@@ -70,7 +70,7 @@ export default function Navbar() {
               href="/animeshelf"
               className="navbar-item px-4 py-2 font-bold text-lg hover:text-primary transition-colors"
             >
-              Anime Shelf
+              Animeshelf
             </Link>
             <Link
               href="/bookshelf"

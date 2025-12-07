@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Assistant, Lora } from "next/font/google";
+import { Assistant, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import Navbar from "@/components/Navbar";
@@ -12,8 +12,8 @@ const assistant = Assistant({
   display: "swap",
 });
 
-const lora = Lora({
-  variable: "--font-lora",
+const jetbrains = JetBrains_Mono({
+  variable: "--font-mono",
   subsets: ["latin"],
   display: "swap",
 });
@@ -30,7 +30,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${assistant.variable} ${lora.variable} antialiased`}>
+      <body className={`${assistant.variable} ${jetbrains.variable} antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
