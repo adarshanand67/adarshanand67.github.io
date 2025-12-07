@@ -44,9 +44,9 @@ export default function WeatherWidget() {
         // 61-65: Rain
         const { weatherCode, isDay } = weather;
 
-        if (weatherCode <= 1) return isDay ? <Sun className="w-4 h-4 text-orange-400" /> : <Moon className="w-4 h-4 text-blue-300" />;
+        if (weatherCode <= 1) return isDay ? <Sun className="w-4 h-4 text-yellow-500" /> : <Moon className="w-4 h-4 text-gray-400" />;
         if (weatherCode <= 3) return <Cloud className="w-4 h-4 text-gray-400" />;
-        if (weatherCode >= 51) return <CloudRain className="w-4 h-4 text-blue-400" />;
+        if (weatherCode >= 51) return <CloudRain className="w-4 h-4 text-gray-500" />;
 
         return <Sun className="w-4 h-4 text-orange-400" />;
     };

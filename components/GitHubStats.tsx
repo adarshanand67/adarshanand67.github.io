@@ -26,12 +26,12 @@ export default async function GitHubStats() {
                         target="_blank"
                         className="group block h-full"
                     >
-                        <div className="h-full p-6 bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800 rounded-xl hover:border-blue-500 dark:hover:border-blue-500 transition-colors flex flex-col">
+                        <div className="h-full p-6 bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800 rounded-xl hover:border-green-500 dark:hover:border-green-500 transition-colors flex flex-col">
                             <div className="flex justify-between items-start mb-4">
-                                <h3 className="font-bold text-lg group-hover:text-blue-600 transition-colors">
+                                <h3 className="font-bold text-lg group-hover:text-green-600 transition-colors">
                                     {repo.name}
                                 </h3>
-                                <ArrowUpRight className="w-5 h-5 text-gray-400 group-hover:text-blue-600 transition-colors" />
+                                <ArrowUpRight className="w-5 h-5 text-gray-400 group-hover:text-green-600 transition-colors" />
                             </div>
 
                             <p className="text-gray-800 dark:text-gray-300 text-sm mb-6 flex-grow line-clamp-3">
@@ -45,7 +45,7 @@ export default async function GitHubStats() {
                                 </div>
                                 {repo.language && (
                                     <div className="flex items-center gap-1">
-                                        <span className="w-2 h-2 rounded-full bg-blue-500"></span>
+                                        <span className="w-2 h-2 rounded-full bg-green-500"></span>
                                         <span>{repo.language}</span>
                                     </div>
                                 )}
