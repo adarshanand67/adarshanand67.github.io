@@ -2,7 +2,8 @@
   {
     "title": "48 Laws of Power",
     "author": "Robert Greene",
-    "image": "https://m.media-amazon.com/images/I/71aG+xDKSYL._SY466_.jpg"
+    "image": "https://m.media-amazon.com/images/I/71aG+xDKSYL._SY466_.jpg",
+    "recommended": true
   },
   {
     "title": "Chip War",
@@ -42,7 +43,8 @@
   {
     "title": "12 Rules for Life",
     "author": "Jordan Peterson",
-    "image": "https://m.media-amazon.com/images/I/71gAjfXGjwL._SY466_.jpg"
+    "image": "https://m.media-amazon.com/images/I/71gAjfXGjwL._SY466_.jpg",
+    "recommended": true
   },
   {
     "title": "The Rudest Book Ever",
