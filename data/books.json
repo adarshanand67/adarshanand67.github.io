@@ -107,7 +107,8 @@
   {
     "title": "The Way of the Superior Man",
     "author": "David Deida",
-    "image": "https://m.media-amazon.com/images/I/81zVkZsq2dL._SY466_.jpg"
+    "image": "https://m.media-amazon.com/images/I/81zVkZsq2dL._SY466_.jpg",
+    "recommended": true
   },
   {
     "title": "Thinking, Fast and Slow",

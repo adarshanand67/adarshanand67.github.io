@@ -2,7 +2,7 @@
 
 import booksData from "@/data/books.json";
 import Link from "next/link";
-import { ExternalLink, Search } from "lucide-react";
+import { ExternalLink, Search, Star } from "lucide-react";
 import { useState, useMemo, useEffect } from "react";
 
 interface Book {
@@ -79,14 +79,12 @@ export default function Bookshelf() {
                   className="text-green-700 dark:text-green-400 hover:underline flex items-center gap-2 group"
                 >
                   {book.title}
+                  {book.recommended && (
+                    <Star className="w-4 h-4 text-yellow-500 fill-yellow-500 shrink-0" />
+                  )}
                   <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </Link>
                 <span className="text-gray-500 text-sm italic">by {book.author}</span>
-                {book.recommended && (
-                  <span className="text-yellow-500 text-xs px-2 py-0.5 bg-yellow-100 dark:bg-yellow-900/30 rounded-full">
-                    Recommended
-                  </span>
-                )}
               </div>
             </div>
           ))}

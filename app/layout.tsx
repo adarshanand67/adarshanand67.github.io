@@ -82,7 +82,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${assistant.variable} ${jetbrains.variable} antialiased`}>
+      <body
+        className={`${assistant.variable} ${jetbrains.variable} antialiased`}
+        suppressHydrationWarning
+      >
         <ThemeProvider attribute="class" defaultTheme="dark" disableTransitionOnChange>
           <Navbar />
           <MatrixRain />

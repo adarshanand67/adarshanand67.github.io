@@ -46,6 +46,7 @@ model Book {
   notes     Boolean @default(false)
   amazonUrl String?
   image     String?
+  recommended Boolean @default(false)
 }
 
 model Paper {
