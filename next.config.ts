@@ -4,8 +4,7 @@ const isProd = process.env.NODE_ENV === "production";
 const repoName = "personal-website";
 
 const nextConfig: NextConfig = {
-  output: "export",
-  basePath: isProd ? `/${repoName}` : "",
+  output: "standalone",
   images: {
     unoptimized: true,
     remotePatterns: [
