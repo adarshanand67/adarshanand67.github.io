@@ -18,7 +18,7 @@ export default async function Papershelf() {
             <Link
               href={paper.url}
               target="_blank"
-              className="text-green-600 dark:text-green-400 hover:underline text-lg"
+              className="text-green-700 dark:text-green-400 hover:underline text-lg"
             >
               {paper.title}
             </Link>

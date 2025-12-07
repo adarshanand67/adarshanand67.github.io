@@ -48,7 +48,7 @@ export default async function Blogs() {
                     </span>
                     <Link
                       href={`/blogs/${post.slug}`}
-                      className="text-green-600 dark:text-green-400 hover:underline font-medium text-lg"
+                      className="text-green-700 dark:text-green-400 hover:underline font-medium text-lg"
                     >
                       {post.title}
                     </Link>

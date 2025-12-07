@@ -63,7 +63,7 @@ export function linkifyTech(text: string): string {
         const url = techLinks[tech];
         // Use word boundary to avoid partial matches, case insensitive
         const regex = new RegExp(`\\b${tech.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'gi');
-        result = result.replace(regex, `<a href="${url}" target="_blank" rel="noopener noreferrer" class="text-green-600 dark:text-green-400 hover:underline">$&</a>`);
+        result = result.replace(regex, `<a href="${url}" target="_blank" rel="noopener noreferrer" class="text-green-700 dark:text-green-400 hover:underline font-medium">$&</a>`);
     }
 
     return result;

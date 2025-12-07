@@ -28,10 +28,10 @@ export default async function GitHubStats() {
                     >
                         <div className="h-full p-6 bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800 rounded-xl hover:border-green-500 dark:hover:border-green-500 transition-colors flex flex-col">
                             <div className="flex justify-between items-start mb-4">
-                                <h3 className="font-bold text-lg group-hover:text-green-600 transition-colors">
+                                <h3 className="font-bold text-lg group-hover:text-green-700 transition-colors">
                                     {repo.name}
                                 </h3>
-                                <ArrowUpRight className="w-5 h-5 text-gray-400 group-hover:text-green-600 transition-colors" />
+                                <ArrowUpRight className="w-5 h-5 text-gray-400 group-hover:text-green-700 transition-colors" />
                             </div>
 
                             <p className="text-gray-800 dark:text-gray-300 text-sm mb-6 flex-grow line-clamp-3">

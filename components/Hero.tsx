@@ -27,11 +27,11 @@ export default async function Hero() {
                     paragraph
                       .replace(
                         "Trellix",
-                        `<a href="https://trellix.com" target="_blank" class="text-green-600 dark:text-green-400 hover:underline">Trellix</a>`,
+                        `<a href="https://trellix.com" target="_blank" class="text-green-700 dark:text-green-400 hover:underline">Trellix</a>`,
                       )
                       .replace(
                         "Intel Corporation",
-                        `<a href="https://intel.com" target="_blank" class="text-green-600 dark:text-green-400 hover:underline">Intel Corporation</a>`,
+                        `<a href="https://intel.com" target="_blank" class="text-green-700 dark:text-green-400 hover:underline">Intel Corporation</a>`,
                       ),
                   ),
                 }}
@@ -41,7 +41,7 @@ export default async function Hero() {
           </div>
           <ul className="buttons flex flex-wrap gap-4 mb-8">
             <Link
-              className="button bg-white dark:bg-black border border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-200 hover:border-green-500 hover:text-green-600 dark:hover:text-green-400 transition-colors rounded-md px-4 py-2 flex items-center gap-2"
+              className="button bg-white dark:bg-black border border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-200 hover:border-green-500 hover:text-green-700 dark:hover:text-green-400 transition-colors rounded-md px-4 py-2 flex items-center gap-2"
               href={profile.socials.linkedin}
               target="_blank"
               rel="noopener noreferrer"
@@ -53,7 +53,7 @@ export default async function Hero() {
               <span>LinkedIn</span>
             </Link>
             <Link
-              className="button bg-white dark:bg-black border border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-200 hover:border-green-500 hover:text-green-600 dark:hover:text-green-400 transition-colors rounded-md px-4 py-2 flex items-center gap-2"
+              className="button bg-white dark:bg-black border border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-200 hover:border-green-500 hover:text-green-700 dark:hover:text-green-400 transition-colors rounded-md px-4 py-2 flex items-center gap-2"
               href={profile.socials.github}
               target="_blank"
               rel="noopener noreferrer"
@@ -66,7 +66,7 @@ export default async function Hero() {
             </Link>
             {profile.socials.email && (
               <Link
-                className="button bg-white dark:bg-black border border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-200 hover:border-green-500 hover:text-green-600 dark:hover:text-green-400 transition-colors rounded-md px-4 py-2 flex items-center gap-2"
+                className="button bg-white dark:bg-black border border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-200 hover:border-green-500 hover:text-green-700 dark:hover:text-green-400 transition-colors rounded-md px-4 py-2 flex items-center gap-2"
                 href={`mailto:${profile.socials.email}`}
                 target="_blank"
                 rel="noopener noreferrer"
