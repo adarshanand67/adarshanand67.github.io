@@ -46,44 +46,61 @@ export default async function Home() {
               Experience
             </h2>
           </FadeIn>
-          <div className="grid grid-cols-1 gap-6">
-            {experiences.map((exp, index) => (
-              <FadeIn key={index} delay={index * 0.1}>
-                <SpotlightCard className="p-6">
-                  <div className="flex items-start gap-4 mb-4">
-                    {exp.logo && (
-                      <div className="relative w-12 h-12 md:w-16 md:h-16 flex-shrink-0 bg-white dark:bg-white rounded-lg p-2 border border-gray-100 overflow-hidden">
-                        <Image
-                          src={exp.logo}
-                          alt={`${exp.company} logo`}
-                          fill
-                          className="object-contain"
-                        />
+
+          {/* Timeline */}
+          <div className="relative">
+            {/* Vertical line */}
+            <div className="absolute left-6 md:left-8 top-0 bottom-0 w-0.5 bg-gray-200 dark:bg-gray-800" />
+
+            <div className="space-y-8">
+              {experiences.map((exp, index) => (
+                <FadeIn key={index} delay={index * 0.1}>
+                  <div className="relative flex gap-6">
+                    {/* Timeline dot */}
+                    <div className="relative z-10 flex-shrink-0">
+                      {exp.logo ? (
+                        <div className="relative w-12 h-12 md:w-16 md:h-16 bg-white dark:bg-zinc-900 rounded-full border-2 border-green-500 overflow-hidden">
+                          <Image
+                            src={exp.logo}
+                            alt={`${exp.company} logo`}
+                            fill
+                            className="object-contain p-2"
+                          />
+                        </div>
+                      ) : (
+                        <div className="w-12 h-12 md:w-16 md:h-16 bg-green-500 rounded-full flex items-center justify-center">
+                          <span className="text-white font-bold text-lg">{exp.company[0]}</span>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Content */}
+                    <div className="flex-grow pb-8">
+                      <div className="mb-2">
+                        <h3 className="text-xl font-bold">{exp.company}</h3>
+                        <p className="text-green-600 dark:text-green-400 font-medium">{exp.role}</p>
+                        <p className="text-gray-500 text-sm font-mono mt-1">
+                          {exp.duration} • {exp.location}
+                        </p>
                       </div>
-                    )}
-                    <div className="flex-grow">
-                      <SectionHeader title={exp.company} subtitle={exp.role} />
-                      <p className="text-gray-500 text-sm font-mono mt-1">
-                        {exp.duration} • {exp.location}
-                      </p>
+
+                      {exp.description && (
+                        <p className="mb-3 text-gray-700 dark:text-gray-300 leading-relaxed">
+                          {exp.description}
+                        </p>
+                      )}
+                      {exp.highlights.length > 0 && (
+                        <ul className="list-disc pl-5 space-y-2 text-gray-600 dark:text-gray-400 text-sm">
+                          {exp.highlights.map((highlight, idx) => (
+                            <li key={idx}>{highlight}</li>
+                          ))}
+                        </ul>
+                      )}
                     </div>
                   </div>
-
-                  {exp.description && (
-                    <p className="mb-4 text-gray-700 dark:text-gray-300 leading-relaxed">
-                      {exp.description}
-                    </p>
-                  )}
-                  {exp.highlights.length > 0 && (
-                    <ul className="list-disc pl-5 space-y-2 text-gray-600 dark:text-gray-400">
-                      {exp.highlights.map((highlight, idx) => (
-                        <li key={idx}>{highlight}</li>
-                      ))}
-                    </ul>
-                  )}
-                </SpotlightCard>
-              </FadeIn>
-            ))}
+                </FadeIn>
+              ))}
+            </div>
           </div>
         </div>
 
