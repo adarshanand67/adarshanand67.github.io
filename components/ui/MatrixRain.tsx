@@ -60,9 +60,10 @@ export const MatrixRain = () => {
     }, []);
 
     return (
+  return (
         <canvas
             ref={canvasRef}
-            className="absolute inset-0 z-0 pointer-events-none opacity-[0.2] dark:opacity-[0.3]"
+            className="fixed inset-0 z-[-1] pointer-events-none opacity-[0.2] dark:opacity-[0.4]"
             aria-hidden="true"
         />
     );

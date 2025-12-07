@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { CommandMenu } from "@/components/CommandMenu";
+import { MatrixRain } from "@/components/ui/MatrixRain";
 
 const assistant = Assistant({
   variable: "--font-assistant",
@@ -38,6 +39,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Navbar />
+          <MatrixRain />
           <CommandMenu />
           {children}
           <Footer />
