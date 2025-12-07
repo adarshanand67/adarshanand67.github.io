@@ -1,7 +1,5 @@
 import { getGithubRepos } from "@/lib/github";
-import { Star, GitFork, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
-import SectionHeader from "./SectionHeader";
 
 export default async function GitHubStats() {
   const repos = await getGithubRepos();
@@ -9,45 +7,48 @@ export default async function GitHubStats() {
   if (repos.length === 0) return null;
 
   return (
-    <div className="section container mx-auto px-4 mb-24">
-      <SectionHeader
-        title="Open Source"
-        subtitle="My top GitHub repositories and contributions."
-        linkText="View GitHub"
-        linkHref="https://github.com/adarshanand67"
-      />
+    <section className="section container mx-auto px-4 mb-16 font-mono">
+      <h2 className="text-2xl font-bold mb-2">
+        <span className="text-gray-500">##</span> Open Source
+      </h2>
+      <p className="text-gray-600 dark:text-gray-400 mb-6 text-sm">$ ls ~/repos --sort=stars</p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="space-y-3">
         {repos.map((repo) => (
-          <Link key={repo.name} href={repo.html_url} target="_blank" className="group block h-full">
-            <div className="h-full p-6 bg-white dark:bg-zinc-900 border border-gray-200 dark:border-gray-800 rounded-xl hover:border-green-500 dark:hover:border-green-500 transition-colors flex flex-col">
-              <div className="flex justify-between items-start mb-4">
-                <h3 className="font-bold text-lg group-hover:text-green-700 transition-colors">
-                  {repo.name}
-                </h3>
-                <ArrowUpRight className="w-5 h-5 text-gray-400 group-hover:text-green-700 transition-colors" />
-              </div>
-
-              <p className="text-gray-800 dark:text-gray-300 text-sm mb-6 flex-grow line-clamp-3">
-                {repo.description || "No description available."}
-              </p>
-
-              <div className="flex items-center gap-4 text-xs text-gray-600 dark:text-gray-400 mt-auto">
-                <div className="flex items-center gap-1">
-                  <Star className="w-4 h-4" />
-                  <span>{repo.stargazers_count}</span>
-                </div>
-                {repo.language && (
-                  <div className="flex items-center gap-1">
-                    <span className="w-2 h-2 rounded-full bg-green-500"></span>
-                    <span>{repo.language}</span>
-                  </div>
-                )}
-              </div>
+          <div
+            key={repo.name}
+            className="border-l-2 border-gray-300 dark:border-gray-700 pl-4 hover:border-green-500 transition-colors"
+          >
+            <div className="flex items-baseline gap-2 flex-wrap">
+              <Link
+                href={repo.html_url}
+                target="_blank"
+                className="text-green-700 dark:text-green-400 hover:underline font-bold"
+              >
+                {repo.name}
+              </Link>
+              <span className="text-gray-500 text-sm">
+                ⭐ {repo.stargazers_count}
+                {repo.language && ` • ${repo.language}`}
+              </span>
             </div>
-          </Link>
+            <p className="text-gray-600 dark:text-gray-400 text-sm mt-1">
+              {repo.description || "No description"}
+            </p>
+          </div>
         ))}
       </div>
-    </div>
+
+      <p className="mt-6 text-sm text-gray-500">
+        →{" "}
+        <Link
+          href="https://github.com/adarshanand67"
+          target="_blank"
+          className="text-green-700 dark:text-green-400 hover:underline"
+        >
+          View all repositories
+        </Link>
+      </p>
+    </section>
   );
 }
