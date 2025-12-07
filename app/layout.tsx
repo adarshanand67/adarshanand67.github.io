@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { CommandMenu } from "@/components/CommandMenu";
 import { MatrixRain } from "@/components/ui/MatrixRain";
+import BackToTop from "@/components/BackToTop";
 
 const assistant = Assistant({
   variable: "--font-assistant",
@@ -20,8 +21,58 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Adarsh Anand",
-  description: "SDE @Trellix | Ex-Intel | C++ Engineer",
+  title: {
+    default: "Adarsh Anand",
+    template: "%s | Adarsh Anand",
+  },
+  description:
+    "Software Development Engineer @Trellix focusing on data security, C++, and secure systems. Ex-Intel. IIT Goa graduate.",
+  keywords: [
+    "Adarsh Anand",
+    "Software Engineer",
+    "C++",
+    "Rust",
+    "Data Security",
+    "Intel SGX",
+    "Trellix",
+    "IIT Goa",
+  ],
+  authors: [{ name: "Adarsh Anand" }],
+  creator: "Adarsh Anand",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://adarshanand.dev",
+    siteName: "Adarsh Anand",
+    title: "Adarsh Anand - SDE @Trellix | C++ | Ex-Intel",
+    description:
+      "Software Development Engineer focusing on data security, confidential computing, and secure systems development.",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Adarsh Anand",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Adarsh Anand - SDE @Trellix",
+    description: "Software Development Engineer @Trellix focusing on data security and C++.",
+    images: ["/og-image.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 export default function RootLayout({
@@ -37,6 +88,7 @@ export default function RootLayout({
           <MatrixRain />
           <CommandMenu />
           {children}
+          <BackToTop />
           <Footer />
         </ThemeProvider>
       </body>
