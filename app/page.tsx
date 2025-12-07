@@ -79,7 +79,7 @@ export default async function Home() {
                     <div className="flex-grow pb-8">
                       <div className="mb-2">
                         <h3 className="text-xl font-bold">{exp.company}</h3>
-                        <p className="text-green-600 dark:text-green-400 font-medium">{exp.role}</p>
+                        <p className="text-gray-800 dark:text-white font-medium">{exp.role}</p>
                         <p className="text-gray-500 text-sm font-mono mt-1">
                           {exp.duration} • {exp.location}
                         </p>
