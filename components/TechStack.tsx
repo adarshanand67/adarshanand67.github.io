@@ -1,20 +1,40 @@
+```
 const skills = [
-    "C++",
-    "Rust",
-    "Python",
-    "TypeScript",
-    "React",
-    "Next.js",
-    "Node.js",
-    "PostgreSQL",
-    "Docker",
-    "Linux",
-    "Git",
-    "AWS",
-    "Intel SGX/TDX",
-    "Cryptography",
-    "Fuzzing",
-    "System Design",
+  // Languages
+  "C++",
+  "C",
+  "Rust",
+  "Python",
+  "Assembly",
+  "TypeScript",
+  // Systems
+  "Linux Kernel",
+  "Windows Internals",
+  "Device Drivers",
+  "Memory Management",
+  "Process Scheduling",
+  "IPC & Sockets",
+  // Security
+  "Intel SGX/TDX",
+  "Cryptography",
+  "Fuzzing",
+  "Sanitizers",
+  "Static Analysis",
+  // Tools
+  "GDB",
+  "Valgrind",
+  "Perf",
+  "Docker",
+  "Git",
+  // Infra
+  "PostgreSQL",
+  "Redis",
+  "AWS",
+  "CI/CD",
+  // Web (for balance)
+  "React",
+  "Next.js",
+  "Node.js",
 ];
 
 export default function TechStack() {
