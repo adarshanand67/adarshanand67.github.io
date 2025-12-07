@@ -3,15 +3,14 @@ import WeatherWidget from "./WeatherWidget";
 
 export default function Footer() {
   return (
-    <footer className="py-12 bg-white dark:bg-black border-t border-gray-100 dark:border-gray-900 mt-auto">
-      <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
-        <div className="flex flex-col gap-2 items-center md:items-start">
-          <span className="font-serif font-bold text-xl">Adarsh Anand</span>
-          <p className="text-zinc-600 dark:text-zinc-400 text-sm">
-            © {new Date().getFullYear()} Adarsh Anand. All rights reserved.
+    <footer className="py-8 border-t border-gray-200 dark:border-gray-800 mt-auto font-mono">
+      <div className="container mx-auto px-4">
+        <div className="text-sm text-gray-600 dark:text-gray-400">
+          <p className="mb-2">
+            <span className="text-gray-500">$</span> cat ~/footer.txt
           </p>
-          <p className="text-zinc-400 dark:text-zinc-600 text-xs mt-1">
-            Inspired by{" "}
+          <p className="mb-4">
+            © {new Date().getFullYear()} Adarsh Anand • Inspired by{" "}
             <Link
               href="https://arpitbhayani.me"
               target="_blank"
@@ -20,27 +19,30 @@ export default function Footer() {
               Arpit Bhayani
             </Link>
           </p>
-          <p className="text-zinc-400 dark:text-zinc-600 text-xs mt-2 hidden md:block">
-            Press <kbd className="font-mono">⌘K</kbd> to navigate
+          <p className="flex flex-wrap items-center gap-2">
+            <span className="text-gray-500">→</span>
+            <Link
+              href="https://github.com/adarshanand67"
+              target="_blank"
+              className="text-green-700 dark:text-green-400 hover:underline"
+            >
+              GitHub
+            </Link>
+            <span className="text-gray-500">•</span>
+            <Link
+              href="https://linkedin.com/in/adarshanand67"
+              target="_blank"
+              className="text-green-700 dark:text-green-400 hover:underline"
+            >
+              LinkedIn
+            </Link>
+            <span className="text-gray-500">•</span>
+            <WeatherWidget />
           </p>
-        </div>
-
-        <div className="flex items-center gap-6">
-          <WeatherWidget />
-          <Link
-            href="https://github.com/adarshanand67"
-            target="_blank"
-            className="text-gray-500 hover:text-black dark:hover:text-white transition-colors"
-          >
-            GitHub
-          </Link>
-          <Link
-            href="https://linkedin.com/in/adarshanand67"
-            target="_blank"
-            className="text-gray-500 hover:text-black dark:hover:text-white transition-colors"
-          >
-            LinkedIn
-          </Link>
+          <p className="mt-4 text-xs text-gray-500 hidden md:block">
+            Press <kbd className="px-1 py-0.5 bg-gray-100 dark:bg-gray-800 rounded">⌘K</kbd> to
+            navigate
+          </p>
         </div>
       </div>
     </footer>
