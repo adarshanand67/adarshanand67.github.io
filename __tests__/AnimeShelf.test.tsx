@@ -37,7 +37,7 @@ describe("AnimeShelf Page", () => {
     const component = await AnimeShelf();
     render(component);
 
-    expect(screen.getByText("Anime Shelf")).toBeInTheDocument();
+    expect(screen.getByText("Animeshelf")).toBeInTheDocument();
     expect(screen.getByText("Anime")).toBeInTheDocument();
     expect(screen.getByText("Movies")).toBeInTheDocument();
   });
