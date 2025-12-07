@@ -44,7 +44,12 @@ export async function getEntertainment() {
 function parseFrontmatter(fileContent: string) {
   const frontmatterRegex = /---\s*([\s\S]*?)\s*---/;
   const match = frontmatterRegex.exec(fileContent);
-  const frontMatterBlock = match![1];
+
+  if (!match) {
+    return { data: {}, content: fileContent };
+  }
+
+  const frontMatterBlock = match[1];
   const content = fileContent.replace(frontmatterRegex, "").trim();
   const frontMatterLines = frontMatterBlock.trim().split("\n");
   const metadata: Record<string, string> = {};
@@ -61,7 +66,7 @@ function parseFrontmatter(fileContent: string) {
 
 export async function getBlogs() {
   try {
-    const postsDirectory = path.join(process.cwd(), "posts");
+    const postsDirectory = path.join(process.cwd(), "data", "posts");
 
     // Check if directory exists
     try {
@@ -100,7 +105,7 @@ export async function getBlogs() {
 
 export async function getPost(slug: string): Promise<string | null> {
   try {
-    const postsDirectory = path.join(process.cwd(), "posts");
+    const postsDirectory = path.join(process.cwd(), "data", "posts");
     const fullPath = path.join(postsDirectory, `${slug}.md`);
     const fileContents = await fs.readFile(fullPath, "utf8");
     const { content } = parseFrontmatter(fileContents);
