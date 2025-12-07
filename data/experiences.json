@@ -7,10 +7,9 @@
     "logo": "/assets/logos/trellix.png",
     "description": "Preventing unauthorized exfiltration of sensitive corporate data as part of the Data Loss Prevention (Windows) team.",
     "highlights": [
-      "Integrated Boldon James classification support in Trellix DLP Endpoint, ensuring successful file classification and policy enforcement without SDK code upgrades.",
-      "Developed comprehensive unit tests for Boldon James classification files `tools/sanity_test` using CPP Unit framework to validate integration stability.",
-      "Configured and validated third-party tags in McAfee ePolicy Orchestrator (ePO) to map Boldon James labels (e.g., 'business', 'confidential') to DLP policies.",
-      "Created PowerShell scripts to automate Registry configuration for Boldon James ConfigManager on endpoints, supporting both 64-bit and WOW6432Node environments."
+      "Engineered the Native Registry Management Module for Google Content Analysis Connector to enable injection-free web protection for Chrome and Edge, implementing self-healing mechanisms that restore registry settings during policy updates and OPG XML parsing logic for dynamic activation via McAfee ePO.",
+      "Integrated Boldon James classification support into Trellix DLP Endpoint, configuring third-party tag mapping in McAfee ePO and creating PowerShell automation scripts for seamless endpoint registry configuration across 64-bit and WOW6432Node environments.",
+      "Developed comprehensive test automation infrastructure using CppUnit for Boldon James integration files and `tools/sanity_test`, validating classification stability and ensuring policy enforcement reliability without requiring full SDK code upgrades."
     ]
   },
   {

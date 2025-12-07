@@ -38,6 +38,13 @@ export const techLinks: Record<string, string> = {
   CentOS: "https://www.centos.org/",
   RHEL: "https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux",
   SUSE: "https://www.suse.com/",
+  PowerShell: "https://learn.microsoft.com/en-us/powershell/",
+  Chrome: "https://www.google.com/chrome/",
+  Edge: "https://www.microsoft.com/en-us/edge",
+  "Trellix DLP Endpoint": "https://www.trellix.com/products/dlp-endpoint/",
+  "McAfee ePO": "https://www.trellix.com/platform/epolicy-orchestrator/",
+  "Google Content Analysis Connector": "https://support.google.com/chrome/a/answer/9355153",
+  "Google SDK": "https://support.google.com/chrome/a/answer/9355153",
 };
 
 // Function to add hyperlinks to text - simplified to avoid conflicts
