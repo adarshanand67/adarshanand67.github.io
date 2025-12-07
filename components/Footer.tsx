@@ -10,6 +10,16 @@ export default function Footer() {
           <p className="text-zinc-600 dark:text-zinc-400 text-sm">
             © {new Date().getFullYear()} Adarsh Anand. All rights reserved.
           </p>
+          <p className="text-zinc-400 dark:text-zinc-600 text-xs mt-1">
+            Inspired by{" "}
+            <Link
+              href="https://arpitbhayani.me"
+              target="_blank"
+              className="text-green-700 dark:text-green-400 hover:underline"
+            >
+              Arpit Bhayani
+            </Link>
+          </p>
           <p className="text-zinc-400 dark:text-zinc-600 text-xs mt-2 hidden md:block">
             Press <kbd className="font-mono">⌘K</kbd> to navigate
           </p>
