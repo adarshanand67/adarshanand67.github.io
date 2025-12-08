@@ -1,6 +1,7 @@
 import { Book, Paper, Blog, EntertainmentItem, Project, Hobby } from "@/types";
 import { ReactNode } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ExternalLink, Star, Check, Camera, BookOpen, Gamepad2, Activity, Dumbbell, Flower2, Bike, Mountain, ChefHat, Plane, Dices, Tv, Mic, Palette, Shapes, Trophy, Waves, Coffee } from "lucide-react";
 import { SpotlightCard } from "@/components/ui/SpotlightCard";
 
@@ -99,12 +100,13 @@ export class AnimeCardStrategy implements ShelfItemStrategy<EntertainmentItem> {
     return (
       <SpotlightCard key={index} className="h-full flex flex-col p-4">
         {item.image ? (
-          <div className="w-full aspect-[2/3] mb-4 overflow-hidden rounded-md">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+          <div className="w-full aspect-[2/3] mb-4 overflow-hidden rounded-md relative">
+            <Image
               src={item.image}
               alt={item.title}
-              className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+              fill
+              className="object-cover hover:scale-105 transition-transform duration-300"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           </div>
         ) : (
