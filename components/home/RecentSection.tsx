@@ -25,14 +25,15 @@ export default function RecentSection({
     linkUrl,
 }: RecentSectionProps) {
     return (
-        <section className="font-mono">
+        <section className="font-mono group/section">
             <h2 className="text-2xl font-bold mb-2 flex items-center gap-2">
-                <span className="text-primary">##</span> {title}
+                <span className="text-primary text-glow">##</span>
+                <span className="group-hover/section:text-green-400 transition-colors duration-300">{title}</span>
             </h2>
             <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400 mb-4 text-sm">
                 <span className="text-green-500 font-bold">$</span>
-                <span>{command}</span>
-                <span className="animate-pulse inline-block w-2 h-4 bg-green-500 align-middle"></span>
+                <span className="opacity-75">{command}</span>
+                <span className="animate-pulse inline-block w-2 h-4 bg-green-500 align-middle shadow-[0_0_8px_rgba(34,197,94,0.8)]"></span>
             </div>
 
             <div className="space-y-2">

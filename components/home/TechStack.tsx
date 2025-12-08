@@ -62,7 +62,7 @@ export default function TechStack() {
                 key={skill}
                 href={url}
                 target="_blank"
-                className="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded text-sm font-semibold hover:bg-green-200 dark:hover:bg-green-900/50 transition-colors"
+                className="px-3 py-1 bg-green-50 dark:bg-green-900/10 text-green-700 dark:text-green-400 border border-green-200 dark:border-green-800 rounded text-sm font-semibold hover:bg-green-100 dark:hover:bg-green-900/30 hover:border-green-500 hover:shadow-[0_0_10px_rgba(34,197,94,0.4)] transition-all duration-300 transform hover:-translate-y-0.5"
               >
                 {skill}
               </Link>

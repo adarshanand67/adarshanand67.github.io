@@ -89,7 +89,11 @@ export default function RootLayout({
         className={`${assistant.variable} ${jetbrains.variable} antialiased`}
         suppressHydrationWarning
       >
-        <ThemeProvider attribute="class" defaultTheme="dark" disableTransitionOnChange>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <div className="pointer-events-none fixed inset-0 z-50 bg-[url('/assets/scanline.png')] opacity-[0.03] animate-scanline mix-blend-overlay" style={{ backgroundSize: '100% 4px' }}></div>
+          {/* Subtle vignette */}
+          <div className="pointer-events-none fixed inset-0 z-40 bg-radial-gradient from-transparent to-black/20"></div>
+
           <GlobalProvider>
             <Navbar />
             <TerminalCursor />
