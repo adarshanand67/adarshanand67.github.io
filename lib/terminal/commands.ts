@@ -49,11 +49,36 @@ export const commands: Record<string, Command> = {
     ls: {
         name: "ls",
         description: "List directories",
-        execute: (_, { setLines }) => {
-            setLines((prev) => [
-                ...prev,
-                ...DIRECTORIES.map(d => `drwxr-xr-x  ${d}/`)
-            ]);
+        execute: (args, { setLines }) => {
+            const hasLongFormat = args.includes("-l") || args.includes("-la") || args.includes("-al");
+            const showHidden = args.includes("-a") || args.includes("-la") || args.includes("-al");
+
+            const directories = [...DIRECTORIES];
+            const files = ["README.md", "package.json", ".gitignore", ".env.example"];
+
+            if (hasLongFormat) {
+                const output = [];
+                output.push("total 42");
+
+                if (showHidden) {
+                    output.push("drwxr-xr-x  2 adarsh adarsh 4096 Dec  9 22:30 .");
+                    output.push("drwxr-xr-x  5 adarsh adarsh 4096 Dec  9 22:30 ..");
+                    output.push("-rw-r--r--  1 adarsh adarsh  256 Dec  9 22:30 .env.example");
+                    output.push("-rw-r--r--  1 adarsh adarsh  128 Dec  9 22:30 .gitignore");
+                }
+
+                output.push("-rw-r--r--  1 adarsh adarsh 2048 Dec  9 22:30 README.md");
+                output.push("-rw-r--r--  1 adarsh adarsh 1024 Dec  9 22:30 package.json");
+
+                directories.forEach(d => {
+                    output.push(`drwxr-xr-x  2 adarsh adarsh 4096 Dec  9 22:30 ${d}/`);
+                });
+
+                setLines((prev) => [...prev, ...output]);
+            } else {
+                const items = [...(showHidden ? [".env.example", ".gitignore"] : []), "README.md", "package.json", ...directories.map(d => `${d}/`)];
+                setLines((prev) => [...prev, items.join("  ")]);
+            }
         },
     },
     cd: {
@@ -88,8 +113,30 @@ export const commands: Record<string, Command> = {
     date: {
         name: "date",
         description: "Show current date/time",
-        execute: (_, { setLines }) => {
-            setLines((prev) => [...prev, new Date().toString()]);
+        execute: (args, { setLines }) => {
+            const now = new Date();
+
+            if (args.includes("-u") || args.includes("--utc")) {
+                setLines((prev) => [...prev, now.toUTCString()]);
+            } else if (args.includes("-I") || args.includes("--iso-8601")) {
+                setLines((prev) => [...prev, now.toISOString().split('T')[0]]);
+            } else if (args.includes("-R") || args.includes("--rfc-email")) {
+                setLines((prev) => [...prev, now.toUTCString()]);
+            } else if (args[0]?.startsWith("+")) {
+                // Custom format (simplified)
+                const format = args[0];
+                let output = format
+                    .replace(/%Y/g, now.getFullYear().toString())
+                    .replace(/%m/g, (now.getMonth() + 1).toString().padStart(2, '0'))
+                    .replace(/%d/g, now.getDate().toString().padStart(2, '0'))
+                    .replace(/%H/g, now.getHours().toString().padStart(2, '0'))
+                    .replace(/%M/g, now.getMinutes().toString().padStart(2, '0'))
+                    .replace(/%S/g, now.getSeconds().toString().padStart(2, '0'))
+                    .replace(/^\\+/, '');
+                setLines((prev) => [...prev, output]);
+            } else {
+                setLines((prev) => [...prev, now.toString()]);
+            }
         },
     },
     theme: {
@@ -202,7 +249,17 @@ export const commands: Record<string, Command> = {
         name: "echo",
         description: "Print text to terminal",
         execute: (args, { setLines }) => {
-            setLines((prev) => [...prev, args.join(" ")]);
+            const hasNoNewline = args[0] === "-n";
+            const text = hasNoNewline ? args.slice(1).join(" ") : args.join(" ");
+
+            // Handle special variables
+            let output = text
+                .replace(/\$HOME/g, "/home/adarsh")
+                .replace(/\$USER/g, "adarsh")
+                .replace(/\$PWD/g, "/home/adarsh")
+                .replace(/\$PATH/g, "/usr/local/bin:/usr/bin:/bin");
+
+            setLines((prev) => [...prev, output]);
         },
     },
     pwd: {
