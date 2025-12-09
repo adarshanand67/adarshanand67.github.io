@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useState, ReactNode } from "react";
+import React, { createContext, useContext, useState, useCallback, ReactNode } from "react";
 
 import { PLAYLIST, TRACK_NAMES } from "@/lib/constants";
 
@@ -32,13 +32,13 @@ export const GlobalProvider = ({ children }: { children: ReactNode }) => {
     const [isMuted, setIsMuted] = useState(false);
     const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
 
-    const toggleMatrix = () => setIsMatrixEnabled((prev) => !prev);
-    const setMatrix = (enabled: boolean) => setIsMatrixEnabled(enabled);
+    const toggleMatrix = useCallback(() => setIsMatrixEnabled((prev) => !prev), []);
+    const setMatrix = useCallback((enabled: boolean) => setIsMatrixEnabled(enabled), []);
 
-    const setVolume = (vol: number) => setVolumeState(Math.max(0, Math.min(1, vol)));
-    const toggleMute = () => setIsMuted((prev) => !prev);
-    const nextTrack = () => setCurrentTrackIndex((prev) => (prev + 1) % PLAYLIST.length);
-    const prevTrack = () => setCurrentTrackIndex((prev) => (prev - 1 + PLAYLIST.length) % PLAYLIST.length);
+    const setVolume = useCallback((vol: number) => setVolumeState(Math.max(0, Math.min(1, vol))), []);
+    const toggleMute = useCallback(() => setIsMuted((prev) => !prev), []);
+    const nextTrack = useCallback(() => setCurrentTrackIndex((prev) => (prev + 1) % PLAYLIST.length), []);
+    const prevTrack = useCallback(() => setCurrentTrackIndex((prev) => (prev - 1 + PLAYLIST.length) % PLAYLIST.length), []);
 
     return (
         <GlobalContext.Provider

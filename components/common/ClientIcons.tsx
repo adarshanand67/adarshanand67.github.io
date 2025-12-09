@@ -1,13 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import * as lucideReact from "lucide-react";
-
-function useMounted() {
-    const [mounted, setMounted] = useState(false);
-    useEffect(() => setMounted(true), []);
-    return mounted;
-}
+import { useMounted } from "@/lib/hooks";
 
 function createClientIcon(Icon: React.ComponentType<lucideReact.LucideProps>) {
     return function ClientIcon(props: lucideReact.LucideProps) {

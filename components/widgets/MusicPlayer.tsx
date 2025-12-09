@@ -1,11 +1,10 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import { Play, Pause, Volume2, VolumeX, Disc, SkipBack, SkipForward } from "lucide-react";
 import { useGlobalState } from "@/components/common/GlobalProvider";
-import { PLAYLIST, TRACK_NAMES } from "@/lib/constants";
-import { AUDIO_CONFIG } from "@/lib/design-tokens";
-import { ERROR_MESSAGES } from "@/lib/error-messages";
+import { PLAYLIST, TRACK_NAMES, AUDIO_CONFIG, ERROR_MESSAGES } from "@/lib";
+import { useMounted } from "@/lib/hooks";
 
 export default function MusicPlayer() {
     const {
@@ -16,11 +15,7 @@ export default function MusicPlayer() {
     } = useGlobalState();
 
     const audioRef = useRef<HTMLAudioElement | null>(null);
-    const [mounted, setMounted] = useState(false);
-
-    useEffect(() => {
-        setMounted(true);
-    }, []);
+    const mounted = useMounted();
 
     // Try to autoplay on mount
     useEffect(() => {
