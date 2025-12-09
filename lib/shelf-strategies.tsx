@@ -5,6 +5,9 @@ import Image from "next/image";
 import { ExternalLink, Star, Check, Camera, BookOpen, Gamepad2, Activity, Dumbbell, Flower2, Bike, Mountain, ChefHat, Plane, Dices, Tv, Mic, Palette, Shapes, Trophy, Waves, Coffee } from "lucide-react";
 import { SpotlightCard } from "@/components/ui/SpotlightCard";
 
+// Union type for all shelf items
+export type ShelfItem = Book | Paper | EntertainmentItem | Blog | Project | Hobby;
+
 // Abstract Strategy Interface
 export interface ShelfItemStrategy<T> {
   renderItem(item: T, index: number): ReactNode;
@@ -382,7 +385,7 @@ export class HobbyListStrategy implements ShelfItemStrategy<Hobby> {
 
 // Factory to create strategies
 export class ShelfStrategyFactory {
-  static getStrategy(type: ShelfType): ShelfItemStrategy<any> {
+  static getStrategy(type: ShelfType): ShelfItemStrategy<ShelfItem> {
     switch (type) {
       case ShelfType.Book:
         return new BookListStrategy();

@@ -12,6 +12,7 @@ import usesData from "@/data/uses.json";
 
 // Shared Types
 import type { Profile, Experience, Book, Paper, Blog, EntertainmentItem, Hobby } from "@/types";
+import { parseEntertainmentType, parseWatchStatus } from "@/lib/type-guards";
 
 // Wrapper to match existing async API
 export async function getProfile() {
@@ -44,18 +45,10 @@ export async function getHobbies() {
 
 export async function getEntertainment(): Promise<EntertainmentItem[]> {
   return entertainmentData.map((item: any) => {
-    // Convert string type to enum
-    let type: EntertainmentItem['type'];
-    if (item.type === "Web_Series" || item.type === "Web Series") {
-      type = "Web Series" as EntertainmentItem['type'];
-    } else {
-      type = item.type as EntertainmentItem['type'];
-    }
-
     const result: EntertainmentItem = {
       title: item.title,
-      type,
-      status: item.status as EntertainmentItem['status'],
+      type: parseEntertainmentType(item.type),
+      status: parseWatchStatus(item.status),
     };
 
     if (item.image) result.image = item.image;

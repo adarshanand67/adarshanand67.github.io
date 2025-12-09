@@ -4,6 +4,8 @@ import { useState, useRef, useEffect } from "react";
 import { Play, Pause, Volume2, VolumeX, Disc, SkipBack, SkipForward } from "lucide-react";
 import { useGlobalState } from "@/components/common/GlobalProvider";
 import { PLAYLIST, TRACK_NAMES } from "@/lib/constants";
+import { AUDIO_CONFIG } from "@/lib/design-tokens";
+import { ERROR_MESSAGES } from "@/lib/error-messages";
 
 export default function MusicPlayer() {
     const {
@@ -29,7 +31,7 @@ export default function MusicPlayer() {
                 // audioRef.current.play().then(() => setIsPlaying(true)).catch(...)
                 // We'll leave strict autoplay off or handled by user interaction for safer UX
             }
-        }, 1000);
+        }, AUDIO_CONFIG.AUTOPLAY_DELAY_MS);
         return () => clearTimeout(timer);
     }, []);
 
@@ -44,7 +46,7 @@ export default function MusicPlayer() {
         if (!audioRef.current) return;
         if (isPlaying) {
             audioRef.current.play().catch(e => {
-                console.error("Playback failed:", e);
+                console.error(ERROR_MESSAGES.AUDIO.PLAYBACK_FAILED, e);
                 setIsPlaying(false);
             });
         } else {
@@ -57,7 +59,7 @@ export default function MusicPlayer() {
     };
 
     const handleTrackError = () => {
-        console.warn("Track failed to load, switching to next...");
+        console.warn(ERROR_MESSAGES.AUDIO.TRACK_LOAD_FAILED);
         nextTrack();
     };
 
@@ -122,9 +124,9 @@ export default function MusicPlayer() {
 
                         <input
                             type="range"
-                            min="0"
-                            max="1"
-                            step="0.1"
+                            min={AUDIO_CONFIG.MIN_VOLUME}
+                            max={AUDIO_CONFIG.MAX_VOLUME}
+                            step={AUDIO_CONFIG.VOLUME_STEP}
                             value={volume}
                             onChange={(e) => setVolume(parseFloat(e.target.value))}
                             className="w-16 h-1 bg-gray-700 rounded-lg appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-2 [&::-webkit-slider-thumb]:h-2 [&::-webkit-slider-thumb]:bg-green-500 [&::-webkit-slider-thumb]:rounded-full"
