@@ -1,8 +1,8 @@
 "use client";
 
-import React, { createContext, useContext, useState, useCallback, ReactNode } from "react";
+import { createContext, useContext, useState, useCallback, ReactNode } from "react";
 
-import { PLAYLIST, TRACK_NAMES } from "@/lib/constants";
+import { PLAYLIST } from "@/lib/constants";
 
 interface GlobalState {
     isMatrixEnabled: boolean;

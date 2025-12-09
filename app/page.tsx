@@ -1,7 +1,6 @@
 import Hero from "@/components/home/Hero";
 
 import { getExperiences, getBlogs, getPapers } from "@/lib/api";
-import { linkifyTech } from "@/lib/tech-links";
 import TechStack from "@/components/home/TechStack";
 import Experience from "@/components/home/Experience";
 import RecentSection from "@/components/home/RecentSection";

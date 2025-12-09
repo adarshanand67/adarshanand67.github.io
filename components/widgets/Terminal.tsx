@@ -18,8 +18,6 @@ export default function Terminal() {
   } = useGlobalState();
 
   const [lines, setLines] = useState<string[]>([]);
-  const [currentLineIndex, setCurrentLineIndex] = useState(0);
-  const [currentText, setCurrentText] = useState("");
   const [isIntroDone, setIsIntroDone] = useState(false);
   const [input, setInput] = useState("");
   const [history, setHistory] = useState<string[]>([]);
@@ -40,7 +38,7 @@ export default function Terminal() {
     if (containerRef.current) {
       containerRef.current.scrollTop = containerRef.current.scrollHeight;
     }
-  }, [lines, currentText, isIntroDone]);
+  }, [lines, isIntroDone]);
 
   // Intro Typing Effect
   useEffect(() => {
@@ -154,7 +152,7 @@ export default function Terminal() {
           setInput(parts.join(" ") + " ");
         } else if (matches.length > 1) {
           // Find common prefix
-          let prefix = matches[0] || '';
+          let prefix: string = matches[0] || '';
           for (let i = 1; i < matches.length; i++) {
             while (!matches[i]!.startsWith(prefix)) {
               prefix = prefix.substring(0, prefix.length - 1);
@@ -199,12 +197,7 @@ export default function Terminal() {
             {line}
           </div>
         ))}
-        {!isIntroDone && (
-          <div>
-            {currentText}
-            <span className="animate-pulse">_</span>
-          </div>
-        )}
+
         {isIntroDone && (
           <div className="flex items-center">
             <span className="mr-2">$</span>

@@ -11,7 +11,7 @@ import projectsData from "@/data/projects.json";
 import usesData from "@/data/uses.json";
 
 // Shared Types
-import type { Profile, Experience, Book, Paper, Blog, EntertainmentItem, Hobby } from "@/types";
+import type { EntertainmentItem } from "@/types";
 import { parseEntertainmentType, parseWatchStatus } from "@/lib/type-guards";
 
 // Wrapper to match existing async API

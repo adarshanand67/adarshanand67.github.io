@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useEffect } from "react";
-import { Play, Pause, Volume2, VolumeX, Disc, SkipBack, SkipForward } from "lucide-react";
+import { Play, Pause, Volume2, VolumeX, Disc, SkipForward } from "lucide-react";
 import { useGlobalState } from "@/components/common/GlobalProvider";
 import { PLAYLIST, TRACK_NAMES, AUDIO_CONFIG, ERROR_MESSAGES } from "@/lib";
 import { useMounted } from "@/lib/hooks";
@@ -12,7 +12,7 @@ export default function MusicPlayer() {
         isPlaying, setIsPlaying,
         volume, setVolume,
         isMuted, toggleMute,
-        currentTrackIndex, nextTrack, prevTrack
+        currentTrackIndex, nextTrack
     } = useGlobalState();
 
     const audioRef = useRef<HTMLAudioElement | null>(null);

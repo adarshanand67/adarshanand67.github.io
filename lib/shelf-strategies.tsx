@@ -191,7 +191,7 @@ export class AnimeCardStrategy implements ShelfItemStrategy<EntertainmentItem> {
 
 // Concrete Strategy: Blog List Item
 export class BlogListStrategy implements ShelfItemStrategy<Blog> {
-  renderItem(blog: Blog, index: number): ReactNode {
+  renderItem(blog: Blog, _index: number): ReactNode {
     return (
       <div
         key={blog.slug}
