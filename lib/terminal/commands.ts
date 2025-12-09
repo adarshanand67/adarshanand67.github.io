@@ -819,14 +819,32 @@ export const commands: Record<string, Command> = {
         name: "head",
         description: "Output first part of files",
         execute: (args, { setLines }) => {
-            const file = args[0] || "file";
-            setLines((prev) => [...prev,
-            `==> ${file} <==`,
+            let numLines = 10;
+            const nIndex = args.indexOf("-n");
+
+            if (nIndex !== -1 && args[nIndex + 1]) {
+                numLines = parseInt(args[nIndex + 1]) || 10;
+            }
+
+            const files = args.filter(arg => !arg.startsWith("-") && arg !== args[nIndex + 1]);
+            const file = files[0] || "file";
+
+            const content = [
                 "Line 1: Welcome to my portfolio!",
                 "Line 2: Built with Next.js and TypeScript",
                 "Line 3: Featuring a terminal interface",
                 "Line 4: Type 'help' for available commands",
-                "Line 5: Enjoy exploring! 🚀"
+                "Line 5: Enjoy exploring! 🚀",
+                "Line 6: Check out my projects",
+                "Line 7: View my experience",
+                "Line 8: Read my blog posts",
+                "Line 9: See my papers",
+                "Line 10: Contact me anytime"
+            ];
+
+            setLines((prev) => [...prev,
+            `==> ${file} <==`,
+            ...content.slice(0, numLines)
             ]);
         },
     },
@@ -834,12 +852,34 @@ export const commands: Record<string, Command> = {
         name: "tail",
         description: "Output last part of files",
         execute: (args, { setLines }) => {
-            const file = args[0] || "file";
+            let numLines = 10;
+            const nIndex = args.indexOf("-n");
+            const follow = args.includes("-f");
+
+            if (nIndex !== -1 && args[nIndex + 1]) {
+                numLines = parseInt(args[nIndex + 1]) || 10;
+            }
+
+            const files = args.filter(arg => !arg.startsWith("-") && arg !== args[nIndex + 1]);
+            const file = files[0] || "file";
+
+            const content = [
+                "Line 91: Almost at the end...",
+                "Line 92: Just a few more lines",
+                "Line 93: Getting closer",
+                "Line 94: Nearly there",
+                "Line 95: So close now",
+                "Line 96: Just about done",
+                "Line 97: Final lines approaching",
+                "Line 98: Second to last",
+                "Line 99: Last line: Thanks for visiting!",
+                "Line 100: EOF"
+            ];
+
             setLines((prev) => [...prev,
             `==> ${file} <==`,
-                "...",
-                "Last line: Thanks for visiting!",
-                "EOF"
+            ...content.slice(-numLines),
+            ...(follow ? ["", "tail: following file (press Ctrl+C to stop... just kidding!)"] : [])
             ]);
         },
     },
@@ -847,8 +887,29 @@ export const commands: Record<string, Command> = {
         name: "wc",
         description: "Word count",
         execute: (args, { setLines }) => {
-            const file = args[0] || "file";
-            setLines((prev) => [...prev, `  42  256  1337 ${file}`]);
+            const linesOnly = args.includes("-l");
+            const wordsOnly = args.includes("-w");
+            const charsOnly = args.includes("-c") || args.includes("-m");
+
+            const files = args.filter(arg => !arg.startsWith("-"));
+            const file = files[0] || "file";
+
+            const lineCount = 42;
+            const wordCount = 256;
+            const charCount = 1337;
+
+            let output = "";
+            if (linesOnly) {
+                output = `  ${lineCount} ${file}`;
+            } else if (wordsOnly) {
+                output = `  ${wordCount} ${file}`;
+            } else if (charsOnly) {
+                output = `  ${charCount} ${file}`;
+            } else {
+                output = `  ${lineCount}  ${wordCount}  ${charCount} ${file}`;
+            }
+
+            setLines((prev) => [...prev, output]);
         },
     },
     diff: {
@@ -868,6 +929,43 @@ export const commands: Record<string, Command> = {
         execute: (args, { setLines }) => {
             if (args.length === 0) {
                 setLines((prev) => [...prev, "usage: tar [options] [file]"]);
+                return;
+            }
+
+            const extract = args.some(arg => arg.includes("x"));
+            const create = args.some(arg => arg.includes("c"));
+            const gzip = args.some(arg => arg.includes("z"));
+            const verbose = args.some(arg => arg.includes("v"));
+            const fIndex = args.findIndex(arg => arg.includes("f"));
+
+            let filename = "archive.tar";
+            if (fIndex !== -1 && args[fIndex + 1]) {
+                filename = args[fIndex + 1];
+            }
+
+            if (extract) {
+                const files = ["portfolio.html", "styles.css", "script.js", "README.md"];
+                if (verbose) {
+                    setLines((prev) => [...prev,
+                    `Extracting ${filename}...`,
+                    ...files.map(f => `x ${f}`),
+                        "Done!"
+                    ]);
+                } else {
+                    setLines((prev) => [...prev, `Extracted ${filename}`]);
+                }
+            } else if (create) {
+                if (verbose) {
+                    setLines((prev) => [...prev,
+                    `Creating ${filename}...`,
+                        "a portfolio.html",
+                        "a styles.css",
+                        "a script.js",
+                        "Done!"
+                    ]);
+                } else {
+                    setLines((prev) => [...prev, `Created ${filename}`]);
+                }
             } else {
                 setLines((prev) => [...prev, `tar: This is a web portfolio, not a real filesystem! 📦`]);
             }
