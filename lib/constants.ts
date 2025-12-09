@@ -19,23 +19,32 @@ export const INTRO_LINES = (toLeet: (t: string) => string) => [
     `> Access granted :${toLeet("Type 'help' for commands.")}`,
 ];
 
-export const DIRECTORIES = ["blogs", "papers", "books", "anime", "hobbieshelf"];
+export const DIRECTORIES = ["blogs", "papers", "books", "anime", "HobbyShelf"];
+
+export const ROUTES = {
+    HOME: "/",
+    BLOG_SHELF: "/blogshelf",
+    PAPER_SHELF: "/papershelf",
+    BOOK_SHELF: "/bookshelf",
+    ANIME_SHELF: "/animeshelf",
+    HOBBY_SHELF: "/HobbyShelf", // CamelCase as requested
+} as const;
 
 export const DIRECTORY_MAP: Record<string, string> = {
-    blog: "/blogshelf",
-    blogs: "/blogshelf",
-    paper: "/papershelf",
-    papers: "/papershelf",
-    book: "/bookshelf",
-    books: "/bookshelf",
-    anime: "/animeshelf",
-    animes: "/animeshelf",
-    hobby: "/hobbieshelf",
-    hobbies: "/hobbieshelf",
-    hobbieshelf: "/hobbieshelf",
-    home: "/",
-    "~": "/",
-    ".": "/",
+    blog: ROUTES.BLOG_SHELF,
+    blogs: ROUTES.BLOG_SHELF,
+    paper: ROUTES.PAPER_SHELF,
+    papers: ROUTES.PAPER_SHELF,
+    book: ROUTES.BOOK_SHELF,
+    books: ROUTES.BOOK_SHELF,
+    anime: ROUTES.ANIME_SHELF,
+    animes: ROUTES.ANIME_SHELF,
+    hobby: ROUTES.HOBBY_SHELF,
+    hobbies: ROUTES.HOBBY_SHELF,
+    HobbyShelf: ROUTES.HOBBY_SHELF,
+    home: ROUTES.HOME,
+    "~": ROUTES.HOME,
+    ".": ROUTES.HOME,
 };
 
 export const CONTACT_INFO = [

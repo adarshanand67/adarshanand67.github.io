@@ -3,10 +3,7 @@ import { techLinks } from "@/lib/tech-links";
 
 const primarySkills = [
   "C++",
-  "Intel SGX",
-  "Intel TDX",
-  "Gramine",
-  "OS Internals",
+  "Intel SGX/TDX",
   "Kernel Development",
   "System Programming",
 ];

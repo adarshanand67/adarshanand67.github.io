@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { ThemeToggle } from "./theme-toggle";
 import { Search } from "lucide-react";
+import { ROUTES } from "@/lib/constants";
 
 export default function Navbar() {
   const [isActive, setIsActive] = useState(false);
@@ -45,7 +46,7 @@ export default function Navbar() {
 
             {/* Brand */}
             <Link
-              href="/"
+              href={ROUTES.HOME}
               className="text-lg font-bold text-foreground hover:text-green-600 dark:hover:text-green-400 transition-colors"
             >
               ~/adarsh
@@ -59,34 +60,34 @@ export default function Navbar() {
             {/* Desktop Nav */}
             <div className="hidden md:flex md:items-center md:ml-auto gap-0">
               <Link
-                href="/blogshelf"
+                href={ROUTES.BLOG_SHELF}
                 className="px-4 py-3 text-base text-foreground/80 hover:text-green-600 dark:hover:text-green-400 hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
               >
                 Blogshelf
               </Link>
               <Link
-                href="/papershelf"
+                href={ROUTES.PAPER_SHELF}
                 className="px-4 py-3 text-base text-foreground/80 hover:text-green-600 dark:hover:text-green-400 hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
               >
                 Papershelf
               </Link>
               <Link
-                href="/animeshelf"
+                href={ROUTES.ANIME_SHELF}
                 className="px-4 py-3 text-base text-foreground/80 hover:text-green-600 dark:hover:text-green-400 hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
               >
                 Animeshelf
               </Link>
               <Link
-                href="/bookshelf"
+                href={ROUTES.BOOK_SHELF}
                 className="px-4 py-3 text-base text-foreground/80 hover:text-green-600 dark:hover:text-green-400 hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
               >
                 Bookshelf
               </Link>
               <Link
-                href="/hobbieshelf"
+                href={ROUTES.HOBBY_SHELF}
                 className="px-4 py-3 text-base text-foreground/80 hover:text-green-600 dark:hover:text-green-400 hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
               >
-                Hobbieshelf
+                HobbyShelf
               </Link>
 
               <span className="text-gray-400 mx-1">|</span>
@@ -112,39 +113,39 @@ export default function Navbar() {
           >
             <div className="flex flex-col gap-1 text-sm">
               <Link
-                href="/blogshelf"
+                href={ROUTES.BLOG_SHELF}
                 className="py-2 hover:text-green-600 dark:hover:text-green-400"
                 onClick={() => setIsActive(false)}
               >
                 Blogshelf
               </Link>
               <Link
-                href="/papershelf"
+                href={ROUTES.PAPER_SHELF}
                 className="py-2 hover:text-green-600 dark:hover:text-green-400"
                 onClick={() => setIsActive(false)}
               >
                 Papershelf
               </Link>
               <Link
-                href="/animeshelf"
+                href={ROUTES.ANIME_SHELF}
                 className="py-2 hover:text-green-600 dark:hover:text-green-400"
                 onClick={() => setIsActive(false)}
               >
                 Animeshelf
               </Link>
               <Link
-                href="/bookshelf"
+                href={ROUTES.BOOK_SHELF}
                 className="py-2 hover:text-green-600 dark:hover:text-green-400"
                 onClick={() => setIsActive(false)}
               >
                 Bookshelf
               </Link>
               <Link
-                href="/hobbieshelf"
+                href={ROUTES.HOBBY_SHELF}
                 className="py-2 hover:text-green-600 dark:hover:text-green-400"
                 onClick={() => setIsActive(false)}
               >
-                Hobbieshelf
+                HobbyShelf
               </Link>
 
               <div className="flex items-center gap-4 pt-2 border-t border-gray-200 dark:border-gray-800">
