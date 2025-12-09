@@ -20,6 +20,12 @@ export const commands: Record<string, Command> = {
                 "  fetch           - Display system information",
                 "  matrix          - Toggle Matrix Rain effect",
                 "  music [cmd]     - Control music (play/pause/next/prev)",
+                "  echo [text]     - Print text to terminal",
+                "  pwd             - Print working directory",
+                "  cat [file]      - Display file contents",
+                "  skills          - Display technical skills",
+                "  projects        - View featured projects",
+                "  hack            - Initiate hacking sequence 😎",
             ];
             setLines((prev) => [...prev, ...helpText]);
         },
@@ -174,6 +180,112 @@ export const commands: Record<string, Command> = {
         description: "Show contact info",
         execute: (_, { setLines }) => {
             setLines((prev) => [...prev, ...CONTACT_INFO]);
+        },
+    },
+    echo: {
+        name: "echo",
+        description: "Print text to terminal",
+        execute: (args, { setLines }) => {
+            setLines((prev) => [...prev, args.join(" ")]);
+        },
+    },
+    pwd: {
+        name: "pwd",
+        description: "Print working directory",
+        execute: (_, { setLines }) => {
+            setLines((prev) => [...prev, "/home/adarsh"]);
+        },
+    },
+    cat: {
+        name: "cat",
+        description: "Display file contents",
+        execute: (args, { setLines }) => {
+            if (args.length === 0) {
+                setLines((prev) => [...prev, "usage: cat [file]"]);
+                return;
+            }
+            const file = args[0]?.toLowerCase();
+            if (file === "readme.md" || file === "readme") {
+                setLines((prev) => [...prev,
+                    "# Adarsh Anand - Portfolio",
+                    "",
+                    "Software Development Engineer @Trellix",
+                    "Specializing in C++, Data Security, and System Programming",
+                    "",
+                    "Type 'help' for available commands"
+                ]);
+            } else if (file === "skills.txt" || file === "skills") {
+                setLines((prev) => [...prev,
+                    "Languages: C++, Python, JavaScript, TypeScript, Rust",
+                    "Technologies: Next.js, React, Node.js, Docker",
+                    "Security: Intel SGX, TDX, Cryptography, DLP",
+                    "Tools: Git, Linux, LLVM, Fuzzing"
+                ]);
+            } else {
+                setLines((prev) => [...prev, `cat: ${args[0]}: No such file or directory`]);
+            }
+        },
+    },
+    history: {
+        name: "history",
+        description: "Show command history",
+        execute: (_, { setLines }) => {
+            setLines((prev) => [...prev, "Use arrow keys (↑/↓) to navigate command history"]);
+        },
+    },
+    skills: {
+        name: "skills",
+        description: "Display technical skills",
+        execute: (_, { setLines }) => {
+            setLines((prev) => [...prev,
+                "Technical Skills:",
+                "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━",
+                "Languages:    C++ | Python | Rust | TypeScript",
+                "Security:     Intel SGX/TDX | Cryptography | DLP",
+                "Systems:      Linux | Docker | LLVM | Fuzzing",
+                "Web:          Next.js | React | Node.js",
+                "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+            ]);
+        },
+    },
+    projects: {
+        name: "projects",
+        description: "View featured projects",
+        execute: (_, { setLines, router }) => {
+            setLines((prev) => [...prev,
+                "Featured Projects:",
+                "  • Intel SGX Gramine - Confidential Computing",
+                "  • Intel TDX FDE - Full Disk Encryption",
+                "  • Trellix DLP - Data Loss Prevention",
+                "",
+                "Type 'cd projects' to see all projects"
+            ]);
+        },
+    },
+    neofetch: {
+        name: "neofetch",
+        description: "Display system info (alias for fetch)",
+        execute: (args, ctx) => commands.fetch!.execute(args, ctx),
+    },
+    exit: {
+        name: "exit",
+        description: "Close terminal (just kidding)",
+        execute: (_, { setLines }) => {
+            setLines((prev) => [...prev, "Nice try! This terminal is here to stay 😎"]);
+        },
+    },
+    hack: {
+        name: "hack",
+        description: "Initiate hacking sequence",
+        execute: (_, { setLines, toggleMatrix }) => {
+            setLines((prev) => [...prev,
+                "Initializing hacking sequence...",
+                "Bypassing firewall... ✓",
+                "Cracking encryption... ✓",
+                "Accessing mainframe... ✓",
+                "Just kidding! Try 'sudo' for real power 😄"
+            ]);
+            setTimeout(() => toggleMatrix(), 1000);
         },
     },
 };
