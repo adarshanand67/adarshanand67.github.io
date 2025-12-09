@@ -191,7 +191,10 @@ export default function Terminal() {
         className="p-6 text-gray-300 dark:text-gray-200 h-[320px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-transparent"
       >
         {lines.map((line, i) => (
-          <div key={i} className="mb-1 whitespace-pre-wrap">
+          <div
+            key={i}
+            className={`mb-1 whitespace-pre-wrap ${line.startsWith('$ ') ? 'text-green-400' : ''}`}
+          >
             {line}
           </div>
         ))}
