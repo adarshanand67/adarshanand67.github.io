@@ -1,23 +1,23 @@
 [
   {
-    "title": "Pok\u00e9mon",
+    "title": "Pokémon",
     "type": "Anime",
     "status": "Completed",
-    "notes": "too many to count (20+ seasons across regions)",
+    "notes": "S1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25",
     "image": "https://cdn.myanimelist.net/images/anime/1405/117456l.jpg"
   },
   {
     "title": "Dragon Ball Z",
     "type": "Anime",
     "status": "Completed",
-    "notes": "S1-9 / Dragon Ball Super \u2013 S1",
+    "notes": "S1,2,3,4,5,6,7,8,9, Super S1",
     "image": "https://cdn.myanimelist.net/images/anime/1277/142022l.jpg"
   },
   {
     "title": "Naruto",
     "type": "Anime",
     "status": "Planning",
-    "notes": "S1,2,3,4,5 / Naruto Shippuden \u2013 S1-21",
+    "notes": "S1,2,3,4,5, Shippuden S1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21",
     "image": "https://cdn.myanimelist.net/images/anime/1141/142503l.jpg"
   },
   {
@@ -25,14 +25,13 @@
     "type": "Anime",
     "status": "Completed",
     "notes": "S1",
-    "recommended": true,
     "image": "https://cdn.myanimelist.net/images/anime/1079/138100l.jpg"
   },
   {
     "title": "One Punch Man",
     "type": "Anime",
     "status": "Completed",
-    "notes": "S1,2, [3?]",
+    "notes": "S1,2",
     "image": "https://cdn.myanimelist.net/images/anime/12/76049l.jpg"
   },
   {
@@ -40,14 +39,13 @@
     "type": "Anime",
     "status": "Completed",
     "notes": "S1,2,3,4",
-    "recommended": true,
     "image": "https://cdn.myanimelist.net/images/anime/7/76014l.jpg"
   },
   {
     "title": "Haikyuu!! The Dumpster Battle",
     "type": "Movie",
     "status": "Completed",
-    "notes": "2024",
+    "notes": "",
     "image": "https://cdn.myanimelist.net/images/anime/1665/140360l.jpg"
   },
   {
@@ -55,7 +53,6 @@
     "type": "Anime",
     "status": "Completed",
     "notes": "S1,2",
-    "recommended": true,
     "image": "https://cdn.myanimelist.net/images/anime/1032/135088l.jpg"
   },
   {
@@ -77,7 +74,6 @@
     "type": "Anime",
     "status": "Completed",
     "notes": "S1,2,3",
-    "recommended": true,
     "image": "https://cdn.myanimelist.net/images/anime/8/80356l.jpg"
   },
   {
@@ -91,6 +87,7 @@
     "title": "Jujutsu Kaisen 0",
     "type": "Movie",
     "status": "Completed",
+    "notes": "",
     "image": "https://cdn.myanimelist.net/images/anime/1121/119044l.jpg"
   },
   {
@@ -98,7 +95,6 @@
     "type": "Anime",
     "status": "Completed",
     "notes": "S1,2",
-    "recommended": true,
     "image": "https://cdn.myanimelist.net/images/anime/1258/126929l.jpg"
   },
   {
@@ -106,21 +102,20 @@
     "type": "Anime",
     "status": "Completed",
     "notes": "S1,2",
-    "recommended": true,
     "image": "https://cdn.myanimelist.net/images/anime/1801/142390l.jpg"
   },
   {
     "title": "Demon Slayer",
     "type": "Anime",
     "status": "Completed",
-    "notes": "S1, Mugen Train Movie, S2,3,4,5",
+    "notes": "S1, Mugen Train, S2,3,4",
     "image": "https://cdn.myanimelist.net/images/anime/1286/99889l.jpg"
   },
   {
     "title": "Tokyo Ghoul",
     "type": "Anime",
     "status": "Planning",
-    "notes": "S1,2 + \u221aA + :re (4 seasons)",
+    "notes": "S1,2,3,4",
     "image": "https://cdn.myanimelist.net/images/anime/1498/134443l.jpg"
   },
   {
@@ -134,56 +129,56 @@
     "title": "Attack on Titan",
     "type": "Anime",
     "status": "Planning",
-    "notes": "S1,2,3,4 (Final Season split into parts)",
+    "notes": "S1,2,3,4",
     "image": "https://cdn.myanimelist.net/images/anime/10/47347l.jpg"
   },
   {
     "title": "Fullmetal Alchemist Brotherhood",
     "type": "Anime",
     "status": "Planning",
-    "notes": "S1 (64 episodes)",
+    "notes": "S1",
     "image": "https://cdn.myanimelist.net/images/anime/1208/94745l.jpg"
   },
   {
     "title": "Hunter x Hunter",
     "type": "Anime",
     "status": "Planning",
-    "notes": "S1 (148 episodes)",
+    "notes": "S1",
     "image": "https://cdn.myanimelist.net/images/anime/1305/132237l.jpg"
   },
   {
     "title": "JoJo's Bizarre Adventure",
     "type": "Anime",
     "status": "Planning",
-    "notes": "S1,2,3,4,5",
+    "notes": "S1,2,3,4,5,6",
     "image": "https://cdn.myanimelist.net/images/anime/3/40409l.jpg"
   },
   {
     "title": "My Hero Academia",
     "type": "Anime",
     "status": "Planning",
-    "notes": "S1,2,3,4,5,6,7 / 8 (final incoming)",
+    "notes": "S1,2,3,4,5,6,7,8",
     "image": "https://cdn.myanimelist.net/images/anime/10/78745l.jpg"
   },
   {
     "title": "Bleach",
     "type": "Anime",
     "status": "Planning",
-    "notes": "16 seasons + Thousand-Year Blood War",
+    "notes": "S1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16, TYBW",
     "image": "https://cdn.myanimelist.net/images/anime/1541/147774l.jpg"
   },
   {
     "title": "Kaiju No 8",
     "type": "Anime",
     "status": "Planning",
-    "notes": "S1, 2 (announced)",
+    "notes": "S1,2",
     "image": "https://cdn.myanimelist.net/images/anime/1370/140362l.jpg"
   },
   {
-    "title": "~One Piece",
+    "title": "One Piece",
     "type": "Anime",
     "status": "Planning",
-    "notes": "20+ seasons (ongoing)",
+    "notes": "S1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21",
     "image": "https://cdn.myanimelist.net/images/anime/1770/97704l.jpg"
   },
   {
@@ -197,14 +192,14 @@
     "title": "Sword Art Online",
     "type": "Anime",
     "status": "Planning",
-    "notes": "S1,2 + Alicization + War of Underworld (4 arcs treated as seasons)",
+    "notes": "S1,2,3,4",
     "image": "https://cdn.myanimelist.net/images/anime/11/39717l.jpg"
   },
   {
-    "title": "Frieren: Beyond Journey\u2019s End",
+    "title": "Frieren: Beyond Journey’s End",
     "type": "Anime",
     "status": "Planning",
-    "notes": "1 season",
+    "notes": "S1",
     "image": "https://cdn.myanimelist.net/images/anime/1015/138006l.jpg"
   },
   {
@@ -218,13 +213,14 @@
     "title": "Black Clover: Sword of the Wizard King",
     "type": "Movie",
     "status": "Planning",
+    "notes": "",
     "image": "https://cdn.myanimelist.net/images/anime/1337/136363l.jpg"
   },
   {
     "title": "Spy x Family",
     "type": "Anime",
     "status": "Planning",
-    "notes": "S1,2",
+    "notes": "S1,2,3",
     "image": "https://cdn.myanimelist.net/images/anime/1441/122795l.jpg"
   },
   {
@@ -275,13 +271,6 @@
     "status": "Planning",
     "notes": "S1",
     "image": "https://cdn.myanimelist.net/images/anime/1731/120871l.jpg"
-  },
-  {
-    "title": "Spy \u00d7 Family",
-    "type": "Anime",
-    "status": "Planning",
-    "notes": "S1,2,3",
-    "image": "https://cdn.myanimelist.net/images/anime/1441/122795l.jpg"
   },
   {
     "title": "The Seven Deadly Sins",
@@ -340,10 +329,10 @@
     "image": "https://cdn.myanimelist.net/images/anime/10/77957l.jpg"
   },
   {
-    "title": "Fate Zero",
+    "title": "Fate/Zero",
     "type": "Anime",
     "status": "Planning",
-    "notes": "S1",
+    "notes": "S1,2",
     "image": "https://cdn.myanimelist.net/images/anime/1887/117644l.jpg"
   },
   {
@@ -361,7 +350,7 @@
     "image": "https://cdn.myanimelist.net/images/anime/1405/143284l.jpg"
   },
   {
-    "title": "Hyosuka",
+    "title": "Hyouka",
     "type": "Anime",
     "status": "Planning",
     "notes": "S1",
@@ -385,7 +374,7 @@
     "title": "Monster",
     "type": "Anime",
     "status": "Planning",
-    "notes": "S1 (74 episodes)",
+    "notes": "S1",
     "image": "https://cdn.myanimelist.net/images/anime/1648/152231l.jpg"
   },
   {
@@ -396,17 +385,17 @@
     "image": "https://cdn.myanimelist.net/images/anime/3/82899l.jpg"
   },
   {
-    "title": "Ghost in the Shell:Stand alone complex",
+    "title": "Ghost in the Shell: Stand Alone Complex",
     "type": "Anime",
     "status": "Planning",
     "notes": "S1,2",
     "image": "https://cdn.myanimelist.net/images/anime/3/85128l.jpg"
   },
   {
-    "title": "The promised Neverland",
+    "title": "The Promised Neverland",
     "type": "Anime",
     "status": "Planning",
-    "notes": "S1",
+    "notes": "S1,2",
     "image": "https://cdn.myanimelist.net/images/anime/1830/118780l.jpg"
   },
   {
@@ -417,7 +406,7 @@
     "image": "https://cdn.myanimelist.net/images/anime/1826/147276l.jpg"
   },
   {
-    "title": "Rascal does not dream of bunny girls senpai",
+    "title": "Rascal Does Not Dream of Bunny Girl Senpai",
     "type": "Anime",
     "status": "Planning",
     "notes": "S1",
@@ -427,7 +416,7 @@
     "title": "Gintama",
     "type": "Anime",
     "status": "Planning",
-    "notes": "9 seasons",
+    "notes": "S1,2,3,4,5,6,7,8,9",
     "image": "https://cdn.myanimelist.net/images/anime/4/50361l.jpg"
   },
   {
@@ -455,111 +444,126 @@
     "title": "Hajime no Ippo",
     "type": "Anime",
     "status": "Planning",
-    "notes": "S1,2,3 (76 episodes)",
+    "notes": "S1,2,3",
     "image": "https://cdn.myanimelist.net/images/anime/4/86334l.jpg"
   },
   {
     "title": "I want to eat your pancreas",
     "type": "Movie",
     "status": "Completed",
+    "notes": "",
     "image": "https://cdn.myanimelist.net/images/anime/1768/93291l.jpg"
   },
   {
     "title": "Grave of Fireflies",
     "type": "Movie",
     "status": "Completed",
+    "notes": "",
     "image": "https://cdn.myanimelist.net/images/anime/1485/141208l.jpg"
   },
   {
     "title": "Spirited Away",
     "type": "Movie",
     "status": "Completed",
+    "notes": "",
     "image": "https://cdn.myanimelist.net/images/anime/6/79597l.jpg"
   },
   {
     "title": "Your Name",
     "type": "Movie",
     "status": "Completed",
+    "notes": "",
     "image": "https://cdn.myanimelist.net/images/anime/5/87048l.jpg"
   },
   {
-    "title": "5 centimeter per second",
+    "title": "5 Centimeters Per Second",
     "type": "Movie",
     "status": "Planning",
+    "notes": "",
     "image": "https://cdn.myanimelist.net/images/anime/1410/112994l.jpg"
   },
   {
-    "title": "Howl\u2019s Moving Castle",
+    "title": "Howl’s Moving Castle",
     "type": "Movie",
     "status": "Planning",
+    "notes": "",
     "image": "https://cdn.myanimelist.net/images/anime/1470/138723l.jpg"
   },
   {
     "title": "Princess Mononoke",
     "type": "Movie",
     "status": "Planning",
+    "notes": "",
     "image": "https://cdn.myanimelist.net/images/anime/1355/147277l.jpg"
   },
   {
     "title": "Suzume",
     "type": "Movie",
     "status": "Planning",
+    "notes": "",
     "image": "https://cdn.myanimelist.net/images/anime/1598/128450l.jpg"
   },
   {
     "title": "Weathering With You",
     "type": "Movie",
     "status": "Planning",
+    "notes": "",
     "image": "https://cdn.myanimelist.net/images/anime/1880/101146l.jpg"
   },
   {
     "title": "Demon Slayer Mugen Train",
     "type": "Movie",
     "status": "Planning",
+    "notes": "",
     "image": "https://cdn.myanimelist.net/images/anime/1065/118763l.jpg"
   },
   {
     "title": "A Silent Voice",
     "type": "Movie",
     "status": "Completed",
+    "notes": "",
     "image": "https://cdn.myanimelist.net/images/anime/1122/96435l.jpg"
   },
   {
     "title": "The Girl Who Leapt Through Time",
     "type": "Movie",
     "status": "Planning",
+    "notes": "",
     "image": "https://cdn.myanimelist.net/images/anime/1/2432l.jpg"
   },
   {
     "title": "One Piece Film Red",
     "type": "Movie",
     "status": "Planning",
+    "notes": "",
     "image": "https://cdn.myanimelist.net/images/anime/1668/125323l.jpg"
   },
   {
     "title": "That Time I Got Reincarnated as a Slime",
     "type": "Movie",
     "status": "Planning",
+    "notes": "",
     "image": "https://cdn.myanimelist.net/images/anime/1069/123309l.jpg"
   },
   {
     "title": "The Eminence in Shadow",
     "type": "Movie",
     "status": "Planning",
+    "notes": "",
     "image": "https://cdn.myanimelist.net/images/anime/1091/128729l.jpg"
   },
   {
     "title": "Kaguya-sama: Love Is War",
     "type": "Anime",
     "status": "Planning",
-    "notes": "S1,2,3 + Movie",
+    "notes": "S1,2,3",
     "image": "https://cdn.myanimelist.net/images/anime/1295/106551l.jpg"
   },
   {
     "title": "Re:Zero",
     "type": "Anime",
     "status": "Planning",
-    "notes": "S1,2",
+    "notes": "S1,2,3",
     "image": "https://cdn.myanimelist.net/images/anime/1040/153636l.jpg"
   },
   {
@@ -587,240 +591,210 @@
     "title": "Clannad: After Story",
     "type": "Anime",
     "status": "Planning",
-    "notes": "Highly rated drama"
-  },
-  {
-    "title": "Fruits Basket (2019)",
-    "type": "Anime",
-    "status": "Planning",
-    "notes": "Complete adaptation"
+    "notes": "S1,2",
+    "image": "https://cdn.myanimelist.net/images/anime/13/24647l.jpg"
   },
   {
     "title": "Oshi no Ko",
     "type": "Anime",
     "status": "Planning",
-    "notes": "Idol industry drama"
-  },
-  {
-    "title": "Ranking of Kings",
-    "type": "Anime",
-    "status": "Planning",
-    "notes": "Fantasy adventure"
-  },
-  {
-    "title": "Odd Taxi",
-    "type": "Anime",
-    "status": "Planning",
-    "notes": "Mystery anthropomorphic"
+    "notes": "S1,2",
+    "image": "https://cdn.myanimelist.net/images/anime/1015/138006l.jpg"
   },
   {
     "title": "86 (Eighty-Six)",
     "type": "Anime",
     "status": "Planning",
-    "notes": "Mecha war drama"
+    "notes": "S1,2",
+    "image": "https://cdn.myanimelist.net/images/anime/1987/117507.jpg"
   },
   {
     "title": "Bocchi the Rock!",
     "type": "Anime",
     "status": "Planning",
-    "notes": "Music slice of life"
+    "notes": "S1",
+    "image": "https://cdn.myanimelist.net/images/anime/1448/127956.jpg"
   },
   {
     "title": "Chihayafuru",
     "type": "Anime",
     "status": "Planning",
-    "notes": "Karuta sports"
+    "notes": "S1,2,3",
+    "image": "https://cdn.myanimelist.net/images/anime/3/35749.jpg"
   },
   {
     "title": "Natsume's Book of Friends",
     "type": "Anime",
     "status": "Planning",
-    "notes": "Supernatural slice of life"
+    "notes": "S1,2,3,4,5,6,7",
+    "image": "https://cdn.myanimelist.net/images/anime/1681/108439.jpg"
   },
   {
     "title": "Bakemonogatari",
     "type": "Anime",
     "status": "Planning",
-    "notes": "Monogatari Series"
+    "notes": "S1,2,3",
+    "image": "https://cdn.myanimelist.net/images/anime/11/75274.jpg"
   },
   {
     "title": "Mushishi",
     "type": "Anime",
     "status": "Planning",
-    "notes": "Atmospheric supernatural"
+    "notes": "S1,2",
+    "image": "https://cdn.myanimelist.net/images/anime/2/73862.jpg"
   },
   {
     "title": "Great Teacher Onizuka",
     "type": "Anime",
     "status": "Planning",
-    "notes": "Classic comedy drama"
+    "notes": "S1",
+    "image": "https://cdn.myanimelist.net/images/anime/13/11460.jpg"
   },
   {
     "title": "Yu Yu Hakusho",
     "type": "Anime",
     "status": "Planning",
-    "notes": "Classic battle shonen"
+    "notes": "S1",
+    "image": "https://cdn.myanimelist.net/images/anime/1228/111372.jpg"
   },
   {
     "title": "Rurouni Kenshin",
     "type": "Anime",
     "status": "Planning",
-    "notes": "Historical samurai"
+    "notes": "S1",
+    "image": "https://cdn.myanimelist.net/images/anime/1346/119505.jpg"
   },
   {
     "title": "Inuyasha",
     "type": "Anime",
     "status": "Planning",
-    "notes": "Isekai fantasy classic"
+    "notes": "S1,2",
+    "image": "https://cdn.myanimelist.net/images/anime/1589/95329.jpg"
   },
   {
     "title": "Nana",
     "type": "Anime",
     "status": "Planning",
-    "notes": "Music romance drama"
+    "notes": "S1",
+    "image": "https://cdn.myanimelist.net/images/anime/2/11232.jpg"
   },
   {
     "title": "Beck: Mongolian Chop Squad",
     "type": "Anime",
     "status": "Planning",
-    "notes": "Rock band journey"
+    "notes": "S1",
+    "image": "https://cdn.myanimelist.net/images/anime/11/11636.jpg"
   },
   {
     "title": "Black Lagoon",
     "type": "Anime",
     "status": "Planning",
-    "notes": "Action crime"
+    "notes": "S1,2,3",
+    "image": "https://cdn.myanimelist.net/images/anime/1906/121592.jpg"
   },
   {
     "title": "Trigun",
     "type": "Anime",
     "status": "Planning",
-    "notes": "Sci-fi western"
+    "notes": "S1",
+    "image": "https://cdn.myanimelist.net/images/anime/1130/120002.jpg"
   },
   {
     "title": "Hellsing Ultimate",
     "type": "Anime",
     "status": "Planning",
-    "notes": "Vampire action horror"
+    "notes": "S1",
+    "image": "https://cdn.myanimelist.net/images/anime/1012/143965.jpg"
   },
   {
     "title": "Psycho-Pass",
     "type": "Anime",
     "status": "Planning",
-    "notes": "Cyberpunk psychological"
+    "notes": "S1,2,3",
+    "image": "https://cdn.myanimelist.net/images/anime/1314/142015.jpg"
   },
   {
     "title": "Darker than Black",
     "type": "Anime",
     "status": "Planning",
-    "notes": "Supernatural abilities"
-  },
-  {
-    "title": "Baccano!",
-    "type": "Anime",
-    "status": "Planning",
-    "notes": "Non-linear storytelling"
+    "notes": "S1,2",
+    "image": "https://cdn.myanimelist.net/images/anime/5/19570.jpg"
   },
   {
     "title": "Durarara!!",
     "type": "Anime",
     "status": "Planning",
-    "notes": "Urban fantasy"
+    "notes": "S1,2,3,4",
+    "image": "https://cdn.myanimelist.net/images/anime/10/71772.jpg"
   },
   {
     "title": "Noragami",
     "type": "Anime",
     "status": "Planning",
-    "notes": "Gods and phantoms"
+    "notes": "S1,2",
+    "image": "https://cdn.myanimelist.net/images/anime/1886/128266.jpg"
   },
   {
     "title": "Soul Eater",
     "type": "Anime",
     "status": "Planning",
-    "notes": "Stylized action"
+    "notes": "S1",
+    "image": "https://cdn.myanimelist.net/images/anime/1071/149486.jpg"
   },
   {
     "title": "Akame ga Kill!",
     "type": "Anime",
     "status": "Planning",
-    "notes": "Dark fantasy action"
+    "notes": "S1",
+    "image": "https://cdn.myanimelist.net/images/anime/1429/95946.jpg"
   },
   {
     "title": "No Game No Life",
     "type": "Anime",
     "status": "Planning",
-    "notes": "Isekai games"
+    "notes": "S1",
+    "image": "https://cdn.myanimelist.net/images/anime/1074/111944.jpg"
   },
   {
     "title": "KonoSuba",
     "type": "Anime",
     "status": "Planning",
-    "notes": "Isekai comedy"
+    "notes": "S1,2,3",
+    "image": "https://cdn.myanimelist.net/images/anime/1895/142748.jpg"
   },
   {
     "title": "Toradora!",
     "type": "Anime",
     "status": "Planning",
-    "notes": "Romcom classic"
+    "notes": "S1",
+    "image": "https://cdn.myanimelist.net/images/anime/13/22128.jpg"
   },
   {
     "title": "Angel Beats!",
     "type": "Anime",
     "status": "Planning",
-    "notes": "Afterlife drama"
+    "notes": "S1",
+    "image": "https://cdn.myanimelist.net/images/anime/1244/111115.jpg"
   },
   {
     "title": "Anohana: The Flower We Saw That Day",
     "type": "Anime",
     "status": "Planning",
-    "notes": "Emotional drama"
+    "notes": "S1",
+    "image": "https://cdn.myanimelist.net/images/anime/5/79697.jpg"
   },
   {
     "title": "Another",
     "type": "Anime",
     "status": "Planning",
-    "notes": "Horror mystery"
+    "notes": "S1",
+    "image": "https://cdn.myanimelist.net/images/anime/4/75509.jpg"
   },
   {
     "title": "Mirai Nikki",
     "type": "Anime",
     "status": "Planning",
-    "notes": "Survival game thriller"
-  },
-  {
-    "title": "Golden Kamuy",
-    "type": "Anime",
-    "status": "Planning",
-    "notes": "Historical adventure"
-  },
-  {
-    "title": "Dorohedoro",
-    "type": "Anime",
-    "status": "Planning",
-    "notes": "Gritty fantasy comedy"
-  },
-  {
-    "title": "Land of the Lustrous",
-    "type": "Anime",
-    "status": "Planning",
-    "notes": "Gem people CGI masterpiece"
-  },
-  {
-    "title": "Beastars",
-    "type": "Anime",
-    "status": "Planning",
-    "notes": "Anthropomorphic drama"
-  },
-  {
-    "title": "The Apothecary Diaries",
-    "type": "Anime",
-    "status": "Planning",
-    "notes": "Historical mystery"
-  },
-  {
-    "title": "Bungo Stray Dogs",
-    "type": "Anime",
-    "status": "Planning",
-    "notes": "Literary superpowers"
+    "notes": "S1",
+    "image": "https://cdn.myanimelist.net/images/anime/13/33465.jpg"
   }
 ]

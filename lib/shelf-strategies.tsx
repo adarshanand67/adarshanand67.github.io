@@ -124,7 +124,7 @@ export class AnimeCardStrategy implements ShelfItemStrategy<EntertainmentItem> {
           {item.recommended && <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />}
         </h3>
         {item.notes && (
-          <p className="text-sm text-gray-500 dark:text-gray-400 mt-auto font-mono">{item.notes}</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400 mt-auto font-mono break-words">{item.notes}</p>
         )}
       </SpotlightCard>
     );
