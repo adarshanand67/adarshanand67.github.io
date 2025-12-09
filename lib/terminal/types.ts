@@ -10,6 +10,7 @@ export interface CommandContext {
     prevTrack: () => void;
     toggleMute: () => void;
     setInput: (input: string) => void;
+    commandHistory?: string[];
 }
 
 export type CommandFn = (args: string[], context: CommandContext) => void | Promise<void>;

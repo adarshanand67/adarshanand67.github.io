@@ -97,10 +97,11 @@ export default function Terminal() {
         nextTrack,
         prevTrack,
         toggleMute,
-        setInput
+        setInput,
+        commandHistory: history
       });
     } else {
-      setLines(prev => [...prev, `Command not found: ${commandName}. Type 'help' for options.`]);
+      setLines((prev) => [...prev, `Command not found: ${commandName}. Type 'help' for available commands.`]);
     }
   };
 
@@ -211,7 +212,7 @@ export default function Terminal() {
               className="bg-transparent border-none outline-none text-green-400 flex-grow"
               autoFocus
               spellCheck={false}
-              
+
               autoComplete="off"
               placeholder={passwordMode ? "●●●●●●●●" : ""}
             />

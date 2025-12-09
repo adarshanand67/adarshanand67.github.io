@@ -245,8 +245,12 @@ export const commands: Record<string, Command> = {
     history: {
         name: "history",
         description: "Show command history",
-        execute: (_, { setLines }) => {
-            setLines((prev) => [...prev, "Use arrow keys (↑/↓) to navigate command history"]);
+        execute: (_, { setLines, commandHistory }) => {
+            if (commandHistory && commandHistory.length > 0) {
+                setLines((prev) => [...prev, ...commandHistory.map((cmd, index) => `  ${index + 1}  ${cmd}`)]);
+            } else {
+                setLines((prev) => [...prev, "No command history yet."]);
+            }
         },
     },
     skills: {
