@@ -3,6 +3,7 @@ export interface Profile {
   title: string;
   pronouns: string;
   location: string;
+  avatar?: string;
   education: {
     university: string;
     degree: string;

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import DOMPurify from "isomorphic-dompurify";
 import { getProfile } from "@/lib/api";
 import Terminal from "@/components/widgets/Terminal";
@@ -18,6 +19,19 @@ export default async function Hero() {
             <span className="text-gray-700 dark:text-gray-300">whoami</span>
             <span className="animate-pulse inline-block w-2 h-4 bg-green-500 align-middle"></span>
           </div>
+
+          {/* Profile Picture */}
+          {profile.avatar && (
+            <div className="relative w-32 h-32 rounded-full overflow-hidden border-4 border-green-500 shadow-lg shadow-green-500/50">
+              <Image
+                src={profile.avatar}
+                alt={profile.name}
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
+          )}
 
           <h1 className="title text-4xl md:text-5xl font-bold font-serif flex items-center gap-2">
             <GlitchText text={profile.name} className="text-primary" />
