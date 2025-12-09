@@ -9,21 +9,25 @@ export default async function Hero() {
   const profile = await getProfile();
 
   return (
-    <section className="section max-w-4xl mx-auto px-4 mt-12 mb-12">
-      <div className="flex flex-col gap-8">
-        <div className="flex-1">
-          <div className="font-mono mb-4 flex items-center gap-2">
+    <section className="section max-w-6xl mx-auto px-4 mt-12 mb-12">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+        {/* Left Column - Description */}
+        <div className="flex flex-col gap-6">
+          <div className="font-mono mb-2 flex items-center gap-2">
             <span className="text-green-500 font-bold">$</span>{" "}
             <span className="text-gray-700 dark:text-gray-300">whoami</span>
             <span className="animate-pulse inline-block w-2 h-4 bg-green-500 align-middle"></span>
           </div>
-          <h1 className="title text-4xl md:text-5xl font-bold font-serif mb-4 flex items-center gap-2">
+
+          <h1 className="title text-4xl md:text-5xl font-bold font-serif flex items-center gap-2">
             <GlitchText text={profile.name} className="text-primary" />
           </h1>
-          <h3 className="title text-xl md:text-2xl font-bold text-primary font-serif mb-6">
+
+          <h3 className="title text-xl md:text-2xl font-bold text-primary font-serif">
             <GlitchText text={profile.bio.short} className="text-primary" />
           </h3>
-          <div className="content text-lg leading-relaxed mb-8">
+
+          <div className="content text-lg leading-relaxed">
             {profile.bio.paragraphs.map((paragraph: string, index: number) => (
               <p
                 key={index}
@@ -44,7 +48,8 @@ export default async function Hero() {
               />
             ))}
           </div>
-          <ul className="buttons flex flex-wrap gap-4 mb-8">
+
+          <ul className="buttons flex flex-wrap gap-4">
             <Link
               className="button bg-white dark:bg-black border border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-200 hover:border-green-500 hover:text-green-700 dark:hover:text-green-400 transition-colors rounded-md px-4 py-2 flex items-center gap-2"
               href={profile.socials.linkedin}
@@ -84,10 +89,11 @@ export default async function Hero() {
               </Link>
             )}
           </ul>
+        </div>
 
-          <div className="hidden md:block">
-            <Terminal />
-          </div>
+        {/* Right Column - Terminal */}
+        <div className="lg:sticky lg:top-20">
+          <Terminal />
         </div>
       </div>
     </section>

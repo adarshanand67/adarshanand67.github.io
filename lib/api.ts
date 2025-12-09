@@ -42,13 +42,28 @@ export async function getHobbies() {
   return hobbiesData;
 }
 
-export async function getEntertainment() {
-  return entertainmentData.map((item) => ({
-    ...item,
-    type: item.type === "Web_Series" ? "Web Series" : item.type,
-    image: item.image || null, // Ensure compatibility
-    notes: item.notes || null,
-  })) as any; // Type assertion to bypass strict type mismatches if any
+export async function getEntertainment(): Promise<EntertainmentItem[]> {
+  return entertainmentData.map((item: any) => {
+    // Convert string type to enum
+    let type: EntertainmentItem['type'];
+    if (item.type === "Web_Series" || item.type === "Web Series") {
+      type = "Web Series" as EntertainmentItem['type'];
+    } else {
+      type = item.type as EntertainmentItem['type'];
+    }
+
+    const result: EntertainmentItem = {
+      title: item.title,
+      type,
+      status: item.status as EntertainmentItem['status'],
+    };
+
+    if (item.image) result.image = item.image;
+    if (item.notes) result.notes = item.notes;
+    if (item.recommended !== undefined) result.recommended = item.recommended;
+
+    return result;
+  });
 }
 
 function parseFrontmatter(fileContent: string) {

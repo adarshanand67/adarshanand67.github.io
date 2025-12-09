@@ -1,4 +1,4 @@
-import { Book, Paper, Blog, EntertainmentItem, Project, Hobby } from "@/types";
+import { Book, Paper, Blog, EntertainmentItem, Project, Hobby, EntertainmentType, WatchStatus, ShelfType } from "@/types";
 import { ReactNode } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -116,7 +116,7 @@ export class AnimeCardStrategy implements ShelfItemStrategy<EntertainmentItem> {
         )}
         <h3 className="font-bold text-lg leading-tight mb-2 flex items-center gap-2">
           {item.title}
-          {item.status === "Completed" && (
+          {item.status === WatchStatus.Completed && (
             <div className="bg-green-100 dark:bg-green-900/30 rounded-full p-0.5">
               <Check className="w-3 h-3 text-green-600 dark:text-green-400" strokeWidth={3} />
             </div>
@@ -133,16 +133,16 @@ export class AnimeCardStrategy implements ShelfItemStrategy<EntertainmentItem> {
   renderList(items: EntertainmentItem[]): ReactNode {
     const filterItems = (
       items: EntertainmentItem[],
-      type: "Anime" | "Movie",
-      status: "Completed" | "Planning"
+      type: EntertainmentType,
+      status: WatchStatus
     ) => {
       return items.filter((item) => item.type === type && item.status === status);
     };
 
-    const animeCompleted = filterItems(items, "Anime", "Completed");
-    const animePlanning = filterItems(items, "Anime", "Planning");
-    const movieCompleted = filterItems(items, "Movie", "Completed");
-    const moviePlanning = filterItems(items, "Movie", "Planning");
+    const animeCompleted = filterItems(items, EntertainmentType.Anime, WatchStatus.Completed);
+    const animePlanning = filterItems(items, EntertainmentType.Anime, WatchStatus.Planning);
+    const movieCompleted = filterItems(items, EntertainmentType.Movie, WatchStatus.Completed);
+    const moviePlanning = filterItems(items, EntertainmentType.Movie, WatchStatus.Planning);
 
     const Section = ({
       title,
@@ -382,19 +382,19 @@ export class HobbyListStrategy implements ShelfItemStrategy<Hobby> {
 
 // Factory to create strategies
 export class ShelfStrategyFactory {
-  static getStrategy(type: string): ShelfItemStrategy<any> {
+  static getStrategy(type: ShelfType): ShelfItemStrategy<any> {
     switch (type) {
-      case "book":
+      case ShelfType.Book:
         return new BookListStrategy();
-      case "paper":
+      case ShelfType.Paper:
         return new PaperListStrategy();
-      case "anime":
+      case ShelfType.Anime:
         return new AnimeCardStrategy();
-      case "blog":
+      case ShelfType.Blog:
         return new BlogListStrategy();
-      case "project":
+      case ShelfType.Project:
         return new ProjectListStrategy();
-      case "hobby":
+      case ShelfType.Hobby:
         return new HobbyListStrategy();
       default:
         throw new Error(`Unknown shelf type: ${type}`);

@@ -65,8 +65,27 @@ export interface Blog {
   excerpt?: string;
 }
 
-export type EntertainmentType = "Anime" | "Movie" | "Web Series";
-export type WatchStatus = "Completed" | "Planning" | "Watching";
+// Enums for type safety
+export enum EntertainmentType {
+  Anime = "Anime",
+  Movie = "Movie",
+  WebSeries = "Web Series"
+}
+
+export enum WatchStatus {
+  Completed = "Completed",
+  Planning = "Planning",
+  Watching = "Watching"
+}
+
+export enum ShelfType {
+  Book = "book",
+  Paper = "paper",
+  Anime = "anime",
+  Blog = "blog",
+  Project = "project",
+  Hobby = "hobby"
+}
 
 export interface EntertainmentItem {
   title: string;
