@@ -212,7 +212,11 @@ export default function Terminal() {
               autoFocus
               spellCheck={false}
               autoComplete="off"
+              placeholder={passwordMode ? "●●●●●●●●" : ""}
             />
+            {passwordMode && input.length === 0 && (
+              <span className="animate-pulse text-green-400">▊</span>
+            )}
           </div>
         )}
       </div>
