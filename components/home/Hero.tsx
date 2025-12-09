@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import DOMPurify from "isomorphic-dompurify";
 import { getProfile } from "@/lib/api";
+import { BASE_PATH } from "@/lib/constants";
 import Terminal from "@/components/widgets/Terminal";
 import { ClientGithub as Github, ClientLinkedin as Linkedin, ClientMail as Mail } from "@/components/common/ClientIcons";
 import { GlitchText } from "@/components/ui/GlitchText";
@@ -25,7 +26,7 @@ export default async function Hero() {
             {profile.avatar && (
               <div className="relative w-24 h-24 rounded-full overflow-hidden border-4 border-green-500 shadow-lg shadow-green-500/50 flex-shrink-0">
                 <Image
-                  src={profile.avatar}
+                  src={`${BASE_PATH}${profile.avatar}`}
                   alt={profile.name}
                   fill
                   className="object-cover"

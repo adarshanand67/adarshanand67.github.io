@@ -1,4 +1,6 @@
 /** @type {import('next').NextConfig} */
+const isProd = process.env.NODE_ENV === 'production';
+
 const nextConfig = {
     images: {
         unoptimized: true,
@@ -9,6 +11,9 @@ const nextConfig = {
             },
         ],
     },
+    basePath: process.env.NEXT_PUBLIC_BASE_PATH || '',
+    assetPrefix: process.env.NEXT_PUBLIC_BASE_PATH || '',
+    output: isProd ? 'export' : undefined,
     async headers() {
         return [
             {

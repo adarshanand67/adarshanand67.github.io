@@ -1,16 +1,18 @@
 import { siteConfig } from "@/config";
 
+export const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
 export const PLAYLIST = [
-    "/assets/music/cruel_angels_thesis.mp3",
-    "/assets/music/one_punch_man.mp3",
-    "/assets/music/pokemon_theme.mp3",
-    "/assets/music/tank.mp3",
-    "/assets/music/unravel.mp3",
-    "/assets/music/battlecry.mp3",
-    "/assets/music/blue_bird.mp3",
-    "/assets/music/go.mp3",
-    "/assets/music/the_world.mp3",
-    "/assets/music/guren_no_yumiya.mp3",
+    `${BASE_PATH}/assets/music/cruel_angels_thesis.mp3`,
+    `${BASE_PATH}/assets/music/one_punch_man.mp3`,
+    `${BASE_PATH}/assets/music/pokemon_theme.mp3`,
+    `${BASE_PATH}/assets/music/tank.mp3`,
+    `${BASE_PATH}/assets/music/unravel.mp3`,
+    `${BASE_PATH}/assets/music/battlecry.mp3`,
+    `${BASE_PATH}/assets/music/blue_bird.mp3`,
+    `${BASE_PATH}/assets/music/go.mp3`,
+    `${BASE_PATH}/assets/music/the_world.mp3`,
+    `${BASE_PATH}/assets/music/guren_no_yumiya.mp3`
 ] as const;
 
 export const TRACK_NAMES = [

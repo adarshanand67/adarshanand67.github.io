@@ -180,7 +180,7 @@ export default function Terminal() {
       className="w-full max-w-2xl bg-[#1e1e1e] rounded-lg shadow-xl overflow-hidden border border-gray-800 font-mono text-base my-8 cursor-text relative group"
       onClick={handleTerminalClick}
     >
-      <div className="absolute inset-0 pointer-events-none z-10 bg-[url('/assets/scanline.png')] opacity-5 animate-scanline" style={{ backgroundSize: '100% 4px' }}></div>
+      <div className="absolute inset-0 pointer-events-none z-10 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] z-[100] bg-[length:100%_4px,3px_100%] pointer-events-none"></div>
       <div className="absolute inset-0 pointer-events-none z-10 bg-gradient-to-b from-transparent to-black/10"></div>
       <div className="bg-[#2d2d2d] px-4 py-2 flex items-center gap-2 border-b border-gray-700">
         <div className="w-3 h-3 rounded-full bg-red-500"></div>
