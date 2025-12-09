@@ -1,8 +1,8 @@
 import { siteConfig } from "@/config";
+import { CONFIG } from "./config";
 
-// For root deployment (adarshanand67.github.io)
-// Set to "/repo-name" if deploying to a subdirectory
-export const BASE_PATH = "";
+// Re-export for backward compatibility
+export const BASE_PATH = CONFIG.BASE_PATH;
 
 export const PLAYLIST = [
     `${BASE_PATH}/assets/music/cruel_angels_thesis.mp3`,

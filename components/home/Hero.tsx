@@ -2,7 +2,6 @@ import Link from "next/link";
 import Image from "next/image";
 import DOMPurify from "isomorphic-dompurify";
 import { getProfile } from "@/lib/api";
-import { BASE_PATH } from "@/lib/constants";
 import Terminal from "@/components/widgets/Terminal";
 import { ClientGithub as Github, ClientLinkedin as Linkedin, ClientMail as Mail } from "@/components/common/ClientIcons";
 import { GlitchText } from "@/components/ui/GlitchText";
