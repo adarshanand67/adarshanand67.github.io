@@ -211,13 +211,19 @@ Edit `data/experiences.json`:
   "role": "Your Role",
   "duration": "Jan 2024 - Present",
   "location": "Remote",
-  "logo": "/logos/company.png",
+  "logo": "/assets/logos/company.png",  // Optional: add company logo
   "highlights": [
     "Achievement 1",
     "Achievement 2"
   ]
 }
 ```
+
+**Adding Company Logos:**
+1. Download company logo (PNG/SVG, transparent background)
+2. Save to `public/assets/logos/company-name.png`
+3. Reference in `logo` field above
+4. If logo is missing, only company name will show (graceful fallback)
 
 ---
 
