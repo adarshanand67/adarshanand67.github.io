@@ -11,8 +11,8 @@ const nextConfig = {
             },
         ],
     },
-    basePath: process.env.NEXT_PUBLIC_BASE_PATH || '',
-    assetPrefix: process.env.NEXT_PUBLIC_BASE_PATH || '',
+    basePath: '/personal-website',
+    assetPrefix: '/personal-website',
     output: isProd ? 'export' : undefined,
     async headers() {
         return [
