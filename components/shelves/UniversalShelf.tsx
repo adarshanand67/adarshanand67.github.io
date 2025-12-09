@@ -3,7 +3,7 @@
 import { useState, useMemo } from "react";
 import { ShelfHeader } from "@/components/shelves/ShelfHeader";
 import { ShelfConfig } from "@/config/shelves";
-import { ShelfStrategyFactory } from "@/lib/shelf-strategies";
+import { ShelfStrategyFactory, ShelfItem } from "@/lib/shelf-strategies";
 
 interface UniversalShelfProps {
   config: ShelfConfig;
@@ -17,7 +17,7 @@ export default function UniversalShelf({ config, items }: UniversalShelfProps) {
   const [query, setQuery] = useState("");
 
   // Polymorphic Filtering
-  const filteredItems = useMemo(() => strategy.filter(items, query), [items, query, strategy]);
+  const filteredItems = useMemo(() => strategy.filter(items as ShelfItem[], query), [items, query, strategy]);
 
   return (
     <div className="section max-w-4xl mx-auto px-4 mt-12 mb-12 font-mono">

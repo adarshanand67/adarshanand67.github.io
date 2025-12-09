@@ -1,8 +1,8 @@
-import { shelfConfigs } from "@/config/shelves";
-import UniversalShelf from "@/components/shelves/UniversalShelf";
 import { getProjects } from "@/lib/api";
+import UniversalShelf from "@/components/shelves/UniversalShelf";
+import { shelfConfigs } from "@/config/shelves";
 
-export default async function Projectshelf() {
+export default async function ProjectShelf() {
     const projects = await getProjects();
-    return <UniversalShelf config={shelfConfigs.projects} items={projects} />;
+    return <UniversalShelf config={shelfConfigs.projects!} items={projects} />;
 }

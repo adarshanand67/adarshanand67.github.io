@@ -42,19 +42,19 @@ export const commands: Record<string, Command> = {
                 setLines((prev) => [...prev, "usage: cd [directory]"]);
                 return;
             }
-            const dir = args[0].replace(/^\.\//, "").replace(/\/$/, "").replace("shelf", "");
+            const dir = (args[0] || '').replace(/^\.\//, "").replace(/\/$/, "").replace("shelf", "");
             if (DIRECTORY_MAP[dir]) {
                 setLines((prev) => [...prev, `Navigating to ${DIRECTORY_MAP[dir]}...`]);
-                router.push(DIRECTORY_MAP[dir]);
+                router.push(DIRECTORY_MAP[dir]!);
             } else {
-                setLines((prev) => [...prev, `Directory not found: ${args[0]}`]);
+                setLines((prev) => [...prev, `Directory not found: ${args[0] || ''}`]);
             }
         },
     },
     open: {
         name: "open",
         description: "Open directory",
-        execute: (args, ctx) => commands.cd.execute(args, ctx),
+        execute: (args, ctx) => commands.cd!.execute(args, ctx),
     },
     whoami: {
         name: "whoami",
@@ -77,7 +77,7 @@ export const commands: Record<string, Command> = {
             if (args.length === 0) {
                 setLines((prev) => [...prev, "usage: theme [light|dark|system]"]);
             } else {
-                const mode = args[0].toLowerCase();
+                const mode = (args[0] || '').toLowerCase();
                 if (["light", "dark", "system"].includes(mode)) {
                     setTheme(mode);
                     setLines((prev) => [...prev, `Theme set to ${mode}`]);
@@ -109,7 +109,7 @@ export const commands: Record<string, Command> = {
             if (args.length === 0) {
                 setLines((prev) => [...prev, "usage: music [play|pause|next|prev|mute]"]);
             } else {
-                const action = args[0].toLowerCase();
+                const action = (args[0] || '').toLowerCase();
                 switch (action) {
                     case "play":
                         setIsPlaying(true);
@@ -166,8 +166,8 @@ export const commands: Record<string, Command> = {
     },
     cls: {
         name: "cls",
-        description: "Clear terminal",
-        execute: (_, ctx) => commands.clear.execute(_, ctx),
+        description: "Clear screen (alias)",
+        execute: (args, ctx) => commands.clear!.execute(args, ctx),
     },
     contact: {
         name: "contact",

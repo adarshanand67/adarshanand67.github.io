@@ -44,13 +44,14 @@ export const MatrixRain = () => {
                 const text = chars[Math.floor(Math.random() * chars.length)];
 
                 // x = column index * font size, y = drop value * font size
-                ctx.fillText(text, i * 20, drops[i] * 20);
+                ctx.fillText(text || '', i * 20, drops[i]! * 20);
 
                 // Reset drop to top randomly or increment y
-                if (drops[i] * 20 > canvas.height && Math.random() > 0.975) {
+                if (drops[i]! * 20 > canvas.height && Math.random() > 0.975) {
                     drops[i] = 0;
+                } else {
+                    drops[i]!++;
                 }
-                drops[i]++;
             }
             animationId = requestAnimationFrame(draw);
         };

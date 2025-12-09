@@ -67,7 +67,7 @@ function parseFrontmatter(fileContent: string) {
     return { data: {}, content: fileContent };
   }
 
-  const frontMatterBlock = match[1];
+  const frontMatterBlock = match[1] || '';
   const content = fileContent.replace(frontmatterRegex, "").trim();
   const frontMatterLines = frontMatterBlock.trim().split("\n");
   const metadata: Record<string, string> = {};
@@ -76,7 +76,7 @@ function parseFrontmatter(fileContent: string) {
     const [key, ...valueArr] = line.split(": ");
     let value = valueArr.join(": ").trim();
     value = value.replace(/^['"](.*)['"]$/, "$1"); // Remove quotes
-    metadata[key.trim()] = value;
+    metadata[key?.trim() || ''] = value;
   });
 
   return { data: metadata, content };
@@ -114,7 +114,7 @@ export async function getBlogs() {
         })
     );
 
-    return blogs.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    return blogs.sort((a, b) => new Date(b.date || '').getTime() - new Date(a.date || '').getTime());
   } catch (error) {
     console.error("[API] Error fetching blogs:", error);
     return [];

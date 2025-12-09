@@ -4,5 +4,5 @@ import { shelfConfigs } from "@/config/shelves";
 
 export default async function HobbiesPage() {
     const hobbies = await getHobbies();
-    return <UniversalShelf config={shelfConfigs.hobbies} items={hobbies} />;
+    return <UniversalShelf config={shelfConfigs.hobbies!} items={hobbies} />;
 }

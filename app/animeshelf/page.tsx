@@ -4,5 +4,5 @@ import { getEntertainment } from "@/lib/api";
 
 export default async function Animeshelf() {
   const anime = await getEntertainment();
-  return <UniversalShelf config={shelfConfigs.anime} items={anime} />;
+  return <UniversalShelf config={shelfConfigs.anime!} items={anime} />;
 }

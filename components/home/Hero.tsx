@@ -20,22 +20,24 @@ export default async function Hero() {
             <span className="animate-pulse inline-block w-2 h-4 bg-green-500 align-middle"></span>
           </div>
 
-          {/* Profile Picture */}
-          {profile.avatar && (
-            <div className="relative w-32 h-32 rounded-full overflow-hidden border-4 border-green-500 shadow-lg shadow-green-500/50">
-              <Image
-                src={profile.avatar}
-                alt={profile.name}
-                fill
-                className="object-cover"
-                priority
-              />
-            </div>
-          )}
+          {/* Profile Picture and Name on Same Line */}
+          <div className="flex items-center gap-6">
+            {profile.avatar && (
+              <div className="relative w-24 h-24 rounded-full overflow-hidden border-4 border-green-500 shadow-lg shadow-green-500/50 flex-shrink-0">
+                <Image
+                  src={profile.avatar}
+                  alt={profile.name}
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </div>
+            )}
 
-          <h1 className="title text-4xl md:text-5xl font-bold font-serif flex items-center gap-2">
-            <GlitchText text={profile.name} className="text-primary" />
-          </h1>
+            <h1 className="title text-4xl md:text-5xl font-bold font-serif">
+              <GlitchText text={profile.name} className="text-primary" />
+            </h1>
+          </div>
 
           <h3 className="title text-xl md:text-2xl font-bold text-primary font-serif">
             <GlitchText text={profile.bio.short} className="text-primary" />

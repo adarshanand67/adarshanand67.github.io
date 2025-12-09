@@ -45,7 +45,7 @@ export default function Terminal() {
   // Intro Typing Effect
   useEffect(() => {
     if (!isIntroDone) {
-      setLines(INTRO_LINES(toLeetSpeak));
+      setLines([...INTRO_LINES(toLeetSpeak)]);
       setIsIntroDone(true);
     }
   }, [isIntroDone]);
@@ -76,7 +76,7 @@ export default function Terminal() {
     }
 
     const parts = cmd.trim().split(/\s+/);
-    const commandName = parts[0].toLowerCase();
+    const commandName = parts[0]?.toLowerCase() || '';
     const args = parts.slice(1);
 
     if (!commandName) return;
@@ -116,7 +116,7 @@ export default function Terminal() {
         const newIndex = historyIndex + 1;
         if (newIndex < history.length) {
           setHistoryIndex(newIndex);
-          setInput(history[newIndex]);
+          setInput(history[newIndex] || '');
         }
       }
     } else if (e.key === "ArrowDown") {
@@ -124,7 +124,7 @@ export default function Terminal() {
       if (historyIndex > 0) {
         const newIndex = historyIndex - 1;
         setHistoryIndex(newIndex);
-        setInput(history[newIndex]);
+        setInput(history[newIndex] || '');
       } else if (historyIndex === 0) {
         setHistoryIndex(-1);
         setInput("");
@@ -135,28 +135,28 @@ export default function Terminal() {
 
       // If we are at the command part (first word, no space yet or just started typing it)
       const isCommand = parts.length === 1;
-      const currentToken = parts[parts.length - 1];
+      const currentToken = parts[parts.length - 1] || '';
 
       let candidates: string[] = [];
-      const cmd = parts[0].toLowerCase();
+      const cmd = parts[0]?.toLowerCase() || '';
 
       if (isCommand) {
         candidates = Object.keys(commands);
       } else if ((cmd === "cd" || cmd === "open") && parts.length === 2) {
-        candidates = DIRECTORIES;
+        candidates = [...DIRECTORIES];
       }
 
       if (candidates.length > 0) {
-        const matches = candidates.filter((c) => c.startsWith(currentToken.toLowerCase()));
+        const matches = [...DIRECTORIES].filter((dir) => dir.startsWith(currentToken.toLowerCase()));
 
         if (matches.length === 1) {
-          parts[parts.length - 1] = matches[0];
+          parts[parts.length - 1] = matches[0]!;
           setInput(parts.join(" ") + " ");
         } else if (matches.length > 1) {
           // Find common prefix
-          let prefix = matches[0];
+          let prefix = matches[0] || '';
           for (let i = 1; i < matches.length; i++) {
-            while (!matches[i].startsWith(prefix)) {
+            while (!matches[i]!.startsWith(prefix)) {
               prefix = prefix.substring(0, prefix.length - 1);
               if (prefix === "") break;
             }

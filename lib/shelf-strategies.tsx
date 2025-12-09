@@ -213,9 +213,9 @@ export class BlogListStrategy implements ShelfItemStrategy<Blog> {
   renderList(items: Blog[]): ReactNode {
     const blogsByYear = items.reduce(
       (acc: Record<string, Blog[]>, blog: Blog) => {
-        const year = blog.date.split("-")[0];
+        const year = blog.date.split("-")[0] || 'Unknown';
         if (!acc[year]) acc[year] = [];
-        acc[year].push(blog);
+        acc[year]!.push(blog);
         return acc;
       },
       {} as Record<string, Blog[]>
@@ -231,7 +231,7 @@ export class BlogListStrategy implements ShelfItemStrategy<Blog> {
               <span className="text-gray-500">##</span> {year}
             </h2>
             <div className="space-y-2">
-              {blogsByYear[year].map((post, index) => this.renderItem(post, index))}
+              {blogsByYear[year]!.map((post, index) => this.renderItem(post, index))}
             </div>
           </div>
         ))}

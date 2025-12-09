@@ -4,5 +4,5 @@ import { getPapers } from "@/lib/api";
 
 export default async function Papershelf() {
   const papers = await getPapers();
-  return <UniversalShelf config={shelfConfigs.papers} items={papers} />;
+  return <UniversalShelf config={shelfConfigs.papers!} items={papers} />;
 }
