@@ -252,6 +252,25 @@ pnpm export
 # Push to gh-pages branch
 ```
 
+### **Deployment Configuration (Base Path)**
+
+This project supports deploying to a subdirectory (like GitHub Pages often requires) using environment variables.
+
+#### **Scenario A: Root Deployment (Default)**
+If deploying to `https://your-site.com/` or `https://username.github.io/`:
+- No configuration needed.
+- `NEXT_PUBLIC_BASE_PATH` should be empty.
+
+#### **Scenario B: Subdirectory Deployment**
+If deploying to `https://username.github.io/repo-name/`:
+1. **GitHub Actions**: Set `NEXT_PUBLIC_BASE_PATH` to `/repo-name` in your workflow env.
+2. **Environment File**: Create/Edit `.env.production`:
+   ```env
+   NEXT_PUBLIC_BASE_PATH=/repo-name
+   ```
+   *(Note: This project includes a `.env.production` set to `/personal-website` by default)*.
+
+
 ---
 
 ## 🛠️ Tech Stack
