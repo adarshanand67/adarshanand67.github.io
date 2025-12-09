@@ -23,18 +23,6 @@ export default async function Hero() {
 
           {/* Profile Picture and Name on Same Line */}
           <div className="flex items-center gap-6">
-            {profile.avatar && (
-              <div className="relative w-24 h-24 rounded-full overflow-hidden border-4 border-green-500 shadow-lg shadow-green-500/50 flex-shrink-0">
-                <Image
-                  src={profile.avatar}
-                  alt={profile.name}
-                  fill
-                  className="object-cover"
-                  priority
-                />
-              </div>
-            )}
-
             <h1 className="title text-4xl md:text-5xl font-bold font-serif">
               <GlitchText text={profile.name} className="text-primary" />
             </h1>

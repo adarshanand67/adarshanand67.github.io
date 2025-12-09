@@ -1,6 +1,8 @@
 import { siteConfig } from "@/config";
 
-export const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || "";
+// For GitHub Pages deployment at /personal-website
+// Change this if deploying to root (set to "")
+export const BASE_PATH = "/personal-website";
 
 export const PLAYLIST = [
     `${BASE_PATH}/assets/music/cruel_angels_thesis.mp3`,
