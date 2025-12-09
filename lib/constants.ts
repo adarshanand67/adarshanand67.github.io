@@ -1,17 +1,29 @@
 import { siteConfig } from "@/config";
 
 export const PLAYLIST = [
-    "https://archive.org/download/tvtunes_30971/One%20Punch%20Man.mp3",
-    "https://archive.org/download/fav-mikezillak/Pokemon%20Theme%20-%20Billy%20Crawford.mp3",
-    "https://archive.org/download/cowboy-bebop-tank-the-best/Tank!%20(TV%20stretch).mp3",
-    "https://archive.org/download/mythium/JLS_ATI.mp3",
+    "/assets/music/cruel_angels_thesis.mp3",
+    "/assets/music/one_punch_man.mp3",
+    "/assets/music/pokemon_theme.mp3",
+    "/assets/music/tank.mp3",
+    "/assets/music/unravel.mp3",
+    "/assets/music/battlecry.mp3",
+    "/assets/music/blue_bird.mp3",
+    "/assets/music/go.mp3",
+    "/assets/music/the_world.mp3",
+    "/assets/music/guren_no_yumiya.mp3",
 ] as const;
 
 export const TRACK_NAMES = [
-    "A Cruel Angel's Thesis",
+    "A Cruel Angel's Thesis (Evangelion)",
     "THE HERO!! (One Punch Man)",
+    "Pokemon Theme (Instrumental)",
     "Tank! (Cowboy Bebop)",
-    "Lofi Chill Session",
+    "Unravel (Tokyo Ghoul)",
+    "Battlecry (Samurai Champloo)",
+    "Blue Bird (Naruto)",
+    "GO!!! (Naruto)",
+    "The World (Death Note)",
+    "Guren no Yumiya (Attack on Titan)",
 ] as const;
 
 export const INTRO_LINES = (toLeet: (t: string) => string) => [
