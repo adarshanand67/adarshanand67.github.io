@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { linkifyTech } from "@/lib/tech-links";
 
 interface ExperienceItem {
@@ -5,6 +6,7 @@ interface ExperienceItem {
     role: string;
     duration: string;
     location: string;
+    logo?: string;
     description?: string;
     highlights: string[];
 }
@@ -30,7 +32,19 @@ export default function Experience({ items }: ExperienceProps) {
                     {items.map((exp, index) => (
                         <div key={index} className="border-l-2 border-gray-300 dark:border-gray-700 pl-4">
                             <div className="mb-2">
-                                <h3 className="text-xl font-bold">{exp.company}</h3>
+                                <div className="flex items-center gap-3 mb-1">
+                                    {exp.logo && (
+                                        <div className="relative w-12 h-12 rounded-full overflow-hidden bg-white border border-gray-200 dark:border-gray-700">
+                                            <Image
+                                                src={exp.logo}
+                                                alt={`${exp.company} logo`}
+                                                fill
+                                                className="object-contain p-1"
+                                            />
+                                        </div>
+                                    )}
+                                    <h3 className="text-xl font-bold">{exp.company}</h3>
+                                </div>
                                 <p className="text-gray-800 dark:text-white font-medium">{exp.role}</p>
                                 <p className="text-gray-500 text-sm font-mono mt-1">
                                     {exp.duration} • {exp.location}
