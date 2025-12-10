@@ -181,23 +181,23 @@ export default function Terminal() {
 
   return (
     <div
-      className="w-full max-w-2xl bg-[#1e1e1e] rounded-lg shadow-xl overflow-hidden border border-gray-800 font-mono text-base my-8 cursor-text relative group"
+      className="w-full max-w-2xl bg-white dark:bg-[#1e1e1e] rounded-lg shadow-xl overflow-hidden border border-gray-300 dark:border-gray-800 font-mono text-base my-8 cursor-text relative"
       onClick={handleTerminalClick}
     >
-      <div className="bg-[#2d2d2d] px-4 py-2 flex items-center gap-2 border-b border-gray-700">
+      <div className="bg-gray-100 dark:bg-[#2d2d2d] px-4 py-2 flex items-center gap-2 border-b border-gray-300 dark:border-gray-700">
         <div className="w-3 h-3 rounded-full bg-red-500"></div>
         <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
         <div className="w-3 h-3 rounded-full bg-green-500"></div>
-        <span className="ml-2 text-gray-400 text-sm">adarsh@linux:~</span>
+        <span className="ml-2 text-gray-600 dark:text-gray-400 text-sm">adarsh@linux:~</span>
       </div>
       <div
         ref={containerRef}
-        className="p-6 text-gray-300 dark:text-gray-200 h-[500px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-transparent"
+        className="p-6 text-gray-800 dark:text-gray-300 h-[500px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 dark:scrollbar-thumb-gray-700 scrollbar-track-transparent"
       >
         {lines.map((line, i) => (
           <div
             key={i}
-            className={`mb-1 whitespace-pre-wrap ${line.startsWith('$ ') ? 'text-green-400' : ''}`}
+            className={`mb-1 whitespace-pre-wrap ${line.startsWith('$ ') ? 'text-green-600 dark:text-green-400 font-semibold' : ''}`}
           >
             {line}
           </div>
@@ -205,14 +205,14 @@ export default function Terminal() {
 
         {isIntroDone && (
           <div className="flex items-center">
-            <span className="mr-2 text-green-400">$</span>
+            <span className="mr-2 text-green-600 dark:text-green-400 font-bold">$</span>
             <input
               ref={inputRef}
               type={passwordMode ? "password" : "text"}
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
-              className="bg-transparent border-none outline-none text-green-400 flex-grow"
+              className="bg-transparent border-none outline-none text-green-600 dark:text-green-400 flex-grow font-medium"
               autoFocus
               spellCheck={false}
 
@@ -220,7 +220,7 @@ export default function Terminal() {
               placeholder={passwordMode ? "●●●●●●●●" : ""}
             />
             {passwordMode && input.length === 0 && (
-              <span className="animate-pulse text-green-400">▊</span>
+              <span className="animate-pulse text-green-600 dark:text-green-400">▊</span>
             )}
           </div>
         )}

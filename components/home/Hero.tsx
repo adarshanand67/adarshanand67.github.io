@@ -125,14 +125,9 @@ export default async function Hero() {
           </ul>
         </div>
 
-        {/* Right Column - Terminal with enhanced styling */}
+        {/* Right Column - Terminal */}
         <div className="lg:sticky lg:top-20">
-          <div className="relative group">
-            <div className="absolute -inset-1 bg-gradient-to-r from-green-500 to-emerald-500 rounded-lg blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
-            <div className="relative">
-              <Terminal />
-            </div>
-          </div>
+          <Terminal />
         </div>
       </div>
     </section>
