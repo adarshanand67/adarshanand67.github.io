@@ -173,7 +173,13 @@ export default function Terminal() {
     }
   };
 
-  const handleTerminalClick = () => {
+  const handleTerminalClick = (e: React.MouseEvent) => {
+    // Don't focus if user is selecting text
+    const selection = window.getSelection();
+    if (selection && selection.toString().length > 0) {
+      return;
+    }
+
     if (isIntroDone) {
       inputRef.current?.focus();
     }
@@ -181,7 +187,7 @@ export default function Terminal() {
 
   return (
     <div
-      className="w-full max-w-2xl bg-white dark:bg-[#1e1e1e] rounded-lg shadow-xl overflow-hidden border border-gray-300 dark:border-gray-800 font-mono text-base my-8 cursor-text relative"
+      className="w-full max-w-2xl bg-white dark:bg-[#1e1e1e] rounded-lg shadow-xl overflow-hidden border border-gray-300 dark:border-gray-800 font-mono text-base my-8 select-text relative"
       onClick={handleTerminalClick}
     >
       <div className="bg-gray-100 dark:bg-[#2d2d2d] px-4 py-2 flex items-center gap-2 border-b border-gray-300 dark:border-gray-700">
