@@ -25,6 +25,7 @@ export default function MusicPlayer() {
     const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
     const playerRef = useRef<HTMLDivElement>(null);
     const [isMinimized, setIsMinimized] = useState(false);
+    const hasMoved = useRef(false);
 
     const [currentTime, setCurrentTime] = useState(0);
     const [duration, setDuration] = useState(0);
@@ -42,6 +43,7 @@ export default function MusicPlayer() {
     const handleMouseDown = (e: React.MouseEvent) => {
         if ((e.target as HTMLElement).closest('button, input')) return;
         setIsDragging(true);
+        hasMoved.current = false;
         setDragOffset({
             x: e.clientX - position.x,
             y: e.clientY - position.y
@@ -50,6 +52,7 @@ export default function MusicPlayer() {
 
     const handleMouseMove = (e: MouseEvent) => {
         if (isDragging) {
+            hasMoved.current = true;
             setPosition({
                 x: e.clientX - dragOffset.x,
                 y: e.clientY - dragOffset.y
@@ -61,17 +64,57 @@ export default function MusicPlayer() {
         setIsDragging(false);
     };
 
+    // Touch handlers
+    const handleTouchStart = (e: React.TouchEvent) => {
+        if ((e.target as HTMLElement).closest('button, input')) return;
+        setIsDragging(true);
+        hasMoved.current = false;
+        const touch = e.touches[0];
+        setDragOffset({
+            x: touch.clientX - position.x,
+            y: touch.clientY - position.y
+        });
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+        if (isDragging) {
+            e.preventDefault(); // Prevent scrolling while dragging
+            hasMoved.current = true;
+            const touch = e.touches[0];
+            setPosition({
+                x: touch.clientX - dragOffset.x,
+                y: touch.clientY - dragOffset.y
+            });
+        }
+    };
+
+    const handleTouchEnd = () => {
+        setIsDragging(false);
+    };
+
+    const handleClick = (e: React.MouseEvent) => {
+        if (!hasMoved.current) {
+            setIsMinimized(!isMinimized);
+        }
+    };
+
     useEffect(() => {
         if (isDragging) {
             window.addEventListener('mousemove', handleMouseMove);
             window.addEventListener('mouseup', handleMouseUp);
+            window.addEventListener('touchmove', handleTouchMove, { passive: false });
+            window.addEventListener('touchend', handleTouchEnd);
         } else {
             window.removeEventListener('mousemove', handleMouseMove);
             window.removeEventListener('mouseup', handleMouseUp);
+            window.removeEventListener('touchmove', handleTouchMove);
+            window.removeEventListener('touchend', handleTouchEnd);
         }
         return () => {
             window.removeEventListener('mousemove', handleMouseMove);
             window.removeEventListener('mouseup', handleMouseUp);
+            window.removeEventListener('touchmove', handleTouchMove);
+            window.removeEventListener('touchend', handleTouchEnd);
         };
     }, [isDragging, dragOffset]);
 
@@ -173,8 +216,9 @@ export default function MusicPlayer() {
                 top: `${position.y}px`
             }}
             onMouseDown={handleMouseDown}
-        >
-            <audio
+            onTouchStart={handleTouchStart}
+            onClick={handleClick}
+        >        <audio
                 ref={audioRef}
                 src={PLAYLIST[currentTrackIndex]}
                 onEnded={nextTrack}
