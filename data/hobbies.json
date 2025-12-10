@@ -75,16 +75,6 @@
         "icon": "Mic"
     },
     {
-        "name": "Pottery",
-        "description": "Creating art with clay.",
-        "icon": "Palette"
-    },
-    {
-        "name": "Origami",
-        "description": "The art of paper folding.",
-        "icon": "Shapes"
-    },
-    {
         "name": "Cafe Hopping",
         "description": "Finding the best coffee spots.",
         "icon": "Coffee"
