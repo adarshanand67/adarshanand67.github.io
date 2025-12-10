@@ -7,7 +7,6 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { CommandMenu } from "@/components/layout/CommandMenu";
 import { MatrixRain } from "@/components/ui/MatrixRain";
-import BackToTop from "@/components/layout/BackToTop";
 import MusicPlayer from "@/components/widgets/MusicPlayer";
 import MusicToggleButton from "@/components/widgets/MusicToggleButton";
 import { siteConfig } from "@/config";
@@ -93,7 +92,6 @@ export default function RootLayout({
             {children}
             <MusicPlayer />
             <MusicToggleButton />
-            <BackToTop />
             <Footer />
             <script
               type="application/ld+json"

@@ -23,7 +23,8 @@ export async function getGithubRepos(): Promise<GithubRepo[]> {
 
   const repos: GithubRepo[] = await res.json();
 
-  // Sort by stars and filter out forks if desired (keeping them for now if they are significant)
-  // Taking top 6
-  return repos.sort((a, b) => b.stargazers_count - a.stargazers_count).slice(0, 6);
+  // Sort by recent activity (updated_at) and take top 6
+  return repos
+    .sort((a, b) => new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime())
+    .slice(0, 6);
 }
