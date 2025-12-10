@@ -33,9 +33,12 @@ export default function MusicPlayer() {
     // Initialize position safely on client side
     useEffect(() => {
         if (typeof window !== 'undefined') {
+            // Default to bottom-right
+            const width = window.innerWidth >= 768 ? 384 : 320;
+            const height = 550; // Approx height
             setPosition({
-                x: window.innerWidth - 300,
-                y: window.innerHeight - 500
+                x: Math.max(0, window.innerWidth - width - 24),
+                y: Math.max(0, window.innerHeight - height - 24)
             });
         }
     }, [mounted]);
@@ -103,8 +106,8 @@ export default function MusicPlayer() {
         if (typeof window === 'undefined') return;
 
         if (isMinimized) {
-            // Snap to bottom right (above scroll-to-top arrow button)
-            const dockMarginBottom = 120; // Space for arrow button
+            // Snap to bottom right (space cleared by centering BackToTop)
+            const dockMarginBottom = 24;
             const dockMarginRight = 24;
             const minWidth = 288; // w-72 = 18rem = 288px
             const minHeight = 80; // Approx height of minimized player header
