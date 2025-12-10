@@ -98,6 +98,45 @@ export default function MusicPlayer() {
         }
     };
 
+    // Docking logic
+    useEffect(() => {
+        if (typeof window === 'undefined') return;
+
+        if (isMinimized) {
+            // Snap to bottom right (above scroll-to-top arrow button)
+            const dockMarginBottom = 120; // Space for arrow button
+            const dockMarginRight = 24;
+            const minWidth = 288; // w-72 = 18rem = 288px
+            const minHeight = 80; // Approx height of minimized player header
+
+            const x = window.innerWidth - minWidth - dockMarginRight;
+            const y = window.innerHeight - minHeight - dockMarginBottom;
+
+            setPosition({ x: Math.max(0, x), y: Math.max(0, y) });
+        } else {
+            // When returning to full size, ensure we don't overflow screen
+            // "Open from there" -> Keep anchor but shift if needed
+            const fullWidth = window.innerWidth >= 768 ? 384 : 320; // w-96 (md) or w-80
+            const fullHeight = 550; // Approx max height of full player (image + controls)
+
+            setPosition(prev => {
+                let newX = prev.x;
+                let newY = prev.y;
+
+                // If expanding right goes offscreen, shift left
+                if (newX + fullWidth > window.innerWidth) {
+                    newX = window.innerWidth - fullWidth - 20;
+                }
+                // If expanding down goes offscreen, shift up
+                if (newY + fullHeight > window.innerHeight) {
+                    newY = window.innerHeight - fullHeight - 20;
+                }
+
+                return { x: Math.max(0, newX), y: Math.max(0, newY) };
+            });
+        }
+    }, [isMinimized]);
+
     useEffect(() => {
         if (isDragging) {
             window.addEventListener('mousemove', handleMouseMove);
