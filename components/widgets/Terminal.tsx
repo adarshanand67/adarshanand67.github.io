@@ -8,6 +8,7 @@ import { useGlobalState } from "@/components/common/GlobalProvider";
 import { commands } from "@/lib/terminal/commands";
 import { INTRO_LINES, DIRECTORIES } from "@/lib/constants";
 import { ChevronDown } from "lucide-react";
+import SectionHeader from "@/components/ui/SectionHeader";
 
 export default function Terminal() {
   const router = useRouter();
@@ -242,26 +243,12 @@ export default function Terminal() {
     >
       <div className="relative bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm rounded-xl p-4 border border-gray-200 dark:border-gray-800 hover:border-green-500/50 transition-colors duration-300">
         <section className="font-mono">
-          <div
-            className="w-full text-left group mb-3 cursor-pointer"
-            onClick={(e) => {
-              e.stopPropagation();
-              setIsExpanded(!isExpanded);
-            }}
-          >
-            <h2 className="text-2xl font-bold flex items-center gap-2 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors mb-2">
-              <span className="text-primary">##</span> Terminal
-              <ChevronDown
-                size={20}
-                className={`transition-transform duration-300 ${isExpanded ? 'rotate-0' : '-rotate-90'}`}
-              />
-            </h2>
-            <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400 text-sm">
-              <span className="text-green-500 font-bold">$</span>
-              <span>./interactive-shell.sh</span>
-              <span className="animate-pulse inline-block w-2 h-4 bg-green-500 align-middle"></span>
-            </div>
-          </div>
+          <SectionHeader
+            title="Terminal"
+            command="./interactive-shell.sh"
+            isExpanded={isExpanded}
+            onToggle={() => setIsExpanded(!isExpanded)}
+          />
 
           <div className={`transition-all duration-500 ease-in-out ${isExpanded ? 'opacity-100 max-h-[1000px]' : 'opacity-0 max-h-0 overflow-hidden'}`}>
             <div className="w-full bg-white/70 dark:bg-black/60 backdrop-blur-xl rounded-lg shadow-2xl overflow-hidden border border-white/20 dark:border-white/10 font-mono text-base select-text relative">
