@@ -22,7 +22,7 @@ export default function Navbar() {
         role="navigation"
         aria-label="main navigation"
       >
-        <div className="container mx-auto px-4">
+        <div className="w-full px-2 md:px-4">
           <div className="flex items-center h-14">
             {/* Hamburger - Left side on mobile */}
             <button
@@ -44,12 +44,12 @@ export default function Navbar() {
               </div>
             </button>
 
-            {/* Brand */}
+            {/* Brand: Terminal Home Style */}
             <Link
               href={ROUTES.HOME}
-              className="text-lg font-bold text-foreground hover:text-green-600 dark:hover:text-green-400 transition-colors flex items-center gap-2"
+              className="text-lg font-bold text-foreground hover:text-green-600 dark:hover:text-green-400 transition-colors flex items-center gap-2 font-mono whitespace-nowrap"
             >
-              Adarsh Anand
+              ~/
             </Link>
 
             {/* Mobile: Theme toggle on right */}
@@ -58,50 +58,60 @@ export default function Navbar() {
             </div>
 
             {/* Desktop Nav */}
-            <div className="hidden md:flex md:items-center md:ml-auto gap-0">
+            <div className="hidden md:flex md:items-center md:ml-4 gap-0 text-sm font-medium">
+              <span className="text-gray-300 dark:text-gray-700 mx-2 select-none">|</span>
+
               <Link
                 href={ROUTES.BLOG_SHELF}
-                className="px-4 py-3 text-base text-foreground/80 hover:text-green-600 dark:hover:text-green-400 hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
+                className="px-2 py-3 text-foreground/80 hover:text-green-600 dark:hover:text-green-400 transition-colors"
               >
                 Blogshelf
               </Link>
+              <span className="text-gray-300 dark:text-gray-700 mx-1 select-none">|</span>
+
               <Link
                 href={ROUTES.PAPER_SHELF}
-                className="px-4 py-3 text-base text-foreground/80 hover:text-green-600 dark:hover:text-green-400 hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
+                className="px-2 py-3 text-foreground/80 hover:text-green-600 dark:hover:text-green-400 transition-colors"
               >
                 Papershelf
               </Link>
+              <span className="text-gray-300 dark:text-gray-700 mx-1 select-none">|</span>
+
               <Link
                 href={ROUTES.ANIME_SHELF}
-                className="px-4 py-3 text-base text-foreground/80 hover:text-green-600 dark:hover:text-green-400 hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
+                className="px-2 py-3 text-foreground/80 hover:text-green-600 dark:hover:text-green-400 transition-colors"
               >
                 Animeshelf
               </Link>
+              <span className="text-gray-300 dark:text-gray-700 mx-1 select-none">|</span>
+
               <Link
                 href={ROUTES.BOOK_SHELF}
-                className="px-4 py-3 text-base text-foreground/80 hover:text-green-600 dark:hover:text-green-400 hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
+                className="px-2 py-3 text-foreground/80 hover:text-green-600 dark:hover:text-green-400 transition-colors"
               >
                 Bookshelf
               </Link>
+              <span className="text-gray-300 dark:text-gray-700 mx-1 select-none">|</span>
+
               <Link
                 href={ROUTES.HOBBY_SHELF}
-                className="px-4 py-3 text-base text-foreground/80 hover:text-green-600 dark:hover:text-green-400 hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
+                className="px-2 py-3 text-foreground/80 hover:text-green-600 dark:hover:text-green-400 transition-colors"
               >
                 HobbyShelf
               </Link>
 
-              <span className="text-gray-400 mx-1">|</span>
-
-              <button
-                className="px-3 py-1.5 flex items-center gap-1.5 text-sm text-foreground/80 hover:text-green-600 dark:hover:text-green-400 transition-colors"
-                onClick={() => document.dispatchEvent(new Event("open-command-menu"))}
-                aria-label="Search"
-              >
-                {mounted ? <Search className="w-4 h-4" /> : <div className="w-4 h-4" />}
-                <kbd className="text-xs text-gray-500">⌘K</kbd>
-              </button>
-
-              <ThemeToggle />
+              <div className="ml-auto flex items-center gap-4">
+                <span className="text-gray-300 dark:text-gray-700 select-none">|</span>
+                <button
+                  className="flex items-center gap-1.5 text-sm text-foreground/80 hover:text-green-600 dark:hover:text-green-400 transition-colors"
+                  onClick={() => document.dispatchEvent(new Event("open-command-menu"))}
+                  aria-label="Search"
+                >
+                  {mounted ? <Search className="w-4 h-4" /> : <div className="w-4 h-4" />}
+                  <kbd className="hidden lg:inline text-[10px] text-gray-500 border border-gray-300 dark:border-gray-700 rounded px-1">⌘K</kbd>
+                </button>
+                <ThemeToggle />
+              </div>
             </div>
           </div>
 
