@@ -18,35 +18,35 @@ const SHELVES: Shelf[] = [
         path: "/blogshelf",
         description: "Technical articles and thoughts",
         icon: Feather,
-        color: "text-blue-500"
+        color: "text-green-500"
     },
     {
         name: "papers",
         path: "/papershelf",
         description: "Research papers and publications",
         icon: FileText,
-        color: "text-purple-500"
+        color: "text-green-500"
     },
     {
         name: "books",
         path: "/bookshelf",
         description: "Reading list and notes",
         icon: Book,
-        color: "text-yellow-500"
+        color: "text-green-500"
     },
     {
         name: "anime",
         path: "/animeshelf",
         description: "Watch list and favorites",
         icon: Tv,
-        color: "text-pink-500"
+        color: "text-green-500"
     },
     {
         name: "hobbies",
         path: "/HobbyShelf",
         description: "Interests outside of coding",
         icon: Gamepad2,
-        color: "text-emerald-500"
+        color: "text-green-500"
     }
 ];
 
@@ -62,12 +62,12 @@ export default function ShelvesSection() {
             className="section max-w-4xl mx-auto px-4 mb-8"
         >
             <div className="group relative">
-                <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition duration-500"></div>
-                <div className="relative bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm rounded-xl p-4 border border-gray-200 dark:border-gray-800 hover:border-blue-500/50 transition-colors duration-300 cursor-pointer">
+                <div className="absolute -inset-1 bg-gradient-to-r from-green-500/20 to-emerald-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                <div className="relative bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm rounded-xl p-4 border border-gray-200 dark:border-gray-800 hover:border-green-500/50 transition-colors duration-300 cursor-pointer">
                     <section className="font-mono">
                         <div className="w-full text-left group mb-3">
-                            <h2 className="text-2xl font-bold flex items-center gap-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors mb-2">
-                                <span className="text-primary">##</span> <span className="text-blue-700 dark:text-blue-400">Directories</span>
+                            <h2 className="text-2xl font-bold flex items-center gap-2 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors mb-2">
+                                <span className="text-primary">##</span> <span className="text-green-700 dark:text-green-400">Directories</span>
                                 <ChevronDown
                                     size={20}
                                     className={`transition-transform duration-300 ${isExpanded ? 'rotate-0' : '-rotate-90'}`}
@@ -88,13 +88,13 @@ export default function ShelvesSection() {
                                     <Link
                                         key={shelf.name}
                                         href={shelf.path}
-                                        className="group/item flex items-start gap-3 p-3 rounded-lg border border-gray-200/50 dark:border-gray-800/50 hover:bg-gray-100/50 dark:hover:bg-gray-800/50 hover:border-blue-500/30 transition-all duration-300"
+                                        className="group/item flex items-start gap-3 p-3 rounded-lg border border-gray-200/50 dark:border-gray-800/50 hover:bg-gray-100/50 dark:hover:bg-gray-800/50 hover:border-green-500/30 transition-all duration-300"
                                     >
                                         <div className={`p-2 rounded-lg bg-gray-100 dark:bg-gray-800 group-hover/item:scale-110 transition-transform duration-300 ${shelf.color}`}>
                                             <shelf.icon size={20} />
                                         </div>
                                         <div>
-                                            <div className="font-bold text-gray-700 dark:text-gray-200 group-hover/item:text-blue-600 dark:group-hover/item:text-blue-400 transition-colors">
+                                            <div className="font-bold text-gray-700 dark:text-gray-200 group-hover/item:text-green-600 dark:group-hover/item:text-green-400 transition-colors">
                                                 {shelf.name}/
                                             </div>
                                             <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
