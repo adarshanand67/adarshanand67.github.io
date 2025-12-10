@@ -1,13 +1,11 @@
 import { ShelfType } from "@/types";
-
 export interface ShelfConfig {
   title: string;
   description: string;
-  command: string; // CLI command like "ls ~/books"
+  command: string; 
   searchPlaceholder: string;
   type: ShelfType;
 }
-
 export const shelfConfigs: Record<string, ShelfConfig> = {
   books: {
     title: "Bookshelf",

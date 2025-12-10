@@ -1,9 +1,7 @@
 "use client";
-
 import Link from "next/link";
 import { useState } from "react";
 import { ChevronDown, Folder, Book, FileText, Tv, Gamepad2, Feather } from "lucide-react";
-
 interface Shelf {
     name: string;
     path: string;
@@ -11,7 +9,6 @@ interface Shelf {
     icon: React.ElementType;
     color: string;
 }
-
 const SHELVES: Shelf[] = [
     {
         name: "blogs",
@@ -49,10 +46,8 @@ const SHELVES: Shelf[] = [
         color: "text-green-500"
     }
 ];
-
 export default function ShelvesSection() {
     const [isExpanded, setIsExpanded] = useState(false);
-
     return (
         <div className="section max-w-4xl mx-auto px-4 mb-8">
             <div className="group relative">
@@ -79,7 +74,6 @@ export default function ShelvesSection() {
                                 <span className="animate-pulse inline-block w-2 h-4 bg-green-500 align-middle"></span>
                             </div>
                         </div>
-
                         <div
                             className={`transition-all duration-300 ease-in-out overflow-hidden ${isExpanded ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'}`}
                         >

@@ -1,12 +1,10 @@
 "use client";
-
 import { useRef, useEffect, useState } from "react";
 import { Play, Pause, Volume2, VolumeX, SkipForward, SkipBack, X, Minus, Maximize2, Music } from "lucide-react";
 import { useGlobalState } from "@/components/common/GlobalProvider";
 import { PLAYLIST, TRACK_NAMES, TRACK_IMAGES, AUDIO_CONFIG, ERROR_MESSAGES } from "@/lib";
 import { useMounted } from "@/lib/hooks";
 import Image from "next/image";
-
 export default function MusicPlayer() {
     const {
         isPlaying, setIsPlaying,
@@ -15,29 +13,22 @@ export default function MusicPlayer() {
         currentTrackIndex, nextTrack, prevTrack,
         showMusicPlayer, toggleMusicPlayer
     } = useGlobalState();
-
     const audioRef = useRef<HTMLAudioElement | null>(null);
     const mounted = useMounted();
-
-    // Dragging state (Offsets from Bottom-Right)
     const [offset, setOffset] = useState({ x: 24, y: 24 });
     const [isDragging, setIsDragging] = useState(false);
-    const [dragStart, setDragStart] = useState({ x: 0, y: 0 }); // Cursor position
-    const [initialOffset, setInitialOffset] = useState({ x: 0, y: 0 }); // Element offset at start
+    const [dragStart, setDragStart] = useState({ x: 0, y: 0 }); 
+    const [initialOffset, setInitialOffset] = useState({ x: 0, y: 0 }); 
     const playerRef = useRef<HTMLDivElement>(null);
     const [isMinimized, setIsMinimized] = useState(false);
     const hasMoved = useRef(false);
-
     const [currentTime, setCurrentTime] = useState(0);
     const [duration, setDuration] = useState(0);
-
-    // Initialize position (not needed if hardcoded default is good, but hydration check is good)
     useEffect(() => {
         if (typeof window !== 'undefined') {
             setOffset({ x: 24, y: 24 });
         }
     }, [mounted]);
-
     const handleMouseDown = (e: React.MouseEvent) => {
         if ((e.target as HTMLElement).closest('button, input')) return;
         setIsDragging(true);
@@ -45,29 +36,20 @@ export default function MusicPlayer() {
         setDragStart({ x: e.clientX, y: e.clientY });
         setInitialOffset({ ...offset });
     };
-
     const handleMouseMove = (e: MouseEvent) => {
         if (isDragging) {
             hasMoved.current = true;
-            // Calculate delta
             const dx = e.clientX - dragStart.x;
             const dy = e.clientY - dragStart.y;
-
-            // Update offsets (inverted because we are positioning from Right/Bottom)
-            // Moving right (positive dx) -> Decreases Right offset
-            // Moving down (positive dy) -> Decreases Bottom offset
             setOffset({
                 x: initialOffset.x - dx,
                 y: initialOffset.y - dy
             });
         }
     };
-
     const handleMouseUp = () => {
         setIsDragging(false);
     };
-
-    // Touch handlers
     const handleTouchStart = (e: React.TouchEvent) => {
         if ((e.target as HTMLElement).closest('button, input')) return;
         setIsDragging(true);
@@ -76,10 +58,9 @@ export default function MusicPlayer() {
         setDragStart({ x: touch.clientX, y: touch.clientY });
         setInitialOffset({ ...offset });
     };
-
     const handleTouchMove = (e: TouchEvent) => {
         if (isDragging) {
-            e.preventDefault(); // Prevent scrolling while dragging
+            e.preventDefault(); 
             hasMoved.current = true;
             const touch = e.touches[0];
             const dx = touch.clientX - dragStart.x;
@@ -90,29 +71,20 @@ export default function MusicPlayer() {
             });
         }
     };
-
     const handleTouchEnd = () => {
         setIsDragging(false);
     };
-
     const handleClick = (e: React.MouseEvent) => {
         if (!hasMoved.current) {
             setIsMinimized(!isMinimized);
         }
     };
-
-    // Minimal docking logic - just ensure we don't drift too far on mode switch if needed
-    // But since we are anchored bottom-right, window resize is handled automatically.
-    // We can add boundary checks later if needed.
     useEffect(() => {
-        // Optional: Snap back to margin if it gets negative (offscreen right/bottom)
-        // This keeps it accessible
         setOffset(prev => ({
             x: Math.max(10, prev.x),
             y: Math.max(10, prev.y)
         }));
     }, [isMinimized]);
-
     useEffect(() => {
         if (isDragging) {
             window.addEventListener('mousemove', handleMouseMove);
@@ -132,19 +104,16 @@ export default function MusicPlayer() {
             window.removeEventListener('touchend', handleTouchEnd);
         };
     }, [isDragging]);
-
     const handleTimeUpdate = () => {
         if (audioRef.current) {
             setCurrentTime(audioRef.current.currentTime);
         }
     };
-
     const handleLoadedMetadata = () => {
         if (audioRef.current) {
             setDuration(audioRef.current.duration);
         }
     };
-
     const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
         const time = parseFloat(e.target.value);
         if (audioRef.current) {
@@ -152,29 +121,24 @@ export default function MusicPlayer() {
             setCurrentTime(time);
         }
     };
-
     const formatTime = (time: number) => {
         if (isNaN(time)) return "0:00";
         const minutes = Math.floor(time / 60);
         const seconds = Math.floor(time % 60);
         return `${minutes}:${seconds.toString().padStart(2, '0')}`;
     };
-
     useEffect(() => {
         const timer = setTimeout(() => {
             if (audioRef.current && !isPlaying) {
-                // Initial setup
             }
         }, AUDIO_CONFIG.AUTOPLAY_DELAY_MS);
         return () => clearTimeout(timer);
     }, []);
-
     useEffect(() => {
         if (audioRef.current) {
             audioRef.current.volume = volume;
         }
     }, [volume]);
-
     useEffect(() => {
         if (!audioRef.current) return;
         if (isPlaying) {
@@ -189,7 +153,6 @@ export default function MusicPlayer() {
             audioRef.current.pause();
         }
     }, [isPlaying, currentTrackIndex, setIsPlaying]);
-
     useEffect(() => {
         if (isPlaying && audioRef.current) {
             if (audioRef.current.readyState >= 3) {
@@ -197,13 +160,10 @@ export default function MusicPlayer() {
             }
         }
     }, [currentTrackIndex]);
-
     const togglePlay = () => {
         setIsPlaying(!isPlaying);
     };
-
     const errorTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-
     const handleTrackError = () => {
         if (errorTimeoutRef.current) return;
         console.warn(ERROR_MESSAGES.AUDIO.TRACK_LOAD_FAILED);
@@ -212,21 +172,15 @@ export default function MusicPlayer() {
             errorTimeoutRef.current = null;
         }, 2000);
     };
-
     const handleMute = () => {
         if (audioRef.current) audioRef.current.muted = !isMuted;
         toggleMute();
     };
-
-    // -- VOLUME HANDLER --
     const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const val = parseFloat(e.target.value);
         setVolume(val);
     };
-
     if (!mounted) return null;
-
-    // --- LAUNCHER STATE (Bottom-Right Fixed) ---
     if (!showMusicPlayer) {
         return (
             <button
@@ -241,8 +195,6 @@ export default function MusicPlayer() {
             </button>
         );
     }
-
-    // --- ACTIVE PLAYER STATE ---
     return (
         <div
             ref={playerRef}
@@ -263,15 +215,12 @@ export default function MusicPlayer() {
                 onLoadedMetadata={handleLoadedMetadata}
                 crossOrigin="anonymous"
             />
-
-            {/* Main player container */}
+            {}
             <div className={`relative bg-black/60 backdrop-blur-xl rounded-2xl shadow-2xl overflow-hidden border border-white/10 group active:scale-[0.99] transition-transform duration-200`}>
-                {/* Glow effect */}
+                {}
                 <div className="absolute -inset-1 bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl blur-lg opacity-50 group-hover:opacity-75 transition duration-500"></div>
-
                 <div className="relative bg-black/80 backdrop-blur-xl rounded-2xl overflow-hidden h-full">
                     {isMinimized ? (
-                        // Compact View
                         <div className="flex items-center justify-between p-3 gap-3">
                             <div className="flex items-center gap-3 overflow-hidden">
                                 <div className={`w-2 h-2 rounded-full flex-shrink-0 ${isPlaying ? 'bg-green-500 animate-pulse' : 'bg-gray-500'}`}></div>
@@ -284,7 +233,6 @@ export default function MusicPlayer() {
                                     </span>
                                 </div>
                             </div>
-
                             <div className="flex items-center gap-2 flex-shrink-0">
                                 <button
                                     onClick={(e) => { e.stopPropagation(); togglePlay(); }}
@@ -307,9 +255,8 @@ export default function MusicPlayer() {
                             </div>
                         </div>
                     ) : (
-                        // Full View
                         <>
-                            {/* Header */}
+                            {}
                             <div className="flex items-center justify-between px-4 py-3 bg-black/40 backdrop-blur-sm border-b border-gray-800/50">
                                 <div className="flex items-center gap-2">
                                     <div className={`w-2.5 h-2.5 rounded-full ${isPlaying ? 'bg-green-500 animate-pulse' : 'bg-gray-500'}`}></div>
@@ -340,8 +287,7 @@ export default function MusicPlayer() {
                                     </button>
                                 </div>
                             </div>
-
-                            {/* Anime Image */}
+                            {}
                             <div className="relative h-40 md:h-72 overflow-hidden bg-gray-900">
                                 <Image
                                     src={TRACK_IMAGES[currentTrackIndex]}
@@ -350,9 +296,9 @@ export default function MusicPlayer() {
                                     className="object-cover"
                                     priority
                                 />
-                                {/* Overlay gradient */}
+                                {}
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none"></div>
-                                {/* Playing indicator */}
+                                {}
                                 {isPlaying && (
                                     <div className="absolute bottom-3 right-3 flex items-center gap-2 bg-black/60 backdrop-blur-sm px-3 py-1.5 rounded-full">
                                         <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
@@ -360,16 +306,14 @@ export default function MusicPlayer() {
                                     </div>
                                 )}
                             </div>
-
-                            {/* Track info */}
+                            {}
                             <div className="px-4 py-3 bg-black/20">
                                 <h3 className="text-base font-bold text-white truncate mb-1">
                                     {TRACK_NAMES[currentTrackIndex] || "Unknown Track"}
                                 </h3>
                                 <p className="text-sm text-gray-400">Track {currentTrackIndex + 1}/{PLAYLIST.length}</p>
                             </div>
-
-                            {/* Progress bar */}
+                            {}
                             <div className="px-4 py-2 bg-black/20">
                                 <div className="flex items-center gap-2 mb-1">
                                     <span className="text-sm text-gray-400 w-10 text-right">{formatTime(currentTime)}</span>
@@ -400,10 +344,9 @@ export default function MusicPlayer() {
                                     <span className="text-sm text-gray-400 w-10">{formatTime(duration)}</span>
                                 </div>
                             </div>
-
-                            {/* Controls with Volume */}
+                            {}
                             <div className="px-3 py-3 bg-black/30 flex flex-col gap-3">
-                                {/* Playback Controls */}
+                                {}
                                 <div className="flex items-center justify-center gap-3">
                                     <button
                                         onClick={(e) => { e.stopPropagation(); prevTrack(); }}
@@ -412,7 +355,6 @@ export default function MusicPlayer() {
                                     >
                                         <SkipBack size={16} className="text-gray-300" fill="currentColor" />
                                     </button>
-
                                     <button
                                         onClick={(e) => { e.stopPropagation(); togglePlay(); }}
                                         className="p-2.5 rounded-full bg-white hover:bg-gray-100 hover:scale-105 transition-all shadow-lg cursor-pointer"
@@ -423,7 +365,6 @@ export default function MusicPlayer() {
                                             <Play size={18} className="text-black ml-0.5" fill="currentColor" />
                                         }
                                     </button>
-
                                     <button
                                         onClick={(e) => { e.stopPropagation(); nextTrack(); }}
                                         className="p-1.5 rounded-full hover:bg-white/10 transition-all hover:scale-110 cursor-pointer"
@@ -432,8 +373,7 @@ export default function MusicPlayer() {
                                         <SkipForward size={16} className="text-gray-300" fill="currentColor" />
                                     </button>
                                 </div>
-
-                                {/* Volume Control */}
+                                {}
                                 <div className="flex items-center gap-2 px-4 pb-1">
                                     <button onClick={(e) => { e.stopPropagation(); handleMute(); }} className="p-1 hover:text-white text-gray-400">
                                         {isMuted || volume === 0 ? <VolumeX size={14} /> : <Volume2 size={14} />}

@@ -20,20 +20,17 @@ export interface Profile {
     paragraphs: string[];
   };
 }
-
 export interface Project {
   title: string;
   description: string;
   tech: string[];
   link: string;
 }
-
 export interface Hobby {
   name: string;
   description: string;
   icon: string;
 }
-
 export interface Experience {
   company: string;
   role: string;
@@ -43,7 +40,6 @@ export interface Experience {
   description?: string;
   highlights: string[];
 }
-
 export interface Book {
   title: string;
   author: string;
@@ -51,34 +47,26 @@ export interface Book {
   notes?: string;
   recommended?: boolean;
 }
-
 export interface Paper {
   title: string;
   url: string;
 }
-
-
-
 export interface Blog {
   date: string;
   title: string;
   slug: string;
   excerpt?: string;
 }
-
-// Enums for type safety
 export enum EntertainmentType {
   Anime = "Anime",
   Movie = "Movie",
   WebSeries = "Web Series"
 }
-
 export enum WatchStatus {
   Completed = "Completed",
   Planning = "Planning",
   Watching = "Watching"
 }
-
 export enum ShelfType {
   Book = "book",
   Paper = "paper",
@@ -87,7 +75,6 @@ export enum ShelfType {
   Project = "project",
   Hobby = "hobby"
 }
-
 export interface EntertainmentItem {
   title: string;
   type: EntertainmentType;
@@ -98,5 +85,5 @@ export interface EntertainmentItem {
   description?: string;
   tags?: string[];
   year?: string;
-  rating?: string; // e.g. "8.5/10"
+  rating?: string;
 }

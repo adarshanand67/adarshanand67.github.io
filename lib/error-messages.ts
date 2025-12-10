@@ -1,4 +1,3 @@
-// Centralized error and log messages for consistency
 export const ERROR_MESSAGES = {
     AUDIO: {
         PLAYBACK_FAILED: 'Audio playback failed',
@@ -13,7 +12,6 @@ export const ERROR_MESSAGES = {
         INVALID_DIRECTORY: 'Invalid directory',
     },
 } as const;
-
 export const LOG_MESSAGES = {
     API: {
         FETCHING_BLOGS: '[API] Fetching blogs',

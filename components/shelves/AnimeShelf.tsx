@@ -3,7 +3,6 @@
 
 import { useState } from 'react';
 import { EntertainmentItem, EntertainmentType, WatchStatus } from '@/types';
-import { SpotlightCard } from '@/components/ui/SpotlightCard';
 import Image from 'next/image';
 import { Check, Star, X, Tag, Calendar, Layers } from 'lucide-react';
 
@@ -57,7 +56,7 @@ export const AnimeShelf = ({ items }: AnimeShelfProps) => {
 
     const AnimeCard = ({ item }: { item: EntertainmentItem }) => (
         <div onClick={() => setSelectedItem(item)} className="cursor-pointer h-full">
-            <SpotlightCard className="h-full flex flex-col p-4 relative overflow-hidden group">
+            <div className="h-full flex flex-col p-4 relative overflow-hidden group glass hover:bg-white/40 dark:hover:bg-gray-800/40 transition-colors duration-300 rounded-xl">
                 {item.image ? (
                     <div className="w-full aspect-[2/3] mb-4 overflow-hidden rounded-md relative shadow-lg">
                         <Image
@@ -100,7 +99,7 @@ export const AnimeShelf = ({ items }: AnimeShelfProps) => {
                         {item.tags.length > 2 && <span className="text-[10px] text-gray-400">+{item.tags.length - 2}</span>}
                     </div>
                 )}
-            </SpotlightCard>
+            </div>
         </div>
     );
 

@@ -1,9 +1,3 @@
-
-/**
- * Terminal Output Messages
- * Centralized strings for terminal commands to follow DRY/SOLID principles.
- */
-
 export const TERMINAL_MESSAGES = {
     ERRORS: {
         READ_ONLY: "Read-only file system",

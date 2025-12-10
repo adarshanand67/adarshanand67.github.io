@@ -2,8 +2,7 @@ import { Book, Paper, Blog, EntertainmentItem, Project, Hobby, EntertainmentType
 import { ReactNode } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ExternalLink, Star, Check, Camera, BookOpen, Gamepad2, Activity, Dumbbell, Flower2, Bike, Mountain, ChefHat, Plane, Dices, Tv, Mic, Palette, Shapes, Trophy, Waves, Coffee, Users } from "lucide-react";
-import { SpotlightCard } from "@/components/ui/SpotlightCard";
+import { Star, ExternalLink } from "lucide-react";
 import { AnimeShelf } from "@/components/shelves/AnimeShelf";
 
 // Union type for all shelf items
@@ -235,47 +234,7 @@ export class ProjectListStrategy implements ShelfItemStrategy<Project> {
 // Concrete Strategy: Hobby List Item
 export class HobbyListStrategy implements ShelfItemStrategy<Hobby> {
   private getIcon(iconName: string): ReactNode {
-    const props = { className: "w-6 h-6 text-green-600 dark:text-green-400" };
-    switch (iconName) {
-      case "Camera":
-        return <Camera {...props} />;
-      case "BookOpen":
-        return <BookOpen {...props} />;
-      case "Gamepad2":
-        return <Gamepad2 {...props} />;
-      case "Dumbbell":
-        return <Dumbbell {...props} />;
-      case "Flower2":
-        return <Flower2 {...props} />;
-      case "Bike":
-        return <Bike {...props} />;
-      case "Mountain":
-        return <Mountain {...props} />;
-      case "ChefHat":
-        return <ChefHat {...props} />;
-      case "Plane":
-        return <Plane {...props} />;
-      case "Dices":
-        return <Dices {...props} />;
-      case "Tv":
-        return <Tv {...props} />;
-      case "Mic":
-        return <Mic {...props} />;
-      case "Palette":
-        return <Palette {...props} />;
-      case "Shapes":
-        return <Shapes {...props} />;
-      case "Trophy":
-        return <Trophy {...props} />;
-      case "Waves":
-        return <Waves {...props} />;
-      case "Coffee":
-        return <Coffee {...props} />;
-      case "Users":
-        return <Users {...props} />;
-      default:
-        return <Activity {...props} />;
-    }
+    return null;
   }
 
   renderItem(hobby: Hobby, index: number): ReactNode {

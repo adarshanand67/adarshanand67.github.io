@@ -1,9 +1,6 @@
-
 import { MetadataRoute } from 'next';
 import { siteConfig } from '@/config';
-
 export const dynamic = 'force-static';
-
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     '',
@@ -13,7 +10,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/animeshelf',
     '/HobbyShelf'
   ];
-
   return routes.map((route) => ({
     url: `${siteConfig.url}${route}`,
     lastModified: new Date(),

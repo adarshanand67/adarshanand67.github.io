@@ -2,11 +2,6 @@ import { Command } from '../types';
 import { createCommand, addLines } from '../helpers';
 import { siteConfig } from '@/config';
 import { TERMINAL_MESSAGES } from '../messages';
-
-/**
- * Personal branding commands: resume
- */
-
 export const resume: Command = createCommand(
     'resume',
     'Display interactive resume',
@@ -46,7 +41,6 @@ export const resume: Command = createCommand(
         examples: ['resume']
     }
 );
-
 export const personalCommands = {
     resume
 };

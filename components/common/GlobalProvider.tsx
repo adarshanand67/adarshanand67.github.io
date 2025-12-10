@@ -1,16 +1,12 @@
 "use client";
-
 import { createContext, useContext, useState, useCallback, ReactNode } from "react";
 import confetti from "canvas-confetti";
 import { useKonamiCode } from "@/hooks/useKonamiCode";
-
 import { PLAYLIST } from "@/lib/constants";
-
 interface GlobalState {
     isMatrixEnabled: boolean;
     toggleMatrix: () => void;
     setMatrix: (enabled: boolean) => void;
-    // Music State
     isPlaying: boolean;
     setIsPlaying: (playing: boolean) => void;
     volume: number;
@@ -20,54 +16,37 @@ interface GlobalState {
     currentTrackIndex: number;
     nextTrack: () => void;
     prevTrack: () => void;
-    // Music Player Visibility
     showMusicPlayer: boolean;
     toggleMusicPlayer: () => void;
     setShowMusicPlayer: (show: boolean) => void;
-    // Sound State
     isSoundEnabled: boolean;
     toggleSound: () => void;
 }
-
 const GlobalContext = createContext<GlobalState | undefined>(undefined);
-
 export const GlobalProvider = ({ children }: { children: ReactNode }) => {
-    // Matrix enabled by default as requested
     const [isMatrixEnabled, setIsMatrixEnabled] = useState(true);
-
-    // Music State
     const [isPlaying, setIsPlaying] = useState(false);
     const [volume, setVolumeState] = useState(0.5);
     const [isMuted, setIsMuted] = useState(false);
     const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
-
-    // Music Player Visibility - hidden by default for better mobile UX
     const [showMusicPlayer, setShowMusicPlayer] = useState(false);
-
-    // Sound State
     const [isSoundEnabled, setIsSoundEnabled] = useState(true);
     const toggleSound = useCallback(() => setIsSoundEnabled((prev) => !prev), []);
-
     const toggleMatrix = useCallback(() => setIsMatrixEnabled((prev) => !prev), []);
     const setMatrix = useCallback((enabled: boolean) => setIsMatrixEnabled(enabled), []);
-
     const setVolume = useCallback((vol: number) => setVolumeState(Math.max(0, Math.min(1, vol))), []);
     const toggleMute = useCallback(() => setIsMuted((prev) => !prev), []);
     const nextTrack = useCallback(() => setCurrentTrackIndex((prev) => (prev + 1) % PLAYLIST.length), []);
     const prevTrack = useCallback(() => setCurrentTrackIndex((prev) => (prev - 1 + PLAYLIST.length) % PLAYLIST.length), []);
-
     const toggleMusicPlayer = useCallback(() => setShowMusicPlayer((prev) => !prev), []);
-
-    // Konami Code Easter Egg
     useKonamiCode(() => {
         confetti({
             particleCount: 150,
             spread: 100,
             origin: { y: 0.6 },
-            colors: ['#22c55e', '#15803d', '#ffffff'], // Green theme
+            colors: ['#22c55e', '#15803d', '#ffffff'], 
         });
     });
-
     return (
         <GlobalContext.Provider
             value={{
@@ -94,7 +73,6 @@ export const GlobalProvider = ({ children }: { children: ReactNode }) => {
         </GlobalContext.Provider>
     );
 };
-
 export const useGlobalState = () => {
     const context = useContext(GlobalContext);
     if (context === undefined) {

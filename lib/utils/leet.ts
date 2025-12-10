@@ -20,7 +20,6 @@ export const leetMap: Record<string, string> = {
   T: "7",
   Z: "2",
 };
-
 export function toLeetSpeak(text: string): string {
   return text
     .split("")

@@ -1,25 +1,19 @@
 "use client";
-
 import { useState } from "react";
 import { ShelfHeader } from "@/components/shelves/ShelfHeader";
-
 interface UsesItem {
     name: string;
     description: string;
 }
-
 interface UsesData {
     hardware: UsesItem[];
     software: UsesItem[];
 }
-
 interface UsesShelfProps {
     initialUses: UsesData;
 }
-
 export default function UsesShelf({ initialUses }: UsesShelfProps) {
     const [query, setQuery] = useState("");
-
     const filterItems = (items: UsesItem[]) => {
         if (!query) return items;
         return items.filter(
@@ -28,11 +22,9 @@ export default function UsesShelf({ initialUses }: UsesShelfProps) {
                 item.description.toLowerCase().includes(query.toLowerCase())
         );
     };
-
     const filteredHardware = filterItems(initialUses.hardware);
     const filteredSoftware = filterItems(initialUses.software);
     const totalCount = filteredHardware.length + filteredSoftware.length;
-
     return (
         <div className="section max-w-4xl mx-auto px-4 mt-12 mb-12 font-mono">
             <ShelfHeader
@@ -44,7 +36,6 @@ export default function UsesShelf({ initialUses }: UsesShelfProps) {
                 onSearchChange={setQuery}
                 searchPlaceholder="Search setup..."
             />
-
             <div className="space-y-12">
                 {filteredHardware.length > 0 && (
                     <section>
@@ -64,7 +55,6 @@ export default function UsesShelf({ initialUses }: UsesShelfProps) {
                         </div>
                     </section>
                 )}
-
                 {filteredSoftware.length > 0 && (
                     <section>
                         <h2 className="text-xl font-bold mb-6 flex items-center gap-2">
@@ -83,7 +73,6 @@ export default function UsesShelf({ initialUses }: UsesShelfProps) {
                         </div>
                     </section>
                 )}
-
                 {totalCount === 0 && (
                     <p className="text-gray-500 text-center py-8">
                         No items found matching &quot;{query}&quot;

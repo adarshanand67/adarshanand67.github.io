@@ -1,17 +1,13 @@
 import { getExperiences } from "@/lib/api";
 import { linkifyTech } from "@/lib/tech-links";
-
 export default async function Experience() {
   const experiences = await getExperiences();
-
-
   return (
     <div className="section max-w-4xl mx-auto px-4 mt-12 mb-12 font-mono">
       <h1 className="text-3xl font-bold mb-2">
         <span className="text-gray-500">#</span> Experience
       </h1>
       <p className="text-gray-600 dark:text-gray-400 mb-8 text-sm">$ cat ~/work/history.log</p>
-
       <div className="space-y-8 mb-16">
         {experiences.map(
           (
@@ -36,14 +32,12 @@ export default async function Experience() {
               <p className="text-gray-500 text-xs mb-3">
                 {exp.duration} • {exp.location}
               </p>
-
               {exp.description && (
                 <p
                   className="text-sm mb-3"
                   dangerouslySetInnerHTML={{ __html: linkifyTech(exp.description) }}
                 />
               )}
-
               {exp.highlights.length > 0 && (
                 <ul className="text-sm space-y-2 text-gray-600 dark:text-gray-400">
                   {exp.highlights.map((h: string, i: number) => (

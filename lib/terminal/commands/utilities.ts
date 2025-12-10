@@ -1,18 +1,12 @@
 import { Command } from '../types';
 import { createCommand, createAliasCommand, addLine, addLines, showUsage, parseFlags } from '../helpers';
 import { CONTACT_INFO } from '@/lib/constants';
-
-/**
- * Utility commands: date, clear, echo, history, skills, contact, which, whereis, find, man
- */
-
 export const date: Command = createCommand(
     'date',
     'Show current date/time',
     (args, { setLines }) => {
         const now = new Date();
         const { hasFlags } = parseFlags(args, ['u', 'utc', 'I', 'iso-8601', 'R', 'rfc-email']);
-
         if (hasFlags.u || hasFlags.utc) {
             addLine(setLines, now.toUTCString());
         } else if (hasFlags.I || hasFlags['iso-8601']) {
@@ -20,7 +14,6 @@ export const date: Command = createCommand(
         } else if (hasFlags.R || hasFlags['rfc-email']) {
             addLine(setLines, now.toUTCString());
         } else if (args[0]?.startsWith('+')) {
-            // Custom format (simplified)
             const format = args[0];
             let output = format
                 .replace(/%Y/g, now.getFullYear().toString())
@@ -45,7 +38,6 @@ export const date: Command = createCommand(
         ]
     }
 );
-
 export const clear: Command = createCommand(
     'clear',
     'Clear terminal',
@@ -58,27 +50,21 @@ export const clear: Command = createCommand(
         usage: 'clear'
     }
 );
-
 export const echo: Command = createCommand(
     'echo',
     'Print text to terminal',
     (args, { setLines }) => {
         const { hasFlags, nonFlagArgs } = parseFlags(args, ['n']);
         const text = nonFlagArgs.join(' ');
-
-        // Handle $CONTACT_INFO variable
         if (text.includes('$CONTACT_INFO')) {
             addLines(setLines, CONTACT_INFO as unknown as string[]);
             return;
         }
-
-        // Handle special variables
         let output = text
             .replace(/\$HOME/g, '/home/adarsh')
             .replace(/\$USER/g, 'adarsh')
             .replace(/\$PWD/g, '/home/adarsh')
             .replace(/\$PATH/g, '/usr/local/bin:/usr/bin:/bin');
-
         addLine(setLines, output);
     },
     {
@@ -91,7 +77,6 @@ export const echo: Command = createCommand(
         ]
     }
 );
-
 export const history: Command = createCommand(
     'history',
     'Show command history',
@@ -108,7 +93,6 @@ export const history: Command = createCommand(
         usage: 'history'
     }
 );
-
 export const skills: Command = createCommand(
     'skills',
     'Display technical skills',
@@ -129,7 +113,6 @@ export const skills: Command = createCommand(
         usage: 'skills'
     }
 );
-
 export const contact: Command = createCommand(
     'contact',
     'Show contact info',
@@ -141,7 +124,6 @@ export const contact: Command = createCommand(
         usage: 'contact'
     }
 );
-
 export const which: Command = createCommand(
     'which',
     'Locate command',
@@ -162,7 +144,6 @@ export const which: Command = createCommand(
         usage: 'which [command]'
     }
 );
-
 export const whereis: Command = createCommand(
     'whereis',
     'Locate binary, source, and manual',
@@ -179,29 +160,23 @@ export const whereis: Command = createCommand(
         usage: 'whereis [command]'
     }
 );
-
 export const find: Command = createCommand(
     'find',
     'Search for files',
     (args, { setLines }) => {
         const nameIndex = args.indexOf('-name');
         const typeIndex = args.indexOf('-type');
-
         let pattern = '*';
         let fileType = 'all';
-
         if (nameIndex !== -1 && args[nameIndex + 1]) {
             pattern = args[nameIndex + 1].replace(/[*]/g, '');
         }
-
         if (typeIndex !== -1 && args[typeIndex + 1]) {
-            fileType = args[typeIndex + 1]; // f for file, d for directory
+            fileType = args[typeIndex + 1]; 
         }
-
         const results: string[] = [];
         const directories = ['blogs', 'papers', 'books', 'anime', 'HobbyShelf'];
         const files = ['README.md', 'package.json', '.gitignore', '.env.example'];
-
         if (fileType === 'd' || fileType === 'all') {
             directories.forEach(dir => {
                 if (pattern === '' || dir.toLowerCase().includes(pattern.toLowerCase())) {
@@ -209,7 +184,6 @@ export const find: Command = createCommand(
                 }
             });
         }
-
         if (fileType === 'f' || fileType === 'all') {
             files.forEach(file => {
                 if (pattern === '' || file.toLowerCase().includes(pattern.toLowerCase())) {
@@ -217,7 +191,6 @@ export const find: Command = createCommand(
                 }
             });
         }
-
         if (results.length > 0) {
             addLines(setLines, results);
         } else {
@@ -233,7 +206,6 @@ export const find: Command = createCommand(
         ]
     }
 );
-
 export const man: Command = createCommand(
     'man',
     'Display manual pages',
@@ -255,16 +227,11 @@ export const man: Command = createCommand(
         usage: 'man [command]'
     }
 );
-
-// Alias: cls -> clear
 export const cls: Command = createAliasCommand(
     'cls',
     'Clear screen (alias)',
     () => clear
 );
-
-
-
 export const theme: Command = createCommand(
     'theme',
     'Switch color theme',
@@ -273,7 +240,6 @@ export const theme: Command = createCommand(
             showUsage(setLines, 'theme [dark|light|system]');
             return;
         }
-
         const mode = args[0].toLowerCase();
         if (['dark', 'light', 'system'].includes(mode)) {
             setTheme(mode as 'dark' | 'light' | 'system');
@@ -291,7 +257,6 @@ export const theme: Command = createCommand(
         ]
     }
 );
-
 export const utilityCommands = {
     date,
     clear,

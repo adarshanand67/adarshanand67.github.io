@@ -1,7 +1,5 @@
 "use client";
-
 import { useEffect } from "react";
-
 export default function Error({
   error,
   reset,
@@ -10,13 +8,8 @@ export default function Error({
   reset: () => void;
 }) {
   useEffect(() => {
-    // Log error to console in development
     console.error("[Error Boundary]", error);
-
-    // In production, send to error tracking service
-    // e.g., Sentry.captureException(error);
   }, [error]);
-
   return (
     <div className="min-h-screen flex items-center justify-center p-4">
       <div className="max-w-md w-full bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-6">

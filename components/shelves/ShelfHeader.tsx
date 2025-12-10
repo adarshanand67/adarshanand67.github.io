@@ -1,7 +1,5 @@
 "use client";
-
 import { Search } from "lucide-react";
-
 interface ShelfHeaderProps {
   title: string;
   description?: string;
@@ -11,7 +9,6 @@ interface ShelfHeaderProps {
   onSearchChange: (value: string) => void;
   searchPlaceholder?: string;
 }
-
 export function ShelfHeader({
   title,
   description,
@@ -31,8 +28,7 @@ export function ShelfHeader({
       {description && (
         <p className="text-gray-500 dark:text-gray-500 mb-6 text-sm italic">&gt; {description}</p>
       )}
-
-      {/* Search */}
+      {}
       <div className="relative mb-6">
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
         <input

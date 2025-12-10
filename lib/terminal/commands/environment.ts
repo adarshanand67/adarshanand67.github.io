@@ -1,10 +1,5 @@
 import { Command } from '../types';
 import { createCommand, addLine, addLines, showUsage } from '../helpers';
-
-/**
- * Environment commands: env, export, printenv, alias
- */
-
 export const env: Command = createCommand(
     'env',
     'Display environment',
@@ -24,7 +19,6 @@ export const env: Command = createCommand(
         usage: 'env'
     }
 );
-
 export const exportCmd: Command = createCommand(
     'export',
     'Set environment variable',
@@ -43,7 +37,6 @@ export const exportCmd: Command = createCommand(
         ]
     }
 );
-
 export const printenv: Command = createCommand(
     'printenv',
     'Print environment',
@@ -56,7 +49,6 @@ export const printenv: Command = createCommand(
         usage: 'printenv [variable]'
     }
 );
-
 export const alias: Command = createCommand(
     'alias',
     'Create command alias',
@@ -81,7 +73,6 @@ export const alias: Command = createCommand(
         ]
     }
 );
-
 export const environmentCommands = {
     env,
     export: exportCmd,

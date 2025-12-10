@@ -1,10 +1,5 @@
 import { Command } from '../types';
 import { createCommand, addLine, addLines } from '../helpers';
-
-/**
- * Fun commands: hack, fortune, cowsay, exit, reboot, shutdown, theme, sudo, matrix, music
- */
-
 export const hack: Command = createCommand(
     'hack',
     'Initiate hacking sequence',
@@ -24,7 +19,6 @@ export const hack: Command = createCommand(
         usage: 'hack'
     }
 );
-
 export const fortune: Command = createCommand(
     'fortune',
     'Display random quote',
@@ -45,7 +39,6 @@ export const fortune: Command = createCommand(
         usage: 'fortune'
     }
 );
-
 export const cowsay: Command = createCommand(
     'cowsay',
     'ASCII cow says something',
@@ -71,7 +64,6 @@ export const cowsay: Command = createCommand(
         ]
     }
 );
-
 export const exit: Command = createCommand(
     'exit',
     'Close terminal (just kidding)',
@@ -83,7 +75,6 @@ export const exit: Command = createCommand(
         usage: 'exit'
     }
 );
-
 export const reboot: Command = createCommand(
     'reboot',
     'Reboot system',
@@ -100,7 +91,6 @@ export const reboot: Command = createCommand(
         usage: 'reboot'
     }
 );
-
 export const shutdown: Command = createCommand(
     'shutdown',
     'Shutdown system',
@@ -117,7 +107,6 @@ export const shutdown: Command = createCommand(
         usage: 'shutdown [time]'
     }
 );
-
 export const theme: Command = createCommand(
     'theme',
     'Set theme (light/dark/system)',
@@ -144,7 +133,6 @@ export const theme: Command = createCommand(
         ]
     }
 );
-
 export const sudo: Command = createCommand(
     'sudo',
     'Execute with superuser privileges',
@@ -157,7 +145,6 @@ export const sudo: Command = createCommand(
         usage: 'sudo [command]'
     }
 );
-
 export const matrix: Command = createCommand(
     'matrix',
     'Toggle Matrix Rain effect',
@@ -169,13 +156,11 @@ export const matrix: Command = createCommand(
         usage: 'matrix'
     }
 );
-
 export const music: Command = createCommand(
     'music',
     'Control music player',
     (args, ctx) => {
         const { setLines, setIsPlaying, nextTrack, prevTrack, toggleMute, toggleMusicPlayer, setShowMusicPlayer } = ctx;
-
         if (args.length === 0) {
             addLine(setLines, 'usage: music [show|hide|toggle|play|pause|next|prev|mute]');
         } else {
@@ -194,7 +179,7 @@ export const music: Command = createCommand(
                     addLine(setLines, 'Music Player: Toggled');
                     break;
                 case 'play':
-                    setShowMusicPlayer(true); // Auto-show when playing
+                    setShowMusicPlayer(true); 
                     setIsPlaying(true);
                     addLine(setLines, 'Music: Playing');
                     break;
@@ -203,12 +188,12 @@ export const music: Command = createCommand(
                     addLine(setLines, 'Music: Paused');
                     break;
                 case 'next':
-                    setShowMusicPlayer(true); // Auto-show when changing track
+                    setShowMusicPlayer(true); 
                     nextTrack();
                     addLine(setLines, 'Music: Next Track');
                     break;
                 case 'prev':
-                    setShowMusicPlayer(true); // Auto-show when changing track
+                    setShowMusicPlayer(true); 
                     prevTrack();
                     addLine(setLines, 'Music: Previous Track');
                     break;
@@ -234,7 +219,21 @@ export const music: Command = createCommand(
         ]
     }
 );
-
+export const snake: Command = createCommand(
+    'snake',
+    'Play Snake game',
+    (_, ctx) => {
+        if (ctx.startSnakeGame) {
+            ctx.startSnakeGame();
+        } else {
+            ctx.setLines(lines => [...lines, 'Snake game not available (function missing from context).']);
+        }
+    },
+    {
+        category: 'fun',
+        usage: 'snake'
+    }
+);
 export const funCommands = {
     hack,
     fortune,
@@ -245,5 +244,6 @@ export const funCommands = {
     theme,
     sudo,
     matrix,
-    music
+    music,
+    snake
 };

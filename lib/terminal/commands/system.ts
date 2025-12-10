@@ -1,11 +1,6 @@
 import { Command } from '../types';
 import { createCommand, createAliasCommand, parseFlags, addLines, addLine } from '../helpers';
 import { WHOAMI_INFO, SYSTEM_STATS } from '@/lib/constants';
-
-/**
- * System information commands: whoami, fetch, uname, uptime, df, top, ps, free, hostname
- */
-
 export const whoami: Command = createCommand(
     'whoami',
     'Display profile info',
@@ -17,7 +12,6 @@ export const whoami: Command = createCommand(
         usage: 'whoami'
     }
 );
-
 export const fetch: Command = createCommand(
     'fetch',
     'Display system information',
@@ -30,7 +24,6 @@ export const fetch: Command = createCommand(
         aliases: ['neofetch']
     }
 );
-
 export const uname: Command = createCommand(
     'uname',
     'Print system information',
@@ -42,7 +35,6 @@ export const uname: Command = createCommand(
         usage: 'uname'
     }
 );
-
 export const uptime: Command = createCommand(
     'uptime',
     'Show system uptime',
@@ -57,7 +49,6 @@ export const uptime: Command = createCommand(
         usage: 'uptime'
     }
 );
-
 export const df: Command = createCommand(
     'df',
     'Display disk space',
@@ -74,7 +65,6 @@ export const df: Command = createCommand(
         usage: 'df'
     }
 );
-
 export const top: Command = createCommand(
     'top',
     'Display running processes',
@@ -92,14 +82,12 @@ export const top: Command = createCommand(
         usage: 'top'
     }
 );
-
 export const ps: Command = createCommand(
     'ps',
     'List processes',
     (args, { setLines }) => {
         const { hasFlags } = parseFlags(args, ['aux', 'ef']);
         const showAll = hasFlags.aux || hasFlags.ef || args.includes('aux') || args.includes('-ef');
-
         if (showAll) {
             const output = [
                 'USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND',
@@ -128,7 +116,6 @@ export const ps: Command = createCommand(
         ]
     }
 );
-
 export const free: Command = createCommand(
     'free',
     'Display memory usage',
@@ -145,7 +132,6 @@ export const free: Command = createCommand(
         usage: 'free'
     }
 );
-
 export const hostname: Command = createCommand(
     'hostname',
     'Show system hostname',
@@ -157,7 +143,6 @@ export const hostname: Command = createCommand(
         usage: 'hostname'
     }
 );
-
 export const kill: Command = createCommand(
     'kill',
     'Terminate process',
@@ -173,14 +158,11 @@ export const kill: Command = createCommand(
         usage: 'kill [pid]'
     }
 );
-
-// Alias: neofetch -> fetch
 export const neofetch: Command = createAliasCommand(
     'neofetch',
     'Display system info (alias for fetch)',
     () => fetch
 );
-
 export const systemCommands = {
     whoami,
     fetch,

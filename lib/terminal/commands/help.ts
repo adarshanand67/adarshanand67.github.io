@@ -1,10 +1,5 @@
 import { Command } from '../types';
 import { createCommand, addLines } from '../helpers';
-
-/**
- * Help command - displays available commands organized by category
- */
-
 export const help: Command = createCommand(
     'help',
     'List available commands',
@@ -53,7 +48,6 @@ export const help: Command = createCommand(
         usage: 'help'
     }
 );
-
 export const helpCommand = {
     help
 };

@@ -1,21 +1,17 @@
 "use client";
-
 import Link from "next/link";
 import { ReactNode } from "react";
 import { useGlobalState } from "@/components/common/GlobalProvider";
 import { useUISound } from "@/hooks/useUISound";
-
 interface GlitchLinkProps {
     href: string;
     children: ReactNode;
     className?: string;
     onClick?: () => void;
 }
-
 export default function GlitchLink({ href, children, className = "", onClick }: GlitchLinkProps) {
     const { isSoundEnabled } = useGlobalState();
     const { playSound } = useUISound(isSoundEnabled);
-
     return (
         <Link
             href={href}

@@ -8,8 +8,6 @@ import Footer from "@/components/layout/Footer";
 import { CommandMenu } from "@/components/layout/CommandMenu";
 import { MatrixRain } from "@/components/ui/MatrixRain";
 import MusicPlayer from "@/components/widgets/MusicPlayer";
-import MusicToggleButton from "@/components/widgets/MusicToggleButton";
-import ChatWidget from "@/components/widgets/ChatWidget";
 import { siteConfig } from "@/config";
 import { StructuredData } from "@/components/seo/StructuredData";
 import { generatePersonSchema, generateWebSiteSchema } from "@/lib/seo/schemas";

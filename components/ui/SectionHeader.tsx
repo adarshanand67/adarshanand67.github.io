@@ -1,8 +1,6 @@
 "use client";
-
 import { ChevronDown } from "lucide-react";
 import { ReactNode } from "react";
-
 interface SectionHeaderProps {
     title: string;
     command: string;
@@ -10,7 +8,6 @@ interface SectionHeaderProps {
     onToggle: () => void;
     rightElement?: ReactNode;
 }
-
 export default function SectionHeader({
     title,
     command,

@@ -1,4 +1,3 @@
-// Barrel export for all lib utilities
 export * from './config';
 export * from './constants';
 export * from './design-tokens';

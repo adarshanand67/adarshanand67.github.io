@@ -1,16 +1,13 @@
 "use client";
-
 import Link from "next/link";
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
-
 interface Item {
     title: string;
     url: string;
     date?: string;
     isExternal?: boolean;
 }
-
 interface RecentSectionProps {
     title: string;
     command: string;
@@ -18,7 +15,6 @@ interface RecentSectionProps {
     linkText: string;
     linkUrl: string;
 }
-
 export default function RecentSection({
     title,
     command,
@@ -27,7 +23,6 @@ export default function RecentSection({
     linkUrl,
 }: RecentSectionProps) {
     const [isExpanded, setIsExpanded] = useState(false);
-
     return (
         <section
             className="font-mono group/section cursor-pointer"
@@ -51,7 +46,6 @@ export default function RecentSection({
                 <span className="opacity-75">{command}</span>
                 <span className="animate-pulse inline-block w-2 h-4 bg-green-500 align-middle shadow-[0_0_8px_rgba(34,197,94,0.8)]"></span>
             </div>
-
             <div
                 className={`transition-all duration-300 ease-in-out overflow-hidden ${isExpanded ? 'max-h-[3000px] opacity-100' : 'max-h-0 opacity-0'
                     }`}
@@ -75,7 +69,6 @@ export default function RecentSection({
                         </div>
                     ))}
                 </div>
-
                 <p className="mt-4 text-sm text-gray-500">
                     →{" "}
                     <Link href={linkUrl} className="text-green-700 dark:text-green-400 hover:underline">
