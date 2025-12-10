@@ -30,6 +30,19 @@ export const TRACK_NAMES = [
     "Guren no Yumiya (Attack on Titan)",
 ] as const;
 
+export const TRACK_IMAGES = [
+    "https://m.media-amazon.com/images/M/MV5BYTlhNzJjYzYtNGU3My00ZDNiLWEyZjItYTdiOTIxOTc1YWQ0XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_.jpg", // Evangelion
+    "https://m.media-amazon.com/images/M/MV5BZjJlNzE5YzEtYzQwYS00NTBjLTk5YzEtYWQ3ZTI5YjgzNzNhXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_.jpg", // One Punch Man
+    "https://m.media-amazon.com/images/M/MV5BNDc2NjdmMjItZjlkNy00NjZjLTk0NjUtODZkMjRkMjNlMmRjXkEyXkFqcGdeQXVyMTA1OTcyNDQ4._V1_.jpg", // Pokemon
+    "https://m.media-amazon.com/images/M/MV5BNzJlNGNkNDctMjcwYy00YjkzLTk3YjMtNGRjN2Y1ZWY4NzJiXkEyXkFqcGdeQXVyNjI4OTE5OTM@._V1_.jpg", // Cowboy Bebop
+    "https://m.media-amazon.com/images/M/MV5BYjg3YjM3MGEtNTZkOS00ZDQ5LWFkN2YtOWFjMGE5MWMyYzZjXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_.jpg", // Tokyo Ghoul
+    "https://m.media-amazon.com/images/M/MV5BNTBjZTJmNTctYTZkYS00ZmJhLWFkOTgtNjgzMzZmMjJiNzJlXkEyXkFqcGdeQXVyNTgyNTA4MjM@._V1_.jpg", // Samurai Champloo
+    "https://m.media-amazon.com/images/M/MV5BZmQ5NGFiNWEtMmMyMC00MDdiLTg4YjktOGY5Yzc2MDUxMTE1XkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_.jpg", // Naruto
+    "https://m.media-amazon.com/images/M/MV5BZmQ5NGFiNWEtMmMyMC00MDdiLTg4YjktOGY5Yzc2MDUxMTE1XkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_.jpg", // Naruto
+    "https://m.media-amazon.com/images/M/MV5BNzhiYjY3ZjUtZWJkMi00ZWNiLWFjNGMtNjkwZjMyNWJiMzRhXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_.jpg", // Death Note
+    "https://m.media-amazon.com/images/M/MV5BNzc5MTczNjQtOWFkNS00MjJmLWJiMzYtZjhjMDk5NTI2NmM5XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_.jpg", // Attack on Titan
+] as const;
+
 export const INTRO_LINES = (toLeet: (t: string) => string) => [
     `> ./${siteConfig.author.name.toLowerCase().replace(' ', '_')}_profile.sh`,
     "> Initializing SDE protocol...",

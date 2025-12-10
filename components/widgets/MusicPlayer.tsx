@@ -1,10 +1,11 @@
 "use client";
 
 import { useRef, useEffect, useState } from "react";
-import { Play, Pause, Volume2, VolumeX, SkipForward, SkipBack, X, Maximize2, Minimize2 } from "lucide-react";
+import { Play, Pause, Volume2, VolumeX, SkipForward, SkipBack, X, Maximize2 } from "lucide-react";
 import { useGlobalState } from "@/components/common/GlobalProvider";
-import { PLAYLIST, TRACK_NAMES, AUDIO_CONFIG, ERROR_MESSAGES } from "@/lib";
+import { PLAYLIST, TRACK_NAMES, TRACK_IMAGES, AUDIO_CONFIG, ERROR_MESSAGES } from "@/lib";
 import { useMounted } from "@/lib/hooks";
+import Image from "next/image";
 
 export default function MusicPlayer() {
     const {
@@ -22,7 +23,7 @@ export default function MusicPlayer() {
     const [position, setPosition] = useState({ x: 20, y: 20 });
     const [isDragging, setIsDragging] = useState(false);
     const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
-    const [isCompact, setIsCompact] = useState(false);
+    const [isCompact, setIsCompact] = useState(true); // Start in compact mode
     const playerRef = useRef<HTMLDivElement>(null);
 
     const [currentTime, setCurrentTime] = useState(0);
@@ -200,16 +201,18 @@ export default function MusicPlayer() {
                             </span>
                         </div>
                         <div className="flex items-center gap-1">
-                            <button
-                                onClick={(e) => {
-                                    e.stopPropagation();
-                                    setIsCompact(!isCompact);
-                                }}
-                                className="p-1.5 rounded-lg hover:bg-white/10 transition-colors cursor-pointer"
-                                aria-label={isCompact ? "Expand" : "Compact"}
-                            >
-                                {isCompact ? <Maximize2 size={14} className="text-gray-400" /> : <Minimize2 size={14} className="text-gray-400" />}
-                            </button>
+                            {isCompact && (
+                                <button
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        setIsCompact(false);
+                                    }}
+                                    className="p-1.5 rounded-lg hover:bg-white/10 transition-colors cursor-pointer"
+                                    aria-label="Expand"
+                                >
+                                    <Maximize2 size={14} className="text-gray-400" />
+                                </button>
+                            )}
                             <button
                                 onClick={(e) => {
                                     e.stopPropagation();
@@ -223,21 +226,25 @@ export default function MusicPlayer() {
                         </div>
                     </div>
 
-                    {/* Album art placeholder with gradient */}
+                    {/* Album art with anime poster */}
                     {!isCompact && (
-                        <div className="relative h-32 bg-gradient-to-br from-green-600 via-emerald-600 to-green-700 flex items-center justify-center overflow-hidden">
-                            <div className="absolute inset-0 bg-black/20"></div>
-                            <div className="relative z-10 flex flex-col items-center">
-                                <div className={`w-16 h-16 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center border-2 border-white/20 ${isPlaying ? 'animate-spin-slow' : ''}`}>
-                                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-green-400 to-emerald-500 flex items-center justify-center">
-                                        <div className="w-3 h-3 rounded-full bg-gray-900"></div>
-                                    </div>
+                        <div className="relative h-48 overflow-hidden">
+                            <Image
+                                src={TRACK_IMAGES[currentTrackIndex]}
+                                alt={TRACK_NAMES[currentTrackIndex] || "Album Art"}
+                                fill
+                                className="object-cover"
+                                priority
+                            />
+                            {/* Overlay gradient */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                            {/* Playing indicator */}
+                            {isPlaying && (
+                                <div className="absolute bottom-4 right-4 flex items-center gap-2 bg-black/60 backdrop-blur-sm px-3 py-1.5 rounded-full">
+                                    <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                                    <span className="text-xs text-white font-medium">Playing</span>
                                 </div>
-                            </div>
-                            {/* Animated background */}
-                            <div className="absolute inset-0 opacity-30">
-                                <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-transparent via-white/5 to-transparent animate-pulse"></div>
-                            </div>
+                            )}
                         </div>
                     )}
 
