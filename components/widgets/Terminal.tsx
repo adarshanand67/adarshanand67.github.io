@@ -237,99 +237,113 @@ export default function Terminal() {
 
   return (
     <div
-      className={`w-full max-w-4xl bg-white/70 dark:bg-black/60 backdrop-blur-xl rounded-lg shadow-2xl overflow-hidden border border-white/20 dark:border-white/10 font-mono text-base my-8 select-text relative transition-all duration-500 ease-in-out ${isExpanded ? 'h-auto' : 'h-12'}`}
+      className="w-full max-w-4xl relative"
       onClick={handleTerminalWrapperClick}
     >
-      <div
-        className="bg-white/50 dark:bg-white/5 px-4 h-12 flex items-center justify-between border-b border-white/20 dark:border-white/10 cursor-pointer hover:bg-white/60 dark:hover:bg-white/10 transition-colors"
-        onClick={(e) => {
-          e.stopPropagation(); // Prevent wrapper click logic
-          setIsExpanded(!isExpanded);
-        }}
-      >
-        <div className="flex items-center gap-2">
-          <div className={`w-3 h-3 rounded-full bg-[#FF5F56] shadow-sm ${!isExpanded && 'animate-pulse'}`}></div>
-          <div className="w-3 h-3 rounded-full bg-[#FFBD2E] shadow-sm"></div>
-          <div className="w-3 h-3 rounded-full bg-[#27C93F] shadow-sm"></div>
-          <span className="ml-2 text-gray-600 dark:text-gray-400 text-sm font-medium opacity-80">adarsh@linux:~</span>
-        </div>
-        <div className="flex items-center gap-2 text-gray-500 text-sm">
-          {!isExpanded && <span className="hidden sm:inline opacity-50">Click to expand terminal</span>}
-          <ChevronDown
-            size={18}
-            className={`transition-transform duration-300 ${isExpanded ? 'rotate-0' : '-rotate-90'}`}
-          />
-        </div>
-      </div>
-
-      <div
-        ref={containerRef}
-        className={`p-6 text-gray-800 dark:text-gray-300 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 dark:scrollbar-thumb-gray-700 scrollbar-track-transparent transition-all duration-300 ${isExpanded ? 'h-[500px] opacity-100' : 'h-0 opacity-0 overflow-hidden p-0'}`}
-      >
-        {lines.map((line, i) => {
-          // Parse ANSI color codes
-          const parseAnsi = (text: string) => {
-            const ansiColors: Record<string, string> = {
-              '30': 'text-black',
-              '31': 'text-red-500',
-              '32': 'text-green-500',
-              '33': 'text-yellow-500',
-              '34': 'text-blue-500',
-              '35': 'text-purple-500',
-              '36': 'text-cyan-500',
-              '37': 'text-white',
-              '90': 'text-gray-500',
-              '1': 'font-bold',
-              '0': '',
-            };
-
-            const parts = text.split(/(\x1b\[\d+m)/g);
-            let currentColor = '';
-
-            return parts.map((part, idx) => {
-              const match = part.match(/\x1b\[(\d+)m/);
-              if (match) {
-                currentColor = ansiColors[match[1]] || '';
-                return null;
-              }
-              if (!part) return null;
-              return currentColor ? (
-                <span key={idx} className={currentColor}>{part}</span>
-              ) : part;
-            }).filter(Boolean);
-          };
-
-          return (
-            <div
-              key={i}
-              className={`mb-1 whitespace-pre-wrap ${line.startsWith('$ ') ? 'text-green-600 dark:text-green-400 font-semibold' : ''}`}
-            >
-              {line.includes('\x1b[') ? parseAnsi(line) : line}
+      <div className="relative bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm rounded-xl p-4 border border-gray-200 dark:border-gray-800 hover:border-green-500/50 transition-colors duration-300">
+        <section className="font-mono">
+          <div
+            className="w-full text-left group mb-3 cursor-pointer"
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsExpanded(!isExpanded);
+            }}
+          >
+            <h2 className="text-2xl font-bold flex items-center gap-2 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors mb-2">
+              <span className="text-primary">##</span> <span className="text-green-700 dark:text-green-400">Terminal</span>
+              <ChevronDown
+                size={20}
+                className={`transition-transform duration-300 ${isExpanded ? 'rotate-0' : '-rotate-90'}`}
+              />
+            </h2>
+            <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400 text-sm">
+              <span className="text-green-500 font-bold">$</span>
+              <span>./interactive-shell.sh</span>
+              <span className="animate-pulse inline-block w-2 h-4 bg-green-500 align-middle"></span>
             </div>
-          );
-        })}
-
-        {isIntroDone && (
-          <div className="flex items-center">
-            <span className="mr-2 text-green-600 dark:text-green-400 font-bold">$</span>
-            <input
-              ref={inputRef}
-              type={passwordMode ? "password" : "text"}
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              onKeyDown={handleKeyDown}
-              className="bg-transparent border-none outline-none text-green-600 dark:text-green-400 flex-grow font-medium focus:ring-0 focus:outline-none"
-              autoFocus
-              spellCheck={false}
-
-              autoComplete="off"
-              placeholder={passwordMode ? "●●●●●●●●" : ""}
-            />
-            {passwordMode && input.length === 0 && (
-              <span className="animate-pulse text-green-600 dark:text-green-400">▊</span>
-            )}
           </div>
-        )}
+
+          <div className={`transition-all duration-500 ease-in-out ${isExpanded ? 'opacity-100 max-h-[1000px]' : 'opacity-0 max-h-0 overflow-hidden'}`}>
+            <div className="w-full bg-white/70 dark:bg-black/60 backdrop-blur-xl rounded-lg shadow-2xl overflow-hidden border border-white/20 dark:border-white/10 font-mono text-base select-text relative">
+              <div className="bg-white/50 dark:bg-white/5 px-4 h-8 flex items-center gap-2 border-b border-white/20 dark:border-white/10">
+                <div className="w-3 h-3 rounded-full bg-[#FF5F56] shadow-sm"></div>
+                <div className="w-3 h-3 rounded-full bg-[#FFBD2E] shadow-sm"></div>
+                <div className="w-3 h-3 rounded-full bg-[#27C93F] shadow-sm"></div>
+                <span className="ml-2 text-gray-600 dark:text-gray-400 text-xs font-medium opacity-80">adarsh@linux:~</span>
+              </div>
+
+              <div
+                ref={containerRef}
+                className="p-4 text-gray-800 dark:text-gray-300 h-[400px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 dark:scrollbar-thumb-gray-700 scrollbar-track-transparent"
+              >
+                {lines.map((line, i) => {
+                  // Parse ANSI color codes
+                  const parseAnsi = (text: string) => {
+                    const ansiColors: Record<string, string> = {
+                      '30': 'text-black',
+                      '31': 'text-red-500',
+                      '32': 'text-green-500',
+                      '33': 'text-yellow-500',
+                      '34': 'text-blue-500',
+                      '35': 'text-purple-500',
+                      '36': 'text-cyan-500',
+                      '37': 'text-white',
+                      '90': 'text-gray-500',
+                      '1': 'font-bold',
+                      '0': '',
+                    };
+
+                    const parts = text.split(/(\x1b\[\d+m)/g);
+                    let currentColor = '';
+
+                    return parts.map((part, idx) => {
+                      const match = part.match(/\x1b\[(\d+)m/);
+                      if (match) {
+                        currentColor = ansiColors[match[1]] || '';
+                        return null;
+                      }
+                      if (!part) return null;
+                      return currentColor ? (
+                        <span key={idx} className={currentColor}>{part}</span>
+                      ) : part;
+                    }).filter(Boolean);
+                  };
+
+                  return (
+                    <div
+                      key={i}
+                      className={`mb-1 whitespace-pre-wrap ${line.startsWith('$ ') ? 'text-green-600 dark:text-green-400 font-semibold' : ''}`}
+                    >
+                      {line.includes('\x1b[') ? parseAnsi(line) : line}
+                    </div>
+                  );
+                })}
+
+                {isIntroDone && (
+                  <div className="flex items-center">
+                    <span className="mr-2 text-green-600 dark:text-green-400 font-bold">$</span>
+                    <input
+                      ref={inputRef}
+                      type={passwordMode ? "password" : "text"}
+                      value={input}
+                      onChange={(e) => setInput(e.target.value)}
+                      onKeyDown={handleKeyDown}
+                      className="bg-transparent border-none outline-none text-green-600 dark:text-green-400 flex-grow font-medium focus:ring-0 focus:outline-none"
+                      autoFocus
+                      spellCheck={false}
+
+                      autoComplete="off"
+                      placeholder={passwordMode ? "●●●●●●●●" : ""}
+                    />
+                    {passwordMode && input.length === 0 && (
+                      <span className="animate-pulse text-green-600 dark:text-green-400">▊</span>
+                    )}
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   );
