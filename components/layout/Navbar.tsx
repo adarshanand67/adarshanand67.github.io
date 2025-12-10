@@ -18,7 +18,7 @@ export default function Navbar() {
     <>
       <div className="h-14" />
       <nav
-        className="fixed top-0 left-0 right-0 z-50 border-b border-gray-200/50 dark:border-gray-800/50 bg-background transition-all duration-300 font-mono"
+        className="fixed top-0 left-0 right-0 z-50 border-b border-gray-200/50 dark:border-gray-800/50 bg-white/70 dark:bg-black/70 backdrop-blur-xl transition-all duration-300 font-mono"
         role="navigation"
         aria-label="main navigation"
       >
@@ -47,9 +47,9 @@ export default function Navbar() {
             {/* Brand */}
             <Link
               href={ROUTES.HOME}
-              className="text-lg font-bold text-foreground hover:text-green-600 dark:hover:text-green-400 transition-colors"
+              className="text-lg font-bold text-foreground hover:text-green-600 dark:hover:text-green-400 transition-colors flex items-center gap-2"
             >
-              ~/adarsh
+              Adarsh Anand
             </Link>
 
             {/* Mobile: Theme toggle on right */}

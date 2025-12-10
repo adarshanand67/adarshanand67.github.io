@@ -187,14 +187,14 @@ export default function Terminal() {
 
   return (
     <div
-      className="w-full max-w-4xl bg-white dark:bg-[#1e1e1e] rounded-lg shadow-xl overflow-hidden border border-gray-300 dark:border-gray-800 font-mono text-base my-8 select-text relative"
+      className="w-full max-w-4xl bg-white/70 dark:bg-black/60 backdrop-blur-xl rounded-lg shadow-2xl overflow-hidden border border-white/20 dark:border-white/10 font-mono text-base my-8 select-text relative"
       onClick={handleTerminalClick}
     >
-      <div className="bg-gray-100 dark:bg-[#2d2d2d] px-4 py-2 flex items-center gap-2 border-b border-gray-300 dark:border-gray-700">
-        <div className="w-3 h-3 rounded-full bg-red-500"></div>
-        <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-        <div className="w-3 h-3 rounded-full bg-green-500"></div>
-        <span className="ml-2 text-gray-600 dark:text-gray-400 text-sm">adarsh@linux:~</span>
+      <div className="bg-white/50 dark:bg-white/5 px-4 py-2 flex items-center gap-2 border-b border-white/20 dark:border-white/10">
+        <div className="w-3 h-3 rounded-full bg-[#FF5F56] shadow-sm"></div>
+        <div className="w-3 h-3 rounded-full bg-[#FFBD2E] shadow-sm"></div>
+        <div className="w-3 h-3 rounded-full bg-[#27C93F] shadow-sm"></div>
+        <span className="ml-2 text-gray-600 dark:text-gray-400 text-sm font-medium opacity-80">adarsh@linux:~</span>
       </div>
       <div
         ref={containerRef}

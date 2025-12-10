@@ -190,7 +190,7 @@ export default function MusicPlayer() {
                 <div className="absolute -inset-1 bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl blur-lg opacity-50 group-hover:opacity-75 transition duration-500"></div>
 
                 {/* Main player container */}
-                <div className="relative bg-gradient-to-br from-gray-900 via-black to-gray-900 rounded-2xl shadow-2xl overflow-hidden border border-gray-800">
+                <div className="relative bg-black/60 backdrop-blur-xl rounded-2xl shadow-2xl overflow-hidden border border-white/10">
                     {/* Header */}
                     <div className="flex items-center justify-between px-3 py-2 bg-black/40 backdrop-blur-sm border-b border-gray-800/50">
                         <div className="flex items-center gap-2">

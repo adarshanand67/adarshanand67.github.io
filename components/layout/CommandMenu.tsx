@@ -58,7 +58,7 @@ export function CommandMenu() {
     >
       <div onClick={(e) => e.stopPropagation()} className="w-full max-w-[640px]">
         <Command
-          className="w-full bg-white dark:bg-[#1a1a1a] rounded-xl shadow-2xl border border-gray-200 dark:border-gray-800 p-2 overflow-hidden"
+          className="w-full bg-white/80 dark:bg-black/80 backdrop-blur-xl rounded-xl shadow-2xl border border-white/20 dark:border-gray-800 p-2 overflow-hidden"
           loop
         >
           <div className="flex items-center border-b border-gray-100 dark:border-gray-800 px-3 pb-2 mb-2">
