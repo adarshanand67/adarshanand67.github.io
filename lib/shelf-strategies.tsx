@@ -115,6 +115,8 @@ export class AnimeCardStrategy implements ShelfItemStrategy<EntertainmentItem> {
     return items.filter(
       (item) =>
         item.title.toLowerCase().includes(lowerQuery) ||
+        (item.description && item.description.toLowerCase().includes(lowerQuery)) ||
+        (item.tags && item.tags.some(tag => tag.toLowerCase().includes(lowerQuery))) ||
         (item.notes && item.notes.toLowerCase().includes(lowerQuery))
     );
   }

@@ -29,6 +29,28 @@ export const AnimeShelf = ({ items }: AnimeShelfProps) => {
     const movieCompleted = filterItems(items, EntertainmentType.Movie, WatchStatus.Completed);
     const moviePlanning = filterItems(items, EntertainmentType.Movie, WatchStatus.Planning);
 
+    const formatSeasons = (notes: string | undefined) => {
+        if (!notes) return null;
+        // Collapse sequences like "S1,2,3...25" into "S1-25" if length > 8
+        // Pattern: S1 followed by comma-separated numbers
+        if (notes.match(/^S1(,\d+){8,}$/)) {
+            const last = notes.split(',').pop();
+            return `S1-${last}`;
+        }
+        // Pattern handling "S1,2,3,4,5... Shippuden..." - complex, keeping simple for now
+        // Just simple comma checking
+        const parts = notes.split(',');
+        if (parts.length > 8) {
+            // Check if they are mostly numbers
+            const first = parts[0].trim();
+            const last = parts[parts.length - 1].trim();
+            if (first.startsWith('S') && !isNaN(Number(last))) {
+                return `${first}-${last}`;
+            }
+        }
+        return notes;
+    };
+
     const AnimeCard = ({ item }: { item: EntertainmentItem }) => (
         <div onClick={() => setSelectedItem(item)} className="cursor-pointer h-full">
             <SpotlightCard className="h-full flex flex-col p-4 relative overflow-hidden group">
@@ -61,7 +83,9 @@ export const AnimeShelf = ({ items }: AnimeShelfProps) => {
                     {item.recommended && <Star className="w-4 h-4 text-yellow-500 fill-yellow-500 shrink-0" />}
                 </h3>
                 {item.notes && (
-                    <p className="text-sm text-gray-500 dark:text-gray-400 mt-auto font-mono break-words line-clamp-2">{item.notes}</p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400 mt-auto font-mono break-words line-clamp-2">
+                        {formatSeasons(item.notes)}
+                    </p>
                 )}
                 {/* Mini tags preview */}
                 {item.tags && item.tags.length > 0 && (
@@ -184,7 +208,7 @@ export const AnimeShelf = ({ items }: AnimeShelfProps) => {
                                             <Layers size={14} /> Seasons / Progress
                                         </h4>
                                         <p className="font-mono text-sm text-gray-600 dark:text-gray-400">
-                                            {selectedItem.notes}
+                                            {formatSeasons(selectedItem.notes)}
                                         </p>
                                     </div>
                                 )}
