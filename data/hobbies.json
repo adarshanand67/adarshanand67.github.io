@@ -98,5 +98,10 @@
         "name": "Tech Conferences",
         "description": "Networking and learning at tech meetups.",
         "icon": "Users"
+    },
+    {
+        "name": "Toastmasters",
+        "description": "Public speaking and leadership development.",
+        "icon": "Mic"
     }
 ]
