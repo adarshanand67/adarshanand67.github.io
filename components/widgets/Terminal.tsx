@@ -49,7 +49,7 @@ export default function Terminal() {
     }
   }, [isIntroDone]);
 
-  const executeCommand = (cmd: string) => {
+  const executeCommand = async (cmd: string) => {
     // Password mode handling (KEEPING IN COMPONENT FOR NOW for simplicity of state)
     if (passwordMode) {
       setPasswordMode(false);
@@ -74,37 +74,75 @@ export default function Terminal() {
       setHistoryIndex(-1);
     }
 
-    const parts = cmd.trim().split(/\s+/);
-    const commandName = parts[0]?.toLowerCase() || '';
-    const args = parts.slice(1);
+    // Echo command
+    setLines((prev) => [...prev, `$ ${cmd}`]);
 
-    if (!commandName) return;
+    const pipeParts = cmd.split('|').map(p => p.trim()).filter(p => p);
+    if (pipeParts.length === 0) return;
 
-    const newLines = [...lines, `$ ${cmd}`];
-    // Immediate state update for the command echo, then let command logic append more
-    setLines(newLines);
+    let currentInput: string | undefined = undefined;
 
-    const command = commands[commandName];
-    if (command) {
-      // Execute command
-      command.execute(args, {
-        setLines,
-        setPasswordMode,
-        router,
-        setTheme,
-        isMatrixEnabled,
-        toggleMatrix,
-        setIsPlaying,
-        nextTrack,
-        prevTrack,
-        toggleMute,
-        setInput,
-        commandHistory: history,
-        toggleMusicPlayer,
-        setShowMusicPlayer
-      });
-    } else {
-      setLines((prev) => [...prev, `Command not found: ${commandName}. Type 'help' for available commands.`]);
+    // We creating a partial context to share (setLines will be overridden per command if needed)
+    const baseContext = {
+      setPasswordMode,
+      router,
+      setTheme,
+      isMatrixEnabled,
+      toggleMatrix,
+      setIsPlaying,
+      nextTrack,
+      prevTrack,
+      toggleMute,
+      setInput,
+      commandHistory: history,
+      toggleMusicPlayer,
+      setShowMusicPlayer
+    };
+
+    try {
+      for (let i = 0; i < pipeParts.length; i++) {
+        const part = pipeParts[i];
+        const parts = part.trim().split(/\s+/);
+        const commandName = parts[0]?.toLowerCase() || '';
+        const args = parts.slice(1);
+
+        if (!commandName) continue;
+
+        const command = commands[commandName];
+        if (!command) {
+          setLines((prev) => [...prev, `Command not found: ${commandName}`]);
+          return;
+        }
+
+        if (i < pipeParts.length - 1) {
+          // Capture output
+          let captured: string[] = [];
+          const mockSetLines: React.Dispatch<React.SetStateAction<string[]>> = (action) => {
+            if (typeof action === 'function') {
+              captured = action(captured);
+            } else {
+              if (Array.isArray(action)) {
+                captured = [...captured, ...action];
+              } else {
+                // Should not happen with our use of addLine/addLines
+                captured = [...captured, action as string];
+              }
+            }
+          };
+
+          const context = { ...baseContext, setLines: mockSetLines };
+          // @ts-ignore - mockSetLines matching
+          await command.execute(args, context, currentInput);
+          currentInput = captured.join('\n');
+        } else {
+          // Final command - output to real terminal
+          const context = { ...baseContext, setLines };
+          await command.execute(args, context, currentInput);
+        }
+      }
+    } catch (error) {
+      console.error("Exec error", error);
+      setLines((prev) => [...prev, `Error executing command.`]);
     }
   };
 

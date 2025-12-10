@@ -12,8 +12,8 @@ const DECODED_FLAG = 'flag{H1dd3n_T3rm1n4l_M45t3r}';
 export const base64: Command = createCommand(
     'base64',
     'Encode or decode base64 strings',
-    (args, { setLines }) => {
-        if (args.length === 0) {
+    (args, { setLines }, input) => {
+        if (args.length === 0 && !input) {
             addLines(setLines, [
                 '',
                 'Usage: base64 [-d] <string>',
@@ -28,7 +28,23 @@ export const base64: Command = createCommand(
         }
 
         const isDecode = args[0] === '-d' || args[0] === '--decode';
-        const text = isDecode ? args.slice(1).join(' ') : args.join(' ');
+        // If decoding, args[0] is flag. text is rest.
+        // If encoding, text is all args.
+        // BUT if input is present, we might have flags but no text args.
+
+        let text = '';
+
+        // Handle args text
+        if (isDecode) {
+            text = args.slice(1).join(' ');
+        } else {
+            text = args.join(' ');
+        }
+
+        // Fallback to piped input if no text in args
+        if (!text && input) {
+            text = input.trim();
+        }
 
         if (!text) {
             addLine(setLines, '');

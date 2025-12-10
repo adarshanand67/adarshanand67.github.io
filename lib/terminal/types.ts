@@ -55,7 +55,8 @@ export type CommandArgs = readonly string[];
  */
 export type CommandFn = (
     args: CommandArgs,
-    context: CommandContext
+    context: CommandContext,
+    input?: string
 ) => void | Promise<void>;
 
 /**
