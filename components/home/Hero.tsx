@@ -17,9 +17,9 @@ export default async function Hero() {
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start max-lg:items-center max-lg:justify-center">
         {/* Left Column - Description */}
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-6 max-lg:items-center max-lg:text-center">
           {/* Terminal prompt with enhanced styling */}
           <div className="font-mono mb-2 flex items-center gap-2 group">
             <span className="text-green-500 font-bold text-lg group-hover:scale-110 transition-transform">$</span>{" "}
