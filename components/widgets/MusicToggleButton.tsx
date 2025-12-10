@@ -14,7 +14,7 @@ export default function MusicToggleButton() {
         <button
             onClick={toggleMusicPlayer}
             className={`
-                fixed bottom-6 right-6 z-40
+                fixed bottom-6 left-6 z-40
                 p-4 rounded-full
                 bg-gradient-to-br from-green-500 to-emerald-600
                 hover:from-green-600 hover:to-emerald-700
@@ -42,7 +42,7 @@ export default function MusicToggleButton() {
 
             {/* Tooltip */}
             <span className="
-                absolute bottom-full right-0 mb-2
+                absolute bottom-full left-0 mb-2
                 px-3 py-1.5 rounded-lg
                 bg-gray-900 text-white text-sm
                 whitespace-nowrap
