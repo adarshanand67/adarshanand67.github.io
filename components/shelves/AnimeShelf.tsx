@@ -118,7 +118,7 @@ export const AnimeShelf = ({ items }: AnimeShelfProps) => {
                     <span className="text-gray-500">##</span> {title}
                     <span className="text-gray-500 text-sm ml-2">({sectionItems.length})</span>
                 </h2>
-                <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-4">
+                <div className="grid grid-cols-2 gap-3 md:gap-4">
                     {sectionItems.map((item, index) => <AnimeCard key={index} item={item} />)}
                 </div>
             </div>
@@ -263,7 +263,7 @@ export const AnimeShelf = ({ items }: AnimeShelfProps) => {
                             {/* Watch Link - Bottom */}
                             <div className="mt-8 pt-4">
                                 <a
-                                    href={`https://www.youtube.com/results?search_query=${encodeURIComponent(selectedItem.title + " trailer")}`}
+                                    href={`https://www.youtube.com/results?search_query=${encodeURIComponent(selectedItem.title + " anime trailer official")}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="inline-flex items-center justify-center gap-2 w-full px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-md text-base font-bold transition-all transform hover:scale-[1.02] shadow-lg"
