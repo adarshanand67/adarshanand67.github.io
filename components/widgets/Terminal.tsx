@@ -7,6 +7,7 @@ import { toLeetSpeak } from "@/lib/utils/leet";
 import { useGlobalState } from "@/components/common/GlobalProvider";
 import { commands } from "@/lib/terminal/commands";
 import { INTRO_LINES, DIRECTORIES } from "@/lib/constants";
+import { ChevronDown } from "lucide-react";
 
 export default function Terminal() {
   const router = useRouter();
@@ -24,9 +25,17 @@ export default function Terminal() {
   const [history, setHistory] = useState<string[]>([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
   const [passwordMode, setPasswordMode] = useState(false); // For sudo
+  const [isExpanded, setIsExpanded] = useState(true);
 
   const containerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  // Check mobile on mount
+  useEffect(() => {
+    if (window.innerWidth < 1024) { // Collapse on mobile/tablet
+      setIsExpanded(false);
+    }
+  }, []);
 
   useEffect(() => {
     if (isMatrixEnabled) {
@@ -211,7 +220,10 @@ export default function Terminal() {
     }
   };
 
-  const handleTerminalClick = (e: React.MouseEvent) => {
+  const handleTerminalWrapperClick = (e: React.MouseEvent) => {
+    // If collapsed, don't focus
+    if (!isExpanded) return;
+
     // Don't focus if user is selecting text
     const selection = window.getSelection();
     if (selection && selection.toString().length > 0) {
@@ -225,18 +237,34 @@ export default function Terminal() {
 
   return (
     <div
-      className="w-full max-w-4xl bg-white/70 dark:bg-black/60 backdrop-blur-xl rounded-lg shadow-2xl overflow-hidden border border-white/20 dark:border-white/10 font-mono text-base my-8 select-text relative"
-      onClick={handleTerminalClick}
+      className={`w-full max-w-4xl bg-white/70 dark:bg-black/60 backdrop-blur-xl rounded-lg shadow-2xl overflow-hidden border border-white/20 dark:border-white/10 font-mono text-base my-8 select-text relative transition-all duration-500 ease-in-out ${isExpanded ? 'h-auto' : 'h-12'}`}
+      onClick={handleTerminalWrapperClick}
     >
-      <div className="bg-white/50 dark:bg-white/5 px-4 py-2 flex items-center gap-2 border-b border-white/20 dark:border-white/10">
-        <div className="w-3 h-3 rounded-full bg-[#FF5F56] shadow-sm"></div>
-        <div className="w-3 h-3 rounded-full bg-[#FFBD2E] shadow-sm"></div>
-        <div className="w-3 h-3 rounded-full bg-[#27C93F] shadow-sm"></div>
-        <span className="ml-2 text-gray-600 dark:text-gray-400 text-sm font-medium opacity-80">adarsh@linux:~</span>
+      <div
+        className="bg-white/50 dark:bg-white/5 px-4 h-12 flex items-center justify-between border-b border-white/20 dark:border-white/10 cursor-pointer hover:bg-white/60 dark:hover:bg-white/10 transition-colors"
+        onClick={(e) => {
+          e.stopPropagation(); // Prevent wrapper click logic
+          setIsExpanded(!isExpanded);
+        }}
+      >
+        <div className="flex items-center gap-2">
+          <div className={`w-3 h-3 rounded-full bg-[#FF5F56] shadow-sm ${!isExpanded && 'animate-pulse'}`}></div>
+          <div className="w-3 h-3 rounded-full bg-[#FFBD2E] shadow-sm"></div>
+          <div className="w-3 h-3 rounded-full bg-[#27C93F] shadow-sm"></div>
+          <span className="ml-2 text-gray-600 dark:text-gray-400 text-sm font-medium opacity-80">adarsh@linux:~</span>
+        </div>
+        <div className="flex items-center gap-2 text-gray-500 text-sm">
+          {!isExpanded && <span className="hidden sm:inline opacity-50">Click to expand terminal</span>}
+          <ChevronDown
+            size={18}
+            className={`transition-transform duration-300 ${isExpanded ? 'rotate-0' : '-rotate-90'}`}
+          />
+        </div>
       </div>
+
       <div
         ref={containerRef}
-        className="p-6 text-gray-800 dark:text-gray-300 h-[500px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 dark:scrollbar-thumb-gray-700 scrollbar-track-transparent"
+        className={`p-6 text-gray-800 dark:text-gray-300 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 dark:scrollbar-thumb-gray-700 scrollbar-track-transparent transition-all duration-300 ${isExpanded ? 'h-[500px] opacity-100' : 'h-0 opacity-0 overflow-hidden p-0'}`}
       >
         {lines.map((line, i) => {
           // Parse ANSI color codes
