@@ -71,7 +71,7 @@ export default function Footer() {
                   📺 Anime
                 </Link>
                 <Link
-                  href="/hobbyshelf"
+                  href="/HobbyShelf"
                   className="px-4 py-2 bg-white/50 dark:bg-gray-800/50 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-green-50 dark:hover:bg-green-900/20 hover:text-green-600 dark:hover:text-green-400 border border-gray-200 dark:border-gray-700 hover:border-green-500/50 transition-all duration-200 text-sm font-medium"
                 >
                   🎮 Hobbies
