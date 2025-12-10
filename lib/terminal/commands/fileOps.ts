@@ -21,7 +21,9 @@ export const cat: Command = createCommand(
         const files = nonFlagArgs;
 
         files.forEach(file => {
-            const content = getFileContent(file);
+            // Handle ~/ prefix
+            const normalizedFile = file.replace(/^~\//, '');
+            const content = getFileContent(normalizedFile);
 
             if (content) {
                 if (showLineNumbers) {
@@ -39,8 +41,9 @@ export const cat: Command = createCommand(
         category: 'file',
         usage: 'cat [-n] [file]',
         examples: [
-            'cat README.md       # Display file',
-            'cat -n skills.txt   # Display with line numbers'
+            'cat README.md         # Display file',
+            'cat -n skills.txt     # Display with line numbers',
+            'cat ~/footer.txt      # Display footer file'
         ]
     }
 );

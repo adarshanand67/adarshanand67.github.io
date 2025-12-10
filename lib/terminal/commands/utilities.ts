@@ -66,6 +66,12 @@ export const echo: Command = createCommand(
         const { hasFlags, nonFlagArgs } = parseFlags(args, ['n']);
         const text = nonFlagArgs.join(' ');
 
+        // Handle $CONTACT_INFO variable
+        if (text.includes('$CONTACT_INFO')) {
+            addLines(setLines, CONTACT_INFO as unknown as string[]);
+            return;
+        }
+
         // Handle special variables
         let output = text
             .replace(/\$HOME/g, '/home/adarsh')
@@ -79,8 +85,9 @@ export const echo: Command = createCommand(
         category: 'utility',
         usage: 'echo [-n] [text]',
         examples: [
-            'echo Hello World     # Print text',
-            'echo $HOME           # Print variable'
+            'echo Hello World       # Print text',
+            'echo $HOME             # Print variable',
+            'echo $CONTACT_INFO     # Show contact info'
         ]
     }
 );

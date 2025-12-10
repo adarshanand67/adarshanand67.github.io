@@ -1,6 +1,7 @@
 import { Command } from '../types';
 import { createCommand, createAliasCommand, parseFlags, addLines, addLine, showUsage, formatLongListing } from '../helpers';
 import { DIRECTORIES, DIRECTORY_MAP } from '@/lib/constants';
+import { getDirectoryContent } from '../mockFileSystem';
 
 /**
  * Navigation commands: ls, cd, pwd, tree, open
@@ -10,39 +11,39 @@ export const ls: Command = createCommand(
     'ls',
     'List directories',
     (args, { setLines }) => {
-        const { hasFlags } = parseFlags(args, ['l', 'a', 'la', 'al']);
+        const { hasFlags, nonFlagArgs } = parseFlags(args, ['l', 'a', 'la', 'al']);
         const hasLongFormat = hasFlags.l || hasFlags.la || hasFlags.al;
         const showHidden = hasFlags.a || hasFlags.la || hasFlags.al;
 
-        const directories = [...DIRECTORIES];
-        const files = ['README.md', 'package.json', '.gitignore', '.env.example'];
+        const path = nonFlagArgs[0] || '.';
+        const content = getDirectoryContent(path);
+
+        if (content.length === 0 && path !== '.' && path !== './' && path !== '~') {
+            addLine(setLines, `ls: ${path}: No such file or directory`);
+            return;
+        }
 
         if (hasLongFormat) {
-            const output: string[] = ['total 42'];
+            const output: string[] = [`total ${content.length * 4} `];
 
-            if (showHidden) {
+            if (showHidden && (path === '.' || path === './' || path === '~')) {
                 output.push(formatLongListing('.', true, 4096, 'Dec  9 22:30'));
                 output.push(formatLongListing('..', true, 4096, 'Dec  9 22:30'));
-                output.push(formatLongListing('.env.example', false, 256, 'Dec  9 22:30'));
-                output.push(formatLongListing('.gitignore', false, 128, 'Dec  9 22:30'));
-                output.push(formatLongListing('.secret', false, 64, 'Dec  9 22:30'));
             }
 
-            output.push(formatLongListing('README.md', false, 2048, 'Dec  9 22:30'));
-            output.push(formatLongListing('package.json', false, 1024, 'Dec  9 22:30'));
-
-            directories.forEach(d => {
-                output.push(formatLongListing(d, true, 4096, 'Dec  9 22:30'));
+            content.forEach(item => {
+                // Simple heuristic for directory detection in ls output
+                const isDir = item.endsWith('/') || !item.includes('.');
+                output.push(formatLongListing(item, isDir, isDir ? 4096 : 1024, 'Dec  9 22:30'));
             });
 
             addLines(setLines, output);
         } else {
-            const items = [
-                ...(showHidden ? ['.env.example', '.gitignore', '.secret'] : []),
-                'README.md',
-                'package.json',
-                ...directories.map(d => `${d}/`)
-            ];
+            // For root, maybe show hidden files if requested
+            let items = [...content];
+            if (showHidden && (path === '.' || path === './' || path === '~')) {
+                items = ['.env.example', '.gitignore', '.secret', ...items];
+            }
             addLine(setLines, items.join('  '));
         }
     },
@@ -75,7 +76,7 @@ export const cd: Command = createCommand(
             addLine(setLines, `Navigating to ${DIRECTORY_MAP[dir]}...`);
             router.push(DIRECTORY_MAP[dir]!);
         } else {
-            addLine(setLines, `Directory not found: ${args[0] || ''}`);
+            addLine(setLines, `Directory not found: ${args[0] || ''} `);
         }
     },
     {

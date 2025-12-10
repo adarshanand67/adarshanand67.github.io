@@ -1,8 +1,13 @@
+"use client";
+
 import Link from "next/link";
+import { useState } from "react";
 import WeatherWidget from "@/components/widgets/WeatherWidget";
-import { Heart, Zap, Sparkles } from "lucide-react";
+import { Heart, Zap, Sparkles, ChevronDown } from "lucide-react";
 
 export default function Footer() {
+  const [isExpanded, setIsExpanded] = useState(false);
+
   return (
     <footer className="relative py-16 border-t border-gray-200/50 dark:border-gray-800/50 mt-auto font-mono overflow-hidden">
       {/* Enhanced gradient background */}
@@ -21,54 +26,65 @@ export default function Footer() {
       <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl animate-pulse delay-1000"></div>
 
       <div className="max-w-4xl mx-auto px-4 relative z-10">
-        <div className="text-sm space-y-6">
-          {/* Terminal prompt */}
-          <div className="group">
-            <p className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-              <span className="text-green-500 font-bold group-hover:scale-110 transition-transform inline-block">$</span>
-              <span className="opacity-75">cat ~/footer.txt</span>
-              <span className="animate-pulse inline-block w-2 h-4 bg-green-500 align-middle ml-1"></span>
+        <div className="text-sm">
+          {/* Collapsible Toggle */}
+          <button
+            onClick={() => setIsExpanded(!isExpanded)}
+            className="w-full flex justify-center group mb-6 focus:outline-none"
+          >
+            <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
+              <ChevronDown
+                size={16}
+                className={`transition-transform duration-300 ${isExpanded ? 'rotate-180' : 'rotate-0'}`}
+              />
+              <span className="text-green-500 font-bold">$</span>
+              <span className="opacity-75 font-medium">cat ~/footer.txt</span>
+              <span className="animate-pulse inline-block w-2 h-4 bg-green-500 align-middle"></span>
+            </div>
+          </button>
+
+          {/* Collapsible Content */}
+          <div className={`transition-all duration-500 ease-in-out overflow-hidden space-y-6 ${isExpanded ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
+            }`}>
+            {/* Weather Widget */}
+            <div className="flex justify-center">
+              <WeatherWidget />
+            </div>
+
+            {/* Inspired by badge */}
+            <div className="flex justify-center">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-gray-100/80 to-gray-50/80 dark:from-gray-800/80 dark:to-gray-900/80 border border-gray-200/50 dark:border-gray-700/50 text-xs">
+                <Sparkles size={14} className="text-green-500" />
+                <span className="text-gray-600 dark:text-gray-400">Inspired by</span>
+                <Link
+                  href="https://arpitbhayani.me"
+                  target="_blank"
+                  className="text-green-700 dark:text-green-400 hover:text-green-600 dark:hover:text-green-300 font-semibold transition-colors"
+                >
+                  arpitbhayani.me
+                </Link>
+              </div>
+            </div>
+
+            {/* Made with love badge */}
+            <div className="flex items-center justify-center gap-2 text-sm">
+              <span className="text-gray-600 dark:text-gray-400">Made with</span>
+              <Heart size={16} className="text-red-500 animate-pulse fill-red-500" />
+              <span className="text-gray-600 dark:text-gray-400">and</span>
+              <Zap size={16} className="text-green-500 fill-green-500" />
+              <span className="text-gray-600 dark:text-gray-400">in</span>
+              <span className="font-semibold bg-gradient-to-r from-orange-500 via-white to-green-500 bg-clip-text text-transparent">India</span>
+            </div>
+
+            {/* Copyright moved to end */}
+            <p className="text-gray-500 dark:text-gray-400 font-medium text-center text-xs opacity-80 pt-4 border-t border-gray-200/50 dark:border-gray-800/50">
+              <span className="mr-1">©</span>
+              {new Date().getFullYear()}
+              <span className="ml-2 bg-gradient-to-r from-green-600 via-emerald-600 to-green-600 dark:from-green-400 dark:via-emerald-400 dark:to-green-400 bg-clip-text text-transparent font-bold">
+                Adarsh Anand
+              </span>
             </p>
           </div>
-
-          {/* Weather Widget */}
-          <div className="flex justify-center">
-            <WeatherWidget />
-          </div>
-
-          {/* Inspired by badge */}
-          <div className="flex justify-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-gray-100/80 to-gray-50/80 dark:from-gray-800/80 dark:to-gray-900/80 border border-gray-200/50 dark:border-gray-700/50">
-              <Sparkles size={14} className="text-green-500" />
-              <span className="text-xs text-gray-600 dark:text-gray-400">Inspired by</span>
-              <Link
-                href="https://arpitbhayani.me"
-                target="_blank"
-                className="text-xs text-green-700 dark:text-green-400 hover:text-green-600 dark:hover:text-green-300 font-semibold transition-colors"
-              >
-                arpitbhayani.me
-              </Link>
-            </div>
-          </div>
-
-          {/* Made with love badge */}
-          <div className="flex items-center justify-center gap-2 text-sm">
-            <span className="text-gray-600 dark:text-gray-400">Made with</span>
-            <Heart size={16} className="text-red-500 animate-pulse fill-red-500" />
-            <span className="text-gray-600 dark:text-gray-400">and</span>
-            <Zap size={16} className="text-green-500 fill-green-500" />
-            <span className="text-gray-600 dark:text-gray-400">in</span>
-            <span className="font-semibold bg-gradient-to-r from-orange-500 via-white to-green-500 bg-clip-text text-transparent">India</span>
-          </div>
-
-          {/* Copyright moved to end */}
-          <p className="text-gray-500 dark:text-gray-400 font-medium text-center text-xs opacity-80 pt-4 border-t border-gray-200/50 dark:border-gray-800/50">
-            <span className="mr-1">©</span>
-            {new Date().getFullYear()}
-            <span className="ml-2 bg-gradient-to-r from-green-600 via-emerald-600 to-green-600 dark:from-green-400 dark:via-emerald-400 dark:to-green-400 bg-clip-text text-transparent font-bold">
-              Adarsh Anand
-            </span>
-          </p>
         </div>
       </div>
     </footer>

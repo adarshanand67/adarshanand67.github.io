@@ -113,6 +113,99 @@ export const MOCK_FILES: Record<string, MockFile> = {
         content: [
             'ZmxhZ3tIMWRkM25fVDNybTFuNGxfTTQ1dDNyfQ=='
         ]
+    },
+    'footer.txt': {
+        type: 'file',
+        size: 256,
+        permissions: '-rw-r--r--',
+        owner: 'adarsh',
+        group: 'adarsh',
+        modified: 'Dec 10 18:57',
+        content: [
+            '© 2025 Adarsh Anand',
+            '',
+            'Links:',
+            '→ GitHub: https://github.com/adarshanand67',
+            '→ LinkedIn: https://linkedin.com/in/adarshanand67',
+            '',
+            'Inspired by arpitbhayani.me'
+        ]
+    },
+    'work/history.log': {
+        type: 'file',
+        size: 512,
+        permissions: '-rw-r--r--',
+        owner: 'adarsh',
+        group: 'adarsh',
+        modified: 'Dec 10 19:00',
+        content: [
+            '[2025-07] Joined Trellix as Software Development Engineer',
+            '          Team: Data Loss Prevention (Windows)',
+            '          Focus: Data Security, C++, Endpoint Protection',
+            '',
+            '[2024-06] Promoted to SDE at Intel Corporation',
+            '          Team: Confidential Computing (Intel SGX/TDX)',
+            '          Focus: Security, Fuzzing, Cryptography',
+            '',
+            '[2023-06] Started as Graduate Technical Intern at Intel',
+            '          Team: Device Onboarding',
+            '          Focus: FIDO, OpenSSL, Security Validation'
+        ]
+    },
+    '.skills': {
+        type: 'file',
+        size: 384,
+        permissions: '-rw-r--r--',
+        owner: 'adarsh',
+        group: 'adarsh',
+        modified: 'Dec 10 19:00',
+        content: [
+            'Primary Focus:',
+            '  • C++',
+            '  • Intel SGX/TDX',
+            '  • Kernel Development',
+            '  • System Programming',
+            '',
+            'Other Skills:',
+            '  • Data Loss Prevention',
+            '  • Trellix ePO',
+            '  • Endpoint Security',
+            '  • Windows Internals',
+            '  • PowerShell',
+            '  • Full-Disk Encryption',
+            '  • Hashicorp Vault',
+            '  • OpenSSL',
+            '  • Post-Quantum Cryptography',
+            '  • libFuzzer',
+            '  • RESTler',
+            '  • vLLM',
+            '  • PyTorch',
+            '  • OpenVINO'
+        ]
+    },
+    'setup.json': {
+        type: 'file',
+        size: 1024,
+        permissions: '-rw-r--r--',
+        owner: 'adarsh',
+        group: 'adarsh',
+        modified: 'Dec 10 19:00',
+        content: [
+            '{',
+            '  "hardware": {',
+            '    "laptop": "MacBook Air M4",',
+            '    "monitor": "LG UltraWide",',
+            '    "keyboard": "Mechanical RGB",',
+            '    "mouse": "Logitech MX Master"',
+            '  },',
+            '  "software": {',
+            '    "editor": "VS Code",',
+            '    "terminal": "iTerm2",',
+            '    "browser": "Chrome",',
+            '    "tools": ["Docker", "Git", "LLVM"]',
+            '  }',
+            '}'
+        ]
     }
 };
 
@@ -218,9 +311,27 @@ export const getFileType = (filename: string): string => {
  * Gets files in a directory
  */
 export const getDirectoryContent = (path: string): string[] => {
-    // Simple mock implementation: everything is in root
-    if (path === '.' || path === './' || path === '/') {
+    // Normalize path
+    const normalizedPath = path.toLowerCase().replace(/\/$/, '').replace(/^~\//, '').replace(/^\.\//, '');
+
+    // Root directory
+    if (normalizedPath === '' || normalizedPath === '.' || normalizedPath === '~') {
         return Object.keys(MOCK_FILES).sort();
     }
-    return [];
+
+    // Mock contents for subdirectories
+    switch (normalizedPath) {
+        case 'blogs':
+            return ['optimizing-react.md', 'security-best-practices.md', 'understanding-sgx.md'];
+        case 'papers':
+            return ['confidential-computing-review.pdf', 'sgx-vulnerabilities.pdf', 'tdx-architecture.pdf'];
+        case 'books':
+            return ['clean-code.epub', 'pragmatic-programmer.pdf', 'designing-data-intensive-apps.mobi'];
+        case 'anime':
+            return ['evangelion/', 'cowboy-bebop/', 'naruto/'];
+        case 'hobbyshelf':
+            return ['photography/', 'gaming/', 'reading/'];
+        default:
+            return [];
+    }
 };
