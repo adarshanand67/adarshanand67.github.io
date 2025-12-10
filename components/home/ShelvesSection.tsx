@@ -51,7 +51,7 @@ const SHELVES: Shelf[] = [
 ];
 
 export default function ShelvesSection() {
-    const [isExpanded, setIsExpanded] = useState(true);
+    const [isExpanded, setIsExpanded] = useState(false);
 
     return (
         <div className="section max-w-4xl mx-auto px-4 mb-8">
