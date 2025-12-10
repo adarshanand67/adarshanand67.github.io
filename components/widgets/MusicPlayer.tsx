@@ -212,16 +212,16 @@ export default function MusicPlayer() {
                     </div>
 
                     {/* Anime Image */}
-                    <div className="relative h-40 overflow-hidden">
+                    <div className="relative h-32 overflow-hidden bg-gray-900">
                         <Image
                             src={TRACK_IMAGES[currentTrackIndex]}
                             alt={TRACK_NAMES[currentTrackIndex] || "Album Art"}
                             fill
-                            className="object-cover"
+                            className="object-contain"
                             priority
                         />
                         {/* Overlay gradient */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none"></div>
                         {/* Playing indicator */}
                         {isPlaying && (
                             <div className="absolute bottom-2 right-2 flex items-center gap-1.5 bg-black/60 backdrop-blur-sm px-2 py-1 rounded-full">
