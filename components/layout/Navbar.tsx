@@ -58,7 +58,7 @@ export default function Navbar() {
             </div>
 
             {/* Desktop Nav */}
-            <div className="hidden md:flex md:items-center md:ml-4 gap-0 text-sm font-medium">
+            <div className="hidden md:flex md:items-center md:ml-auto gap-0 text-sm font-medium">
               <span className="text-gray-300 dark:text-gray-700 mx-2 select-none">|</span>
 
               <Link

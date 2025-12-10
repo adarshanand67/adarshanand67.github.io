@@ -2,7 +2,7 @@ import { Book, Paper, Blog, EntertainmentItem, Project, Hobby, EntertainmentType
 import { ReactNode } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ExternalLink, Star, Check, Camera, BookOpen, Gamepad2, Activity, Dumbbell, Flower2, Bike, Mountain, ChefHat, Plane, Dices, Tv, Mic, Palette, Shapes, Trophy, Waves, Coffee } from "lucide-react";
+import { ExternalLink, Star, Check, Camera, BookOpen, Gamepad2, Activity, Dumbbell, Flower2, Bike, Mountain, ChefHat, Plane, Dices, Tv, Mic, Palette, Shapes, Trophy, Waves, Coffee, Users } from "lucide-react";
 import { SpotlightCard } from "@/components/ui/SpotlightCard";
 import { AnimeShelf } from "@/components/shelves/AnimeShelf";
 
@@ -271,6 +271,8 @@ export class HobbyListStrategy implements ShelfItemStrategy<Hobby> {
         return <Waves {...props} />;
       case "Coffee":
         return <Coffee {...props} />;
+      case "Users":
+        return <Users {...props} />;
       default:
         return <Activity {...props} />;
     }

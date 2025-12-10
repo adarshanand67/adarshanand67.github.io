@@ -19,7 +19,7 @@
         "description": "Understanding the world from different eyes",
         "icon": "Book"
     },
-    {   
+    {
         "name": "Table Tennis",
         "description": "Fast-paced rallies and spin control.",
         "icon": "Trophy"
@@ -93,5 +93,10 @@
         "name": "Cooking",
         "description": "Culinary experiments in the kitchen.",
         "icon": "ChefHat"
+    },
+    {
+        "name": "Tech Conferences",
+        "description": "Networking and learning at tech meetups.",
+        "icon": "Users"
     }
 ]
