@@ -25,6 +25,7 @@ export const ls: Command = createCommand(
                 output.push(formatLongListing('..', true, 4096, 'Dec  9 22:30'));
                 output.push(formatLongListing('.env.example', false, 256, 'Dec  9 22:30'));
                 output.push(formatLongListing('.gitignore', false, 128, 'Dec  9 22:30'));
+                output.push(formatLongListing('.secret', false, 64, 'Dec  9 22:30'));
             }
 
             output.push(formatLongListing('README.md', false, 2048, 'Dec  9 22:30'));
@@ -37,7 +38,7 @@ export const ls: Command = createCommand(
             addLines(setLines, output);
         } else {
             const items = [
-                ...(showHidden ? ['.env.example', '.gitignore'] : []),
+                ...(showHidden ? ['.env.example', '.gitignore', '.secret'] : []),
                 'README.md',
                 'package.json',
                 ...directories.map(d => `${d}/`)
