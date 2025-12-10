@@ -209,59 +209,61 @@ export const AnimeShelf = ({ items }: AnimeShelfProps) => {
                         </div>
 
                         {/* Right: Details */}
-                        <div className="w-full md:w-1/2 p-6 overflow-y-auto bg-white dark:bg-gray-900">
-                            <div className="hidden md:block mb-4">
-                                <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-1 flex items-center gap-2">
+                        {/* Right: Details (Netflix Style: Centered, Clean) */}
+                        <div className="w-full md:w-1/2 p-6 overflow-y-auto bg-white dark:bg-zinc-900 flex flex-col text-center">
+                            <div className="mb-6">
+                                <h2 className="text-3xl font-extrabold text-gray-900 dark:text-white mb-2 flex items-center justify-center gap-2">
                                     {selectedItem.title}
-                                    {selectedItem.recommended && <Star className="w-5 h-5 text-yellow-500 fill-yellow-500" />}
+                                    {selectedItem.recommended && <Star className="w-6 h-6 text-yellow-500 fill-yellow-500" />}
                                 </h2>
-                                <div className="flex flex-wrap gap-2 text-sm text-gray-500 mb-4">
-                                    {selectedItem.year && <span className="flex items-center gap-1"><Calendar size={14} /> {selectedItem.year}</span>}
-                                    {selectedItem.rating && <span className="font-semibold text-green-600">{selectedItem.rating}</span>}
+                                <div className="flex flex-wrap items-center justify-center gap-3 text-sm text-gray-400 font-medium">
+                                    {selectedItem.year && <span>{selectedItem.year}</span>}
+                                    {selectedItem.rating && <span className="border border-gray-600 px-1 rounded text-xs">{selectedItem.rating}</span>}
                                     <span>{selectedItem.type}</span>
                                 </div>
-                                <a
-                                    href={`https://www.youtube.com/results?search_query=${encodeURIComponent(selectedItem.title + " trailer")}`}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="inline-flex items-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-md text-sm font-semibold transition-colors shadow-sm"
-                                >
-                                    <div className="w-0 h-0 border-t-[5px] border-t-transparent border-l-[8px] border-l-white border-b-[5px] border-b-transparent ml-0.5"></div>
-                                    Watch Trailer
-                                </a>
                             </div>
 
-                            <div className="space-y-6">
+                            <div className="space-y-6 flex-grow">
+                                {/* Description */}
+                                <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm md:text-base">
+                                    {selectedItem.description || "No description available."}
+                                </p>
+
                                 {/* Tags */}
                                 {selectedItem.tags && selectedItem.tags.length > 0 && (
-                                    <div className="flex flex-wrap gap-2">
+                                    <div className="flex flex-wrap justify-center gap-2">
                                         {selectedItem.tags.map(tag => (
-                                            <span key={tag} className="px-2.5 py-1 text-xs font-semibold bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-md border border-green-200 dark:border-green-800/50">
-                                                {tag}
+                                            <span key={tag} className="text-xs text-gray-500 dark:text-gray-400">
+                                                <span className="opacity-50">•</span> {tag}
                                             </span>
                                         ))}
                                     </div>
                                 )}
 
-                                {/* Description */}
-                                <div>
-                                    <h4 className="text-sm font-bold uppercase tracking-wider text-gray-400 mb-2">Synopsis</h4>
-                                    <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-sm md:text-base">
-                                        {selectedItem.description || "No description available."}
-                                    </p>
-                                </div>
-
-                                {/* Seasons / Notes */}
+                                {/* Seasons */}
                                 {selectedItem.notes && (
-                                    <div className="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-xl border border-gray-100 dark:border-gray-800">
-                                        <h4 className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-2 flex items-center gap-2">
+                                    <div className="py-2">
+                                        <h4 className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-1 flex items-center justify-center gap-2">
                                             <Layers size={14} /> Seasons
                                         </h4>
-                                        <p className="font-mono text-sm text-gray-600 dark:text-gray-400">
+                                        <p className="font-mono text-lg font-bold text-gray-800 dark:text-white">
                                             {formatSeasons(selectedItem.notes)}
                                         </p>
                                     </div>
                                 )}
+                            </div>
+
+                            {/* Watch Link - Bottom */}
+                            <div className="mt-8 pt-4">
+                                <a
+                                    href={`https://www.youtube.com/results?search_query=${encodeURIComponent(selectedItem.title + " trailer")}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center justify-center gap-2 w-full px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-md text-base font-bold transition-all transform hover:scale-[1.02] shadow-lg"
+                                >
+                                    <div className="w-0 h-0 border-t-[6px] border-t-transparent border-l-[10px] border-l-white border-b-[6px] border-b-transparent ml-0.5"></div>
+                                    Watch Trailer
+                                </a>
                             </div>
                         </div>
                     </div>
