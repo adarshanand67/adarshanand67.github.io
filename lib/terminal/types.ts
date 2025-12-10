@@ -39,6 +39,10 @@ export interface CommandContext {
     setInput: (input: string) => void;
     /** Array of previously executed commands */
     commandHistory: readonly string[];
+    /** Function to toggle music player visibility */
+    toggleMusicPlayer: () => void;
+    /** Function to set music player visibility */
+    setShowMusicPlayer: (show: boolean) => void;
 }
 
 /**

@@ -14,7 +14,8 @@ export default function Terminal() {
   // Import audio controls
   const {
     toggleMatrix, isMatrixEnabled,
-    setIsPlaying, nextTrack, prevTrack, toggleMute
+    setIsPlaying, nextTrack, prevTrack, toggleMute,
+    toggleMusicPlayer, setShowMusicPlayer
   } = useGlobalState();
 
   const [lines, setLines] = useState<string[]>([]);
@@ -98,7 +99,9 @@ export default function Terminal() {
         prevTrack,
         toggleMute,
         setInput,
-        commandHistory: history
+        commandHistory: history,
+        toggleMusicPlayer,
+        setShowMusicPlayer
       });
     } else {
       setLines((prev) => [...prev, `Command not found: ${commandName}. Type 'help' for available commands.`]);

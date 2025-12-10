@@ -1,6 +1,6 @@
 ---
 title: "Hello World"
-date: "2024-01-01"
+date: "2025-12-10"
 excerpt: "Welcome to my digital garden."
 ---
 

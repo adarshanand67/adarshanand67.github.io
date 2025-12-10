@@ -18,6 +18,10 @@ interface GlobalState {
     currentTrackIndex: number;
     nextTrack: () => void;
     prevTrack: () => void;
+    // Music Player Visibility
+    showMusicPlayer: boolean;
+    toggleMusicPlayer: () => void;
+    setShowMusicPlayer: (show: boolean) => void;
 }
 
 const GlobalContext = createContext<GlobalState | undefined>(undefined);
@@ -32,6 +36,9 @@ export const GlobalProvider = ({ children }: { children: ReactNode }) => {
     const [isMuted, setIsMuted] = useState(false);
     const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
 
+    // Music Player Visibility - hidden by default for better mobile UX
+    const [showMusicPlayer, setShowMusicPlayer] = useState(false);
+
     const toggleMatrix = useCallback(() => setIsMatrixEnabled((prev) => !prev), []);
     const setMatrix = useCallback((enabled: boolean) => setIsMatrixEnabled(enabled), []);
 
@@ -39,6 +46,8 @@ export const GlobalProvider = ({ children }: { children: ReactNode }) => {
     const toggleMute = useCallback(() => setIsMuted((prev) => !prev), []);
     const nextTrack = useCallback(() => setCurrentTrackIndex((prev) => (prev + 1) % PLAYLIST.length), []);
     const prevTrack = useCallback(() => setCurrentTrackIndex((prev) => (prev - 1 + PLAYLIST.length) % PLAYLIST.length), []);
+
+    const toggleMusicPlayer = useCallback(() => setShowMusicPlayer((prev) => !prev), []);
 
     return (
         <GlobalContext.Provider
@@ -55,6 +64,9 @@ export const GlobalProvider = ({ children }: { children: ReactNode }) => {
                 currentTrackIndex,
                 nextTrack,
                 prevTrack,
+                showMusicPlayer,
+                toggleMusicPlayer,
+                setShowMusicPlayer,
             }}
         >
             {children}

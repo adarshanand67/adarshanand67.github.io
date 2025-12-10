@@ -172,14 +172,29 @@ export const matrix: Command = createCommand(
 
 export const music: Command = createCommand(
     'music',
-    'Control music',
-    (args, { setLines, setIsPlaying, nextTrack, prevTrack, toggleMute }) => {
+    'Control music player',
+    (args, ctx) => {
+        const { setLines, setIsPlaying, nextTrack, prevTrack, toggleMute, toggleMusicPlayer, setShowMusicPlayer } = ctx;
+
         if (args.length === 0) {
-            addLine(setLines, 'usage: music [play|pause|next|prev|mute]');
+            addLine(setLines, 'usage: music [show|hide|toggle|play|pause|next|prev|mute]');
         } else {
             const action = (args[0] || '').toLowerCase();
             switch (action) {
+                case 'show':
+                    setShowMusicPlayer(true);
+                    addLine(setLines, 'Music Player: Shown');
+                    break;
+                case 'hide':
+                    setShowMusicPlayer(false);
+                    addLine(setLines, 'Music Player: Hidden');
+                    break;
+                case 'toggle':
+                    toggleMusicPlayer();
+                    addLine(setLines, 'Music Player: Toggled');
+                    break;
                 case 'play':
+                    setShowMusicPlayer(true); // Auto-show when playing
                     setIsPlaying(true);
                     addLine(setLines, 'Music: Playing');
                     break;
@@ -188,10 +203,12 @@ export const music: Command = createCommand(
                     addLine(setLines, 'Music: Paused');
                     break;
                 case 'next':
+                    setShowMusicPlayer(true); // Auto-show when changing track
                     nextTrack();
                     addLine(setLines, 'Music: Next Track');
                     break;
                 case 'prev':
+                    setShowMusicPlayer(true); // Auto-show when changing track
                     prevTrack();
                     addLine(setLines, 'Music: Previous Track');
                     break;
@@ -206,11 +223,14 @@ export const music: Command = createCommand(
     },
     {
         category: 'fun',
-        usage: 'music [play|pause|next|prev|mute]',
+        usage: 'music [show|hide|toggle|play|pause|next|prev|mute]',
         examples: [
-            'music play      # Play music',
+            'music show      # Show music player',
+            'music hide      # Hide music player',
+            'music toggle    # Toggle music player',
+            'music play      # Play music (auto-shows player)',
             'music pause     # Pause music',
-            'music next      # Next track'
+            'music next      # Next track (auto-shows player)'
         ]
     }
 );

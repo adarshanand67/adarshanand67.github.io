@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useEffect, useState } from "react";
-import { Play, Pause, Volume2, VolumeX, Disc, SkipForward, SkipBack } from "lucide-react";
+import { Play, Pause, Volume2, VolumeX, Disc, SkipForward, SkipBack, X } from "lucide-react";
 import { useGlobalState } from "@/components/common/GlobalProvider";
 import { PLAYLIST, TRACK_NAMES, AUDIO_CONFIG, ERROR_MESSAGES } from "@/lib";
 import { useMounted } from "@/lib/hooks";
@@ -12,7 +12,8 @@ export default function MusicPlayer() {
         isPlaying, setIsPlaying,
         volume, setVolume,
         isMuted, toggleMute,
-        currentTrackIndex, nextTrack, prevTrack
+        currentTrackIndex, nextTrack, prevTrack,
+        showMusicPlayer, toggleMusicPlayer
     } = useGlobalState();
 
     const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -183,6 +184,11 @@ export default function MusicPlayer() {
         return null;
     }
 
+    // Don't render if music player is hidden
+    if (!showMusicPlayer) {
+        return null;
+    }
+
     return (
         <div
             ref={playerRef}
@@ -203,7 +209,19 @@ export default function MusicPlayer() {
                 crossOrigin="anonymous"
             />
 
-            <div className={`bg-[#1e1e1e]/90 backdrop-blur-sm border p-4 rounded-lg shadow-[0_0_15px_rgba(34,197,94,0.2)] flex items-start gap-4 transition-all hover:border-green-400 ${isDragging ? 'border-green-400 cursor-grabbing' : 'border-green-500/50'}`}>
+            <div className={`relative bg-[#1e1e1e]/90 backdrop-blur-sm border p-4 rounded-lg shadow-[0_0_15px_rgba(34,197,94,0.2)] flex items-start gap-4 transition-all hover:border-green-400 ${isDragging ? 'border-green-400 cursor-grabbing' : 'border-green-500/50'}`}>
+                {/* Close Button */}
+                <button
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        toggleMusicPlayer();
+                    }}
+                    className="absolute top-2 right-2 p-1 rounded-full bg-black/50 hover:bg-red-500/20 border border-gray-700 hover:border-red-500 transition-colors cursor-pointer"
+                    aria-label="Close Music Player"
+                >
+                    <X size={14} className="text-gray-400 hover:text-red-500" />
+                </button>
+
                 {/* Animated Icon */}
                 <div className={`relative w-10 h-10 flex items-center justify-center rounded-full bg-black/50 border border-gray-700 ${isPlaying ? 'animate-spin-slow' : ''}`}>
                     <Disc className={`w-6 h-6 text-green-500 ${isPlaying ? 'animate-pulse' : ''}`} />
