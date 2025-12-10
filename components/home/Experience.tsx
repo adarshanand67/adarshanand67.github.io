@@ -55,8 +55,8 @@ export default function Experience({ items }: ExperienceProps) {
                                 <div className="pt-1">
                                     <div className="mb-2">
                                         <h3 className="text-xl font-bold text-gray-900 dark:text-white leading-tight">{exp.company}</h3>
-                                        <p className="text-lg text-gray-800 dark:text-gray-200 font-medium mt-0.5">{exp.role}</p>
-                                        <p className="text-gray-500 dark:text-gray-400 text-sm font-mono mt-1">
+                                        <p className="text-lg text-gray-900 dark:text-gray-200 font-medium mt-0.5">{exp.role}</p>
+                                        <p className="text-gray-600 dark:text-gray-400 text-sm font-mono mt-1">
                                             {exp.duration} • {exp.location}
                                         </p>
                                     </div>

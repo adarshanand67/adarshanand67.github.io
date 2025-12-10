@@ -84,7 +84,7 @@ export default function RootLayout({
         {/* SEO Structured Data */}
         <StructuredData data={generatePersonSchema()} />
         <StructuredData data={generateWebSiteSchema()} />
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
 
           <GlobalProvider>
             <Navbar />
