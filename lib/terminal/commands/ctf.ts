@@ -1,76 +1,54 @@
 /**
  * CTF (Capture The Flag) Commands
- * Hidden easter egg challenge
+ * Hidden easter egg challenge - No hints, figure it out!
  */
 
 import { Command } from '../types';
+import { createCommand, addLine, addLines } from '../helpers';
 
 // The secret flag (base64 encoded)
-const SECRET_FLAG = 'ZmxhZ3tIMWRkM25fVDNybTFuNGxfTTQ1dDNyfQ=='; // flag{H1dd3n_T3rm1n4l_M45t3r}
 const DECODED_FLAG = 'flag{H1dd3n_T3rm1n4l_M45t3r}';
 
-// Hints scattered across different commands
-const HINTS = [
-    'Hint 1: Look for hidden files... (try ls -a)',
-    'Hint 2: The secret lies in base64...',
-    'Hint 3: Try decoding something suspicious...',
-    'Hint 4: Check the .secret file',
-];
-
-export const ctfCommands: Record<string, Command> = {
-    '.secret': {
-        description: 'A hidden file (CTF challenge)',
-        usage: 'cat .secret',
-        category: 'hidden',
-        execute: (args, context) => {
-            context.setLines((prev) => [
-                ...prev,
+export const base64: Command = createCommand(
+    'base64',
+    'Encode or decode base64 strings',
+    (args, { setLines }) => {
+        if (args.length === 0) {
+            addLines(setLines, [
                 '',
-                '🔐 SECRET FILE CONTENTS:',
-                '========================',
+                'Usage: base64 [-d] <string>',
+                '  -d    Decode base64 string',
                 '',
-                `Encoded Message: ${SECRET_FLAG}`,
-                '',
-                '💡 Hint: This looks like base64 encoding...',
-                '💡 Try: decode <string>',
-                '',
+                'Examples:',
+                '  base64 "Hello World"      # Encode',
+                '  base64 -d SGVsbG8gV29ybGQ=  # Decode',
+                ''
             ]);
-        },
-    },
+            return;
+        }
 
-    decode: {
-        description: 'Decode base64 strings (CTF tool)',
-        usage: 'decode <base64-string>',
-        category: 'utilities',
-        execute: (args, context) => {
-            if (args.length === 0) {
-                context.setLines((prev) => [
-                    ...prev,
-                    '',
-                    'Usage: decode <base64-string>',
-                    'Example: decode SGVsbG8gV29ybGQ=',
-                    '',
-                ]);
-                return;
-            }
+        const isDecode = args[0] === '-d' || args[0] === '--decode';
+        const text = isDecode ? args.slice(1).join(' ') : args.join(' ');
 
-            const encoded = args.join(' ');
+        if (!text) {
+            addLine(setLines, '');
+            addLine(setLines, 'Error: No input provided');
+            addLine(setLines, '');
+            return;
+        }
 
-            try {
-                const decoded = atob(encoded);
-
-                context.setLines((prev) => [
-                    ...prev,
-                    '',
-                    `Decoded: ${decoded}`,
-                    '',
-                ]);
+        try {
+            if (isDecode) {
+                // Decode base64
+                const decoded = atob(text);
+                addLine(setLines, '');
+                addLine(setLines, decoded);
+                addLine(setLines, '');
 
                 // Check if they decoded the flag
                 if (decoded === DECODED_FLAG) {
                     setTimeout(() => {
-                        context.setLines((prev) => [
-                            ...prev,
+                        addLines(setLines, [
                             '',
                             '🎉🎉🎉 CONGRATULATIONS! 🎉🎉🎉',
                             '═══════════════════════════════════',
@@ -84,50 +62,56 @@ export const ctfCommands: Record<string, Command> = {
                             '   • You have unlocked the secret achievement',
                             '   • DM me on LinkedIn with this flag for a surprise!',
                             '',
-                            '💡 Fun fact: Only true hackers find this!',
+                            '💡 Only true hackers find this!',
                             '',
                             '═══════════════════════════════════',
-                            '',
+                            ''
                         ]);
                     }, 100);
                 }
-            } catch (e) {
-                context.setLines((prev) => [
-                    ...prev,
-                    '',
-                    '❌ Error: Invalid base64 string',
-                    '',
-                ]);
-            }
-        },
-    },
-
-    hint: {
-        description: 'Get a hint for the CTF challenge',
-        usage: 'hint [number]',
-        category: 'fun',
-        execute: (args, context) => {
-            const hintNum = args[0] ? parseInt(args[0]) - 1 : Math.floor(Math.random() * HINTS.length);
-
-            if (hintNum >= 0 && hintNum < HINTS.length) {
-                context.setLines((prev) => [
-                    ...prev,
-                    '',
-                    `💡 ${HINTS[hintNum]}`,
-                    '',
-                    `(Try 'hint 1', 'hint 2', etc. for specific hints)`,
-                    '',
-                ]);
             } else {
-                context.setLines((prev) => [
-                    ...prev,
-                    '',
-                    '💡 Available hints: 1-4',
-                    '',
-                    ...HINTS.map((h, i) => `   ${i + 1}. ${h}`),
-                    '',
-                ]);
+                // Encode to base64
+                const encoded = btoa(text);
+                addLine(setLines, '');
+                addLine(setLines, encoded);
+                addLine(setLines, '');
             }
-        },
+        } catch (e) {
+            addLines(setLines, [
+                '',
+                'Error: Invalid input',
+                ''
+            ]);
+        }
     },
+    {
+        category: 'file',
+        usage: 'base64 [-d] <string>',
+        examples: [
+            'base64 "Hello World"      # Encode to base64',
+            'base64 -d SGVsbG8gV29ybGQ=  # Decode from base64'
+        ]
+    }
+);
+
+// Keep decode as an alias for convenience
+export const decode: Command = createCommand(
+    'decode',
+    'Decode base64 strings (alias for base64 -d)',
+    (args, { setLines }) => {
+        // Just call base64 with -d flag
+        base64.execute(['-d', ...args], { setLines } as any);
+    },
+    {
+        category: 'file',
+        usage: 'decode <base64-string>',
+        examples: [
+            'decode SGVsbG8gV29ybGQ=   # Decode base64 string'
+        ]
+    }
+);
+
+export const ctfCommands = {
+    base64,
+    decode
 };

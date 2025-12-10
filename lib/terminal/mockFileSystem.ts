@@ -102,6 +102,17 @@ export const MOCK_FILES: Record<string, MockFile> = {
             'NEXT_PUBLIC_SITE_URL=https://example.com',
             'NEXT_PUBLIC_GA_ID=UA-XXXXXXXXX-X'
         ]
+    },
+    '.secret': {
+        type: 'file',
+        size: 64,
+        permissions: '-rw-r--r--',
+        owner: 'adarsh',
+        group: 'adarsh',
+        modified: 'Dec  9 22:30',
+        content: [
+            'ZmxhZ3tIMWRkM25fVDNybTFuNGxfTTQ1dDNyfQ=='
+        ]
     }
 };
 
