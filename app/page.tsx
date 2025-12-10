@@ -78,8 +78,7 @@ export default async function Home() {
         </div>
       </div>
 
-      {/* Directory / Shelves Section */}
-      <ShelvesSection />
+
 
       {/* GitHub Stats with enhanced design */}
       <div className="section max-w-4xl mx-auto px-4 mb-8">
@@ -90,6 +89,9 @@ export default async function Home() {
       <div className="section max-w-4xl mx-auto px-4 mb-8">
         <ContactSection />
       </div>
+
+      {/* Directory / Shelves Section */}
+      <ShelvesSection />
     </main>
   );
 }
