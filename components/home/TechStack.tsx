@@ -1,4 +1,8 @@
+"use client";
+
 import Link from "next/link";
+import { useState } from "react";
+import { ChevronDown } from "lucide-react";
 import { techLinks } from "@/lib/tech-links";
 
 const skillCategories = {
@@ -47,18 +51,32 @@ const skillCategories = {
 };
 
 export default function TechStack() {
+  const [isExpanded, setIsExpanded] = useState(false);
+
   return (
     <section className="section max-w-4xl mx-auto px-4 mb-16 font-mono">
-      <h2 className="text-2xl font-bold mb-2 flex items-center gap-2">
-        <span className="text-primary">##</span> Tech Stack
-      </h2>
+      <button
+        onClick={() => setIsExpanded(!isExpanded)}
+        className="w-full text-left group"
+      >
+        <h2 className="text-2xl font-bold mb-2 flex items-center gap-2 cursor-pointer hover:text-green-600 dark:hover:text-green-400 transition-colors">
+          <span className="text-primary">##</span> Tech Stack
+          <ChevronDown
+            size={20}
+            className={`transition-transform duration-300 ${isExpanded ? 'rotate-0' : '-rotate-90'}`}
+          />
+        </h2>
+      </button>
       <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400 mb-6 text-sm">
         <span className="text-green-500 font-bold">$</span>
         <span>cat ~/.skills</span>
         <span className="animate-pulse inline-block w-2 h-4 bg-green-500 align-middle"></span>
       </div>
 
-      <div className="space-y-6">
+      <div
+        className={`space-y-6 transition-all duration-300 ease-in-out overflow-hidden ${isExpanded ? 'max-h-[5000px] opacity-100' : 'max-h-0 opacity-0'
+          }`}
+      >
         {Object.entries(skillCategories).map(([category, skills]) => (
           <div key={category}>
             <h3 className="text-sm font-bold text-gray-500 mb-3 uppercase tracking-wider">

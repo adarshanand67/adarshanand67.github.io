@@ -166,7 +166,7 @@ export default function MusicPlayer() {
     return (
         <div
             ref={playerRef}
-            className={`fixed z-50 font-sans select-none transition-all duration-300 ${isDragging ? 'cursor-grabbing' : 'cursor-move'} w-72 md:w-80`}
+            className={`fixed z-50 font-sans select-none transition-all duration-300 ${isDragging ? 'cursor-grabbing' : 'cursor-move'} w-80 md:w-96`}
             style={{
                 left: `${position.x}px`,
                 top: `${position.y}px`

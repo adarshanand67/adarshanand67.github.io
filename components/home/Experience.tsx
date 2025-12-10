@@ -1,4 +1,8 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
+import { ChevronDown } from "lucide-react";
 import { linkifyTech } from "@/lib/tech-links";
 import { getAssetPath } from "@/lib/utils/asset-path";
 
@@ -17,12 +21,23 @@ interface ExperienceProps {
 }
 
 export default function Experience({ items }: ExperienceProps) {
+    const [isExpanded, setIsExpanded] = useState(false);
+
     return (
         <div className="section max-w-4xl mx-auto px-4 mb-24">
             <div className="mb-16 font-mono" id="experience">
-                <h2 className="text-2xl font-bold mb-2 flex items-center gap-2">
-                    <span className="text-primary">##</span> Experience
-                </h2>
+                <button
+                    onClick={() => setIsExpanded(!isExpanded)}
+                    className="w-full text-left group"
+                >
+                    <h2 className="text-2xl font-bold mb-2 flex items-center gap-2 cursor-pointer hover:text-green-600 dark:hover:text-green-400 transition-colors">
+                        <span className="text-primary">##</span> Experience
+                        <ChevronDown
+                            size={20}
+                            className={`transition-transform duration-300 ${isExpanded ? 'rotate-0' : '-rotate-90'}`}
+                        />
+                    </h2>
+                </button>
                 <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400 mb-8 text-sm">
                     <span className="text-green-500 font-bold">$</span>
                     <span>cat ~/work/history.log</span>
@@ -30,7 +45,10 @@ export default function Experience({ items }: ExperienceProps) {
                 </div>
 
                 {/* Timeline Container */}
-                <div className="relative">
+                <div
+                    className={`relative transition-all duration-300 ease-in-out overflow-hidden ${isExpanded ? 'max-h-[10000px] opacity-100' : 'max-h-0 opacity-0'
+                        }`}
+                >
                     {/* Vertical Timeline Line */}
                     <div className="absolute left-8 top-2 bottom-0 w-0.5 bg-gradient-to-b from-green-500 via-emerald-500 to-green-500"></div>
 
