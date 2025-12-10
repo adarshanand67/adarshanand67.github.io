@@ -54,6 +54,10 @@ export async function getEntertainment(): Promise<EntertainmentItem[]> {
     if (item.image) result.image = item.image;
     if (item.notes) result.notes = item.notes;
     if (item.recommended !== undefined) result.recommended = item.recommended;
+    if (item.description) result.description = item.description;
+    if (item.tags) result.tags = item.tags;
+    if (item.year) result.year = item.year;
+    if (item.rating) result.rating = item.rating;
 
     return result;
   });
