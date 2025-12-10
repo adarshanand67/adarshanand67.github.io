@@ -224,7 +224,7 @@ export const AnimeShelf = ({ items }: AnimeShelfProps) => {
                                     href={`https://www.youtube.com/results?search_query=${encodeURIComponent(selectedItem.title + " trailer")}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="inline-flex items-center gap-2 px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-md text-sm font-semibold transition-colors shadow-sm"
+                                    className="inline-flex items-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-md text-sm font-semibold transition-colors shadow-sm"
                                 >
                                     <div className="w-0 h-0 border-t-[5px] border-t-transparent border-l-[8px] border-l-white border-b-[5px] border-b-transparent ml-0.5"></div>
                                     Watch Trailer
