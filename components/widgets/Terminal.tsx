@@ -187,7 +187,7 @@ export default function Terminal() {
 
   return (
     <div
-      className="w-full max-w-2xl bg-white dark:bg-[#1e1e1e] rounded-lg shadow-xl overflow-hidden border border-gray-300 dark:border-gray-800 font-mono text-base my-8 select-text relative"
+      className="w-full max-w-4xl bg-white dark:bg-[#1e1e1e] rounded-lg shadow-xl overflow-hidden border border-gray-300 dark:border-gray-800 font-mono text-base my-8 select-text relative"
       onClick={handleTerminalClick}
     >
       <div className="bg-gray-100 dark:bg-[#2d2d2d] px-4 py-2 flex items-center gap-2 border-b border-gray-300 dark:border-gray-700">
@@ -200,14 +200,48 @@ export default function Terminal() {
         ref={containerRef}
         className="p-6 text-gray-800 dark:text-gray-300 h-[500px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 dark:scrollbar-thumb-gray-700 scrollbar-track-transparent"
       >
-        {lines.map((line, i) => (
-          <div
-            key={i}
-            className={`mb-1 whitespace-pre-wrap ${line.startsWith('$ ') ? 'text-green-600 dark:text-green-400 font-semibold' : ''}`}
-          >
-            {line}
-          </div>
-        ))}
+        {lines.map((line, i) => {
+          // Parse ANSI color codes
+          const parseAnsi = (text: string) => {
+            const ansiColors: Record<string, string> = {
+              '30': 'text-black',
+              '31': 'text-red-500',
+              '32': 'text-green-500',
+              '33': 'text-yellow-500',
+              '34': 'text-blue-500',
+              '35': 'text-purple-500',
+              '36': 'text-cyan-500',
+              '37': 'text-white',
+              '90': 'text-gray-500',
+              '1': 'font-bold',
+              '0': '',
+            };
+
+            const parts = text.split(/(\x1b\[\d+m)/g);
+            let currentColor = '';
+
+            return parts.map((part, idx) => {
+              const match = part.match(/\x1b\[(\d+)m/);
+              if (match) {
+                currentColor = ansiColors[match[1]] || '';
+                return null;
+              }
+              if (!part) return null;
+              return currentColor ? (
+                <span key={idx} className={currentColor}>{part}</span>
+              ) : part;
+            }).filter(Boolean);
+          };
+
+          return (
+            <div
+              key={i}
+              className={`mb-1 whitespace-pre-wrap ${line.startsWith('$ ') ? 'text-green-600 dark:text-green-400 font-semibold' : ''}`}
+            >
+              {line.includes('\x1b[') ? parseAnsi(line) : line}
+            </div>
+          );
+        })}
 
         {isIntroDone && (
           <div className="flex items-center">

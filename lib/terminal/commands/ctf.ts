@@ -60,7 +60,7 @@ export const base64: Command = createCommand(
                             '🎁 Your Rewards:',
                             '   • Terminal Master Achievement Unlocked! 🚀',
                             '   • Secret Resource: System Design Primer',
-                            '   • https://youtu.be/dQw4w9WgXcQ',
+                            '   • Opening your reward in 3 seconds...',
                             '',
                             '💡 Pro Tip: Check out these resources:',
                             '   • System Design: https://github.com/donnemartin/system-design-primer',
@@ -73,6 +73,14 @@ export const base64: Command = createCommand(
                             '═══════════════════════════════════',
                             ''
                         ]);
+
+                        // Rickroll them after 3 seconds
+                        setTimeout(() => {
+                            window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank');
+                            addLine(setLines, '');
+                            addLine(setLines, '😏 Enjoy your reward! You\'ve been rickrolled! 🎵');
+                            addLine(setLines, '');
+                        }, 3000);
                     }, 100);
                 }
             } else {
