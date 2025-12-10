@@ -27,25 +27,19 @@ export default function Footer() {
 
       <div className="max-w-4xl mx-auto px-4 relative z-10">
         <div className="text-sm">
-          {/* Collapsible Toggle */}
-          <button
-            onClick={() => setIsExpanded(!isExpanded)}
-            className="w-full flex justify-center group mb-6 focus:outline-none"
-          >
-            <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
-              <ChevronDown
-                size={16}
-                className={`transition-transform duration-300 ${isExpanded ? 'rotate-180' : 'rotate-0'}`}
-              />
+          {/* Terminal prompt with Home Navigation */}
+          <div className="flex justify-center mb-8">
+            <Link
+              href="/"
+              className="group flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-colors bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm px-4 py-2 rounded-full border border-gray-200/50 dark:border-gray-800/50"
+            >
               <span className="text-green-500 font-bold">$</span>
-              <span className="opacity-75 font-medium">cat ~/footer.txt</span>
+              <span className="opacity-75 font-medium group-hover:underline">cd ~</span>
               <span className="animate-pulse inline-block w-2 h-4 bg-green-500 align-middle"></span>
-            </div>
-          </button>
+            </Link>
+          </div>
 
-          {/* Collapsible Content */}
-          <div className={`transition-all duration-500 ease-in-out overflow-hidden space-y-6 ${isExpanded ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
-            }`}>
+          <div className="space-y-6">
             {/* Weather Widget */}
             <div className="flex justify-center">
               <WeatherWidget />
