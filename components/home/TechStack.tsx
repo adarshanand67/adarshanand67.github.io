@@ -70,12 +70,12 @@ export default function TechStack() {
 
       <div>
         <h3 className="text-sm font-bold text-gray-500 mb-3 uppercase tracking-wider">Other Skills</h3>
-        <div className="text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+        <div className="text-sm leading-relaxed text-gray-700 dark:text-gray-300 flex flex-wrap items-center">
           {otherSkills.map((skill, index) => {
             const url =
               techLinks[skill] || `https://www.google.com/search?q=${encodeURIComponent(skill)}`;
             return (
-              <span key={index}>
+              <span key={index} className="inline-flex items-center">
                 <Link
                   href={url}
                   target="_blank"
