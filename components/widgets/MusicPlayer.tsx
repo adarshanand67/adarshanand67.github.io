@@ -411,7 +411,7 @@ export default function MusicPlayer() {
                             <div className="px-3 py-3 bg-black/30">
                                 <div className="flex items-center justify-center gap-3 mb-3">
                                     <button
-                                        onClick={prevTrack}
+                                        onClick={(e) => { e.stopPropagation(); prevTrack(); }}
                                         className="p-1.5 rounded-full hover:bg-white/10 transition-all hover:scale-110 cursor-pointer"
                                         aria-label="Previous"
                                     >
@@ -419,7 +419,7 @@ export default function MusicPlayer() {
                                     </button>
 
                                     <button
-                                        onClick={togglePlay}
+                                        onClick={(e) => { e.stopPropagation(); togglePlay(); }}
                                         className="p-2.5 rounded-full bg-white hover:bg-gray-100 hover:scale-105 transition-all shadow-lg cursor-pointer"
                                         aria-label={isPlaying ? "Pause" : "Play"}
                                     >
@@ -430,7 +430,7 @@ export default function MusicPlayer() {
                                     </button>
 
                                     <button
-                                        onClick={nextTrack}
+                                        onClick={(e) => { e.stopPropagation(); nextTrack(); }}
                                         className="p-1.5 rounded-full hover:bg-white/10 transition-all hover:scale-110 cursor-pointer"
                                         aria-label="Next"
                                     >
