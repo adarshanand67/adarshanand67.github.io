@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { techLinks } from "@/lib/tech-links";
+import SectionHeader from "@/components/ui/SectionHeader";
 
 const skillCategories = {
   "Languages": [
@@ -59,19 +60,13 @@ export default function TechStack() {
         onClick={() => setIsExpanded(!isExpanded)}
         className="w-full text-left group"
       >
-        <h2 className="text-xl font-bold mb-1 flex items-center gap-2 cursor-pointer hover:text-green-600 dark:hover:text-green-400 transition-colors">
-          <span className="text-primary">##</span> Tech Stack
-          <ChevronDown
-            size={20}
-            className={`transition-transform duration-300 ${isExpanded ? 'rotate-0' : '-rotate-90'}`}
-          />
-        </h2>
+        <SectionHeader
+          title="Tech Stack"
+          command="cat ~/.skills"
+          isExpanded={isExpanded}
+          onToggle={() => setIsExpanded(!isExpanded)}
+        />
       </button>
-      <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400 mb-3 text-xs">
-        <span className="text-green-500 font-bold">$</span>
-        <span>cat ~/.skills</span>
-        <span className="animate-pulse inline-block w-2 h-4 bg-green-500 align-middle"></span>
-      </div>
 
       <div
         className={`space-y-6 transition-all duration-300 ease-in-out overflow-hidden ${isExpanded ? 'max-h-[5000px] opacity-100' : 'max-h-0 opacity-0'

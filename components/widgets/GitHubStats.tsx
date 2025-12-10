@@ -4,6 +4,7 @@ import { getGithubRepos } from "@/lib/github";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { ChevronDown } from "lucide-react";
+import SectionHeader from "@/components/ui/SectionHeader";
 
 export default function GitHubStats() {
   const [repos, setRepos] = useState<any[]>([]);
@@ -27,20 +28,12 @@ export default function GitHubStats() {
         className="relative bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm rounded-xl p-4 border border-gray-200 dark:border-gray-800 hover:border-green-500/50 transition-colors duration-300 cursor-pointer"
       >
         <section className="font-mono">
-          <div className="w-full text-left group mb-3">
-            <h2 className="text-2xl font-bold flex items-center gap-2 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors mb-2">
-              <span className="text-primary">##</span> Open Source
-              <ChevronDown
-                size={20}
-                className={`transition-transform duration-300 ${isExpanded ? 'rotate-0' : '-rotate-90'}`}
-              />
-            </h2>
-            <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400 text-sm">
-              <span className="text-green-500 font-bold">$</span>
-              <span>ls ~/repos --sort=stars</span>
-              <span className="animate-pulse inline-block w-2 h-4 bg-green-500 align-middle"></span>
-            </div>
-          </div>
+          <SectionHeader
+            title="Open Source"
+            command="ls ~/repos --sort=stars"
+            isExpanded={isExpanded}
+            onToggle={() => setIsExpanded(!isExpanded)}
+          />
 
           <div
             className={`transition-all duration-300 ease-in-out overflow-hidden ${isExpanded ? 'max-h-[3000px] opacity-100' : 'max-h-0 opacity-0'
