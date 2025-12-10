@@ -1,11 +1,10 @@
 "use client";
 
 import { useRef, useEffect, useState } from "react";
-import { Play, Pause, Volume2, VolumeX, Disc, SkipForward, SkipBack, X } from "lucide-react";
+import { Play, Pause, Volume2, VolumeX, SkipForward, SkipBack, X, Maximize2, Minimize2 } from "lucide-react";
 import { useGlobalState } from "@/components/common/GlobalProvider";
 import { PLAYLIST, TRACK_NAMES, AUDIO_CONFIG, ERROR_MESSAGES } from "@/lib";
 import { useMounted } from "@/lib/hooks";
-import { POSITION_STYLES, BUTTON_STYLES } from "@/lib/styles";
 
 export default function MusicPlayer() {
     const {
@@ -20,15 +19,10 @@ export default function MusicPlayer() {
     const mounted = useMounted();
 
     // Dragging state
-    const [position, setPosition] = useState({ x: 20, y: 20 }); // Position from bottom-right (simulated by initial calc or just fixed)
-    // Actually simpler to use top-left or relative to viewport. Let's use fixed style.
-    // Initial state: undefined to let it start at default CSS position, then track?
-    // Easiest is to start with a fixed default position (e.g. bottom-right equivalent)
-    // But fixed bottom-right is hard to drag freely without complex calculations.
-    // Let's use left/top and initialize to a tailored position.
-
+    const [position, setPosition] = useState({ x: 20, y: 20 });
     const [isDragging, setIsDragging] = useState(false);
     const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
+    const [isCompact, setIsCompact] = useState(false);
     const playerRef = useRef<HTMLDivElement>(null);
 
     const [currentTime, setCurrentTime] = useState(0);
@@ -37,19 +31,15 @@ export default function MusicPlayer() {
     // Initialize position safely on client side
     useEffect(() => {
         if (typeof window !== 'undefined') {
-            // Start at bottom right: window.innerWidth - width - 20, window.innerHeight - height - 20
-            // For simplicity, let's start it at fixed coordinates that resemble bottom-right
             setPosition({
-                x: window.innerWidth - 350,
-                y: window.innerHeight - 150
+                x: window.innerWidth - 380,
+                y: window.innerHeight - 200
             });
         }
     }, [mounted]);
 
     const handleMouseDown = (e: React.MouseEvent) => {
-        // Prevent drag when clicking controls
         if ((e.target as HTMLElement).closest('button, input')) return;
-
         setIsDragging(true);
         setDragOffset({
             x: e.clientX - position.x,
@@ -82,9 +72,8 @@ export default function MusicPlayer() {
             window.removeEventListener('mousemove', handleMouseMove);
             window.removeEventListener('mouseup', handleMouseUp);
         };
-    }, [isDragging, dragOffset]); // Dependencies for closure stability
+    }, [isDragging, dragOffset]);
 
-    // Update time
     const handleTimeUpdate = () => {
         if (audioRef.current) {
             setCurrentTime(audioRef.current.currentTime);
@@ -112,14 +101,10 @@ export default function MusicPlayer() {
         return `${minutes}:${seconds.toString().padStart(2, '0')}`;
     };
 
-    // Try to autoplay on mount
     useEffect(() => {
-        // give valid user interaction a chance or just try
         const timer = setTimeout(() => {
             if (audioRef.current && !isPlaying) {
-                // Initial autoplay might still be blocked, but state is now global
-                // audioRef.current.play().then(() => setIsPlaying(true)).catch(...)
-                // We'll leave strict autoplay off or handled by user interaction for safer UX
+                // Initial setup
             }
         }, AUDIO_CONFIG.AUTOPLAY_DELAY_MS);
         return () => clearTimeout(timer);
@@ -131,7 +116,6 @@ export default function MusicPlayer() {
         }
     }, [volume]);
 
-    // Handle play/pause sync
     useEffect(() => {
         if (!audioRef.current) return;
         if (isPlaying) {
@@ -147,10 +131,8 @@ export default function MusicPlayer() {
         }
     }, [isPlaying, currentTrackIndex, setIsPlaying]);
 
-    // Ensure we reset playing state if track changes and we were playing
     useEffect(() => {
         if (isPlaying && audioRef.current) {
-            // Check if readyState is sufficient (HAVE_FUTURE_DATA = 3 or HAVE_ENOUGH_DATA = 4)
             if (audioRef.current.readyState >= 3) {
                 audioRef.current.play().catch(console.error);
             }
@@ -164,11 +146,8 @@ export default function MusicPlayer() {
     const errorTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
     const handleTrackError = () => {
-        if (errorTimeoutRef.current) return; // Prevent cascading errors
-
+        if (errorTimeoutRef.current) return;
         console.warn(ERROR_MESSAGES.AUDIO.TRACK_LOAD_FAILED);
-
-        // Wait 2 seconds before trying next track to prevent rapid loops
         errorTimeoutRef.current = setTimeout(() => {
             nextTrack();
             errorTimeoutRef.current = null;
@@ -180,22 +159,18 @@ export default function MusicPlayer() {
         toggleMute();
     };
 
-    if (!mounted) {
-        return null;
-    }
-
-    // Don't render if music player is hidden
-    if (!showMusicPlayer) {
+    if (!mounted || !showMusicPlayer) {
         return null;
     }
 
     return (
         <div
             ref={playerRef}
-            className={`fixed z-50 font-mono select-none cursor-move`}
+            className={`fixed z-50 font-sans select-none transition-all duration-300 ${isDragging ? 'cursor-grabbing' : 'cursor-move'}`}
             style={{
                 left: `${position.x}px`,
-                top: `${position.y}px`
+                top: `${position.y}px`,
+                width: isCompact ? '280px' : '360px'
             }}
             onMouseDown={handleMouseDown}
         >
@@ -209,91 +184,179 @@ export default function MusicPlayer() {
                 crossOrigin="anonymous"
             />
 
-            <div className={`relative bg-[#1e1e1e]/90 backdrop-blur-sm border p-4 rounded-lg shadow-[0_0_15px_rgba(34,197,94,0.2)] flex items-start gap-4 transition-all hover:border-green-400 ${isDragging ? 'border-green-400 cursor-grabbing' : 'border-green-500/50'}`}>
-                {/* Close Button */}
-                <button
-                    onClick={(e) => {
-                        e.stopPropagation();
-                        toggleMusicPlayer();
-                    }}
-                    className="absolute top-2 right-2 p-1 rounded-full bg-black/50 hover:bg-red-500/20 border border-gray-700 hover:border-red-500 transition-colors cursor-pointer"
-                    aria-label="Close Music Player"
-                >
-                    <X size={14} className="text-gray-400 hover:text-red-500" />
-                </button>
+            {/* Spotify-inspired Player */}
+            <div className="relative group">
+                {/* Glow effect */}
+                <div className="absolute -inset-1 bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition duration-500"></div>
 
-                {/* Animated Icon */}
-                <div className={`relative w-10 h-10 flex items-center justify-center rounded-full bg-black/50 border border-gray-700 ${isPlaying ? 'animate-spin-slow' : ''}`}>
-                    <Disc className={`w-6 h-6 text-green-500 ${isPlaying ? 'animate-pulse' : ''}`} />
-                </div>
-
-                <div className="flex flex-col gap-1 w-48">
-                    <div className="text-xs text-green-400 font-bold uppercase tracking-wider flex justify-between w-full gap-4">
-                        <span>{isPlaying ? "Now Playing" : "Paused"}</span>
-                        <span className="text-[10px] opacity-70">Track {currentTrackIndex + 1}/{PLAYLIST.length}</span>
-                    </div>
-                    <div className="text-xs text-gray-400 w-full truncate">
-                        {TRACK_NAMES[currentTrackIndex] || "Unknown Track"}
-                    </div>
-
-                    {/* Progress Bar */}
-                    <div className="flex items-center gap-2 mt-1">
-                        <span className="text-[10px] text-gray-500 w-8 text-right">{formatTime(currentTime)}</span>
-                        <input
-                            type="range"
-                            min={0}
-                            max={duration || 100}
-                            value={currentTime}
-                            onChange={handleSeek}
-                            className="flex-grow h-1 bg-gray-700 rounded-lg appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-2 [&::-webkit-slider-thumb]:h-2 [&::-webkit-slider-thumb]:bg-green-500 [&::-webkit-slider-thumb]:rounded-full"
-                        />
-                        <span className="text-[10px] text-gray-500 w-8">{formatTime(duration)}</span>
-                    </div>
-
-                    <div className="flex items-center gap-3 mt-1 justify-center">
-                        <button
-                            onClick={prevTrack}
-                            className={`${BUTTON_STYLES.ICON_BUTTON} cursor-pointer`}
-                            aria-label="Previous Track"
-                        >
-                            <SkipBack size={16} />
-                        </button>
-
-                        <button
-                            onClick={togglePlay}
-                            className={`${BUTTON_STYLES.ICON_BUTTON} cursor-pointer`}
-                            aria-label={isPlaying ? "Pause" : "Play"}
-                        >
-                            {isPlaying ? <Pause size={16} /> : <Play size={16} />}
-                        </button>
-
-                        <button
-                            onClick={nextTrack}
-                            className={`${BUTTON_STYLES.ICON_BUTTON} cursor-pointer`}
-                            aria-label="Next Track"
-                        >
-                            <SkipForward size={16} />
-                        </button>
-
+                {/* Main player container */}
+                <div className="relative bg-gradient-to-br from-gray-900 via-black to-gray-900 rounded-2xl shadow-2xl overflow-hidden border border-gray-800">
+                    {/* Header with controls */}
+                    <div className="flex items-center justify-between px-4 py-2 bg-black/40 backdrop-blur-sm border-b border-gray-800/50">
+                        <div className="flex items-center gap-2">
+                            <div className={`w-2 h-2 rounded-full ${isPlaying ? 'bg-green-500 animate-pulse' : 'bg-gray-500'}`}></div>
+                            <span className="text-xs text-gray-400 font-medium">
+                                {isPlaying ? 'Playing' : 'Paused'}
+                            </span>
+                        </div>
                         <div className="flex items-center gap-1">
                             <button
-                                onClick={handleMute}
-                                className={`${BUTTON_STYLES.ICON_BUTTON} cursor-pointer`}
-                                aria-label={isMuted ? "Unmute" : "Mute"}
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    setIsCompact(!isCompact);
+                                }}
+                                className="p-1.5 rounded-lg hover:bg-white/10 transition-colors cursor-pointer"
+                                aria-label={isCompact ? "Expand" : "Compact"}
                             >
-                                {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
+                                {isCompact ? <Maximize2 size={14} className="text-gray-400" /> : <Minimize2 size={14} className="text-gray-400" />}
+                            </button>
+                            <button
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    toggleMusicPlayer();
+                                }}
+                                className="p-1.5 rounded-lg hover:bg-red-500/20 transition-colors cursor-pointer"
+                                aria-label="Close"
+                            >
+                                <X size={14} className="text-gray-400 hover:text-red-400" />
+                            </button>
+                        </div>
+                    </div>
+
+                    {/* Album art placeholder with gradient */}
+                    {!isCompact && (
+                        <div className="relative h-32 bg-gradient-to-br from-green-600 via-emerald-600 to-green-700 flex items-center justify-center overflow-hidden">
+                            <div className="absolute inset-0 bg-black/20"></div>
+                            <div className="relative z-10 flex flex-col items-center">
+                                <div className={`w-16 h-16 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center border-2 border-white/20 ${isPlaying ? 'animate-spin-slow' : ''}`}>
+                                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-green-400 to-emerald-500 flex items-center justify-center">
+                                        <div className="w-3 h-3 rounded-full bg-gray-900"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            {/* Animated background */}
+                            <div className="absolute inset-0 opacity-30">
+                                <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-transparent via-white/5 to-transparent animate-pulse"></div>
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Track info */}
+                    <div className="px-4 py-3 bg-black/20">
+                        <div className="flex items-center justify-between mb-1">
+                            <h3 className="text-sm font-semibold text-white truncate flex-1">
+                                {TRACK_NAMES[currentTrackIndex] || "Unknown Track"}
+                            </h3>
+                            <span className="text-xs text-gray-500 ml-2">
+                                {currentTrackIndex + 1}/{PLAYLIST.length}
+                            </span>
+                        </div>
+                        <p className="text-xs text-gray-400">Playlist • {PLAYLIST.length} tracks</p>
+                    </div>
+
+                    {/* Progress bar */}
+                    <div className="px-4 py-2 bg-black/20">
+                        <div className="flex items-center gap-2 mb-1">
+                            <span className="text-xs text-gray-500 w-10 text-right">{formatTime(currentTime)}</span>
+                            <div className="flex-1 group/progress">
+                                <input
+                                    type="range"
+                                    min={0}
+                                    max={duration || 100}
+                                    value={currentTime}
+                                    onChange={handleSeek}
+                                    className="w-full h-1 bg-gray-700 rounded-full appearance-none cursor-pointer
+                                        [&::-webkit-slider-thumb]:appearance-none 
+                                        [&::-webkit-slider-thumb]:w-3 
+                                        [&::-webkit-slider-thumb]:h-3 
+                                        [&::-webkit-slider-thumb]:bg-white 
+                                        [&::-webkit-slider-thumb]:rounded-full
+                                        [&::-webkit-slider-thumb]:shadow-lg
+                                        [&::-webkit-slider-thumb]:opacity-0
+                                        group-hover/progress:[&::-webkit-slider-thumb]:opacity-100
+                                        [&::-webkit-slider-thumb]:transition-opacity
+                                        hover:bg-green-600/50
+                                        transition-colors"
+                                    style={{
+                                        background: `linear-gradient(to right, rgb(34, 197, 94) 0%, rgb(34, 197, 94) ${(currentTime / duration) * 100}%, rgb(55, 65, 81) ${(currentTime / duration) * 100}%, rgb(55, 65, 81) 100%)`
+                                    }}
+                                />
+                            </div>
+                            <span className="text-xs text-gray-500 w-10">{formatTime(duration)}</span>
+                        </div>
+                    </div>
+
+                    {/* Controls */}
+                    <div className="px-4 py-4 bg-black/30">
+                        <div className="flex items-center justify-center gap-4 mb-4">
+                            <button
+                                onClick={prevTrack}
+                                className="p-2 rounded-full hover:bg-white/10 transition-all hover:scale-110 cursor-pointer"
+                                aria-label="Previous"
+                            >
+                                <SkipBack size={20} className="text-gray-300" fill="currentColor" />
                             </button>
 
-                            <input
-                                type="range"
-                                min={AUDIO_CONFIG.MIN_VOLUME}
-                                max={AUDIO_CONFIG.MAX_VOLUME}
-                                step={AUDIO_CONFIG.VOLUME_STEP}
-                                value={volume}
-                                onChange={(e) => setVolume(parseFloat(e.target.value))}
-                                className="w-24 h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-3 [&::-webkit-slider-thumb]:h-3 [&::-webkit-slider-thumb]:bg-green-500 [&::-webkit-slider-thumb]:rounded-full hover:bg-gray-600 transition-colors"
-                                aria-label="Volume Control"
-                            />
+                            <button
+                                onClick={togglePlay}
+                                className="p-3 rounded-full bg-white hover:bg-gray-100 hover:scale-105 transition-all shadow-lg cursor-pointer"
+                                aria-label={isPlaying ? "Pause" : "Play"}
+                            >
+                                {isPlaying ?
+                                    <Pause size={24} className="text-black" fill="currentColor" /> :
+                                    <Play size={24} className="text-black ml-0.5" fill="currentColor" />
+                                }
+                            </button>
+
+                            <button
+                                onClick={nextTrack}
+                                className="p-2 rounded-full hover:bg-white/10 transition-all hover:scale-110 cursor-pointer"
+                                aria-label="Next"
+                            >
+                                <SkipForward size={20} className="text-gray-300" fill="currentColor" />
+                            </button>
+                        </div>
+
+                        {/* Volume control */}
+                        <div className="flex items-center gap-3">
+                            <button
+                                onClick={handleMute}
+                                className="p-1.5 rounded-lg hover:bg-white/10 transition-colors cursor-pointer"
+                                aria-label={isMuted ? "Unmute" : "Mute"}
+                            >
+                                {isMuted ?
+                                    <VolumeX size={18} className="text-gray-400" /> :
+                                    <Volume2 size={18} className="text-gray-400" />
+                                }
+                            </button>
+
+                            <div className="flex-1 group/volume">
+                                <input
+                                    type="range"
+                                    min={AUDIO_CONFIG.MIN_VOLUME}
+                                    max={AUDIO_CONFIG.MAX_VOLUME}
+                                    step={AUDIO_CONFIG.VOLUME_STEP}
+                                    value={volume}
+                                    onChange={(e) => setVolume(parseFloat(e.target.value))}
+                                    className="w-full h-1 bg-gray-700 rounded-full appearance-none cursor-pointer
+                                        [&::-webkit-slider-thumb]:appearance-none 
+                                        [&::-webkit-slider-thumb]:w-3 
+                                        [&::-webkit-slider-thumb]:h-3 
+                                        [&::-webkit-slider-thumb]:bg-white 
+                                        [&::-webkit-slider-thumb]:rounded-full
+                                        [&::-webkit-slider-thumb]:shadow-lg
+                                        [&::-webkit-slider-thumb]:opacity-0
+                                        group-hover/volume:[&::-webkit-slider-thumb]:opacity-100
+                                        [&::-webkit-slider-thumb]:transition-opacity
+                                        hover:bg-green-600/50
+                                        transition-colors"
+                                    style={{
+                                        background: `linear-gradient(to right, rgb(34, 197, 94) 0%, rgb(34, 197, 94) ${volume * 100}%, rgb(55, 65, 81) ${volume * 100}%, rgb(55, 65, 81) 100%)`
+                                    }}
+                                    aria-label="Volume"
+                                />
+                            </div>
+                            <span className="text-xs text-gray-500 w-8 text-right">{Math.round(volume * 100)}</span>
                         </div>
                     </div>
                 </div>
@@ -301,4 +364,3 @@ export default function MusicPlayer() {
         </div>
     );
 }
-
