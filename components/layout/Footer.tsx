@@ -31,6 +31,7 @@ export default function Footer() {
           <div className="flex justify-center mb-8">
             <Link
               href="/"
+              scroll={false}
               className="group flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-all duration-300 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm px-6 py-3 rounded-full border border-gray-200/50 dark:border-gray-800/50 hover:border-green-500/50 hover:shadow-lg hover:shadow-green-500/10"
             >
               <Home size={18} className="group-hover:scale-110 transition-transform" />
