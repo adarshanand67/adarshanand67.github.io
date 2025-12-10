@@ -233,9 +233,16 @@ export const AnimeShelf = ({ items }: AnimeShelfProps) => {
                                 {selectedItem.tags && selectedItem.tags.length > 0 && (
                                     <div className="flex flex-wrap justify-center gap-2">
                                         {selectedItem.tags.map(tag => (
-                                            <span key={tag} className="text-xs text-gray-500 dark:text-gray-400">
+                                            <button
+                                                key={tag}
+                                                onClick={() => {
+                                                    setSelectedTag(tag);
+                                                    setSelectedItem(null);
+                                                }}
+                                                className="text-xs text-gray-500 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 hover:underline transition-colors"
+                                            >
                                                 <span className="opacity-50">•</span> {tag}
-                                            </span>
+                                            </button>
                                         ))}
                                     </div>
                                 )}
