@@ -108,7 +108,4 @@ export const WHOAMI_INFO = [
     `Status: ${siteConfig.whoami.status}`
 ] as const;
 
-export const AUDIO_CONFIG = {
-    AUTOPLAY_DELAY_MS: 3000,
-    DEFAULT_VOLUME: 0.5
-} as const;
+

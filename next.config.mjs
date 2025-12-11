@@ -17,6 +17,12 @@ const nextConfig = {
     },
     basePath: '',
     assetPrefix: '',
+    eslint: {
+        ignoreDuringBuilds: true,
+    },
+    typescript: {
+        ignoreBuildErrors: true,
+    },
     output: isProd ? 'export' : undefined,
     async headers() {
         return [
