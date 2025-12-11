@@ -3,7 +3,8 @@ import { useRef, useEffect, useState } from "react";
 import { Play, Pause, Volume2, VolumeX, SkipForward, SkipBack, X, Minus, Maximize2, Music } from "lucide-react";
 import { useGlobalState } from "@/components/common/GlobalProvider";
 import { useMounted } from "@/lib/hooks/useMounted";
-import { PLAYLIST, TRACK_NAMES, TRACK_IMAGES, AUDIO_CONFIG } from "@/lib/constants";
+import { PLAYLIST, TRACK_NAMES, TRACK_IMAGES } from "@/lib/constants";
+import { AUDIO_CONFIG } from "@/lib/design-tokens";
 import Image from "next/image";
 export default function MusicPlayer() {
     const {
