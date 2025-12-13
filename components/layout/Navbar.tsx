@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useGlobalState } from "@/components/common/GlobalProvider";
-import { useUISound } from "@/hooks/useUISound";
+
 import { ThemeToggle } from "./theme-toggle";
 import { Search } from "lucide-react";
 import GlitchLink from "@/components/ui/GlitchLink";
@@ -10,8 +10,7 @@ import { ROUTES } from "@/lib/constants";
 export default function Navbar() {
   const [isActive, setIsActive] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const { isSoundEnabled } = useGlobalState();
-  const { playSound } = useUISound(isSoundEnabled);
+
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -32,10 +31,8 @@ export default function Navbar() {
                 aria-label="menu"
                 aria-expanded={isActive}
                 onClick={() => {
-                  playSound('click');
                   setIsActive(!isActive);
                 }}
-                onMouseEnter={() => playSound('hover')}
               >
                 <div className="w-5 h-4 relative flex flex-col justify-between">
                   <span
@@ -92,10 +89,8 @@ export default function Navbar() {
                   <button
                     className="flex items-center justify-center w-9 h-9 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-foreground/80 hover:text-green-600 dark:hover:text-green-400 transition-all"
                     onClick={() => {
-                      playSound('click');
                       document.dispatchEvent(new Event("open-command-menu"));
                     }}
-                    onMouseEnter={() => playSound('hover')}
                     aria-label="Search"
                   >
                     {mounted ? <Search className="w-4 h-4" /> : <div className="w-4 h-4" />}

@@ -7,10 +7,11 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { CommandMenu } from "@/components/layout/CommandMenu";
 import { MatrixRain } from "@/components/ui/MatrixRain";
-import MusicPlayer from "@/components/widgets/MusicPlayer";
+
 import { siteConfig } from "@/config";
 import { StructuredData } from "@/components/seo/StructuredData";
 import { generatePersonSchema, generateWebSiteSchema } from "@/lib/seo/schemas";
+import { HobbiesModal } from "@/components/modals/HobbiesModal";
 const assistant = Assistant({
   variable: "--font-assistant",
   subsets: ["latin"],
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
-  keywords: [...siteConfig.seo.keywords], 
+  keywords: [...siteConfig.seo.keywords],
   authors: [{ name: siteConfig.author.name }],
   creator: siteConfig.author.name,
   openGraph: {
@@ -75,7 +76,7 @@ export default function RootLayout({
         className={`${assistant.variable} ${jetbrains.variable} antialiased`}
         suppressHydrationWarning
       >
-        {}
+        { }
         <StructuredData data={generatePersonSchema()} />
         <StructuredData data={generateWebSiteSchema()} />
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
@@ -83,11 +84,12 @@ export default function RootLayout({
             <Navbar />
             <MatrixRain />
             <CommandMenu />
+            <HobbiesModal />
             {children}
-            <MusicPlayer />
-            {}
-            {}
-            {}
+
+            { }
+            { }
+            { }
             <Footer />
             <script
               type="application/ld+json"

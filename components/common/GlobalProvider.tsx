@@ -2,49 +2,30 @@
 import { createContext, useContext, useState, useCallback, ReactNode } from "react";
 import confetti from "canvas-confetti";
 import { useKonamiCode } from "@/hooks/useKonamiCode";
-import { PLAYLIST } from "@/lib/constants";
+
 interface GlobalState {
     isMatrixEnabled: boolean;
     toggleMatrix: () => void;
     setMatrix: (enabled: boolean) => void;
-    isPlaying: boolean;
-    setIsPlaying: (playing: boolean) => void;
-    volume: number;
-    setVolume: (vol: number) => void;
-    isMuted: boolean;
-    toggleMute: () => void;
-    currentTrackIndex: number;
-    nextTrack: () => void;
-    prevTrack: () => void;
-    showMusicPlayer: boolean;
-    toggleMusicPlayer: () => void;
-    setShowMusicPlayer: (show: boolean) => void;
-    isSoundEnabled: boolean;
-    toggleSound: () => void;
+
+    showHobbiesModal: boolean;
+    toggleHobbiesModal: () => void;
 }
 const GlobalContext = createContext<GlobalState | undefined>(undefined);
 export const GlobalProvider = ({ children }: { children: ReactNode }) => {
     const [isMatrixEnabled, setIsMatrixEnabled] = useState(true);
-    const [isPlaying, setIsPlaying] = useState(false);
-    const [volume, setVolumeState] = useState(0.5);
-    const [isMuted, setIsMuted] = useState(false);
-    const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
-    const [showMusicPlayer, setShowMusicPlayer] = useState(false);
-    const [isSoundEnabled, setIsSoundEnabled] = useState(true);
-    const toggleSound = useCallback(() => setIsSoundEnabled((prev) => !prev), []);
+
+    const [showHobbiesModal, setShowHobbiesModal] = useState(false);
+
     const toggleMatrix = useCallback(() => setIsMatrixEnabled((prev) => !prev), []);
     const setMatrix = useCallback((enabled: boolean) => setIsMatrixEnabled(enabled), []);
-    const setVolume = useCallback((vol: number) => setVolumeState(Math.max(0, Math.min(1, vol))), []);
-    const toggleMute = useCallback(() => setIsMuted((prev) => !prev), []);
-    const nextTrack = useCallback(() => setCurrentTrackIndex((prev) => (prev + 1) % PLAYLIST.length), []);
-    const prevTrack = useCallback(() => setCurrentTrackIndex((prev) => (prev - 1 + PLAYLIST.length) % PLAYLIST.length), []);
-    const toggleMusicPlayer = useCallback(() => setShowMusicPlayer((prev) => !prev), []);
+    const toggleHobbiesModal = useCallback(() => setShowHobbiesModal((prev) => !prev), []);
     useKonamiCode(() => {
         confetti({
             particleCount: 150,
             spread: 100,
             origin: { y: 0.6 },
-            colors: ['#22c55e', '#15803d', '#ffffff'], 
+            colors: ['#22c55e', '#15803d', '#ffffff'],
         });
     });
     return (
@@ -53,20 +34,9 @@ export const GlobalProvider = ({ children }: { children: ReactNode }) => {
                 isMatrixEnabled,
                 toggleMatrix,
                 setMatrix,
-                isPlaying,
-                setIsPlaying,
-                volume,
-                setVolume,
-                isMuted,
-                toggleMute,
-                currentTrackIndex,
-                nextTrack,
-                prevTrack,
-                showMusicPlayer,
-                toggleMusicPlayer,
-                setShowMusicPlayer,
-                isSoundEnabled,
-                toggleSound,
+
+                showHobbiesModal,
+                toggleHobbiesModal,
             }}
         >
             {children}

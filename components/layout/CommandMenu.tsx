@@ -16,33 +16,24 @@ import {
   Mail,
   Github,
   Linkedin,
-  Play,
-  Pause,
-  SkipForward,
-  SkipBack,
+
   Sparkles,
+  Gamepad2,
 } from "lucide-react";
-import { useUISound } from "@/hooks/useUISound";
+
 export function CommandMenu() {
   const [open, setOpen] = React.useState(false);
   const router = useRouter();
   const { setTheme } = useTheme();
   const {
-    toggleMusicPlayer,
-    isPlaying,
-    setIsPlaying,
-    nextTrack,
-    prevTrack,
     toggleMatrix,
-    isSoundEnabled,
+    toggleHobbiesModal,
   } = useGlobalState();
-  const { playSound } = useUISound(isSoundEnabled);
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
         setOpen((open) => !open);
-        if (!open) playSound('hover'); 
       }
       if (e.key === "Escape") {
         setOpen(false);
@@ -50,7 +41,6 @@ export function CommandMenu() {
     };
     const openEvent = () => {
       setOpen(true);
-      playSound('hover');
     };
     document.addEventListener("keydown", down);
     document.addEventListener("open-command-menu", openEvent);
@@ -58,12 +48,12 @@ export function CommandMenu() {
       document.removeEventListener("keydown", down);
       document.removeEventListener("open-command-menu", openEvent);
     };
-  }, [open, playSound]);
+  }, [open]);
+
   const runCommand = React.useCallback((command: () => unknown) => {
-    playSound('click');
     setOpen(false);
     command();
-  }, [playSound]);
+  }, []);
   if (!open) return null;
   return (
     <div
@@ -127,30 +117,7 @@ export function CommandMenu() {
                 Bookshelf
               </Command.Item>
             </Command.Group>
-            <Command.Separator className="h-px bg-gray-100 dark:bg-gray-800 my-2" />
-            <Command.Group heading="Media Control" className="text-xs font-medium text-gray-600 dark:text-gray-400 mb-2 px-2">
-              <Command.Item
-                onSelect={() => runCommand(() => setIsPlaying(!isPlaying))}
-                className="flex items-center gap-2 px-2 py-2 rounded-md text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-zinc-800 cursor-pointer aria-selected:bg-gray-100 dark:aria-selected:bg-zinc-800 transition-colors"
-              >
-                {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
-                {isPlaying ? "Pause Music" : "Play Music"}
-              </Command.Item>
-              <Command.Item
-                onSelect={() => runCommand(nextTrack)}
-                className="flex items-center gap-2 px-2 py-2 rounded-md text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-zinc-800 cursor-pointer aria-selected:bg-gray-100 dark:aria-selected:bg-zinc-800 transition-colors"
-              >
-                <SkipForward className="w-4 h-4" />
-                Next Track
-              </Command.Item>
-              <Command.Item
-                onSelect={() => runCommand(prevTrack)}
-                className="flex items-center gap-2 px-2 py-2 rounded-md text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-zinc-800 cursor-pointer aria-selected:bg-gray-100 dark:aria-selected:bg-zinc-800 transition-colors"
-              >
-                <SkipBack className="w-4 h-4" />
-                Previous Track
-              </Command.Item>
-            </Command.Group>
+
             <Command.Separator className="h-px bg-gray-100 dark:bg-gray-800 my-2" />
             <Command.Group heading="System Actions" className="text-xs font-medium text-gray-600 dark:text-gray-400 mb-2 px-2">
               <Command.Item
@@ -159,6 +126,13 @@ export function CommandMenu() {
               >
                 <Sparkles className="w-4 h-4" />
                 Toggle Matrix Rain
+              </Command.Item>
+              <Command.Item
+                onSelect={() => runCommand(toggleHobbiesModal)}
+                className="flex items-center gap-2 px-2 py-2 rounded-md text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-zinc-800 cursor-pointer aria-selected:bg-gray-100 dark:aria-selected:bg-zinc-800 transition-colors"
+              >
+                <Gamepad2 className="w-4 h-4" />
+                View Hobbies
               </Command.Item>
             </Command.Group>
             <Command.Separator className="h-px bg-gray-100 dark:bg-gray-800 my-2" />
