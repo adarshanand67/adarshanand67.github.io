@@ -4,15 +4,15 @@ import {
     getBooks,
     getEntertainment,
     getHobby,
-    getProjects
+    getProjects,
+    getArticles
 } from "@/lib/api";
 import UniversalShelf from "@/components/shelves/UniversalShelf";
 import { shelfConfigs } from "@/config/shelves";
 import { notFound } from "next/navigation";
 
 const SHELF_MAPPING = {
-    blogshelf: { api: getBlogs, config: shelfConfigs.blogs },
-    papershelf: { api: getPapers, config: shelfConfigs.papers },
+    articleshelf: { api: getArticles, config: shelfConfigs.articles },
     bookshelf: { api: getBooks, config: shelfConfigs.books },
     animeshelf: { api: getEntertainment, config: shelfConfigs.anime },
     hobbyshelf: { api: getHobby, config: shelfConfigs.hobby },

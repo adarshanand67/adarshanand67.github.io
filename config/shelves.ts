@@ -14,12 +14,12 @@ export const shelfConfigs: Record<string, ShelfConfig> = {
     searchPlaceholder: "Search books...",
     type: ShelfType.Book,
   },
-  papers: {
-    title: "Papershelf",
-    description: "Research papers that have shaped my understanding.",
-    command: 'find ~/papers -name "*.pdf"',
-    searchPlaceholder: "Search papers...",
-    type: ShelfType.Paper,
+  articles: {
+    title: "Articles",
+    description: "Research papers and thoughts on technology.",
+    command: "ls ~/articles",
+    searchPlaceholder: "Search articles...",
+    type: ShelfType.Article,
   },
   anime: {
     title: "Animeshelf",

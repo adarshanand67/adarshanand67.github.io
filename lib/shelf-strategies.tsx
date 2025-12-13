@@ -113,7 +113,7 @@ export class BlogListStrategy implements ShelfItemStrategy<Blog> {
         <div className="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-3">
           <span className="text-gray-500 text-xs min-w-[80px]">{blog.date}</span>
           <Link
-            href={`/blogshelf/${blog.slug}`}
+            href={`/articleshelf/${blog.slug}`}
             className="text-green-700 dark:text-green-400 hover:underline"
           >
             {blog.title}
@@ -247,6 +247,53 @@ export class HobbyListStrategy implements ShelfItemStrategy<Hobby> {
     );
   }
 }
+
+export class ArticleListStrategy implements ShelfItemStrategy<Blog | Paper> {
+  renderItem(item: Blog | Paper, index: number): ReactNode {
+    if ('url' in item) {
+      return new PaperListStrategy().renderItem(item as Paper, index);
+    }
+    return new BlogListStrategy().renderItem(item as Blog, index);
+  }
+
+  renderList(items: (Blog | Paper)[]): ReactNode {
+    const papers = items.filter((i): i is Paper => 'url' in i);
+    const blogs = items.filter((i): i is Blog => 'slug' in i);
+
+    return (
+      <div className="space-y-12">
+        {papers.length > 0 && (
+          <div>
+            <h2 className="text-2xl font-bold mb-6 flex items-center gap-2 font-mono">
+              <span className="text-green-600">01.</span> Research Papers
+            </h2>
+            {new PaperListStrategy().renderList(papers)}
+          </div>
+        )}
+        {blogs.length > 0 && (
+          <div>
+            <h2 className="text-2xl font-bold mb-6 flex items-center gap-2 font-mono">
+              <span className="text-green-600">{papers.length > 0 ? '02.' : '01.'}</span> Blog Posts
+            </h2>
+            {new BlogListStrategy().renderList(blogs)}
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  filter(items: (Blog | Paper)[], query: string): (Blog | Paper)[] {
+    if (!query) return items;
+    const papers = items.filter((i): i is Paper => 'url' in i);
+    const blogs = items.filter((i): i is Blog => 'slug' in i);
+
+    return [
+      ...new PaperListStrategy().filter(papers, query),
+      ...new BlogListStrategy().filter(blogs, query)
+    ];
+  }
+}
+
 export class ShelfStrategyFactory {
   static getStrategy(type: ShelfType): ShelfItemStrategy<ShelfItem> {
     switch (type) {
@@ -262,6 +309,8 @@ export class ShelfStrategyFactory {
         return new ProjectListStrategy();
       case ShelfType.Hobby:
         return new HobbyListStrategy();
+      case ShelfType.Article:
+        return new ArticleListStrategy();
       default:
         throw new Error(`Unknown shelf type: ${type}`);
     }

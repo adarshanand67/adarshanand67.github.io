@@ -63,16 +63,10 @@ export default function Navbar() {
               { }
               <div className="hidden md:flex md:items-center md:ml-auto gap-1 text-sm font-medium">
                 <GlitchLink
-                  href={ROUTES.BLOG_SHELF}
+                  href={ROUTES.ARTICLE_SHELF}
                   className="px-3 py-2 rounded-lg text-foreground/80 hover:bg-gray-100 dark:hover:bg-gray-800 font-mono transition-colors"
                 >
-                  Blogshelf
-                </GlitchLink>
-                <GlitchLink
-                  href={ROUTES.PAPER_SHELF}
-                  className="px-3 py-2 rounded-lg text-foreground/80 hover:bg-gray-100 dark:hover:bg-gray-800 font-mono transition-colors"
-                >
-                  Papershelf
+                  Articleshelf
                 </GlitchLink>
                 <GlitchLink
                   href={ROUTES.ANIME_SHELF}
@@ -118,18 +112,11 @@ export default function Navbar() {
             >
               <div className="flex flex-col items-center gap-2 text-sm font-mono pt-2 border-t border-gray-200/50 dark:border-gray-800/50">
                 <Link
-                  href={ROUTES.BLOG_SHELF}
+                  href={ROUTES.ARTICLE_SHELF}
                   className="w-full text-center py-2.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-green-600 dark:hover:text-green-400"
                   onClick={() => setIsActive(false)}
                 >
-                  Blogshelf
-                </Link>
-                <Link
-                  href={ROUTES.PAPER_SHELF}
-                  className="w-full text-center py-2.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-green-600 dark:hover:text-green-400"
-                  onClick={() => setIsActive(false)}
-                >
-                  Papershelf
+                  Articleshelf
                 </Link>
                 <Link
                   href={ROUTES.ANIME_SHELF}

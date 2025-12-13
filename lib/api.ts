@@ -16,6 +16,11 @@ export const getBooks = async () => booksData;
 export const getProjects = async () => [];
 export const getUses = async () => usesData;
 export const getHobby = async () => hobbyData;
+export const getArticles = async () => {
+  const blogs = await getBlogs();
+  const papers = await getPapers();
+  return [...papers, ...blogs];
+};
 
 export const getEntertainment = async (): Promise<EntertainmentItem[]> =>
   entertainmentData.map((item: any) => ({

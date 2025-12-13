@@ -53,17 +53,18 @@ export const INTRO_LINES = (toLeet: (t: string) => string) => [
 export const DIRECTORIES = ["blogs", "papers", "books", "anime", "hobby"] as const;
 export const ROUTES = {
     HOME: "/",
-    BLOG_SHELF: "/blogshelf",
-    PAPER_SHELF: "/papershelf",
+    ARTICLE_SHELF: "/articleshelf",
     BOOK_SHELF: "/bookshelf",
     ANIME_SHELF: "/animeshelf",
     HOBBY_SHELF: "/hobbyshelf",
 } as const;
 export const DIRECTORY_MAP: Record<string, string> = {
-    blog: ROUTES.BLOG_SHELF,
-    blogs: ROUTES.BLOG_SHELF,
-    paper: ROUTES.PAPER_SHELF,
-    papers: ROUTES.PAPER_SHELF,
+    blog: ROUTES.ARTICLE_SHELF,
+    blogs: ROUTES.ARTICLE_SHELF,
+    paper: ROUTES.ARTICLE_SHELF,
+    papers: ROUTES.ARTICLE_SHELF,
+    article: ROUTES.ARTICLE_SHELF,
+    articles: ROUTES.ARTICLE_SHELF,
     book: ROUTES.BOOK_SHELF,
     books: ROUTES.BOOK_SHELF,
     anime: ROUTES.ANIME_SHELF,

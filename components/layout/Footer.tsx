@@ -33,8 +33,7 @@ export default function Footer() {
           { }
           <div className="flex flex-wrap justify-center gap-2">
             {[
-              { href: "/blogshelf", label: "Blogs", icon: "📝" },
-              { href: "/papershelf", label: "Papers", icon: "📄" },
+              { href: "/articleshelf", label: "Articles", icon: "📝" },
               { href: "/bookshelf", label: "Books", icon: "📚" },
               { href: "/animeshelf", label: "Anime", icon: "📺" },
               { href: "/hobbyshelf", label: "Hobby", icon: "🎮" },
