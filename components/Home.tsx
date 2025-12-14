@@ -1,0 +1,440 @@
+"use client";
+
+import Link from "next/link";
+import Image from "next/image";
+import { ChevronDown, Book, FileText, Tv, Gamepad2, Feather } from "lucide-react";
+import { useStore } from "@/lib/store/useStore";
+import { SectionHeader } from "@/components/UI";
+import { linkifyTech } from "@/lib/tech-links";
+import { getAssetPath } from "@/lib/utils/asset-path";
+import { techLinks } from "@/lib/tech-links";
+import { shelfConfigs } from "@/lib/config/shelves";
+import { DIRECTORY_MAP } from "@/lib/constants";
+
+// --- ContactSection ---
+export function ContactSection() {
+    const { expandedSections, toggleSectionExpanded } = useStore();
+    const isExpanded = expandedSections['contact'] ?? false;
+
+    return (
+        <div className="font-mono">
+            <SectionHeader
+                title="Let's Talk"
+                command="echo $CONTACT_INFO"
+                isExpanded={isExpanded}
+                onToggle={() => toggleSectionExpanded('contact')}
+            />
+            <div
+                className={`transition-all duration-300 ease-in-out overflow-hidden ${isExpanded ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'
+                    }`}
+            >
+                <p className="text-gray-600 dark:text-gray-400 mb-8 text-base max-w-2xl leading-relaxed">
+                    I&apos;m always open to discussing new opportunities, interesting projects, collaborations,
+                    or just chatting about tech, security, and system programming. Feel free to reach out!
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <a
+                        href="https://linkedin.com/in/adarshanand67"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group relative overflow-hidden glass rounded-lg p-4 transition-all duration-300 hover:shadow-lg hover:shadow-green-500/20 hover:-translate-y-1"
+                    >
+                        <div className="flex items-center gap-3">
+                            <div className="flex-shrink-0 w-10 h-10 bg-green-500 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
+                                <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                                </svg>
+                            </div>
+                            <div className="flex-1 min-w-0">
+                                <div className="text-xs text-green-600 dark:text-green-400 font-semibold mb-0.5">LinkedIn</div>
+                                <div className="text-sm text-gray-700 dark:text-gray-300 font-medium truncate">adarshanand67</div>
+                            </div>
+                            <svg className="w-5 h-5 text-green-500 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            </svg>
+                        </div>
+                    </a>
+                    <a
+                        href="mailto:adarshan20302@gmail.com"
+                        className="group relative overflow-hidden glass rounded-lg p-4 transition-all duration-300 hover:shadow-lg hover:shadow-green-500/20 hover:-translate-y-1"
+                    >
+                        <div className="flex items-center gap-3">
+                            <div className="flex-shrink-0 w-10 h-10 bg-green-500 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
+                                <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                </svg>
+                            </div>
+                            <div className="flex-1 min-w-0">
+                                <div className="text-xs text-green-600 dark:text-green-400 font-semibold mb-0.5">Email</div>
+                                <div className="text-sm text-gray-700 dark:text-gray-300 font-medium truncate">adarshan20302@gmail.com</div>
+                            </div>
+                            <svg className="w-5 h-5 text-green-500 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            </svg>
+                        </div>
+                    </a>
+                    <a
+                        href="https://github.com/adarshanand67"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group relative overflow-hidden glass rounded-lg p-4 transition-all duration-300 hover:shadow-lg hover:shadow-green-500/20 hover:-translate-y-1"
+                    >
+                        <div className="flex items-center gap-3">
+                            <div className="flex-shrink-0 w-10 h-10 bg-green-500 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
+                                <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                                </svg>
+                            </div>
+                            <div className="flex-1 min-w-0">
+                                <div className="text-xs text-green-600 dark:text-green-400 font-semibold mb-0.5">GitHub</div>
+                                <div className="text-sm text-gray-700 dark:text-gray-300 font-medium truncate">adarshanand67</div>
+                            </div>
+                            <svg className="w-5 h-5 text-green-500 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+// --- Experience ---
+interface ExperienceItem {
+    company: string;
+    role: string;
+    duration: string;
+    location: string;
+    logo?: string;
+    description?: string;
+    highlights: string[];
+}
+interface ExperienceProps {
+    items: ExperienceItem[];
+}
+export function Experience({ items }: ExperienceProps) {
+    const { expandedSections, toggleSectionExpanded } = useStore();
+    const isExpanded = expandedSections['experience'] ?? false;
+
+    return (
+        <div className="mb-4 font-mono" id="experience">
+            <SectionHeader
+                title="Experience"
+                command="cat ~/work/history.log"
+                isExpanded={isExpanded}
+                onToggle={() => toggleSectionExpanded('experience')}
+            />
+            { }
+            <div
+                className={`relative transition-all duration-300 ease-in-out overflow-hidden ${isExpanded ? 'max-h-[10000px] opacity-100' : 'max-h-0 opacity-0'
+                    }`}
+            >
+                <div className="pt-4 pl-2">
+                    {items.map((exp, index) => (
+                        <div key={index} className="relative pl-8 pb-8 border-l-2 border-gray-300 dark:border-gray-700 last:pb-0 last:border-l-transparent hover:border-green-500 transition-colors group/item">
+                            { }
+                            <div className="absolute left-0 top-0 z-10 w-4 h-4 -translate-x-[9px] rounded-full bg-green-500 border-4 border-white dark:border-gray-900 group-hover/item:scale-125 transition-transform"></div>
+                            <div className="flex flex-col gap-3 glass p-5 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                                { }
+                                <div className="flex items-start gap-3">
+                                    {exp.logo && (
+                                        <div className="shrink-0 w-12 h-12 rounded-lg overflow-hidden bg-white dark:bg-gray-800 p-1 border border-gray-200 dark:border-gray-700">
+                                            <Image
+                                                src={getAssetPath(exp.logo)}
+                                                alt={`${exp.company} logo`}
+                                                width={48}
+                                                height={48}
+                                                className="w-full h-full object-contain"
+                                            />
+                                        </div>
+                                    )}
+                                    <div className="flex-1 min-w-0">
+                                        <h3 className="text-xl font-bold text-gray-900 dark:text-white leading-tight">{exp.company}</h3>
+                                        <p className="text-green-600 dark:text-green-400 font-semibold mt-0.5">{exp.role}</p>
+                                        <div className="flex flex-wrap items-center gap-2 mt-1 text-sm text-gray-600 dark:text-gray-400">
+                                            <span>{exp.duration}</span>
+                                            <span className="text-gray-400">•</span>
+                                            <span>{exp.location}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                { }
+                                {exp.description && (
+                                    <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                                        {exp.description}
+                                    </p>
+                                )}
+                                { }
+                                {exp.highlights && exp.highlights.length > 0 && (
+                                    <ul className="space-y-2">
+                                        {exp.highlights.map((highlight, i) => (
+                                            <li
+                                                key={i}
+                                                className="flex gap-2 text-gray-700 dark:text-gray-300 leading-relaxed"
+                                                dangerouslySetInnerHTML={{
+                                                    __html: `<span class="text-green-500 shrink-0">▸</span><span>${linkifyTech(highlight)}</span>`
+                                                }}
+                                            />
+                                        ))}
+                                    </ul>
+                                )}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+    );
+}
+
+// --- TechStack ---
+const skillCategories = {
+    "Languages": [
+        "C",
+        "C++",
+        "Python",
+        "Java",
+        "JavaScript",
+    ],
+    "System & Kernel": [
+        "Intel SGX/TDX",
+        "Kernel Development",
+        "System Programming",
+        "Windows Internals",
+        "Ubuntu",
+        "CentOS",
+        "RHEL",
+    ],
+    "Security & Privacy": [
+        "Data Loss Prevention",
+        "Trellix ePO",
+        "Endpoint Security",
+        "EDR (Endpoint Detection & Response)",
+        "XDR (Extended Detection & Response)",
+        "PowerShell",
+        "Boldon James",
+        "Full-Disk Encryption",
+        "Hashicorp Vault",
+        "OpenSSL",
+        "Post-Quantum Cryptography",
+        "libFuzzer",
+        "RESTler",
+        "SIEM",
+        "Threat Intelligence",
+    ],
+    "AI & Machine Learning": [
+        "vLLM",
+        "PyTorch",
+        "OpenVINO",
+    ],
+    "Databases & Tools": [
+        "Redis",
+        "MySQL",
+    ],
+};
+export function TechStack() {
+    const { expandedSections, toggleSectionExpanded } = useStore();
+    const isExpanded = expandedSections['techstack'] ?? false;
+    return (
+        <div className="font-mono">
+            <SectionHeader
+                title="Tech Stack"
+                command="cat ~/.skills"
+                isExpanded={isExpanded}
+                onToggle={() => toggleSectionExpanded('techstack')}
+            />
+            <div
+                className={`space-y-6 transition-all duration-300 ease-in-out overflow-hidden ${isExpanded ? 'max-h-[5000px] opacity-100' : 'max-h-0 opacity-0'
+                    }`}
+            >
+                <div className="glass p-6 rounded-xl space-y-6 shadow-sm">
+                    {Object.entries(skillCategories).map(([category, skills]) => (
+                        <div key={category}>
+                            <h3 className="text-sm font-bold text-gray-500 mb-3 uppercase tracking-wider">
+                                {category}
+                            </h3>
+                            <div className="flex flex-wrap gap-2">
+                                {skills.map((skill) => {
+                                    const url =
+                                        techLinks[skill] || `https://www.google.com/search?q=${encodeURIComponent(skill)}`;
+                                    return (
+                                        <Link
+                                            key={skill}
+                                            href={url}
+                                            target="_blank"
+                                            className="px-3 py-1.5 bg-gray-50 dark:bg-gray-800/50 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 rounded text-sm hover:bg-green-50 dark:hover:bg-green-900/20 hover:text-green-700 dark:hover:text-green-400 hover:border-green-500/50 transition-all duration-200"
+                                        >
+                                            {skill}
+                                        </Link>
+                                    );
+                                })}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+    );
+}
+
+// --- RecentSection ---
+interface Item {
+    title: string;
+    url: string;
+    date?: string;
+    isExternal?: boolean;
+}
+interface RecentSectionProps {
+    title: string;
+    command: string;
+    items: Item[];
+    linkText: string;
+    linkUrl: string;
+}
+export function RecentSection({
+    title,
+    command,
+    items,
+    linkText,
+    linkUrl,
+}: RecentSectionProps) {
+    const { expandedSections, toggleSectionExpanded } = useStore();
+    // Generate a consistent ID based on title
+    const sectionId = `recent-${title.toLowerCase().replace(/\s+/g, '-')}`;
+    const isExpanded = expandedSections[sectionId] ?? false;
+
+    return (
+        <section
+            className="font-mono group/section cursor-pointer"
+            onClick={(e) => {
+                if ((e.target as HTMLElement).closest('a')) return;
+                toggleSectionExpanded(sectionId);
+            }}
+        >
+            <div className="w-full text-left group">
+                <h2 className="text-xl font-bold mb-1 flex items-center gap-2 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
+                    <span className="text-primary text-glow">##</span>
+                    <span className="group-hover/section:text-green-400 transition-colors duration-300">{title}</span>
+                    <ChevronDown
+                        size={20}
+                        className={`transition-transform duration-300 ${isExpanded ? 'rotate-0' : '-rotate-90'}`}
+                    />
+                </h2>
+            </div>
+            <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400 mb-3 text-xs">
+                <span className="text-green-500 font-bold">$</span>
+                <span className="opacity-75">{command}</span>
+                <span className="animate-pulse inline-block w-2 h-4 bg-green-500 align-middle shadow-[0_0_8px_rgba(34,197,94,0.8)]"></span>
+            </div>
+            <div
+                className={`transition-all duration-300 ease-in-out overflow-hidden ${isExpanded ? 'max-h-[3000px] opacity-100' : 'max-h-0 opacity-0'
+                    }`}
+            >
+                <div className="space-y-2 glass p-4 rounded-xl">
+                    {items.map((item, index) => (
+                        <div
+                            key={index}
+                            className="border-l-2 border-gray-300 dark:border-gray-700 pl-4 hover:border-green-500 transition-colors py-1"
+                        >
+                            <div className="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-3">
+                                {item.date && <span className="text-gray-500 text-xs">{item.date}</span>}
+                                <Link
+                                    href={item.url}
+                                    target={item.isExternal ? "_blank" : undefined}
+                                    className="text-green-700 dark:text-green-400 hover:underline"
+                                >
+                                    {item.title}
+                                </Link>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+                <p className="mt-4 text-sm text-gray-500">
+                    →{" "}
+                    <Link href={linkUrl} className="text-green-700 dark:text-green-400 hover:underline">
+                        {linkText}
+                    </Link>
+                </p>
+            </div>
+        </section>
+    );
+}
+
+// --- ShelvesSection ---
+const SHELF_ICONS: Record<string, React.ElementType> = {
+    blogs: Feather,
+    papers: FileText,
+    books: Book,
+    anime: Tv,
+    hobby: Gamepad2
+};
+
+const SHELVES = ["blogs", "papers", "books", "anime", "hobby"].map(key => ({
+    name: key,
+    path: DIRECTORY_MAP[key],
+    description: shelfConfigs[key].description,
+    icon: SHELF_ICONS[key],
+    color: "text-green-500"
+}));
+export function ShelvesSection() {
+    const { expandedSections, toggleSectionExpanded } = useStore();
+    const isExpanded = expandedSections['shelves'] ?? false;
+
+    return (
+        <div className="section max-w-4xl mx-auto px-4 mb-8">
+            <div className="group relative">
+                <div className="absolute -inset-1 bg-gradient-to-r from-green-500/20 to-emerald-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                <div
+                    onClick={(e) => {
+                        if ((e.target as HTMLElement).closest('a')) return;
+                        toggleSectionExpanded('shelves');
+                    }}
+                    className="relative glass rounded-xl p-4 hover:border-green-500/50 transition-colors duration-300 cursor-pointer"
+                >
+                    <section className="font-mono">
+                        <div className="w-full text-left group mb-3">
+                            <h2 className="text-2xl font-bold flex items-center gap-2 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors mb-2">
+                                <span className="text-primary">##</span> <span className="text-green-700 dark:text-green-400">Directories</span>
+                                <ChevronDown
+                                    size={20}
+                                    className={`transition-transform duration-300 ${isExpanded ? 'rotate-0' : '-rotate-90'}`}
+                                />
+                            </h2>
+                            <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400 text-sm">
+                                <span className="text-green-500 font-bold">$</span>
+                                <span>tree -d -L 1 ~</span>
+                                <span className="animate-pulse inline-block w-2 h-4 bg-green-500 align-middle"></span>
+                            </div>
+                        </div>
+                        <div
+                            className={`transition-all duration-300 ease-in-out overflow-hidden ${isExpanded ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'}`}
+                        >
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+                                {SHELVES.map((shelf) => (
+                                    <Link
+                                        key={shelf.name}
+                                        href={shelf.path}
+                                        className="group/item flex items-start gap-3 p-3 rounded-lg border border-gray-200/50 dark:border-gray-800/50 hover:bg-gray-100/50 dark:hover:bg-gray-800/50 hover:border-green-500/30 transition-all duration-300"
+                                    >
+                                        <div className={`p-2 rounded-lg bg-gray-100 dark:bg-gray-800 group-hover/item:scale-110 transition-transform duration-300 ${shelf.color}`}>
+                                            <shelf.icon size={20} />
+                                        </div>
+                                        <div>
+                                            <div className="font-bold text-gray-700 dark:text-gray-200 group-hover/item:text-green-600 dark:group-hover/item:text-green-400 transition-colors">
+                                                {shelf.name}/
+                                            </div>
+                                            <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                                                {shelf.description}
+                                            </div>
+                                        </div>
+                                    </Link>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    );
+}
