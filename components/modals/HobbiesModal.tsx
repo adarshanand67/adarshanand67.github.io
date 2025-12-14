@@ -1,7 +1,7 @@
 "use client";
 
 import { useStore } from "@/lib/store/useStore";
-import { hobbyData } from "@/lib/data";
+import { hobbyData } from "@/data";
 import * as LucideIcons from "lucide-react";
 import { X } from "lucide-react";
 import { useEffect, useRef } from "react";

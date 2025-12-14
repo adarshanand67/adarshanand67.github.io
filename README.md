@@ -66,7 +66,7 @@ export const siteConfig = {
 
 ### 3. **Update Your Data**
 
-Edit `lib/data.ts` to update your profile, projects, experiences, and more.
+Edit `data/index.ts` to update your profile, projects, experiences, and more.
 
 ### 4. **Run Locally**
 

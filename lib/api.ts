@@ -8,7 +8,7 @@ import {
   entertainmentData,
   hobbyData,
   usesData
-} from "@/lib/data";
+} from "@/data";
 import { EntertainmentItem, EntertainmentType, WatchStatus } from "@/types/definitions";
 
 export const getProfile = async () => profileData;
