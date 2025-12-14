@@ -7,7 +7,7 @@ import { ChevronDown, Book, FileText, Tv, Gamepad2, Feather } from "lucide-react
 import { useStore } from "@/lib/store/useStore";
 import { SectionHeader, GlitchText, Terminal } from "@/components/layout";
 import { linkifyTech } from "@/lib/techLinks";
-import { getAssetPath } from "@/lib/utils/assetPath";
+import { getAssetPath } from "@/lib/utils";
 import { techLinks } from "@/lib/techLinks";
 import { shelfConfigs, siteConfig } from "@/lib/config";
 import { directoryMap, skillCategories } from "@/lib/constants";

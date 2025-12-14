@@ -6,7 +6,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useTheme, ThemeProvider as NextThemesProvider } from "next-themes";
 import { type ThemeProviderProps } from "next-themes";
 import { useStore } from "@/lib/store/useStore";
-import { useMounted } from "@/lib/hooks/useMounted";
+import { useMounted } from "@/lib/hooks";
 import { useRef } from "react";
 import { routes, introLines, directories } from "@/lib/constants";
 import { siteConfig } from "@/lib/config";
@@ -401,7 +401,7 @@ export function Terminal() {
     );
 }
 
-import { cn } from "@/lib/utils/cn";
+import { cn } from "@/lib/utils";
 import { Command } from "cmdk";
 
 
