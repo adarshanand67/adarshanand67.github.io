@@ -13,13 +13,15 @@ const nextConfig = {
                 protocol: 'https',
                 hostname: 'cdn.myanimelist.net',
             },
+            {
+                protocol: 'https',
+                hostname: 'www.google.com',
+            },
         ],
     },
     basePath: '',
     assetPrefix: '',
-    eslint: {
-        ignoreDuringBuilds: true,
-    },
+
     typescript: {
         ignoreBuildErrors: true,
     },

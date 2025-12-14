@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
 import { Assistant, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider, GlobalEffect, Navbar, Footer, CommandMenu } from "@/components/Layout";
-import { MatrixRain } from "@/components/UI";
+import { ThemeProvider, GlobalEffect, Navbar, Footer, CommandMenu, MatrixRain } from "@/components/layout";
 
 import { siteConfig } from "@/lib/config";
-import { StructuredData } from "@/components/seo/StructuredData";
+import { StructuredData } from "@/components/seo/structuredData";
 import { generatePersonSchema, generateWebSiteSchema } from "@/lib/seo/schemas";
-import { HobbiesModal } from "@/components/modals/HobbiesModal";
+import { HobbiesModal } from "@/components/modals/hobbiesModal";
 const assistant = Assistant({
   variable: "--font-assistant",
   subsets: ["latin"],
@@ -19,6 +18,7 @@ const jetbrains = JetBrains_Mono({
   display: "swap",
 });
 export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
   title: {
     default: siteConfig.name,
     template: `%s | ${siteConfig.name}`,

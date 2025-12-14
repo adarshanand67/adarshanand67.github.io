@@ -36,7 +36,6 @@ export function isValidWatchStatus(status: string): status is WatchStatus {
 export function parseAnimeType(type: string): AnimeType {
     if (!type) return AnimeType.Anime;
 
-    // Handle specific mapping if needed, e.g. "Web Series" space handling
     if (type === "Web_Series" || type === "Web Series") {
         return AnimeType.WebSeries;
     }

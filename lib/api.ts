@@ -7,7 +7,7 @@ import {
   booksData,
   animeData,
   hobbyData,
-  usesData
+
 } from "@/data";
 import { AnimeItem, AnimeType, WatchStatus } from "@/types/definitions";
 
@@ -16,7 +16,7 @@ export const getExperiences = async () => experiencesData;
 export const getPapers = async () => papersData;
 export const getBooks = async () => booksData;
 export const getProjects = async () => [];
-export const getUses = async () => usesData;
+
 export const getHobby = async () => hobbyData;
 export const getArticles = async () => {
   const blogs = await getBlogs();

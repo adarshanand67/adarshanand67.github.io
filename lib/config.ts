@@ -1,8 +1,7 @@
 import { ShelfType } from "@/types/definitions";
 
-export const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || "";
+export const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
-// Site Configuration
 export const siteConfig = {
     name: "Adarsh Anand",
     title: "Adarsh Anand - Software Engineer",
@@ -43,7 +42,6 @@ export const siteConfig = {
 
 export type SiteConfig = typeof siteConfig;
 
-// Theme Configuration
 export const themeConfig = {
     colors: {
         primary: "#00bf40",
@@ -78,7 +76,6 @@ export const themeConfig = {
 
 export type ThemeConfig = typeof themeConfig;
 
-// Features Configuration
 export const featuresConfig = {
     enableBlog: true,
     enableProjects: true,
@@ -108,7 +105,6 @@ export function isFeatureEnabled(feature: keyof FeaturesConfig): boolean {
     return featuresConfig[feature];
 }
 
-// Shelves Configuration
 export interface ShelfConfig {
     title: string;
     description: string;

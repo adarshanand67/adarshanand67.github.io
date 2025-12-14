@@ -2,16 +2,90 @@
 
 import Link from "next/link";
 import Image from "next/image";
+
 import { ChevronDown, Book, FileText, Tv, Gamepad2, Feather } from "lucide-react";
 import { useStore } from "@/lib/store/useStore";
-import { SectionHeader } from "@/components/UI";
-import { linkifyTech } from "@/lib/tech-links";
-import { getAssetPath } from "@/lib/utils/asset-path";
-import { techLinks } from "@/lib/tech-links";
-import { shelfConfigs } from "@/lib/config";
-import { DIRECTORY_MAP } from "@/lib/constants";
+import { SectionHeader, GlitchText, Terminal } from "@/components/layout";
+import { linkifyTech } from "@/lib/techLinks";
+import { getAssetPath } from "@/lib/utils/assetPath";
+import { techLinks } from "@/lib/techLinks";
+import { shelfConfigs, siteConfig } from "@/lib/config";
+import { directoryMap, skillCategories } from "@/lib/constants";
+export function Hero({ profile }: { profile: any }) {
+    return (
+        <section className="section max-w-6xl mx-auto px-4 mt-8 mb-8 relative">
+            <div className="absolute inset-0 -z-10 overflow-hidden">
+                <div className="absolute top-0 left-1/4 w-96 h-96 bg-green-500/10 rounded-full blur-3xl animate-pulse" />
+                <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
+            </div>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-start max-lg:items-center max-lg:justify-center">
+                <div className="flex flex-col gap-4 max-lg:items-center max-lg:text-center glass p-8 rounded-2xl">
+                    <div className="font-mono mb-1 flex items-center gap-2 group">
+                        <span className="text-green-500 font-bold text-lg group-hover:scale-110 transition-transform">$</span>{" "}
+                        <span className="text-gray-700 dark:text-gray-300">whoami</span>
+                        <span className="animate-pulse inline-block w-2 h-4 bg-green-500 align-middle"></span>
+                    </div>
+                    <div className="flex items-center gap-5">
+                        {profile.avatar && (
+                            <div className="relative group">
+                                <div className="absolute -inset-1 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
+                                <div className="relative w-20 h-20 rounded-full overflow-hidden border-4 border-green-500 shadow-lg shadow-green-500/50 flex-shrink-0 group-hover:scale-105 transition-transform duration-300">
+                                    <Image
+                                        src={profile.avatar}
+                                        alt={profile.name}
+                                        fill
+                                        className="object-cover"
+                                        priority
+                                    />
+                                </div>
+                            </div>
+                        )}
+                        <h1 className="title text-3xl md:text-5xl font-bold font-serif bg-gradient-to-r from-green-600 to-emerald-600 dark:from-green-400 dark:to-emerald-400 bg-clip-text text-transparent">
+                            <GlitchText text={profile.name} className="text-primary" />
+                        </h1>
+                    </div>
+                    <div className="relative inline-block">
+                        <h3 className="title text-lg md:text-2xl font-bold text-primary font-serif">
+                            <GlitchText text={profile.bio.short} className="text-primary" />
+                        </h3>
+                        <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+                    </div>
+                    <div className="content text-lg leading-relaxed space-y-3">
+                        {profile.bio.paragraphs.map((paragraph: string, index: number) => (
+                            <p
+                                key={index}
+                                dangerouslySetInnerHTML={{
+                                    __html: paragraph
+                                        .replace(
+                                            "Trellix",
+                                            `<a href="https://trellix.com" target="_blank" class="text-green-700 dark:text-green-400 hover:underline font-semibold hover:text-green-600 dark:hover:text-green-300 transition-colors">Trellix</a>`
+                                        )
+                                        .replace(
+                                            "Intel Corporation",
+                                            `<a href="https://intel.com" target="_blank" class="text-green-700 dark:text-green-400 hover:underline font-semibold hover:text-green-600 dark:hover:text-green-300 transition-colors">Intel Corporation</a>`
+                                        ),
+                                }}
+                                className="text-gray-700 dark:text-gray-300"
+                            />
+                        ))}
+                    </div>
+                </div>
+                <div className="lg:sticky lg:top-20 max-lg:flex max-lg:flex-col max-lg:justify-center w-full">
+                    <div className="flex justify-center lg:justify-end mb-4 pr-4">
+                        <div className="group inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass hover:scale-105 transition-all duration-300 cursor-help">
+                            <span className="text-xs text-green-700 dark:text-green-400">🔐</span>
+                            <span className="text-xs text-gray-600 dark:text-gray-400 font-mono">
+                                Psst... hidden CTF challenge
+                            </span>
+                        </div>
+                    </div>
+                    <Terminal />
+                </div>
+            </div>
+        </section>
+    );
+}
 
-// --- ContactSection ---
 export function ContactSection() {
     const { expandedSections, toggleSectionExpanded } = useStore();
     const isExpanded = expandedSections['contact'] ?? false;
@@ -34,7 +108,7 @@ export function ContactSection() {
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <a
-                        href="https://linkedin.com/in/adarshanand67"
+                        href={`https://${siteConfig.contact.linkedin}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="group relative overflow-hidden glass rounded-lg p-4 transition-all duration-300 hover:shadow-lg hover:shadow-green-500/20 hover:-translate-y-1"
@@ -47,7 +121,7 @@ export function ContactSection() {
                             </div>
                             <div className="flex-1 min-w-0">
                                 <div className="text-xs text-green-600 dark:text-green-400 font-semibold mb-0.5">LinkedIn</div>
-                                <div className="text-sm text-gray-700 dark:text-gray-300 font-medium truncate">adarshanand67</div>
+                                <div className="text-sm text-gray-700 dark:text-gray-300 font-medium truncate">{siteConfig.contact.linkedin.split('/').pop()}</div>
                             </div>
                             <svg className="w-5 h-5 text-green-500 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -55,7 +129,7 @@ export function ContactSection() {
                         </div>
                     </a>
                     <a
-                        href="mailto:adarshan20302@gmail.com"
+                        href={`mailto:${siteConfig.contact.email}`}
                         className="group relative overflow-hidden glass rounded-lg p-4 transition-all duration-300 hover:shadow-lg hover:shadow-green-500/20 hover:-translate-y-1"
                     >
                         <div className="flex items-center gap-3">
@@ -66,7 +140,7 @@ export function ContactSection() {
                             </div>
                             <div className="flex-1 min-w-0">
                                 <div className="text-xs text-green-600 dark:text-green-400 font-semibold mb-0.5">Email</div>
-                                <div className="text-sm text-gray-700 dark:text-gray-300 font-medium truncate">adarshan20302@gmail.com</div>
+                                <div className="text-sm text-gray-700 dark:text-gray-300 font-medium truncate">{siteConfig.contact.email}</div>
                             </div>
                             <svg className="w-5 h-5 text-green-500 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -74,7 +148,7 @@ export function ContactSection() {
                         </div>
                     </a>
                     <a
-                        href="https://github.com/adarshanand67"
+                        href={`https://${siteConfig.contact.github}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="group relative overflow-hidden glass rounded-lg p-4 transition-all duration-300 hover:shadow-lg hover:shadow-green-500/20 hover:-translate-y-1"
@@ -87,7 +161,7 @@ export function ContactSection() {
                             </div>
                             <div className="flex-1 min-w-0">
                                 <div className="text-xs text-green-600 dark:text-green-400 font-semibold mb-0.5">GitHub</div>
-                                <div className="text-sm text-gray-700 dark:text-gray-300 font-medium truncate">adarshanand67</div>
+                                <div className="text-sm text-gray-700 dark:text-gray-300 font-medium truncate">{siteConfig.contact.github.split('/').pop()}</div>
                             </div>
                             <svg className="w-5 h-5 text-green-500 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -100,7 +174,6 @@ export function ContactSection() {
     );
 }
 
-// --- Experience ---
 interface ExperienceItem {
     company: string;
     role: string;
@@ -188,54 +261,11 @@ export function Experience({ items }: ExperienceProps) {
     );
 }
 
-// --- TechStack ---
-const skillCategories = {
-    "Languages": [
-        "C",
-        "C++",
-        "Python",
-        "Java",
-        "JavaScript",
-    ],
-    "System & Kernel": [
-        "Intel SGX/TDX",
-        "Kernel Development",
-        "System Programming",
-        "Windows Internals",
-        "Ubuntu",
-        "CentOS",
-        "RHEL",
-    ],
-    "Security & Privacy": [
-        "Data Loss Prevention",
-        "Trellix ePO",
-        "Endpoint Security",
-        "EDR",
-        "XDR",
-        "PowerShell",
-        "Boldon James",
-        "Full-Disk Encryption",
-        "Hashicorp Vault",
-        "OpenSSL",
-        "Post-Quantum Cryptography",
-        "libFuzzer",
-        "RESTler",
-        "SIEM",
-        "Threat Intelligence",
-    ],
-    "AI & Machine Learning": [
-        "vLLM",
-        "PyTorch",
-        "OpenVINO",
-    ],
-    "Databases & Tools": [
-        "Redis",
-        "MySQL",
-    ],
-};
+
 export function TechStack() {
     const { expandedSections, toggleSectionExpanded } = useStore();
     const isExpanded = expandedSections['techstack'] ?? false;
+
     return (
         <div className="font-mono">
             <SectionHeader
@@ -245,26 +275,54 @@ export function TechStack() {
                 onToggle={() => toggleSectionExpanded('techstack')}
             />
             <div
-                className={`space-y-6 transition-all duration-300 ease-in-out overflow-hidden ${isExpanded ? 'max-h-[5000px] opacity-100' : 'max-h-0 opacity-0'
-                    }`}
+                className={`transition-all duration-300 ease-in-out overflow-hidden ${isExpanded ? 'max-h-[5000px] opacity-100' : 'max-h-0 opacity-0'}`}
             >
-                <div className="glass p-6 rounded-xl space-y-6 shadow-sm">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                     {Object.entries(skillCategories).map(([category, skills]) => (
-                        <div key={category}>
-                            <h3 className="text-sm font-bold text-gray-500 mb-3 uppercase tracking-wider">
+                        <div
+                            key={category}
+                            className="glass p-5 rounded-xl border border-gray-200/50 dark:border-gray-800/50 hover:border-green-500/30 transition-all duration-300 group hover:shadow-lg hover:shadow-green-500/5"
+                        >
+                            <h3 className="text-xs font-bold text-gray-500 mb-4 uppercase tracking-widest flex items-center gap-2">
+                                <span className="w-1.5 h-1.5 rounded-full bg-green-500 group-hover:animate-pulse"></span>
                                 {category}
                             </h3>
                             <div className="flex flex-wrap gap-2">
                                 {skills.map((skill) => {
-                                    const url =
-                                        techLinks[skill] || `https://www.google.com/search?q=${encodeURIComponent(skill)}`;
+                                    const url = techLinks[skill] || `https://www.google.com/search?q=${encodeURIComponent(skill)}`;
+                                    let domain = 'google.com';
+                                    try {
+                                        domain = new URL(url).hostname;
+                                    } catch {
+                                    }
+                                    const favicon = `https://www.google.com/s2/favicons?domain=${domain}&sz=32`;
+
                                     return (
                                         <Link
                                             key={skill}
                                             href={url}
                                             target="_blank"
-                                            className="px-3 py-1.5 bg-gray-50 dark:bg-gray-800/50 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 rounded text-sm hover:bg-green-50 dark:hover:bg-green-900/20 hover:text-green-700 dark:hover:text-green-400 hover:border-green-500/50 transition-all duration-200"
+                                            className="
+                                                flex items-center gap-2 pl-2 pr-3 py-1.5 
+                                                bg-gray-50/50 dark:bg-gray-800/30 
+                                                border border-gray-200 dark:border-gray-700 
+                                                rounded-full text-xs font-medium 
+                                                text-gray-700 dark:text-gray-300 
+                                                hover:bg-white dark:hover:bg-gray-800 
+                                                hover:text-green-600 dark:hover:text-green-400 
+                                                hover:border-green-500/50 hover:shadow-md 
+                                                hover:-translate-y-0.5 transition-all duration-200
+                                            "
                                         >
+                                            <div className="relative w-4 h-4 rounded-full overflow-hidden bg-white dark:bg-gray-900 p-0.5 shrink-0">
+                                                <Image
+                                                    src={favicon}
+                                                    alt={skill}
+                                                    width={16}
+                                                    height={16}
+                                                    className="object-contain"
+                                                />
+                                            </div>
                                             {skill}
                                         </Link>
                                     );
@@ -278,7 +336,6 @@ export function TechStack() {
     );
 }
 
-// --- RecentSection ---
 interface Item {
     title: string;
     url: string;
@@ -300,7 +357,6 @@ export function RecentSection({
     linkUrl,
 }: RecentSectionProps) {
     const { expandedSections, toggleSectionExpanded } = useStore();
-    // Generate a consistent ID based on title
     const sectionId = `recent-${title.toLowerCase().replace(/\s+/g, '-')}`;
     const isExpanded = expandedSections[sectionId] ?? false;
 
@@ -361,8 +417,7 @@ export function RecentSection({
     );
 }
 
-// --- ShelvesSection ---
-const SHELF_ICONS: Record<string, React.ElementType> = {
+const shelfIcons: Record<string, React.ElementType> = {
     blogs: Feather,
     articles: FileText,
     books: Book,
@@ -370,11 +425,11 @@ const SHELF_ICONS: Record<string, React.ElementType> = {
     hobby: Gamepad2
 };
 
-const SHELVES = ["blogs", "articles", "books", "anime", "hobby"].map(key => ({
+const shelves = ["blogs", "articles", "books", "anime", "hobby"].map(key => ({
     name: key,
-    path: DIRECTORY_MAP[key],
+    path: directoryMap[key],
     description: shelfConfigs[key].description,
-    icon: SHELF_ICONS[key],
+    icon: shelfIcons[key],
     color: "text-green-500"
 }));
 export function ShelvesSection() {
@@ -411,7 +466,7 @@ export function ShelvesSection() {
                             className={`transition-all duration-300 ease-in-out overflow-hidden ${isExpanded ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'}`}
                         >
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
-                                {SHELVES.map((shelf) => (
+                                {shelves.map((shelf) => (
                                     <Link
                                         key={shelf.name}
                                         href={shelf.path}

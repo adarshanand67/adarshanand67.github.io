@@ -16,7 +16,7 @@ export interface MockDirectory {
     modified: string;
 }
 export type MockFileSystemEntry = MockFile | MockDirectory;
-export const MOCK_FILES: Record<string, MockFile> = {
+export const mockFiles: Record<string, MockFile> = {
     'readme.md': {
         type: 'file',
         size: 2048,
@@ -197,14 +197,14 @@ export const MOCK_FILES: Record<string, MockFile> = {
         ]
     }
 };
-export const SAMPLE_TEXT_CONTENT = [
+export const sampleTextContent = [
     'Welcome to my portfolio',
     'Built with Next.js and TypeScript',
     'Featuring a terminal interface',
     "Type 'help' for available commands",
     'Enjoy exploring!'
 ];
-export const SAMPLE_FILE_LINES = {
+export const sampleFileLines = {
     head: [
         'Line 1: Welcome to my portfolio!',
         'Line 2: Built with Next.js and TypeScript',
@@ -230,7 +230,7 @@ export const SAMPLE_FILE_LINES = {
         'Line 100: EOF'
     ]
 };
-export const ARCHIVE_FILES = [
+export const archiveFiles = [
     'portfolio.html',
     'styles.css',
     'script.js',
@@ -238,16 +238,16 @@ export const ARCHIVE_FILES = [
 ];
 export const getFileContent = (filename: string): string[] | null => {
     const normalizedName = filename.toLowerCase();
-    const file = MOCK_FILES[normalizedName];
+    const file = mockFiles[normalizedName];
     return file?.content || null;
 };
 export const getFileMetadata = (filename: string): MockFile | null => {
     const normalizedName = filename.toLowerCase();
-    return MOCK_FILES[normalizedName] || null;
+    return mockFiles[normalizedName] || null;
 };
 export const fileExists = (filename: string): boolean => {
     const normalizedName = filename.toLowerCase();
-    return normalizedName in MOCK_FILES;
+    return normalizedName in mockFiles;
 };
 export const getFileType = (filename: string): string => {
     if (filename.endsWith('.md')) {
@@ -270,7 +270,7 @@ export const getFileType = (filename: string): string => {
 export const getDirectoryContent = (path: string): string[] => {
     const normalizedPath = path.toLowerCase().replace(/\/$/, '').replace(/^~\//, '');
     if (normalizedPath === '' || normalizedPath === '.' || normalizedPath === '~') {
-        return Object.keys(MOCK_FILES).sort();
+        return Object.keys(mockFiles).sort();
     }
     switch (normalizedPath) {
         case 'blogs':

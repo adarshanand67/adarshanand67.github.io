@@ -379,4 +379,4 @@ export const profileData = {
     }
 };
 
-export const usesData = { "hardware": [], "software": [] };
+

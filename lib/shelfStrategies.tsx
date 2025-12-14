@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 import Link from "next/link";
 import { Star, ExternalLink } from "lucide-react";
 import * as LucideIcons from "lucide-react";
-import { AnimeShelf } from "@/components/Shelves";
+import { AnimeShelf } from "@/components/shelves";
 export type ShelfItem = Book | Paper | AnimeItem | Blog | Project | Hobby;
 export interface ShelfItemStrategy<T> {
   renderItem(item: T, index: number): ReactNode;
@@ -84,7 +84,6 @@ export class PaperListStrategy implements ShelfItemStrategy<Paper> {
   }
 }
 export class AnimeCardStrategy implements ShelfItemStrategy<AnimeItem> {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   renderItem(_item: AnimeItem, _index: number): ReactNode {
     return null;
   }
@@ -205,7 +204,6 @@ export class ProjectListStrategy implements ShelfItemStrategy<Project> {
 }
 export class HobbyListStrategy implements ShelfItemStrategy<Hobby> {
   private getIcon(iconName: string): ReactNode {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const IconComponent = (LucideIcons as any)[iconName];
     if (IconComponent) {
       return <IconComponent className="w-6 h-6 text-green-600 dark:text-green-400" />;

@@ -4,7 +4,6 @@ import Markdown from "markdown-to-jsx";
 
 export async function generateStaticParams() {
     const blogs = await getBlogs();
-    // Only articleshelf has dynamic routes for now
     return blogs.map((post) => ({
         shelf: "articleshelf",
         slug: post.slug,
@@ -12,11 +11,9 @@ export async function generateStaticParams() {
 }
 
 export default async function GenericShelfItem({ params }: { params: { shelf: string; slug: string } }) {
-    // Wait for params if it's a promise (Next.js 15+ convention, explicit await for safety)
     const { shelf, slug } = await params;
 
     if (shelf !== "articleshelf") {
-        // Only blogshelf supports detail view currently
         notFound();
     }
 

@@ -26,7 +26,6 @@ interface TerminalState {
     position: { x: number; y: number };
     isDragging: boolean;
 
-    // Actions
     setLines: (lines: string[] | ((prev: string[]) => string[])) => void;
     addLine: (line: string) => void;
     clearLines: () => void;
@@ -42,22 +41,18 @@ interface TerminalState {
 }
 
 interface UIState {
-    // Global
     isMatrixEnabled: boolean;
     isMounted: boolean;
 
-    // Modals & Overlays
     showHobbiesModal: boolean;
     showMusicPlayer: boolean;
     isNavbarActive: boolean;
     isCommandMenuOpen: boolean; // Managed by cmk internally mostly, but if we need trigger
     isBackToTopVisible: boolean;
 
-    // Audio
     isPlaying: boolean;
     isMuted: boolean;
 
-    // Actions
     toggleMatrix: () => void;
     setMatrix: (enabled: boolean) => void;
     setMounted: (mounted: boolean) => void;
@@ -71,13 +66,11 @@ interface UIState {
 }
 
 interface WidgetsState {
-    // Weather
     weather: WeatherData | null;
     locationName: string;
     setWeather: (weather: WeatherData) => void;
     setLocationName: (name: string) => void;
 
-    // GitHubStats
     githubRepos: GithubRepo[];
     isGithubExpanded: boolean;
     setGithubRepos: (repos: GithubRepo[]) => void;
@@ -85,11 +78,9 @@ interface WidgetsState {
 }
 
 interface ShelvesState {
-    // Universal & Uses Shelf
     searchQuery: string;
     setSearchQuery: (query: string) => void;
 
-    // Anime Shelf
     animeSelectedItem: AnimeItem | null;
     animeSelectedTag: string | null;
     setAnimeSelectedItem: (item: AnimeItem | null) => void;
@@ -97,7 +88,6 @@ interface ShelvesState {
 }
 
 interface SectionsState {
-    // Home Sections Expansion
     expandedSections: Record<string, boolean>; // key: sectionId, value: isExpanded
     setSectionExpanded: (sectionId: string, expanded: boolean) => void;
     toggleSectionExpanded: (sectionId: string) => void;
@@ -117,7 +107,6 @@ interface CursorState {
 export interface AppState extends TerminalState, UIState, WidgetsState, ShelvesState, SectionsState, CursorState { }
 
 export const useStore = create<AppState>((set) => ({
-    // --- Terminal State ---
     lines: [],
     history: [],
     historyIndex: -1,
@@ -145,7 +134,6 @@ export const useStore = create<AppState>((set) => ({
     setPosition: (pos) => set({ position: pos }),
     setIsDragging: (dragging) => set({ isDragging: dragging }),
 
-    // --- UI State ---
     isMatrixEnabled: true,
     isMounted: false,
     showHobbiesModal: false,
@@ -167,7 +155,6 @@ export const useStore = create<AppState>((set) => ({
     setIsPlaying: (playing) => set({ isPlaying: playing }),
     toggleMute: () => set((state) => ({ isMuted: !state.isMuted })),
 
-    // --- Widgets State ---
     weather: null,
     locationName: "Bengaluru",
     setWeather: (weather) => set({ weather }),
@@ -178,7 +165,6 @@ export const useStore = create<AppState>((set) => ({
     setGithubRepos: (repos) => set({ githubRepos: repos }),
     setIsGithubExpanded: (expanded) => set({ isGithubExpanded: expanded }),
 
-    // --- Shelves State ---
     searchQuery: "",
     setSearchQuery: (query) => set({ searchQuery: query }),
 
@@ -187,7 +173,6 @@ export const useStore = create<AppState>((set) => ({
     setAnimeSelectedItem: (item) => set({ animeSelectedItem: item }),
     setAnimeSelectedTag: (tag) => set({ animeSelectedTag: tag }),
 
-    // --- Sections State ---
     expandedSections: {},
     setSectionExpanded: (sectionId, expanded) => set((state) => ({
         expandedSections: { ...state.expandedSections, [sectionId]: expanded }
@@ -196,7 +181,6 @@ export const useStore = create<AppState>((set) => ({
         expandedSections: { ...state.expandedSections, [sectionId]: !state.expandedSections[sectionId] }
     })),
 
-    // --- Cursor State ---
     cursorPosition: { x: -100, y: -100 },
     isCursorVisible: false,
     isCursorClicking: false,

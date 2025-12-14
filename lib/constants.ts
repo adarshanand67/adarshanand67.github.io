@@ -1,18 +1,18 @@
-import { siteConfig, featuresConfig as CONFIG, BASE_PATH as CONFIG_BASE_PATH } from "@/lib/config";
-export const BASE_PATH = CONFIG_BASE_PATH;
-export const PLAYLIST = [
-    `${BASE_PATH}/assets/music/cruel_angels_thesis.mp3`,
-    `${BASE_PATH}/assets/music/one_punch_man.mp3`,
-    `${BASE_PATH}/assets/music/pokemon_theme.mp3`,
-    `${BASE_PATH}/assets/music/tank.mp3`,
-    `${BASE_PATH}/assets/music/unravel.mp3`,
-    `${BASE_PATH}/assets/music/battlecry.mp3`,
-    `${BASE_PATH}/assets/music/blue_bird.mp3`,
-    `${BASE_PATH}/assets/music/go.mp3`,
-    `${BASE_PATH}/assets/music/the_world.mp3`,
-    `${BASE_PATH}/assets/music/guren_no_yumiya.mp3`
+import { siteConfig, featuresConfig as config, basePath as configBasePath } from "@/lib/config";
+export const basePath = configBasePath;
+export const playlist = [
+    `${basePath}/assets/music/cruel_angels_thesis.mp3`,
+    `${basePath}/assets/music/one_punch_man.mp3`,
+    `${basePath}/assets/music/pokemon_theme.mp3`,
+    `${basePath}/assets/music/tank.mp3`,
+    `${basePath}/assets/music/unravel.mp3`,
+    `${basePath}/assets/music/battlecry.mp3`,
+    `${basePath}/assets/music/blue_bird.mp3`,
+    `${basePath}/assets/music/go.mp3`,
+    `${basePath}/assets/music/the_world.mp3`,
+    `${basePath}/assets/music/guren_no_yumiya.mp3`
 ] as const;
-export const TRACK_NAMES = [
+export const trackNames = [
     "A Cruel Angel's Thesis (Evangelion)",
     "THE HERO!! (One Punch Man)",
     "Pokemon Theme (Instrumental)",
@@ -24,7 +24,7 @@ export const TRACK_NAMES = [
     "The World (Death Note)",
     "Guren no Yumiya (Attack on Titan)",
 ] as const;
-export const TRACK_IMAGES = [
+export const trackImages = [
     "https://cdn.myanimelist.net/images/anime/1314/108941l.jpg",
     "https://cdn.myanimelist.net/images/anime/12/76049l.jpg",
     "https://cdn.myanimelist.net/images/anime/1405/117456l.jpg",
@@ -36,7 +36,7 @@ export const TRACK_IMAGES = [
     "https://cdn.myanimelist.net/images/anime/1079/138100l.jpg",
     "https://cdn.myanimelist.net/images/anime/10/47347l.jpg",
 ] as const;
-export const INTRO_LINES = (modifier?: (s: string) => string) => {
+export const introLines = (modifier?: (s: string) => string) => {
     const lines = [
         `$ ./${siteConfig.author.name.toLowerCase().replace(' ', '_')}_profile.sh`,
         "",
@@ -52,38 +52,38 @@ export const INTRO_LINES = (modifier?: (s: string) => string) => {
     ];
     return modifier ? lines.map(modifier) : lines;
 };
-export const DIRECTORIES = ["blogs", "papers", "books", "anime", "hobby"] as const;
-export const ROUTES = {
-    HOME: "/",
-    ARTICLE_SHELF: "/articleshelf",
-    BOOK_SHELF: "/bookshelf",
-    ANIME_SHELF: "/animeshelf",
-    HOBBY_SHELF: "/hobbyshelf",
+export const directories = ["blogs", "papers", "books", "anime", "hobby"] as const;
+export const routes = {
+    home: "/",
+    articleShelf: "/articleshelf",
+    bookShelf: "/bookshelf",
+    animeShelf: "/animeshelf",
+    hobbyShelf: "/hobbyshelf",
 } as const;
-export const DIRECTORY_MAP: Record<string, string> = {
-    blog: ROUTES.ARTICLE_SHELF,
-    blogs: ROUTES.ARTICLE_SHELF,
-    paper: ROUTES.ARTICLE_SHELF,
-    papers: ROUTES.ARTICLE_SHELF,
-    article: ROUTES.ARTICLE_SHELF,
-    articles: ROUTES.ARTICLE_SHELF,
-    book: ROUTES.BOOK_SHELF,
-    books: ROUTES.BOOK_SHELF,
-    anime: ROUTES.ANIME_SHELF,
-    animes: ROUTES.ANIME_SHELF,
-    hobby: ROUTES.HOBBY_SHELF,
-    hobbies: ROUTES.HOBBY_SHELF,
-    hobbyshelf: ROUTES.HOBBY_SHELF,
-    home: ROUTES.HOME,
-    "~": ROUTES.HOME,
-    ".": ROUTES.HOME,
+export const directoryMap: Record<string, string> = {
+    blog: routes.articleShelf,
+    blogs: routes.articleShelf,
+    paper: routes.articleShelf,
+    papers: routes.articleShelf,
+    article: routes.articleShelf,
+    articles: routes.articleShelf,
+    book: routes.bookShelf,
+    books: routes.bookShelf,
+    anime: routes.animeShelf,
+    animes: routes.animeShelf,
+    hobby: routes.hobbyShelf,
+    hobbies: routes.hobbyShelf,
+    hobbyshelf: routes.hobbyShelf,
+    home: routes.home,
+    "~": routes.home,
+    ".": routes.home,
 };
-export const CONTACT_INFO = [
+export const contactInfo = [
     `Email: ${siteConfig.contact.email}`,
     `LinkedIn: ${siteConfig.contact.linkedin}`,
     `GitHub: ${siteConfig.contact.github}`
 ] as const;
-export const SYSTEM_STATS = (isMatrix: boolean) => [
+export const systemStats = (isMatrix: boolean) => [
     "                    \x1b[32m'c.\x1b[0m          \x1b[1madarsh_anand@Adarshs-MacBook-Air.local\x1b[0m",
     "                 \x1b[33m,xNMM.\x1b[0m          ",
     "               \x1b[31m.OMMMMo\x1b[0m           \x1b[36mOS:\x1b[0m macOS 27.0 26A5289h arm64",
@@ -104,11 +104,56 @@ export const SYSTEM_STATS = (isMatrix: boolean) => [
     "",
     `                                 \x1b[36mMatrix:\x1b[0m ${isMatrix ? "🟢 Active" : "🔴 Disabled"}`,
 ] as const;
-export const WHOAMI_INFO = [
+export const whoamiInfo = [
     `User: ${siteConfig.whoami.user}`,
     `Role: ${siteConfig.whoami.role}`,
     `Expertise: ${siteConfig.whoami.expertise}`,
     `Status: ${siteConfig.whoami.status}`
 ] as const;
+
+export const skillCategories = {
+    "Languages": [
+        "C",
+        "C++",
+        "Python",
+        "Java",
+        "JavaScript",
+    ],
+    "System & Kernel": [
+        "Intel SGX/TDX",
+        "Kernel Development",
+        "System Programming",
+        "Windows Internals",
+        "Ubuntu",
+        "CentOS",
+        "RHEL",
+    ],
+    "Security & Privacy": [
+        "Data Loss Prevention",
+        "Trellix ePO",
+        "Endpoint Security",
+        "EDR",
+        "XDR",
+        "PowerShell",
+        "Boldon James",
+        "Full-Disk Encryption",
+        "Hashicorp Vault",
+        "OpenSSL",
+        "Post-Quantum Cryptography",
+        "libFuzzer",
+        "RESTler",
+        "SIEM",
+        "Threat Intelligence",
+    ],
+    "AI & Machine Learning": [
+        "vLLM",
+        "PyTorch",
+        "OpenVINO",
+    ],
+    "Databases & Tools": [
+        "Redis",
+        "MySQL",
+    ],
+};
 
 

@@ -1,5 +1,5 @@
 import { getExperiences } from "@/lib/api";
-import { linkifyTech } from "@/lib/tech-links";
+import { linkifyTech } from "@/lib/techLinks";
 export default async function Experience() {
   const experiences = await getExperiences();
   return (

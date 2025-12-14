@@ -18,7 +18,6 @@ class Analytics {
     private enabled: boolean;
 
     constructor() {
-        // Analytics disabled - set to true to enable in production
         this.enabled = false;
     }
 
@@ -28,12 +27,10 @@ class Analytics {
     pageView(url: string) {
         if (!this.enabled) return;
 
-        // Plausible Analytics
         if (typeof window !== 'undefined' && window.plausible) {
             window.plausible('pageview', { props: { url } });
         }
 
-        // Umami Analytics
         if (typeof window !== 'undefined' && window.umami) {
             window.umami.track({ url });
         }
@@ -45,12 +42,10 @@ class Analytics {
     event(event: AnalyticsEvent) {
         if (!this.enabled) return;
 
-        // Plausible Analytics
         if (typeof window !== 'undefined' && window.plausible) {
             window.plausible(event.name, { props: event.properties || {} });
         }
 
-        // Umami Analytics
         if (typeof window !== 'undefined' && window.umami) {
             window.umami.track(event.name, event.properties || {});
         }

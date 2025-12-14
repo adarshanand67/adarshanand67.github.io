@@ -1,4 +1,3 @@
-// Centralized error and log messages for consistency
 export const ERROR_MESSAGES = {
     AUDIO: {
         PLAYBACK_FAILED: 'Audio playback failed',

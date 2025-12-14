@@ -1,11 +1,11 @@
-import Hero from "@/components/Hero";
-import { getExperiences } from "@/lib/api";
-import { TechStack, Experience, ContactSection } from "@/components/Home";
+import { getExperiences, getProfile } from "@/lib/api";
+import { TechStack, Experience, ContactSection, Hero } from "@/components/home";
 export default async function Home() {
   const experiences = await getExperiences();
+  const profile = await getProfile();
   return (
     <main className="min-h-screen">
-      <Hero />
+      <Hero profile={profile} />
       { }
       <div className="section max-w-4xl mx-auto px-4 mb-8 space-y-8">
         { }

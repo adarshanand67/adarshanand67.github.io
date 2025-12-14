@@ -66,7 +66,6 @@ export interface Blog {
   excerpt?: string;
 }
 
-// Enums for type safety
 export enum EntertainmentType {
   Anime = "Anime",
   Movie = "Movie",

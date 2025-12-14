@@ -1,12 +1,11 @@
 import { Command, ThemeMode } from './types';
 import { createCommand, createAliasCommand, addLine, addLines, parseFlags, getFlagValue, validateNumberArg, generateRange, showUsage, formatLongListing } from './helpers';
-import { CONTACT_INFO, WHOAMI_INFO, SYSTEM_STATS, DIRECTORY_MAP } from '@/lib/constants';
-import { getFileContent, ARCHIVE_FILES, getFileType, getDirectoryContent, SAMPLE_TEXT_CONTENT, SAMPLE_FILE_LINES, getFileMetadata } from './mockFileSystem';
+import { contactInfo, whoamiInfo, systemStats, directoryMap } from '@/lib/constants';
+import { getFileContent, archiveFiles, getFileType, getDirectoryContent, sampleTextContent, sampleFileLines, getFileMetadata } from './mockFileSystem';
 import { TERMINAL_MESSAGES } from './messages';
 import { siteConfig } from '@/lib/config';
 import { useStore } from '@/lib/store/useStore';
 
-// --- Utilities ---
 export const date: Command = createCommand('date', 'Show current date/time', (args, { setLines }) => {
     addLine(setLines, new Date().toString());
 }, { category: 'utility', usage: 'date' });
@@ -37,7 +36,7 @@ export const skills: Command = createCommand('skills', 'Display technical skills
 }, { category: 'utility', usage: 'skills' });
 
 export const contact: Command = createCommand('contact', 'Show contact info', (_, { setLines }) => {
-    addLines(setLines, CONTACT_INFO as unknown as string[]);
+    addLines(setLines, contactInfo as unknown as string[]);
 }, { category: 'utility', usage: 'contact' });
 
 export const which: Command = createCommand('which', 'Locate command', (args, { setLines }) => {
@@ -76,7 +75,6 @@ export const theme: Command = createCommand('theme', 'Switch color theme', (args
 }, { category: 'utility', usage: 'theme [dark|light|system]' });
 
 
-// --- Navigation ---
 export const ls: Command = createCommand('ls', 'List directories', (args, { setLines }) => {
     const { hasFlags, nonFlagArgs } = parseFlags(args, ['l', 'a', 'la', 'al']);
     const hasLongFormat = hasFlags.l || hasFlags.la || hasFlags.al;
@@ -88,7 +86,6 @@ export const ls: Command = createCommand('ls', 'List directories', (args, { setL
         return;
     }
 
-    // Filter hidden files if not showing all
     const items = showHidden ? content : content.filter(item => !item.startsWith('.'));
 
     if (hasLongFormat) {
@@ -116,9 +113,9 @@ export const cd: Command = createCommand('cd', 'Change directory', (args, { setL
         return;
     }
     const dir = (args[0] || '').replace(/^\.\//, '').replace(/\/$/, '').replace('shelf', '');
-    if (DIRECTORY_MAP[dir]) {
-        addLine(setLines, `Navigating to ${DIRECTORY_MAP[dir]}...`);
-        router.push(DIRECTORY_MAP[dir]!);
+    if (directoryMap[dir]) {
+        addLine(setLines, `Navigating to ${directoryMap[dir]}...`);
+        router.push(directoryMap[dir]!);
     } else {
         addLine(setLines, `Directory not found: ${args[0] || ''} `);
     }
@@ -135,13 +132,12 @@ export const tree: Command = createCommand('tree', 'List directory tree', (_, { 
 export const open: Command = createAliasCommand('open', 'Open directory', () => cd);
 
 
-// --- System ---
 export const whoami: Command = createCommand('whoami', 'Display profile info', (_, { setLines }) => {
-    addLines(setLines, WHOAMI_INFO as unknown as string[]);
+    addLines(setLines, whoamiInfo as unknown as string[]);
 }, { category: 'system', usage: 'whoami' });
 
 export const fetch: Command = createCommand('fetch', 'Display system information', (_, { setLines, isMatrixEnabled }) => {
-    addLines(setLines, SYSTEM_STATS(isMatrixEnabled) as unknown as string[]);
+    addLines(setLines, systemStats(isMatrixEnabled) as unknown as string[]);
 }, { category: 'system', usage: 'fetch', aliases: ['neofetch'] });
 
 export const uname: Command = createCommand('uname', 'Print system information', (_, { setLines }) => {
@@ -180,7 +176,6 @@ export const kill: Command = createCommand('kill', 'Terminate process', (args, {
 export const neofetch: Command = createAliasCommand('neofetch', 'System info alias', () => fetch);
 
 
-// --- File Ops ---
 export const cat: Command = createCommand('cat', 'Display file contents', (args, { setLines }) => {
     const { hasFlags, nonFlagArgs } = parseFlags(args, ['n']);
     nonFlagArgs.forEach(file => {
@@ -228,7 +223,7 @@ export const tar: Command = createCommand('tar', 'Archive utility', (args, { set
     const verbose = args.some(a => a.includes('v'));
     const filename = args[args.findIndex(a => a.includes('f')) + 1] || 'archive.tar';
     if (extract || create) {
-        addLines(setLines, verbose ? [(extract ? 'Extracting' : 'Creating') + ` ${filename}...`, ...ARCHIVE_FILES.map(f => `${extract ? 'x' : 'a'} ${f}`), TERMINAL_MESSAGES.FILE_OPS.UNZIP_DONE] : [(extract ? 'Extracted' : 'Created') + ` ${filename}`]);
+        addLines(setLines, verbose ? [(extract ? 'Extracting' : 'Creating') + ` ${filename}...`, ...archiveFiles.map(f => `${extract ? 'x' : 'a'} ${f}`), TERMINAL_MESSAGES.FILE_OPS.UNZIP_DONE] : [(extract ? 'Extracted' : 'Created') + ` ${filename}`]);
     } else {
         addLine(setLines, TERMINAL_MESSAGES.FILE_OPS.TAR_MSG);
     }
@@ -247,12 +242,11 @@ export const file: Command = createCommand('file', 'Determine file type', (args,
 }, { category: 'file', usage: 'file [filename]' });
 
 
-// --- Text Processing ---
 export const grep: Command = createCommand('grep', 'Search for patterns', (args, { setLines }, input) => {
     if (args.length < 1) { showUsage(setLines, 'grep [options] pattern [file]'); return; }
     const { hasFlags, nonFlagArgs } = parseFlags(args, ['i', 'n', 'v', 'r']);
     const pattern = nonFlagArgs[0];
-    let linesToSearch = SAMPLE_TEXT_CONTENT;
+    let linesToSearch = sampleTextContent;
     if (input && !nonFlagArgs[1]) linesToSearch = input.split('\n');
     const regex = new RegExp(pattern, hasFlags.i ? 'i' : '');
     const matches: string[] = [];
@@ -269,7 +263,7 @@ export const head: Command = createCommand('head', 'Output first part of files',
     const nValue = getFlagValue(args, 'n');
     if (nValue) { const parsed = validateNumberArg(nValue, 'head', setLines); if (parsed !== null) numLines = parsed; }
     const file = parseFlags(args, ['n']).nonFlagArgs.filter(arg => arg !== nValue)[0] || 'file';
-    addLines(setLines, [`==> ${file} <==`, ...SAMPLE_FILE_LINES.head.slice(0, numLines)]);
+    addLines(setLines, [`==> ${file} <==`, ...sampleFileLines.head.slice(0, numLines)]);
 }, { category: 'text', usage: 'head [-n lines] [file]' });
 
 export const tail: Command = createCommand('tail', 'Output last part of files', (args, { setLines }) => {
@@ -278,7 +272,7 @@ export const tail: Command = createCommand('tail', 'Output last part of files', 
     if (nValue) { const parsed = validateNumberArg(nValue, 'tail', setLines); if (parsed !== null) numLines = parsed; }
     const { hasFlags, nonFlagArgs } = parseFlags(args, ['n', 'f']);
     const file = nonFlagArgs.filter(arg => arg !== nValue)[0] || 'file';
-    addLines(setLines, [`==> ${file} <==`, ...SAMPLE_FILE_LINES.tail.slice(-numLines), ...(hasFlags.f ? ['', 'tail: following file...'] : [])]);
+    addLines(setLines, [`==> ${file} <==`, ...sampleFileLines.tail.slice(-numLines), ...(hasFlags.f ? ['', 'tail: following file...'] : [])]);
 }, { category: 'text', usage: 'tail [-n lines] [-f] [file]' });
 
 export const wc: Command = createCommand('wc', 'Word count', (args, { setLines }) => {
@@ -293,7 +287,6 @@ export const diff: Command = createCommand('diff', 'Compare files', (args, { set
 }, { category: 'text', usage: 'diff [file1] [file2]' });
 
 
-// --- Network ---
 export const ping: Command = createCommand('ping', 'Ping a host', (args, { setLines }) => {
     const host = args[0] || 'localhost';
     addLines(setLines, [`PING ${host} (127.0.0.1): 56 data bytes`, `64 bytes from ${host}: icmp_seq = 0 ttl = 64 time = 0.042 ms`, '...']);
@@ -311,7 +304,6 @@ export const ssh: Command = createCommand('ssh', 'Connect via SSH', (args, { set
     addLines(setLines, [`ssh: connect to host ${args[0] || 'localhost'} port 22: Connection refused`]);
 }, { category: 'network', usage: 'ssh [user@]host' });
 
-// --- Development ---
 export const git: Command = createCommand('git', 'Version control', (args, { setLines }) => {
     const subcommand = args[0] || 'status';
     if (subcommand === 'status') addLines(setLines, ['On branch main', 'nothing to commit, working tree clean']);
@@ -330,7 +322,6 @@ export const docker: Command = createCommand('docker', 'Container management', (
     addLine(setLines, 'Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?');
 }, { category: 'dev', usage: 'docker [command]' });
 
-// --- Environment ---
 export const env: Command = createCommand('env', 'Display environment', (_, { setLines }) => {
     addLines(setLines, ['USER=adarsh', 'SHELL=/bin/zsh', 'LANG=en_US.UTF-8']);
 }, { category: 'environment', usage: 'env' });
@@ -348,7 +339,6 @@ export const alias: Command = createCommand('alias', 'Create command alias', (ar
 }, { category: 'environment', usage: 'alias [name=value]' });
 
 
-// --- Math & Fun ---
 export const bc: Command = createCommand('bc', 'Calculator', (args, { setLines }) => {
     try {
         if (/^[\d\s+\-*/().]+$/.test(args.join(' '))) addLine(setLines, String(eval(args.join(' '))));
@@ -414,7 +404,6 @@ export const sl: Command = createCommand('sl', 'Steam locomotive', (_, { setLine
 }, { category: 'fun', usage: 'sl' });
 
 
-// --- Hidden (CTF) ---
 const DECODED_FLAG = 'flag{Hidden_Terminal_Master}';
 export const base64: Command = createCommand('base64', 'Encode/decode base64', (args, { setLines }, input) => {
     const isDecode = args[0] === '-d';
@@ -435,7 +424,6 @@ export const decode: Command = createCommand('decode', 'Decode alias', (args, co
 }, { category: 'file', usage: 'decode <string>' });
 
 
-// --- Resume ---
 export const resume: Command = createCommand('resume', 'Display resume', (_, { setLines }) => {
     addLines(setLines, ['', `📄 ${siteConfig.author.name.toUpperCase()} - RESUME`, '──────────────────────────────────────────────────', 'Software Engineer @ Trellix', 'July 2022 - Present', '']);
 }, { category: 'utility', usage: 'resume' });
@@ -446,7 +434,6 @@ export const hobbies: Command = createCommand('hobbies', 'Open Hobbies Modal', (
 }, { category: 'fun', usage: 'hobbies' });
 
 
-// --- Help ---
 export const help: Command = createCommand('help', 'List commands', (_, { setLines }) => {
     addLines(setLines, [
         'Available commands:',
@@ -465,7 +452,6 @@ export const help: Command = createCommand('help', 'List commands', (_, { setLin
 }, { category: 'utility', usage: 'help' });
 
 
-// --- Registry ---
 export const commands: Record<string, Command> = {
     help,
     ls, cd, pwd, tree, open,

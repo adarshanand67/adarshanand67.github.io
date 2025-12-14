@@ -8,7 +8,6 @@ export interface GithubRepo {
 }
 
 export async function getGithubRepos(): Promise<GithubRepo[]> {
-  // Use revalidate to cache results for 1 hour to avoid rate limits
   const res = await fetch(
     "https://api.github.com/users/adarshanand67/repos?sort=updated&per_page=100",
     {
@@ -23,7 +22,6 @@ export async function getGithubRepos(): Promise<GithubRepo[]> {
 
   const repos: GithubRepo[] = await res.json();
 
-  // Sort by recent activity (updated_at) and take top 6
   return repos
     .sort((a, b) => new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime())
     .slice(0, 6);
