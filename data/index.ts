@@ -130,6 +130,17 @@ export const animeData = [
         "rating": "9.1/10"
     },
     {
+        "title": "Cowboy Bebop",
+        "type": "Anime",
+        "status": "Completed",
+        "notes": "S1",
+        "image": "https://cdn.myanimelist.net/images/anime/4/19644l.jpg",
+        "description": "Bounty hunters in space.",
+        "tags": ["Sci-Fi"],
+        "year": "1998",
+        "rating": "8.9/10"
+    }
+    {
         "title": "Mob Psycho 100",
         "type": "Anime",
         "status": "Completed",
@@ -270,17 +281,6 @@ export const animeData = [
         "tags": ["Mystery", "Thriller"],
         "year": "2004",
         "rating": "8.8/10"
-    },
-    {
-        "title": "Cowboy Bebop",
-        "type": "Anime",
-        "status": "Completed",
-        "notes": "S1",
-        "image": "https://cdn.myanimelist.net/images/anime/4/19644l.jpg",
-        "description": "Bounty hunters in space.",
-        "tags": ["Sci-Fi"],
-        "year": "1998",
-        "rating": "8.9/10"
     }
 ];
 
