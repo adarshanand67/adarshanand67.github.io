@@ -1,11 +1,7 @@
 import type { Metadata } from "next";
 import { Assistant, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/layout/theme-provider";
-import { GlobalEffect } from "@/components/common/GlobalEffect";
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
-import { CommandMenu } from "@/components/layout/CommandMenu";
+import { ThemeProvider, GlobalEffect, Navbar, Footer, CommandMenu } from "@/components/Layout";
 import { MatrixRain } from "@/components/UI";
 
 import { siteConfig } from "@/lib/config";
