@@ -1,5 +1,5 @@
 "use client";
-import SectionHeader from "@/components/ui/SectionHeader";
+import { SectionHeader } from "@/components/UI";
 import { useStore } from "@/lib/store/useStore";
 
 export default function ContactSection() {

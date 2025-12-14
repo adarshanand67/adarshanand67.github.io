@@ -4,10 +4,10 @@ import { useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
 import { toLeetSpeak } from "@/lib/utils/leet";
 import { useStore } from "@/lib/store/useStore";
-import { commands } from "@/lib/terminal/commands/registry";
+import { commands } from "@/lib/terminal/commands";
 import { INTRO_LINES, DIRECTORIES } from "@/lib/constants";
 import { MOCK_FILES } from "@/lib/terminal/mockFileSystem";
-import SectionHeader from "@/components/ui/SectionHeader";
+import { SectionHeader } from "@/components/UI";
 
 export default function Terminal() {
   const router = useRouter();

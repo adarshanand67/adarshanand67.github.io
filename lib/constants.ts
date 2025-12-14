@@ -1,6 +1,5 @@
-import { siteConfig } from "@/lib/config/site.config";
-import { CONFIG } from "./config";
-export const BASE_PATH = CONFIG.BASE_PATH;
+import { siteConfig, featuresConfig as CONFIG, BASE_PATH as CONFIG_BASE_PATH } from "@/lib/config";
+export const BASE_PATH = CONFIG_BASE_PATH;
 export const PLAYLIST = [
     `${BASE_PATH}/assets/music/cruel_angels_thesis.mp3`,
     `${BASE_PATH}/assets/music/one_punch_man.mp3`,
@@ -37,19 +36,22 @@ export const TRACK_IMAGES = [
     "https://cdn.myanimelist.net/images/anime/1079/138100l.jpg",
     "https://cdn.myanimelist.net/images/anime/10/47347l.jpg",
 ] as const;
-export const INTRO_LINES = () => [
-    `$ ./${siteConfig.author.name.toLowerCase().replace(' ', '_')}_profile.sh`,
-    "",
-    "[    0.001] Loading kernel modules",
-    "[    0.023] ✓ gcc-12.2.0 | glibc-2.36 | binutils-2.39",
-    "[    0.045] ✓ make-4.3 | git-2.39.0 | vim-9.0",
-    "[    0.067] ✓ ssh.service | docker.service",
-    "[    0.089] System ready.",
-    "",
-    "macOS Tahoe 27.0",
-    `Last login: ${new Date().toLocaleString('en-US', { weekday: 'short', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })}`,
-    "",
-] as const;
+export const INTRO_LINES = (modifier?: (s: string) => string) => {
+    const lines = [
+        `$ ./${siteConfig.author.name.toLowerCase().replace(' ', '_')}_profile.sh`,
+        "",
+        "[    0.001] Loading kernel modules",
+        "[    0.023] ✓ gcc-12.2.0 | glibc-2.36 | binutils-2.39",
+        "[    0.045] ✓ make-4.3 | git-2.39.0 | vim-9.0",
+        "[    0.067] ✓ ssh.service | docker.service",
+        "[    0.089] System ready.",
+        "",
+        "macOS Tahoe 27.0",
+        `Last login: ${new Date().toLocaleString('en-US', { weekday: 'short', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })}`,
+        "",
+    ];
+    return modifier ? lines.map(modifier) : lines;
+};
 export const DIRECTORIES = ["blogs", "papers", "books", "anime", "hobby"] as const;
 export const ROUTES = {
     HOME: "/",

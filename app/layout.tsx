@@ -6,9 +6,9 @@ import { GlobalEffect } from "@/components/common/GlobalEffect";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { CommandMenu } from "@/components/layout/CommandMenu";
-import { MatrixRain } from "@/components/ui/MatrixRain";
+import { MatrixRain } from "@/components/UI";
 
-import { siteConfig } from "@/lib/config/site.config";
+import { siteConfig } from "@/lib/config";
 import { StructuredData } from "@/components/seo/StructuredData";
 import { generatePersonSchema, generateWebSiteSchema } from "@/lib/seo/schemas";
 import { HobbiesModal } from "@/components/modals/HobbiesModal";

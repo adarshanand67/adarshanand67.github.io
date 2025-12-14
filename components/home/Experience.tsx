@@ -3,7 +3,7 @@ import Image from "next/image";
 // import { Briefcase } from "lucide-react";
 import { linkifyTech } from "@/lib/tech-links";
 import { getAssetPath } from "@/lib/utils/asset-path";
-import SectionHeader from "@/components/ui/SectionHeader";
+import { SectionHeader } from "@/components/UI";
 import { useStore } from "@/lib/store/useStore";
 
 interface ExperienceItem {

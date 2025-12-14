@@ -1,5 +1,7 @@
 import { ShelfType } from "@/types/definitions";
 
+export const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
 // Site Configuration
 export const siteConfig = {
     name: "Adarsh Anand",

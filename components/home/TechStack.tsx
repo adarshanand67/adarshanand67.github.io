@@ -2,7 +2,7 @@
 import Link from "next/link";
 // import { Code2 } from "lucide-react";
 import { techLinks } from "@/lib/tech-links";
-import SectionHeader from "@/components/ui/SectionHeader";
+import { SectionHeader } from "@/components/UI";
 import { useStore } from "@/lib/store/useStore";
 const skillCategories = {
   "Languages": [
