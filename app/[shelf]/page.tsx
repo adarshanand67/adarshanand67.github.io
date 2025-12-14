@@ -5,7 +5,7 @@ import {
     getProjects,
     getArticles
 } from "@/lib/api";
-import UniversalShelf from "@/components/shelves/UniversalShelf";
+import { UniversalShelf } from "@/components/Shelves";
 import { shelfConfigs } from "@/lib/config";
 import { notFound } from "next/navigation";
 
