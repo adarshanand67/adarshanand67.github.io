@@ -74,10 +74,6 @@ export function Terminal() {
 
     const {
         toggleMatrix, isMatrixEnabled,
-        setIsPlaying, toggleMute,
-        toggleMusicPlayer, setShowMusicPlayer,
-
-
         lines, setLines,
         isIntroDone, setIsIntroDone,
         input, setInput,
@@ -145,13 +141,8 @@ export function Terminal() {
             setTheme,
             isMatrixEnabled,
             toggleMatrix,
-            setIsPlaying,
-            toggleMute,
             setInput,
             commandHistory: history,
-            toggleMusicPlayer,
-            setShowMusicPlayer,
-
         };
         try {
             for (let i = 0; i < pipeParts.length; i++) {
