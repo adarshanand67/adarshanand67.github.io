@@ -6,7 +6,7 @@ import {
     getArticles
 } from "@/lib/api";
 import UniversalShelf from "@/components/shelves/UniversalShelf";
-import { shelfConfigs } from "@/config/shelves";
+import { shelfConfigs } from "@/lib/config";
 import { notFound } from "next/navigation";
 
 const SHELF_MAPPING = {

@@ -417,7 +417,7 @@ const DECODED_FLAG = 'flag{H1dd3n_T3rm1n4l_M45t3r}';
 export const base64: Command = createCommand('base64', 'Encode/decode base64', (args, { setLines }, input) => {
     const isDecode = args[0] === '-d';
     const text = isDecode ? args.slice(1).join(' ') : args.join(' ');
-    const txt = text || input.trim();
+    const txt = text || (input ? input.trim() : '');
     if (!txt) { addLine(setLines, 'Error: No input'); return; }
     try {
         const res = isDecode ? atob(txt) : btoa(txt);
