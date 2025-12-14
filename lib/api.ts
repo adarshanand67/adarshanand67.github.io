@@ -1,12 +1,14 @@
 import { promises as fs } from "fs";
 import path from "path";
-import profileData from "@/lib/data/profile.json";
-import experiencesData from "@/lib/data/experiences.json";
-import papersData from "@/lib/data/papers.json";
-import booksData from "@/lib/data/books.json";
-import entertainmentData from "@/lib/data/entertainment.json";
-import hobbyData from "@/lib/data/hobby.json";
-import usesData from "@/lib/data/uses.json";
+import {
+  profileData,
+  experiencesData,
+  papersData,
+  booksData,
+  entertainmentData,
+  hobbyData,
+  usesData
+} from "@/lib/data";
 import { EntertainmentItem, EntertainmentType, WatchStatus } from "@/types/definitions";
 
 export const getProfile = async () => profileData;

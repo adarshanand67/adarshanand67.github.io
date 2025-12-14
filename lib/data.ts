@@ -1,0 +1,382 @@
+export const booksData = [
+    {
+        "title": "48 Laws of Power",
+        "author": "Robert Greene",
+        "recommended": true
+    },
+    {
+        "title": "12 Rules for Life",
+        "author": "Jordan Peterson",
+        "recommended": true
+    },
+    {
+        "title": "The Way of the Superior Man",
+        "author": "David Deida",
+        "recommended": true
+    },
+    { "title": "Chip War", "author": "Chris Miller" },
+    { "title": "Deep Work", "author": "Cal Newport" },
+    { "title": "Don't Shut Up", "author": "Prakhar Gupta" },
+    { "title": "Don't Take It Personal", "author": "Elayne Savage" },
+    { "title": "Emotional Intelligence", "author": "Daniel Goleman" },
+    { "title": "Games People Play", "author": "Eric Berne" },
+    { "title": "How to Win Friends and Influence People", "author": "Dale Carnegie" },
+    { "title": "The Rudest Book Ever", "author": "Shwetabh Gangwar" },
+    { "title": "Stillness is the Key", "author": "Ryan Holiday" },
+    { "title": "System Design Interview", "author": "Alex Xu" },
+    { "title": "The 5 AM Club", "author": "Robin Sharma" },
+    { "title": "The 7 Habits of Highly Effective People", "author": "Stephen R. Covey" },
+    { "title": "The Compound Effect", "author": "Darren Hardy" },
+    { "title": "The Definitive Book of Body Language", "author": "Allan & Barbara Pease" },
+    { "title": "The Happiness Hypothesis", "author": "Jonathan Haidt" },
+    { "title": "The Happiness Trap", "author": "Russ Harris" },
+    { "title": "The Let Them Theory", "author": "Mel Robbins" },
+    { "title": "The Mountain Is You", "author": "Brianna Wiest" },
+    { "title": "The Subtle Art of Not Giving a F*ck", "author": "Mark Manson" },
+    { "title": "Thinking, Fast and Slow", "author": "Daniel Kahneman" },
+    { "title": "Who Will Cry When You Die?", "author": "Robin Sharma" },
+    { "title": "Why We Sleep", "author": "Matthew Walker" },
+    { "title": "You Are a Badass", "author": "Jen Sincero" }
+];
+
+export const entertainmentData = [
+    {
+        "title": "Pokémon",
+        "type": "Anime",
+        "status": "Completed",
+        "notes": "S1-25",
+        "image": "https://cdn.myanimelist.net/images/anime/1405/117456l.jpg",
+        "description": "Ash Ketchum and his partner Pikachu travel the world to become the greatest Pokémon Master.",
+        "tags": ["Adventure", "Fantasy"]
+    },
+    {
+        "title": "Death Note",
+        "type": "Anime",
+        "status": "Completed",
+        "notes": "S1",
+        "image": "https://cdn.myanimelist.net/images/anime/1079/138100l.jpg",
+        "recommended": true,
+        "description": "A high school student discovers a supernatural notebook that grants him the ability to kill anyone by writing their name.",
+        "tags": ["Supernatural", "Thriller"],
+        "year": "2006",
+        "rating": "9.0/10"
+    },
+    {
+        "title": "Dragon Ball Z",
+        "type": "Anime",
+        "status": "Completed",
+        "notes": "S1-9, Super S1",
+        "image": "https://cdn.myanimelist.net/images/anime/1277/142022l.jpg",
+        "description": "Goku and his friends defend Earth from intergalactic threats.",
+        "tags": ["Action"],
+        "year": "1989",
+        "rating": "8.8/10"
+    },
+    {
+        "title": "Naruto",
+        "type": "Anime",
+        "status": "Planning",
+        "notes": "S1-5, Shippuden S1-21",
+        "image": "https://cdn.myanimelist.net/images/anime/1141/142503l.jpg",
+        "description": "A young ninja seeks recognition from his peers and dreams of becoming the Hokage.",
+        "tags": ["Action"],
+        "year": "2002",
+        "rating": "8.3/10"
+    },
+    {
+        "title": "One Punch Man",
+        "type": "Anime",
+        "status": "Completed",
+        "notes": "S1,2",
+        "image": "https://cdn.myanimelist.net/images/anime/12/76049l.jpg",
+        "description": "A hero who can defeat any opponent with a single punch seeks a worthy challenge.",
+        "tags": ["Action", "Comedy"],
+        "year": "2015",
+        "rating": "8.7/10"
+    },
+    {
+        "title": "Haikyu",
+        "type": "Anime",
+        "status": "Completed",
+        "notes": "S1-4",
+        "image": "https://cdn.myanimelist.net/images/anime/7/76014l.jpg",
+        "recommended": true,
+        "description": "A short volleyball player with high jumping ability joins a former rival.",
+        "tags": ["Slice of Life", "Sports"],
+        "year": "2014",
+        "rating": "8.7/10"
+    },
+    {
+        "title": "Code Geass",
+        "type": "Anime",
+        "status": "Completed",
+        "notes": "S1,2",
+        "image": "https://cdn.myanimelist.net/images/anime/1032/135088l.jpg",
+        "recommended": true,
+        "description": "An exiled prince gains the power of absolute obedience and leads a rebellion.",
+        "tags": ["Sci-Fi", "Thriller"],
+        "year": "2006",
+        "rating": "8.7/10"
+    },
+    {
+        "title": "Steins;Gate",
+        "type": "Anime",
+        "status": "Completed",
+        "notes": "S1, 0",
+        "image": "https://cdn.myanimelist.net/images/anime/1935/127974l.jpg",
+        "description": "Friends accidentally invent a time machine.",
+        "tags": ["Sci-Fi", "Thriller"],
+        "year": "2011",
+        "rating": "9.1/10"
+    },
+    {
+        "title": "Mob Psycho 100",
+        "type": "Anime",
+        "status": "Completed",
+        "notes": "S1-3",
+        "image": "https://cdn.myanimelist.net/images/anime/8/80356l.jpg",
+        "description": "A powerful psychic tries to live a normal life.",
+        "tags": ["Action", "Comedy", "Supernatural"],
+        "year": "2016",
+        "rating": "8.6/10"
+    },
+    {
+        "title": "Jujutsu Kaisen",
+        "type": "Anime",
+        "status": "Completed",
+        "notes": "S1,2",
+        "image": "https://cdn.myanimelist.net/images/anime/1171/109222l.jpg",
+        "description": "A student swallows a cursed finger.",
+        "tags": ["Action", "Slice of Life", "Supernatural"],
+        "year": "2020",
+        "rating": "8.6/10"
+    },
+    {
+        "title": "Blue Lock",
+        "type": "Anime",
+        "status": "Completed",
+        "notes": "S1,2",
+        "image": "https://cdn.myanimelist.net/images/anime/1258/126929l.jpg",
+        "description": "Project to create the world's greatest striker.",
+        "tags": ["Sports", "Thriller"],
+        "year": "2022",
+        "rating": "8.3/10"
+    },
+    {
+        "title": "Solo Leveling",
+        "type": "Anime",
+        "status": "Completed",
+        "notes": "S1,2",
+        "image": "https://cdn.myanimelist.net/images/anime/1801/142390l.jpg",
+        "recommended": true,
+        "description": "Weakest hunter becomes the strongest.",
+        "tags": ["Action", "Adventure", "Fantasy"],
+        "year": "2024",
+        "rating": "8.5/10"
+    },
+    {
+        "title": "Demon Slayer",
+        "type": "Anime",
+        "status": "Completed",
+        "notes": "S1-4, Mugen Train",
+        "image": "https://cdn.myanimelist.net/images/anime/1286/99889l.jpg",
+        "description": "Young man becomes demon slayer to avenge family.",
+        "tags": ["Action", "Fantasy", "Historical"],
+        "year": "2019",
+        "rating": "8.5/10"
+    },
+    {
+        "title": "Tokyo Ghoul",
+        "type": "Anime",
+        "status": "Completed",
+        "notes": "S1-4",
+        "image": "https://cdn.myanimelist.net/images/anime/1498/134443l.jpg",
+        "description": "Student becomes half-ghoul.",
+        "tags": ["Action", "Horror", "Supernatural"]
+    },
+    {
+        "title": "Vinland Saga",
+        "type": "Anime",
+        "status": "Planning",
+        "notes": "S1,2",
+        "image": "https://cdn.myanimelist.net/images/anime/1500/103005l.jpg",
+        "description": "Viking warrior seeks revenge.",
+        "tags": ["Action", "Drama", "Historical"],
+        "year": "2019",
+        "rating": "8.8/10"
+    },
+    {
+        "title": "Attack on Titan",
+        "type": "Anime",
+        "status": "Planning",
+        "notes": "S1-4",
+        "image": "https://cdn.myanimelist.net/images/anime/10/47347l.jpg",
+        "description": "Humanity fights man-eating giants.",
+        "tags": ["Action", "Fantasy"],
+        "year": "2013",
+        "rating": "9.0/10"
+    },
+    {
+        "title": "Fullmetal Alchemist Brotherhood",
+        "type": "Anime",
+        "status": "Planning",
+        "notes": "S1",
+        "image": "https://cdn.myanimelist.net/images/anime/1208/94745l.jpg",
+        "description": "Brothers search for Philosopher's Stone.",
+        "tags": ["Adventure", "Fantasy"],
+        "year": "2009",
+        "rating": "9.1/10"
+    },
+    {
+        "title": "Hunter x Hunter",
+        "type": "Anime",
+        "status": "Planning",
+        "notes": "S1",
+        "image": "https://cdn.myanimelist.net/images/anime/1305/132237l.jpg",
+        "description": "Boy sets out to become a Hunter.",
+        "tags": ["Action", "Adventure", "Fantasy"],
+        "year": "2011",
+        "rating": "9.0/10"
+    },
+    {
+        "title": "One Piece",
+        "type": "Anime",
+        "status": "Planning",
+        "notes": "S1-21",
+        "image": "https://cdn.myanimelist.net/images/anime/1770/97704l.jpg",
+        "description": "Pirate crew searches for ultimate treasure.",
+        "tags": ["Action", "Adventure", "Fantasy"],
+        "year": "1999",
+        "rating": "9.0/10"
+    },
+    {
+        "title": "Frieren: Beyond Journey’s End",
+        "type": "Anime",
+        "status": "Planning",
+        "notes": "S1",
+        "image": "https://cdn.myanimelist.net/images/anime/1015/138006l.jpg",
+        "description": "Elf mage reflects on life.",
+        "tags": ["Adventure", "Fantasy", "Slice of Life"],
+        "year": "2023",
+        "rating": "9.1/10"
+    },
+    {
+        "title": "Monster",
+        "type": "Anime",
+        "status": "Planning",
+        "notes": "S1",
+        "image": "https://cdn.myanimelist.net/images/anime/1648/152231l.jpg",
+        "description": "Doctor hunts down serial killer patient.",
+        "tags": ["Mystery", "Thriller"],
+        "year": "2004",
+        "rating": "8.8/10"
+    },
+    {
+        "title": "Cowboy Bebop",
+        "type": "Anime",
+        "status": "Completed",
+        "notes": "S1",
+        "image": "https://cdn.myanimelist.net/images/anime/4/19644l.jpg",
+        "description": "Bounty hunters in space.",
+        "tags": ["Sci-Fi"],
+        "year": "1998",
+        "rating": "8.9/10"
+    }
+];
+
+export const experiencesData = [
+    {
+        "company": "Trellix",
+        "role": "Software Development Engineer",
+        "duration": "Jul 2025 - Present",
+        "location": "Bengaluru, Karnataka, India",
+        "logo": "/assets/logos/trellix.png",
+        "description": "Team - Data Loss Prevention (Windows) || Data Security",
+        "highlights": [
+            "Engineered the Native Registry Management Module for Google Content Analysis Connector to enable injection-free web protection for Chrome and Edge.",
+            "Integrated Boldon James classification support into Trellix DLP Endpoint.",
+            "Developed comprehensive test automation infrastructure using CppUnit."
+        ]
+    },
+    {
+        "company": "Intel",
+        "role": "Software Development Engineer",
+        "duration": "Jun 2024 - Jul 2025",
+        "location": "Bengaluru, Karnataka, India",
+        "logo": "/assets/logos/intel.png",
+        "description": "Team - Confidential Computing (Intel SGX/TDX) || Platform Engineering Group",
+        "highlights": [
+            "Contributed to Intel SGX Gramine to secure confidential computing workloads.",
+            "Implemented Intel SGX fuzzing framework by CPU ID fuzzing harnesses.",
+            "Engineered Intel TDX full-disk encryption (FDE) solution.",
+            "Led creation of CentOS Virtualization SIG attestation guides.",
+            "Integrated Post-Quantum Cryptography (PQC) with Intel SGX.",
+            "Enhanced LLM Adversarial Robustness Toolkit.",
+            "Conducted comprehensive vLLM benchmarking."
+        ]
+    },
+    {
+        "company": "Intel",
+        "role": "Graduate Technical Intern",
+        "duration": "Jun 2023 - Dec 2023",
+        "location": "Bengaluru, Karnataka, India",
+        "logo": "/assets/logos/intel.png",
+        "description": "Team - Device Onboarding || Product Assurance & Security",
+        "highlights": [
+            "Collaborated with FIDO Device Onboarding (FDO) team.",
+            "Modernized cryptographic security architecture by implementing OpenSSL 3.0 migration.",
+            "Designed and implemented a POC of Bare Metal Onboarding (BMO)."
+        ]
+    }
+];
+
+export const hobbyData = [
+    { "name": "Gym", "description": "Hypertrophy and strength training.", "icon": "Dumbbell" },
+    { "name": "Cinephile", "description": "Loves movies and documentaries.", "icon": "Tv" },
+    { "name": "Anime", "description": "Appreciating storytelling and animation.", "icon": "Tv" },
+    { "name": "Book Reading", "description": "Understanding the world from different eyes", "icon": "Book" },
+    { "name": "Table Tennis", "description": "Fast-paced rallies and spin control.", "icon": "Trophy" },
+    { "name": "Badminton", "description": "Smashing shuttlecocks and court agility.", "icon": "Trophy" },
+    { "name": "Pickleball", "description": "Combining elements of tennis, badminton, and ping-pong.", "icon": "Trophy" },
+    { "name": "Cycling", "description": "Urban exploration on two wheels.", "icon": "Bike" },
+    { "name": "Trekking & Hiking", "description": "Exploring nature trails and mountains.", "icon": "Mountain" },
+    { "name": "Board Games", "description": "Strategy and social deduction games.", "icon": "Dices" },
+    { "name": "Travelling", "description": "Experiencing new cultures and places.", "icon": "Plane" },
+    { "name": "Cafe Hopping", "description": "Finding the best coffee spots.", "icon": "Coffee" },
+    { "name": "Tech Conferences", "description": "Networking and learning at tech meetups.", "icon": "Users" },
+    { "name": "Toastmasters", "description": "Public speaking and leadership development.", "icon": "Mic" }
+];
+
+export const papersData = [
+    { "title": "Attention Is All You Need", "url": "https://arxiv.org/abs/1706.03762" },
+    { "title": "Deep Residual Learning for Image Recognition", "url": "https://arxiv.org/abs/1512.03385" }
+];
+
+export const profileData = {
+    "name": "Adarsh Anand",
+    "title": "SDE @Trellix | C++ | Ex-Intel",
+    "pronouns": "He/Him",
+    "location": "Bengaluru, Karnataka, India",
+    "avatar": "/dp.jpeg",
+    "education": {
+        "university": "Indian Institute of Technology (IIT) Goa",
+        "degree": "B.Tech, CSE",
+        "years": "2020 - 2024",
+        "grade": "8.67"
+    },
+    "socials": {
+        "linkedin": "https://linkedin.com/in/adarshanand67",
+        "github": "https://github.com/adarshanand67",
+        "email": "adarshan20302@gmail.com"
+    },
+    "bio": {
+        "short": "SDE @Trellix | C++ | Ex-Intel",
+        "paragraphs": [
+            "As a Software Development Engineer at Trellix, I focus on data security and preventing unauthorized exfiltration of sensitive corporate information as part of the Data Loss Prevention (Windows) team.",
+            "Previously at Intel Corporation, I worked on confidential computing technologies, including Intel SGX and TDX, implementing advanced fuzzing frameworks and addressing vulnerabilities.",
+            "A B.Tech graduate in Computer Science and Engineering from IIT Goa, I am dedicated to advancing innovation in data protection and secure systems."
+        ]
+    }
+};
+
+export const usesData = { "hardware": [], "software": [] };
