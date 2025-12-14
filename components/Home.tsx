@@ -8,7 +8,7 @@ import { SectionHeader } from "@/components/UI";
 import { linkifyTech } from "@/lib/tech-links";
 import { getAssetPath } from "@/lib/utils/asset-path";
 import { techLinks } from "@/lib/tech-links";
-import { shelfConfigs } from "@/lib/config/shelves";
+import { shelfConfigs } from "@/lib/config";
 import { DIRECTORY_MAP } from "@/lib/constants";
 
 // --- ContactSection ---
@@ -364,13 +364,13 @@ export function RecentSection({
 // --- ShelvesSection ---
 const SHELF_ICONS: Record<string, React.ElementType> = {
     blogs: Feather,
-    papers: FileText,
+    articles: FileText,
     books: Book,
     anime: Tv,
     hobby: Gamepad2
 };
 
-const SHELVES = ["blogs", "papers", "books", "anime", "hobby"].map(key => ({
+const SHELVES = ["blogs", "articles", "books", "anime", "hobby"].map(key => ({
     name: key,
     path: DIRECTORY_MAP[key],
     description: shelfConfigs[key].description,
