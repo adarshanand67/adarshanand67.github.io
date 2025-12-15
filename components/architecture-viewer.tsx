@@ -45,13 +45,6 @@ export function ArchitectureViewer() {
             />
 
             <div className="relative z-10 container mx-auto px-4">
-                <div className="mb-8 text-center">
-                    <h2 className="text-2xl md:text-3xl font-bold text-white mb-2 font-mono">System Architecture</h2>
-                    <p className="text-slate-400 max-w-xl mx-auto text-sm">
-                        Hover over nodes to visualize dependencies and data flow across the stack.
-                    </p>
-                </div>
-
                 <div className="relative w-full aspect-[16/9] md:aspect-[2/1] max-w-5xl mx-auto bg-slate-900/50 rounded-xl border border-slate-700/50 backdrop-blur-sm p-8">
 
                     {/* SVG Layer for Connections */}
