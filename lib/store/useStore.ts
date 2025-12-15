@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
 import { playlist } from '@/lib/constants';
 
 interface TerminalState {
@@ -100,7 +101,7 @@ interface RandomizerState {
 
 export interface AppState extends TerminalState, UIState, CursorState, MusicState, WeatherState, BackToTopState, AnimeState, SearchState, RandomizerState { }
 
-export const useStore = create<AppState>((set) => ({
+export const useStore = create<AppState>()(persist((set) => ({
     lines: [],
     history: [],
     historyIndex: -1,
@@ -110,7 +111,7 @@ export const useStore = create<AppState>((set) => ({
     isExpanded: true,
     position: { x: 0, y: 0 },
     isDragging: false,
-    isMatrixEnabled: false,
+    isMatrixEnabled: true,
     isMounted: false,
     showHobbiesModal: false,
     isNavbarActive: false,
@@ -197,4 +198,14 @@ export const useStore = create<AppState>((set) => ({
     isRandomizing: false,
     setRandomItemIndex: (index) => set({ randomItemIndex: index }),
     setIsRandomizing: (isRandomizing) => set({ isRandomizing }),
+}), {
+    name: 'ui-storage',
+    partialize: (state) => ({
+        isMatrixEnabled: state.isMatrixEnabled,
+        expandedSections: state.expandedSections,
+        volume: state.volume,
+        isMuted: state.isMuted,
+        isShuffle: state.isShuffle,
+        isRepeat: state.isRepeat
+    }),
 }));
