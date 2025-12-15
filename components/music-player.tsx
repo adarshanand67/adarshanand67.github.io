@@ -6,6 +6,8 @@ import { Play, Pause, Volume2, VolumeX, SkipBack, SkipForward, Repeat, Shuffle, 
 import { useStore } from "@/lib/store/useStore";
 import { playlist, trackNames, trackImages } from "@/lib/constants";
 
+import { Visualizer } from '@/components/visualizer';
+
 export function MusicPlayer() {
     const {
         isPlaying, setIsPlaying,
@@ -136,6 +138,10 @@ export function MusicPlayer() {
         return null;
     }
 
+    // ... (existing imports)
+
+    // ... (inside component)
+
     // Fixed position bottom-8 right-8
     return (
         <>
@@ -152,7 +158,12 @@ export function MusicPlayer() {
                 ref={playerRef}
                 className={`fixed bottom-8 right-8 z-[60] font-sans transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] transform origin-bottom-right ${showMusicPlayer ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-90 translate-y-4 pointer-events-none'}`}
             >
-                <div className="bg-white/90 dark:bg-[#121212] backdrop-blur-md w-80 rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:shadow-2xl border border-gray-200 dark:border-[#282828] overflow-hidden flex flex-col transition-colors duration-300">
+                <div className="bg-white/90 dark:bg-[#121212] backdrop-blur-md w-80 rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:shadow-2xl border border-gray-200 dark:border-[#282828] overflow-hidden flex flex-col transition-colors duration-300 relative">
+
+                    {/* Visualizer Background */}
+                    <div className="absolute inset-x-0 bottom-0 h-24 z-0 pointer-events-none opacity-30">
+                        <Visualizer audioRef={audioRef} isPlaying={isPlaying} />
+                    </div>
 
                     {/* 1. Header (Close) */}
                     <div className="flex justify-between items-center px-4 pt-3 pb-1 border-b border-gray-100 dark:border-[#282828]/50">
