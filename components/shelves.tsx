@@ -133,7 +133,7 @@ export function UniversalShelf({ config, items }: UniversalShelfProps) {
                             <X size={20} />
                         </button>
 
-                        <div className="p-4 bg-green-50 dark:bg-green-900/20 rounded-full mb-4">
+                        <div className="p-4 bg-green-50 dark:bg-green-900/20 rounded-xl mb-4">
                             {getIcon((hobbySelectedItem as any).icon)}
                         </div>
 
