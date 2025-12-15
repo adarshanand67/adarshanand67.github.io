@@ -31,6 +31,11 @@ export function MusicPlayer() {
     }, []);
 
     useEffect(() => {
+        setCurrentTime(0);
+        setDuration(0);
+    }, [currentTrackIndex]);
+
+    useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             if (showMusicPlayer && playerRef.current && !playerRef.current.contains(event.target as Node)) {
                 toggleMusicPlayer();
@@ -178,7 +183,7 @@ export function MusicPlayer() {
                         </div>
                         <div className="flex flex-col overflow-hidden min-w-0 flex-1">
                             <div className="w-full relative overflow-hidden h-5">
-                                <div className="absolute whitespace-nowrap animate-marquee hover:animate-pause text-gray-900 dark:text-white font-bold text-sm">
+                                <div key={currentTrackIndex} className="absolute whitespace-nowrap animate-marquee hover:animate-pause text-gray-900 dark:text-white font-bold text-sm">
                                     {trackNames[currentTrackIndex] || "Unknown Track"}
                                 </div>
                             </div>
