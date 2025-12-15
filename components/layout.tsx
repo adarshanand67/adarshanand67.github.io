@@ -12,6 +12,7 @@ import { routes, introLines, directories } from "@/lib/constants";
 import { siteConfig } from "@/lib/config";
 import { commands } from "@/lib/terminal/commands";
 import { mockFiles } from "@/lib/terminal/mockFileSystem";
+import { SystemMonitor } from "@/components/system-monitor";
 import {
     ArrowUp,
     Search,
@@ -92,7 +93,11 @@ export function Terminal() {
         passwordMode, setPasswordMode,
         isExpanded, setIsExpanded,
         position, setPosition,
-        isDragging, setIsDragging
+        passwordMode, setPasswordMode,
+        isExpanded, setIsExpanded,
+        position, setPosition,
+        isDragging, setIsDragging,
+        showSystemMonitor
     } = useStore();
 
     const containerRef = useRef<HTMLDivElement>(null);
@@ -151,6 +156,7 @@ export function Terminal() {
             setTheme,
             isMatrixEnabled,
             toggleMatrix,
+            toggleSystemMonitor: useStore.getState().toggleSystemMonitor,
             setInput,
             commandHistory: history,
         };
@@ -301,6 +307,7 @@ export function Terminal() {
             className="w-full max-w-4xl relative"
             onClick={handleTerminalWrapperClick}
         >
+            {showSystemMonitor && <SystemMonitor />}
             <div className="relative glass rounded-xl p-4 hover:border-green-500/50 transition-colors duration-300">
                 <section className="font-mono">
                     <SectionHeader

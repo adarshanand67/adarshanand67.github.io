@@ -106,8 +106,14 @@ export const cat: Command = createCommand('cat', 'Read file', (args, { setLines 
 
 export const matrix: Command = createCommand('matrix', 'Toggle Matrix rain', (_, { toggleMatrix, setLines, isMatrixEnabled }) => {
     toggleMatrix();
+    toggleMatrix();
     addLine(setLines, isMatrixEnabled ? 'Matrix: Disabled.' : 'Matrix: Activated. Follow the white rabbit.');
 }, { category: 'utility', usage: 'matrix' });
+
+export const htop: Command = createCommand('htop', 'Open System Monitor', (_, { toggleSystemMonitor, setLines }) => {
+    toggleSystemMonitor();
+    addLine(setLines, 'Launching System Monitor...');
+}, { category: 'utility', usage: 'htop' });
 
 export const sudo: Command = createCommand('sudo', 'Execute a command as superuser', (_, { setLines }) => {
     setTimeout(() => {
@@ -154,5 +160,5 @@ export const open: Command = createCommand('open', 'Open directory or URL', (arg
 }, { category: 'navigation', usage: 'open [link]' });
 
 export const commands: Record<string, Command> = {
-    clear, help, skills, contact, theme, ls, cd, pwd, whoami, cls, cat, matrix, sudo, rm, open
+    clear, help, skills, contact, theme, ls, cd, pwd, whoami, cls, cat, matrix, sudo, rm, open, htop
 };

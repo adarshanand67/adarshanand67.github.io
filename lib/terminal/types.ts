@@ -8,6 +8,7 @@ export interface CommandContext {
     setTheme: (theme: ThemeMode) => void;
     isMatrixEnabled: boolean;
     toggleMatrix: () => void;
+    toggleSystemMonitor: () => void;
     setInput: (input: string) => void;
     commandHistory: readonly string[];
 }
