@@ -235,10 +235,10 @@ export const AnimeShelf = ({ items }: AnimeShelfProps) => {
             </div>
             <Section title="Anime - Watching" sectionItems={animeWatching} AnimeCard={AnimeCard} />
             <Section title="Anime - Watched" sectionItems={animeCompleted} AnimeCard={AnimeCard} />
-            <Section title="Anime - Planning" sectionItems={animePlanning} AnimeCard={AnimeCard} />
+
             <Section title="Movies - Watching" sectionItems={movieWatching} AnimeCard={AnimeCard} />
             <Section title="Movies - Watched" sectionItems={movieCompleted} AnimeCard={AnimeCard} />
-            <Section title="Movies - Planning" sectionItems={moviePlanning} AnimeCard={AnimeCard} />
+
             {/* Modal */}
             {selectedItem && (
                 <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">

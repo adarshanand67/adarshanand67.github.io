@@ -670,7 +670,7 @@ export const animeData = [
     {
         "title": "Erased",
         "type": "Anime",
-        "status": "Planning",
+        "status": "Completed",
         "notes": "S1",
         "image": "https://cdn.myanimelist.net/images/anime/10/77957l.jpg",
         "description": "A man travels back in time to his childhood to prevent a series of murders.",
