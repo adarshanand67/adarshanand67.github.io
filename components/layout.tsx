@@ -93,9 +93,6 @@ export function Terminal() {
         passwordMode, setPasswordMode,
         isExpanded, setIsExpanded,
         position, setPosition,
-        passwordMode, setPasswordMode,
-        isExpanded, setIsExpanded,
-        position, setPosition,
         isDragging, setIsDragging,
         showSystemMonitor
     } = useStore();
