@@ -284,7 +284,7 @@ export class ArticleListStrategy implements ShelfItemStrategy<Blog | Paper> {
         {blogs.length > 0 && (
           <div>
             <h2 className="text-2xl font-bold mb-6 flex items-center gap-2 font-mono">
-              <span className="text-green-600">{papers.length > 0 ? '02.' : '01.'}</span> Blog Posts
+              <span className="text-green-600">{papers.length > 0 ? '02.' : '01.'}</span> Blogs
             </h2>
             {new BlogListStrategy().renderList(blogs)}
           </div>

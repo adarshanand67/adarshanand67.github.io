@@ -153,6 +153,21 @@ export const skillCategories = {
     "Databases & Tools": [
         "Redis",
         "MySQL",
+        "PostgreSQL",
+    ],
+    "Frontend & Web": [
+        "Next.js",
+        "React",
+        "Tailwind CSS",
+        "Framer Motion",
+        "Three.js",
+        "Zustand",
+    ],
+    "DevOps & Infrastructure": [
+        "Docker",
+        "Kubernetes",
+        "GitHub Actions",
+        "AWS",
     ],
 };
 

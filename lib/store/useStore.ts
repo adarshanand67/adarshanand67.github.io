@@ -72,12 +72,14 @@ interface UIState {
     isMounted: boolean;
     showHobbiesModal: boolean;
     showSystemMonitor: boolean;
+    isXRayEnabled: boolean;
     isNavbarActive: boolean;
     expandedSections: Record<string, boolean>;
     toggleMatrix: () => void;
     setIsMounted: (mounted: boolean) => void;
     toggleHobbiesModal: () => void;
     toggleSystemMonitor: () => void;
+    toggleXRay: () => void;
     setIsNavbarActive: (active: boolean) => void;
     toggleSectionExpanded: (section: string) => void;
 }
@@ -133,6 +135,7 @@ export const useStore = create<AppState>()(persist((set) => ({
     isMounted: false,
     showHobbiesModal: false,
     showSystemMonitor: false,
+    isXRayEnabled: false,
     isNavbarActive: false,
     expandedSections: {},
 
@@ -166,6 +169,7 @@ export const useStore = create<AppState>()(persist((set) => ({
     setIsMounted: (mounted) => set({ isMounted: mounted }),
     toggleHobbiesModal: () => set((state) => ({ showHobbiesModal: !state.showHobbiesModal })),
     toggleSystemMonitor: () => set((state) => ({ showSystemMonitor: !state.showSystemMonitor })),
+    toggleXRay: () => set((state) => ({ isXRayEnabled: !state.isXRayEnabled })),
     setIsNavbarActive: (active) => set({ isNavbarActive: active }),
     toggleSectionExpanded: (section) => set((state) => ({
         expandedSections: { ...state.expandedSections, [section]: !state.expandedSections[section] }

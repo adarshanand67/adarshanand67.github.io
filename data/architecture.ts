@@ -1,7 +1,7 @@
 export interface ArchNode {
     id: string;
     label: string;
-    type: 'frontend' | 'backend' | 'database' | 'devops' | 'core';
+    type: 'frontend' | 'backend' | 'database' | 'devops' | 'core' | 'security' | 'language' | 'system' | 'ai';
     x: number;
     y: number;
     description?: string;
@@ -13,45 +13,70 @@ export interface ArchConnection {
     description?: string;
 }
 
+// Layout Strategy:
+// Left Column: Frontend & Web (15-25% X)
+// Center Column: Languages & AI (40-50% X)
+// Right Column: Databases & DevOps (65-75% X)
+// Bottom/Wide: Systems & Security (Spread across 20-80% X, lower Y)
+
 export const architectureNodes: ArchNode[] = [
-    // Core User
-    { id: 'user', label: 'User / Recruiter', type: 'core', x: 50, y: 50, description: 'The end user accessing the portfolio.' },
+    // --- Frontend & Web (Left) ---
+    { id: 'nextjs', label: 'Next.js', type: 'frontend', x: 20, y: 20, description: 'App Router framework.' },
+    { id: 'react', label: 'React', type: 'frontend', x: 20, y: 30, description: 'UI Library.' },
+    { id: 'tailwind', label: 'Tailwind', type: 'frontend', x: 20, y: 40, description: 'Styling.' },
+    { id: 'framer', label: 'Framer', type: 'frontend', x: 20, y: 50, description: 'Motion.' },
+    { id: 'threejs', label: 'Three.js', type: 'frontend', x: 20, y: 60, description: '3D Visuals.' },
+    { id: 'zustand', label: 'Zustand', type: 'frontend', x: 20, y: 70, description: 'State.' },
 
-    // Frontend
-    { id: 'nextjs', label: 'Next.js (App Router)', type: 'frontend', x: 25, y: 25, description: 'React framework for performance and SEO.' },
-    { id: 'tailwind', label: 'Tailwind CSS', type: 'frontend', x: 25, y: 35, description: 'Utility-first CSS for rapid, custom styling.' },
-    { id: 'framer', label: 'Framer Motion', type: 'frontend', x: 25, y: 15, description: 'Animation library for complex transitions.' },
-    { id: 'threejs', label: 'Three.js / R3F', type: 'frontend', x: 35, y: 20, description: '3D rendering engine for hero elements.' },
-    { id: 'zustand', label: 'Zustand Store', type: 'frontend', x: 40, y: 30, description: 'Lightweight state management.' },
+    // --- Languages (Center Top) ---
+    { id: 'python', label: 'Python', type: 'language', x: 45, y: 20, description: 'Scripting & AI.' },
+    { id: 'cpp', label: 'C++', type: 'language', x: 45, y: 30, description: 'Systems & Performance.' },
+    { id: 'c', label: 'C', type: 'language', x: 45, y: 40, description: 'Low-level dev.' },
+    { id: 'java', label: 'Java', type: 'language', x: 45, y: 50, description: 'Enterprise.' },
+    { id: 'js', label: 'JS/TS', type: 'language', x: 45, y: 60, description: 'Web High-level.' },
 
-    // Backend / Services
-    { id: 'node', label: 'Node.js', type: 'backend', x: 75, y: 25, description: 'Runtime for backend logic.' },
-    { id: 'rust', label: 'Rust Services', type: 'backend', x: 80, y: 35, description: 'High-performance microservices.' },
+    // --- AI & ML (Center Bottom) ---
+    { id: 'torch', label: 'PyTorch', type: 'ai', x: 45, y: 75, description: 'Deep Learning.' },
+    { id: 'vllm', label: 'vLLM', type: 'ai', x: 55, y: 75, description: 'LLM Inference.' },
+    { id: 'openvino', label: 'OpenVINO', type: 'ai', x: 50, y: 85, description: 'AI Optimization.' },
 
-    // Data
-    { id: 'postgres', label: 'PostgreSQL', type: 'database', x: 75, y: 45, description: 'Relational database for structured data.' },
-    { id: 'redis', label: 'Redis', type: 'database', x: 85, y: 25, description: 'In-memory caching for speed.' },
+    // --- System & Kernel (Right Top) ---
+    { id: 'kernel', label: 'Kernel', type: 'system', x: 70, y: 20, description: 'Linux Dev.' },
+    { id: 'sgx', label: 'Intel SGX', type: 'system', x: 70, y: 30, description: 'Confidential Compute.' },
+    { id: 'win', label: 'Windows', type: 'system', x: 70, y: 40, description: 'Internals.' },
+    { id: 'linux', label: 'Linux', type: 'system', x: 70, y: 50, description: 'RHEL/CentOS/Ubuntu.' },
 
-    // DevOps
-    { id: 'docker', label: 'Docker / K8s', type: 'devops', x: 60, y: 60, description: 'Containerization and orchestration.' },
-    { id: 'github', label: 'CI/CD (GitHub)', type: 'devops', x: 50, y: 70, description: 'Automated testing and deployment pipelines.' },
+    // --- Databases & DevOps (Right Mid) ---
+    { id: 'redis', label: 'Redis', type: 'database', x: 85, y: 20, description: 'Cache.' },
+    { id: 'sql', label: 'SQL', type: 'database', x: 85, y: 30, description: 'Postgres/MySQL.' },
+    { id: 'docker', label: 'Docker', type: 'devops', x: 85, y: 50, description: 'Containers.' },
+    { id: 'k8s', label: 'K8s', type: 'devops', x: 85, y: 60, description: 'Orchestration.' },
+    { id: 'aws', label: 'AWS', type: 'devops', x: 85, y: 70, description: 'Cloud.' },
+    { id: 'gh', label: 'GitHub', type: 'devops', x: 85, y: 80, description: 'CI/CD.' },
+
+    // --- Security (Far Right / Distributed) ---
+    { id: 'edr', label: 'EDR/XDR', type: 'security', x: 70, y: 65, description: 'Endpoint Security.' },
+    { id: 'security', label: 'Security', type: 'security', x: 70, y: 75, description: 'DLP / Encryption.' },
+    { id: 'threat', label: 'Intel', type: 'security', x: 70, y: 85, description: 'Threat Intelligence.' },
 ];
 
 export const architectureConnections: ArchConnection[] = [
-    { source: 'user', target: 'nextjs', description: 'HTTP/HTTPS Request' },
-    { source: 'nextjs', target: 'tailwind', description: 'Styled By' },
-    { source: 'nextjs', target: 'framer', description: 'Animated By' },
-    { source: 'nextjs', target: 'threejs', description: 'Renders 3D' },
-    { source: 'nextjs', target: 'zustand', description: 'Manages State' },
+    // Web -> Lang
+    { source: 'nextjs', target: 'react' },
+    { source: 'nextjs', target: 'js' },
+    { source: 'threejs', target: 'react' },
 
-    { source: 'nextjs', target: 'node', description: 'API Calls' },
-    { source: 'node', target: 'postgres', description: 'Query / Write' },
-    { source: 'node', target: 'redis', description: 'Cache Hit/Miss' },
-    { source: 'node', target: 'rust', description: 'FFI / Microservices' },
+    // Lang -> System
+    { source: 'c', target: 'kernel' },
+    { source: 'cpp', target: 'win' },
+    { source: 'python', target: 'torch' },
 
-    { source: 'docker', target: 'node', description: 'Runs' },
-    { source: 'docker', target: 'rust', description: 'Runs' },
-    { source: 'docker', target: 'postgres', description: 'Hosts' },
+    // System -> Security
+    { source: 'kernel', target: 'security' },
+    { source: 'win', target: 'edr' },
+    { source: 'linux', target: 'docker' },
 
-    { source: 'github', target: 'nextjs', description: 'Deploys' },
+    // DevOps -> All
+    { source: 'docker', target: 'k8s' },
+    { source: 'gh', target: 'nextjs' },
 ];

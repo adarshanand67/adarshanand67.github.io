@@ -8,6 +8,7 @@ import { AnimeItem, AnimeType, WatchStatus } from '@/types/definitions';
 import { ShelfConfig } from "@/lib/config";
 import { ShelfStrategyFactory, ShelfItem } from "@/lib/shelfStrategies";
 import { RandomizerButton } from "@/components/randomizer-button";
+import { withXRay } from "@/lib/withXRay";
 
 interface ShelfHeaderProps {
     title: string;
@@ -65,7 +66,12 @@ interface UniversalShelfProps {
     config: ShelfConfig;
     items: unknown[];
 }
-export function UniversalShelf({ config, items }: UniversalShelfProps) {
+const UniversalShelfWrapped = withXRay(UniversalShelfBase, 'UniversalShelf');
+export function UniversalShelf(props: UniversalShelfProps) {
+    return <UniversalShelfWrapped {...props} />;
+}
+
+function UniversalShelfBase({ config, items }: UniversalShelfProps) {
     const strategy = useMemo(() => ShelfStrategyFactory.getStrategy(config.type), [config.type]);
     const { searchQuery, setSearchQuery, hobbySelectedItem, setHobbySelectedItem } = useStore();
 
@@ -189,7 +195,12 @@ const Section = ({
 interface AnimeShelfProps {
     items: AnimeItem[];
 }
-export const AnimeShelf = ({ items }: AnimeShelfProps) => {
+const AnimeShelfWrapped = withXRay(AnimeShelfBase, 'AnimeShelf');
+export function AnimeShelf(props: AnimeShelfProps) {
+    return <AnimeShelfWrapped {...props} />;
+}
+
+function AnimeShelfBase({ items }: AnimeShelfProps) {
     const {
         animeSelectedItem: selectedItem,
         setAnimeSelectedItem: setSelectedItem,

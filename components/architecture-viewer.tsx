@@ -25,10 +25,14 @@ export function ArchitectureViewer() {
 
     const getTypeColor = (type: ArchNode['type']) => {
         switch (type) {
-            case 'frontend': return '#22d3ee'; // Cyan-400
-            case 'backend': return '#a78bfa'; // Violet-400
-            case 'database': return '#fbbf24'; // Amber-400
-            case 'devops': return '#f87171'; // Red-400
+            case 'frontend': return '#22d3ee'; // Cyan
+            case 'backend': return '#a78bfa'; // Violet
+            case 'database': return '#fbbf24'; // Amber
+            case 'devops': return '#f87171'; // Red
+            case 'security': return '#ef4444'; // Red-500
+            case 'ai': return '#c084fc'; // Purple
+            case 'language': return '#4ade80'; // Green
+            case 'system': return '#60a5fa'; // Blue
             case 'core': return '#ffffff'; // White
             default: return '#9ca3af';
         }

@@ -1,37 +1,72 @@
 export const techLinks: Record<string, string> = {
+  // Languages
+  "C": "https://en.cppreference.com/w/c",
   "C++": "https://isocpp.org/",
-  Rust: "https://www.rust-lang.org/",
-  Python: "https://www.python.org/",
-  TypeScript: "https://www.typescriptlang.org/",
-  "Intel SGX":
-    "https://www.intel.com/content/www/us/en/architecture-and-technology/software-guard-extensions.html",
-  "Intel TDX":
-    "https://www.intel.com/content/www/us/en/developer/tools/trust-domain-extensions/overview.html",
-  Gramine: "https://gramineproject.io/",
-  "Intel Xeon": "https://www.intel.com/content/www/us/en/products/details/processors/xeon.html",
-  libFuzzer: "https://llvm.org/docs/LibFuzzer.html",
-  RESTler: "https://github.com/microsoft/restler-fuzzer",
-  OpenSSL: "https://www.openssl.org/",
-  PyTorch: "https://pytorch.org/",
-  OpenVINO: "https://docs.openvino.ai/",
-  vLLM: "https://vllm.ai/",
-  MySQL: "https://www.mysql.com/",
-  Redis: "https://redis.io/",
-  Docker: "https://www.docker.com/",
+  "Java": "https://www.java.com/",
+  "JavaScript": "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+  "Python": "https://www.python.org/",
+  "TypeScript": "https://www.typescriptlang.org/",
+  "Rust": "https://www.rust-lang.org/",
+
+  // System & Kernel
+  "Intel SGX/TDX": "https://www.intel.com/content/www/us/en/developer/articles/technical/intel-trust-domain-extensions.html",
+  "Intel SGX": "https://www.intel.com/content/www/us/en/architecture-and-technology/software-guard-extensions.html",
+  "Intel TDX": "https://www.intel.com/content/www/us/en/developer/tools/trust-domain-extensions/overview.html",
+  "Kernel Development": "https://www.kernel.org/",
+  "System Programming": "https://man7.org/linux/man-pages/",
+  "Windows Internals": "https://learn.microsoft.com/en-us/sysinternals/",
+  "Ubuntu": "https://ubuntu.com/",
+  "CentOS": "https://www.centos.org/",
+  "RHEL": "https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux",
+
+  // Security
+  "Data Loss Prevention": "https://www.trellix.com/products/dlp-endpoint/",
+  "Trellix ePO": "https://www.trellix.com/platform/epolicy-orchestrator/",
+  "Endpoint Security": "https://www.trellix.com/products/endpoint-security/",
+  "EDR": "https://www.crowdstrike.com/what-is-edr/",
+  "XDR": "https://www.trellix.com/platform/xdr/",
+  "PowerShell": "https://learn.microsoft.com/en-us/powershell/",
+  "Boldon James": "https://www.boldonjames.com/",
+  "Full-Disk Encryption": "https://en.wikipedia.org/wiki/Hardware-based_full_disk_encryption",
   "Hashicorp Vault": "https://www.vaultproject.io/",
-  React: "https://react.dev/",
-  Ubuntu: "https://ubuntu.com/",
-  CentOS: "https://www.centos.org/",
-  RHEL: "https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux",
-  SUSE: "https://www.suse.com/",
-  PowerShell: "https://learn.microsoft.com/en-us/powershell/",
-  Chrome: "https://www.google.com/chrome/",
-  Edge: "https://www.microsoft.com/en-us/edge",
+  "OpenSSL": "https://www.openssl.org/",
+  "Post-Quantum Cryptography": "https://csrc.nist.gov/projects/post-quantum-cryptography",
+  "libFuzzer": "https://llvm.org/docs/LibFuzzer.html",
+  "RESTler": "https://github.com/microsoft/restler-fuzzer",
+  "SIEM": "https://www.ibm.com/topics/siem",
+  "Threat Intelligence": "https://www.trellix.com/threat-intelligence/",
+
+  // AI & Machine Learning
+  "vLLM": "https://vllm.ai/",
+  "PyTorch": "https://pytorch.org/",
+  "OpenVINO": "https://docs.openvino.ai/",
+
+  // Databases & Tools
+  "Redis": "https://redis.io/",
+  "MySQL": "https://www.mysql.com/",
+  "PostgreSQL": "https://www.postgresql.org/",
+  "Docker": "https://www.docker.com/",
+  "Kubernetes": "https://kubernetes.io/",
+  "GitHub Actions": "https://github.com/features/actions",
+  "AWS": "https://aws.amazon.com/",
+
+  // Frontend & Web
+  "Next.js": "https://nextjs.org/",
+  "React": "https://react.dev/",
+  "Tailwind CSS": "https://tailwindcss.com/",
+  "Framer Motion": "https://www.framer.com/motion/",
+  "Three.js": "https://threejs.org/",
+  "Zustand": "https://zustand-demo.pmnd.rs/",
+
+  // Misc
+  "Gramine": "https://gramineproject.io/",
+  "Intel Xeon": "https://www.intel.com/content/www/us/en/products/details/processors/xeon.html",
+  "Chrome": "https://www.google.com/chrome/",
+  "Edge": "https://www.microsoft.com/en-us/edge",
   "Trellix DLP Endpoint": "https://www.trellix.com/products/dlp-endpoint/",
   "McAfee ePO": "https://www.trellix.com/platform/epolicy-orchestrator/",
-  "Google Content Analysis Connector": "https://support.google.com/chrome/a/answer/9355153",
-  "Google SDK": "https://support.google.com/chrome/a/answer/9355153",
 };
+
 export function linkifyTech(text: string): string {
   let result = text;
   const sortedTechs = Object.keys(techLinks).sort((a, b) => b.length - a.length);

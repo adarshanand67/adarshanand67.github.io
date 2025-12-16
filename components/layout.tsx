@@ -8,31 +8,16 @@ import { type ThemeProviderProps } from "next-themes";
 import { useStore } from "@/lib/store/useStore";
 import { useMounted } from "@/lib/hooks";
 import { useRef } from "react";
+import {
+    Terminal as TerminalIcon, Search as SearchIcon, Moon, Sun, X, Music, Menu, Bug,
+    ArrowUp, Laptop, FileText, Home, BookOpen, Tv, Mail, Github, Linkedin, Sparkles,
+    Gamepad2, Cloud, CloudRain, ChevronDown, Search,
+} from "lucide-react";
 import { routes, introLines, directories } from "@/lib/constants";
 import { siteConfig } from "@/lib/config";
 import { commands } from "@/lib/terminal/commands";
 import { mockFiles } from "@/lib/terminal/mockFileSystem";
 import { SystemMonitor } from "@/components/system-monitor";
-import {
-    ArrowUp,
-    Search,
-    Sun,
-    Moon,
-    Laptop,
-    FileText,
-    Home,
-    BookOpen,
-    Tv,
-    Mail,
-    Github,
-    Linkedin,
-    Sparkles,
-    Gamepad2,
-    Cloud,
-    CloudRain,
-    Music,
-    ChevronDown,
-} from "lucide-react";
 
 
 interface GlitchTextProps {
@@ -414,7 +399,7 @@ export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
 
 export function ThemeToggle() {
     const { theme, setTheme } = useTheme();
-    const { isMounted, setIsMounted } = useStore();
+    const { isMounted, setIsMounted, isXRayEnabled, toggleXRay } = useStore();
 
     useEffect(() => {
         setIsMounted(true);
@@ -431,17 +416,25 @@ export function ThemeToggle() {
         );
     }
     return (
-        <button
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="rounded-md p-2 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-            aria-label="Toggle theme"
-        >
-            <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0 text-gray-900 dark:text-gray-100" />
-            <Moon
-                className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100 text-gray-900 dark:text-gray-100"
-                style={{ marginTop: "-20px" }}
-            />
-        </button>
+        <div className="flex items-center gap-1"> {/* Added a div to wrap the buttons */}
+            <button
+                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 transition-colors"
+                aria-label="Toggle theme"
+            >
+                {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+            </button>
+
+            {/* X-Ray Toggle */}
+            <button
+                onClick={toggleXRay}
+                className={`p-2 rounded-lg transition-colors ${isXRayEnabled ? 'bg-green-500/10 text-green-500' : 'hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500'}`}
+                title="Toggle X-Ray Debug Mode"
+                aria-label="Toggle X-Ray Debug Mode"
+            >
+                <Bug size={20} />
+            </button>
+        </div>
     );
 }
 
