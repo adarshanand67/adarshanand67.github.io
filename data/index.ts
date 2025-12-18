@@ -2,25 +2,31 @@ export const booksData = [
     {
         "title": "48 Laws of Power",
         "author": "Robert Greene",
-        "recommended": true
+        "recommended": true,
+        "description": "A comprehensive guide to the laws of power, drawing on 3,000 years of history. It provides a ruthless and insightful look into how power is gained, maintained, and used in various aspects of life.",
+        "notes": "Law 1: Never Outshine the Master. Understand that power is often about perception and strategic positioning."
     },
     {
         "title": "12 Rules for Life",
         "author": "Jordan Peterson",
-        "recommended": true
+        "recommended": true,
+        "description": "An antidote to chaos, this book offers twelve profound and practical principles for how to live a meaningful life, combining ancient myth, psychology, and personal anecdotes.",
+        "notes": "Rule 1: Stand up straight with your shoulders back. Treat yourself like someone you are responsible for helping."
     },
     {
         "title": "The Way of the Superior Man",
         "author": "David Deida",
-        "recommended": true
+        "recommended": true,
+        "description": "A spiritual guide for men that explores the challenges of living a life of integrity, authenticity, and freedom while navigating the complexities of modern relationships and work.",
+        "notes": "Live as if your father were dead. It's about taking ultimate responsibility for your own life's direction."
     },
-    { "title": "Chip War", "author": "Chris Miller" },
-    { "title": "Deep Work", "author": "Cal Newport" },
+    { "title": "Chip War", "author": "Chris Miller", "description": "An epic battle for the world's most critical technology: the semiconductor. This book explains how silicon chips became the new oil and why they are at the center of global power struggles." },
+    { "title": "Deep Work", "author": "Cal Newport", "description": "Rules for focused success in a distracted world. Deep work is the ability to focus without distraction on a cognitively demanding task, a skill that is becoming increasingly rare and valuable." },
     { "title": "Don't Shut Up", "author": "Prakhar Gupta" },
     { "title": "Don't Take It Personal", "author": "Elayne Savage" },
     { "title": "Emotional Intelligence", "author": "Daniel Goleman" },
     { "title": "Games People Play", "author": "Eric Berne" },
-    { "title": "How to Win Friends and Influence People", "author": "Dale Carnegie" },
+    { "title": "How to Win Friends and Influence People", "author": "Dale Carnegie", "description": "The classic guide to improving your social skills and building meaningful relationships. It emphasizes empathy, active listening, and making others feel important." },
     { "title": "The Rudest Book Ever", "author": "Shwetabh Gangwar" },
     { "title": "Stillness is the Key", "author": "Ryan Holiday" },
     { "title": "System Design Interview", "author": "Alex Xu" },

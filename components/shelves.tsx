@@ -2,7 +2,7 @@
 
 import { useMemo, useState, useEffect } from "react";
 import Image from "next/image";
-import { Search, Check, Star, X, Tag, Layers, Cloud, CloudRain, Sun, Moon, Dumbbell, Tv, Trophy, Bike, Mountain, Dices, Plane, Coffee, Users, Mic } from "lucide-react";
+import { Search, Check, Star, X, Tag, Layers, Cloud, CloudRain, Sun, Moon, Dumbbell, Tv, Trophy, Bike, Mountain, Dices, Plane, Coffee, Users, Mic, ExternalLink } from "lucide-react";
 import { useStore } from "@/lib/store/useStore";
 import { AnimeItem, AnimeType, WatchStatus } from '@/types/definitions';
 import { ShelfConfig } from "@/lib/config";
@@ -73,7 +73,14 @@ export function UniversalShelf(props: UniversalShelfProps) {
 
 function UniversalShelfBase({ config, items }: UniversalShelfProps) {
     const strategy = useMemo(() => ShelfStrategyFactory.getStrategy(config.type), [config.type]);
-    const { searchQuery, setSearchQuery, hobbySelectedItem, setHobbySelectedItem } = useStore();
+    const {
+        searchQuery,
+        setSearchQuery,
+        hobbySelectedItem,
+        setHobbySelectedItem,
+        bookSelectedItem,
+        setBookSelectedItem
+    } = useStore();
 
     useEffect(() => {
         setSearchQuery("");
@@ -115,6 +122,8 @@ function UniversalShelfBase({ config, items }: UniversalShelfProps) {
                         setAnimeSelectedItem(item);
                     } else if (config.type === 'hobby') {
                         setHobbySelectedItem(item);
+                    } else if (config.type === 'book') {
+                        setBookSelectedItem(item);
                     } else {
                         const element = document.getElementById(`shelf-item-${(item as any).title}`);
                         if (element) {
@@ -159,6 +168,100 @@ function UniversalShelfBase({ config, items }: UniversalShelfProps) {
                         <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
                             {(hobbySelectedItem as any).description}
                         </p>
+                    </div>
+                </div>
+            )}
+
+            {/* Book Modal */}
+            {bookSelectedItem && (
+                <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
+                    <div
+                        className="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity"
+                        onClick={() => setBookSelectedItem(null)}
+                    ></div>
+                    <div className="relative w-full max-w-2xl bg-white dark:bg-gray-900 rounded-2xl shadow-2xl overflow-hidden flex flex-col md:flex-row max-h-[90vh] md:max-h-[600px] animate-fade-in border border-gray-200 dark:border-gray-800">
+                        {/* Close Button */}
+                        <button
+                            onClick={() => setBookSelectedItem(null)}
+                            className="absolute top-3 right-3 z-10 p-2 bg-black/50 hover:bg-black/70 rounded-full text-white transition-colors"
+                        >
+                            <X size={20} />
+                        </button>
+
+                        {/* Left Side - Book Representation */}
+                        <div className="w-full md:w-1/2 relative min-h-[300px] md:min-h-full bg-gradient-to-br from-green-900 to-black p-8 flex items-center justify-center">
+                            <div className="relative w-48 aspect-[2/3] shadow-2xl rotate-y-[-10deg] transform-style-3d">
+                                <div className="absolute inset-0 bg-white/10 border-r-4 border-white/20 rounded-r-lg"></div>
+                                <div className="absolute inset-4 border-2 border-white/20 flex flex-col items-center justify-center p-4 text-center">
+                                    <h3 className="font-serif font-bold text-white text-xl mb-4 leading-tight">
+                                        {bookSelectedItem.title}
+                                    </h3>
+                                    <div className="w-8 h-0.5 bg-white/40 mb-4"></div>
+                                    <p className="text-xs text-white/70 font-mono uppercase tracking-[0.2em]">
+                                        {bookSelectedItem.author}
+                                    </p>
+                                </div>
+                                {/* Spine depth effect */}
+                                <div className="absolute top-1 left-0 w-4 h-[98%] -translate-x-3 rotate-y-[-90deg] origin-right bg-green-950 brightness-75 rounded-l-sm"></div>
+                            </div>
+                        </div>
+
+                        {/* Right Side - Content */}
+                        <div className="w-full md:w-1/2 p-6 overflow-y-auto bg-white dark:bg-zinc-900 flex flex-col">
+                            <div className="mb-6">
+                                <h2 className="text-3xl font-extrabold text-gray-900 dark:text-white mb-2 leading-tight">
+                                    {bookSelectedItem.title}
+                                </h2>
+                                <p className="text-green-600 dark:text-green-400 font-bold font-mono text-sm uppercase tracking-wider">
+                                    by {bookSelectedItem.author}
+                                </p>
+                            </div>
+
+                            <div className="space-y-6 flex-grow">
+                                {/* Badges */}
+                                <div className="flex flex-wrap gap-2">
+                                    {bookSelectedItem.recommended && (
+                                        <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400 text-xs font-bold">
+                                            <Star size={12} fill="currentColor" /> Highly Recommended
+                                        </span>
+                                    )}
+                                    <span className="px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 text-xs font-mono">
+                                        Type: Book
+                                    </span>
+                                </div>
+
+                                {/* Description */}
+                                <div className="space-y-2">
+                                    <h4 className="text-xs font-bold uppercase tracking-widest text-gray-400">About this book</h4>
+                                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm">
+                                        {bookSelectedItem.description || "A insightful read from the personal collection. This book exploring themes that have significantly influenced my perspective and thinking."}
+                                    </p>
+                                </div>
+
+                                {/* Personal Thoughts / Notes if any */}
+                                {bookSelectedItem.notes && (
+                                    <div className="p-4 bg-green-50 dark:bg-green-900/10 border-l-4 border-green-500 rounded">
+                                        <h4 className="text-xs font-bold uppercase tracking-widest text-green-700 dark:text-green-400 mb-2">Key Takeaway</h4>
+                                        <p className="text-sm text-gray-700 dark:text-gray-300 italic">
+                                            &ldquo;{bookSelectedItem.notes}&rdquo;
+                                        </p>
+                                    </div>
+                                )}
+                            </div>
+
+                            {/* Purchase/Search Button */}
+                            <div className="mt-8 pt-4">
+                                <a
+                                    href={`https://www.amazon.in/s?k=${encodeURIComponent(bookSelectedItem.title + " " + bookSelectedItem.author)}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center justify-center gap-2 w-full px-6 py-3 bg-zinc-900 dark:bg-white text-white dark:text-black rounded-lg text-sm font-bold transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg"
+                                >
+                                    View on Amazon
+                                    <ExternalLink size={14} />
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             )}

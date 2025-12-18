@@ -46,6 +46,7 @@ export interface Book {
   image?: string;
   notes?: string;
   recommended?: boolean;
+  description?: string;
 }
 export interface Paper {
   title: string;

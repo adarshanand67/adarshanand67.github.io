@@ -40,13 +40,11 @@ export class BookListStrategy implements ShelfItemStrategy<Book> {
     const coverColor = getBookStyle(book.title);
 
     return (
-      <Link
+      <div
         id={`shelf-item-${book.title}`}
         key={index}
-        href={getAmazonSearchUrl(book.title, book.author)}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="group relative block w-full aspect-[2/3] perspective-1000"
+        onClick={() => useStore.getState().setBookSelectedItem(book)}
+        className="group relative block w-full aspect-[2/3] perspective-1000 cursor-pointer"
       >
         <div className={`
           relative w-full h-full transition-all duration-500 transform-style-3d 
@@ -92,10 +90,8 @@ export class BookListStrategy implements ShelfItemStrategy<Book> {
             {/* Spine Crease Effect */}
             <div className="absolute top-0 left-2 bottom-0 w-1 bg-black/20 blur-[1px]"></div>
           </div>
-
-          {/* Pages (Right/Bottom Depth effect if rotated) - simplified to shadow or just hidden for front-only mostly */}
         </div>
-      </Link>
+      </div>
     );
   }
 

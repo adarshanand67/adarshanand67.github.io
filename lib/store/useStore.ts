@@ -101,6 +101,11 @@ interface SearchState {
     setSearchQuery: (query: string) => void;
 }
 
+interface BookState {
+    bookSelectedItem: any;
+    setBookSelectedItem: (item: any) => void;
+}
+
 interface RandomizerState {
     randomItemIndex: number | null;
     isRandomizing: boolean;
@@ -119,7 +124,7 @@ interface GuestbookState {
     addGuestbookEntry: (entry: GuestbookEntry) => void;
 }
 
-export interface AppState extends TerminalState, UIState, CursorState, MusicState, WeatherState, BackToTopState, AnimeState, HobbyState, SearchState, RandomizerState, GuestbookState { }
+export interface AppState extends TerminalState, UIState, CursorState, MusicState, WeatherState, BackToTopState, AnimeState, HobbyState, BookState, SearchState, RandomizerState, GuestbookState { }
 
 export const useStore = create<AppState>()(persist((set) => ({
     lines: [],
@@ -157,6 +162,10 @@ export const useStore = create<AppState>()(persist((set) => ({
     // Search state
     searchQuery: '',
     setSearchQuery: (query) => set({ searchQuery: query }),
+
+    // Book state
+    bookSelectedItem: null,
+    setBookSelectedItem: (item) => set({ bookSelectedItem: item }),
 
     setLines: (lines) => set((state) => ({ lines: typeof lines === 'function' ? lines(state.lines) : lines })),
     addLine: (line) => set((state) => ({ lines: [...state.lines, line] })),
