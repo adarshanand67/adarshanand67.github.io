@@ -24,7 +24,7 @@ export const siteConfig = {
             "Full Stack Developer",
             "Backend Engineer",
         ],
-        ogImage: "/og-image.png",
+        ogImage: "/ogImage.png",
         twitterHandle: "@adarshanand67",
     },
     contact: {

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Assistant, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider, GlobalEffect, Navbar, Footer, CommandMenu, MatrixRain, MusicToggleButton } from "@/components/layout";
-import { MusicPlayer } from "@/components/music-player";
+import { MusicPlayer } from "@/components/musicPlayer";
 
 import { siteConfig } from "@/lib/config";
 import { StructuredData } from "@/components/seo/structuredData";
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Adarsh Anand - SDE @Trellix",
     description: "Software Development Engineer @Trellix focusing on data security and C++.",
-    images: ["/og-image.png"],
+    images: ["/ogImage.png"],
   },
   robots: {
     index: true,

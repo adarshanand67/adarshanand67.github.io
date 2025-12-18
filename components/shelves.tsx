@@ -7,7 +7,7 @@ import { useStore } from "@/lib/store/useStore";
 import { AnimeItem, AnimeType, WatchStatus } from '@/types/definitions';
 import { ShelfConfig } from "@/lib/config";
 import { ShelfStrategyFactory, ShelfItem } from "@/lib/shelfStrategies";
-import { RandomizerButton } from "@/components/randomizer-button";
+import { RandomizerButton } from "@/components/randomizerButton";
 
 interface ShelfHeaderProps {
     title: string;
@@ -89,8 +89,9 @@ function UniversalShelfBase({ config, items }: UniversalShelfProps) {
         Dumbbell, Tv, Book: Tv, Trophy, Bike, Mountain, Dices, Plane, Coffee, Users, Mic
     };
     const getIcon = (iconName: string) => {
-        const IconComponent = iconMap[iconName];
-        return IconComponent ? <IconComponent className="w-12 h-12 text-green-600 dark:text-green-400 mb-4" /> : <span className="text-4xl mb-4">🎮</span>;
+        const IconComponent = (iconMap as any)[iconName];
+        if (!IconComponent) return <span className="text-4xl mb-4">🎮</span>;
+        return <IconComponent className="w-12 h-12 text-green-600 dark:text-green-400 mb-4" />;
     };
 
     const filteredItems = useMemo(() => strategy.filter(items as ShelfItem[], searchQuery), [items, searchQuery, strategy]);

@@ -1,16 +1,16 @@
 import { siteConfig, featuresConfig as config, basePath as configBasePath } from "@/lib/config";
 export const basePath = configBasePath;
 export const playlist = [
-    `${basePath}/assets/music/the_world.mp3`,
-    `${basePath}/assets/music/cruel_angels_thesis.mp3`,
-    `${basePath}/assets/music/one_punch_man.mp3`,
-    `${basePath}/assets/music/pokemon_theme.mp3`,
+    `${basePath}/assets/music/theWorld.mp3`,
+    `${basePath}/assets/music/cruelAngelsThesis.mp3`,
+    `${basePath}/assets/music/onePunchMan.mp3`,
+    `${basePath}/assets/music/pokemonTheme.mp3`,
     `${basePath}/assets/music/tank.mp3`,
     `${basePath}/assets/music/unravel.mp3`,
 
-    `${basePath}/assets/music/blue_bird.mp3`,
+    `${basePath}/assets/music/blueBird.mp3`,
     `${basePath}/assets/music/go.mp3`,
-    `${basePath}/assets/music/guren_no_yumiya.mp3`
+    `${basePath}/assets/music/gurenNoYumiya.mp3`
 ] as const;
 export const trackNames = [
     "The World (Death Note)",
@@ -19,7 +19,6 @@ export const trackNames = [
     "Pokemon Theme (Instrumental)",
     "Tank! (Cowboy Bebop)",
     "Unravel (Tokyo Ghoul)",
-
     "Blue Bird (Naruto)",
     "GO!!! (Naruto)",
     "Guren no Yumiya (Attack on Titan)",
@@ -93,8 +92,6 @@ export const systemStats = (isMatrix: boolean) => [
     "    \x1b[35mkMMMMMMMMMMMMMMMMMMMMMMd\x1b[0m     \x1b[36mCPU:\x1b[0m Apple M4",
     "     \x1b[35m;KMMMMMMMWXXWMMMMMMMk.\x1b[0m      \x1b[36mGPU:\x1b[0m Apple M4",
     "       \x1b[35m.cooc,.\x1b[0m    \x1b[35m.,coo:.\x1b[0m        \x1b[36mMemory:\x1b[0m 3226MiB / 16384MiB",
-    "",
-    `                                 \x1b[36mMatrix:\x1b[0m ${isMatrix ? "🟢 Active" : "🔴 Disabled"}`,
 ] as const;
 export const whoamiInfo = [
     `User: ${siteConfig.whoami.user}`,

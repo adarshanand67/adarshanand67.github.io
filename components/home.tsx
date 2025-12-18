@@ -11,10 +11,10 @@ import { linkifyTech } from "@/lib/techLinks";
 import { getAssetPath } from "@/lib/utils";
 import { techLinks } from "@/lib/techLinks";
 import { shelfConfigs, siteConfig } from "@/lib/config";
-import { Hero3D } from "@/components/hero-3d";
+import { Hero3D } from "@/components/hero3D";
 import { directoryMap, skillCategories } from "@/lib/constants";
-import { SkillGraph } from "@/components/skill-graph";
-import { ArchitectureViewer } from "@/components/architecture-viewer";
+import { SkillGraph } from "@/components/skillGraph";
+import { ArchitectureViewer } from "@/components/architectureViewer";
 
 function HeroBase({ profile }: { profile: any }) {
     const [viewMode, setViewMode] = useState<'profile' | 'terminal'>('profile');

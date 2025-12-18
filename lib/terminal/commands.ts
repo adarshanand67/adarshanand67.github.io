@@ -1,7 +1,78 @@
-import { Command } from './types';
-import { createCommand, createAliasCommand, addLine, addLines } from './helpers';
+import { Dispatch, SetStateAction } from 'react';
+import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 import { contactInfo, whoamiInfo, directoryMap } from '@/lib/constants';
 import { siteConfig } from '@/lib/config';
+
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// Types
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+export type ThemeMode = 'light' | 'dark' | 'system';
+export type CommandCategory = 'navigation' | 'utility';
+export type CommandArgs = readonly string[];
+
+export interface CommandContext {
+    setLines: Dispatch<SetStateAction<string[]>>;
+    setPasswordMode: (mode: boolean) => void;
+    router: AppRouterInstance;
+    setTheme: (theme: ThemeMode) => void;
+    isMatrixEnabled: boolean;
+    toggleMatrix: () => void;
+    toggleSystemMonitor: () => void;
+    setInput: (input: string) => void;
+    commandHistory: readonly string[];
+}
+
+export type CommandFn = (args: CommandArgs, context: CommandContext, input?: string) => void | Promise<void>;
+
+export interface Command {
+    readonly name: string;
+    readonly description: string;
+    readonly category?: CommandCategory;
+    readonly usage?: string;
+    readonly execute: CommandFn;
+}
+
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// Helpers
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+export const addLine = (setLines: Dispatch<SetStateAction<string[]>>, line: string) => {
+    setLines((prev) => [...prev, line]);
+};
+
+export const addLines = (setLines: Dispatch<SetStateAction<string[]>>, lines: string[]) => {
+    setLines((prev) => [...prev, ...lines]);
+};
+
+export const createCommand = (
+    name: string,
+    description: string,
+    execute: CommandFn,
+    options?: { category?: CommandCategory; usage?: string }
+): Command => ({
+    name,
+    description,
+    execute,
+    category: options?.category,
+    usage: options?.usage || name
+});
+
+export const createAliasCommand = (
+    name: string,
+    description: string,
+    getTarget: () => Command
+): Command => ({
+    name,
+    description,
+    execute: (args, context) => getTarget().execute(args, context),
+    category: 'utility',
+    usage: name
+});
+
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// Commands
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 export const clear: Command = createCommand('clear', 'Clear terminal', (_, { setLines, setInput }) => {
     setLines([]); setInput('');
@@ -32,8 +103,6 @@ export const help: Command = createCommand('help', 'Show available commands', (_
         '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
     ]);
 }, { category: 'utility', usage: 'help' });
-
-// ... (existing commands)
 
 export const cls: Command = createAliasCommand('cls', 'Clear screen (alias)', () => clear);
 
@@ -105,10 +174,9 @@ export const cat: Command = createCommand('cat', 'Read file', (args, { setLines 
     }
 }, { category: 'utility', usage: 'cat [file]' });
 
-export const matrix: Command = createCommand('matrix', 'Toggle Matrix rain', (_, { toggleMatrix, setLines, isMatrixEnabled }) => {
+export const matrix: Command = createCommand('matrix', 'Toggle Matrix rain', (_, { toggleMatrix }) => {
     toggleMatrix();
     toggleMatrix();
-    addLine(setLines, isMatrixEnabled ? 'Matrix: Disabled.' : 'Matrix: Activated. Follow the white rabbit.');
 }, { category: 'utility', usage: 'matrix' });
 
 export const htop: Command = createCommand('htop', 'Open System Monitor', (_, { toggleSystemMonitor, setLines }) => {

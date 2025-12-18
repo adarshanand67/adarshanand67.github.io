@@ -17,7 +17,7 @@ import { routes, introLines, directories } from "@/lib/constants";
 import { siteConfig } from "@/lib/config";
 import { commands } from "@/lib/terminal/commands";
 import { mockFiles } from "@/lib/terminal/mockFileSystem";
-import { SystemMonitor } from "@/components/system-monitor";
+import { SystemMonitor } from "@/components/systemMonitor";
 
 
 
@@ -595,7 +595,7 @@ export function Navbar() {
                 role="navigation"
                 aria-label="main navigation"
             >
-                <div className="w-full max-w-7xl glass rounded-2xl shadow-sm transition-all duration-300">
+                <div className="w-full max-w-7xl glass rounded-2xl shadow-lg border border-white/20 dark:border-white/5 transition-all duration-300 hover:shadow-xl hover:scale-[1.005]">
                     <div className="px-4 md:px-6">
                         <div className="flex items-center h-14">
                             <button
@@ -628,30 +628,30 @@ export function Navbar() {
                                 <ThemeToggle />
                             </div>
                             <div className="hidden md:flex md:items-center md:ml-auto gap-1 text-sm font-medium">
-                                <GlitchLink
+                                <Link
                                     href={routes.articleShelf}
-                                    className="px-3 py-2 rounded-lg text-foreground/80 hover:bg-gray-100 dark:hover:bg-gray-800 font-mono transition-colors"
+                                    className="px-4 py-2 rounded-xl text-foreground/80 hover:bg-white/50 dark:hover:bg-gray-800/50 hover:text-green-600 dark:hover:text-green-400 transition-all font-medium"
                                 >
-                                    Articleshelf
-                                </GlitchLink>
-                                <GlitchLink
+                                    Articles
+                                </Link>
+                                <Link
                                     href={routes.animeShelf}
-                                    className="px-3 py-2 rounded-lg text-foreground/80 hover:bg-gray-100 dark:hover:bg-gray-800 font-mono transition-colors"
+                                    className="px-4 py-2 rounded-xl text-foreground/80 hover:bg-white/50 dark:hover:bg-gray-800/50 hover:text-green-600 dark:hover:text-green-400 transition-all font-medium"
                                 >
-                                    Animeshelf
-                                </GlitchLink>
-                                <GlitchLink
+                                    Anime
+                                </Link>
+                                <Link
                                     href={routes.bookShelf}
-                                    className="px-3 py-2 rounded-lg text-foreground/80 hover:bg-gray-100 dark:hover:bg-gray-800 font-mono transition-colors"
+                                    className="px-4 py-2 rounded-xl text-foreground/80 hover:bg-white/50 dark:hover:bg-gray-800/50 hover:text-green-600 dark:hover:text-green-400 transition-all font-medium"
                                 >
-                                    Bookshelf
-                                </GlitchLink>
-                                <GlitchLink
+                                    Books
+                                </Link>
+                                <Link
                                     href={routes.hobbyShelf}
-                                    className="px-3 py-2 rounded-lg text-foreground/80 hover:bg-gray-100 dark:hover:bg-gray-800 font-mono transition-colors"
+                                    className="px-4 py-2 rounded-xl text-foreground/80 hover:bg-white/50 dark:hover:bg-gray-800/50 hover:text-green-600 dark:hover:text-green-400 transition-all font-medium"
                                 >
-                                    Hobbyshelf
-                                </GlitchLink>
+                                    Hobby
+                                </Link>
                                 <div className="w-px h-5 bg-gray-200 dark:bg-gray-800 mx-2"></div>
                                 <div className="flex items-center gap-2">
                                     <button
@@ -748,39 +748,7 @@ export const ClientMail = createClientIcon(Mail);
 
 
 
-interface GlitchLinkProps {
-    href: string;
-    children: React.ReactNode;
-    className?: string;
-    onClick?: () => void;
-}
-export function GlitchLink({ href, children, className = "", onClick }: GlitchLinkProps) {
-    return (
-        <Link
-            href={href}
-            className={`relative group inline-block overflow-hidden ${className}`}
-            onClick={() => {
-                if (onClick) onClick();
-            }}
-        >
-            <span className="relative z-10 transition-transform duration-300 group-hover:-translate-y-[2px]">
-                {children}
-            </span>
-            <span
-                className="absolute top-0 left-0 -z-10 w-full h-full text-green-500 opacity-0 group-hover:opacity-50 group-hover:animate-glitch-1 group-hover:translate-x-[2px]"
-                aria-hidden="true"
-            >
-                {children}
-            </span>
-            <span
-                className="absolute top-0 left-0 -z-10 w-full h-full text-red-500 opacity-0 group-hover:opacity-50 group-hover:animate-glitch-2 group-hover:-translate-x-[2px]"
-                aria-hidden="true"
-            >
-                {children}
-            </span>
-        </Link>
-    );
-}
+
 
 
 export const MatrixRain = () => {
