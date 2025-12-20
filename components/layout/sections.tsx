@@ -157,37 +157,34 @@ export function Experience({ items }: { items: any[] }) {
                 onToggle={() => toggleSectionExpanded('experience')}
             />
             <div className={`relative transition-all duration-300 ease-in-out overflow-hidden ${isExpanded ? 'max-h-[10000px] opacity-100' : 'max-h-0 opacity-0'}`}>
-                <div className="pt-4 pl-2">
+                <div className="pt-4 space-y-4">
                     {items.map((exp, index) => (
-                        <div key={index} className="relative pl-6 pb-6 border-l-2 border-gray-300 dark:border-gray-700 last:pb-0 last:border-l-transparent hover:border-green-500 transition-colors group/item">
-                            <div className="absolute left-0 top-0 z-10 w-3 h-3 -translate-x-[7px] rounded-full bg-green-500 border-2 border-white dark:border-gray-900 group-hover/item:scale-125 transition-transform"></div>
-                            <SpotlightCard className="hover:shadow-green-500/10 transition-all duration-500">
-                                <div className="flex flex-col gap-2.5 p-4">
-                                    <div className="flex items-start gap-3">
-                                        {exp.logo && (
-                                            <div className="shrink-0 w-10 h-10 rounded-lg overflow-hidden bg-white dark:bg-gray-800 p-1.5 border border-gray-200 dark:border-gray-700 flex items-center justify-center">
-                                                <Image src={getAssetPath(exp.logo)} alt={`${exp.company} logo`} width={40} height={40} className="w-full h-full object-contain" />
-                                            </div>
-                                        )}
-                                        <div className="flex-1 min-w-0">
-                                            <h3 className="text-lg font-bold text-gray-900 dark:text-white leading-tight">{exp.company}</h3>
-                                            <p className="text-green-600 dark:text-green-400 font-semibold text-sm mt-0.5">{exp.role}</p>
-                                            <div className="flex flex-wrap items-center gap-2 mt-1 text-xs text-gray-600 dark:text-gray-400">
-                                                <span>{exp.duration}</span><span className="text-gray-400">•</span><span>{exp.location}</span>
-                                            </div>
+                        <SpotlightCard key={index} className="hover:shadow-green-500/10 transition-all duration-500 hover:border-green-500/30">
+                            <div className="p-5">
+                                <div className="flex items-start gap-4 mb-3">
+                                    {exp.logo && (
+                                        <div className="shrink-0 w-12 h-12 rounded-lg overflow-hidden bg-white dark:bg-gray-800 p-2 border border-gray-200 dark:border-gray-700 flex items-center justify-center">
+                                            <Image src={getAssetPath(exp.logo)} alt={`${exp.company} logo`} width={48} height={48} className="w-full h-full object-contain" />
+                                        </div>
+                                    )}
+                                    <div className="flex-1 min-w-0">
+                                        <h3 className="text-xl font-bold text-gray-900 dark:text-white leading-tight">{exp.company}</h3>
+                                        <p className="text-green-600 dark:text-green-400 font-semibold mt-1">{exp.role}</p>
+                                        <div className="flex flex-wrap items-center gap-2 mt-1.5 text-sm text-gray-600 dark:text-gray-400">
+                                            <span>{exp.duration}</span><span className="text-gray-400">•</span><span>{exp.location}</span>
                                         </div>
                                     </div>
-                                    {exp.description && <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">{exp.description}</p>}
-                                    {exp.highlights && (
-                                        <ul className="space-y-1.5">
-                                            {exp.highlights.map((h: string, i: number) => (
-                                                <li key={i} className="flex gap-2 text-sm text-gray-700 dark:text-gray-300 leading-relaxed" dangerouslySetInnerHTML={{ __html: `<span class="text-green-500 shrink-0">▸</span><span>${linkifyTech(h)}</span>` }} />
-                                            ))}
-                                        </ul>
-                                    )}
                                 </div>
-                            </SpotlightCard>
-                        </div>
+                                {exp.description && <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-3">{exp.description}</p>}
+                                {exp.highlights && (
+                                    <ul className="space-y-2">
+                                        {exp.highlights.map((h: string, i: number) => (
+                                            <li key={i} className="flex gap-2 text-gray-700 dark:text-gray-300 leading-relaxed" dangerouslySetInnerHTML={{ __html: `<span class="text-green-500 shrink-0">▸</span><span>${linkifyTech(h)}</span>` }} />
+                                        ))}
+                                    </ul>
+                                )}
+                            </div>
+                        </SpotlightCard>
                     ))}
                 </div>
             </div>
