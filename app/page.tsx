@@ -1,5 +1,9 @@
 import { getExperiences, getProfile } from "@/lib/api";
-import { TechStack, Experience, ContactSection, Hero, ErrorBoundary } from "@/components";
+import { TechStack } from "@/components/layout/sections/TechStack";
+import { Experience } from "@/components/layout/sections/Experience";
+import { ContactSection } from "@/components/layout/sections/Contact";
+import { Hero } from "@/components/layout/sections/Hero";
+import { ErrorBoundary } from "@/components/features/errorBoundary";
 export default async function Home() {
   const experiences = await getExperiences();
   const profile = await getProfile();

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { ChevronDown } from "lucide-react";
+import { useStore } from "@/lib/store/useStore";
 
 interface SectionHeaderProps {
     title: string;
@@ -59,7 +60,6 @@ export const SpotlightCard = ({
 };
 
 export function TerminalCursor() {
-    const { useStore } = require("@/lib/store/useStore");
     const {
         cursorPosition,
         setCursorPosition,

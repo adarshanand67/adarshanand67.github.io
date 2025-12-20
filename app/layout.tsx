@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import { Assistant, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import {
-  ThemeProvider, GlobalEffect, Navbar, Footer, CommandMenu, MatrixRain, MusicToggleButton,
-  MusicPlayer, ErrorBoundary, ServiceWorker, HobbiesModal, StructuredData
-} from "@/components";
+import { StructuredData } from "@/components/seo/structuredData";
+import { ClientLayout } from "@/components/layout/ClientLayout";
 import { siteConfig } from "@/lib/config";
 import { generatePersonSchema, generateWebSiteSchema } from "@/lib/seo/schemas";
 
@@ -86,43 +84,31 @@ export default function RootLayout({
         { }
         <StructuredData data={generatePersonSchema()} />
         <StructuredData data={generateWebSiteSchema()} />
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-          <ServiceWorker />
-          <GlobalEffect />
-          <Navbar />
-          <MatrixRain />
-          <CommandMenu />
-          <HobbiesModal />
+        <ClientLayout>
           {children}
-          <MusicPlayer />
-          <MusicToggleButton />
-
-          {/* Footer */}
-          {/* <div className="h-20" /> */}
-          <Footer />
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify({
-                "@context": "https://schema.org",
-                "@type": "Person",
-                name: "Adarsh Anand",
-                url: "https://adarshanand.dev",
-                sameAs: [
-                  "https://github.com/adarshanand67",
-                  "https://linkedin.com/in/adarshanand67",
-                ],
-                jobTitle: "Software Development Engineer",
-                worksFor: {
-                  "@type": "Organization",
-                  name: "Trellix",
-                },
-                description:
-                  "Software Development Engineer @Trellix focusing on data security, C++, and secure systems.",
-              }),
-            }}
-          />
-        </ThemeProvider>
+        </ClientLayout>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Adarsh Anand",
+              url: "https://adarshanand.dev",
+              sameAs: [
+                "https://github.com/adarshanand67",
+                "https://linkedin.com/in/adarshanand67",
+              ],
+              jobTitle: "Software Development Engineer",
+              worksFor: {
+                "@type": "Organization",
+                name: "Trellix",
+              },
+              description:
+                "Software Development Engineer @Trellix focusing on data security, C++, and secure systems.",
+            }),
+          }}
+        />
       </body>
     </html>
   );

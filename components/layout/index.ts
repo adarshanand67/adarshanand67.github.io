@@ -1,23 +1,26 @@
 // Re-export from home.tsx sections
 export { TechStack, Experience, ContactSection, Hero, RecentSection, ShelvesSection } from './home';
 
-// Re-export from main layout.tsx modules
+// Re-export from submodules
+export * from './navigation';
+export * from './effects';
+export * from './utils';
+
+// Re-export from terminal submodule
+export { Terminal } from './terminal';
+
+// Re-export from theme submodule
 export {
-    Terminal,
     ThemeProvider,
     ThemeToggle,
-    BackToTop,
-    CommandMenu,
-    Footer,
-    Navbar,
-    GlobalEffect,
     ClientLinkedin,
     ClientGithub,
-    ClientMail,
-    MatrixRain,
+    ClientMail
+} from './theme';
+
+// Re-export from ui submodule
+export {
     SectionHeader,
     SpotlightCard,
-    TerminalCursor,
-    MusicToggleButton,
-    WeatherWidget
-} from '../layout';
+    TerminalCursor
+} from './ui';
