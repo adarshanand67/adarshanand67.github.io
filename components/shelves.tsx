@@ -2,16 +2,23 @@
 
 import { useMemo, useState, useEffect } from "react";
 import Image from "next/image";
-import { Search, Check, Star, X, Tag, Layers, Dumbbell, Tv, Trophy, Bike, Mountain, Dices, Plane, Coffee, Users, Mic, ExternalLink, BookOpen } from "lucide-react";
+import Link from "next/link";
+import {
+    Search, X, ExternalLink, BookOpen,
+    Dumbbell, Tv, Trophy, Bike, Mountain, Dices, Plane, Coffee, Users, Mic
+} from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import { useStore } from "@/lib/store/useStore";
-import { AnimeItem, AnimeType, WatchStatus, Hobby, Book } from '@/types/definitions';
+import { WatchStatus, ShelfType } from '@/types/definitions';
 import { ShelfConfig } from "@/lib/config";
 import { ShelfStrategyFactory, ShelfItem } from "@/lib/shelfStrategies";
 import { RandomizerButton } from "@/components/ui";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { routes } from "@/lib/constants";
-import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 1. Shelf Header component
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 interface ShelfHeaderProps {
     title: string;
@@ -74,16 +81,16 @@ export function ShelfHeader({
     );
 }
 
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 2. Universal Shelf Component
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
 interface UniversalShelfProps {
     config: ShelfConfig;
     items: unknown[];
 }
 
-export function UniversalShelf(props: UniversalShelfProps) {
-    return <UniversalShelfBase {...props} />;
-}
-
-function UniversalShelfBase({ config, items }: UniversalShelfProps) {
+export function UniversalShelf({ config, items }: UniversalShelfProps) {
     const {
         searchQuery,
         setSearchQuery,
@@ -94,8 +101,8 @@ function UniversalShelfBase({ config, items }: UniversalShelfProps) {
     } = useStore();
 
     const strategy = useMemo(() => ShelfStrategyFactory.getStrategy(config.type), [config.type]);
-
     const [mounted, setMounted] = useState(false);
+
     useEffect(() => {
         setMounted(true);
         setSearchQuery("");
@@ -104,7 +111,7 @@ function UniversalShelfBase({ config, items }: UniversalShelfProps) {
     const filteredItems = useMemo(() => strategy.filter(items as ShelfItem[], searchQuery), [items, searchQuery, strategy]);
 
     const randomizerItems = useMemo(() => {
-        if (config.type === 'anime') {
+        if (config.type === ShelfType.Anime) {
             return filteredItems.filter((item: any) => item.status === WatchStatus.Completed);
         }
         return filteredItems;
@@ -132,7 +139,7 @@ function UniversalShelfBase({ config, items }: UniversalShelfProps) {
     };
 
     const getIcon = (iconName: string) => {
-        const IconComponent = (iconMap as any)[iconName];
+        const IconComponent = iconMap[iconName];
         if (!IconComponent) return <span className="text-4xl mb-4">🎮</span>;
         return <IconComponent className="w-12 h-12 text-green-600 dark:text-green-400 mb-4" />;
     };
@@ -150,12 +157,12 @@ function UniversalShelfBase({ config, items }: UniversalShelfProps) {
                 searchPlaceholder={config.searchPlaceholder}
                 items={randomizerItems}
                 onPickRandom={(item) => {
-                    if (config.type === 'anime') {
+                    if (config.type === ShelfType.Anime) {
                         const { setAnimeSelectedItem } = useStore.getState();
                         setAnimeSelectedItem(item as any);
-                    } else if (config.type === 'hobby') {
+                    } else if (config.type === ShelfType.Hobby) {
                         setHobbySelectedItem(item as any);
-                    } else if (config.type === 'book') {
+                    } else if (config.type === ShelfType.Book) {
                         setBookSelectedItem(item as any);
                     } else {
                         const element = document.getElementById(`shelf-item-${(item as any).title}`);

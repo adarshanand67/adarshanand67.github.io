@@ -4,7 +4,6 @@ export { TechStack, Experience, ContactSection, Hero, RecentSection, ShelvesSect
 // Re-export from submodules
 export * from './navigation';
 export * from './effects';
-export * from './utils';
 
 // Re-export from terminal submodule
 export { Terminal } from './terminal';
