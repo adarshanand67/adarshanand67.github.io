@@ -22,7 +22,7 @@ export interface CommandContext {
     toggleSystemMonitor: () => void;
     setInput: (input: string) => void;
     history: readonly string[];
-    todos: any[]; // Avoid circular dependency with store if possible, or just use any for now
+    todos: any[];
     addTodo: (text: string) => void;
     toggleTodo: (id: string) => void;
     removeTodo: (id: string) => void;

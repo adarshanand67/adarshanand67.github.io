@@ -11,7 +11,6 @@ import { linkifyTech } from "@/lib/techLinks";
 import { getAssetPath } from "@/lib/utils";
 import { techLinks } from "@/lib/techLinks";
 import { shelfConfigs, siteConfig } from "@/lib/config";
-import { Hero3D } from "@/components/hero3D";
 import { directoryMap, skillCategories } from "@/lib/constants";
 import { SkillGraph } from "@/components/skillGraph";
 import { ArchitectureViewer } from "@/components/architectureViewer";
@@ -48,7 +47,7 @@ function HeroBase({ profile }: { profile: any }) {
 
     return (
         <section className="section max-w-7xl mx-auto px-4 mt-8 mb-8 relative">
-            <Hero3D />
+
             <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
                 <div className="absolute top-0 left-1/4 w-96 h-96 bg-green-500/10 rounded-full blur-3xl animate-pulse" />
                 <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl animate-pulse delay-1000" />

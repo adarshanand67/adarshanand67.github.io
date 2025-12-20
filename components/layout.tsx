@@ -23,6 +23,7 @@ import { SystemStatus } from "@/components/systemStatus";
 
 
 
+
 export function Terminal() {
     const router = useRouter();
     const { setTheme } = useTheme();
