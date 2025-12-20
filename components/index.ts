@@ -1,13 +1,5 @@
-// Main component exports - Core functionality
-export { SkillGraph } from './skillGraph';
-export { ArchitectureViewer } from './architectureViewer';
-export { Guestbook } from './guestbook';
-export { RandomizerButton } from './randomizerButton';
-export { SystemStatus } from './systemStatus';
-export { Visualizer } from './visualizer';
-
-// Shelf components
-export { UniversalShelf, AnimeShelf } from './shelves';
+// Core components - Direct exports for backwards compatibility
+// (Components are primarily accessed through their modules)
 
 // Feature components - Interactive and advanced features
 export * from './features';
@@ -17,6 +9,9 @@ export * from './layout';
 
 // SEO components - Search engine optimization
 export { StructuredData } from './seo/structuredData';
+
+// Content components - Page content and sections
+export * from './content';
 
 // Modal components - Overlays and dialogs
 export { HobbiesModal } from './modals/hobbiesModal';

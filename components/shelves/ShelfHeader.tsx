@@ -1,4 +1,5 @@
 import { Search } from "lucide-react";
+import { RandomizerButton } from "@/components/ui";
 
 interface ShelfHeaderProps {
     title: string;
@@ -23,7 +24,6 @@ export function ShelfHeader({
     onPickRandom,
     items = []
 }: ShelfHeaderProps) {
-    const { RandomizerButton } = require("@/components/randomizerButton");
 
     return (
         <>

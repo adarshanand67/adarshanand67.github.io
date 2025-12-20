@@ -1,4 +1,4 @@
-import { Guestbook } from "@/components/guestbook";
+import { Guestbook } from "@/components/content";
 
 export const metadata = {
     title: 'Guestbook | Adarsh Anand',

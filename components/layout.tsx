@@ -16,7 +16,7 @@ import { siteConfig } from "@/lib/config";
 import { commands } from "@/lib/terminal/commands";
 import { mockFiles } from "@/lib/terminal/mockFileSystem";
 import { SystemMonitor } from "@/components/features";
-import { SystemStatus } from "@/components/systemStatus";
+import { SystemStatus } from "@/components/features";
 import { Terminal } from "@/components/layout/terminal";
 import { ThemeProvider, ThemeToggle, ClientLinkedin, ClientGithub, ClientMail } from "@/components/layout/theme";
 import { SectionHeader, SpotlightCard, TerminalCursor } from "@/components/layout/ui";

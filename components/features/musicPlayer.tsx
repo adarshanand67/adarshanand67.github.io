@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Play, Pause, Volume2, VolumeX, SkipBack, SkipForward, Repeat, Shuffle, ChevronDown } from "lucide-react";
 import { useStore } from "@/lib/store/useStore";
 import { playlist, trackNames, trackImages } from "@/lib/constants";
-import { Visualizer } from '@/components/visualizer';
+import { Visualizer } from '@/components/ui';
 
 export function MusicPlayer() {
     const {

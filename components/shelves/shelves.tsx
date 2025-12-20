@@ -7,7 +7,7 @@ import { useStore } from "@/lib/store/useStore";
 import { AnimeItem, AnimeType, WatchStatus } from '@/types/definitions';
 import { ShelfConfig } from "@/lib/config";
 import { ShelfStrategyFactory, ShelfItem } from "@/lib/shelfStrategies";
-import { RandomizerButton } from "@/components/randomizerButton";
+import { RandomizerButton } from "@/components/ui";
 
 interface ShelfHeaderProps {
     title: string;
