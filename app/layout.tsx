@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Assistant, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider, GlobalEffect, Navbar, Footer, CommandMenu, MatrixRain, MusicToggleButton } from "@/components/layout";
-import { MusicPlayer, ErrorBoundary, ServiceWorker } from "@/components/features";
-import { HobbiesModal } from "@/components/modals/hobbiesModal";
-import { StructuredData } from "@/components/seo/structuredData";
+import {
+  ThemeProvider, GlobalEffect, Navbar, Footer, CommandMenu, MatrixRain, MusicToggleButton,
+  MusicPlayer, ErrorBoundary, ServiceWorker, HobbiesModal, StructuredData
+} from "@/components";
 import { siteConfig } from "@/lib/config";
 import { generatePersonSchema, generateWebSiteSchema } from "@/lib/seo/schemas";
 
