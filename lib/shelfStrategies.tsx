@@ -170,10 +170,12 @@ export class AnimeCardStrategy implements ShelfItemStrategy<AnimeItem> {
               <Star size={12} fill="currentColor" className="text-amber-400 flex-shrink-0" />
             )}
           </h3>
+          {anime.notes && (
+            <p className="text-[11px] text-gray-600 dark:text-gray-300 mb-1.5 font-semibold">
+              {anime.notes}
+            </p>
+          )}
           <div className="flex flex-wrap gap-1.5 mt-auto">
-            <span className="text-[9px] font-bold text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-500/10 px-1.5 py-0.5 rounded">
-              {anime.type}
-            </span>
             {anime.tags?.slice(0, 3).map((tag, i) => (
               <button
                 key={i}

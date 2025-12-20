@@ -194,6 +194,22 @@ export function UniversalShelf({ config, items }: UniversalShelfProps) {
                 }}
             />
 
+            {/* Clear Filters Button */}
+            {config.type === ShelfType.Anime && (searchQuery || animeSelectedTag) && (
+                <div className="mb-4 flex justify-end">
+                    <button
+                        onClick={() => {
+                            setSearchQuery("");
+                            setAnimeSelectedTag(null);
+                        }}
+                        className="inline-flex items-center gap-2 px-4 py-2 bg-red-500/10 hover:bg-red-500/20 text-red-600 dark:text-red-400 rounded-full text-xs font-bold uppercase tracking-wider transition-all border border-red-500/20 hover:border-red-500/40"
+                    >
+                        <X size={14} />
+                        Clear Filters
+                    </button>
+                </div>
+            )}
+
             {/* Tag Filter for Anime */}
             {config.type === ShelfType.Anime && mounted && (() => {
                 const allTags = Array.from(new Set(
@@ -384,15 +400,7 @@ export function UniversalShelf({ config, items }: UniversalShelfProps) {
                             </div>
 
                             <div className="md:w-2/3 p-10">
-                                <div className="flex items-center gap-2 mb-2">
-                                    <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block">Anime Details</span>
-                                    {animeSelectedItem.status === WatchStatus.Completed && (
-                                        <div className="flex items-center gap-1 bg-green-500/10 text-green-500 px-2 py-0.5 rounded-full text-[10px] font-bold">
-                                            <Check size={10} />
-                                            WATCHED
-                                        </div>
-                                    )}
-                                </div>
+                                <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block mb-2">Anime Details</span>
                                 <h2 className="text-3xl font-bold mb-4 flex items-center gap-3">
                                     {animeSelectedItem.title}
                                     {animeSelectedItem.status === WatchStatus.Completed && (
@@ -424,7 +432,7 @@ export function UniversalShelf({ config, items }: UniversalShelfProps) {
 
                                 {animeSelectedItem.notes && (
                                     <div className="mb-8 p-4 rounded-2xl bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/10">
-                                        <h4 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Seasons Watched</h4>
+                                        <h4 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Seasons</h4>
                                         <p className="text-gray-700 dark:text-gray-300 text-sm font-medium">
                                             {animeSelectedItem.notes}
                                         </p>
