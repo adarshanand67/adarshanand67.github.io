@@ -353,7 +353,7 @@ export const animeData = [
     {
         "title": "Vinland Saga",
         "type": "Anime",
-        "status": "Planning",
+        "status": "Completed",
         "notes": "S1,2",
         "image": "https://cdn.myanimelist.net/images/anime/1500/103005l.jpg",
         "description": "A young Viking warrior seeks revenge against his father's killer while caught in a war for the English throne.",
@@ -910,7 +910,7 @@ export const animeData = [
     {
         "title": "Hajime no Ippo",
         "type": "Anime",
-        "status": "Planning",
+        "status": "Completed",
         "notes": "S1,2,3",
         "image": "https://cdn.myanimelist.net/images/anime/4/86334l.jpg",
         "description": "A bullied boy discovers a talent for boxing and aims for the championship.",
