@@ -110,7 +110,11 @@ export function UniversalShelf({ config, items }: UniversalShelfProps) {
     useEffect(() => {
         setMounted(true);
         setSearchQuery("");
-    }, [config.type, setSearchQuery]);
+        // Clear anime tag filter when navigating to anime shelf
+        if (config.type === ShelfType.Anime) {
+            setAnimeSelectedTag(null);
+        }
+    }, [config.type, setSearchQuery, setAnimeSelectedTag]);
 
     const filteredItems = useMemo(() => {
         let filtered = strategy.filter(items as ShelfItem[], searchQuery);
