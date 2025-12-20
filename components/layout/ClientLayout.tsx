@@ -14,7 +14,7 @@ import { MobileDock } from "@/components/layout/navigation/MobileDock";
 
 export function ClientLayout({ children }: { children: React.ReactNode }) {
     return (
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <PWARegistration />
             <GlobalEffect />
             <MatrixRain />
