@@ -264,7 +264,6 @@ export function UniversalShelf({ config, items }: UniversalShelfProps) {
 
 
 
-            {/* Modal Components */}
             <AnimatePresence>
                 {hobbySelectedItem && (
                     <div className="fixed inset-0 z-[1001] flex items-center justify-center p-4">
@@ -289,9 +288,20 @@ export function UniversalShelf({ config, items }: UniversalShelfProps) {
                                 <div className="flex flex-col items-center text-center">
                                     {getIcon(hobbySelectedItem.icon)}
                                     <h2 className="text-3xl font-bold mb-3">{hobbySelectedItem.name}</h2>
-                                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-lg">
+                                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-lg mb-6">
                                         {hobbySelectedItem.description}
                                     </p>
+                                    {(hobbySelectedItem as any).link && (
+                                        <a
+                                            href={(hobbySelectedItem as any).link}
+                                            target={(hobbySelectedItem as any).link?.startsWith('http') ? "_blank" : undefined}
+                                            rel={(hobbySelectedItem as any).link?.startsWith('http') ? "noopener noreferrer" : undefined}
+                                            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold text-sm rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                                        >
+                                            <ExternalLink size={16} />
+                                            Explore More
+                                        </a>
+                                    )}
                                 </div>
                             </div>
                         </motion.div>
