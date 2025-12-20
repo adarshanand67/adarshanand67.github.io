@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { X, Dumbbell, Tv, Book, Trophy, Bike, Mountain, Dices, Plane, Coffee, Users, Mic } from "lucide-react";
+import { X, Dumbbell, Tv, Book, Trophy, Bike, Mountain, Dices, Plane, Coffee, Users, Mic, ExternalLink } from "lucide-react";
 import { useStore } from "@/lib/store/useStore";
 import { hobbyData } from "@/data";
+import Link from "next/link";
 
 const iconMap: Record<string, React.ElementType> = {
     Dumbbell, Tv, Book, Trophy, Bike, Mountain, Dices, Plane, Coffee, Users, Mic
@@ -41,9 +42,9 @@ export const HobbiesModal = () => {
             <div
                 ref={modalRef}
                 onClick={(e) => e.stopPropagation()}
-                className="w-full max-w-2xl bg-white/90 dark:bg-black/90 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-200/50 dark:border-gray-800/50 p-6 max-h-[80vh] overflow-y-auto"
+                className="w-full max-w-2xl glass rounded-2xl shadow-2xl border border-white/10 p-6 max-h-[80vh] overflow-y-auto"
             >
-                <div className="flex items-center justify-between mb-6 sticky top-0 bg-white/90 dark:bg-black/90 backdrop-blur-xl py-2 z-10 border-b border-gray-100 dark:border-gray-800">
+                <div className="flex items-center justify-between mb-6 sticky top-0 glass backdrop-blur-xl py-2 z-10 border-b border-white/10">
                     <h2 className="text-2xl font-bold font-mono flex items-center gap-2">
                         <span className="text-green-600">~/</span> Hobbies
                     </h2>
@@ -51,31 +52,41 @@ export const HobbiesModal = () => {
                         onClick={() => {
                             toggleHobbiesModal();
                         }}
-                        className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                        className="p-2 rounded-full hover:bg-white/10 transition-colors"
                     >
                         <X className="w-5 h-5 text-gray-500" />
                     </button>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {hobbyData.map((hobby, index) => (
-                        <div
-                            key={index}
-                            className="flex items-start gap-4 p-4 rounded-xl bg-gray-50 dark:bg-gray-800/50 hover:bg-green-50 dark:hover:bg-gray-800 transition-colors border border-transparent hover:border-green-500/20"
-                        >
-                            <div className="shrink-0 p-2 bg-white dark:bg-gray-900 rounded-lg shadow-sm">
-                                {getIcon(hobby.icon)}
-                            </div>
-                            <div>
-                                <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-1">
-                                    {hobby.name}
-                                </h3>
-                                <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed text-balance">
-                                    {hobby.description}
-                                </p>
-                            </div>
-                        </div>
-                    ))}
+                    {hobbyData.map((hobby: any, index) => {
+                        const isExternal = hobby.link?.startsWith('http');
+                        const Component = isExternal ? 'a' : Link;
+                        const linkProps = isExternal
+                            ? { href: hobby.link, target: "_blank", rel: "noopener noreferrer" }
+                            : { href: hobby.link };
+
+                        return (
+                            <Component
+                                key={index}
+                                {...linkProps}
+                                className="group flex items-start gap-4 p-4 rounded-xl glass hover:bg-green-500/10 transition-all duration-300 border border-transparent hover:border-green-500/30 hover:shadow-lg hover:shadow-green-500/10 cursor-pointer"
+                            >
+                                <div className="shrink-0 p-2 bg-white/5 dark:bg-white/10 rounded-lg shadow-sm group-hover:scale-110 transition-transform">
+                                    {getIcon(hobby.icon)}
+                                </div>
+                                <div className="flex-1">
+                                    <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-1 flex items-center gap-2 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
+                                        {hobby.name}
+                                        {isExternal && <ExternalLink size={14} className="opacity-0 group-hover:opacity-100 transition-opacity" />}
+                                    </h3>
+                                    <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed text-balance">
+                                        {hobby.description}
+                                    </p>
+                                </div>
+                            </Component>
+                        );
+                    })}
                 </div>
             </div>
         </div>
