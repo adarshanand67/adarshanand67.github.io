@@ -4,7 +4,7 @@ import { ReactNode } from "react";
 import Link from "next/link";
 import { Star, ExternalLink, Dumbbell, Tv, Trophy, Bike, Mountain, Dices, Plane, Coffee, Users, Mic, Check } from "lucide-react";
 import { useStore } from "@/lib/store/useStore";
-import { Book, Paper, Blog, AnimeItem, Project, Hobby, ShelfType, WatchStatus } from "@/types/definitions";
+import { Book, Paper, Blog, AnimeItem, Project, Hobby, ShelfType, WatchStatus, AnimeType } from "@/types/definitions";
 import Image from "next/image";
 
 const iconMap: Record<string, React.ElementType> = {
@@ -155,16 +155,15 @@ export class AnimeCardStrategy implements ShelfItemStrategy<AnimeItem> {
 
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-          {anime.recommended && (
-            <div className="absolute top-3 left-3 bg-amber-400 text-amber-950 p-1.5 rounded-full shadow-lg group-hover:rotate-12 transition-transform">
-              <Star size={12} fill="currentColor" />
-            </div>
-          )}
+
         </div>
 
         <div className="px-1">
-          <h3 className="text-gray-900 dark:text-white font-bold text-sm leading-tight group-hover:text-green-500 transition-colors line-clamp-2 mb-1.5">
+          <h3 className="text-gray-900 dark:text-white font-bold text-sm leading-tight group-hover:text-green-500 transition-colors line-clamp-2 mb-1.5 flex items-center gap-1.5">
             {anime.title}
+            {anime.recommended && (
+              <Star size={12} fill="currentColor" className="text-amber-400 flex-shrink-0" />
+            )}
           </h3>
           <div className="flex flex-wrap gap-1.5 mt-auto">
             <span className="text-[9px] font-bold text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-500/10 px-1.5 py-0.5 rounded">
@@ -183,9 +182,38 @@ export class AnimeCardStrategy implements ShelfItemStrategy<AnimeItem> {
 
   renderList(items: AnimeItem[]): ReactNode {
     if (items.length === 0) return null;
+
+    // Separate anime series from movies
+    const series = items.filter(item => item.type === AnimeType.Anime || item.type === AnimeType.WebSeries);
+    const movies = items.filter(item => item.type === AnimeType.Movie);
+
     return (
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 px-4 py-8">
-        {items.map((anime, index) => this.renderItem(anime, index))}
+      <div className="space-y-16">
+        {series.length > 0 && (
+          <div>
+            <h2 className="text-2xl font-bold mb-6 flex items-center gap-4">
+              <span className="text-green-500/20 text-3xl font-mono">/</span>
+              Anime Series
+              <span className="text-gray-400 text-sm font-normal">({series.length})</span>
+            </h2>
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 px-4">
+              {series.map((anime, index) => this.renderItem(anime, index))}
+            </div>
+          </div>
+        )}
+
+        {movies.length > 0 && (
+          <div>
+            <h2 className="text-2xl font-bold mb-6 flex items-center gap-4">
+              <span className="text-green-500/20 text-3xl font-mono">/</span>
+              Anime Movies
+              <span className="text-gray-400 text-sm font-normal">({movies.length})</span>
+            </h2>
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 px-4">
+              {movies.map((anime, index) => this.renderItem(anime, index))}
+            </div>
+          </div>
+        )}
       </div>
     );
   }
