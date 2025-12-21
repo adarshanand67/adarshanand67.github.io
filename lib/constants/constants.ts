@@ -117,15 +117,17 @@ export const whoamiInfo = [
     `Status: ${siteConfig.whoami.status}`
 ] as const;
 
+import { SkillCategoryName } from "@/data/enums";
+
 export const skillCategories = {
-    "Languages": [
+    [SkillCategoryName.Languages]: [
         "C",
         "C++",
         "Python",
         "Java",
         "JavaScript",
     ],
-    "System & Kernel": [
+    [SkillCategoryName.SystemKernel]: [
         "Intel SGX/TDX",
         "Kernel Development",
         "System Programming",
@@ -134,7 +136,7 @@ export const skillCategories = {
         "CentOS",
         "RHEL",
     ],
-    "Security & Privacy": [
+    [SkillCategoryName.SecurityPrivacy]: [
         "Data Loss Prevention",
         "Trellix ePO",
         "Endpoint Security",
@@ -151,17 +153,17 @@ export const skillCategories = {
         "SIEM",
         "Threat Intelligence",
     ],
-    "AI & Machine Learning": [
+    [SkillCategoryName.AIML]: [
         "vLLM",
         "PyTorch",
         "OpenVINO",
     ],
-    "Databases & Tools": [
+    [SkillCategoryName.DatabasesTools]: [
         "Redis",
         "MySQL",
         "PostgreSQL",
     ],
-    "Frontend & Web": [
+    [SkillCategoryName.FrontendWeb]: [
         "Next.js",
         "React",
         "Tailwind CSS",
@@ -169,7 +171,7 @@ export const skillCategories = {
         "Three.js",
         "Zustand",
     ],
-    "DevOps & Infrastructure": [
+    [SkillCategoryName.DevOpsInfra]: [
         "Docker",
         "Kubernetes",
         "GitHub Actions",

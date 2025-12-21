@@ -1,11 +1,13 @@
 "use client";
 
+import { Company, Location, Role } from "./enums";
+
 export const experiencesData = [
     {
-        company: "Trellix",
-        role: "Software Development Engineer",
+        company: Company.Trellix,
+        role: Role.SDE,
         duration: "Jul 2025 - Present",
-        location: "Bengaluru, Karnataka, India",
+        location: Location.Bengaluru,
         logo: "/assets/logos/trellix.png",
         description: "Team - Data Loss Prevention (Windows) || Data Security",
         highlights: [
@@ -15,10 +17,10 @@ export const experiencesData = [
         ]
     },
     {
-        company: "Intel",
-        role: "Software Development Engineer",
+        company: Company.Intel,
+        role: Role.SDE,
         duration: "Jun 2024 - Jul 2025",
-        location: "Bengaluru, Karnataka, India",
+        location: Location.Bengaluru,
         logo: "/assets/logos/intel.png",
         description: "Team - Confidential Computing (Intel SGX/TDX) || Platform Engineering Group",
         highlights: [
@@ -32,10 +34,10 @@ export const experiencesData = [
         ]
     },
     {
-        company: "Intel",
-        role: "Graduate Technical Intern",
+        company: Company.Intel,
+        role: Role.Intern,
         duration: "Jun 2023 - Dec 2023",
-        location: "Bengaluru, Karnataka, India",
+        location: Location.Bengaluru,
         logo: "/assets/logos/intel.png",
         description: "Team - Device Onboarding || Product Assurance & Security",
         highlights: [

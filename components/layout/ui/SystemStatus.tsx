@@ -3,10 +3,11 @@
 import { useState, useEffect } from "react";
 import { Clock, MapPin, Activity } from "lucide-react";
 import { motion } from "framer-motion";
+import { SystemStatusLabel } from "@/data/enums";
 
 export function SystemStatus() {
     const [time, setTime] = useState("");
-    const [status, setStatus] = useState("Available");
+    const [status, setStatus] = useState<SystemStatusLabel>(SystemStatusLabel.Available);
 
     useEffect(() => {
         const updateTime = () => {
@@ -23,9 +24,9 @@ export function SystemStatus() {
             // Dynamic status based on IST time
             const hour = now.toLocaleString("en-IN", { timeZone: "Asia/Kolkata", hour: "numeric", hour12: false });
             const h = parseInt(hour);
-            if (h >= 0 && h < 7) setStatus("Sleeping 😴");
-            else if (h >= 9 && h < 18) setStatus("Coding 💻");
-            else setStatus("Available ✅");
+            if (h >= 0 && h < 7) setStatus(SystemStatusLabel.Sleeping);
+            else if (h >= 9 && h < 18) setStatus(SystemStatusLabel.Coding);
+            else setStatus(SystemStatusLabel.Available);
         };
 
         updateTime();

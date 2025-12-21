@@ -1,10 +1,12 @@
 "use client";
 
+import { Location } from "./enums";
+
 export const profileData = {
     name: "Adarsh Anand",
     title: "Adarsh Anand",
     pronouns: "He/Him",
-    location: "Bengaluru, Karnataka, India",
+    location: Location.Bengaluru,
     avatar: "/dp.jpeg",
     education: {
         university: "Indian Institute of Technology (IIT) Goa",

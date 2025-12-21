@@ -2,6 +2,8 @@ import { ShelfType } from "@/types/definitions";
 
 export const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
+import { Designation, Skill } from "@/data/enums";
+
 export const siteConfig = {
     name: "Adarsh Anand",
     title: "Adarsh Anand - Software Engineer",
@@ -10,7 +12,7 @@ export const siteConfig = {
     author: {
         name: "Adarsh Anand",
         email: "adarshan20302@gmail.com",
-        role: "SDE @ Trellix",
+        role: Designation.SDE_Trellix,
         location: "India",
         github: "adarshanand67",
         linkedin: "adarshanand67",
@@ -18,9 +20,9 @@ export const siteConfig = {
     seo: {
         keywords: [
             "Software Engineer",
-            "C++",
-            "System Design",
-            "Security",
+            Skill.Cpp,
+            Skill.SystemDesign,
+            Skill.Security,
             "Full Stack Developer",
             "Backend Engineer",
         ],
@@ -34,8 +36,8 @@ export const siteConfig = {
     },
     whoami: {
         user: "Adarsh Anand",
-        role: "SDE @ Trellix",
-        expertise: "C++, System Design, Security",
+        role: Designation.SDE_Trellix,
+        expertise: `${Skill.Cpp}, ${Skill.SystemDesign}, ${Skill.Security}`,
         status: "Online",
     },
 } as const;

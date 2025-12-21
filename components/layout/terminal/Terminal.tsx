@@ -312,7 +312,8 @@ export function Terminal() {
                             style={{
                                 transform: `translate(${position.x}px, ${position.y}px)`,
                                 transition: isDragging ? 'none' : 'transform 0.1s ease-out, opacity 0.5s ease-in-out',
-                                fontFamily: "'SF Mono', SFMono-Regular, ui-monospace, 'DejaVu Sans Mono', Menlo, Consolas, monospace"
+                                fontFamily: "'JetBrains Mono', 'SF Mono', SFMono-Regular, ui-monospace, monospace",
+                                letterSpacing: "0.02em"
                             }}
                         >
                             <div
