@@ -304,6 +304,17 @@ export const animeData = [
         "rating": "9/10"
     },
     {
+        "title": "Demon Slayer: Mugen Train",
+        "type": "Movie",
+        "status": "Completed",
+        "notes": "Movie",
+        "image": "https://cdn.myanimelist.net/images/anime/1704/106947l.jpg",
+        "description": "Tanjiro and his friends board the Mugen Train to investigate demon attacks. They team up with the Flame Hashira, Kyojuro Rengoku, to face the demon Enmu.",
+        "tags": ["Action", "Fantasy", "Supernatural", "Adventure"],
+        "year": "2020",
+        "rating": "8.8/10"
+    },
+    {
         "title": "Tokyo Ghoul",
         "type": "Anime",
         "status": "Completed",
