@@ -190,7 +190,7 @@ export const animeData = [
         "title": "One Punch Man",
         "type": "Anime",
         "status": "Completed",
-        "notes": "S1-2, [3?]",
+        "notes": "S1-3",
         "image": "https://cdn.myanimelist.net/images/anime/12/76049l.jpg",
         "description": "A hero who can defeat any opponent with a single punch seeks a worthy challenge.",
         "tags": ["Action", "Comedy"],
