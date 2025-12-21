@@ -8,7 +8,7 @@ import {
     Feather, FileText, Book, Tv, Gamepad2, ExternalLink
 } from "lucide-react";
 import { Terminal } from "@/components/layout/terminal";
-import { SectionHeader, SpotlightCard } from "@/components/layout/ui";
+import { SectionHeader, SpotlightCard, SystemStatus } from "@/components/layout/ui";
 import { TiltWrapper } from "@/components/ui/TiltWrapper";
 import { useStore } from "@/lib/store/useStore";
 import { linkifyTech } from "@/lib/techLinks";
@@ -102,16 +102,14 @@ function HeroBase({ profile }: { profile: any }) {
                                 </TiltWrapper>
                             )}
                             <div className="text-center md:text-left">
-                                <h1 className="title text-4xl md:text-6xl font-bold font-serif bg-gradient-to-r from-green-600 to-emerald-600 dark:from-green-400 dark:to-emerald-400 bg-clip-text text-transparent mb-2">
+                                <h1 className="title text-4xl md:text-6xl font-bold font-serif bg-gradient-to-r from-green-600 to-emerald-600 dark:from-green-400 dark:to-emerald-400 bg-clip-text text-transparent mb-4">
                                     {profile.name}
                                 </h1>
-                                <div className="relative inline-block">
-                                    <div className="w-full h-1 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
-                                </div>
+                                <SystemStatus />
                             </div>
                         </div>
 
-                        <div className="content text-lg leading-relaxed space-y-4 mt-4">
+                        <div className="content text-lg leading-relaxed space-y-4 mt-6">
                             {profile.bio.paragraphs.map((paragraph: string, index: number) => (
                                 <p
                                     key={index}

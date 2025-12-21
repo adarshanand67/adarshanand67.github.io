@@ -11,11 +11,14 @@ import { HobbiesModal } from "@/components/modals/hobbiesModal";
 import { ShortcutGuide } from "@/components/features/ShortcutGuide";
 import { BackToTop } from "@/components/layout/navigation/BackToTop";
 import { MobileDock } from "@/components/layout/navigation/MobileDock";
+import { ScrollProgress } from "@/components/ui/ScrollProgress";
 
 export function ClientLayout({ children }: { children: React.ReactNode }) {
     return (
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <PWARegistration />
+            <ScrollProgress />
+            <div className="page-glow" />
             <GlobalEffect />
             <MatrixRain />
             <Navbar />
