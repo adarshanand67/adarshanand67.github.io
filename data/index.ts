@@ -1252,7 +1252,7 @@ export const animeData = [
     {
         "title": "Great Teacher Onizuka",
         "type": "Anime",
-        "status": "Planning",
+        "status": "Completed",
         "notes": "S1",
         "image": "https://cdn.myanimelist.net/images/anime/13/11460.jpg",
         "description": "An ex-gangster becomes a teacher to reform a class of delinquents.",
