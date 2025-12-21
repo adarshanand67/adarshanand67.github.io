@@ -29,17 +29,16 @@ export function Footer() {
                     <div className="hidden md:block w-px h-8 bg-gray-200 dark:bg-gray-800"></div>
                     <div className="flex flex-wrap justify-center gap-2">
                         {[
-                            { href: "/articleshelf", label: "Articles", icon: "📝" },
-                            { href: "/bookshelf", label: "Books", icon: "📚" },
-                            { href: "/animeshelf", label: "Anime", icon: "📺" },
-                            { href: "/hobbyshelf", label: "Hobby", icon: "🎮" },
+                            { href: "/articleshelf", label: "Articles" },
+                            { href: "/bookshelf", label: "Books" },
+                            { href: "/animeshelf", label: "Anime" },
+                            { href: "/hobbyshelf", label: "Hobby" },
                         ].map((link) => (
                             <Link
                                 key={link.href}
                                 href={link.href}
-                                className="px-3 py-2 rounded-lg text-gray-600 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 hover:bg-white/50 dark:hover:bg-gray-800/50 transition-all duration-200 text-sm font-medium flex items-center gap-2"
+                                className="px-3 py-2 rounded-lg text-gray-600 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 hover:bg-white/50 dark:hover:bg-gray-800/50 transition-all duration-200 text-sm font-medium"
                             >
-                                <span className="text-xs opacity-70">{link.icon}</span>
                                 <span>{link.label}</span>
                             </Link>
                         ))}
@@ -48,11 +47,6 @@ export function Footer() {
                 <div className="flex flex-col items-center gap-6 mt-12 mb-8">
                     <div className="text-3xl md:text-4xl text-green-600 dark:text-green-400 opacity-80" style={{ fontFamily: "'Dancing Script', cursive" }}>
                         Adarsh Anand
-                    </div>
-                    <div className="flex items-center gap-6">
-                        <ClientGithub />
-                        <ClientLinkedin />
-                        <ClientMail />
                     </div>
                 </div>
             </div>
