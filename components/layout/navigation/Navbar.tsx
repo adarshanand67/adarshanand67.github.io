@@ -8,6 +8,11 @@ import { NavBrand } from "./NavBrand";
 import { NavLinks } from "./NavLinks";
 import { NavActions } from "./NavActions";
 
+/**
+ * Main Navigation Bar Component - fixed glassmorphic navbar with scroll progress.
+ * Features responsive design with mobile menu, theme toggle, and command menu integration.
+ * @component
+ */
 export function Navbar() {
     const { isNavbarActive, setIsNavbarActive, isMounted, setIsMounted } = useStore();
     const [scrollProgress, setScrollProgress] = useState(0);
