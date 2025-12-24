@@ -1,5 +1,14 @@
+/**
+ * @fileoverview Navigation constants - routes and directory mappings.
+ */
+
+/** Valid directory names for content shelves. */
 export const directories = ["blogs", "papers", "books", "anime", "hobby"] as const;
 
+/**
+ * Application route paths.
+ * @constant
+ */
 export const routes = {
     home: "/",
     articleShelf: "/articleshelf",
@@ -8,6 +17,11 @@ export const routes = {
     hobbyShelf: "/hobbyshelf",
 } as const;
 
+/**
+ * Directory name to route path mapping.
+ * Supports aliases and plural/singular variations.
+ * @constant
+ */
 export const directoryMap: Record<string, string> = {
     blog: routes.articleShelf,
     blogs: routes.articleShelf,
