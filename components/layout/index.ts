@@ -1,5 +1,10 @@
-// Re-export from sections.tsx
-export { TechStack, Experience, ContactSection, Hero, RecentSection, ShelvesSection } from './sections';
+// Re-export from modular layouts
+export { Hero } from './hero/Hero';
+export { Experience } from './experience/Experience';
+export { TechStack } from './techstack/TechStack';
+export { ShelvesSection } from './shelves/ShelvesSection';
+export { RecentSection } from './recent/RecentSection';
+export { ContactSection } from './contact/ContactSection';
 
 // Re-export from submodules
 export * from './navigation';
