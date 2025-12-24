@@ -9,6 +9,11 @@ import { useKeyboard } from "./hooks/useKeyboard";
 import { TerminalHeader } from "./TerminalHeader";
 import { TerminalContent } from "./TerminalContent";
 
+/**
+ * Terminal Component - interactive command-line interface.
+ * Features draggable window, command execution, and password mode.
+ * @component
+ */
 export function Terminal() {
     const {
         lines, isIntroDone, input, setInput,
