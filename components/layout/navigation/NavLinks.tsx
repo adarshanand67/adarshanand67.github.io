@@ -3,11 +3,23 @@
 import Link from "next/link";
 import { routes } from "@/lib/constants";
 
+/**
+ * Props for NavLinks component.
+ * @interface NavLinksProps
+ * @property {string} [className] - Optional CSS classes
+ * @property {Function} [onItemClick] - Optional callback when link is clicked
+ */
 interface NavLinksProps {
     className?: string;
     onItemClick?: () => void;
 }
 
+/**
+ * Navigation Links Component - renders shelf navigation links.
+ * Displays links to Articles, Books, Anime, and Hobby shelves.
+ * @component
+ * @param {NavLinksProps} props - Component props
+ */
 export function NavLinks({ className, onItemClick }: NavLinksProps) {
     const links = [
         { href: routes.articleShelf, label: "Articles" },

@@ -5,6 +5,12 @@ import { ArrowUp } from "lucide-react";
 import { useStore } from "@/lib/store/useStore";
 import { motion, AnimatePresence } from "framer-motion";
 
+/**
+ * Back to Top Button Component - floating button to scroll to page top.
+ * Appears when user scrolls down >400px, animates in/out smoothly.
+ * Fixed position in bottom-left corner with smooth scroll behavior.
+ * @component
+ */
 export function BackToTop() {
     const { isBackToTopVisible, setIsBackToTopVisible } = useStore();
 

@@ -3,6 +3,11 @@
 import Link from "next/link";
 import { routes } from "@/lib/constants";
 
+/**
+ * Navigation Brand Component - displays logo and site name in navbar.
+ * Features animated tilde icon with rotation effect on hover.
+ * @component
+ */
 export function NavBrand() {
     return (
         <Link
