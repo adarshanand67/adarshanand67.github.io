@@ -2,11 +2,23 @@ import Image from "next/image";
 import { ChevronDown } from "lucide-react";
 import { trackNames, trackImages } from "@/lib/constants";
 
+/**
+ * Props for TrackInfo component.
+ * @interface TrackInfoProps
+ * @property {number} index - Current track index in playlist
+ * @property {Function} onClose - Callback to close/minimize music player
+ */
 interface TrackInfoProps {
     index: number;
     onClose: () => void;
 }
 
+/**
+ * Track Info Component - displays current track metadata and album art.
+ * Shows track name, artist, and album artwork with close button.
+ * @component
+ * @param {TrackInfoProps} props - Component props
+ */
 export function TrackInfo({ index, onClose }: TrackInfoProps) {
     return (
         <div className="flex gap-4 items-start">

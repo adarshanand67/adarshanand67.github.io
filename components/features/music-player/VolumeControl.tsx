@@ -1,5 +1,13 @@
 import { Volume2, VolumeX } from "lucide-react";
 
+/**
+ * Props for VolumeControl component.
+ * @interface VolumeControlProps
+ * @property {number} volume - Current volume level (0-1)
+ * @property {boolean} isMuted - Whether audio is muted
+ * @property {Function} onVolumeChange - Callback when volume changes
+ * @property {Function} onToggleMute - Callback to toggle mute
+ */
 interface VolumeControlProps {
     volume: number;
     isMuted: boolean;
@@ -7,6 +15,12 @@ interface VolumeControlProps {
     onToggleMute: () => void;
 }
 
+/**
+ * Volume Control Component - adjustable volume slider with mute toggle.
+ * Features visual feedback and mute button.
+ * @component
+ * @param {VolumeControlProps} props - Component props
+ */
 export function VolumeControl({ volume, isMuted, onVolumeChange, onToggleMute }: VolumeControlProps) {
     return (
         <div className="flex items-center gap-3 px-2 group">

@@ -1,3 +1,11 @@
+/**
+ * Props for ProgressBar component.
+ * @interface ProgressBarProps
+ * @property {number} currentTime - Current playback time in seconds
+ * @property {number} duration - Total track duration in seconds
+ * @property {Function} onSeek - Callback when user seeks to a new position
+ * @property {Function} onDragStateChange - Callback when drag state changes
+ */
 interface ProgressBarProps {
     currentTime: number;
     duration: number;
@@ -5,6 +13,12 @@ interface ProgressBarProps {
     onDragStateChange: (isDragging: boolean) => void;
 }
 
+/**
+ * Progress Bar Component - seekable playback progress indicator.
+ * Displays current time, total duration, and allows seeking via slider.
+ * @component
+ * @param {ProgressBarProps} props - Component props
+ */
 export function ProgressBar({ currentTime, duration, onSeek, onDragStateChange }: ProgressBarProps) {
     const formatTime = (time: number) => {
         if (isNaN(time)) return "0:00";
