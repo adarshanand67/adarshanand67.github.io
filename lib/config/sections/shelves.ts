@@ -1,5 +1,19 @@
+/**
+ * @fileoverview Shelf configurations for content pages.
+ * Defines metadata and settings for each content shelf (books, anime, articles, etc.).
+ */
+
 import { ShelfType } from "@/types/definitions";
 
+/**
+ * Configuration interface for a content shelf.
+ * @interface ShelfConfig
+ * @property {string} title - Display title for the shelf
+ * @property {string} description - Shelf description
+ * @property {string} command - Terminal-style command representation
+ * @property {string} searchPlaceholder - Placeholder text for search input
+ * @property {ShelfType} type - Type of shelf content
+ */
 export interface ShelfConfig {
     title: string;
     description: string;
@@ -8,6 +22,11 @@ export interface ShelfConfig {
     type: ShelfType;
 }
 
+/**
+ * Shelf configurations mapped by shelf key.
+ * Contains settings for all content shelves in the application.
+ * @constant
+ */
 export const shelfConfigs: Record<string, ShelfConfig> = {
     books: {
         title: "Bookshelf",

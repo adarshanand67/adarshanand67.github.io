@@ -1,5 +1,15 @@
+/**
+ * @fileoverview Site-wide configuration.
+ * Contains metadata, SEO settings, contact info, and author details.
+ */
+
 import { Designation, Skill } from "@/data/enums";
 
+/**
+ * Site configuration object.
+ * Central configuration for site metadata, author info, SEO, and contact details.
+ * @constant
+ */
 export const siteConfig = {
     name: "Adarsh Anand",
     title: "Adarsh Anand - Software Engineer",
@@ -38,4 +48,5 @@ export const siteConfig = {
     },
 } as const;
 
+/** Type definition for site config. */
 export type SiteConfig = typeof siteConfig;

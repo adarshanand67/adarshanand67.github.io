@@ -1,3 +1,13 @@
+/**
+ * @fileoverview Theme configuration.
+ * Defines color schemes, fonts, effects, and animation settings.
+ */
+
+/**
+ * Theme configuration object.
+ * Controls visual styling including colors, fonts, effects, and animations.
+ * @constant
+ */
 export const themeConfig = {
     colors: {
         primary: "#00bf40",
@@ -30,4 +40,5 @@ export const themeConfig = {
     },
 } as const;
 
+/** Type definition for theme config. */
 export type ThemeConfig = typeof themeConfig;
