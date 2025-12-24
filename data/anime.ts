@@ -1613,8 +1613,8 @@ export const animeData = [
         year: "2008",
         rating: "8.3/10",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "Love often hides behind rivalry and the people you least expect to care.",
+            "Since ancient times, dragons have been the only ones who could stand equal to tigers."
         ]
     },
     {
@@ -1628,8 +1628,8 @@ export const animeData = [
         year: "2010",
         rating: "8.1/10",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "Even in the afterlife, the strength to move on comes from fulfilling your heart's regrets.",
+            "Thank you for giving me a life. Mapo Tofu is the taste of a soul being saved."
         ]
     },
     {
@@ -1643,8 +1643,8 @@ export const animeData = [
         year: "2011",
         rating: "8.3/10",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "True friendship can overcome the barrier between life and death to grant a final wish.",
+            "Menma, we found you! A secret base is where memories never fade."
         ]
     },
     {
@@ -1658,8 +1658,8 @@ export const animeData = [
         year: "2012",
         rating: "7.5/10",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "Ignoring the truth only makes the curse stronger; sometimes you have to face the dead.",
+            "Who is the extra one? The classroom is a stage for a deadly mystery."
         ]
     },
     {
@@ -1673,8 +1673,8 @@ export const animeData = [
         year: "2011",
         rating: "7.4/10",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "Obsession can be a terrifying power that rewrites the future in blood.",
+            "Yukkii! A survival game is won by the person who has the most to lose."
         ]
     }
 ];
