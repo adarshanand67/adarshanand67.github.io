@@ -282,7 +282,7 @@ export function DLPProtection() {
 
             if ((widthDiff || heightDiff) && !isBlur) {
                 // Can't be 100% sure, but we can warn
-                // addNotification("Debugger environment detected.", <Terminal size={16} />);
+                addNotification("Debugger environment detected. Monitoring active.", <Terminal size={16} />);
             }
         }, 2000);
 
@@ -320,7 +320,7 @@ export function DLPProtection() {
 
             {isBlur && (
                 <div
-                    className="fixed inset-0 z-[99999] flex flex-col items-center justify-center bg-black/95 backdrop-blur-2xl text-center p-8 transition-all duration-300"
+                    className="fixed inset-0 z-[99999] flex flex-col items-center justify-center bg-black/95 backdrop-blur-3xl backdrop-grayscale text-center p-8 transition-all duration-500"
                 >
                     <div className="bg-red-500/10 p-6 rounded-full border border-red-500/20 mb-6 animate-pulse">
                         <EyeOff size={64} className="text-red-500" />
