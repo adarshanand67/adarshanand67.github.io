@@ -1,143 +1,294 @@
 
+import { Book } from "@/types/definitions";
 
-export const booksData = [
+export const booksData: Book[] = [
     {
         title: "48 Laws of Power",
         author: "Robert Greene",
         recommended: true,
         description: "A comprehensive guide to the laws of power, drawing on 3,000 years of history. It provides a ruthless and insightful look into how power is gained, maintained, and used in various aspects of life.",
-        notes: "Law 1: Never Outshine the Master. Understand that power is often about perception and strategic positioning."
+        keyTakeaways: [
+            "Never Outshine the Master: Help those above you feel superior to secure your position.",
+            "Conceal Your Intentions: Keep others off-balance and in the dark to maintain control.",
+            "Say Less Than Necessary: Brevity prevents mistakes and creates an air of mystery."
+        ],
+        amazonLink: "https://www.amazon.com/48-Laws-Power-Robert-Greene/dp/0140280197"
     },
     {
         title: "12 Rules for Life",
         author: "Jordan Peterson",
         recommended: true,
         description: "An antidote to chaos, this book offers twelve profound and practical principles for how to live a meaningful life, combining ancient myth, psychology, and personal anecdotes.",
-        notes: "Rule 1: Stand up straight with your shoulders back. Treat yourself like someone you are responsible for helping."
+        keyTakeaways: [
+            "Stand up straight with your shoulders back: Physical posture affects mental state and social standing.",
+            "Treat yourself like someone you are responsible for helping: Practice self-care with the same diligence you'd give to a loved one.",
+            "Set your house in perfect order before you criticize the world: Internal change precedes external impact."
+        ],
+        amazonLink: "https://www.amazon.com/12-Rules-Life-Antidote-Chaos/dp/0345816021"
     },
     {
         title: "The Way of the Superior Man",
         author: "David Deida",
         recommended: true,
         description: "A spiritual guide for men that explores the challenges of living a life of integrity, authenticity, and freedom while navigating the complexities of modern relationships and work.",
-        notes: "Live as if your father were dead. It's about taking ultimate responsibility for your own life's direction."
+        keyTakeaways: [
+            "Live as if your father were dead: Take full responsibility for your life and path.",
+            "Always lean just beyond your edge: Growth happens in the zone of slight discomfort.",
+            "Choose a core purpose: A man's primary mission should not be his relationship, but his purpose."
+        ],
+        amazonLink: "https://www.amazon.com/Way-Superior-Man-Spiritual-Challenges/dp/1622036040"
     },
     {
         title: "Chip War",
         author: "Chris Miller",
         description: "An epic battle for the world's most critical technology: the semiconductor. This book explains how silicon chips became the new oil and why they are at the center of global power struggles.",
-        notes: "The semiconductor industry is a high-stakes geopolitical battlefield; whoever controls the chips controls the future of AI and defense."
+        keyTakeaways: [
+            "Semiconductors are the foundation of modern military and economic power.",
+            "The complexity of the supply chain makes it the ultimate geopolitical bottleneck.",
+            "TSMC is the most critical company in the world that most people don't fully understand."
+        ],
+        amazonLink: "https://www.amazon.com/Chip-War-Fight-Critical-Technology/dp/1982172002"
     },
     {
         title: "Deep Work",
         author: "Cal Newport",
         description: "Rules for focused success in a distracted world. Deep work is the ability to focus without distraction on a cognitively demanding task, a skill that is becoming increasingly rare and valuable.",
-        notes: "High-quality work is a product of (Time Spent) x (Intensity of Focus). Eliminate distractions to master complicated things quickly."
+        keyTakeaways: [
+            "Deep Work = (Time Spent) x (Intensity of Focus).",
+            "Schedule your deep work blocks to protect them from the whirlwind of shallow tasks.",
+            "Embrace boredom: The ability to focus is a muscle that must be trained."
+        ],
+        amazonLink: "https://www.amazon.com/Deep-Work-Focused-Success-Distracted/dp/1455586692"
     },
     {
         title: "Don't Shut Up",
         author: "Prakhar Gupta",
-        notes: "Articulating your thoughts clearly is a superpower. Don't hide your voice; refine it to navigate social and professional complexities."
+        description: "A guide to articulating your thoughts and navigating social complexities with confidence.",
+        keyTakeaways: [
+            "Articulation is a superpower that clarifies your own thinking.",
+            "Refining your voice allows you to navigate professional and social environments effectively.",
+            "Silence is often a missed opportunity for growth and connection."
+        ],
+        amazonLink: "https://www.amazon.com/Dont-Shut-Up-Prakhar-Gupta/dp/9390166266"
     },
     {
         title: "Don't Take It Personal",
         author: "Elayne Savage",
-        notes: "Rejection is often about the other person's history and perception, not your value. Learn to separate your self-worth from external feedback."
+        description: "Explores the psychology of rejection and how to move past the sting of external feedback.",
+        keyTakeaways: [
+            "Rejection is often a reflection of the other person's history, not your value.",
+            "Separate your core identity from temporary external feedback.",
+            "Understand your own triggers to respond rather than react."
+        ],
+        amazonLink: "https://www.amazon.com/Dont-Take-Personal-Sting-Rejection/dp/1572242485"
     },
     {
         title: "Emotional Intelligence",
         author: "Daniel Goleman",
-        notes: "EQ matters more than IQ for career success. Master self-awareness and empathy to lead effectively."
+        description: "The groundbreaking book that redefined what it means to be smart, emphasizing self-awareness, self-regulation, motivation, empathy, and social skills.",
+        keyTakeaways: [
+            "Self-awareness is the foundation of emotional intelligence.",
+            "Empathy is a critical skill for effective leadership and deep relationships.",
+            "Emotional regulation prevents 'amygdala hijacks' from ruining rational decisions."
+        ],
+        amazonLink: "https://www.amazon.com/Emotional-Intelligence-Why-Matter-Special/dp/055338371X"
     },
     {
         title: "Games People Play",
         author: "Eric Berne",
-        notes: "Most human interactions follow predictable psychological scripts. Understanding transactional analysis helps in breaking toxic communication cycles."
+        description: "The basic handbook of Transactional Analysis, explaining the psychological games we play in our everyday interactions.",
+        keyTakeaways: [
+            "We interact from three ego states: Parent, Adult, and Child.",
+            "Many social interactions are 'games' with hidden agendas and predictable payoffs.",
+            "The 'Adult' state is where rational and honest communication happens."
+        ],
+        amazonLink: "https://www.amazon.com/Games-People-Play-Psychology-Relationships/dp/0345410033"
     },
     {
         title: "How to Win Friends and Influence People",
         author: "Dale Carnegie",
         description: "The classic guide to improving your social skills and building meaningful relationships. It emphasizes empathy, active listening, and making others feel important.",
-        notes: "The sweetest sound in any language is a person's own name. Focus on making others feel important and heard."
+        keyTakeaways: [
+            "A person's name is the sweetest sound in any language.",
+            "Listen more than you talk: People love to feel heard and important.",
+            "Avoid criticism, condemning, or complaining; focus on positive reinforcement."
+        ],
+        amazonLink: "https://www.amazon.com/How-Win-Friends-Influence-People/dp/0671027034"
     },
     {
         title: "The Rudest Book Ever",
         author: "Shwetabh Gangwar",
-        notes: "Stop seeking approval. Happiness is a byproduct of solving problems, not avoiding them. Reclaim your individuality."
+        description: "A series of 'insults' and perspectives designed to free you from the need for external approval and social myths.",
+        keyTakeaways: [
+            "Happiness is the byproduct of solving problems, not a goal in itself.",
+            "Reclaim your individuality by questioning every social narrative you've been taught.",
+            "Self-respect is more important than being liked by others."
+        ],
+        amazonLink: "https://www.amazon.com/Rudest-Book-Ever-Gangwar-Shwetabh/dp/9388754432"
     },
     {
         title: "Stillness is the Key",
         author: "Ryan Holiday",
-        notes: "Stillness is not the absence of movement, but the presence of clarity. To think clearly, you must first find quiet."
+        description: "Explores the power of stillness—the ability to be steady, focused, and present in a chaotic world.",
+        keyTakeaways: [
+            "Stillness is not inactivity; it is the presence of total clarity.",
+            "To think clearly, you must first find a way to quiet the noise of the world.",
+            "Focus on what is in your control and let go of the rest."
+        ],
+        amazonLink: "https://www.amazon.com/Stillness-Key-Ryan-Holiday/dp/0525538585"
     },
     {
         title: "System Design Interview",
         author: "Alex Xu",
-        notes: "Complex systems are built from simple components. Master the trade-offs between latency, throughput, and availability."
+        description: "A practical guide to mastering system design interviews, covering key components and architectural trade-offs.",
+        keyTakeaways: [
+            "System design is all about trade-offs: Latency vs. Throughput, Consistency vs. Availability.",
+            "Start with high-level architecture before diving into specific components.",
+            "Scalability is built by identifying and removing bottlenecks."
+        ],
+        amazonLink: "https://www.amazon.com/System-Design-Interview-Insiders-Guide/dp/1736049119"
     },
     {
         title: "The 5 AM Club",
         author: "Robin Sharma",
-        notes: "Own your morning, elevate your life. The 20/20/20 formula (move, reflect, grow) builds elite performance."
+        description: "A fictional story that conveys the importance of a morning routine for elite performance and personal growth.",
+        keyTakeaways: [
+            "The 20/20/20 formula: 20 mins exercise, 20 mins reflection, 20 mins growth.",
+            "Ownership of your morning leads to mastery of your life.",
+            "Consistency is the hallmark of champions."
+        ],
+        amazonLink: "https://www.amazon.com/AM-Club-Morning-Elevate-Life/dp/1443456624"
     },
     {
         title: "The 7 Habits of Highly Effective People",
         author: "Stephen R. Covey",
-        notes: "Be proactive and begin with the end in mind. Focus on your circle of influence, not your circle of concern."
+        description: "A holistic, integrated, principle-centered approach to solving personal and professional problems.",
+        keyTakeaways: [
+            "Be Proactive: Take responsibility for your response to every situation.",
+            "Begin with the End in Mind: Define your mission and goals before acting.",
+            "Seek first to understand, then to be understood."
+        ],
+        amazonLink: "https://www.amazon.com/Habits-Highly-Effective-People-Powerful/dp/0743273562"
     },
     {
         title: "The Compound Effect",
         author: "Darren Hardy",
-        notes: "Small, smart choices + consistency + time = radical difference. The magic is in the repetition, not the individual act."
+        description: "Explains how small, consistent actions lead to massive results over time.",
+        keyTakeaways: [
+            "Small choices + consistency + time = radical difference.",
+            "Success is earned through daily discipline, not a single event.",
+            "Take 100% responsibility for your life choices."
+        ],
+        amazonLink: "https://www.amazon.com/Compound-Effect-Darren-Hardy/dp/159315724X"
     },
     {
         title: "The Definitive Book of Body Language",
         author: "Allan & Barbara Pease",
-        notes: "60-80% of communication is non-verbal. Learn to read micro-expressions and gestures to understand what people aren't saying."
+        description: "A comprehensive guide to non-verbal communication and how to read the silent signals people send.",
+        keyTakeaways: [
+            "Body language accounts for over 60% of human communication.",
+            "Clusters of signals are more reliable than individual gestures.",
+            "Mirroring builds rapport and trust in social interactions."
+        ],
+        amazonLink: "https://www.amazon.com/Definitive-Book-Body-Language-Pease/dp/0553804715"
     },
     {
         title: "The Happiness Hypothesis",
         author: "Jonathan Haidt",
-        notes: "The mind is divided, like a rider on an elephant. True happiness comes from finding a balance between ancient wisdom and modern science."
+        description: "A look at 10 Great Ideas found in ancient wisdom, analyzed through the lens of modern psychology.",
+        keyTakeaways: [
+            "The mind is like a rider (rational) on an elephant (emotional).",
+            "Happiness comes from within and from between (social connections).",
+            "Reciprocity is a fundamental human drive that builds societies."
+        ],
+        amazonLink: "https://www.amazon.com/Happiness-Hypothesis-Finding-Ancient-Science/dp/0465028020"
     },
     {
         title: "The Happiness Trap",
         author: "Russ Harris",
-        notes: "Stop trying to avoid 'bad' feelings. Use ACT (Acceptance and Commitment Therapy) to live a rich, meaningful life despite challenges."
+        description: "A guide to using ACT (Acceptance and Commitment Therapy) to overcome stress, anxiety, and depression.",
+        keyTakeaways: [
+            "Attempts to avoid 'bad' feelings often create more suffering.",
+            "Accept your thoughts and feelings rather than fighting them.",
+            "Take action aligned with your core values, regardless of how you feel."
+        ],
+        amazonLink: "https://www.amazon.com/Happiness-Trap-Struggling-Start-Living/dp/1590305841"
     },
     {
         title: "The Let Them Theory",
         author: "Mel Robbins",
-        notes: "Detach from the outcomes you can't control. Let people be who they are, and focus your energy on your own actions."
+        description: "A simple mindset shift to release the stress of trying to control other people's actions and opinions.",
+        keyTakeaways: [
+            "Release the burden of responsibility for other people's choices.",
+            "Save your emotional energy for your own reactions and growth.",
+            "Acceptance of others as they are reduces internal conflict."
+        ],
+        amazonLink: "https://www.amazon.com/theory-let-them-theory-mel-robbins/s?k=theory+let+them+theory+mel+robbins"
     },
     {
         title: "The Mountain Is You",
         author: "Brianna Wiest",
-        notes: "Self-sabotage is just a coping mechanism. To climb your mountain, you must first understand why you're keeping yourself at the base."
+        description: "A book about self-sabotage, why we do it, and how to stop it by transforming your internal landscape.",
+        keyTakeaways: [
+            "Self-sabotage is often a misguided attempt at self-protection.",
+            "The mountain is the obstacle within you, not outside of you.",
+            "Emotional resilience is built by facing the truth about yourself."
+        ],
+        amazonLink: "https://www.amazon.com/Mountain-You-Transforming-Self-Sabotage-Self-Mastery/dp/1949759229"
     },
     {
         title: "The Subtle Art of Not Giving a F*ck",
         author: "Mark Manson",
-        notes: "You only have a limited amount of 'f*cks' to give. Choose to give them to things that truly matter: your values and growth."
+        description: "A counterintuitive approach to living a good life, focusing on choosing which problems to have.",
+        keyTakeaways: [
+            "Happiness comes from solving problems, not avoiding them.",
+            "Choose your values wisely: Focus on what you can control.",
+            "Acceptance of suffering is a key part of the human experience."
+        ],
+        amazonLink: "https://www.amazon.com/Subtle-Art-Not-Giving-Fck/dp/0062457713"
     },
     {
         title: "Thinking, Fast and Slow",
         author: "Daniel Kahneman",
-        notes: "System 1 is fast and intuitive; System 2 is slow and deliberate. Awareness of your cognitive biases is the first step to better decision-making."
+        description: "Explores the two systems that drive the way we think: System 1 (fast/intuitive) and System 2 (slow/logical).",
+        keyTakeaways: [
+            "We are prone to numerous cognitive biases that cloud our judgment.",
+            "System 1 is constantly creating 'stories' to explain the world.",
+            "Decision-making can be improved by forcing System 2 to engage."
+        ],
+        amazonLink: "https://www.amazon.com/Thinking-Fast-Slow-Daniel-Kahneman/dp/0374533555"
     },
     {
         title: "Who Will Cry When You Die?",
         author: "Robin Sharma",
-        notes: "Success without significance is empty. Live your days in a way that your legacy will inspire others after you're gone."
+        description: "Offers 101 simple solutions to life's most complex problems to ensure you live a life of significance.",
+        keyTakeaways: [
+            "Success is meaningless if it doesn't leave a positive legacy.",
+            "Live every day as if it were your last; focus on what truly matters.",
+            "The quality of your life is determined by the quality of your thoughts."
+        ],
+        amazonLink: "https://www.amazon.com/Who-Will-Cry-When-Die/dp/8172247651"
     },
     {
         title: "Why We Sleep",
         author: "Matthew Walker",
-        notes: "Sleep is the greatest legal performance-enhancing drug. It's the foundation of physical health, mental clarity, and emotional stability."
+        description: "Explains the science of sleep and how it affects every aspect of our physical and mental health.",
+        keyTakeaways: [
+            "Sleep is the pillar of health alongside nutrition and exercise.",
+            "Lack of sleep impairs cognitive function more than we realize.",
+            "Quality sleep is essential for emotional stability and memory consolidation."
+        ],
+        amazonLink: "https://www.amazon.com/Why-We-Sleep-Unlocking-Dreams/dp/1501144324"
     },
     {
         title: "You Are a Badass",
         author: "Jen Sincero",
-        notes: "Identify and destroy the self-limiting beliefs that hold you back. Love yourself and start living a life that makes you excited."
+        description: "A guide to identifying and changing the self-sabotaging beliefs and behaviors that stop you from getting what you want.",
+        keyTakeaways: [
+            "Love yourself unapologetically; it's the foundation of change.",
+            "Decide you are going to live a life you love and stop making excuses.",
+            "Your external world is a reflection of your internal belief system."
+        ],
+        amazonLink: "https://www.amazon.com/You-Are-Badass-Doubting-Greatness/dp/0762447699"
     }
 ];

@@ -47,6 +47,8 @@ export interface Book {
   notes?: string;
   recommended?: boolean;
   description?: string;
+  keyTakeaways?: string[];
+  amazonLink?: string;
 }
 export interface Paper {
   title: string;
