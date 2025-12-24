@@ -18,7 +18,7 @@ export const themeConfig = {
         serif: "var(--font-mono)",
     },
     effects: {
-        matrixRain: true,
+        matrixRain: false,
         glitchText: true,
         terminalCursor: true,
         glassmorphism: true,

@@ -1,7 +1,7 @@
 "use client";
 
 import { ThemeProvider } from "@/components/layout/theme";
-import { GlobalEffect, MatrixRain } from "@/components/layout/effects";
+import { GlobalEffect } from "@/components/layout/effects";
 import { Navbar } from "@/components/layout/navigation/Navbar";
 import { Footer } from "@/components/layout/navigation/Footer";
 import { CommandMenu } from "@/components/layout/navigation/CommandMenu";
@@ -16,13 +16,12 @@ import { DLPProtection } from "@/components/features/security/DLPProtection";
 
 export function ClientLayout({ children }: { children: React.ReactNode }) {
     return (
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange={false} storageKey="theme">
             <DLPProtection />
             <PWARegistration />
             <ScrollProgress />
             <div className="page-glow" />
             <GlobalEffect />
-            <MatrixRain />
             <Navbar />
             <CommandMenu />
             <HobbiesModal />

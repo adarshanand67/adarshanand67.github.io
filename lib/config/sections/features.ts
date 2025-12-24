@@ -9,7 +9,7 @@ export const featuresConfig = {
     enableUses: true,
     enableMusicPlayer: true,
     enableTerminal: true,
-    enableMatrixRain: true,
+    enableMatrixRain: false,
     enableGitHubStats: true,
     enableWeatherWidget: false,
     enableCommandMenu: true,

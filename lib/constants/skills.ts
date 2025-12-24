@@ -2,10 +2,10 @@ import { SkillCategoryName } from "@/data/enums";
 
 export const skillCategories = {
     [SkillCategoryName.Languages]: [
-        "C", "C++", "Python", "Java", "JavaScript",
+        "C", "C++", "Python", "JavaScript", "TypeScript", "Bash",
     ],
     [SkillCategoryName.SystemKernel]: [
-        "Intel SGX/TDX", "Kernel Development", "System Programming",
+        "Intel SGX/TDX", "Gramine", "System Programming",
         "Windows Internals", "Ubuntu", "CentOS", "RHEL",
     ],
     [SkillCategoryName.SecurityPrivacy]: [
@@ -13,18 +13,20 @@ export const skillCategories = {
         "EDR", "XDR", "PowerShell", "Boldon James", "Full-Disk Encryption",
         "Hashicorp Vault", "OpenSSL", "Post-Quantum Cryptography",
         "libFuzzer", "RESTler", "SIEM", "Threat Intelligence",
+        "Address Sanitizer", "Memory Sanitizer", "FIDO Device Onboarding",
     ],
     [SkillCategoryName.AIML]: [
-        "vLLM", "PyTorch", "OpenVINO",
+        "vLLM", "PyTorch", "OpenVINO", "NumPy", "Pandas", "Jupyter",
+        "CUDA", "ONNX", "MLflow",
     ],
     [SkillCategoryName.DatabasesTools]: [
-        "Redis", "MySQL", "PostgreSQL",
+        "Redis", "MySQL",
     ],
     [SkillCategoryName.FrontendWeb]: [
         "Next.js", "React", "Tailwind CSS", "Framer Motion",
-        "Three.js", "Zustand",
+        "Three.js", "Zustand", "TypeScript",
     ],
     [SkillCategoryName.DevOpsInfra]: [
-        "Docker", "Kubernetes", "GitHub Actions", "AWS",
+        "Docker", "Kubernetes", "GitHub Actions", "AWS", "Jenkins",
     ],
 };

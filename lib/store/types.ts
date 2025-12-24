@@ -48,12 +48,10 @@ export interface BackToTopState {
 }
 
 export interface UIState {
-    isMatrixEnabled: boolean;
     isMounted: boolean;
     showHobbiesModal: boolean;
     isNavbarActive: boolean;
     expandedSections: Record<string, boolean>;
-    toggleMatrix: () => void;
     setIsMounted: (mounted: boolean) => void;
     toggleHobbiesModal: () => void;
     setIsNavbarActive: (active: boolean) => void;
