@@ -1,7 +1,23 @@
-
+/**
+ * @fileoverview Personal profile data including bio, education, and social links.
+ */
 
 import { Location } from "./enums";
 
+/**
+ * Profile data object containing personal information.
+ * 
+ * @type {{
+ *   name: string,
+ *   title: string,
+ *   pronouns: string,
+ *   location: Location,
+ *   avatar: string,
+ *   education: { university: string, degree: string, years: string, grade: string },
+ *   socials: { linkedin: string, github: string, email: string },
+ *   bio: { paragraphs: string[] }
+ * }}
+ */
 export const profileData = {
     name: "Adarsh Anand",
     title: "Adarsh Anand",
