@@ -42,32 +42,32 @@ export function Controls({
                 <Shuffle size={18} strokeWidth={2.5} />
             </button>
 
-            <div className="flex items-center gap-6">
+            <div className="flex items-center gap-5">
                 <button
                     onClick={onPrev}
-                    className="p-2 text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-all hover:scale-110 active:scale-90"
+                    className="p-1.5 text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-all hover:scale-110 active:scale-95"
                     title="Previous"
                 >
-                    <SkipBack size={24} fill="currentColor" strokeWidth={0} />
+                    <SkipBack size={20} fill="currentColor" strokeWidth={0} />
                 </button>
 
                 <button
                     onClick={onTogglePlay}
-                    className="w-14 h-14 bg-gray-900 dark:bg-white rounded-full flex items-center justify-center hover:scale-110 active:scale-95 transition-all shadow-[0_8px_20px_rgba(0,0,0,0.3)] dark:shadow-[0_8px_20px_rgba(255,255,255,0.1)] group"
+                    className="w-12 h-12 bg-gray-900 dark:bg-white rounded-full flex items-center justify-center hover:scale-110 active:scale-95 transition-all shadow-xl dark:shadow-white/5 active:shadow-inner group"
                     title={isPlaying ? "Pause" : "Play"}
                 >
                     {isPlaying ?
-                        <Pause size={28} className="text-white dark:text-black" fill="currentColor" strokeWidth={0} /> :
-                        <Play size={28} className="text-white dark:text-black ml-1" fill="currentColor" strokeWidth={0} />
+                        <Pause size={24} className="text-white dark:text-black" fill="currentColor" strokeWidth={0} /> :
+                        <Play size={24} className="text-white dark:text-black ml-1" fill="currentColor" strokeWidth={0} />
                     }
                 </button>
 
                 <button
                     onClick={onNext}
-                    className="p-2 text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-all hover:scale-110 active:scale-90"
+                    className="p-1.5 text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-all hover:scale-110 active:scale-95"
                     title="Next"
                 >
-                    <SkipForward size={24} fill="currentColor" strokeWidth={0} />
+                    <SkipForward size={20} fill="currentColor" strokeWidth={0} />
                 </button>
             </div>
 

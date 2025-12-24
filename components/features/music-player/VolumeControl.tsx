@@ -23,13 +23,17 @@ interface VolumeControlProps {
  */
 export function VolumeControl({ volume, isMuted, onVolumeChange, onToggleMute }: VolumeControlProps) {
     return (
-        <div className="flex items-center gap-3 px-2 group">
-            <button onClick={onToggleMute} className="text-gray-400 hover:text-gray-600 dark:hover:text-white">
-                {isMuted || volume === 0 ? <VolumeX size={16} /> : <Volume2 size={16} />}
+        <div className="flex items-center gap-4 px-1 group/volume">
+            <button
+                onClick={onToggleMute}
+                className="text-gray-400 hover:text-gray-600 dark:hover:text-white transition-colors shrink-0"
+                title={isMuted ? "Unmute" : "Mute"}
+            >
+                {isMuted || volume === 0 ? <VolumeX size={18} /> : <Volume2 size={18} />}
             </button>
-            <div className="flex-1 h-1 bg-gray-200 dark:bg-white/10 rounded-full relative">
+            <div className="flex-1 h-1.5 bg-black/5 dark:bg-white/10 rounded-full relative overflow-hidden border border-black/5 dark:border-white/5">
                 <div
-                    className="absolute top-0 left-0 h-full bg-gray-600 dark:bg-green-500/80 rounded-full"
+                    className="absolute top-0 left-0 h-full bg-gray-500 dark:bg-green-500/80 rounded-full transition-all"
                     style={{ width: `${volume * 100}%` }}
                 />
                 <input

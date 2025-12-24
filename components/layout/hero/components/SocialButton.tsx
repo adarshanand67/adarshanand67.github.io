@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ReactNode } from "react";
+import { ExternalLink } from "lucide-react";
 
 /**
  * Props for SocialButton component.
@@ -28,17 +29,21 @@ interface SocialButtonProps {
  * @component
  * @param {SocialButtonProps} props - Component props
  */
+
 export function SocialButton({ label, name, icon, href, onClick, index }: SocialButtonProps) {
     const content = (
-        <>
-            <div className="w-10 h-10 bg-green-500 rounded-2xl flex items-center justify-center group-hover/item:scale-110 transition-transform shadow-lg shadow-green-500/20">
-                {icon}
+        <div className="flex items-center justify-between w-full">
+            <div className="flex items-center gap-4">
+                <div className="w-10 h-10 bg-green-500 rounded-2xl flex items-center justify-center group-hover/item:scale-110 transition-transform shadow-lg shadow-green-500/20">
+                    {icon}
+                </div>
+                <div className="flex flex-col text-left">
+                    <span className="text-[9px] font-black uppercase tracking-widest text-green-600 dark:text-green-400">{label}</span>
+                    <span className="text-sm font-bold text-gray-900 dark:text-white line-clamp-1">{name}</span>
+                </div>
             </div>
-            <div className="flex flex-col text-left">
-                <span className="text-[9px] font-black uppercase tracking-widest text-green-600 dark:text-green-400">{label}</span>
-                <span className="text-sm font-bold text-gray-900 dark:text-white">{name}</span>
-            </div>
-        </>
+            {href && <ExternalLink size={14} className="text-gray-400 opacity-0 group-hover/item:opacity-100 transition-opacity" />}
+        </div>
     );
 
     return (

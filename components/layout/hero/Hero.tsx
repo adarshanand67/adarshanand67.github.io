@@ -53,7 +53,7 @@ export function Hero({ profile }: HeroProps) {
     return (
         <section
             id="hero"
-            className="section max-w-6xl mx-auto px-4 md:px-6 py-12 md:py-20 relative overflow-visible"
+            className="section max-w-6xl mx-auto px-4 md:px-6 py-6 md:py-10 relative overflow-visible"
             onMouseMove={(e) => {
                 const rect = e.currentTarget.getBoundingClientRect();
                 const x = ((e.clientX - rect.left) / rect.width) * 100;

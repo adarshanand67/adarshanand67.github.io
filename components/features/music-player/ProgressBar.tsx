@@ -28,12 +28,12 @@ export function ProgressBar({ currentTime, duration, onSeek, onDragStateChange }
     };
 
     return (
-        <div className="space-y-1 group">
-            <div className="flex justify-between text-[9px] font-mono text-gray-400">
+        <div className="space-y-2 group">
+            <div className="flex justify-between text-[10px] font-black text-gray-500 dark:text-gray-400 tabular-nums tracking-tight">
                 <span>{formatTime(currentTime)}</span>
                 <span>{formatTime(duration)}</span>
             </div>
-            <div className="relative h-1.5 bg-gray-200 dark:bg-white/10 rounded-full overflow-hidden">
+            <div className="relative h-2 bg-black/5 dark:bg-white/10 rounded-full overflow-hidden border border-black/5 dark:border-white/5">
                 <div
                     className="absolute top-0 left-0 h-full bg-green-500 rounded-full transition-all duration-300"
                     style={{ width: `${(currentTime / (duration || 1)) * 100}%` }}

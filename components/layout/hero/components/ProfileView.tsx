@@ -38,7 +38,7 @@ export function ProfileView({ profile, viewMode, setViewMode }: ProfileViewProps
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="w-full relative"
         >
-            <div className="glass rounded-[2.5rem] p-8 md:p-12 border border-white/10 dark:border-white/5 relative overflow-hidden group/container shadow-2xl">
+            <div className="glass rounded-[2rem] p-6 md:p-10 border border-white/10 dark:border-white/5 relative overflow-hidden group/container shadow-xl">
                 <div
                     className="absolute inset-0 opacity-0 group-hover/container:opacity-100 transition-opacity duration-1000 pointer-events-none"
                     style={{
@@ -67,19 +67,19 @@ export function ProfileView({ profile, viewMode, setViewMode }: ProfileViewProps
                     </TiltWrapper>
 
                     <div className="flex-1 flex flex-col justify-center pt-2">
-                        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+                        <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-4">
                             <motion.h1
                                 initial={{ opacity: 0, x: -20 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ delay: 0.3 }}
-                                className="text-5xl md:text-7xl font-black tracking-tighter title-gradient"
+                                className="text-4xl md:text-6xl font-black tracking-tighter title-gradient"
                             >
                                 {profile.name}
                             </motion.h1>
                             <ViewToggle viewMode={viewMode} setViewMode={setViewMode} />
                         </div>
 
-                        <div className="mb-8">
+                        <div className="mb-4">
                             <SystemStatus />
                         </div>
 
@@ -90,16 +90,16 @@ export function ProfileView({ profile, viewMode, setViewMode }: ProfileViewProps
                             className="relative"
                         >
                             <div className="absolute -left-4 top-0 bottom-0 w-1 bg-gradient-to-b from-green-500/50 to-transparent rounded-full hidden md:block" />
-                            <blockquote className="text-xl md:text-2xl font-medium text-gray-800 dark:text-zinc-200 leading-tight md:leading-snug italic max-w-2xl group/quote pl-0 md:pl-6">
-                                <span className="text-green-500 opacity-50 text-4xl font-serif absolute -top-4 -left-2 md:-left-4">"</span>
+                            <blockquote className="text-lg md:text-xl font-medium text-gray-800 dark:text-zinc-200 leading-tight md:leading-snug italic max-w-2xl group/quote pl-0 md:pl-6 leading-relaxed">
+                                <span className="text-green-500 opacity-50 text-3xl font-serif absolute -top-4 -left-2 md:-left-4">"</span>
                                 {profile.bio.paragraphs[0]}
-                                <span className="text-green-500 opacity-50 text-4xl font-serif">"</span>
+                                <span className="text-green-500 opacity-50 text-3xl font-serif">"</span>
                             </blockquote>
                         </motion.div>
                     </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-12">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-8">
                     <SocialButton
                         index={0}
                         label="Connect"

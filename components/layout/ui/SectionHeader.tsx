@@ -33,11 +33,11 @@ export function SectionHeader({
 }: SectionHeaderProps) {
     return (
         <div
-            className="w-full text-left group mb-4 cursor-pointer"
+            className="w-full text-left group mb-2 cursor-pointer"
             onClick={onToggle}
         >
-            <div className="flex items-center gap-3 mb-2">
-                <div className={`h-8 w-1 rounded-full bg-green-500 transition-all duration-300 ${isExpanded ? 'scale-y-100' : 'scale-y-50 opacity-50'}`} />
+            <div className="flex items-center gap-3 mb-1">
+                <div className={`h-6 w-1 rounded-full bg-green-500 transition-all duration-300 ${isExpanded ? 'scale-y-100' : 'scale-y-50 opacity-50'}`} />
                 <h2 className="text-2xl md:text-3xl font-black flex items-center gap-3 tracking-tight text-gray-900 dark:text-white group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
                     {title}
                     <ChevronDown

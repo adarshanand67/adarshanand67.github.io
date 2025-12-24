@@ -2,6 +2,7 @@
 
 import { ReactNode } from "react";
 import Link from "next/link";
+import { ExternalLink } from "lucide-react";
 import { Paper } from "@/types/definitions";
 import { ShelfItemStrategy } from "./types";
 
@@ -16,9 +17,10 @@ export class PaperListStrategy implements ShelfItemStrategy<Paper> {
                 <Link
                     href={paper.url}
                     target="_blank"
-                    className="text-green-700 dark:text-green-400 hover:underline"
+                    className="group/link inline-flex items-center gap-2 text-green-700 dark:text-green-400 hover:underline"
                 >
-                    {paper.title}
+                    <span>{paper.title}</span>
+                    <ExternalLink size={14} className="opacity-50 group-hover/link:opacity-100 transition-opacity" />
                 </Link>
             </div>
         );
