@@ -1,7 +1,40 @@
-
+/**
+ * @fileoverview Professional experience data for the portfolio.
+ * Contains detailed work history including roles, responsibilities, and achievements.
+ */
 
 import { Company, Location, Role } from "./enums";
 
+/**
+ * Professional experience entries array.
+ * 
+ * @type {Array<{
+ *   company: Company,
+ *   role: Role,
+ *   duration: string,
+ *   location: Location,
+ *   logo: string,
+ *   description: string,
+ *   highlights: string[]
+ * }>}
+ * 
+ * @description
+ * Each experience object contains:
+ * - `company`: Company name from Company enum
+ * - `role`: Job title from Role enum
+ * - `duration`: Time period in format "MMM YYYY - MMM YYYY" or "MMM YYYY - Present"
+ * - `location`: Geographic location from Location enum
+ * - `logo`: Path to company logo image in /assets/logos/
+ * - `description`: Brief role description or team/focus area
+ * - `highlights`: Array of key achievements and responsibilities
+ * 
+ * @example
+ * ```tsx
+ * import { experiencesData } from '@/data/experience';
+ * 
+ * <Experience items={experiencesData} />
+ * ```
+ */
 export const experiencesData = [
     {
         company: Company.Trellix,
