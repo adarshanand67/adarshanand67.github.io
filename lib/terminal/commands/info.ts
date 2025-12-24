@@ -13,8 +13,16 @@ export const cat: Command = createCommand('cat', 'Read file', (args, { setLines 
         addLine(setLines, 'Usage: cat [filename]');
         return;
     }
-    const content = getFileContent(filename);
+    let content = getFileContent(filename);
     if (content) {
+        // Try to decode if it looks like Base64 (starts with . and is in our secret list)
+        if (filename.startsWith('.') && !content.includes(' ')) {
+            try {
+                content = atob(content);
+            } catch (e) {
+                // Not Base64 or decoding failed, keep original
+            }
+        }
         addLines(setLines, content.split('\n'));
     } else {
         addLine(setLines, `cat: ${filename}: No such file`);

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { routes } from "@/lib/constants";
 
 /**
@@ -15,12 +16,12 @@ interface NavLinksProps {
 }
 
 /**
- * Navigation Links Component - renders shelf navigation links.
- * Displays links to Articles, Books, Anime, and Hobby shelves.
+ * Modern Navigation Links Component with active state indicators.
  * @component
- * @param {NavLinksProps} props - Component props
  */
 export function NavLinks({ className, onItemClick }: NavLinksProps) {
+    const pathname = usePathname();
+
     const links = [
         { href: routes.articleShelf, label: "Articles" },
         { href: routes.bookShelf, label: "Books" },
@@ -30,16 +31,29 @@ export function NavLinks({ className, onItemClick }: NavLinksProps) {
 
     return (
         <div className={className}>
-            {links.map((link) => (
-                <Link
-                    key={link.href}
-                    href={link.href}
-                    className="px-4 py-2 rounded-xl text-foreground/70 hover:text-green-500 hover:bg-green-500/5 transition-all"
-                    onClick={onItemClick}
-                >
-                    {link.label}
-                </Link>
-            ))}
+            {links.map((link) => {
+                const isActive = pathname === link.href;
+                return (
+                    <Link
+                        key={link.href}
+                        href={link.href}
+                        className={`
+                            relative px-4 py-2 rounded-xl font-medium text-sm
+                            transition-all duration-300 group
+                            ${isActive
+                                ? 'text-green-500 bg-green-500/10'
+                                : 'text-foreground/70 hover:text-green-500 hover:bg-green-500/5'
+                            }
+                        `}
+                        onClick={onItemClick}
+                    >
+                        {link.label}
+                        {isActive && (
+                            <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-green-500 animate-pulse" />
+                        )}
+                    </Link>
+                );
+            })}
         </div>
     );
 }
