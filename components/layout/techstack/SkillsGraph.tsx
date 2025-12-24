@@ -84,6 +84,20 @@ export function SkillsGraph() {
         return { nodes, links };
     }, [isDark]);
 
+    const handleNodeClick = (node: any) => {
+        if (node.group === 0) return; // Don't do anything for root
+
+        // For categories (group 1), maybe we expand/collapse? But simpler to just do nothing or zoom.
+        // For skills (group 2), open link.
+        const label = node.label;
+        if (node.group === 2) {
+            import("@/lib/techLinks").then(({ techLinks }) => {
+                const url = techLinks[label] || `https://www.google.com/search?q=${encodeURIComponent(label)}`;
+                window.open(url, '_blank');
+            });
+        }
+    };
+
     return (
         <div className="w-full h-[600px] border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden bg-gray-50/50 dark:bg-gray-900/50 backdrop-blur-sm relative">
             <ForceGraph2D
@@ -96,8 +110,6 @@ export function SkillsGraph() {
                     const label = node.label;
                     const fontSize = 12 / globalScale;
                     ctx.font = `${fontSize}px Sans-Serif`;
-                    const textWidth = ctx.measureText(label).width;
-                    const bckgDimensions = [textWidth, fontSize].map(n => n + fontSize * 0.2); // some padding
 
                     // Draw Node
                     ctx.beginPath();
@@ -115,14 +127,17 @@ export function SkillsGraph() {
                         ctx.fillText(label, node.x, node.y + node.val + fontSize);
                     }
                 }}
+                onNodeClick={handleNodeClick}
                 cooldownTicks={100}
                 d3VelocityDecay={0.3}
                 d3AlphaDecay={0.02}
-                enableZoomInteraction={true} // Allow zooming
-                enablePanInteraction={true} // Allow panning
+
+                onNodeHover={(node: any) => {
+                    document.body.style.cursor = node ? 'pointer' : 'default';
+                }}
             />
             <div className="absolute bottom-4 right-4 text-xs text-gray-400 pointer-events-none">
-                Scroll to zoom • Drag to pan
+                Scroll to zoom • Drag to pan • Click to visit
             </div>
         </div>
     );

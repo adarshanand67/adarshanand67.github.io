@@ -107,14 +107,31 @@ export function DLPProtection() {
             return false;
         };
 
-        // 3. Disable Dragging
+        // 3. Disable Dragging - Allow visual start, block on drop/end
         const handleDragStart = (e: DragEvent) => {
-            addNotification("Dragging content (text or images) to external sources is prohibited.", <ShieldAlert size={16} />);
-            e.preventDefault();
+            // Allow the drag to start visually, but neutralize the data
             if (e.dataTransfer) {
                 e.dataTransfer.clearData();
+                e.dataTransfer.setData("text/plain", "Protected Content: Access Denied");
+                e.dataTransfer.effectAllowed = "none";
             }
-            return false;
+            // Do NOT preventDefault here to allow the "ghost" drag image
+        };
+
+        const handleDragEnd = (e: DragEvent) => {
+            e.preventDefault();
+            addNotification("Dragging content to external sources is prohibited.", <ShieldAlert size={16} />);
+        };
+
+        // 3.5 Handle Selection on Mouse Up
+        const handleMouseUp = () => {
+            const selection = window.getSelection();
+            if (selection && selection.toString().length > 0) {
+                // selection.removeAllRanges(); // Optional: Clear it immediately?
+                // User said "show them blocked action". Clearing it reinforces "blocked".
+                selection.removeAllRanges();
+                addNotification("Text selection is restricted.", <ShieldAlert size={16} />);
+            }
         };
 
         // 4. Keydown Restrictions
@@ -219,10 +236,7 @@ export function DLPProtection() {
         style.id = "dlp-style";
         style.innerHTML = `
       body {
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
+        user-select: text; /* Allow selection initially, block on release */
         -webkit-touch-callout: none;
         -ms-overflow-style: none;  /* IE and Edge */
         scrollbar-width: none;  /* Firefox */
@@ -232,28 +246,27 @@ export function DLPProtection() {
         display: none;
       }
       input, textarea, [contenteditable] {
-        -webkit-user-select: text;
-        -moz-user-select: text;
-        -ms-user-select: text;
-        user-select: text;
+         /* Standard behavior for inputs */
       }
       /* Hide scrollbars during blur to prevent peeking */
       ${isBlur ? 'body { overflow: hidden !important; }' : ''}
 
-      /* Image/Media Protection - Disable interaction BUT allow events to bubble for JS trapping */
+      /* Image/Media Protection */
       img, video, canvas {
-        -webkit-user-drag: none !important;
-        user-drag: none !important;
+         /* Allow drag start so we can trap it in JS events */
       }
     `;
         document.head.appendChild(style);
 
+        // Listeners
         // Listeners
         document.addEventListener("contextmenu", handleContextMenu);
         document.addEventListener("copy", handleCopyCutPaste);
         document.addEventListener("cut", handleCopyCutPaste);
         document.addEventListener("paste", handleCopyCutPaste);
         document.addEventListener("dragstart", handleDragStart);
+        document.addEventListener("dragend", handleDragEnd);
+        document.addEventListener("mouseup", handleMouseUp);
         document.addEventListener("keydown", handleKeyDown);
         document.addEventListener("visibilitychange", handleVisibilityChange);
         window.addEventListener("blur", handleWindowBlur);
@@ -285,6 +298,8 @@ export function DLPProtection() {
             document.removeEventListener("cut", handleCopyCutPaste);
             document.removeEventListener("paste", handleCopyCutPaste);
             document.removeEventListener("dragstart", handleDragStart);
+            document.removeEventListener("dragend", handleDragEnd);
+            document.removeEventListener("mouseup", handleMouseUp);
             document.removeEventListener("keydown", handleKeyDown);
             document.removeEventListener("visibilitychange", handleVisibilityChange);
             window.removeEventListener("blur", handleWindowBlur);
