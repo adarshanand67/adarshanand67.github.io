@@ -1,4 +1,4 @@
-"use client";
+
 
 import { AnimeType, WatchStatus } from "@/types/definitions";
 

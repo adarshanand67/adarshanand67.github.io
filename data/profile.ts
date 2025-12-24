@@ -1,4 +1,4 @@
-"use client";
+
 
 import { Location } from "./enums";
 

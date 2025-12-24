@@ -26,7 +26,7 @@ export function Navbar() {
 
     return (
         <>
-            <div className="h-24" />
+            <div className="h-20" />
             <div className="fixed top-0 left-0 right-0 z-[60] h-1 bg-gray-200/20 pointer-events-none">
                 <div
                     className="h-full bg-gradient-to-r from-green-500 to-emerald-500 transition-all duration-150 ease-out shadow-[0_0_10px_rgba(34,197,94,0.5)]"

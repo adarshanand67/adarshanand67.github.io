@@ -1,4 +1,4 @@
-"use client";
+
 
 import { Company, Location, Role } from "./enums";
 
