@@ -4,6 +4,14 @@ import { useEffect, useRef } from "react";
 import { ChevronDown } from "lucide-react";
 import { useStore } from "@/lib/store/useStore";
 
+/**
+ * Props for SectionHeader component.
+ * @interface SectionHeaderProps
+ * @property {string} title - Section title text
+ * @property {boolean} isExpanded - Whether section is expanded
+ * @property {Function} onToggle - Callback when header is clicked
+ * @property {React.ReactNode} [rightElement] - Optional element to display on the right side
+ */
 interface SectionHeaderProps {
     title: string;
     isExpanded: boolean;
@@ -11,6 +19,12 @@ interface SectionHeaderProps {
     rightElement?: React.ReactNode;
 }
 
+/**
+ * Section Header Component - collapsible section header with animated chevron.
+ * Features green accent bar, hover effects, and optional right-side element.
+ * @component
+ * @param {SectionHeaderProps} props - Component props
+ */
 export function SectionHeader({
     title,
     isExpanded,
@@ -37,6 +51,24 @@ export function SectionHeader({
     );
 }
 
+/**
+ * Spotlight Card Component - interactive card with mouse-tracking spotlight effect.
+ * Creates a radial gradient that follows the mouse cursor for premium visual feedback.
+ * 
+ * @component
+ * @param {Object} props - Component props
+ * @param {React.ReactNode} props.children - Card content
+ * @param {string} [props.className] - Additional CSS classes
+ * @param {string} [props.spotlightColor] - Spotlight gradient color (default: green)
+ * 
+ * @example
+ * ```tsx
+ * <SpotlightCard className="p-6">
+ *   <h3>Card Title</h3>
+ *   <p>Card content</p>
+ * </SpotlightCard>
+ * ```
+ */
 export const SpotlightCard = ({
     children,
     className = "",
