@@ -2,11 +2,18 @@ import { motion } from "framer-motion";
 import { Terminal } from "@/components/layout/terminal";
 import { ViewToggle } from "../ViewToggle";
 
+/**
+ * Props for TerminalView component.
+ */
 interface TerminalViewProps {
     viewMode: 'profile' | 'terminal';
     setViewMode: (mode: 'profile' | 'terminal') => void;
 }
 
+/**
+ * Terminal View Component - displays interactive terminal interface.
+ * @component
+ */
 export function TerminalView({ viewMode, setViewMode }: TerminalViewProps) {
     return (
         <motion.div
