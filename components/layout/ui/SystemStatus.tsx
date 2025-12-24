@@ -5,6 +5,16 @@ import { Clock, MapPin, Activity } from "lucide-react";
 import { motion } from "framer-motion";
 import { SystemStatusLabel } from "@/data/enums";
 
+/**
+ * System Status Component - displays real-time IST clock, dynamic status, and location.
+ * Status automatically updates based on time of day:
+ * - 0:00-7:00: Sleeping 😴
+ * - 9:00-18:00: Coding 💻
+ * - Other times: Available ✅
+ * 
+ * @component
+ * @returns {JSX.Element} Animated status badges showing time, activity, and location
+ */
 export function SystemStatus() {
     const [time, setTime] = useState("");
     const [status, setStatus] = useState<SystemStatusLabel>(SystemStatusLabel.Available);
