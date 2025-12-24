@@ -2,6 +2,16 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { ReactNode } from "react";
 
+/**
+ * Props for SocialButton component.
+ * @interface SocialButtonProps
+ * @property {string} label - Small label text (e.g., "EMAIL", "LINKEDIN")
+ * @property {string} name - Display name/value (e.g., email address, username)
+ * @property {ReactNode} icon - Icon component to display
+ * @property {string} [href] - Optional external link URL
+ * @property {Function} [onClick] - Optional click handler for button mode
+ * @property {number} index - Animation delay index
+ */
 interface SocialButtonProps {
     label: string;
     name: string;
@@ -11,6 +21,13 @@ interface SocialButtonProps {
     index: number;
 }
 
+/**
+ * Social Button Component - animated card for social links or actions.
+ * Renders as either a link or button with icon, label, and name.
+ * Features staggered fade-in animation and hover effects.
+ * @component
+ * @param {SocialButtonProps} props - Component props
+ */
 export function SocialButton({ label, name, icon, href, onClick, index }: SocialButtonProps) {
     const content = (
         <>
