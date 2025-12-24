@@ -1,5 +1,17 @@
 import { Play, Pause, SkipBack, SkipForward, Repeat, Shuffle } from "lucide-react";
 
+/**
+ * Props for music player Controls component.
+ * @interface ControlsProps
+ * @property {boolean} isPlaying - Whether music is currently playing
+ * @property {Function} onTogglePlay - Callback to toggle play/pause
+ * @property {Function} onNext - Callback to skip to next track
+ * @property {Function} onPrev - Callback to go to previous track
+ * @property {boolean} isShuffle - Whether shuffle mode is enabled
+ * @property {Function} onToggleShuffle - Callback to toggle shuffle mode
+ * @property {boolean} isRepeat - Whether repeat mode is enabled
+ * @property {Function} onToggleRepeat - Callback to toggle repeat mode
+ */
 interface ControlsProps {
     isPlaying: boolean;
     onTogglePlay: () => void;
@@ -11,6 +23,12 @@ interface ControlsProps {
     onToggleRepeat: () => void;
 }
 
+/**
+ * Music Player Controls Component - playback control buttons.
+ * Features play/pause, skip, shuffle, and repeat controls with visual feedback.
+ * @component
+ * @param {ControlsProps} props - Component props
+ */
 export function Controls({
     isPlaying, onTogglePlay, onNext, onPrev, isShuffle, onToggleShuffle, isRepeat, onToggleRepeat
 }: ControlsProps) {
