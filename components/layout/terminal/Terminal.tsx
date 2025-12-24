@@ -40,7 +40,7 @@ export function Terminal() {
 
     return (
         <div className="w-full max-w-7xl relative" onClick={handleWrapperClick}>
-            <div className="relative glass rounded-xl p-4 hover:border-green-500/50 transition-colors duration-300">
+            <div className="relative glass rounded-xl p-4 transition-all duration-300">
                 <section className="font-mono">
                     <SectionHeader title="Terminal" isExpanded={isExpanded} onToggle={() => setIsExpanded(!isExpanded)} />
                     <div className={`transition-all duration-500 ease-in-out ${isExpanded ? 'opacity-100 max-h-[1000px]' : 'opacity-0 max-h-0 overflow-hidden'}`}>

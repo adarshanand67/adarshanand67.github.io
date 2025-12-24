@@ -79,21 +79,27 @@ export function MusicPlayer() {
                 crossOrigin="anonymous"
             />
 
-            <div className={`fixed bottom-24 right-8 z-[100] transition-all duration-500 transform ${showMusicPlayer ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}`}>
-                <div className="w-72 glass-apple border border-white/20 dark:border-white/10 shadow-2xl rounded-3xl p-5 flex flex-col gap-4">
+            <div className={`fixed bottom-28 right-8 z-[100] transition-all duration-700 transform ${showMusicPlayer ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95 pointer-events-none'}`}>
+                <div className="w-80 glass border border-white/20 dark:border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.3)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.6)] rounded-[32px] p-6 flex flex-col gap-6 overflow-hidden">
                     <TrackInfo index={currentTrackIndex} onClose={toggleMusicPlayer} />
-                    <ProgressBar currentTime={currentTime} duration={duration} onSeek={seek} onDragStateChange={setIsDraggingTime} />
-                    <Controls
-                        isPlaying={isPlaying}
-                        onTogglePlay={() => setIsPlaying(!isPlaying)}
-                        onNext={nextTrack}
-                        onPrev={prevTrack}
-                        isShuffle={isShuffle}
-                        onToggleShuffle={toggleShuffle}
-                        isRepeat={isRepeat}
-                        onToggleRepeat={toggleRepeat}
-                    />
-                    <VolumeControl volume={volume} isMuted={isMuted} onVolumeChange={setVolume} onToggleMute={toggleMute} />
+
+                    <div className="flex flex-col gap-5">
+                        <Controls
+                            isPlaying={isPlaying}
+                            onTogglePlay={() => setIsPlaying(!isPlaying)}
+                            onNext={nextTrack}
+                            onPrev={prevTrack}
+                            isShuffle={isShuffle}
+                            onToggleShuffle={toggleShuffle}
+                            isRepeat={isRepeat}
+                            onToggleRepeat={toggleRepeat}
+                        />
+
+                        <div className="space-y-4">
+                            <ProgressBar currentTime={currentTime} duration={duration} onSeek={seek} onDragStateChange={setIsDraggingTime} />
+                            <VolumeControl volume={volume} isMuted={isMuted} onVolumeChange={setVolume} onToggleMute={toggleMute} />
+                        </div>
+                    </div>
                 </div>
             </div>
         </>

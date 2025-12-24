@@ -29,13 +29,13 @@
 }
 
 .section-padding {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
+    padding-top: 0.75rem;
+    padding-bottom: 1rem;
 }
 
 @media (max-width: 768px) {
     .section-padding {
-        padding-top: 2rem;
-        padding-bottom: 2rem;
+        padding-top: 0.5rem;
+        padding-bottom: 1rem;
     }
 }

@@ -1,3 +1,13 @@
+/**
+ * @fileoverview Technology links mapping and linkification utility.
+ * Maps technology names to their official documentation and provides
+ * a function to replace plain-text mentions with HTML anchor tags.
+ */
+
+/**
+ * Mapping of technology names to their official documentation URLs.
+ * @constant
+ */
 export const techLinks: Record<string, string> = {
   // Languages
   "C": "https://en.cppreference.com/w/c",
@@ -121,6 +131,13 @@ export const techLinks: Record<string, string> = {
   "McAfee ePO": "https://www.trellix.com/platform/epolicy-orchestrator/",
 };
 
+/**
+ * Replaces technology mentions in a string with HTML anchor tags.
+ * Uses the techLinks mapping and sorts keys by length to avoid partial matches.
+ * 
+ * @param {string} text - The input text to linkify
+ * @returns {string} The linkified HTML string
+ */
 export function linkifyTech(text: string): string {
   let result = text;
   const sortedTechs = Object.keys(techLinks).sort((a, b) => b.length - a.length);

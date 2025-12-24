@@ -1,3 +1,8 @@
+/**
+ * @fileoverview Domain entity type definitions for the application.
+ * Contains interfaces for Profile, Experience, Book, Anime, and other core data structures.
+ */
+
 export interface Profile {
   name: string;
   title: string;

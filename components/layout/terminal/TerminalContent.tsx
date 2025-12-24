@@ -63,7 +63,7 @@ export function TerminalContent({
                         onBlur={onBlur}
                         onChange={onChange}
                         onKeyDown={handleKeyDown}
-                        className="bg-transparent border-none outline-none text-green-600 dark:text-green-400 flex-grow font-medium focus:ring-0 focus:outline-none"
+                        className="bg-transparent border-none outline-none text-green-600 dark:text-green-400 flex-grow font-medium focus:ring-0 focus:outline-none focus-visible:ring-0 focus-visible:outline-none"
                         autoFocus
                         spellCheck={false}
                         autoComplete="off"

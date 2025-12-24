@@ -20,16 +20,16 @@ export function TechStack() {
     const [viewMode, setViewMode] = useState<'list' | 'graph'>('list');
 
     return (
-        <div className="font-mono max-w-6xl mx-auto px-4 md:px-6 mb-8">
+        <div className="font-mono max-w-6xl mx-auto px-4 md:px-6 mb-4">
             <SectionHeader
                 title="Tech Stack"
                 isExpanded={isExpanded}
                 onToggle={() => toggleSectionExpanded('techstack')}
                 rightElement={
-                    <div className="flex bg-gray-100 dark:bg-gray-800 p-1 rounded-lg border border-gray-200 dark:border-gray-700" onClick={(e) => e.stopPropagation()}>
+                    <div className="flex bg-gray-100 dark:bg-gray-800 p-0.5 rounded-lg border border-gray-200 dark:border-gray-700" onClick={(e) => e.stopPropagation()}>
                         <button
                             onClick={() => setViewMode('list')}
-                            className={`px-3 py-1 rounded-md text-xs font-medium transition-all ${viewMode === 'list'
+                            className={`px-2 py-0.5 rounded-md text-[10px] font-medium transition-all ${viewMode === 'list'
                                 ? 'bg-white dark:bg-black text-green-600 shadow-sm'
                                 : 'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200'
                                 }`}
@@ -38,7 +38,7 @@ export function TechStack() {
                         </button>
                         <button
                             onClick={() => setViewMode('graph')}
-                            className={`px-3 py-1 rounded-md text-xs font-medium transition-all ${viewMode === 'graph'
+                            className={`px-2 py-0.5 rounded-md text-[10px] font-medium transition-all ${viewMode === 'graph'
                                 ? 'bg-white dark:bg-black text-green-600 shadow-sm'
                                 : 'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200'
                                 }`}
@@ -50,14 +50,14 @@ export function TechStack() {
             />
             <div className={`transition-all duration-300 ease-in-out overflow-hidden ${isExpanded ? 'max-h-[5000px] opacity-100' : 'max-h-0 opacity-0'}`}>
                 {viewMode === 'list' ? (
-                    <div className="grid grid-cols-1 gap-4 mt-4">
+                    <div className="grid grid-cols-1 gap-2 mt-2">
                         {Object.entries(skillCategories).map(([category, skills]) => (
                             <SpotlightCard key={category} className="group hover:border-green-500/30 transition-all duration-300">
-                                <div className="p-5">
-                                    <h3 className="text-xs font-bold text-gray-500 mb-4 uppercase tracking-widest flex items-center gap-2">
+                                <div className="p-3">
+                                    <h3 className="text-[10px] font-bold text-gray-500 mb-2 uppercase tracking-widest flex items-center gap-2">
                                         <span className="w-1.5 h-1.5 rounded-full bg-green-500 group-hover:animate-pulse"></span>
                                         {category}
-                                        <span className="text-[10px] text-gray-400 ml-auto font-mono opacity-0 group-hover/spotlight:opacity-100 transition-opacity">{skills.length} items</span>
+                                        <span className="text-[9px] text-gray-400 ml-auto font-mono opacity-0 group-hover/spotlight:opacity-100 transition-opacity">{skills.length} items</span>
                                     </h3>
                                     <div className="flex flex-wrap gap-2">
                                         {skills.map((skill) => {
