@@ -111,16 +111,6 @@ export function AnimeModal({ item, onClose, onTagClick }: AnimeModalProps) {
                                 </p>
                             )}
 
-                            {/* Watch Trailer Button */}
-                            <a
-                                href={`https://www.youtube.com/results?search_query=${encodeURIComponent(item.title + " trailer")}`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 mt-6 px-5 py-2.5 rounded-full bg-red-600 hover:bg-red-700 text-white font-medium transition-colors shadow-lg shadow-red-600/20 group transform hover:scale-105 duration-200 text-sm"
-                            >
-                                <Play size={16} className="fill-current" />
-                                Watch Trailer
-                            </a>
                         </div>
 
                         {/* Divider */}
@@ -169,6 +159,19 @@ export function AnimeModal({ item, onClose, onTagClick }: AnimeModalProps) {
                                 </div>
                             </div>
                         )}
+
+                        {/* Watch Trailer - Bottom CTA */}
+                        <div className="pt-2">
+                            <a
+                                href={`https://www.youtube.com/results?search_query=${encodeURIComponent(item.title + " trailer")}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="w-full flex justify-center items-center gap-3 py-4 rounded-2xl bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-bold text-lg shadow-xl shadow-red-600/20 hover:shadow-red-600/30 hover:scale-[1.01] active:scale-[0.99] transition-all duration-200 group"
+                            >
+                                <Play size={20} className="fill-current group-hover:scale-110 transition-transform" />
+                                Watch Trailer
+                            </a>
+                        </div>
                     </div>
                 </div>
             </motion.div>
