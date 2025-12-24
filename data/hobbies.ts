@@ -1,7 +1,15 @@
-
+/**
+ * @fileoverview Hobbies and interests data with humorous descriptions.
+ */
 
 import { HobbyIcon } from "./enums";
 
+/**
+ * Array of hobby objects with pseudo-intellectual descriptions.
+ * Each hobby includes a name, description, icon identifier, and optional link.
+ * 
+ * @type {Array<{ name: string, description: string, icon: HobbyIcon, link: string }>}
+ */
 export const hobbyData = [
     { name: "Gym", description: "Voluntary gravitational resistance training for somatic optimization.", icon: HobbyIcon.Dumbbell, link: "https://www.youtube.com/results?search_query=hypertrophy+training+guide" },
     { name: "Cinephile", description: "Analyzing the visual subtext of the human condition through cinematic lenses.", icon: HobbyIcon.Tv, link: "https://www.youtube.com/results?search_query=best+movies+documentaries" },
