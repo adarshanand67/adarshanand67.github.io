@@ -3,18 +3,18 @@
 import { HobbyIcon } from "./enums";
 
 export const hobbyData = [
-    { name: "Gym", description: "Hypertrophy and strength training.", icon: HobbyIcon.Dumbbell, link: "https://www.youtube.com/results?search_query=hypertrophy+training+guide" },
-    { name: "Cinephile", description: "Loves movies and documentaries.", icon: HobbyIcon.Tv, link: "https://www.youtube.com/results?search_query=best+movies+documentaries" },
-    { name: "Anime", description: "Appreciating storytelling and animation.", icon: HobbyIcon.Tv, link: "/animeshelf" },
-    { name: "Book Reading", description: "Understanding the world from different eyes", icon: HobbyIcon.Book, link: "/bookshelf" },
-    { name: "Table Tennis", description: "Fast-paced rallies and spin control.", icon: HobbyIcon.Trophy, link: "https://www.youtube.com/results?search_query=table+tennis+techniques" },
-    { name: "Badminton", description: "Smashing shuttlecocks and court agility.", icon: HobbyIcon.Trophy, link: "https://www.youtube.com/results?search_query=badminton+skills+tutorial" },
-    { name: "Pickleball", description: "Combining elements of tennis, badminton, and ping-pong.", icon: HobbyIcon.Trophy, link: "https://www.youtube.com/results?search_query=pickleball+how+to+play" },
-    { name: "Cycling", description: "Urban exploration on two wheels.", icon: HobbyIcon.Bike, link: "https://www.youtube.com/results?search_query=cycling+adventures" },
-    { name: "Trekking & Hiking", description: "Exploring nature trails and mountains.", icon: HobbyIcon.Mountain, link: "https://www.youtube.com/results?search_query=best+hiking+trails" },
-    { name: "Board Games", description: "Strategy and social deduction games.", icon: HobbyIcon.Dices, link: "https://www.youtube.com/results?search_query=best+board+games" },
-    { name: "Travelling", description: "Experiencing new cultures and places.", icon: HobbyIcon.Plane, link: "https://www.youtube.com/results?search_query=travel+vlog" },
-    { name: "Cafe Hopping", description: "Finding the best coffee spots.", icon: HobbyIcon.Coffee, link: "https://www.youtube.com/results?search_query=best+coffee+shops" },
-    { name: "Tech Conferences", description: "Networking and learning at tech meetups.", icon: HobbyIcon.Users, link: "https://www.youtube.com/results?search_query=tech+conferences" },
-    { name: "Toastmasters", description: "Public speaking and leadership development.", icon: HobbyIcon.Mic, link: "https://www.toastmasters.org" }
+    { name: "Gym", description: "Voluntary gravitational resistance training for somatic optimization.", icon: HobbyIcon.Dumbbell, link: "https://www.youtube.com/results?search_query=hypertrophy+training+guide" },
+    { name: "Cinephile", description: "Analyzing the visual subtext of the human condition through cinematic lenses.", icon: HobbyIcon.Tv, link: "https://www.youtube.com/results?search_query=best+movies+documentaries" },
+    { name: "Anime", description: "Post-modern storytelling where complexity is measured by the length of the title.", icon: HobbyIcon.Tv, link: "/animeshelf" },
+    { name: "Book Reading", description: "Downloading the consciousness of superior minds into my organic hardware.", icon: HobbyIcon.Book, link: "/bookshelf" },
+    { name: "Table Tennis", description: "High-frequency orbital manipulation of celluloid spheres.", icon: HobbyIcon.Trophy, link: "https://www.youtube.com/results?search_query=table+tennis+techniques" },
+    { name: "Badminton", description: "Aerodynamic shuttlecock redirection at hyper-velocity speeds.", icon: HobbyIcon.Trophy, link: "https://www.youtube.com/results?search_query=badminton+skills+tutorial" },
+    { name: "Pickleball", description: "A synthesis of racket-based disciplines for the intellectual athlete.", icon: HobbyIcon.Trophy, link: "https://www.youtube.com/results?search_query=pickleball+how+to+play" },
+    { name: "Cycling", description: "Bipedal velocity generation for urban cartographic exploration.", icon: HobbyIcon.Bike, link: "https://www.youtube.com/results?search_query=cycling+adventures" },
+    { name: "Trekking & Hiking", description: "Vertical locomotion through geological formations to achieve higher perspective.", icon: HobbyIcon.Mountain, link: "https://www.youtube.com/results?search_query=best+hiking+trails" },
+    { name: "Board Games", description: "Simulated geopolitical and socio-economic conflict resolution in a safe-space.", icon: HobbyIcon.Dices, link: "https://www.youtube.com/results?search_query=best+board+games" },
+    { name: "Travelling", description: "Empirical data gathering of cross-cultural sociodynamics.", icon: HobbyIcon.Plane, link: "https://www.youtube.com/results?search_query=travel+vlog" },
+    { name: "Cafe Hopping", description: "Conducting qualitative analysis of roasted bean extracts in various social ecosystems.", icon: HobbyIcon.Coffee, link: "https://www.youtube.com/results?search_query=best+coffee+shops" },
+    { name: "Tech Conferences", description: "Synchronizing with the hive mind of digital architects.", icon: HobbyIcon.Users, link: "https://www.youtube.com/results?search_query=tech+conferences" },
+    { name: "Toastmasters", description: "Calibrating my vocal resonance to maximize intellectual impact during generic advice delivery.", icon: HobbyIcon.Mic, link: "https://www.toastmasters.org" }
 ];
