@@ -80,7 +80,7 @@ export function DLPProtection() {
     // Violation Lockout Effect - Just notify now, don't lock screen
     useEffect(() => {
         if (violationCount > 5) {
-            addNotification("Warning: Excessive suspicious activity detected.", <AlertTriangle size={16} />);
+            // addNotification("Warning: Excessive suspicious activity detected.", <AlertTriangle size={16} />); // Removed per user request
             const timer = setTimeout(() => {
                 setViolationCount(0);
             }, 5000); // Reset count after 5s
@@ -273,15 +273,32 @@ export function DLPProtection() {
         window.addEventListener("focus", handleWindowFocus);
         window.addEventListener("beforeprint", handleBeforePrint);
 
-        // DevTools Detection (Simple Interval)
+        // DevTools Detection & Console Warfare
         const devToolsCheck = setInterval(() => {
-            // Basic check for window resize diff which often indicates devtools docked
+            // 1. Console Clearing & Warning
+            // console.clear(); // Aggressive clearing
+            const warningStyle = "font-size: 24px; color: red; font-weight: bold; text-shadow: 2px 2px 0px black;";
+            console.log("%cSTOP! This is a protected area.", warningStyle);
+            console.log("%cSecurity protocols are active. Actions are monitored.", "font-size: 14px; color: gray;");
+
+            // 2. Debugger Trap (The "Halt" Mechanism)
+            // This forces the browser to pause if DevTools is open and breakpoints are active.
+            // It makes inspection extremely annoying/impossible.
+            try {
+                (function antiDebug() {
+                    // Force a breakpoint
+                    // debugger; // Uncomment to active the hard trap
+                })();
+            } catch (e) { }
+
+
+            // 3. Heuristic Check (Resize)
             const threshold = 160;
             const widthDiff = window.outerWidth - window.innerWidth > threshold;
             const heightDiff = window.outerHeight - window.innerHeight > threshold;
 
             if ((widthDiff || heightDiff) && !isBlur) {
-                // Can't be 100% sure, but we can warn
+                // If detected, we can trigger the trap harder or just warn
                 addNotification("Debugger environment detected. Monitoring active.", <Terminal size={16} />);
             }
         }, 2000);

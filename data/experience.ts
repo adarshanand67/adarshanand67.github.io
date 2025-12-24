@@ -16,17 +16,7 @@ export const experiencesData = [
             "Designing and orchestrating CppUnit test automation frameworks to improve code quality and regression testing coverage."
         ]
     },
-    {
-        company: Company.Toastmasters,
-        role: Role.Secretary,
-        duration: "Dec 2025 - Present",
-        location: Location.Bengaluru,
-        description: "Rock The Talk Club",
-        highlights: [
-            "Secretary (Dec 2025 - Present)",
-            "Member (Jul 2025 - Dec 2025)"
-        ]
-    },
+
     {
         company: Company.Intel,
         role: Role.SDE,
