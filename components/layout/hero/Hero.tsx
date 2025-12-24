@@ -5,10 +5,48 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ProfileView } from "./components/ProfileView";
 import { TerminalView } from "./components/TerminalView";
 
+/**
+ * Props for the Hero component.
+ * @interface HeroProps
+ * @property {any} profile - Profile data containing name, avatar, bio, and other personal information
+ */
 interface HeroProps {
     profile: any;
 }
 
+/**
+ * Hero Section Component
+ * 
+ * The main landing section of the portfolio featuring a dual-view mode system:
+ * - **Profile View**: Displays personal information, avatar, bio, and social links
+ * - **Terminal View**: Interactive terminal interface for command-based navigation
+ * 
+ * @component
+ * @param {HeroProps} props - Component props
+ * @param {any} props.profile - Profile data object containing personal information
+ * @returns {JSX.Element} Hero section with animated view transitions
+ * 
+ * @remarks
+ * **Interactive Features:**
+ * - Mouse tracking for radial gradient effects (sets CSS custom properties `--mouse-x` and `--mouse-y`)
+ * - Smooth view mode transitions using Framer Motion's AnimatePresence
+ * - Mesh gradient background for visual depth
+ * 
+ * **View Modes:**
+ * - `profile`: Default view showing personal branding and social links
+ * - `terminal`: Interactive command-line interface for navigation
+ * 
+ * **Styling:**
+ * - Uses mesh gradient background with green color scheme
+ * - Responsive padding and spacing
+ * - Z-index layering for proper stacking context
+ * 
+ * @example
+ * ```tsx
+ * const profile = await getProfile();
+ * <Hero profile={profile} />
+ * ```
+ */
 export function Hero({ profile }: HeroProps) {
     const [viewMode, setViewMode] = useState<'profile' | 'terminal'>('profile');
 
