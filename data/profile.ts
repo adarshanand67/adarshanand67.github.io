@@ -21,9 +21,7 @@ export const profileData = {
     },
     bio: {
         paragraphs: [
-            "As a Software Development Engineer at Trellix, I focus on data security and preventing unauthorized exfiltration of sensitive corporate information as part of the Data Loss Prevention (Windows) team.",
-            "Previously at Intel Corporation, I worked on confidential computing technologies, including Intel SGX and TDX, implementing advanced fuzzing frameworks and addressing vulnerabilities.",
-            "A B.Tech graduate in Computer Science and Engineering from IIT Goa, I am dedicated to advancing innovation in data protection and secure systems."
+            "I speak most generic advice and say that in deep voice to sound intellectual"
         ]
     }
 };
