@@ -92,7 +92,7 @@ export function SkillsGraph() {
         // For categories (group 1), maybe we expand/collapse? But simpler to just do nothing or zoom.
         // For skills (group 2), open link.
         const label = node.label;
-        if (node.group === 2) {
+        if (node.group === 2 && label) {
             import("@/lib/techLinks").then(({ techLinks }) => {
                 const url =
                     techLinks[label] ||
