@@ -65,7 +65,7 @@ export function ContactSection() {
                             </div>
                             <ExternalLink
                                 size={16}
-                                className="text-foreground/20 group-hover:text-foreground group-hover:translate-x-1 transition-all"
+                                className="text-black/20 dark:text-gray-600 group-hover:text-black dark:group-hover:text-gray-300 group-hover:translate-x-1 transition-all"
                             />
                         </div>
                     </Link>
@@ -91,7 +91,7 @@ export function ContactSection() {
                             </div>
                             <ExternalLink
                                 size={16}
-                                className="text-foreground/20 group-hover:text-foreground group-hover:translate-x-1 transition-all"
+                                className="text-black/20 dark:text-gray-600 group-hover:text-black dark:group-hover:text-gray-300 group-hover:translate-x-1 transition-all"
                             />
                         </div>
                     </div>
@@ -120,7 +120,7 @@ export function ContactSection() {
                             </div>
                             <ExternalLink
                                 size={16}
-                                className="text-foreground/20 group-hover:text-foreground group-hover:translate-x-1 transition-all"
+                                className="text-black/20 dark:text-gray-600 group-hover:text-black dark:group-hover:text-gray-300 group-hover:translate-x-1 transition-all"
                             />
                         </div>
                     </Link>

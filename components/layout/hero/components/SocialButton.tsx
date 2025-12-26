@@ -38,10 +38,10 @@ export function SocialButton({ label, name, icon, href, onClick, index }: Social
                     {icon}
                 </div>
                 <div className="flex-1 text-left">
-                    <p className="text-[10px] font-black text-foreground/40 uppercase tracking-widest mb-0.5 group-hover:text-foreground/60 transition-colors">
+                    <p className="text-[10px] font-black text-black dark:text-gray-400 uppercase tracking-widest mb-0.5 group-hover:text-foreground/60 transition-colors">
                         {label}
                     </p>
-                    <h3 className="text-sm font-bold text-foreground group-hover:text-foreground transition-colors truncate max-w-[150px]">
+                    <h3 className="text-sm font-bold text-black dark:text-gray-400 group-hover:text-foreground transition-colors truncate max-w-[120px]">
                         {name}
                     </h3>
                 </div>
@@ -49,7 +49,7 @@ export function SocialButton({ label, name, icon, href, onClick, index }: Social
             {href && (
                 <ExternalLink
                     size={16}
-                    className="text-gray-400 group-hover/item:text-foreground transition-all transform group-hover/item:-translate-y-0.5 group-hover/item:translate-x-0.5"
+                    className="text-black/40 dark:text-gray-500 group-hover/item:text-black dark:group-hover/item:text-gray-300 transition-all transform group-hover/item:-translate-y-0.5 group-hover/item:translate-x-0.5"
                 />
             )}
         </div>

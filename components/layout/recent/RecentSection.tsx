@@ -48,7 +48,7 @@ export function RecentSection({ title, command, items, linkText, linkUrl }: Rece
                     </span>
                     <ChevronDown
                         size={20}
-                        className={`transition-transform duration-300 text-foreground/30 ${isExpanded ? "rotate-0" : "-rotate-90"}`}
+                        className={`transition-all duration-300 text-black dark:text-gray-400 ${isExpanded ? "rotate-0" : "-rotate-90 opacity-30 group-hover/section:opacity-100"}`}
                     />
                 </h2>
             </div>

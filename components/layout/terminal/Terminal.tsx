@@ -57,7 +57,7 @@ export function Terminal() {
                         className={`transition-all duration-500 ease-in-out ${isExpanded ? "opacity-100 max-h-[1000px]" : "opacity-0 max-h-0 overflow-hidden"}`}
                     >
                         <div
-                            className={`w-full bg-white/70 dark:bg-black/60 backdrop-blur-xl rounded-lg shadow-2xl overflow-hidden border border-white/20 dark:border-white/10 text-sm select-text relative ${isDragging ? "cursor-grabbing z-50 shadow-foreground/20" : ""}`}
+                            className={`w-full bg-white/70 dark:bg-black/60 backdrop-blur-xl rounded-lg shadow-2xl overflow-hidden border border-white/20 dark:border-white/10 text-sm select-text relative z-10 ${isDragging ? "cursor-grabbing z-50 shadow-foreground/20" : ""}`}
                             style={{
                                 transform: `translate(${position.x}px, ${position.y}px)`,
                                 transition: isDragging

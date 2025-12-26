@@ -14,15 +14,15 @@ export function MusicToggleButton() {
     return (
         <button
             onClick={toggleMusicPlayer}
-            className="fixed bottom-8 right-8 z-[101] w-14 h-14 bg-gray-900 dark:bg-white text-white dark:text-black rounded-full flex items-center justify-center shadow-[0_10px_30px_rgba(0,0,0,0.3)] hover:scale-110 active:scale-90 transition-all duration-300 group"
+            className="fixed bottom-8 right-8 z-[101] w-14 h-14 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md border border-black/10 dark:border-white/10 rounded-full flex items-center justify-center shadow-lg hover:scale-110 active:scale-95 transition-all duration-300 group"
             title="Open Music Player"
         >
             <div className={`relative ${isPlaying ? "animate-pulse" : ""}`}>
-                <Music size={22} />
+                <Music size={22} className="text-black dark:text-gray-400" />
                 {isPlaying && (
                     <span className="absolute -top-1 -right-1 flex h-2.5 w-2.5">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white dark:bg-black opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-white dark:bg-black"></span>
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-black dark:bg-gray-400 opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-black dark:bg-gray-400"></span>
                     </span>
                 )}
             </div>

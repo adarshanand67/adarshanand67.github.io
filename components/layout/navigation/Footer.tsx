@@ -34,7 +34,7 @@ export function Footer() {
                         >
                             <Home
                                 size={18}
-                                className="group-hover:scale-110 transition-transform"
+                                className="text-black dark:text-gray-400 group-hover:scale-110 group-hover:text-black dark:group-hover:text-gray-200 transition-all"
                             />
                             <span className="font-black uppercase tracking-widest text-[10px] md:text-xs">
                                 Home

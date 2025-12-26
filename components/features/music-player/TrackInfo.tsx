@@ -23,8 +23,8 @@ export function TrackInfo({ index, onClose }: TrackInfoProps) {
     const track = tracks[index];
 
     return (
-        <div className="flex gap-6 items-center">
-            <div className="relative w-24 h-24 shrink-0 rounded-[2rem] overflow-hidden shadow-2xl border border-foreground/10 group-hover:scale-105 transition-transform duration-700">
+        <div className="flex gap-4 items-center">
+            <div className="relative w-20 h-20 shrink-0 rounded-[1.5rem] overflow-hidden shadow-xl border border-foreground/10 group-hover:scale-105 transition-all duration-700">
                 <Image
                     src={track?.image || "/icon.png"}
                     alt="Album Art"
@@ -33,21 +33,21 @@ export function TrackInfo({ index, onClose }: TrackInfoProps) {
                 />
             </div>
             <div className="flex flex-col min-w-0 flex-1">
-                <span className="text-xl font-black line-clamp-1 text-foreground leading-tight tracking-tighter">
+                <span className="text-lg font-black line-clamp-1 text-foreground leading-tight tracking-tighter">
                     {track?.title}
                 </span>
-                <span className="text-sm text-foreground/50 font-bold mt-1 line-clamp-1 uppercase tracking-widest">
+                <span className="text-xs text-foreground/40 font-bold mt-0.5 line-clamp-1 uppercase tracking-[0.2em]">
                     {track?.artist}
                 </span>
             </div>
             <button
                 onClick={onClose}
-                className="p-2 hover:bg-foreground/5 rounded-full transition-all shrink-0 hover:scale-110 active:scale-90 group"
+                className="p-1.5 hover:bg-foreground/5 rounded-full transition-all shrink-0 hover:scale-110 active:scale-90 group/close"
                 aria-label="Minimize Player"
             >
                 <ChevronDown
-                    size={24}
-                    className="text-foreground/40 group-hover:text-foreground transition-colors"
+                    size={20}
+                    className="text-foreground/20 group-hover/close:text-foreground transition-colors"
                 />
             </button>
         </div>

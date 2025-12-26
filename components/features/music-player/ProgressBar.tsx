@@ -36,16 +36,16 @@ export function ProgressBar({
 
     return (
         <div className="space-y-1.5 group/progress">
-            <div className="relative h-2 w-full bg-foreground/10 rounded-full cursor-pointer">
+            <div className="relative h-1 w-full bg-black/5 dark:bg-white/5 rounded-full cursor-pointer">
                 <div
-                    className="absolute top-0 left-0 h-full bg-foreground rounded-full transition-all duration-100"
+                    className="absolute top-0 left-0 h-full bg-black dark:bg-gray-400 rounded-full transition-all duration-100 shadow-sm"
                     style={{ width: `${progress}%` }}
                 />
 
                 {/* Thumb/Knob - only visible on hover of the container */}
                 <div
-                    className="absolute top-1/2 -translate-y-1/2 w-4 h-4 bg-foreground rounded-full shadow-xl shadow-foreground/20 opacity-0 group-hover/progress:opacity-100 transition-opacity border-2 border-background"
-                    style={{ left: `calc(${progress}% - 8px)` }}
+                    className="absolute top-1/2 -translate-y-1/2 w-3 h-3 bg-white dark:bg-gray-900 rounded-full shadow-md opacity-0 group-hover/progress:opacity-100 transition-all duration-300 border border-black dark:border-gray-400 scale-75 group-hover/progress:scale-100"
+                    style={{ left: `calc(${progress}% - 6px)` }}
                 />
 
                 <input

@@ -31,15 +31,15 @@ export function VolumeControl({
         <div className="flex items-center gap-3 px-1 group/volume">
             <button
                 onClick={onToggleMute}
-                className="text-foreground/40 hover:text-foreground transition-colors shrink-0"
+                className="text-black/20 dark:text-gray-600 hover:text-black dark:hover:text-gray-400 transition-colors shrink-0"
                 title={isMuted ? "Unmute" : "Mute"}
             >
-                {isMuted || volume === 0 ? <VolumeX size={16} /> : <Volume1 size={16} />}
+                {isMuted || volume === 0 ? <VolumeX size={14} /> : <Volume1 size={14} />}
             </button>
 
-            <div className="flex-1 h-2 bg-foreground/10 rounded-full relative overflow-hidden">
+            <div className="flex-1 h-1 bg-black/5 dark:bg-white/5 rounded-full relative overflow-hidden">
                 <div
-                    className="absolute top-0 left-0 h-full bg-foreground/60 rounded-full"
+                    className="absolute top-0 left-0 h-full bg-black/40 dark:bg-gray-500/40 group-hover/volume:bg-black/60 dark:group-hover/volume:bg-gray-400/60 transition-colors rounded-full"
                     style={{ width: `${volume * 100}%` }}
                 />
                 <input
@@ -53,8 +53,8 @@ export function VolumeControl({
                 />
             </div>
 
-            <div className="text-foreground/40 shrink-0">
-                <Volume2 size={16} />
+            <div className="text-black/20 dark:text-gray-600 shrink-0">
+                <Volume2 size={14} />
             </div>
         </div>
     );

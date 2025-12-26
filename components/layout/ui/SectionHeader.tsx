@@ -21,7 +21,6 @@ interface SectionHeaderProps {
 
 /**
  * Section Header Component - collapsible section header with animated chevron.
- * Features green accent bar, hover effects, and optional right-side element.
  * @component
  * @param {SectionHeaderProps} props - Component props
  */
@@ -36,7 +35,7 @@ export function SectionHeader({ title, isExpanded, onToggle, rightElement }: Sec
                     {title}
                     <ChevronDown
                         size={20}
-                        className={`transition-all duration-500 ${isExpanded ? "rotate-180" : "-rotate-90 opacity-40"}`}
+                        className={`transition-all duration-500 text-black dark:text-gray-400 ${isExpanded ? "rotate-180" : "-rotate-90 opacity-40 group-hover:opacity-100"}`}
                     />
                 </h2>
                 {rightElement && <div className="ml-auto">{rightElement}</div>}
@@ -53,7 +52,7 @@ export function SectionHeader({ title, isExpanded, onToggle, rightElement }: Sec
  * @param {Object} props - Component props
  * @param {React.ReactNode} props.children - Card content
  * @param {string} [props.className] - Additional CSS classes
- * @param {string} [props.spotlightColor] - Spotlight gradient color (default: green)
+ * @param {string} [props.spotlightColor] - Spotlight gradient color
  *
  * @example
  * ```tsx

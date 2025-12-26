@@ -84,9 +84,15 @@ export function Navbar() {
                                         aria-label="Toggle menu"
                                     >
                                         {isNavbarActive ? (
-                                            <X size={24} className="text-foreground" />
+                                            <X
+                                                size={24}
+                                                className="text-black dark:text-gray-400"
+                                            />
                                         ) : (
-                                            <Menu size={24} />
+                                            <Menu
+                                                size={24}
+                                                className="text-black dark:text-gray-400"
+                                            />
                                         )}
                                     </button>
                                 </div>

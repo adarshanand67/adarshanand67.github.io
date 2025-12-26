@@ -44,12 +44,12 @@ export function Breadcrumbs({ items }: BreadcrumbsProps) {
                 href="/"
                 className="hover:text-foreground transition-colors flex items-center gap-1"
             >
-                <Home size={12} />
+                <Home size={12} className="text-black dark:text-gray-400" />
                 <span>~</span>
             </Link>
             {items.map((item, index) => (
                 <div key={index} className="flex items-center gap-2">
-                    <ChevronRight size={12} className="text-gray-300 dark:text-gray-700" />
+                    <ChevronRight size={12} className="text-black/30 dark:text-gray-600" />
                     {item.href ? (
                         <Link href={item.href} className="hover:text-foreground transition-colors">
                             {item.label}

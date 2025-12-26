@@ -12,7 +12,7 @@ import { motion, useSpring } from "framer-motion";
 /**
  * Custom Cursor Component - animated cursor with spring physics.
  * Features smooth spring-based motion tracking, mix-blend-difference effect,
- * and automatic hiding on touch devices. Displays white ring with green center dot.
+ * and automatic hiding on touch devices.
  *
  * @component
  * @returns {JSX.Element | null} Rendered custom cursor or null on touch devices

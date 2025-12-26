@@ -48,7 +48,7 @@ export function ShelvesSection() {
                                 Directories
                                 <ChevronDown
                                     size={22}
-                                    className={`transition-all duration-500 ${isExpanded ? "rotate-180" : "-rotate-90 opacity-40"}`}
+                                    className={`transition-all duration-500 text-black dark:text-gray-400 ${isExpanded ? "rotate-180" : "-rotate-90 opacity-40 group-hover:opacity-100"}`}
                                 />
                             </h2>
                             <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400 text-sm font-bold ml-4">
@@ -68,7 +68,7 @@ export function ShelvesSection() {
                                         className="group/item flex items-center gap-5 p-5 rounded-2xl border border-gray-100 dark:border-white/5 bg-gray-50/50 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10 hover:border-foreground/30 hover:shadow-xl hover:shadow-foreground/5 transition-all duration-500"
                                     >
                                         <div
-                                            className={`p-4 rounded-xl bg-white dark:bg-gray-800 shadow-sm ring-1 ring-gray-100 dark:ring-white/10 group-hover/item:scale-110 group-hover/item:rotate-3 transition-all duration-500 ${shelf.color}`}
+                                            className={`p-4 rounded-xl bg-white dark:bg-gray-800 shadow-sm ring-1 ring-gray-100 dark:ring-white/10 group-hover/item:scale-110 group-hover/item:rotate-3 transition-all duration-500 text-black dark:text-gray-400 group-hover/item:text-black dark:group-hover/item:text-gray-200`}
                                         >
                                             <shelf.icon size={22} />
                                         </div>

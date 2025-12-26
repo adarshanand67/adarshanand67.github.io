@@ -50,7 +50,7 @@ export function BackToTop() {
                         <div className="relative w-12 h-12 flex items-center justify-center bg-white/10 dark:bg-black/20 backdrop-blur-md border border-white/20 dark:border-white/5 rounded-full shadow-2xl transition-all duration-300 group-hover:-translate-y-1">
                             <ArrowUp
                                 size={20}
-                                className="text-gray-600 dark:text-gray-300 group-hover:text-foreground transition-colors"
+                                className="text-black dark:text-gray-400 group-hover:text-black dark:group-hover:text-gray-200 transition-colors"
                             />
                         </div>
                     </div>

@@ -10,7 +10,7 @@ export default function GuestbookPage() {
         <div className="min-h-screen pt-24 pb-12">
             <div className="container mx-auto px-4">
                 <header className="mb-12 text-center">
-                    <h1 className="text-4xl font-bold mb-4 font-mono text-green-500">
+                    <h1 className="text-4xl font-bold mb-4 font-mono">
                         <span className="text-gray-500 mr-2">$</span>
                         ./guestbook.sh
                     </h1>

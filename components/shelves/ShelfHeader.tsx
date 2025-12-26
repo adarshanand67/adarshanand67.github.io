@@ -89,7 +89,7 @@ export function ShelfHeader({
             </div>
             <div className="relative group">
                 <Search
-                    className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-foreground transition-colors"
+                    className="absolute left-4 top-1/2 -translate-y-1/2 text-black dark:text-gray-400 group-focus-within:text-black dark:group-focus-within:text-gray-200 transition-colors"
                     size={20}
                 />
                 <input

@@ -99,17 +99,18 @@ export function MusicPlayer() {
             />
 
             <div
-                className={`fixed bottom-24 right-8 z-[100] transition-all duration-500 ease-out origin-bottom-right transform ${showMusicPlayer ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-4 scale-90 pointer-events-none"}`}
+                className={`fixed bottom-24 right-8 z-[100] transition-all duration-700 ease-in-out origin-bottom-right transform ${showMusicPlayer ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-10 scale-95 pointer-events-none"}`}
             >
-                <div className="w-[400px] backdrop-blur-[50px] bg-background/80 border border-foreground/10 shadow-[0_30px_60px_rgba(0,0,0,0.2)] dark:shadow-[0_30px_60px_rgba(0,0,0,0.8)] rounded-[3rem] p-10 flex flex-col gap-8 overflow-hidden relative group">
-                    {/* Subtle aesthetic glow - very faint */}
-                    <div className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent pointer-events-none rounded-[40px]" />
+                <div className="w-[300px] backdrop-blur-xl bg-background/95 border border-foreground/10 shadow-[0_20px_50px_rgba(0,0,0,0.2)] dark:shadow-[0_40px_100px_rgba(0,0,0,0.7)] rounded-[2.5rem] p-5 flex flex-col gap-6 overflow-hidden relative group">
+                    {/* Subtle aesthetic decorations - neutral */}
+                    <div className="absolute -top-10 -left-10 w-24 h-24 bg-foreground/5 blur-[40px] rounded-full pointer-events-none" />
+                    <div className="absolute -bottom-10 -right-10 w-24 h-24 bg-foreground/5 blur-[40px] rounded-full pointer-events-none" />
 
-                    <div className="relative z-10 flex flex-col gap-8">
+                    <div className="relative z-10 flex flex-col gap-5">
                         <TrackInfo index={currentTrackIndex} onClose={toggleMusicPlayer} />
 
-                        <div className="flex flex-col gap-6">
-                            <div className="space-y-6">
+                        <div className="flex flex-col gap-4">
+                            <div className="space-y-4">
                                 <ProgressBar
                                     currentTime={currentTime}
                                     duration={duration}

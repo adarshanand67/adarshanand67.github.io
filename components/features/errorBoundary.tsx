@@ -77,7 +77,7 @@ function DefaultErrorFallback({ error, resetError }: { error?: Error; resetError
                 </p>
                 <button
                     onClick={resetError}
-                    className="px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg transition-colors"
+                    className="px-4 py-2 text-white rounded-lg transition-colors"
                 >
                     Try Again
                 </button>

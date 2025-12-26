@@ -38,7 +38,7 @@ interface HeroProps {
  * - `terminal`: Interactive command-line interface for navigation
  *
  * **Styling:**
- * - Uses mesh gradient background with green color scheme
+ * - Uses mesh gradient background
  * - Responsive padding and spacing
  * - Z-index layering for proper stacking context
  *

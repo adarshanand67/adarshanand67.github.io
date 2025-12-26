@@ -68,7 +68,10 @@ export function Experience({ items }: ExperienceProps) {
                                             {exp.role}
                                         </p>
                                         <div className="flex items-center gap-2 mt-1 text-[10px] font-medium text-gray-500 dark:text-gray-400">
-                                            <MapPin size={10} />
+                                            <MapPin
+                                                size={10}
+                                                className="text-black dark:text-gray-400"
+                                            />
                                             <span>{exp.location}</span>
                                         </div>
                                     </div>

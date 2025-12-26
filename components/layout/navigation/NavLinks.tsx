@@ -40,14 +40,14 @@ export function NavLinks({ className, onItemClick }: NavLinksProps) {
                         href={link.href}
                         className={`group relative flex items-center gap-2 px-4 py-2 rounded-xl transition-all duration-300 ${
                             isActive
-                                ? "text-white dark:text-black"
+                                ? "bg-black text-white dark:bg-zinc-800"
                                 : "text-foreground/60 hover:text-foreground"
                         }`}
                         onClick={onItemClick}
                     >
                         <link.icon
                             size={18}
-                            className="transition-transform duration-300 group-hover:scale-110"
+                            className={`transition-transform duration-300 group-hover:scale-110 ${isActive ? "text-white" : "text-black dark:text-gray-400"}`}
                         />
                         <span className="text-[11px] font-black uppercase tracking-widest whitespace-nowrap">
                             {link.label}

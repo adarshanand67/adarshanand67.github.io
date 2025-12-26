@@ -47,6 +47,7 @@ export function useTerminal() {
                     setIsIntroDone(true);
                 }
             };
+            // Start typing immediately
             typeNextLine();
         }
     }, [isIntroDone, setLines, setIsIntroDone]);

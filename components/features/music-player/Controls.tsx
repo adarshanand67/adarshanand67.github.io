@@ -43,37 +43,37 @@ export function Controls({
         <div className="flex items-center justify-between px-2">
             <button
                 onClick={onToggleShuffle}
-                className={`p-2 transition-all ${isShuffle ? "text-foreground" : "text-foreground/30 hover:text-foreground"}`}
+                className={`p-1 transition-all duration-300 hover:scale-110 active:scale-95 ${isShuffle ? "text-black dark:text-gray-400 opacity-100" : "text-black/20 dark:text-white/20 hover:text-black/40 dark:hover:text-white/40"}`}
                 title="Shuffle"
             >
-                <Shuffle size={20} strokeWidth={2.5} />
+                <Shuffle size={14} strokeWidth={2.5} />
             </button>
 
-            <div className="flex items-center gap-8">
+            <div className="flex items-center gap-6">
                 <button
                     onClick={onPrev}
-                    className="text-foreground hover:opacity-100 opacity-60 transition-opacity active:scale-90"
+                    className="text-black/40 dark:text-gray-500 hover:text-black dark:hover:text-gray-300 hover:scale-110 active:scale-90 transition-all duration-300"
                     title="Previous"
                 >
-                    <SkipBack size={32} fill="currentColor" strokeWidth={0} />
+                    <SkipBack size={18} fill="currentColor" strokeWidth={0} />
                 </button>
 
                 <button
                     onClick={onTogglePlay}
-                    className="w-20 h-20 flex items-center justify-center hover:scale-105 active:scale-95 transition-all group bg-foreground rounded-full shadow-2xl"
+                    className="w-10 h-10 flex items-center justify-center hover:scale-105 active:scale-95 transition-all duration-300 group bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 rounded-full"
                     title={isPlaying ? "Pause" : "Play"}
                 >
                     {isPlaying ? (
                         <Pause
-                            size={44}
-                            className="text-white dark:text-black"
+                            size={20}
+                            className="text-black dark:text-gray-400"
                             fill="currentColor"
                             strokeWidth={0}
                         />
                     ) : (
                         <Play
-                            size={44}
-                            className="text-white dark:text-black ml-1"
+                            size={20}
+                            className="text-black dark:text-gray-400 ml-0.5"
                             fill="currentColor"
                             strokeWidth={0}
                         />
@@ -82,21 +82,21 @@ export function Controls({
 
                 <button
                     onClick={onNext}
-                    className="text-foreground hover:opacity-100 opacity-60 transition-opacity active:scale-90"
+                    className="text-black/40 dark:text-gray-500 hover:text-black dark:hover:text-gray-300 hover:scale-110 active:scale-90 transition-all duration-300"
                     title="Next"
                 >
-                    <SkipForward size={32} fill="currentColor" strokeWidth={0} />
+                    <SkipForward size={18} fill="currentColor" strokeWidth={0} />
                 </button>
             </div>
 
             <button
                 onClick={onToggleRepeat}
-                className={`p-2 transition-all relative ${isRepeat ? "text-foreground" : "text-foreground/30 hover:text-foreground"}`}
+                className={`p-1 transition-all duration-300 hover:scale-110 active:scale-95 relative ${isRepeat ? "text-black dark:text-gray-400 opacity-100" : "text-black/20 dark:text-white/20 hover:text-black/40 dark:hover:text-white/40"}`}
                 title="Repeat"
             >
-                <Repeat size={20} strokeWidth={2.5} />
+                <Repeat size={14} strokeWidth={2.5} />
                 {isRepeat && (
-                    <span className="absolute top-1 right-0 text-[10px] font-black">1</span>
+                    <span className="absolute -top-1 -right-1 text-[8px] font-black">1</span>
                 )}
             </button>
         </div>

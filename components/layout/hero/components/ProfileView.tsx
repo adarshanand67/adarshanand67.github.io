@@ -57,12 +57,6 @@ export function ProfileView({ profile, viewMode, setViewMode }: ProfileViewProps
                                     priority
                                 />
                             </div>
-                            <div className="absolute -bottom-4 -right-4 bg-background border border-foreground/10 p-2 rounded-2xl shadow-xl flex items-center gap-2 scale-90 group-hover:scale-100 transition-transform duration-500">
-                                <div className="w-2 h-2 rounded-full bg-foreground shadow-[0_0_12px_rgba(255,255,255,0.4)]" />
-                                <span className="text-[9px] font-black tracking-widest uppercase text-foreground/50">
-                                    Online
-                                </span>
-                            </div>
                         </div>
                     </TiltWrapper>
 
@@ -101,7 +95,7 @@ export function ProfileView({ profile, viewMode, setViewMode }: ProfileViewProps
                     </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-8">
+                <div className="flex flex-wrap items-center gap-4 mt-8">
                     <SocialButton
                         index={0}
                         label="Connect"
@@ -109,7 +103,7 @@ export function ProfileView({ profile, viewMode, setViewMode }: ProfileViewProps
                         href={`https://${siteConfig.contact.linkedin}`}
                         icon={
                             <svg
-                                className="w-5 h-5 text-foreground"
+                                className="w-5 h-5 text-black dark:text-gray-400"
                                 fill="currentColor"
                                 viewBox="0 0 24 24"
                             >
@@ -124,7 +118,7 @@ export function ProfileView({ profile, viewMode, setViewMode }: ProfileViewProps
                         href={`mailto:${siteConfig.contact.email}`}
                         icon={
                             <svg
-                                className="w-5 h-5 text-foreground"
+                                className="w-5 h-5 text-black dark:text-gray-400"
                                 fill="none"
                                 stroke="currentColor"
                                 viewBox="0 0 24 24"
@@ -145,7 +139,7 @@ export function ProfileView({ profile, viewMode, setViewMode }: ProfileViewProps
                         href={`https://${siteConfig.contact.github}`}
                         icon={
                             <svg
-                                className="w-5 h-5 text-foreground"
+                                className="w-5 h-5 text-black dark:text-gray-400"
                                 fill="currentColor"
                                 viewBox="0 0 24 24"
                             >

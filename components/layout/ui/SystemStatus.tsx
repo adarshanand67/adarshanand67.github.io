@@ -55,21 +55,21 @@ export function SystemStatus() {
             className="flex flex-wrap items-center gap-3 mt-6"
         >
             <div className="flex items-center gap-2 px-3 py-1.5 bg-foreground/5 backdrop-blur-3xl rounded-full border border-foreground/10 shadow-sm transition-all hover:border-foreground/20">
-                <Clock size={14} className="text-foreground/50" />
+                <Clock size={14} className="text-black dark:text-gray-400" />
                 <span className="text-[11px] font-mono font-black text-foreground/60 tabular-nums uppercase tracking-widest">
                     {time} IST
                 </span>
             </div>
 
             <div className="flex items-center gap-2 px-3 py-1.5 bg-foreground/5 backdrop-blur-3xl rounded-full border border-foreground/10 shadow-sm transition-all hover:border-foreground/20">
-                <Activity size={14} className="text-foreground/50" />
+                <Activity size={14} className="text-black dark:text-gray-400" />
                 <span className="text-[11px] font-mono font-black text-foreground/60 uppercase tracking-widest">
                     {status}
                 </span>
             </div>
 
             <div className="flex items-center gap-2 px-3 py-1.5 bg-foreground/5 backdrop-blur-3xl rounded-full border border-foreground/10 shadow-sm transition-all hover:border-foreground/20">
-                <MapPin size={14} className="text-foreground/50" />
+                <MapPin size={14} className="text-black dark:text-gray-400" />
                 <span className="text-[11px] font-mono font-black text-foreground/60 uppercase tracking-widest">
                     Bengaluru, IN
                 </span>

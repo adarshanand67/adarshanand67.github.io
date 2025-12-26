@@ -33,7 +33,7 @@ export function NavActions({ isMounted }: NavActionsProps) {
             >
                 {isMounted ? (
                     <>
-                        <Search size={22} />
+                        <Search size={22} className="text-black dark:text-gray-400" />
                         <span className="hidden md:inline text-sm text-foreground/50">Search</span>
                         <kbd className="hidden md:inline-flex items-center gap-1 px-1.5 py-0.5 text-[10px] font-mono bg-foreground/5 border border-foreground/10 rounded">
                             <span className="text-xs">⌘</span>K

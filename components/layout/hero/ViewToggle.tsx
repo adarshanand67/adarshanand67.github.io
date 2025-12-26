@@ -20,30 +20,30 @@ interface ViewToggleProps {
  * @param {ViewToggleProps} props - Component props
  */
 export const ViewToggle = ({ viewMode, setViewMode }: ViewToggleProps) => (
-    <div className="flex bg-white/10 dark:bg-black/20 backdrop-blur-md p-1 rounded-lg border border-foreground/10 ml-auto pointer-events-auto shadow-sm">
+    <div className="flex bg-white/10 dark:bg-black/20 backdrop-blur-md p-1 rounded-lg border border-foreground/10 ml-auto pointer-events-auto shadow-sm gap-1">
         <button
             onClick={() => setViewMode("profile")}
-            className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-xs sm:text-sm font-bold transition-all ${
+            className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-xs sm:text-sm font-semibold transition-all ${
                 viewMode === "profile"
-                    ? "bg-gray-900 text-white dark:bg-white dark:text-black shadow-md"
-                    : "text-foreground/60 hover:text-foreground hover:bg-foreground/5"
+                    ? "bg-gray-950 text-white dark:bg-zinc-800 shadow-md"
+                    : "text-foreground/80 hover:text-foreground hover:bg-foreground/5"
             }`}
             title="Switch to Profile"
         >
-            <User size={14} className="sm:w-4 sm:h-4" />
-            <span className="max-sm:hidden">Profile</span>
+            <User size={14} />
+            <span>Profile</span>
         </button>
         <button
             onClick={() => setViewMode("terminal")}
-            className={`flex-1 py-1 px-3 rounded-lg text-xs font-black uppercase tracking-widest transition-all duration-300 ${
+            className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-xs sm:text-sm font-semibold transition-all ${
                 viewMode === "terminal"
-                    ? "bg-gray-900 text-white dark:bg-white dark:text-black shadow-md"
-                    : "text-foreground/60 hover:text-foreground hover:bg-foreground/5"
+                    ? "bg-gray-950 text-white dark:bg-zinc-800 shadow-md"
+                    : "text-foreground/80 hover:text-foreground hover:bg-foreground/5"
             }`}
             title="Switch to Terminal"
         >
-            <TerminalIcon size={14} className="sm:w-4 sm:h-4" />
-            <span className="max-sm:hidden">Terminal</span>
+            <TerminalIcon size={14} />
+            <span>Terminal</span>
         </button>
     </div>
 );
