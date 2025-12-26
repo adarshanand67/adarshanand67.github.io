@@ -40,7 +40,7 @@ export function Experience({ items }: ExperienceProps) {
                     {items.map((exp, index) => (
                         <SpotlightCard
                             key={index}
-                            className="hover:shadow-2xl hover:shadow-green-500/5 transition-all duration-500 hover:border-green-500/20 group"
+                            className="hover:shadow-2xl hover:shadow-green-500/5 transition-all duration-500 hover:border-gray-500/20 group"
                         >
                             <div className="p-4 md:p-6">
                                 <div className="flex flex-col md:flex-row md:items-start gap-4 mb-4">
@@ -60,11 +60,11 @@ export function Experience({ items }: ExperienceProps) {
                                             <h3 className="text-lg md:text-xl font-black text-gray-900 dark:text-white tracking-tight">
                                                 {exp.company}
                                             </h3>
-                                            <span className="text-[9px] font-bold px-2 py-0.5 bg-green-500/10 text-green-500 rounded-full border border-green-500/20">
+                                            <span className="text-[9px] font-bold px-2 py-0.5 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded-full border border-gray-200 dark:border-zinc-700">
                                                 {exp.duration}
                                             </span>
                                         </div>
-                                        <p className="text-sm font-bold text-green-500 mt-0">
+                                        <p className="text-sm font-bold text-gray-700 dark:text-gray-200 mt-0">
                                             {exp.role}
                                         </p>
                                         <div className="flex items-center gap-2 mt-1 text-[10px] font-medium text-gray-500 dark:text-gray-400">
@@ -75,7 +75,7 @@ export function Experience({ items }: ExperienceProps) {
                                 </div>
                                 {exp.description && (
                                     <p
-                                        className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed mb-4 font-medium border-l-2 border-green-500/20 pl-4 italic"
+                                        className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed mb-4 font-medium border-l-2 border-gray-300 dark:border-zinc-800 pl-4 italic"
                                         dangerouslySetInnerHTML={{
                                             __html: linkifyTech(exp.description),
                                         }}
@@ -88,7 +88,7 @@ export function Experience({ items }: ExperienceProps) {
                                                 key={i}
                                                 className="flex gap-3 text-xs text-gray-700 dark:text-gray-300 leading-relaxed font-medium group/item"
                                                 dangerouslySetInnerHTML={{
-                                                    __html: `<div class="shrink-0 mt-1.5 w-1 h-1 rounded-full bg-green-500 group-hover/item:scale-150 transition-transform"></div><span>${linkifyTech(h)}</span>`,
+                                                    __html: `<div class="shrink-0 mt-1.5 w-1 h-1 rounded-full bg-gray-400 dark:bg-zinc-600 group-hover/item:bg-green-500 transition-colors"></div><span>${linkifyTech(h)}</span>`,
                                                 }}
                                             />
                                         ))}

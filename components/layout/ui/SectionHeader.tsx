@@ -30,7 +30,7 @@ export function SectionHeader({ title, isExpanded, onToggle, rightElement }: Sec
         <div className="w-full text-left group mb-2 cursor-pointer" onClick={onToggle}>
             <div className="flex items-center gap-3 mb-1">
                 <div
-                    className={`h-6 w-1 rounded-full bg-green-500 transition-all duration-300 ${isExpanded ? "scale-y-100" : "scale-y-50 opacity-50"}`}
+                    className={`h-6 w-1 rounded-full bg-gray-300 dark:bg-zinc-800 transition-all duration-300 ${isExpanded ? "scale-y-100" : "scale-y-50 opacity-50"}`}
                 />
                 <h2 className="text-2xl md:text-3xl font-black flex items-center gap-3 tracking-tight text-gray-900 dark:text-white group-hover:text-green-500 transition-colors">
                     {title}
@@ -66,7 +66,7 @@ export function SectionHeader({ title, isExpanded, onToggle, rightElement }: Sec
 export const SpotlightCard = ({
     children,
     className = "",
-    spotlightColor = "rgba(34, 197, 94, 0.15)",
+    spotlightColor = "rgba(161, 161, 170, 0.08)", // subtle zinc-400
 }: {
     children: React.ReactNode;
     className?: string;

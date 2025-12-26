@@ -65,7 +65,7 @@ export function CustomCursor() {
             }}
         >
             <div className="w-full h-full bg-white rounded-full border border-white/20 scale-100 group-hover:scale-150 transition-transform duration-300" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-green-500 rounded-full" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1 h-1 bg-gray-400/80 rounded-full" />
         </motion.div>
     );
 }

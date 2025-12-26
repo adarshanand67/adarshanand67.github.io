@@ -206,23 +206,6 @@ export const planningAnime = [
         ],
     },
     {
-        title: "Berserk",
-        type: AnimeType.Anime,
-        status: WatchStatus.Planning,
-        seasons: "S1-2",
-        image: "https://cdn.myanimelist.net/images/anime/5/18179l.webp",
-        description:
-            "A grimdark masterpiece about a man struggling against a predetermined fate and a person he once considered a friend.",
-        tags: ["Action", "Adventure", "Drama", "Fantasy", "Horror"],
-        year: "1997",
-        rating: "8.5/10",
-        keyLearnings: [
-            "The world is a cold, indifferent place, but the struggle to survive is what makes us human.",
-            "Ambition, when unchecked by morality, is the most destructive force in existence.",
-            "Sometimes you are the one holding the sword, and sometimes the sword is just an extension of your trauma.",
-        ],
-    },
-    {
         title: "Made in Abyss",
         type: AnimeType.Anime,
         status: WatchStatus.Planning,

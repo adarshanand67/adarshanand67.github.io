@@ -34,11 +34,11 @@ export function SocialButton({ label, name, icon, href, onClick, index }: Social
     const content = (
         <div className="flex items-center justify-between w-full">
             <div className="flex items-center gap-4">
-                <div className="w-10 h-10 bg-green-500 rounded-2xl flex items-center justify-center group-hover/item:scale-110 transition-transform shadow-lg shadow-green-500/20">
+                <div className="w-10 h-10 bg-zinc-100 dark:bg-zinc-800 rounded-2xl flex items-center justify-center group-hover/item:scale-110 transition-transform shadow-sm border border-zinc-200 dark:border-zinc-700">
                     {icon}
                 </div>
                 <div className="flex flex-col text-left">
-                    <span className="text-[9px] font-black uppercase tracking-widest text-green-500">
+                    <span className="text-[9px] font-black uppercase tracking-widest text-green-500 dark:text-emerald-500/80">
                         {label}
                     </span>
                     <span className="text-sm font-bold text-gray-900 dark:text-white line-clamp-1">
@@ -49,7 +49,7 @@ export function SocialButton({ label, name, icon, href, onClick, index }: Social
             {href && (
                 <ExternalLink
                     size={16}
-                    className="text-green-500/80 group-hover/item:text-green-500 transition-all transform group-hover/item:-translate-y-0.5 group-hover/item:translate-x-0.5"
+                    className="text-gray-400 group-hover/item:text-green-500 transition-all transform group-hover/item:-translate-y-0.5 group-hover/item:translate-x-0.5"
                 />
             )}
         </div>
