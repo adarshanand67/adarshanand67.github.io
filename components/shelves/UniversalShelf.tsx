@@ -80,8 +80,8 @@ export function UniversalShelf({ config, items }: UniversalShelfProps) {
             const element = document.getElementById(`shelf-item-${item.title}`);
             if (element) {
                 element.scrollIntoView({ behavior: "smooth", block: "center" });
-                element.classList.add("ring-4", "ring-foreground/20");
-                setTimeout(() => element.classList.remove("ring-4", "ring-foreground/20"), 2000);
+                element.classList.add("ring-2", "ring-foreground");
+                setTimeout(() => element.classList.remove("ring-2", "ring-foreground"), 2000);
             }
         }
     };
