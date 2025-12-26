@@ -79,7 +79,7 @@ export function AnimeTagFilter({
             <div className="flex flex-wrap gap-2">
                 <button
                     onClick={() => onTagSelect(null)}
-                    className={`px-5 py-2.5 rounded-full text-[11px] font-black uppercase tracking-widest transition-all border-2 ${!selectedTag ? "bg-foreground text-background border-foreground shadow-[0_0_20px_rgba(255,255,255,0.1)] dark:shadow-[0_0_20px_rgba(255,255,255,0.05)]" : "bg-transparent text-foreground/40 border-foreground/10 hover:border-foreground/40 hover:text-foreground hover:scale-105"}`}
+                    className={`px-5 py-2.5 rounded-full text-[11px] font-black uppercase tracking-widest transition-all border-2 ${!selectedTag ? "bg-foreground text-background border-foreground shadow-[0_0_20px_rgba(255,255,255,0.1)] dark:shadow-[0_0_20px_rgba(255,255,255,0.05)]" : "bg-gray-100 dark:bg-white/5 text-foreground/60 border-transparent hover:border-foreground/20 hover:text-foreground hover:scale-105"}`}
                 >
                     All
                 </button>
@@ -87,7 +87,7 @@ export function AnimeTagFilter({
                     <button
                         key={tag}
                         onClick={() => onTagSelect(selectedTag === tag ? null : tag)}
-                        className={`px-5 py-2.5 rounded-full text-[11px] font-black uppercase tracking-widest transition-all border-2 ${selectedTag === tag ? "bg-foreground text-background border-foreground shadow-[0_0_20px_rgba(255,255,255,0.1)] dark:shadow-[0_0_20px_rgba(255,255,255,0.05)]" : "bg-transparent text-foreground/40 border-foreground/10 hover:border-foreground/40 hover:text-foreground hover:scale-105"}`}
+                        className={`px-5 py-2.5 rounded-full text-[11px] font-black uppercase tracking-widest transition-all border-2 ${selectedTag === tag ? "bg-foreground text-background border-foreground shadow-[0_0_20px_rgba(255,255,255,0.1)] dark:shadow-[0_0_20px_rgba(255,255,255,0.05)]" : "bg-gray-100 dark:bg-white/5 text-foreground/60 border-transparent hover:border-foreground/20 hover:text-foreground hover:scale-105"}`}
                     >
                         {tag}
                     </button>

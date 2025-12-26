@@ -40,7 +40,7 @@ interface BookHeaderProps {
  */
 export function BookHeader({ item }: BookHeaderProps) {
     return (
-        <div className="relative bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-950/20 dark:to-emerald-950/20 p-8 md:p-12 border-b border-gray-200 dark:border-white/10">
+        <div className="relative bg-gradient-to-br from-gray-50 to-slate-50 dark:from-gray-900/50 dark:to-slate-900/50 p-8 md:p-12 border-b border-gray-200 dark:border-white/10">
             <div className="flex flex-col md:flex-row gap-8 items-start">
                 {/* Book Cover */}
                 <div className="shrink-0 mx-auto md:mx-0">
@@ -64,11 +64,11 @@ export function BookHeader({ item }: BookHeaderProps) {
                 {/* Book Info */}
                 <div className="flex-1 text-center md:text-left">
                     <div className="flex flex-wrap gap-2 mb-4 justify-center md:justify-start">
-                        <span className="px-3 py-1 bg-green-500/10 text-green-700 dark:text-green-400 rounded-full text-[10px] font-bold uppercase tracking-wider border border-green-500/20">
+                        <span className="px-3 py-1 bg-gray-100 dark:bg-white/10 text-gray-700 dark:text-gray-300 rounded-full text-[10px] font-bold uppercase tracking-wider border border-gray-200 dark:border-white/10">
                             Featured Book
                         </span>
                         {item.recommended && (
-                            <span className="px-3 py-1 bg-amber-500/10 text-amber-700 dark:text-amber-400 rounded-full text-[10px] font-bold flex items-center gap-1.5 border border-amber-500/20">
+                            <span className="px-3 py-1 bg-gray-100 dark:bg-white/10 text-gray-700 dark:text-gray-300 rounded-full text-[10px] font-bold flex items-center gap-1.5 border border-gray-200 dark:border-white/10">
                                 <Star size={11} fill="currentColor" /> Must Read
                             </span>
                         )}
@@ -86,7 +86,7 @@ export function BookHeader({ item }: BookHeaderProps) {
                         <div className="relative">
                             <Quote
                                 size={24}
-                                className="absolute -left-2 -top-2 text-green-500/30"
+                                className="absolute -left-2 -top-2 text-gray-300 dark:text-gray-600"
                             />
                             <p className="text-base md:text-lg text-gray-700 dark:text-gray-300 leading-relaxed italic pl-6 max-w-2xl">
                                 {item.description}

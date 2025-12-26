@@ -46,11 +46,11 @@ export function BackToTop() {
                     aria-label="Back to top"
                 >
                     <div className="relative">
-                        <div className="absolute -inset-2 bg-green-500/20 rounded-full blur-xl group-hover:bg-green-500/30 transition-all" />
+                        <div className="absolute -inset-2 bg-foreground/20 rounded-full blur-xl group-hover:bg-foreground/30 transition-all" />
                         <div className="relative w-12 h-12 flex items-center justify-center bg-white/10 dark:bg-black/20 backdrop-blur-md border border-white/20 dark:border-white/5 rounded-full shadow-2xl transition-all duration-300 group-hover:-translate-y-1">
                             <ArrowUp
                                 size={20}
-                                className="text-gray-600 dark:text-gray-300 group-hover:text-green-500 transition-colors"
+                                className="text-gray-600 dark:text-gray-300 group-hover:text-foreground transition-colors"
                             />
                         </div>
                     </div>

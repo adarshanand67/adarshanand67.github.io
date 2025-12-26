@@ -35,7 +35,7 @@ export class HobbyListStrategy implements ShelfItemStrategy<Hobby> {
     private getIcon(iconName: string): ReactNode {
         const IconComponent = iconMap[iconName] as React.ElementType | undefined;
         if (IconComponent) {
-            return <IconComponent className="w-8 h-8 text-green-500" />;
+            return <IconComponent className="w-8 h-8 text-foreground" />;
         }
         return <span className="text-3xl">🎮</span>;
     }
@@ -45,7 +45,7 @@ export class HobbyListStrategy implements ShelfItemStrategy<Hobby> {
                 id={`shelf-item-${hobby.name}`}
                 key={index}
                 onClick={() => useStore.getState().setHobbySelectedItem(hobby)}
-                className="group p-5 glass rounded-2xl border border-gray-100 dark:border-white/5 hover:border-green-500/30 transition-all duration-500 cursor-pointer overflow-hidden relative"
+                className="group p-5 glass rounded-2xl border border-gray-100 dark:border-white/5 hover:border-foreground/30 transition-all duration-500 cursor-pointer overflow-hidden relative"
             >
                 <div className="relative z-10">
                     <div className="mb-3 transform group-hover:scale-110 group-hover:-rotate-12 transition-transform duration-500 w-fit">

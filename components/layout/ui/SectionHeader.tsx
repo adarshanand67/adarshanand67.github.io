@@ -32,7 +32,7 @@ export function SectionHeader({ title, isExpanded, onToggle, rightElement }: Sec
                 <div
                     className={`h-6 w-1 rounded-full bg-gray-300 dark:bg-zinc-800 transition-all duration-300 ${isExpanded ? "scale-y-100" : "scale-y-50 opacity-50"}`}
                 />
-                <h2 className="text-2xl md:text-3xl font-black flex items-center gap-3 tracking-tight text-gray-900 dark:text-white group-hover:text-green-500 transition-colors">
+                <h2 className="text-2xl md:text-3xl font-black flex items-center gap-3 tracking-tight text-gray-900 dark:text-white group-hover:text-foreground transition-colors">
                     {title}
                     <ChevronDown
                         size={20}

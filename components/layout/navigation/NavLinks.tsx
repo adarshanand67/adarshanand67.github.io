@@ -40,7 +40,7 @@ export function NavLinks({ className, onItemClick }: NavLinksProps) {
                         href={link.href}
                         className={`group relative flex items-center gap-2 px-4 py-2 rounded-xl transition-all duration-300 ${
                             isActive
-                                ? "bg-foreground text-background shadow-lg shadow-foreground/10"
+                                ? "bg-gray-900 text-white dark:bg-white dark:text-black shadow-lg shadow-black/10 dark:shadow-white/10"
                                 : "text-foreground/40 hover:text-foreground hover:bg-foreground/5"
                         }`}
                         onClick={onItemClick}

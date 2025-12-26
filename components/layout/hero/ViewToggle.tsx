@@ -25,7 +25,7 @@ export const ViewToggle = ({ viewMode, setViewMode }: ViewToggleProps) => (
             onClick={() => setViewMode("profile")}
             className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-xs sm:text-sm font-medium transition-all ${
                 viewMode === "profile"
-                    ? "bg-foreground text-background shadow-md"
+                    ? "bg-gray-900 text-white dark:bg-white dark:text-black shadow-md"
                     : "text-foreground/60 hover:text-foreground hover:bg-foreground/5"
             }`}
             title="Switch to Profile"
@@ -37,7 +37,7 @@ export const ViewToggle = ({ viewMode, setViewMode }: ViewToggleProps) => (
             onClick={() => setViewMode("terminal")}
             className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-xs sm:text-sm font-medium transition-all ${
                 viewMode === "terminal"
-                    ? "bg-foreground text-background shadow-md"
+                    ? "bg-gray-900 text-white dark:bg-white dark:text-black shadow-md"
                     : "text-foreground/60 hover:text-foreground hover:bg-foreground/5"
             }`}
             title="Switch to Terminal"

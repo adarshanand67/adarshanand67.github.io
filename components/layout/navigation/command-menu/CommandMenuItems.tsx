@@ -14,7 +14,7 @@ export function CommandMenuItem({ item, isSelected, onSelect }: CommandMenuItemP
                 w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-sm transition-all duration-200
                 ${
                     isSelected
-                        ? "bg-green-500 text-white shadow-lg shadow-green-500/20"
+                        ? "bg-gray-900 text-white dark:bg-white dark:text-black shadow-lg shadow-black/10"
                         : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/5"
                 }
             `}
