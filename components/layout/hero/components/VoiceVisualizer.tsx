@@ -34,10 +34,10 @@ export function VoiceVisualizer() {
                         ease: "easeInOut",
                         delay: i * 0.1,
                     }}
-                    className="w-1 bg-green-500 rounded-full"
+                    className="w-1 bg-foreground rounded-full"
                 />
             ))}
-            <span className="ml-3 text-[10px] font-black uppercase tracking-[0.2em] text-green-600 dark:text-green-400">
+            <span className="ml-3 text-[10px] font-black uppercase tracking-[0.2em] text-foreground/60">
                 Deep Voice Optimized
             </span>
         </div>
