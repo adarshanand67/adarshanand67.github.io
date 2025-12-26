@@ -62,16 +62,6 @@ const nextConfig = {
         ignoreBuildErrors: false,
     },
     output: isProd ? "export" : undefined,
-
-    // Security headers
-    async headers() {
-        return [
-            {
-                source: "/:path*",
-                headers: securityHeaders,
-            },
-        ];
-    },
 };
 
 // Bundle analyzer (enabled with ANALYZE=true env var)
