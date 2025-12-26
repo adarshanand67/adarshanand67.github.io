@@ -9,7 +9,6 @@
 export enum Company {
     Trellix = "Trellix",
     Intel = "Intel",
-    Toastmasters = "Toastmasters International",
 }
 
 /**

@@ -73,6 +73,8 @@ export enum ShelfType {
     Anime = "anime",
     Blog = "blog",
     Hobby = "hobby",
+    Article = "article",
+    Project = "project",
 }
 export interface AnimeItem {
     title: string;

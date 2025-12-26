@@ -89,6 +89,13 @@ export interface MusicState {
     toggleMute: () => void;
     nextTrack: () => void;
     prevTrack: () => void;
+    setCurrentTrack: (index: number) => void;
+    // Time synchronization
+    currentTime: number;
+    duration: number;
+    seekTime: number | null;
+    setProgress: (currentTime: number, duration: number) => void;
+    requestSeek: (time: number | null) => void;
 }
 
 /**

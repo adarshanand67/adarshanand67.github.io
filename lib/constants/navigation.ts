@@ -15,6 +15,7 @@ export const routes = {
     bookShelf: "/bookshelf",
     animeShelf: "/animeshelf",
     hobbyShelf: "/hobbyshelf",
+    music: "/music",
 } as const;
 
 /**

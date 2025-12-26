@@ -60,12 +60,7 @@ export const tracks: Track[] = [
         image: "https://cdn.myanimelist.net/images/anime/1141/142503l.jpg",
         src: `${basePath}/assets/music/blueBird.mp3`,
     },
-    {
-        title: "GO!!!",
-        artist: "Naruto",
-        image: "https://cdn.myanimelist.net/images/anime/1141/142502l.jpg",
-        src: `${basePath}/assets/music/go.mp3`,
-    },
+
     {
         title: "Guren no Yumiya",
         artist: "Attack on Titan",

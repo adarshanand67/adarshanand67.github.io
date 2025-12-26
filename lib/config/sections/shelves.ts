@@ -57,6 +57,13 @@ export const shelfConfigs: Record<string, ShelfConfig> = {
         type: ShelfType.Blog,
     },
 
+    projects: {
+        title: "Projects",
+        description: "Things I've built and worked on.",
+        command: "ls -la ~/projects",
+        searchPlaceholder: "Search projects...",
+        type: ShelfType.Project,
+    },
     hobby: {
         title: "HobbyShelf",
         description: "What I do when I'm not coding.",

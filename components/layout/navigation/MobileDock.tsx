@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Home, FileText, Tv, BookOpen, Music } from "lucide-react";
 import { routes } from "@/lib/constants";
-import { useStore } from "@/lib/store/useStore";
+
 import { motion } from "framer-motion";
 
 const navItems = [
@@ -22,8 +22,6 @@ const navItems = [
  */
 export function MobileDock() {
     const pathname = usePathname();
-
-    const { toggleMusicPlayer, isPlaying } = useStore();
 
     return (
         <div className="md:hidden fixed bottom-0 left-1/2 -translate-x-1/2 z-[100] w-full max-w-[420px]">
@@ -50,12 +48,23 @@ export function MobileDock() {
                         </Link>
                     );
                 })}
-                <button
-                    onClick={toggleMusicPlayer}
-                    className={`flex flex-col items-center gap-1 transition-all p-2 rounded-xl ${isPlaying ? "text-blue-500 animate-pulse" : "text-black dark:text-gray-400 hover:text-black dark:hover:text-gray-200"}`}
+                {/* Music Button - Managed same as others for consistent styling */}
+                <Link
+                    href={routes.music}
+                    className="relative flex flex-col items-center gap-1 group"
                 >
-                    <Music size={22} />
-                </button>
+                    <div
+                        className={`p-2 rounded-xl transition-all duration-300 ${pathname === routes.music ? "bg-gray-900 text-white dark:bg-white dark:text-black shadow-md" : "text-black dark:text-gray-400 hover:text-black dark:hover:text-gray-200"}`}
+                    >
+                        <Music size={20} />
+                    </div>
+                    {pathname === routes.music && (
+                        <motion.div
+                            layoutId="dock-dot"
+                            className="absolute -bottom-1 w-1 h-1 bg-foreground rounded-full"
+                        />
+                    )}
+                </Link>
             </div>
         </div>
     );

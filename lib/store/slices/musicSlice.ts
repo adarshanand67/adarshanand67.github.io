@@ -42,4 +42,10 @@ export const createMusicSlice: StateCreator<AppState, [], [], MusicState> = (set
         set((state) => ({
             currentTrackIndex: (state.currentTrackIndex - 1 + tracks.length) % tracks.length,
         })),
+    setCurrentTrack: (index) => set({ currentTrackIndex: index, isPlaying: true }),
+    currentTime: 0,
+    duration: 0,
+    seekTime: null,
+    setProgress: (currentTime, duration) => set({ currentTime, duration }),
+    requestSeek: (time) => set({ seekTime: time }),
 });

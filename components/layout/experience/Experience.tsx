@@ -89,10 +89,11 @@ export function Experience({ items }: ExperienceProps) {
                                         {exp.highlights.map((h: string, i: number) => (
                                             <li
                                                 key={i}
-                                                className="flex gap-3 text-xs text-zinc-500 dark:text-zinc-500 leading-relaxed group/item"
+                                                className="relative flex gap-3 text-xs leading-relaxed group/item w-full cursor-default"
                                             >
-                                                <div className="shrink-0 mt-1.5 w-1.5 h-1.5 rounded-full bg-gray-300 dark:bg-gray-700 group-hover/item:bg-neutral-900 dark:group-hover/item:bg-white group-focus-within/item:bg-neutral-900 dark:group-focus-within/item:bg-white group-hover/item:scale-150 group-focus-within/item:scale-150 group-hover/item:rounded-sm group-focus-within/item:rounded-sm transition-all duration-300 origin-center" />
+                                                <div className="shrink-0 mt-1.5 w-1.5 h-1.5 rounded-full bg-gray-300 dark:bg-gray-700 group-hover/item:bg-neutral-900 dark:group-hover/item:bg-white group-hover/item:scale-150 group-hover/item:rounded-sm transition-all duration-300 origin-center" />
                                                 <span
+                                                    className="flex-1 text-zinc-500 dark:text-zinc-500 transition-colors duration-300 group-hover/item:text-zinc-900 dark:group-hover/item:text-zinc-200"
                                                     dangerouslySetInnerHTML={{
                                                         __html: linkifyTech(h),
                                                     }}
