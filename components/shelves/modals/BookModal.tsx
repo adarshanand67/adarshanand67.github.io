@@ -60,9 +60,9 @@ export function BookModal({ item, onClose }: BookModalProps) {
                     />
                 </button>
 
-                {/* Mobile: Single scrollable view with everything */}
-                <div className="md:hidden flex-1 overflow-y-auto">
-                    <div className="p-4 pt-10">
+                {/* Mobile/Small Screens: Single scrollable view with everything */}
+                <div className="md:hidden flex-1 overflow-y-auto custom-scrollbar bg-[#fafafa] dark:bg-[#09090b]">
+                    <div className="flex flex-col">
                         <BookSidebar item={item} />
                         <BookContent item={item} />
                     </div>

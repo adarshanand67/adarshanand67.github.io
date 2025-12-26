@@ -9,6 +9,7 @@ import { planningMovies } from "./anime/movies";
 
 /**
  * Consolidated array of all anime and movie data.
+ * Includes completed, planning, and movies for search functionality.
  * Used by the shelf components for rendering.
  */
-export const animeData = [...completedAnime];
+export const animeData = [...completedAnime, ...planningAnime, ...planningMovies];

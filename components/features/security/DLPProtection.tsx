@@ -222,8 +222,17 @@ export function DLPProtection() {
 
             const selection = window.getSelection();
             if (selection && selection.toString().length > 0) {
-                selection.removeAllRanges();
-                addNotification("Text selection is restricted.", <ShieldAlert size={16} />);
+                // Only clear selection if not in an editable field
+                const target = e.target as HTMLElement;
+                const isEditable =
+                    target.tagName === "INPUT" ||
+                    target.tagName === "TEXTAREA" ||
+                    target.isContentEditable;
+
+                if (!isEditable) {
+                    selection.removeAllRanges();
+                    addNotification("Text selection is restricted.", <ShieldAlert size={16} />);
+                }
             }
         };
 

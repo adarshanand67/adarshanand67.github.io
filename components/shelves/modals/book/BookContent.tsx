@@ -36,8 +36,8 @@ interface BookContentProps {
  */
 export function BookContent({ item }: BookContentProps) {
     return (
-        <div className="flex-1 overflow-y-auto custom-scrollbar">
-            <div className="p-8 md:p-10 space-y-8">
+        <div className="flex-1 md:overflow-y-auto custom-scrollbar">
+            <div className="p-6 md:p-10 space-y-6 md:space-y-8">
                 {/* Header */}
                 <div>
                     <h2 className="text-2xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 tracking-tight leading-tight">

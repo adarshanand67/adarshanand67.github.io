@@ -38,7 +38,7 @@ interface AnimeSidebarProps {
  */
 export function AnimeSidebar({ item }: AnimeSidebarProps) {
     return (
-        <div className="md:w-[350px] bg-foreground/[0.02] p-8 flex flex-col items-center justify-start border-r border-foreground/10 relative overflow-hidden shrink-0">
+        <div className="w-full md:w-[350px] bg-foreground/[0.02] p-6 md:p-8 flex flex-col items-center justify-start border-b md:border-b-0 md:border-r border-foreground/10 relative overflow-hidden shrink-0">
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-foreground/[0.02] pointer-events-none" />
 
             {item.image ? (
@@ -46,7 +46,7 @@ export function AnimeSidebar({ item }: AnimeSidebarProps) {
                     href={`https://www.youtube.com/results?search_query=${encodeURIComponent(item.title + " anime official trailer")}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="relative w-48 md:w-64 aspect-[2/3] shadow-2xl rounded-2xl overflow-hidden ring-1 ring-black/5 dark:ring-white/10 mb-8 transform hover:scale-[1.02] transition-transform duration-500 cursor-pointer group"
+                    className="relative w-40 md:w-64 aspect-[2/3] shadow-2xl rounded-2xl overflow-hidden ring-1 ring-black/5 dark:ring-white/10 mb-6 md:mb-8 transform hover:scale-[1.02] transition-transform duration-500 cursor-pointer group"
                 >
                     <Image
                         src={item.image}

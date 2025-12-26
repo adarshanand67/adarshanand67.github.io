@@ -10,11 +10,11 @@ interface BookSidebarProps {
 
 export function BookSidebar({ item }: BookSidebarProps) {
     return (
-        <div className="md:w-[350px] bg-foreground/[0.02] p-8 flex flex-col items-center justify-start border-r border-foreground/10 relative overflow-hidden shrink-0">
+        <div className="w-full md:w-[350px] bg-foreground/[0.02] p-6 md:p-8 flex flex-col items-center justify-start border-b md:border-b-0 md:border-r border-foreground/10 relative overflow-hidden shrink-0">
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-foreground/[0.02] pointer-events-none" />
 
             {item.image ? (
-                <div className="relative w-48 md:w-64 aspect-[2/3] shadow-2xl rounded-2xl overflow-hidden ring-1 ring-black/5 dark:ring-white/10 mb-8 transform hover:scale-[1.02] transition-transform duration-500">
+                <div className="relative w-40 md:w-64 aspect-[2/3] shadow-2xl rounded-2xl overflow-hidden ring-1 ring-black/5 dark:ring-white/10 mb-6 md:mb-8 transform hover:scale-[1.02] transition-transform duration-500">
                     <Image
                         src={item.image}
                         alt={item.title}
@@ -25,7 +25,7 @@ export function BookSidebar({ item }: BookSidebarProps) {
                 </div>
             ) : (
                 <div
-                    className={`relative w-48 md:w-64 aspect-[2/3] bg-gradient-to-br ${getBookGradient(item.title)} rounded-r-md rounded-l-sm flex flex-col p-6 mb-8 shadow-2xl ring-1 ring-black/5 dark:ring-white/10 transform hover:scale-[1.02] transition-transform duration-500`}
+                    className={`relative w-40 md:w-64 aspect-[2/3] bg-gradient-to-br ${getBookGradient(item.title)} rounded-r-md rounded-l-sm flex flex-col p-6 mb-6 md:mb-8 shadow-2xl ring-1 ring-black/5 dark:ring-white/10 transform hover:scale-[1.02] transition-transform duration-500`}
                 >
                     <div className="absolute top-1 left-0 w-4 h-[98%] -translate-x-3 bg-black/20 dark:bg-black/40 blur-[1px] rounded-l-sm" />
                     <div className="flex-1 border-2 border-white/20 p-4 flex flex-col items-center justify-center text-center">

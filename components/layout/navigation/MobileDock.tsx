@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, FileText, Tv, BookOpen, Search } from "lucide-react";
+import { Home, FileText, Tv, BookOpen, Music } from "lucide-react";
 import { routes } from "@/lib/constants";
+import { useStore } from "@/lib/store/useStore";
 import { motion } from "framer-motion";
 
 const navItems = [
@@ -22,13 +23,11 @@ const navItems = [
 export function MobileDock() {
     const pathname = usePathname();
 
-    const openCommandMenu = () => {
-        document.dispatchEvent(new Event("open-command-menu"));
-    };
+    const { toggleMusicPlayer, isPlaying } = useStore();
 
     return (
-        <div className="md:hidden fixed bottom-0 left-1/2 -translate-x-1/2 z-[100] w-full max-w-[420px] px-2 pb-2">
-            <div className="glass-apple dark:bg-black/80 backdrop-blur-2xl border border-white/20 dark:border-white/10 rounded-3xl shadow-2xl px-6 py-3 flex items-center justify-between">
+        <div className="md:hidden fixed bottom-0 left-1/2 -translate-x-1/2 z-[100] w-full max-w-[420px]">
+            <div className="glass-apple dark:bg-black/80 backdrop-blur-2xl border-t border-white/20 dark:border-white/10 rounded-t-[32px] shadow-2xl px-6 py-4 flex items-center justify-between">
                 {navItems.map((item) => {
                     const isActive = pathname === item.path;
                     return (
@@ -52,10 +51,10 @@ export function MobileDock() {
                     );
                 })}
                 <button
-                    onClick={openCommandMenu}
-                    className="flex flex-col items-center gap-1 text-black dark:text-gray-400 hover:text-black dark:hover:text-gray-200 transition-colors p-2"
+                    onClick={toggleMusicPlayer}
+                    className={`flex flex-col items-center gap-1 transition-all p-2 rounded-xl ${isPlaying ? "text-blue-500 animate-pulse" : "text-black dark:text-gray-400 hover:text-black dark:hover:text-gray-200"}`}
                 >
-                    <Search size={22} />
+                    <Music size={22} />
                 </button>
             </div>
         </div>

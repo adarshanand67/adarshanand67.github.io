@@ -78,39 +78,67 @@ export class AnimeCardStrategy implements ShelfItemStrategy<AnimeItem> {
     renderList(items: AnimeItem[]): ReactNode {
         if (items.length === 0) return null;
 
-        const series = items.filter(
+        const watched = items.filter((item) => item.status === WatchStatus.Completed);
+        const others = items.filter((item) => item.status !== WatchStatus.Completed);
+
+        const watchedSeries = watched.filter(
             (item) => item.type === AnimeType.Anime || item.type === AnimeType.WebSeries
         );
-        const movies = items.filter((item) => item.type === AnimeType.Movie);
+        const watchedMovies = watched.filter((item) => item.type === AnimeType.Movie);
 
         return (
             <div className="space-y-16">
-                {series.length > 0 && (
+                {watchedSeries.length > 0 && (
                     <div>
-                        <h2 className="text-2xl font-black mb-6 flex items-center gap-4 uppercase tracking-tighter">
+                        <h2 className="text-2xl font-black mb-6 flex items-center gap-4 uppercase tracking-tighter px-4">
                             <span className="text-foreground/20 text-3xl font-mono">/</span>
-                            Anime Series
+                            Watched Series
                             <span className="text-gray-400 text-sm font-normal">
-                                ({series.length})
+                                ({watchedSeries.length})
                             </span>
                         </h2>
-                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 px-4">
-                            {series.map((anime, index) => this.renderItem(anime, index))}
+                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 px-4">
+                            {watchedSeries.map((anime, index) => this.renderItem(anime, index))}
                         </div>
                     </div>
                 )}
 
-                {movies.length > 0 && (
+                {watchedMovies.length > 0 && (
                     <div>
-                        <h2 className="text-2xl font-black mb-6 flex items-center gap-4 uppercase tracking-tighter">
+                        <h2 className="text-2xl font-black mb-6 flex items-center gap-4 uppercase tracking-tighter px-4">
                             <span className="text-foreground/20 text-3xl font-mono">/</span>
-                            Anime Movies
+                            Watched Movies
                             <span className="text-gray-400 text-sm font-normal">
-                                ({movies.length})
+                                ({watchedMovies.length})
                             </span>
                         </h2>
-                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 px-4">
-                            {movies.map((anime, index) => this.renderItem(anime, index))}
+                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 px-4">
+                            {watchedMovies.map((anime, index) => this.renderItem(anime, index))}
+                        </div>
+                    </div>
+                )}
+
+                {others.length > 0 && (
+                    <div>
+                        <h2 className="text-2xl font-black mb-6 flex items-center gap-4 uppercase tracking-tighter px-4">
+                            <span className="text-foreground/20 text-3xl font-mono">/</span>
+                            All Other
+                            <span className="text-gray-400 text-sm font-normal">
+                                ({others.length})
+                            </span>
+                        </h2>
+
+                        {/* Mobile: Linear Horizontal Scroll | Desktop: Grid */}
+                        <div className="hidden md:grid md:grid-cols-4 gap-8 px-4">
+                            {others.map((anime, index) => this.renderItem(anime, index))}
+                        </div>
+
+                        <div className="md:hidden flex overflow-x-auto gap-4 px-4 pb-4 no-scrollbar">
+                            {others.map((anime, index) => (
+                                <div key={index} className="flex-shrink-0 w-[140px]">
+                                    {this.renderItem(anime, index)}
+                                </div>
+                            ))}
                         </div>
                     </div>
                 )}

@@ -25,12 +25,6 @@ export interface Profile {
         paragraphs: string[];
     };
 }
-export interface Project {
-    title: string;
-    description: string;
-    tech: string[];
-    link: string;
-}
 export interface Hobby {
     name: string;
     description: string;
@@ -68,21 +62,17 @@ export interface Blog {
 export enum AnimeType {
     Anime = "Anime",
     Movie = "Movie",
-    WebSeries = "Web Series",
 }
 export enum WatchStatus {
     Completed = "Completed",
     Planning = "Planning",
-    Watching = "Watching",
 }
 export enum ShelfType {
     Book = "book",
     Paper = "paper",
     Anime = "anime",
     Blog = "blog",
-    Project = "project",
     Hobby = "hobby",
-    Article = "article",
 }
 export interface AnimeItem {
     title: string;

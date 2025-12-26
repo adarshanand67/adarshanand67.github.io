@@ -28,8 +28,8 @@ interface AnimeContentProps {
  */
 export function AnimeContent({ item, onTagClick }: AnimeContentProps) {
     return (
-        <div className="flex-1 overflow-y-auto custom-scrollbar">
-            <div className="p-8 md:p-10 space-y-8">
+        <div className="flex-1 md:overflow-y-auto custom-scrollbar">
+            <div className="p-6 md:p-10 space-y-6 md:space-y-8">
                 {/* Header */}
                 <div>
                     <div className="flex flex-wrap gap-3 mb-4">

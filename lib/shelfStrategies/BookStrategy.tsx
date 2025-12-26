@@ -37,7 +37,7 @@ export class BookListStrategy implements ShelfItemStrategy<Book> {
 
                     <div
                         className={`
-             absolute inset-0 flex flex-col p-4 bg-gradient-to-br ${coverGradient}
+             absolute inset-0 flex flex-col p-3 md:p-4 bg-gradient-to-br ${coverGradient}
              border-r-2 border-white/10 rounded-r-md rounded-l-sm
            `}
                     >
@@ -67,7 +67,7 @@ export class BookListStrategy implements ShelfItemStrategy<Book> {
     renderList(items: Book[]): ReactNode {
         if (items.length === 0) return null;
         return (
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 px-4 py-8">
+            <div className="grid grid-cols-3 sm:grid-cols-4 gap-4 md:gap-8 px-4 py-8">
                 {items.map((book, index) => this.renderItem(book, index))}
             </div>
         );
