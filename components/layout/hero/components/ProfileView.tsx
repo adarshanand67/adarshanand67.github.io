@@ -103,7 +103,7 @@ export function ProfileView({ profile, viewMode, setViewMode }: ProfileViewProps
                         href={`https://${siteConfig.contact.linkedin}`}
                         icon={
                             <svg
-                                className="w-5 h-5 text-black dark:text-gray-400"
+                                className="w-5 h-5 text-black dark:text-white"
                                 fill="currentColor"
                                 viewBox="0 0 24 24"
                             >
@@ -118,7 +118,7 @@ export function ProfileView({ profile, viewMode, setViewMode }: ProfileViewProps
                         href={`mailto:${siteConfig.contact.email}`}
                         icon={
                             <svg
-                                className="w-5 h-5 text-black dark:text-gray-400"
+                                className="w-5 h-5 text-black dark:text-white"
                                 fill="none"
                                 stroke="currentColor"
                                 viewBox="0 0 24 24"
@@ -139,7 +139,7 @@ export function ProfileView({ profile, viewMode, setViewMode }: ProfileViewProps
                         href={`https://${siteConfig.contact.github}`}
                         icon={
                             <svg
-                                className="w-5 h-5 text-black dark:text-gray-400"
+                                className="w-5 h-5 text-black dark:text-white"
                                 fill="currentColor"
                                 viewBox="0 0 24 24"
                             >

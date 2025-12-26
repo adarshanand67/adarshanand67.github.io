@@ -38,10 +38,10 @@ export function SocialButton({ label, name, icon, href, onClick, index }: Social
                     {icon}
                 </div>
                 <div className="flex-1 text-left">
-                    <p className="text-[10px] font-black text-black dark:text-gray-400 uppercase tracking-widest mb-0.5 group-hover:text-foreground/60 transition-colors">
+                    <p className="text-[10px] font-black text-black dark:text-gray-200 uppercase tracking-widest mb-0.5 group-hover:text-foreground/60 transition-colors">
                         {label}
                     </p>
-                    <h3 className="text-sm font-bold text-black dark:text-gray-400 group-hover:text-foreground transition-colors truncate max-w-[120px]">
+                    <h3 className="text-sm font-bold text-black dark:text-white group-hover:text-foreground transition-colors truncate max-w-[120px]">
                         {name}
                     </h3>
                 </div>
