@@ -45,9 +45,9 @@ export class HobbyListStrategy implements ShelfItemStrategy<Hobby> {
                 id={`shelf-item-${hobby.name}`}
                 key={index}
                 onClick={() => useStore.getState().setHobbySelectedItem(hobby)}
-                className="group p-5 glass rounded-2xl border border-gray-100 dark:border-white/5 hover:border-foreground/30 transition-all duration-500 cursor-pointer overflow-hidden relative"
+                className="group p-5 glass rounded-2xl border border-gray-100 dark:border-white/5 hover:border-foreground/30 transition-all duration-500 cursor-pointer overflow-hidden relative flex flex-col items-center text-center"
             >
-                <div className="relative z-10">
+                <div className="relative z-10 flex flex-col items-center">
                     <div className="mb-3 transform group-hover:scale-110 group-hover:-rotate-12 transition-transform duration-500 w-fit">
                         {this.getIcon(hobby.icon)}
                     </div>
@@ -64,7 +64,7 @@ export class HobbyListStrategy implements ShelfItemStrategy<Hobby> {
     renderList(items: Hobby[]): ReactNode {
         if (items.length === 0) return null;
         return (
-            <div className="grid grid-cols-2 gap-4 py-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 py-4 max-w-4xl mx-auto">
                 {items.map((hobby, index) => this.renderItem(hobby, index))}
             </div>
         );

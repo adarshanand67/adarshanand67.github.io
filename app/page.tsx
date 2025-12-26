@@ -31,8 +31,8 @@ export default async function Home() {
                     {/* Experience Section */}
                     <ErrorBoundary>
                         <div className="group relative h-full">
-                            <div className="absolute -inset-1 bg-gradient-to-r from-green-500/20 to-emerald-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition duration-500"></div>
-                            <div className="relative h-full bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm rounded-xl p-4 border border-gray-200 dark:border-gray-800 hover:border-green-500/50 transition-colors duration-300">
+                            <div className="absolute -inset-1 bg-gradient-to-r from-foreground/5 to-foreground/5 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                            <div className="relative h-full bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm rounded-xl p-4 border border-gray-200 dark:border-gray-800 hover:border-foreground/20 transition-colors duration-300">
                                 <Experience items={experiences} />
                             </div>
                         </div>
@@ -41,8 +41,8 @@ export default async function Home() {
                     {/* Tech Stack Section */}
                     <ErrorBoundary>
                         <div className="group relative h-full">
-                            <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500/20 to-green-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition duration-500"></div>
-                            <div className="relative h-full bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm rounded-xl p-4 border border-gray-200 dark:border-gray-800 hover:border-green-500/50 transition-colors duration-300">
+                            <div className="absolute -inset-1 bg-gradient-to-r from-foreground/5 to-foreground/5 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                            <div className="relative h-full bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm rounded-xl p-4 border border-gray-200 dark:border-gray-800 hover:border-foreground/20 transition-colors duration-300">
                                 <TechStack />
                             </div>
                         </div>
