@@ -7,13 +7,15 @@
 import Image from "next/image";
 import { BookOpen, Star, Quote } from "lucide-react";
 
+import { Book } from "@/types/definitions";
+
 /**
  * Props for BookHeader component.
  * @interface BookHeaderProps
- * @property {any} item - Book data object with cover image, title, author, and badges
+ * @property {Book} item - Book data object with cover image, title, author, and badges
  */
 interface BookHeaderProps {
-    item: any;
+    item: Book;
 }
 
 /**
