@@ -78,7 +78,7 @@ export function Experience({ items }: ExperienceProps) {
                                 </div>
                                 {exp.description && (
                                     <p
-                                        className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed mb-4 font-medium border-l-2 border-gray-300 dark:border-zinc-800 pl-4 italic"
+                                        className="text-xs text-zinc-500 dark:text-zinc-500 leading-relaxed mb-4 border-l-2 border-gray-200 dark:border-zinc-800 pl-4 italic"
                                         dangerouslySetInnerHTML={{
                                             __html: linkifyTech(exp.description),
                                         }}
@@ -89,7 +89,7 @@ export function Experience({ items }: ExperienceProps) {
                                         {exp.highlights.map((h: string, i: number) => (
                                             <li
                                                 key={i}
-                                                className="flex gap-3 text-xs text-gray-700 dark:text-gray-300 leading-relaxed font-medium group/item"
+                                                className="flex gap-3 text-xs text-zinc-500 dark:text-zinc-500 leading-relaxed group/item"
                                             >
                                                 <div className="shrink-0 mt-1.5 w-1.5 h-1.5 rounded-full bg-gray-300 dark:bg-gray-700 group-hover/item:bg-neutral-900 dark:group-hover/item:bg-white group-focus-within/item:bg-neutral-900 dark:group-focus-within/item:bg-white group-hover/item:scale-150 group-focus-within/item:scale-150 group-hover/item:rounded-sm group-focus-within/item:rounded-sm transition-all duration-300 origin-center" />
                                                 <span
