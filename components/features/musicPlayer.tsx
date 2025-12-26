@@ -99,13 +99,13 @@ export function MusicPlayer() {
             />
 
             <div
-                className={`fixed bottom-24 right-8 z-[100] transition-all duration-700 transform ${showMusicPlayer ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-8 scale-95 pointer-events-none"}`}
+                className={`fixed bottom-24 right-8 z-[100] transition-all duration-500 ease-out origin-bottom-right transform ${showMusicPlayer ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-4 scale-90 pointer-events-none"}`}
             >
-                <div className="w-[340px] backdrop-blur-[40px] bg-white/70 dark:bg-black/40 border border-white/40 dark:border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.1)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.5)] rounded-[40px] p-7 flex flex-col gap-7 overflow-hidden relative group">
+                <div className="w-[400px] backdrop-blur-[50px] bg-background/80 border border-foreground/10 shadow-[0_30px_60px_rgba(0,0,0,0.2)] dark:shadow-[0_30px_60px_rgba(0,0,0,0.8)] rounded-[3rem] p-10 flex flex-col gap-8 overflow-hidden relative group">
                     {/* Subtle aesthetic glow - very faint */}
                     <div className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent pointer-events-none rounded-[40px]" />
 
-                    <div className="relative z-10 flex flex-col gap-7">
+                    <div className="relative z-10 flex flex-col gap-8">
                         <TrackInfo index={currentTrackIndex} onClose={toggleMusicPlayer} />
 
                         <div className="flex flex-col gap-6">

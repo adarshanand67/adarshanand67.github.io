@@ -11,9 +11,9 @@
 @theme {
     --color-background: var(--background);
     --color-foreground: var(--foreground);
-    --color-primary: #22c55e;
-    --color-primary-dark: #22c55e;
-    --color-accent: #22c55e;
+    --color-primary: var(--foreground);
+    --color-primary-dark: var(--foreground);
+    --color-accent: var(--foreground);
     --font-sans: var(--font-assistant);
     --font-serif: var(--font-mono);
 }

@@ -22,8 +22,10 @@ export class ArticleListStrategy implements ShelfItemStrategy<Blog | Paper> {
             <div className="space-y-24 py-8">
                 {papers.length > 0 && (
                     <div>
-                        <h2 className="text-3xl font-bold mb-10 flex items-center gap-4">
-                            <span className="text-green-500/20 text-4xl font-mono">01</span>
+                        <h2 className="text-3xl font-bold mb-10 flex items-center gap-4 text-foreground/90">
+                            <span className="text-foreground/10 text-4xl font-mono tracking-tighter">
+                                01
+                            </span>
                             Research Papers
                         </h2>
                         <div className="space-y-4">
@@ -33,8 +35,8 @@ export class ArticleListStrategy implements ShelfItemStrategy<Blog | Paper> {
                 )}
                 {blogs.length > 0 && (
                     <div>
-                        <h2 className="text-3xl font-bold mb-10 flex items-center gap-4">
-                            <span className="text-green-500/20 text-4xl font-mono">
+                        <h2 className="text-3xl font-bold mb-10 flex items-center gap-4 text-foreground/90">
+                            <span className="text-foreground/10 text-4xl font-mono tracking-tighter">
                                 {papers.length > 0 ? "02" : "01"}
                             </span>
                             Blogs & Articles

@@ -43,37 +43,37 @@ export function Controls({
         <div className="flex items-center justify-between px-2">
             <button
                 onClick={onToggleShuffle}
-                className={`p-2 transition-all ${isShuffle ? "text-[#FA243C]" : "text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300"}`}
+                className={`p-2 transition-all ${isShuffle ? "text-foreground" : "text-foreground/30 hover:text-foreground"}`}
                 title="Shuffle"
             >
-                <Shuffle size={18} strokeWidth={2} />
+                <Shuffle size={20} strokeWidth={2.5} />
             </button>
 
             <div className="flex items-center gap-8">
                 <button
                     onClick={onPrev}
-                    className="text-gray-900 dark:text-white hover:opacity-70 transition-opacity active:scale-90"
+                    className="text-foreground hover:opacity-100 opacity-60 transition-opacity active:scale-90"
                     title="Previous"
                 >
-                    <SkipBack size={28} fill="currentColor" strokeWidth={0} />
+                    <SkipBack size={32} fill="currentColor" strokeWidth={0} />
                 </button>
 
                 <button
                     onClick={onTogglePlay}
-                    className="w-16 h-16 flex items-center justify-center hover:scale-105 active:scale-95 transition-all group"
+                    className="w-20 h-20 flex items-center justify-center hover:scale-105 active:scale-95 transition-all group bg-foreground rounded-full shadow-2xl"
                     title={isPlaying ? "Pause" : "Play"}
                 >
                     {isPlaying ? (
                         <Pause
                             size={44}
-                            className="text-gray-900 dark:text-white"
+                            className="text-background"
                             fill="currentColor"
                             strokeWidth={0}
                         />
                     ) : (
                         <Play
                             size={44}
-                            className="text-gray-900 dark:text-white"
+                            className="text-background ml-1"
                             fill="currentColor"
                             strokeWidth={0}
                         />
@@ -82,21 +82,21 @@ export function Controls({
 
                 <button
                     onClick={onNext}
-                    className="text-gray-900 dark:text-white hover:opacity-70 transition-opacity active:scale-90"
+                    className="text-foreground hover:opacity-100 opacity-60 transition-opacity active:scale-90"
                     title="Next"
                 >
-                    <SkipForward size={28} fill="currentColor" strokeWidth={0} />
+                    <SkipForward size={32} fill="currentColor" strokeWidth={0} />
                 </button>
             </div>
 
             <button
                 onClick={onToggleRepeat}
-                className={`p-2 transition-all relative ${isRepeat ? "text-[#FA243C]" : "text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300"}`}
+                className={`p-2 transition-all relative ${isRepeat ? "text-foreground" : "text-foreground/30 hover:text-foreground"}`}
                 title="Repeat"
             >
-                <Repeat size={18} strokeWidth={2} />
+                <Repeat size={20} strokeWidth={2.5} />
                 {isRepeat && (
-                    <span className="absolute top-1.5 right-1 text-[8px] font-bold">1</span>
+                    <span className="absolute top-1 right-0 text-[10px] font-black">1</span>
                 )}
             </button>
         </div>

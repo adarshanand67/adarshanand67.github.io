@@ -43,10 +43,10 @@ export function ContactSection() {
                     <Link
                         href={`https://${siteConfig.contact.linkedin}`}
                         target="_blank"
-                        className="group relative overflow-hidden glass rounded-lg p-4 transition-all duration-300 hover:shadow-lg hover:shadow-green-500/20 hover:-translate-y-1"
+                        className="group relative overflow-hidden glass rounded-lg p-4 transition-all duration-300 hover:shadow-lg hover:shadow-foreground/5 hover:-translate-y-1"
                     >
                         <div className="flex items-center gap-3">
-                            <div className="flex-shrink-0 w-10 h-10 bg-green-500 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
+                            <div className="flex-shrink-0 w-10 h-10 bg-foreground rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
                                 <svg
                                     className="w-5 h-5 text-white"
                                     fill="currentColor"
@@ -56,7 +56,7 @@ export function ContactSection() {
                                 </svg>
                             </div>
                             <div className="flex-1 min-w-0">
-                                <div className="text-xs text-green-600 dark:text-green-400 font-semibold mb-0.5">
+                                <div className="text-xs text-foreground/40 font-black uppercase tracking-widest mb-0.5">
                                     LinkedIn
                                 </div>
                                 <div className="text-sm text-gray-700 dark:text-gray-300 font-medium truncate">
@@ -65,24 +65,24 @@ export function ContactSection() {
                             </div>
                             <ExternalLink
                                 size={16}
-                                className="text-green-500 group-hover:translate-x-1 transition-transform"
+                                className="text-foreground/20 group-hover:text-foreground group-hover:translate-x-1 transition-all"
                             />
                         </div>
                     </Link>
                     <div
                         onClick={handleCopyEmail}
-                        className="group relative overflow-hidden glass rounded-lg p-4 transition-all duration-300 hover:shadow-lg hover:shadow-green-500/20 hover:-translate-y-1 cursor-pointer"
+                        className="group relative overflow-hidden glass rounded-lg p-4 transition-all duration-300 hover:shadow-lg hover:shadow-foreground/5 hover:-translate-y-1 cursor-pointer"
                     >
                         <div className="flex items-center gap-3">
-                            <div className="flex-shrink-0 w-10 h-10 bg-green-500 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
+                            <div className="flex-shrink-0 w-10 h-10 bg-foreground rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
                                 {copied ? (
-                                    <Check className="w-5 h-5 text-white" />
+                                    <Check className="w-5 h-5 text-background" />
                                 ) : (
-                                    <Copy className="w-5 h-5 text-white" />
+                                    <Copy className="w-5 h-5 text-background" />
                                 )}
                             </div>
                             <div className="flex-1 min-w-0">
-                                <div className="text-xs text-green-600 dark:text-green-400 font-semibold mb-0.5">
+                                <div className="text-xs text-foreground/40 font-black uppercase tracking-widest mb-0.5">
                                     {copied ? "Copied!" : "Email"}
                                 </div>
                                 <div className="text-sm text-gray-700 dark:text-gray-300 font-medium truncate">
@@ -91,19 +91,19 @@ export function ContactSection() {
                             </div>
                             <ExternalLink
                                 size={16}
-                                className="text-green-500 group-hover:translate-x-1 transition-transform"
+                                className="text-foreground/20 group-hover:text-foreground group-hover:translate-x-1 transition-all"
                             />
                         </div>
                     </div>
                     <Link
                         href={`https://${siteConfig.contact.github}`}
                         target="_blank"
-                        className="group relative overflow-hidden glass rounded-lg p-4 transition-all duration-300 hover:shadow-lg hover:shadow-green-500/20 hover:-translate-y-1"
+                        className="group relative overflow-hidden glass rounded-lg p-4 transition-all duration-300 hover:shadow-lg hover:shadow-foreground/5 hover:-translate-y-1"
                     >
                         <div className="flex items-center gap-3">
-                            <div className="flex-shrink-0 w-10 h-10 bg-green-500 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
+                            <div className="flex-shrink-0 w-10 h-10 bg-foreground rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
                                 <svg
-                                    className="w-5 h-5 text-white"
+                                    className="w-5 h-5 text-background"
                                     fill="currentColor"
                                     viewBox="0 0 24 24"
                                 >
@@ -111,7 +111,7 @@ export function ContactSection() {
                                 </svg>
                             </div>
                             <div className="flex-1 min-w-0">
-                                <div className="text-xs text-green-600 dark:text-green-400 font-semibold mb-0.5">
+                                <div className="text-xs text-foreground/40 font-black uppercase tracking-widest mb-0.5">
                                     GitHub
                                 </div>
                                 <div className="text-sm text-gray-700 dark:text-gray-300 font-medium truncate">
@@ -120,7 +120,7 @@ export function ContactSection() {
                             </div>
                             <ExternalLink
                                 size={16}
-                                className="text-green-500 group-hover:translate-x-1 transition-transform"
+                                className="text-foreground/20 group-hover:text-foreground group-hover:translate-x-1 transition-all"
                             />
                         </div>
                     </Link>

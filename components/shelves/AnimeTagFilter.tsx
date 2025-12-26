@@ -67,7 +67,7 @@ export function AnimeTagFilter({
                 <div className="mb-4 flex justify-end">
                     <button
                         onClick={onClear}
-                        className="inline-flex items-center gap-2 px-4 py-2 bg-red-500/10 hover:bg-red-500/20 text-red-600 dark:text-red-400 rounded-full text-xs font-bold uppercase tracking-wider transition-all border border-red-500/20 hover:border-red-500/40"
+                        className="inline-flex items-center gap-2 px-4 py-2 bg-foreground/5 hover:bg-foreground/10 text-foreground/60 rounded-full text-xs font-bold uppercase tracking-wider transition-all border border-foreground/10 hover:border-foreground/20"
                     >
                         <X size={14} /> Clear Filters
                     </button>
@@ -79,7 +79,7 @@ export function AnimeTagFilter({
             <div className="flex flex-wrap gap-2">
                 <button
                     onClick={() => onTagSelect(null)}
-                    className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all ${!selectedTag ? "bg-green-500 text-white" : "bg-gray-100 dark:bg-white/5 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-white/10"}`}
+                    className={`px-5 py-2.5 rounded-full text-[11px] font-black uppercase tracking-widest transition-all border-2 ${!selectedTag ? "bg-foreground text-background border-foreground shadow-[0_0_20px_rgba(255,255,255,0.1)] dark:shadow-[0_0_20px_rgba(255,255,255,0.05)]" : "bg-transparent text-foreground/40 border-foreground/10 hover:border-foreground/40 hover:text-foreground hover:scale-105"}`}
                 >
                     All
                 </button>
@@ -87,7 +87,7 @@ export function AnimeTagFilter({
                     <button
                         key={tag}
                         onClick={() => onTagSelect(selectedTag === tag ? null : tag)}
-                        className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all ${selectedTag === tag ? "bg-green-500 text-white" : "bg-gray-100 dark:bg-white/5 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-white/10"}`}
+                        className={`px-5 py-2.5 rounded-full text-[11px] font-black uppercase tracking-widest transition-all border-2 ${selectedTag === tag ? "bg-foreground text-background border-foreground shadow-[0_0_20px_rgba(255,255,255,0.1)] dark:shadow-[0_0_20px_rgba(255,255,255,0.05)]" : "bg-transparent text-foreground/40 border-foreground/10 hover:border-foreground/40 hover:text-foreground hover:scale-105"}`}
                     >
                         {tag}
                     </button>

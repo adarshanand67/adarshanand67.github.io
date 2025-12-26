@@ -34,7 +34,7 @@ export function TechStack() {
                             onClick={() => setViewMode("list")}
                             className={`px-2 py-0.5 rounded-md text-[10px] font-medium transition-all ${
                                 viewMode === "list"
-                                    ? "bg-white dark:bg-black text-blue-600 dark:text-blue-400 shadow-sm"
+                                    ? "bg-white dark:bg-black text-foreground shadow-sm"
                                     : "text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
                             }`}
                         >
@@ -44,7 +44,7 @@ export function TechStack() {
                             onClick={() => setViewMode("graph")}
                             className={`px-2 py-0.5 rounded-md text-[10px] font-medium transition-all ${
                                 viewMode === "graph"
-                                    ? "bg-white dark:bg-black text-blue-600 dark:text-blue-400 shadow-sm"
+                                    ? "bg-white dark:bg-black text-foreground shadow-sm"
                                     : "text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
                             }`}
                         >
@@ -64,8 +64,8 @@ export function TechStack() {
                                 className="group hover:border-blue-500/30 transition-all duration-300"
                             >
                                 <div className="p-3">
-                                    <h3 className="text-[10px] font-bold text-gray-500 mb-2 uppercase tracking-widest flex items-center gap-2">
-                                        <span className="w-1.5 h-1.5 rounded-full bg-blue-500 group-hover:animate-pulse"></span>
+                                    <h3 className="text-[10px] font-bold text-gray-400 mb-2 uppercase tracking-widest flex items-center gap-2">
+                                        <span className="w-1.5 h-1.5 rounded-full bg-slate-400 group-hover:bg-slate-600 transition-colors"></span>
                                         {category}
                                         <span className="text-[9px] text-gray-400 ml-auto font-mono opacity-0 group-hover/spotlight:opacity-100 transition-opacity">
                                             {skills.length} items
@@ -86,7 +86,7 @@ export function TechStack() {
                                                     key={skill}
                                                     href={url}
                                                     target="_blank"
-                                                    className="flex items-center gap-2 pl-2 pr-3 py-1.5 bg-gray-50/50 dark:bg-gray-800/30 border border-gray-200 dark:border-gray-700 rounded-full text-xs font-medium text-gray-700 dark:text-gray-300 hover:bg-white dark:hover:bg-gray-800 hover:text-blue-600 dark:hover:text-blue-400 hover:border-blue-500/50 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
+                                                    className="flex items-center gap-2 pl-2 pr-3 py-1.5 bg-gray-50/50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-full text-xs font-medium text-foreground/70 hover:bg-white dark:hover:bg-white/10 hover:text-foreground hover:border-foreground/30 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200"
                                                 >
                                                     <div className="relative w-4 h-4 rounded-full overflow-hidden bg-white dark:bg-gray-900 p-0.5 shrink-0">
                                                         <Image

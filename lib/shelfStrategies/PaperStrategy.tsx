@@ -12,12 +12,12 @@ export class PaperListStrategy implements ShelfItemStrategy<Paper> {
             <div
                 id={`shelf-item-${paper.title}`}
                 key={index}
-                className="border-l-2 border-gray-300 dark:border-gray-700 pl-4 hover:border-green-500 transition-colors"
+                className="border-l-2 border-foreground/10 pl-4 hover:border-foreground/30 transition-colors"
             >
                 <Link
                     href={paper.url}
                     target="_blank"
-                    className="group/link inline-flex items-center gap-2 text-green-500 font-bold hover:underline"
+                    className="group/link inline-flex items-center gap-2 text-foreground/80 hover:text-foreground font-bold hover:underline"
                 >
                     <span>{paper.title}</span>
                     <ExternalLink

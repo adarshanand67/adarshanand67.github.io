@@ -37,7 +37,7 @@ interface BookContentProps {
 export function BookContent({ item }: BookContentProps) {
     return (
         <div className="flex-1 overflow-y-auto custom-scrollbar">
-            <div className="p-8 md:p-12 space-y-8">
+            <div className="p-8 md:p-10 space-y-8">
                 {/* Header */}
                 <div>
                     <h2 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4 tracking-tight leading-tight">
@@ -51,8 +51,8 @@ export function BookContent({ item }: BookContentProps) {
                     {item.description && (
                         <div className="relative">
                             <Quote
-                                size={24}
-                                className="absolute -left-2 -top-2 text-green-500/30"
+                                size={22}
+                                className="absolute -left-2 -top-2 text-foreground/10"
                             />
                             <p className="text-base md:text-lg text-gray-700 dark:text-gray-300 leading-relaxed italic pl-6">
                                 {item.description}
@@ -66,10 +66,10 @@ export function BookContent({ item }: BookContentProps) {
 
                 {/* Key Takeaways */}
                 {item.keyTakeaways && item.keyTakeaways.length > 0 && (
-                    <div className="bg-gray-50 dark:bg-white/5 rounded-2xl p-6 md:p-8 border border-gray-100 dark:border-white/5">
+                    <div className="bg-foreground/[0.02] rounded-3xl p-8 border border-foreground/10">
                         <div className="flex items-center gap-3 mb-6">
-                            <div className="p-2 bg-green-500/10 rounded-lg">
-                                <BookOpen size={18} className="text-green-500" />
+                            <div className="p-2 bg-foreground/5 rounded-lg border border-foreground/10">
+                                <BookOpen size={18} className="text-foreground/60" />
                             </div>
                             <h3 className="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-wider">
                                 Key Takeaways
@@ -79,9 +79,9 @@ export function BookContent({ item }: BookContentProps) {
                             {item.keyTakeaways.map((takeaway: string, idx: number) => (
                                 <li
                                     key={idx}
-                                    className="group flex items-start gap-4 text-base md:text-lg text-gray-700 dark:text-gray-300 leading-relaxed font-normal p-3 rounded-xl transition-all hover:bg-green-500/5"
+                                    className="group flex items-start gap-4 text-base md:text-lg text-foreground/80 leading-relaxed font-normal p-3 rounded-xl transition-all hover:bg-foreground/5"
                                 >
-                                    <span className="mt-2.5 w-2 h-2 rounded-full bg-gray-400 group-hover:bg-green-500 shrink-0 transition-colors" />
+                                    <span className="mt-2.5 w-2 h-2 rounded-full bg-foreground/20 group-hover:bg-foreground/50 shrink-0 transition-colors" />
                                     <span>{takeaway}</span>
                                 </li>
                             ))}

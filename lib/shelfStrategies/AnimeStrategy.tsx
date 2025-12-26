@@ -31,17 +31,17 @@ export class AnimeCardStrategy implements ShelfItemStrategy<AnimeItem> {
                     )}
 
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <div className="text-white text-xs font-bold uppercase tracking-wider bg-green-500 px-4 py-2 rounded-full shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                        <div className="text-background text-xs font-bold uppercase tracking-wider bg-foreground px-4 py-2 rounded-full shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
                             View Details
                         </div>
                     </div>
                 </div>
 
-                <div className="px-1">
-                    <h3 className="text-gray-900 dark:text-white font-bold text-sm leading-tight group-hover:text-green-500 transition-colors line-clamp-2 mb-1.5 flex items-center gap-1.5">
+                <div className="px-1 text-center">
+                    <h3 className="text-foreground font-black text-sm leading-tight group-hover:text-foreground transition-colors line-clamp-2 mb-1.5 flex items-center justify-center gap-1.5 uppercase tracking-tighter">
                         {anime.title}
                         {anime.status === WatchStatus.Completed && (
-                            <Check size={12} className="text-green-500 flex-shrink-0" />
+                            <Check size={12} className="text-foreground flex-shrink-0" />
                         )}
                         {anime.recommended && (
                             <Star
@@ -56,7 +56,7 @@ export class AnimeCardStrategy implements ShelfItemStrategy<AnimeItem> {
                             {anime.seasons}
                         </p>
                     )}
-                    <div className="flex flex-wrap gap-1.5 mt-auto">
+                    <div className="flex flex-wrap justify-center gap-1.5 mt-auto">
                         {anime.tags?.slice(0, 3).map((tag, i) => (
                             <button
                                 key={i}
@@ -64,7 +64,7 @@ export class AnimeCardStrategy implements ShelfItemStrategy<AnimeItem> {
                                     e.stopPropagation();
                                     useStore.getState().setAnimeSelectedTag(tag);
                                 }}
-                                className="text-[9px] font-bold text-gray-500 dark:text-gray-400 bg-gray-100/50 dark:bg-white/5 px-2 py-1 rounded-full border border-gray-200 dark:border-white/10 hover:bg-green-500 hover:text-white hover:border-green-500 transition-all cursor-pointer"
+                                className="text-[9px] font-black uppercase tracking-widest text-foreground/40 bg-foreground/5 px-2 py-1 rounded-full border border-foreground/10 hover:bg-foreground hover:text-background hover:border-foreground transition-all cursor-pointer"
                             >
                                 {tag}
                             </button>
@@ -87,8 +87,8 @@ export class AnimeCardStrategy implements ShelfItemStrategy<AnimeItem> {
             <div className="space-y-16">
                 {series.length > 0 && (
                     <div>
-                        <h2 className="text-2xl font-bold mb-6 flex items-center gap-4">
-                            <span className="text-green-500/20 text-3xl font-mono">/</span>
+                        <h2 className="text-2xl font-black mb-6 flex items-center gap-4 uppercase tracking-tighter">
+                            <span className="text-foreground/20 text-3xl font-mono">/</span>
                             Anime Series
                             <span className="text-gray-400 text-sm font-normal">
                                 ({series.length})
@@ -102,8 +102,8 @@ export class AnimeCardStrategy implements ShelfItemStrategy<AnimeItem> {
 
                 {movies.length > 0 && (
                     <div>
-                        <h2 className="text-2xl font-bold mb-6 flex items-center gap-4">
-                            <span className="text-green-500/20 text-3xl font-mono">/</span>
+                        <h2 className="text-2xl font-black mb-6 flex items-center gap-4 uppercase tracking-tighter">
+                            <span className="text-foreground/20 text-3xl font-mono">/</span>
                             Anime Movies
                             <span className="text-gray-400 text-sm font-normal">
                                 ({movies.length})
@@ -119,12 +119,12 @@ export class AnimeCardStrategy implements ShelfItemStrategy<AnimeItem> {
     }
 
     filter(items: AnimeItem[], query: string, selectedTag?: string | null): AnimeItem[] {
-        let filtered = items.filter((item) => item.status === WatchStatus.Completed);
+        let filtered = [...items];
 
         if (selectedTag === "Recommended") {
             filtered = filtered.filter((item) => item.recommended);
         } else if (selectedTag) {
-            filtered = filtered.filter((item) => item.tags?.includes(selectedTag));
+            filtered = filtered.filter((item) => item.tags?.some((tag) => tag === selectedTag));
         }
 
         if (!query) return filtered;

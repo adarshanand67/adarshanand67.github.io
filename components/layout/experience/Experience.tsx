@@ -40,7 +40,7 @@ export function Experience({ items }: ExperienceProps) {
                     {items.map((exp, index) => (
                         <SpotlightCard
                             key={index}
-                            className="hover:shadow-2xl hover:shadow-green-500/5 transition-all duration-500 hover:border-gray-500/20 group"
+                            className="hover:shadow-2xl hover:shadow-foreground/[0.02] transition-all duration-500 hover:border-foreground/10 group"
                         >
                             <div className="p-4 md:p-6">
                                 <div className="flex flex-col md:flex-row md:items-start gap-4 mb-4">
@@ -88,7 +88,7 @@ export function Experience({ items }: ExperienceProps) {
                                                 key={i}
                                                 className="flex gap-3 text-xs text-gray-700 dark:text-gray-300 leading-relaxed font-medium group/item"
                                                 dangerouslySetInnerHTML={{
-                                                    __html: `<div class="shrink-0 mt-1.5 w-1 h-1 rounded-full bg-gray-400 dark:bg-zinc-600 group-hover/item:bg-green-500 transition-colors"></div><span>${linkifyTech(h)}</span>`,
+                                                    __html: `<div class="shrink-0 mt-1.5 w-1 h-1 rounded-full bg-foreground/20 dark:bg-foreground/10 group-hover/item:bg-foreground transition-colors"></div><span>${linkifyTech(h)}</span>`,
                                                 }}
                                             />
                                         ))}

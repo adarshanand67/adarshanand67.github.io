@@ -77,7 +77,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-    themeColor: "#22c55e",
+    themeColor: "#000000",
 };
 
 export default function RootLayout({
@@ -89,7 +89,7 @@ export default function RootLayout({
         <html lang="en" suppressHydrationWarning>
             <head>
                 <link rel="manifest" href="/manifest.json" />
-                <meta name="theme-color" content="#22c55e" />
+                <meta name="theme-color" content="#000000" />
             </head>
             <body
                 className={`${assistant.variable} ${jetbrains.variable} antialiased`}

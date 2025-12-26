@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { routes } from "@/lib/constants";
+import { FileText, Book, MonitorPlay, Palette } from "lucide-react";
 
 /**
  * Props for NavLinks component.
@@ -23,35 +24,34 @@ export function NavLinks({ className, onItemClick }: NavLinksProps) {
     const pathname = usePathname();
 
     const links = [
-        { href: routes.articleShelf, label: "Articles" },
-        { href: routes.bookShelf, label: "Books" },
-        { href: routes.animeShelf, label: "Anime" },
-        { href: routes.hobbyShelf, label: "Hobby" },
+        { href: routes.articleShelf, label: "Articles", icon: FileText },
+        { href: routes.bookShelf, label: "Books", icon: Book },
+        { href: routes.animeShelf, label: "Anime", icon: MonitorPlay },
+        { href: routes.hobbyShelf, label: "Hobby", icon: Palette },
     ];
 
     return (
-        <div className={className}>
+        <div className={`flex items-center gap-1 md:gap-2 ${className || ""}`}>
             {links.map((link) => {
                 const isActive = pathname === link.href;
                 return (
                     <Link
                         key={link.href}
                         href={link.href}
-                        className={`
-                            relative px-4 py-2 rounded-xl font-medium text-sm
-                            transition-all duration-300 group
-                            ${
-                                isActive
-                                    ? "text-blue-600 dark:text-blue-400 bg-blue-500/10"
-                                    : "text-foreground/70 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-500/5"
-                            }
-                        `}
+                        className={`group relative flex items-center gap-2 px-4 py-2 rounded-xl transition-all duration-300 ${
+                            isActive
+                                ? "bg-foreground text-background shadow-lg shadow-foreground/10"
+                                : "text-foreground/40 hover:text-foreground hover:bg-foreground/5"
+                        }`}
                         onClick={onItemClick}
                     >
-                        {link.label}
-                        {isActive && (
-                            <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-blue-500 animate-pulse" />
-                        )}
+                        <link.icon
+                            size={18}
+                            className="transition-transform duration-300 group-hover:scale-110"
+                        />
+                        <span className="text-[11px] font-black uppercase tracking-widest whitespace-nowrap">
+                            {link.label}
+                        </span>
                     </Link>
                 );
             })}

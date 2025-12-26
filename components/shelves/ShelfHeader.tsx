@@ -89,7 +89,7 @@ export function ShelfHeader({
             </div>
             <div className="relative group">
                 <Search
-                    className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-green-500 transition-colors"
+                    className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-foreground transition-colors"
                     size={20}
                 />
                 <input
@@ -97,7 +97,7 @@ export function ShelfHeader({
                     value={searchValue}
                     onChange={(e) => onSearchChange(e.target.value)}
                     placeholder={searchPlaceholder || "Search..."}
-                    className="w-full bg-white dark:bg-black/20 border border-gray-200 dark:border-white/10 rounded-2xl py-2.5 pl-12 pr-4 text-base focus:outline-none focus:ring-2 focus:ring-green-500/50 focus:border-green-500 transition-all shadow-sm group-hover:shadow-md"
+                    className="w-full bg-white dark:bg-black/20 border border-gray-200 dark:border-white/10 rounded-2xl py-2.5 pl-12 pr-4 text-base focus:outline-none focus:ring-2 focus:ring-foreground/20 focus:border-foreground/30 transition-all shadow-sm group-hover:shadow-md"
                 />
             </div>
         </div>

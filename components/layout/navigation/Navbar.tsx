@@ -38,7 +38,7 @@ export function Navbar() {
             {/* Scroll Progress Bar */}
             <div className="fixed top-0 left-0 right-0 z-[70] h-0.5 bg-transparent pointer-events-none">
                 <div
-                    className="h-full bg-gradient-to-r from-green-500 via-emerald-500 to-green-400 transition-all duration-300 ease-out shadow-[0_0_10px_rgba(34,197,94,0.5)]"
+                    className="h-full bg-slate-900 dark:bg-slate-200 transition-all duration-300 ease-out shadow-[0_0_10px_rgba(0,0,0,0.2)] dark:shadow-[0_0_10px_rgba(255,255,255,0.2)]"
                     style={{ width: `${scrollProgress}%` }}
                 />
             </div>
@@ -52,15 +52,15 @@ export function Navbar() {
                     className={`mx-auto px-4 transition-all duration-500 ${isScrolled ? "py-3" : "py-4"}`}
                 >
                     <div
-                        className={`max-w-7xl mx-auto backdrop-blur-xl bg-white/70 dark:bg-black/50 rounded-2xl border transition-all duration-500 ${
+                        className={`max-w-7xl mx-auto backdrop-blur-3xl bg-white/50 dark:bg-black/40 rounded-3xl border transition-all duration-700 ${
                             isScrolled
-                                ? "border-gray-200/50 dark:border-white/10 shadow-lg shadow-black/5 dark:shadow-black/20"
-                                : "border-gray-200/30 dark:border-white/5 shadow-xl shadow-black/5 dark:shadow-black/10"
+                                ? "border-foreground/10 shadow-2xl shadow-black/10 dark:shadow-black/40"
+                                : "border-foreground/5 shadow-xl shadow-black/5 dark:shadow-black/20"
                         }`}
                     >
                         <div className="px-6">
                             <div
-                                className={`flex items-center justify-between transition-all duration-300 ${isScrolled ? "h-14" : "h-16"}`}
+                                className={`flex items-center justify-between transition-all duration-300 ${isScrolled ? "h-16" : "h-20"}`}
                             >
                                 {/* Brand */}
                                 <NavBrand />
@@ -84,9 +84,9 @@ export function Navbar() {
                                         aria-label="Toggle menu"
                                     >
                                         {isNavbarActive ? (
-                                            <X size={22} className="text-green-500" />
+                                            <X size={24} className="text-foreground" />
                                         ) : (
-                                            <Menu size={22} />
+                                            <Menu size={24} />
                                         )}
                                     </button>
                                 </div>

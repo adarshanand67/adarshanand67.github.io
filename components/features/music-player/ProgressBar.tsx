@@ -36,16 +36,16 @@ export function ProgressBar({
 
     return (
         <div className="space-y-1.5 group/progress">
-            <div className="relative h-1 w-full bg-gray-200 dark:bg-white/10 rounded-full cursor-pointer">
+            <div className="relative h-2 w-full bg-foreground/10 rounded-full cursor-pointer">
                 <div
-                    className="absolute top-0 left-0 h-full bg-gray-900 dark:bg-white rounded-full transition-all duration-100"
+                    className="absolute top-0 left-0 h-full bg-foreground rounded-full transition-all duration-100"
                     style={{ width: `${progress}%` }}
                 />
 
                 {/* Thumb/Knob - only visible on hover of the container */}
                 <div
-                    className="absolute top-1/2 -translate-y-1/2 w-3 h-3 bg-gray-900 dark:bg-white rounded-full shadow-md opacity-0 group-hover/progress:opacity-100 transition-opacity"
-                    style={{ left: `calc(${progress}% - 6px)` }}
+                    className="absolute top-1/2 -translate-y-1/2 w-4 h-4 bg-foreground rounded-full shadow-xl shadow-foreground/20 opacity-0 group-hover/progress:opacity-100 transition-opacity border-2 border-background"
+                    style={{ left: `calc(${progress}% - 8px)` }}
                 />
 
                 <input
@@ -61,7 +61,7 @@ export function ProgressBar({
                 />
             </div>
 
-            <div className="flex justify-between text-[10px] font-medium text-gray-500 dark:text-gray-400 tabular-nums">
+            <div className="flex justify-between text-[11px] font-black uppercase text-foreground/40 tabular-nums tracking-widest mt-2">
                 <span>{formatTime(currentTime)}</span>
                 <span>{formatTime(duration)}</span>
             </div>

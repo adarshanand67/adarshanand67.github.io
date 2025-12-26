@@ -20,7 +20,7 @@ export function GuestbookList({ entries }: GuestbookListProps) {
     };
 
     return (
-        <div className="p-6 max-h-[400px] overflow-y-auto space-y-4 scrollbar-thin scrollbar-thumb-green-900/50 scrollbar-track-transparent">
+        <div className="p-6 max-h-[400px] overflow-y-auto space-y-4 scrollbar-thin scrollbar-thumb-foreground/10 scrollbar-track-transparent">
             {entries.length === 0 ? (
                 <div className="text-gray-500 italic text-sm text-center py-8">
                     &lt; No entries found in system log... /&gt;
@@ -35,9 +35,9 @@ export function GuestbookList({ entries }: GuestbookListProps) {
                             [{formatDate(entry.timestamp)}]
                         </span>
                         <div className="flex flex-col">
-                            <span className="text-green-400 font-bold">
+                            <span className="text-foreground/90 font-bold">
                                 {entry.name}
-                                <span className="text-gray-500">@guest:~$</span>
+                                <span className="text-foreground/30">@guest:~$</span>
                             </span>
                             <span className="text-gray-300 break-words">{entry.message}</span>
                         </div>

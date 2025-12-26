@@ -94,16 +94,15 @@ select:focus {
 
 /* Improved link styles */
 a {
-    color: var(--primary) !important;
+    color: inherit;
     text-decoration: none;
     transition: all 0.2s ease;
     font-weight: 700;
 }
 
 a:hover {
-    color: var(--primary) !important;
     opacity: 0.8;
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 /* Better image rendering */

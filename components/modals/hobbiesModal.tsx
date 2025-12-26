@@ -53,9 +53,9 @@ export const HobbiesModal = () => {
     const getIcon = (iconName: string) => {
         const IconComponent = iconMap[iconName] as any;
         if (IconComponent) {
-            return <IconComponent className="w-6 h-6 text-green-600 dark:text-green-400" />;
+            return <IconComponent className="w-5 h-5 text-foreground/70" />;
         }
-        return <span className="text-2xl">🎮</span>;
+        return <span className="text-xl">🎮</span>;
     };
 
     return (
@@ -68,9 +68,9 @@ export const HobbiesModal = () => {
                 onClick={(e) => e.stopPropagation()}
                 className="w-full max-w-2xl glass rounded-2xl shadow-2xl border border-white/10 p-6 max-h-[80vh] overflow-y-auto"
             >
-                <div className="flex items-center justify-between mb-6 sticky top-0 glass backdrop-blur-xl py-2 z-10 border-b border-white/10">
-                    <h2 className="text-2xl font-bold font-mono flex items-center gap-2">
-                        <span className="text-green-600">~/</span> Hobbies
+                <div className="flex items-center justify-between mb-8 sticky top-0 glass backdrop-blur-xl py-4 z-10 border-b border-foreground/10">
+                    <h2 className="text-2xl font-black flex items-center gap-2">
+                        <span className="text-foreground/20">~/</span> Hobbies
                     </h2>
                     <button
                         onClick={() => {
@@ -94,13 +94,13 @@ export const HobbiesModal = () => {
                             <Component
                                 key={index}
                                 {...linkProps}
-                                className="group flex items-start gap-4 p-4 rounded-xl glass hover:bg-green-500/10 transition-all duration-300 border border-transparent hover:border-green-500/30 hover:shadow-lg hover:shadow-green-500/10 cursor-pointer"
+                                className="group flex items-start gap-4 p-5 rounded-3xl glass hover:bg-foreground/5 transition-all duration-300 border border-foreground/5 hover:border-foreground/10 cursor-pointer"
                             >
-                                <div className="shrink-0 p-2 bg-white/5 dark:bg-white/10 rounded-lg shadow-sm group-hover:scale-110 transition-transform">
+                                <div className="shrink-0 p-2.5 bg-foreground/5 rounded-2xl shadow-sm group-hover:scale-110 transition-transform border border-foreground/5">
                                     {getIcon(hobby.icon)}
                                 </div>
                                 <div className="flex-1">
-                                    <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-1 flex items-center gap-2 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
+                                    <h3 className="font-bold text-foreground/90 mb-1 flex items-center gap-2 group-hover:text-foreground transition-colors">
                                         {hobby.name}
                                         {isExternal && (
                                             <ExternalLink
@@ -109,7 +109,7 @@ export const HobbiesModal = () => {
                                             />
                                         )}
                                     </h3>
-                                    <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed text-balance">
+                                    <p className="text-xs text-foreground/50 leading-relaxed">
                                         {hobby.description}
                                     </p>
                                 </div>

@@ -30,7 +30,7 @@ export function Guestbook() {
 
     return (
         <div className="section max-w-4xl mx-auto px-4 py-16 font-mono">
-            <div className="border border-green-900/50 bg-black/80 rounded-lg overflow-hidden shadow-[0_0_30px_rgba(34,197,94,0.1)] backdrop-blur-sm">
+            <div className="border border-foreground/10 bg-background/80 rounded-[2rem] overflow-hidden shadow-2xl backdrop-blur-sm">
                 <GuestbookHeader />
                 <GuestbookList entries={guestbookEntries} />
                 <GuestbookForm

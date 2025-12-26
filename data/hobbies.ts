@@ -13,91 +13,85 @@ import { HobbyIcon } from "./enums";
 export const hobbyData = [
     {
         name: "Gym",
-        description: "Voluntary gravitational resistance training for somatic optimization.",
+        description: "Lifting heavy to stay strong and focused.",
         icon: HobbyIcon.Dumbbell,
         link: "https://www.youtube.com/results?search_query=hypertrophy+training+guide",
     },
     {
         name: "Cinephile",
-        description:
-            "Analyzing the visual subtext of the human condition through cinematic lenses.",
+        description: "Exploring the world through the lens of timeless cinema.",
         icon: HobbyIcon.Tv,
         link: "https://www.youtube.com/results?search_query=best+movies+documentaries",
     },
     {
         name: "Anime",
-        description:
-            "Post-modern storytelling where complexity is measured by the length of the title.",
+        description: "Getting lost in the art and stories of fictional characters.",
         icon: HobbyIcon.Tv,
         link: "/animeshelf",
     },
     {
         name: "Book Reading",
-        description: "Downloading the consciousness of superior minds into my organic hardware.",
+        description: "Collecting wisdom and stories, one page at a time.",
         icon: HobbyIcon.Book,
         link: "/bookshelf",
     },
     {
         name: "Table Tennis",
-        description: "High-frequency orbital manipulation of celluloid spheres.",
+        description: "Lightning-fast rallies and high-speed precision.",
         icon: HobbyIcon.Trophy,
         link: "https://www.youtube.com/results?search_query=table+tennis+techniques",
     },
     {
         name: "Badminton",
-        description: "Aerodynamic shuttlecock redirection at hyper-velocity speeds.",
+        description: "Hard-hitting smash sessions on the court.",
         icon: HobbyIcon.Trophy,
         link: "https://www.youtube.com/results?search_query=badminton+skills+tutorial",
     },
     {
         name: "Pickleball",
-        description: "A synthesis of racket-based disciplines for the intellectual athlete.",
+        description: "Low-impact, high-intensity rackets and fun.",
         icon: HobbyIcon.Trophy,
         link: "https://www.youtube.com/results?search_query=pickleball+how+to+play",
     },
     {
         name: "Cycling",
-        description: "Bipedal velocity generation for urban cartographic exploration.",
+        description: "Exploring the city on two wheels.",
         icon: HobbyIcon.Bike,
         link: "https://www.youtube.com/results?search_query=cycling+adventures",
     },
     {
         name: "Trekking & Hiking",
-        description:
-            "Vertical locomotion through geological formations to achieve higher perspective.",
+        description: "Chasing sunsets and mountain peaks on the weekends.",
         icon: HobbyIcon.Mountain,
         link: "https://www.youtube.com/results?search_query=best+hiking+trails",
     },
     {
         name: "Board Games",
-        description:
-            "Simulated geopolitical and socio-economic conflict resolution in a safe-space.",
+        description: "Strategy, rivalry, and good vibes with friends.",
         icon: HobbyIcon.Dices,
         link: "https://www.youtube.com/results?search_query=best+board+games",
     },
     {
         name: "Travelling",
-        description: "Empirical data gathering of cross-cultural sociodynamics.",
+        description: "Collecting memories and cultures across the map.",
         icon: HobbyIcon.Plane,
         link: "https://www.youtube.com/results?search_query=travel+vlog",
     },
     {
         name: "Cafe Hopping",
-        description:
-            "Conducting qualitative analysis of roasted bean extracts in various social ecosystems.",
+        description: "Finding the city's hidden aesthetics and best brews.",
         icon: HobbyIcon.Coffee,
         link: "https://www.youtube.com/results?search_query=best+coffee+shops",
     },
     {
         name: "Tech Conferences",
-        description: "Synchronizing with the hive mind of digital architects.",
+        description: "Networking with the builders of the future.",
         icon: HobbyIcon.Users,
         link: "https://www.youtube.com/results?search_query=tech+conferences",
     },
     {
         name: "Toastmasters",
-        description:
-            "Calibrating my vocal resonance to maximize intellectual impact during generic advice delivery.",
+        description: "Sharpening the edge of public speaking.",
         icon: HobbyIcon.Mic,
         link: "https://www.toastmasters.org",
     },

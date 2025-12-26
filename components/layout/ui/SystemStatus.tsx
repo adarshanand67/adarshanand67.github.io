@@ -54,23 +54,23 @@ export function SystemStatus() {
             animate={{ opacity: 1, y: 0 }}
             className="flex flex-wrap items-center gap-3 mt-6"
         >
-            <div className="flex items-center gap-2 px-3 py-1.5 bg-gray-100/50 dark:bg-white/5 backdrop-blur-sm rounded-full border border-gray-200 dark:border-white/10 shadow-sm transition-all hover:border-gray-400 dark:hover:border-zinc-700">
-                <Clock size={14} className="text-gray-500 dark:text-gray-400" />
-                <span className="text-[11px] font-mono font-bold text-gray-600 dark:text-gray-400 tabular-nums">
+            <div className="flex items-center gap-2 px-3 py-1.5 bg-foreground/5 backdrop-blur-3xl rounded-full border border-foreground/10 shadow-sm transition-all hover:border-foreground/20">
+                <Clock size={14} className="text-foreground/50" />
+                <span className="text-[11px] font-mono font-black text-foreground/60 tabular-nums uppercase tracking-widest">
                     {time} IST
                 </span>
             </div>
 
-            <div className="flex items-center gap-2 px-3 py-1.5 bg-gray-100/50 dark:bg-white/5 backdrop-blur-sm rounded-full border border-gray-200 dark:border-white/10 shadow-sm transition-all hover:border-gray-400 dark:hover:border-zinc-700">
-                <Activity size={14} className="text-gray-500 dark:text-gray-400" />
-                <span className="text-[11px] font-mono font-bold text-gray-600 dark:text-gray-400">
+            <div className="flex items-center gap-2 px-3 py-1.5 bg-foreground/5 backdrop-blur-3xl rounded-full border border-foreground/10 shadow-sm transition-all hover:border-foreground/20">
+                <Activity size={14} className="text-foreground/50" />
+                <span className="text-[11px] font-mono font-black text-foreground/60 uppercase tracking-widest">
                     {status}
                 </span>
             </div>
 
-            <div className="flex items-center gap-2 px-3 py-1.5 bg-gray-100/50 dark:bg-white/5 backdrop-blur-sm rounded-full border border-gray-200 dark:border-white/10 shadow-sm transition-all hover:border-gray-400 dark:hover:border-zinc-700">
-                <MapPin size={14} className="text-gray-500 dark:text-gray-400" />
-                <span className="text-[11px] font-mono font-bold text-gray-600 dark:text-gray-400">
+            <div className="flex items-center gap-2 px-3 py-1.5 bg-foreground/5 backdrop-blur-3xl rounded-full border border-foreground/10 shadow-sm transition-all hover:border-foreground/20">
+                <MapPin size={14} className="text-foreground/50" />
+                <span className="text-[11px] font-mono font-black text-foreground/60 uppercase tracking-widest">
                     Bengaluru, IN
                 </span>
             </div>

@@ -56,9 +56,9 @@ export enum HobbyIcon {
  * @enum {string}
  */
 export enum SystemStatusLabel {
-    Available = "Available ✅",
-    Coding = "Coding 💻",
-    Sleeping = "Sleeping 😴",
+    Available = "Online ◉",
+    Coding = "Working ⌨",
+    Sleeping = "Away ☾",
 }
 
 /**

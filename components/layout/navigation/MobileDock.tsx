@@ -38,14 +38,14 @@ export function MobileDock() {
                             className="relative flex flex-col items-center gap-1 group"
                         >
                             <div
-                                className={`p-2 rounded-xl transition-all duration-300 ${isActive ? "bg-green-500 text-white" : "text-gray-500 dark:text-gray-400 group-hover:text-green-500"}`}
+                                className={`p-2 rounded-xl transition-all duration-300 ${isActive ? "bg-foreground text-background" : "text-gray-500 dark:text-gray-400 group-hover:text-foreground"}`}
                             >
                                 <item.icon size={20} />
                             </div>
                             {isActive && (
                                 <motion.div
                                     layoutId="dock-dot"
-                                    className="absolute -bottom-1 w-1 h-1 bg-green-500 rounded-full"
+                                    className="absolute -bottom-1 w-1 h-1 bg-foreground rounded-full"
                                 />
                             )}
                         </Link>
@@ -53,7 +53,7 @@ export function MobileDock() {
                 })}
                 <button
                     onClick={openCommandMenu}
-                    className="flex flex-col items-center gap-1 text-gray-500 dark:text-gray-400 hover:text-green-500 transition-colors p-2"
+                    className="flex flex-col items-center gap-1 text-gray-500 dark:text-gray-400 hover:text-foreground transition-colors p-2"
                 >
                     <Search size={22} />
                 </button>

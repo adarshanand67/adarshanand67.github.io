@@ -50,7 +50,7 @@ const iconMap: Record<string, React.ElementType> = {
 const getIcon = (iconName: string) => {
     const IconComponent = iconMap[iconName];
     if (!IconComponent) return <span className="text-4xl mb-4">🎮</span>;
-    return <IconComponent className="w-12 h-12 text-green-600 dark:text-green-400 mb-4" />;
+    return <IconComponent className="w-12 h-12 text-foreground mb-4" />;
 };
 
 /**
@@ -117,7 +117,7 @@ export function HobbyModal({ item, onClose }: HobbyModalProps) {
                             href={item.link}
                             target={item.link?.startsWith("http") ? "_blank" : undefined}
                             rel={item.link?.startsWith("http") ? "noopener noreferrer" : undefined}
-                            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold text-sm rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                            className="inline-flex items-center gap-2 px-6 py-3 bg-foreground hover:bg-foreground/90 text-background font-bold text-sm rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
                         >
                             <ExternalLink size={16} /> Explore More
                         </a>

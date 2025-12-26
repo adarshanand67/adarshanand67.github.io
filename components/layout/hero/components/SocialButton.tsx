@@ -37,19 +37,19 @@ export function SocialButton({ label, name, icon, href, onClick, index }: Social
                 <div className="w-10 h-10 bg-zinc-100 dark:bg-zinc-800 rounded-2xl flex items-center justify-center group-hover/item:scale-110 transition-transform shadow-sm border border-zinc-200 dark:border-zinc-700">
                     {icon}
                 </div>
-                <div className="flex flex-col text-left">
-                    <span className="text-[9px] font-black uppercase tracking-widest text-green-500 dark:text-emerald-500/80">
+                <div className="flex-1 text-left">
+                    <p className="text-[10px] font-black text-foreground/40 uppercase tracking-widest mb-0.5 group-hover:text-foreground/60 transition-colors">
                         {label}
-                    </span>
-                    <span className="text-sm font-bold text-gray-900 dark:text-white line-clamp-1">
+                    </p>
+                    <h3 className="text-sm font-bold text-foreground group-hover:text-foreground transition-colors truncate max-w-[150px]">
                         {name}
-                    </span>
+                    </h3>
                 </div>
             </div>
             {href && (
                 <ExternalLink
                     size={16}
-                    className="text-gray-400 group-hover/item:text-green-500 transition-all transform group-hover/item:-translate-y-0.5 group-hover/item:translate-x-0.5"
+                    className="text-gray-400 group-hover/item:text-foreground transition-all transform group-hover/item:-translate-y-0.5 group-hover/item:translate-x-0.5"
                 />
             )}
         </div>

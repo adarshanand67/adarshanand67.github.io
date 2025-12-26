@@ -12,7 +12,7 @@ export class ProjectListStrategy implements ShelfItemStrategy<Project> {
             <div
                 id={`shelf-item-${project.title}`}
                 key={index}
-                className="group relative glass p-8 rounded-3xl border border-gray-100 dark:border-white/5 hover:border-green-500/30 transition-all duration-500"
+                className="group relative glass p-8 rounded-3xl border border-gray-100 dark:border-white/5 hover:border-foreground/30 transition-all duration-500"
             >
                 <div className="flex justify-between items-start mb-4">
                     <Link
@@ -20,7 +20,7 @@ export class ProjectListStrategy implements ShelfItemStrategy<Project> {
                         target="_blank"
                         className="group/title flex items-center gap-2"
                     >
-                        <h3 className="text-2xl font-bold text-gray-900 dark:text-white group-hover/title:text-green-500 transition-colors">
+                        <h3 className="text-2xl font-bold text-gray-900 dark:text-white group-hover/title:text-foreground transition-colors">
                             {project.title}
                         </h3>
                         <ExternalLink
@@ -31,7 +31,7 @@ export class ProjectListStrategy implements ShelfItemStrategy<Project> {
                     <Link
                         href={project.link}
                         target="_blank"
-                        className="p-2 rounded-full bg-gray-100 dark:bg-white/5 text-gray-500 hover:text-green-500 transition-colors shrink-0"
+                        className="p-2 rounded-full bg-gray-100 dark:bg-white/5 text-gray-500 hover:text-foreground transition-colors shrink-0"
                     >
                         <ExternalLink size={20} />
                     </Link>

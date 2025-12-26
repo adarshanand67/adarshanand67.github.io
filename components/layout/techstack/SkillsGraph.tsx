@@ -8,8 +8,8 @@ import { skillCategories } from "@/lib/constants/skills";
 const ForceGraph2D = dynamic(() => import("react-force-graph-2d"), {
     ssr: false,
     loading: () => (
-        <div className="flex items-center justify-center h-[500px] w-full bg-gray-50/50 dark:bg-gray-900/50 rounded-xl">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-500"></div>
+        <div className="flex items-center justify-center h-[500px] w-full bg-foreground/5 rounded-xl">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-foreground"></div>
         </div>
     ),
 });
@@ -48,7 +48,7 @@ export function SkillsGraph() {
             group: 0,
             val: 20,
             label: "Me",
-            color: "#22c55e", // green-500
+            color: isDark ? "#ffffff" : "#000000",
         });
 
         Object.entries(skillCategories).forEach(([category, skills]) => {

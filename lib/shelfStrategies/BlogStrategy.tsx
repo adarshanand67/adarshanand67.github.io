@@ -12,7 +12,7 @@ export class BlogListStrategy implements ShelfItemStrategy<Blog> {
             <div
                 id={`shelf-item-${blog.title}`}
                 key={blog.slug}
-                className="border-l-2 border-gray-300 dark:border-gray-700 pl-4 hover:border-green-500 transition-colors"
+                className="border-l-2 border-foreground/10 pl-4 hover:border-foreground/30 transition-colors"
             >
                 <div className="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-3">
                     <span className="text-gray-500 text-xs min-w-[80px] font-mono">
@@ -20,7 +20,7 @@ export class BlogListStrategy implements ShelfItemStrategy<Blog> {
                     </span>
                     <Link
                         href={`/articleshelf/${blog.slug}`}
-                        className="group/link inline-flex items-center gap-1.5 text-green-500 font-bold hover:underline"
+                        className="group/link inline-flex items-center gap-1.5 text-foreground/80 hover:text-foreground font-bold hover:underline"
                     >
                         <span>{blog.title}</span>
                         <ArrowUpRight
@@ -47,8 +47,8 @@ export class BlogListStrategy implements ShelfItemStrategy<Blog> {
             <div className="space-y-12 py-8">
                 {years.map((year) => (
                     <div key={year}>
-                        <h2 className="text-xl font-bold mb-6 flex items-center gap-4">
-                            <span className="text-green-500/20 text-3xl font-mono">/</span>
+                        <h2 className="text-xl font-bold mb-6 flex items-center gap-4 text-foreground/80">
+                            <span className="text-foreground/10 text-3xl font-mono">/</span>
                             {year}
                         </h2>
                         <div className="space-y-4">
