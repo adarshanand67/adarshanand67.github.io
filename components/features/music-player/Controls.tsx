@@ -25,7 +25,7 @@ interface ControlsProps {
 
 /**
  * Music Player Controls Component - playback control buttons.
- * Features play/pause, skip, shuffle, and repeat controls with visual feedback.
+ * Features play/pause, skip, shuffle, and repeat controls with an Apple Music aesthetic.
  * @component
  * @param {ControlsProps} props - Component props
  */
@@ -33,51 +33,51 @@ export function Controls({
     isPlaying, onTogglePlay, onNext, onPrev, isShuffle, onToggleShuffle, isRepeat, onToggleRepeat
 }: ControlsProps) {
     return (
-        <div className="flex items-center justify-between px-1">
+        <div className="flex items-center justify-between px-2">
             <button
                 onClick={onToggleShuffle}
-                className={`p-2 rounded-xl transition-all ${isShuffle ? 'text-green-500 bg-green-500/10' : 'text-gray-400 dark:text-gray-300 hover:text-green-500 hover:bg-green-500/10'}`}
+                className={`p-2 transition-all ${isShuffle ? 'text-[#FA243C]' : 'text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300'}`}
                 title="Shuffle"
             >
-                <Shuffle size={20} strokeWidth={2.5} />
+                <Shuffle size={18} strokeWidth={2} />
             </button>
 
-            <div className="flex items-center gap-6">
+            <div className="flex items-center gap-8">
                 <button
                     onClick={onPrev}
-                    className="p-1.5 text-gray-500 dark:text-gray-200 hover:text-green-500 transition-all hover:scale-120 active:scale-90"
+                    className="text-gray-900 dark:text-white hover:opacity-70 transition-opacity active:scale-90"
                     title="Previous"
                 >
-                    <SkipBack size={24} fill="currentColor" strokeWidth={0} />
+                    <SkipBack size={28} fill="currentColor" strokeWidth={0} />
                 </button>
 
                 <button
                     onClick={onTogglePlay}
-                    className="w-14 h-14 bg-green-500 hover:bg-green-400 dark:bg-green-500 dark:hover:bg-green-400 rounded-full flex items-center justify-center hover:scale-110 active:scale-95 transition-all shadow-[0_0_20px_rgba(34,197,94,0.4)] dark:shadow-[0_0_30px_rgba(34,197,94,0.2)] group"
+                    className="w-16 h-16 flex items-center justify-center hover:scale-105 active:scale-95 transition-all group"
                     title={isPlaying ? "Pause" : "Play"}
                 >
                     {isPlaying ?
-                        <Pause size={28} className="text-white dark:text-black" fill="currentColor" strokeWidth={0} /> :
-                        <Play size={28} className="text-white dark:text-black ml-1" fill="currentColor" strokeWidth={0} />
+                        <Pause size={44} className="text-gray-900 dark:text-white" fill="currentColor" strokeWidth={0} /> :
+                        <Play size={44} className="text-gray-900 dark:text-white" fill="currentColor" strokeWidth={0} />
                     }
                 </button>
 
                 <button
                     onClick={onNext}
-                    className="p-1.5 text-gray-500 dark:text-gray-200 hover:text-green-500 dark:hover:text-green-400 transition-all hover:scale-120 active:scale-90"
+                    className="text-gray-900 dark:text-white hover:opacity-70 transition-opacity active:scale-90"
                     title="Next"
                 >
-                    <SkipForward size={24} fill="currentColor" strokeWidth={0} />
+                    <SkipForward size={28} fill="currentColor" strokeWidth={0} />
                 </button>
             </div>
 
             <button
                 onClick={onToggleRepeat}
-                className={`p-2 rounded-xl transition-all relative ${isRepeat ? 'text-green-500 bg-green-500/20' : 'text-gray-400 dark:text-gray-300 hover:text-green-500 hover:bg-green-500/10'}`}
+                className={`p-2 transition-all relative ${isRepeat ? 'text-[#FA243C]' : 'text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300'}`}
                 title="Repeat"
             >
-                <Repeat size={20} strokeWidth={2.5} />
-                {isRepeat && <span className="absolute top-1.5 right-1.5 text-[8px] font-black">1</span>}
+                <Repeat size={18} strokeWidth={2} />
+                {isRepeat && <span className="absolute top-1.5 right-1 text-[8px] font-bold">1</span>}
             </button>
         </div>
     );

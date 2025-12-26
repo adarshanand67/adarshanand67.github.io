@@ -1,4 +1,4 @@
-import { Volume2, VolumeX } from "lucide-react";
+import { Volume1, Volume2, VolumeX } from "lucide-react";
 
 /**
  * Props for VolumeControl component.
@@ -16,24 +16,25 @@ interface VolumeControlProps {
 }
 
 /**
- * Volume Control Component - adjustable volume slider with mute toggle.
- * Features visual feedback and mute button.
+ * Volume Control Component - adjustable volume slider with an Apple Music aesthetic.
+ * Features a thin slider with speaker icons at both ends.
  * @component
  * @param {VolumeControlProps} props - Component props
  */
 export function VolumeControl({ volume, isMuted, onVolumeChange, onToggleMute }: VolumeControlProps) {
     return (
-        <div className="flex items-center gap-4 px-1 group/volume">
+        <div className="flex items-center gap-3 px-1 group/volume">
             <button
                 onClick={onToggleMute}
-                className="text-gray-400 hover:text-gray-600 dark:hover:text-white transition-colors shrink-0"
+                className="text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 transition-colors shrink-0"
                 title={isMuted ? "Unmute" : "Mute"}
             >
-                {isMuted || volume === 0 ? <VolumeX size={18} /> : <Volume2 size={18} />}
+                {isMuted || volume === 0 ? <VolumeX size={16} /> : <Volume1 size={16} />}
             </button>
-            <div className="flex-1 h-1.5 bg-black/5 dark:bg-white/10 rounded-full relative overflow-hidden border border-black/5 dark:border-white/5">
+
+            <div className="flex-1 h-1 bg-gray-200 dark:bg-white/10 rounded-full relative overflow-hidden">
                 <div
-                    className="absolute top-0 left-0 h-full bg-gray-500 dark:bg-green-500/80 rounded-full transition-all"
+                    className="absolute top-0 left-0 h-full bg-gray-500 dark:bg-white/60 rounded-full"
                     style={{ width: `${volume * 100}%` }}
                 />
                 <input
@@ -45,6 +46,10 @@ export function VolumeControl({ volume, isMuted, onVolumeChange, onToggleMute }:
                     onChange={(e) => onVolumeChange(parseFloat(e.target.value))}
                     className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
                 />
+            </div>
+
+            <div className="text-gray-400 dark:text-gray-500 shrink-0">
+                <Volume2 size={16} />
             </div>
         </div>
     );

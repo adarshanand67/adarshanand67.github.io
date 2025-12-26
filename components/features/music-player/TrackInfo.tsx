@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
-import { siteConfig } from "@/lib/config";
-import { trackNames, trackImages } from "@/lib/constants";
+import { tracks } from "@/lib/constants";
 
 /**
  * Props for TrackInfo component.
@@ -21,11 +20,13 @@ interface TrackInfoProps {
  * @param {TrackInfoProps} props - Component props
  */
 export function TrackInfo({ index, onClose }: TrackInfoProps) {
+    const track = tracks[index];
+
     return (
         <div className="flex gap-4 items-center">
             <div className="relative w-14 h-14 shrink-0 rounded-2xl overflow-hidden shadow-[0_0_15px_rgba(34,197,94,0.3)] border border-white/30 group-hover:scale-105 transition-transform duration-500">
                 <Image
-                    src={trackImages[index] || "/icon.png"}
+                    src={track?.image || "/icon.png"}
                     alt="Album Art"
                     fill
                     className="object-cover"
@@ -33,10 +34,10 @@ export function TrackInfo({ index, onClose }: TrackInfoProps) {
             </div>
             <div className="flex flex-col min-w-0 flex-1">
                 <span className="text-sm font-black line-clamp-1 text-black dark:text-white leading-tight tracking-tight drop-shadow-sm">
-                    {trackNames[index]}
+                    {track?.title}
                 </span>
-                <span className="text-[10px] text-green-600 dark:text-green-400 font-black mt-1 tracking-widest uppercase border-b-2 border-green-500/30 w-fit">
-                    {siteConfig.author.name}
+                <span className="text-[11px] text-gray-500 dark:text-gray-400 font-medium mt-0.5 line-clamp-1">
+                    {track?.artist}
                 </span>
             </div>
             <button

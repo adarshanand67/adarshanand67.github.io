@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { useStore } from "@/lib/store/useStore";
-import { playlist } from "@/lib/constants";
+import { tracks } from "@/lib/constants";
 
 export function useAudio() {
     const {
@@ -48,6 +48,6 @@ export function useAudio() {
     return {
         audioRef, currentTime, duration, isDraggingTime, setIsDraggingTime,
         handleTimeUpdate, handleLoadedMetadata, handleEnded, seek,
-        currentTrackSrc: playlist[currentTrackIndex]
+        currentTrackSrc: tracks[currentTrackIndex]?.src || ""
     };
 }

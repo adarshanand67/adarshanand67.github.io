@@ -5,7 +5,7 @@
 
 import { StateCreator } from 'zustand';
 import { AppState, MusicState } from '../types';
-import { playlist } from '@/lib/constants';
+import { tracks } from '@/lib/constants';
 
 /**
  * Creates the music player state slice.
@@ -30,14 +30,14 @@ export const createMusicSlice: StateCreator<AppState, [], [], MusicState> = (set
     toggleMute: () => set((state) => ({ isMuted: !state.isMuted })),
     nextTrack: () => set((state) => {
         if (state.isShuffle) {
-            const nextIndex = Math.floor(Math.random() * playlist.length);
+            const nextIndex = Math.floor(Math.random() * tracks.length);
             return { currentTrackIndex: nextIndex };
         }
         return {
-            currentTrackIndex: (state.currentTrackIndex + 1) % playlist.length
+            currentTrackIndex: (state.currentTrackIndex + 1) % tracks.length
         };
     }),
     prevTrack: () => set((state) => ({
-        currentTrackIndex: (state.currentTrackIndex - 1 + playlist.length) % playlist.length
+        currentTrackIndex: (state.currentTrackIndex - 1 + tracks.length) % tracks.length
     })),
 });
