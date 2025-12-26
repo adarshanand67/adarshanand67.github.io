@@ -40,7 +40,7 @@ export class ProjectListStrategy implements ShelfItemStrategy<Project> {
                     {project.description}
                 </p>
                 <div className="flex flex-wrap gap-2">
-                    {project.tech.map((tech, i) => (
+                    {project.tech?.map((tech, i) => (
                         <span
                             key={i}
                             className="text-[10px] font-bold uppercase tracking-widest bg-gray-100 dark:bg-white/5 text-gray-500 dark:text-gray-400 px-3 py-1.5 rounded-full"
