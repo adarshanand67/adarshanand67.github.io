@@ -9,6 +9,8 @@ import { BlogListStrategy } from "./shelfStrategies/BlogStrategy";
 import { HobbyListStrategy } from "./shelfStrategies/HobbyStrategy";
 import { ArticleListStrategy } from "./shelfStrategies/ArticleStrategy";
 
+import { AppError } from "./utils/errorHandling";
+
 export * from "./shelfStrategies/types";
 export * from "./shelfStrategies/BookStrategy";
 export * from "./shelfStrategies/PaperStrategy";
@@ -19,6 +21,10 @@ export * from "./shelfStrategies/ArticleStrategy";
 
 export class ShelfStrategyFactory {
     static getStrategy(type: ShelfType): ShelfItemStrategy<ShelfItem> {
+        if (!type) {
+            throw new AppError("Shelf type is required", "MISSING_SHELF_TYPE");
+        }
+
         switch (type) {
             case ShelfType.Book:
                 return new BookListStrategy();
@@ -33,7 +39,7 @@ export class ShelfStrategyFactory {
             case ShelfType.Article:
                 return new ArticleListStrategy();
             default:
-                throw new Error(`Unknown shelf type: ${type}`);
+                throw new AppError(`Unknown shelf type: ${type}`, "UNKNOWN_SHELF_TYPE");
         }
     }
 }

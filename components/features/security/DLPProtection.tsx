@@ -103,6 +103,11 @@ export function DLPProtection() {
     const [violationCount, setViolationCount] = useState(0);
     const violationTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
+    // Bypass DLP on localhost
+    const isLocalhost =
+        typeof window !== "undefined" &&
+        (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1");
+
     const { isPlaying, setIsPlaying } = useStore();
     const wasPlayingRef = useRef(false);
 

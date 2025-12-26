@@ -19,6 +19,8 @@ interface PillTagProps {
  * Pill Tag Component - clean black/white pill-shaped tag button.
  */
 export function PillTag({ label, selected = false, onClick, variant = "default" }: PillTagProps) {
+    const displayLabel = label || "Tag";
+
     // Base styles
     const baseClasses =
         "px-4 py-2 rounded-full text-xs font-bold transition-all duration-200 whitespace-nowrap";
@@ -32,11 +34,20 @@ export function PillTag({ label, selected = false, onClick, variant = "default" 
 
     if (onClick) {
         return (
-            <button onClick={onClick} className={classes}>
-                {label}
+            <button
+                onClick={(e) => {
+                    try {
+                        onClick();
+                    } catch (error) {
+                        console.error("Error clicking PillTag:", error);
+                    }
+                }}
+                className={classes}
+            >
+                {displayLabel}
             </button>
         );
     }
 
-    return <span className={classes}>{label}</span>;
+    return <span className={classes}>{displayLabel}</span>;
 }

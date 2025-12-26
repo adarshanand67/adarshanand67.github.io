@@ -8,54 +8,75 @@ import { BlogListStrategy } from "./BlogStrategy";
 
 export class ArticleListStrategy implements ShelfItemStrategy<Blog | Paper> {
     renderItem(item: Blog | Paper, index: number): ReactNode {
-        if ("url" in item) {
-            return new PaperListStrategy().renderItem(item as Paper, index);
+        if (!item) return null;
+
+        try {
+            if ("url" in item) {
+                return new PaperListStrategy().renderItem(item as Paper, index);
+            }
+            return new BlogListStrategy().renderItem(item as Blog);
+        } catch (error) {
+            console.error("Error rendering article item:", error);
+            return null;
         }
-        return new BlogListStrategy().renderItem(item as Blog);
     }
 
     renderList(items: (Blog | Paper)[]): ReactNode {
-        const papers = items.filter((i): i is Paper => "url" in i);
-        const blogs = items.filter((i): i is Blog => "slug" in i);
+        if (!items || !Array.isArray(items) || items.length === 0) return null;
 
-        return (
-            <div className="space-y-24 py-8">
-                {papers.length > 0 && (
-                    <div>
-                        <h2 className="text-3xl font-bold mb-10 flex items-center gap-4 text-foreground/90">
-                            <span className="text-foreground/10 text-4xl font-mono tracking-tighter">
-                                01
-                            </span>
-                            Research Papers
-                        </h2>
-                        <div className="space-y-4">
-                            {new PaperListStrategy().renderList(papers)}
+        try {
+            const papers = items.filter((i): i is Paper => i && "url" in i);
+            const blogs = items.filter((i): i is Blog => i && "slug" in i);
+
+            return (
+                <div className="space-y-24 py-8">
+                    {papers.length > 0 && (
+                        <div>
+                            <h2 className="text-3xl font-bold mb-10 flex items-center gap-4 text-foreground/90">
+                                <span className="text-foreground/10 text-4xl font-mono tracking-tighter">
+                                    01
+                                </span>
+                                Research Papers
+                            </h2>
+                            <div className="space-y-4">
+                                {new PaperListStrategy().renderList(papers)}
+                            </div>
                         </div>
-                    </div>
-                )}
-                {blogs.length > 0 && (
-                    <div>
-                        <h2 className="text-3xl font-bold mb-10 flex items-center gap-4 text-foreground/90">
-                            <span className="text-foreground/10 text-4xl font-mono tracking-tighter">
-                                {papers.length > 0 ? "02" : "01"}
-                            </span>
-                            Blogs
-                        </h2>
-                        {new BlogListStrategy().renderList(blogs)}
-                    </div>
-                )}
-            </div>
-        );
+                    )}
+                    {blogs.length > 0 && (
+                        <div>
+                            <h2 className="text-3xl font-bold mb-10 flex items-center gap-4 text-foreground/90">
+                                <span className="text-foreground/10 text-4xl font-mono tracking-tighter">
+                                    {papers.length > 0 ? "02" : "01"}
+                                </span>
+                                Blogs
+                            </h2>
+                            {new BlogListStrategy().renderList(blogs)}
+                        </div>
+                    )}
+                </div>
+            );
+        } catch (error) {
+            console.error("Error rendering article list:", error);
+            return <div className="py-12 text-center text-gray-500">Failed to load articles.</div>;
+        }
     }
 
     filter(items: (Blog | Paper)[], query: string): (Blog | Paper)[] {
+        if (!items || !Array.isArray(items)) return [];
         if (!query) return items;
-        const papers = items.filter((i): i is Paper => "url" in i);
-        const blogs = items.filter((i): i is Blog => "slug" in i);
 
-        return [
-            ...new PaperListStrategy().filter(papers, query),
-            ...new BlogListStrategy().filter(blogs, query),
-        ];
+        try {
+            const papers = items.filter((i): i is Paper => i && "url" in i);
+            const blogs = items.filter((i): i is Blog => i && "slug" in i);
+
+            return [
+                ...new PaperListStrategy().filter(papers, query),
+                ...new BlogListStrategy().filter(blogs, query),
+            ];
+        } catch (error) {
+            console.error("Error filtering articles:", error);
+            return [];
+        }
     }
 }
