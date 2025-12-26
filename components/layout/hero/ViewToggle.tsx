@@ -20,12 +20,12 @@ interface ViewToggleProps {
  * @param {ViewToggleProps} props - Component props
  */
 export const ViewToggle = ({ viewMode, setViewMode }: ViewToggleProps) => (
-    <div className="flex bg-gray-100/80 dark:bg-gray-800/80 backdrop-blur-sm p-1 rounded-lg border border-gray-200 dark:border-gray-700 ml-auto pointer-events-auto shadow-sm">
+    <div className="flex bg-white/10 dark:bg-black/20 backdrop-blur-md p-1 rounded-lg border border-foreground/10 ml-auto pointer-events-auto shadow-sm">
         <button
             onClick={() => setViewMode("profile")}
-            className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-xs sm:text-sm font-medium transition-all ${
+            className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-xs sm:text-sm font-bold transition-all ${
                 viewMode === "profile"
-                    ? "bg-gray-900 text-white dark:bg-white dark:text-black shadow-md"
+                    ? "bg-foreground text-background shadow-md"
                     : "text-foreground/60 hover:text-foreground hover:bg-foreground/5"
             }`}
             title="Switch to Profile"
@@ -35,9 +35,9 @@ export const ViewToggle = ({ viewMode, setViewMode }: ViewToggleProps) => (
         </button>
         <button
             onClick={() => setViewMode("terminal")}
-            className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-xs sm:text-sm font-medium transition-all ${
+            className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-xs sm:text-sm font-bold transition-all ${
                 viewMode === "terminal"
-                    ? "bg-gray-900 text-white dark:bg-white dark:text-black shadow-md"
+                    ? "bg-foreground text-background shadow-md"
                     : "text-foreground/60 hover:text-foreground hover:bg-foreground/5"
             }`}
             title="Switch to Terminal"

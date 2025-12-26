@@ -297,18 +297,14 @@ export function DLPProtection() {
             }
         };
 
-        // 5. Blur on Window Focus Loss
+        // 5. Blur on Window Focus Loss - DISABLED per user request
         const handleVisibilityChange = () => {
-            if (document.hidden) {
-                setIsBlur(true);
-                // document.title = "⚠️ SECURITY VIOLATION";
-            } else {
-                setIsBlur(false);
-                // document.title = "Adarsh Anand";
-            }
+            // Logic removed to allow tab switching without blur
         };
 
-        const handleWindowBlur = () => setIsBlur(true);
+        const handleWindowBlur = () => {
+            // Logic removed
+        };
         const handleWindowFocus = () => setIsBlur(false);
 
         // 6. Print Handling

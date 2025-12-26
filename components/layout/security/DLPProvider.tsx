@@ -66,16 +66,13 @@ export const DLPProvider: React.FC<DLPProviderProps> = ({ children }) => {
             return false;
         };
 
-        // 4. Focus loss detection (Screen capture deterrent)
-        const handleBlur = () => setIsBlurred(true);
+        // 4. Focus loss detection (Screen capture deterrent) - DISABLED
+        const handleBlur = () => {}; // setIsBlurred(true);
         const handleFocus = () => setIsBlurred(false);
 
         const handleVisibilityChange = () => {
-            if (document.visibilityState === "hidden") {
-                setIsBlurred(true);
-            } else {
-                setIsBlurred(false);
-            }
+            // Disabled blur on tab switch
+            setIsBlurred(false);
         };
 
         // Attach listeners
