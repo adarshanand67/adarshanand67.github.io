@@ -15,18 +15,18 @@ interface ViewToggleProps {
 
 /**
  * View Toggle Component - switches between profile and terminal views in Hero section.
- * Features glassmorphic design with icon and text labels.
+ * Features subtle toggle design with icon and text labels.
  * @component
  * @param {ViewToggleProps} props - Component props
  */
 export const ViewToggle = ({ viewMode, setViewMode }: ViewToggleProps) => (
-    <div className="flex bg-white/10 dark:bg-black/20 backdrop-blur-md p-1 rounded-lg border border-foreground/10 ml-auto pointer-events-auto shadow-sm gap-1">
+    <div className="flex bg-zinc-100 dark:bg-zinc-900 backdrop-blur-md p-1 rounded-xl border border-zinc-200 dark:border-zinc-800 ml-auto pointer-events-auto shadow-sm gap-1">
         <button
             onClick={() => setViewMode("profile")}
-            className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-xs sm:text-sm font-semibold transition-all ${
+            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all ${
                 viewMode === "profile"
-                    ? "bg-gray-950 text-white dark:bg-zinc-800 shadow-md"
-                    : "text-foreground/80 hover:text-foreground hover:bg-foreground/5"
+                    ? "bg-zinc-200 dark:bg-zinc-800 text-zinc-900 dark:text-white shadow-sm"
+                    : "text-zinc-500 dark:text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200"
             }`}
             title="Switch to Profile"
         >
@@ -35,10 +35,10 @@ export const ViewToggle = ({ viewMode, setViewMode }: ViewToggleProps) => (
         </button>
         <button
             onClick={() => setViewMode("terminal")}
-            className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-xs sm:text-sm font-semibold transition-all ${
+            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all ${
                 viewMode === "terminal"
-                    ? "bg-gray-950 text-white dark:bg-zinc-800 shadow-md"
-                    : "text-foreground/80 hover:text-foreground hover:bg-foreground/5"
+                    ? "bg-zinc-200 dark:bg-zinc-800 text-zinc-900 dark:text-white shadow-sm"
+                    : "text-zinc-500 dark:text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200"
             }`}
             title="Switch to Terminal"
         >

@@ -95,7 +95,7 @@ export function ProfileView({ profile, viewMode, setViewMode }: ProfileViewProps
                     </div>
                 </div>
 
-                <div className="flex flex-wrap items-center gap-4 mt-8">
+                <div className="flex flex-wrap items-center justify-center gap-6 mt-8">
                     <SocialButton
                         index={0}
                         label="Connect"
