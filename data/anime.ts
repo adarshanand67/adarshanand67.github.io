@@ -447,10 +447,26 @@ export const animeData = [
             "Look people in the eye. The world is beautiful if you choose to see it."
         ]
     },
+    {
+        title: "Frieren: Beyond Journey’s End",
+        type: AnimeType.Anime,
+        status: WatchStatus.Completed,
+        seasons: "S1",
+        recommended: true,
+        image: "https://cdn.myanimelist.net/images/anime/1015/138062l.jpg",
+        description: "An elven mage and her companions defeat the Demon King. After the war, she must face the challenges of time and loss as her human friends age and pass away.",
+        tags: ["Adventure", "Drama", "Fantasy"],
+        year: "2023",
+        rating: "9.3/10",
+        keyLearnings: [
+            "A decade is but a blink in the eyes of eternity, yet it's often the most meaningful blink one can experience.",
+            "The weight of a memory is inversely proportional to the time you have left to share it.",
+            "Understanding humanity is a quest that requires more patience than any high-level mana manipulation."
+        ]
+    },
 
     // --- PLANNING ---
     { title: "Naruto", type: AnimeType.Anime, status: WatchStatus.Planning, seasons: "S1-5 + Shippuden S1-21", image: "", description: "", tags: [], keyLearnings: [] },
-    { title: "Frieren: Beyond Journey’s End", type: AnimeType.Anime, status: WatchStatus.Planning, seasons: "S1", image: "", description: "", tags: [], keyLearnings: [] },
     { title: "Attack on Titan", type: AnimeType.Anime, status: WatchStatus.Planning, seasons: "S1-4", image: "", description: "", tags: [], keyLearnings: [] },
     { title: "Fullmetal Alchemist Brotherhood", type: AnimeType.Anime, status: WatchStatus.Planning, seasons: "S1", image: "", description: "", tags: [], keyLearnings: [] },
     { title: "Hunter x Hunter", type: AnimeType.Anime, status: WatchStatus.Planning, seasons: "S1", image: "", description: "", tags: [], keyLearnings: [] },
