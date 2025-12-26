@@ -2,20 +2,25 @@
 
 import { usePathname, useRouter } from "next/navigation";
 import { routes } from "@/lib/constants";
+import { useStore } from "@/lib/store/useStore";
 
 /**
  * Navigation Brand Component - displays logo and site name in navbar.
  * Features animated tilde icon with rotation effect on hover.
- * Scrolls to hero section when on home page.
+ * Scrolls to hero section when on home page and switches to profile view.
  * @component
  */
 export function NavBrand() {
     const pathname = usePathname();
     const router = useRouter();
+    const { setHeroViewMode } = useStore();
     const isHomePage = pathname === routes.home;
 
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
+
+        // Always switch to profile view when clicking home
+        setHeroViewMode("profile");
 
         if (isHomePage) {
             // Already on home page - scroll to hero section

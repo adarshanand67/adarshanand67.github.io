@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import { ProfileView } from "./components/ProfileView";
 import { TerminalView } from "./components/TerminalView";
 import { Profile } from "@/types/definitions";
+import { useStore } from "@/lib/store/useStore";
 
 /**
  * Props for the Hero component.
@@ -49,7 +49,7 @@ interface HeroProps {
  * ```
  */
 export function Hero({ profile }: HeroProps) {
-    const [viewMode, setViewMode] = useState<"profile" | "terminal">("profile");
+    const { heroViewMode, setHeroViewMode } = useStore();
 
     return (
         <section
@@ -76,14 +76,14 @@ export function Hero({ profile }: HeroProps) {
 
             <div className="relative z-10 flex flex-col items-center">
                 <AnimatePresence mode="wait">
-                    {viewMode === "profile" ? (
+                    {heroViewMode === "profile" ? (
                         <ProfileView
                             profile={profile}
-                            viewMode={viewMode}
-                            setViewMode={setViewMode}
+                            viewMode={heroViewMode}
+                            setViewMode={setHeroViewMode}
                         />
                     ) : (
-                        <TerminalView viewMode={viewMode} setViewMode={setViewMode} />
+                        <TerminalView viewMode={heroViewMode} setViewMode={setHeroViewMode} />
                     )}
                 </AnimatePresence>
             </div>

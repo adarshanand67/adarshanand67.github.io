@@ -118,10 +118,12 @@ export interface UIState {
     isMounted: boolean;
     showHobbiesModal: boolean;
     isNavbarActive: boolean;
+    heroViewMode: "profile" | "terminal";
     expandedSections: Record<string, boolean>;
     setIsMounted: (mounted: boolean) => void;
     toggleHobbiesModal: () => void;
     setIsNavbarActive: (active: boolean) => void;
+    setHeroViewMode: (mode: "profile" | "terminal") => void;
     toggleSectionExpanded: (section: string) => void;
 }
 

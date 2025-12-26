@@ -17,6 +17,7 @@ export const createUISlice: StateCreator<AppState, [], [], UIState & BackToTopSt
     isMounted: false,
     showHobbiesModal: false,
     isNavbarActive: false,
+    heroViewMode: "profile",
     expandedSections: {
         experience: true,
         techstack: true,
@@ -27,6 +28,7 @@ export const createUISlice: StateCreator<AppState, [], [], UIState & BackToTopSt
     setIsMounted: (mounted) => set({ isMounted: mounted }),
     toggleHobbiesModal: () => set((state) => ({ showHobbiesModal: !state.showHobbiesModal })),
     setIsNavbarActive: (active) => set({ isNavbarActive: active }),
+    setHeroViewMode: (mode) => set({ heroViewMode: mode }),
     toggleSectionExpanded: (section) =>
         set((state) => ({
             expandedSections: {
