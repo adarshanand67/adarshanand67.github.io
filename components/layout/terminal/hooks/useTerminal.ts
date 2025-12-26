@@ -41,7 +41,7 @@ export function useTerminal() {
                 if (currentLine < allIntroLines.length) {
                     setLines((prev) => [...prev, allIntroLines[currentLine]!]);
                     currentLine++;
-                    const delay = 5;
+                    const delay = 0;
                     setTimeout(typeNextLine, delay);
                 } else {
                     setIsIntroDone(true);
