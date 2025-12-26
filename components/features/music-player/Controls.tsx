@@ -66,14 +66,14 @@ export function Controls({
                     {isPlaying ? (
                         <Pause
                             size={44}
-                            className="text-background"
+                            className="text-white dark:text-black"
                             fill="currentColor"
                             strokeWidth={0}
                         />
                     ) : (
                         <Play
                             size={44}
-                            className="text-background ml-1"
+                            className="text-white dark:text-black ml-1"
                             fill="currentColor"
                             strokeWidth={0}
                         />

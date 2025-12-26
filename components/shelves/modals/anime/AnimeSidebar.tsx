@@ -76,7 +76,7 @@ export function AnimeSidebar({ item }: AnimeSidebarProps) {
                     href={`https://www.youtube.com/results?search_query=${encodeURIComponent(item.title + " trailer")}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full flex items-center justify-center gap-2 py-3 bg-foreground text-background hover:bg-foreground/90 rounded-xl text-[10px] font-black uppercase tracking-widest shadow-xl shadow-foreground/10 group transition-all hover:scale-[1.02] active:scale-[0.98]"
+                    className="w-full flex items-center justify-center gap-2 py-3 bg-foreground text-white dark:text-black hover:bg-foreground/90 rounded-xl text-[10px] font-black uppercase tracking-widest shadow-xl shadow-foreground/10 group transition-all hover:scale-[1.02] active:scale-[0.98]"
                 >
                     <Play
                         size={16}

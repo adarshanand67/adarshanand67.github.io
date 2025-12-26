@@ -43,14 +43,16 @@ const DLPNotification = ({ notifications }: { notifications: NotificationType[] 
             {notifications.map((notif) => (
                 <div
                     key={notif.id}
-                    className="bg-black/80 backdrop-blur-md border border-red-500/50 text-red-100 px-4 py-3 rounded-lg shadow-2xl flex items-center gap-3 animate-in fade-in slide-in-from-top-2 duration-300 max-w-sm"
+                    className="bg-white/95 dark:bg-black/95 backdrop-blur-xl border border-black/10 dark:border-white/10 text-foreground px-4 py-3 rounded-2xl shadow-2xl flex items-center gap-3 animate-in fade-in slide-in-from-top-2 duration-300 max-w-sm pointer-events-auto"
                 >
-                    <div className="p-2 bg-red-500/20 rounded-full shrink-0">{notif.icon}</div>
+                    <div className="p-2 bg-foreground/5 rounded-xl shrink-0 text-foreground">
+                        {notif.icon}
+                    </div>
                     <div>
-                        <h4 className="font-bold text-sm text-red-400 uppercase tracking-wider">
+                        <h4 className="font-black text-[10px] text-foreground uppercase tracking-widest">
                             Security Alert
                         </h4>
-                        <p className="text-xs text-gray-300 leading-tight mt-0.5">
+                        <p className="text-[11px] text-foreground/60 font-bold leading-tight mt-1">
                             {notif.message}
                         </p>
                     </div>

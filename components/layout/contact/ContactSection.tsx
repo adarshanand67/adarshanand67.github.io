@@ -76,9 +76,9 @@ export function ContactSection() {
                         <div className="flex items-center gap-3">
                             <div className="flex-shrink-0 w-10 h-10 bg-foreground rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
                                 {copied ? (
-                                    <Check className="w-5 h-5 text-background" />
+                                    <Check className="w-5 h-5 text-white dark:text-black" />
                                 ) : (
-                                    <Copy className="w-5 h-5 text-background" />
+                                    <Copy className="w-5 h-5 text-white dark:text-black" />
                                 )}
                             </div>
                             <div className="flex-1 min-w-0">
@@ -103,7 +103,7 @@ export function ContactSection() {
                         <div className="flex items-center gap-3">
                             <div className="flex-shrink-0 w-10 h-10 bg-foreground rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
                                 <svg
-                                    className="w-5 h-5 text-background"
+                                    className="w-5 h-5 text-white dark:text-black"
                                     fill="currentColor"
                                     viewBox="0 0 24 24"
                                 >

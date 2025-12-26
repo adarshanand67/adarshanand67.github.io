@@ -105,8 +105,8 @@ export const DLPProvider: React.FC<DLPProviderProps> = ({ children }) => {
 
             {/* Overlay shown when blurred to indicate protection */}
             {isBlurred && (
-                <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/40 backdrop-blur-sm pointer-events-none">
-                    <div className="px-6 py-3 rounded-full bg-white/10 border border-white/20 backdrop-blur-md text-white font-medium animate-pulse shadow-2xl">
+                <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-background/60 backdrop-blur-sm pointer-events-none">
+                    <div className="px-8 py-4 rounded-2xl bg-foreground text-background border border-foreground/10 shadow-2xl font-black uppercase tracking-widest text-xs animate-pulse">
                         Protected Content
                     </div>
                 </div>

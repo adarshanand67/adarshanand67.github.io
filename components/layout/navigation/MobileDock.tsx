@@ -38,7 +38,7 @@ export function MobileDock() {
                             className="relative flex flex-col items-center gap-1 group"
                         >
                             <div
-                                className={`p-2 rounded-xl transition-all duration-300 ${isActive ? "bg-foreground text-background" : "text-gray-500 dark:text-gray-400 group-hover:text-foreground"}`}
+                                className={`p-2 rounded-xl transition-all duration-300 ${isActive ? "bg-gray-900 text-white dark:bg-white dark:text-black shadow-md" : "text-gray-500 dark:text-gray-400 group-hover:text-foreground"}`}
                             >
                                 <item.icon size={20} />
                             </div>
