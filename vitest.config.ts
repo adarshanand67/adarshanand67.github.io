@@ -11,7 +11,8 @@ export default defineConfig({
         alias: {
             "@": path.resolve(__dirname, "./"),
         },
-        exclude: ["node_modules/**", "dist/**", ".next/**", "test/e2e/**", "playwright.config.ts"],
+        include: ["test/unit/**/*.test.ts"],
+        exclude: ["node_modules/**", "dist/**", ".next/**", "test/e2e/**"],
         coverage: {
             provider: "v8",
             reporter: ["text", "json", "html"],
