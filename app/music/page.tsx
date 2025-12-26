@@ -42,26 +42,85 @@ export default function MusicPage() {
         toggleMusicPlayer,
     } = useStore();
 
-    // Calculate progress percentage
-    const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
+    // Validate tracks array
+    if (!tracks || !Array.isArray(tracks) || tracks.length === 0) {
+        return (
+            <div className="min-h-screen flex items-center justify-center bg-white dark:bg-black">
+                <div className="text-center p-8">
+                    <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+                        No Music Available
+                    </h1>
+                    <p className="text-gray-600 dark:text-gray-400 mb-6">
+                        There are no tracks available to play.
+                    </p>
+                    <Link
+                        href="/"
+                        className="px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-black rounded-xl font-bold hover:scale-105 transition-transform inline-block"
+                    >
+                        Go Home
+                    </Link>
+                </div>
+            </div>
+        );
+    }
 
-    // Handle seeking
+    // Validate current track index
+    const safeTrackIndex = Math.max(0, Math.min(currentTrackIndex, tracks.length - 1));
+    const currentTrack = tracks[safeTrackIndex];
+
+    // Validate current track object
+    if (!currentTrack || typeof currentTrack !== "object") {
+        console.error("Invalid track at index:", safeTrackIndex);
+        return (
+            <div className="min-h-screen flex items-center justify-center bg-white dark:bg-black">
+                <div className="text-center p-8">
+                    <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+                        Track Error
+                    </h1>
+                    <p className="text-gray-600 dark:text-gray-400 mb-6">
+                        The current track could not be loaded.
+                    </p>
+                    <Link
+                        href="/"
+                        className="px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-black rounded-xl font-bold hover:scale-105 transition-transform inline-block"
+                    >
+                        Go Home
+                    </Link>
+                </div>
+            </div>
+        );
+    }
+
+    // Calculate progress percentage with safety checks
+    const progress =
+        duration && duration > 0 && !isNaN(duration) ? (currentTime / duration) * 100 : 0;
+
+    // Handle seeking with validation
     const handleSeek = (vals: number[]) => {
+        if (!vals || !Array.isArray(vals) || vals.length === 0) return;
+        if (!duration || duration <= 0 || isNaN(duration)) return;
+
         const newTime = (vals[0] / 100) * duration;
-        requestSeek(newTime);
+        if (!isNaN(newTime) && newTime >= 0 && newTime <= duration) {
+            requestSeek(newTime);
+        }
     };
 
-    // Format time (mm:ss)
+    // Format time (mm:ss) with validation
     const formatTime = (time: number) => {
-        if (!time || isNaN(time)) return "0:00";
+        if (!time || isNaN(time) || time < 0) return "0:00";
         const mins = Math.floor(time / 60);
         const secs = Math.floor(time % 60);
         return `${mins}:${secs < 10 ? "0" : ""}${secs}`;
     };
 
-    // Local state for volume slider to separate from immediate store updates if needed
+    // Local state for volume slider with validation
     const handleVolumeChange = (vals: number[]) => {
-        setVolume(vals[0]);
+        if (!vals || !Array.isArray(vals) || vals.length === 0) return;
+        const newVolume = vals[0];
+        if (!isNaN(newVolume) && newVolume >= 0 && newVolume <= 1) {
+            setVolume(newVolume);
+        }
     };
 
     const handlePlayPause = () => {
@@ -74,12 +133,22 @@ export default function MusicPage() {
         setIsMaximized(!isMaximized);
     };
 
-    const currentTrack = tracks[currentTrackIndex];
-
-    // Close floating widget when this page loads
+    // Close floating widget when this page loads, re-open when leaving
     useEffect(() => {
-        if (showMusicPlayer) {
-            toggleMusicPlayer();
+        try {
+            // Explicitly close the mini player
+            if (showMusicPlayer) {
+                toggleMusicPlayer();
+            }
+
+            // Re-open widget when component unmounts (user navigates away)
+            return () => {
+                if (!showMusicPlayer) {
+                    toggleMusicPlayer();
+                }
+            };
+        } catch (error) {
+            console.error("Error managing music player visibility:", error);
         }
     }, []);
 
@@ -102,11 +171,57 @@ export default function MusicPage() {
                 e.preventDefault();
                 setIsMaximized(!isMaximized);
             }
+
+            // Arrow Right - Next track
+            if (e.key === "ArrowRight") {
+                e.preventDefault();
+                nextTrack();
+            }
+
+            // Arrow Left - Previous track
+            if (e.key === "ArrowLeft") {
+                e.preventDefault();
+                prevTrack();
+            }
+
+            // Arrow Up - Volume up
+            if (e.key === "ArrowUp") {
+                e.preventDefault();
+                setVolume(Math.min(1, volume + 0.1));
+            }
+
+            // Arrow Down - Volume down
+            if (e.key === "ArrowDown") {
+                e.preventDefault();
+                setVolume(Math.max(0, volume - 0.1));
+            }
+
+            // S key - Toggle shuffle
+            if (e.key === "s" || e.key === "S") {
+                e.preventDefault();
+                toggleShuffle();
+            }
+
+            // R key - Toggle repeat
+            if (e.key === "r" || e.key === "R") {
+                e.preventDefault();
+                toggleRepeat();
+            }
         };
 
         window.addEventListener("keydown", handleKeyPress);
         return () => window.removeEventListener("keydown", handleKeyPress);
-    }, [isPlaying, isMaximized, setIsPlaying]);
+    }, [
+        isPlaying,
+        isMaximized,
+        volume,
+        setIsPlaying,
+        nextTrack,
+        prevTrack,
+        setVolume,
+        toggleShuffle,
+        toggleRepeat,
+    ]);
 
     return (
         <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white font-sans">
@@ -173,34 +288,31 @@ export default function MusicPage() {
             </div>
 
             {/* Main Content - Apple Music Style: Left Player, Right Playlist */}
-            <div className="flex flex-col lg:flex-row h-full lg:h-screen lg:overflow-hidden pt-20 lg:pt-24">
+            <div className="flex flex-col lg:flex-row h-full lg:h-[calc(100vh-6rem)] lg:overflow-hidden pt-6 lg:pt-12 px-4 lg:px-8 max-w-[1800px] mx-auto">
                 {/* LEFT SIDE - Music Player */}
                 <div
                     className={cn(
                         "flex flex-col justify-center transition-all duration-500 ease-in-out pb-32 lg:pb-0",
-                        isMaximized
-                            ? "lg:w-2/3 px-8 pt-6 lg:px-16 lg:py-12"
-                            : "lg:w-1/2 px-8 pt-6 lg:px-12 lg:py-8"
+                        isMaximized ? "lg:w-2/3 px-4 lg:px-12" : "lg:w-1/2 px-4 lg:px-8"
                     )}
                 >
                     {/* Album Art Section */}
                     <div
                         className={cn(
-                            "w-full max-w-md mx-auto relative aspect-square mb-8 transition-transform duration-500 ease-out",
+                            "w-full max-w-md mx-auto mb-8 transition-all duration-500 ease-out",
                             isMaximized ? "lg:max-w-2xl" : "lg:max-w-lg"
                         )}
-                        style={{ transform: isPlaying ? "scale(1)" : "scale(0.95)" }}
                     >
                         {/* Glow Effect */}
                         <div
                             className={cn(
-                                "absolute inset-4 rounded-[2rem] bg-black/20 dark:bg-white/10 blur-3xl translate-y-4 transition-opacity duration-1000",
+                                "absolute inset-0 rounded-[2rem] bg-black/20 dark:bg-white/10 blur-3xl translate-y-4 transition-opacity duration-1000",
                                 isPlaying ? "opacity-100" : "opacity-30"
                             )}
                         />
 
-                        {/* Album Art Container */}
-                        <div className="relative w-full h-full rounded-[2rem] overflow-hidden shadow-[0_20px_50px_-12px_rgba(0,0,0,0.3)] dark:shadow-[0_20px_50px_-12px_rgba(255,255,255,0.1)] border border-black/5 dark:border-white/5">
+                        {/* Album Art Container - Fixed aspect ratio */}
+                        <div className="relative w-full aspect-square rounded-[2rem] overflow-hidden shadow-[0_20px_50px_-12px_rgba(0,0,0,0.3)] dark:shadow-[0_20px_50px_-12px_rgba(255,255,255,0.1)] border border-black/5 dark:border-white/5">
                             {currentTrack?.image && (
                                 <Image
                                     src={currentTrack.image}
@@ -209,6 +321,7 @@ export default function MusicPage() {
                                     className="object-cover"
                                     priority
                                     unoptimized
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                 />
                             )}
                         </div>
@@ -357,7 +470,7 @@ export default function MusicPage() {
                 {/* RIGHT SIDE - Playlist */}
                 <div
                     className={cn(
-                        "flex flex-col transition-all duration-500 bg-gray-50 dark:bg-white/5 lg:border-l border-black/5 dark:border-white/5",
+                        "flex flex-col transition-all duration-500 bg-gray-50 dark:bg-white/5 lg:border-l border-black/5 dark:border-white/5 lg:rounded-2xl lg:m-4",
                         isMaximized ? "lg:w-1/3 lg:overflow-y-auto" : "lg:w-1/2 lg:overflow-y-auto",
                         "px-6 py-6 lg:px-8 lg:py-8"
                     )}
@@ -391,6 +504,7 @@ export default function MusicPage() {
                                             fill
                                             className="object-cover"
                                             unoptimized
+                                            sizes="56px"
                                         />
                                         {isCurrent && isPlaying && (
                                             <div className="absolute inset-0 bg-black/30 flex items-center justify-center gap-[3px]">

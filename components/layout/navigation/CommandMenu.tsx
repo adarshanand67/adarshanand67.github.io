@@ -31,14 +31,14 @@ export function CommandMenu() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="fixed inset-0 bg-black/60 backdrop-blur-sm pointer-events-auto"
+                        className="fixed inset-0 bg-black/80 backdrop-blur-md pointer-events-auto"
                         onClick={() => setOpen(false)}
                     />
                     <motion.div
                         initial={{ opacity: 0, scale: 0.95, y: -20 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.95, y: -20 }}
-                        className="w-full max-w-[600px] bg-white/90 dark:bg-[#1a1a1a]/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20 dark:border-white/5 overflow-hidden pointer-events-auto"
+                        className="w-full max-w-[600px] bg-white dark:bg-[#0a0a0a] backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-200 dark:border-white/10 overflow-hidden pointer-events-auto"
                     >
                         <CommandMenuInput value={search} onChange={setSearch} />
 

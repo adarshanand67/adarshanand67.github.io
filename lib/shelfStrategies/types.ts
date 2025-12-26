@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
-import { Book, Paper, AnimeItem, Blog, Project, Hobby } from "@/types/definitions";
+import { Book, Paper, AnimeItem, Blog, Hobby } from "@/types/definitions";
 
-export type ShelfItem = Book | Paper | AnimeItem | Blog | Project | Hobby;
+export type ShelfItem = Book | Paper | AnimeItem | Blog | Hobby;
 
 export interface ShelfItemStrategy<T> {
     renderItem(item: T, index: number): ReactNode;

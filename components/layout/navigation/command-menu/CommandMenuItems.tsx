@@ -15,20 +15,24 @@ export function CommandMenuItem({ item, isSelected, onSelect }: CommandMenuItemP
                 ${
                     isSelected
                         ? "bg-gray-900 text-white dark:bg-white dark:text-black shadow-lg shadow-black/10"
-                        : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/5"
+                        : "text-gray-900 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-white/5"
                 }
             `}
         >
             <div className="flex items-center gap-3 flex-1">
                 <item.icon
                     size={18}
-                    className={isSelected ? "text-white" : "text-gray-400 dark:text-gray-500"}
+                    className={
+                        isSelected
+                            ? "text-white dark:text-black"
+                            : "text-gray-500 dark:text-gray-500"
+                    }
                 />
                 <div className="flex flex-col items-start gap-0.5">
                     <span className="font-medium">{item.label}</span>
                     {item.description && (
                         <span
-                            className={`text-xs ${isSelected ? "text-white/70" : "text-gray-500 dark:text-gray-400"}`}
+                            className={`text-xs ${isSelected ? "text-white/90 dark:text-black/90" : "text-gray-700 dark:text-gray-300"}`}
                         >
                             {item.description}
                         </span>
@@ -62,7 +66,7 @@ export function CommandMenuItems({
 }: CommandMenuItemsProps) {
     if (filteredItems.length === 0) {
         return (
-            <div className="py-12 text-center text-gray-500 text-sm">
+            <div className="py-12 text-center text-gray-500 dark:text-gray-400 text-sm">
                 No results found for &ldquo;{search}&rdquo;
             </div>
         );
@@ -78,7 +82,7 @@ export function CommandMenuItems({
 
                 return (
                     <div key={group.group} className="space-y-1">
-                        <div className="px-3 py-1 text-[10px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest">
+                        <div className="px-3 py-1 text-[10px] font-bold text-gray-500 dark:text-gray-500 uppercase tracking-widest">
                             {group.group}
                         </div>
                         {groupFiltered.map((item: any) => (

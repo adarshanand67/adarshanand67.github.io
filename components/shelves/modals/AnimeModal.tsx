@@ -6,6 +6,7 @@
 
 "use client";
 
+import { useEffect } from "react";
 import { X } from "lucide-react";
 import { motion } from "framer-motion";
 import { AnimeSidebar } from "./anime/AnimeSidebar";
@@ -34,6 +35,13 @@ interface AnimeModalProps {
  * @returns {JSX.Element} Rendered modal with anime details
  */
 export function AnimeModal({ item, onClose, onTagClick }: AnimeModalProps) {
+    // Validate item prop
+    if (!item || typeof item !== "object") {
+        console.error("Invalid anime item passed to AnimeModal:", item);
+        onClose();
+        return null;
+    }
+
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
             if (e.key === "Escape") onClose();

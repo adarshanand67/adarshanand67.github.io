@@ -24,9 +24,9 @@ export const profileData: Profile = {
         email: "adarshan20302@gmail.com",
     },
     bio: {
-        short: "I enjoy wrapping basic common sense in a slow deep voice just to see if it sounds like philosophy.",
+        short: "I enjoy wrapping basic common sense in a slow, monotone voice just to see if it sounds like philosophy.",
         paragraphs: [
-            "I enjoy wrapping basic common sense in a slow deep voice just to see if it sounds like philosophy.",
+            "I enjoy wrapping basic common sense in a slow, monotone voice just to see if it sounds like philosophy.",
         ],
     },
 };
