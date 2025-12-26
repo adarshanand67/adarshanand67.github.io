@@ -6,6 +6,7 @@ import { Tv, Check, Star } from "lucide-react";
 import { useStore } from "@/lib/store/useStore";
 import { AnimeItem, WatchStatus, AnimeType } from "@/types/definitions";
 import { ShelfItemStrategy } from "./types";
+import { PillTag } from "@/components/ui/PillTag";
 
 export class AnimeCardStrategy implements ShelfItemStrategy<AnimeItem> {
     renderItem(anime: AnimeItem, index: number): ReactNode {
@@ -62,16 +63,15 @@ export class AnimeCardStrategy implements ShelfItemStrategy<AnimeItem> {
                     )}
                     <div className="flex flex-wrap justify-center gap-1.5 mt-auto">
                         {anime.tags?.slice(0, 3).map((tag, i) => (
-                            <button
+                            <PillTag
                                 key={i}
+                                label={tag}
                                 onClick={(e) => {
                                     e.stopPropagation();
                                     useStore.getState().setAnimeSelectedTag(tag);
                                 }}
-                                className="text-[10px] font-black uppercase tracking-widest text-zinc-600 dark:text-zinc-400 bg-zinc-100 dark:bg-zinc-800 px-3 py-1.5 rounded-full border border-zinc-200 dark:border-zinc-700 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-all cursor-pointer"
-                            >
-                                {tag}
-                            </button>
+                                variant="filter"
+                            />
                         ))}
                     </div>
                 </div>

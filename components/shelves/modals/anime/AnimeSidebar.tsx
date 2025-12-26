@@ -71,13 +71,13 @@ export function AnimeSidebar({ item }: AnimeSidebarProps) {
 
             <div className="w-full space-y-3 relative z-10">
                 {item.status === WatchStatus.Completed && (
-                    <div className="w-full flex items-center justify-center gap-2 py-2.5 bg-foreground/5 text-foreground/80 rounded-xl text-[10px] font-black uppercase tracking-widest border border-foreground/10">
+                    <div className="w-full flex items-center justify-center gap-2 py-2.5 bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-full text-[10px] font-black uppercase tracking-widest shadow-sm">
                         <Check size={18} strokeWidth={3} />
                         <span>Completed</span>
                     </div>
                 )}
                 {item.recommended && (
-                    <div className="w-full flex items-center justify-center gap-2 py-2.5 bg-foreground/5 text-foreground/80 rounded-xl text-[10px] font-black uppercase tracking-widest border border-foreground/10">
+                    <div className="w-full flex items-center justify-center gap-2 py-2.5 bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-full text-[10px] font-black uppercase tracking-widest shadow-sm">
                         <Star size={18} fill="currentColor" />
                         <span>Highly Recommended</span>
                     </div>
@@ -87,7 +87,7 @@ export function AnimeSidebar({ item }: AnimeSidebarProps) {
                     href={`https://www.youtube.com/results?search_query=${encodeURIComponent(item.title + " anime official trailer")}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full flex items-center justify-center gap-2 py-3 text-foreground/60 hover:text-foreground rounded-xl text-[10px] font-black uppercase tracking-widest group transition-all hover:scale-[1.02] active:scale-[0.98] border border-foreground/10 hover:border-foreground hover:bg-foreground/5"
+                    className="w-full flex items-center justify-center gap-2 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-full text-[10px] font-black uppercase tracking-widest group transition-all hover:scale-[1.02] active:scale-[0.98] shadow-sm hover:bg-gray-800 dark:hover:bg-gray-100"
                 >
                     <Play
                         size={16}

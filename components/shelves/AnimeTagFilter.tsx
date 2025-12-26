@@ -6,6 +6,7 @@
 "use client";
 
 import React from "react";
+import { PillTag } from "@/components/ui/PillTag";
 
 /**
  * Props for AnimeTagFilter component.
@@ -45,17 +46,13 @@ export function AnimeTagFilter({ items, selectedTag, onTagSelect }: AnimeTagFilt
             </h4>
             <div className="flex flex-wrap gap-2">
                 {allTags.map((tag) => (
-                    <button
+                    <PillTag
                         key={tag}
+                        label={tag}
+                        selected={selectedTag === tag}
                         onClick={() => onTagSelect(selectedTag === tag ? null : tag)}
-                        className={`px-4 py-2 rounded-full text-[11px] uppercase tracking-wider transition-all bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 ${
-                            selectedTag === tag
-                                ? "font-black text-zinc-900 dark:text-white"
-                                : "font-medium text-zinc-600 dark:text-zinc-400"
-                        }`}
-                    >
-                        {tag}
-                    </button>
+                        variant="filter"
+                    />
                 ))}
             </div>
         </div>

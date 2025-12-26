@@ -6,6 +6,7 @@
 
 "use client";
 
+import { useEffect } from "react";
 import { X } from "lucide-react";
 import { motion } from "framer-motion";
 import { BookSidebar } from "./book/BookSidebar";
@@ -32,6 +33,13 @@ interface BookModalProps {
  * @returns {JSX.Element} Rendered modal with book details
  */
 export function BookModal({ item, onClose }: BookModalProps) {
+    // Validate item prop
+    if (!item || typeof item !== "object") {
+        console.error("Invalid book item passed to BookModal:", item);
+        onClose();
+        return null;
+    }
+
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
             if (e.key === "Escape") onClose();

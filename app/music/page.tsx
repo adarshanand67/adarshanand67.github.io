@@ -288,7 +288,7 @@ export default function MusicPage() {
             </div>
 
             {/* Main Content - Apple Music Style: Left Player, Right Playlist */}
-            <div className="flex flex-col lg:flex-row h-full lg:h-[calc(100vh-6rem)] lg:overflow-hidden pt-6 lg:pt-12 px-4 lg:px-8 max-w-[1800px] mx-auto">
+            <div className="flex flex-col lg:flex-row h-full lg:h-[calc(100vh-8rem)] lg:overflow-hidden pt-12 lg:pt-20 px-4 lg:px-8 max-w-[1800px] mx-auto">
                 {/* LEFT SIDE - Music Player */}
                 <div
                     className={cn(
