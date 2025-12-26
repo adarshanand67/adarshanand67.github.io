@@ -8,9 +8,9 @@ import { motion } from "framer-motion";
 
 const navItems = [
     { icon: Home, label: "Home", path: routes.home },
-    { icon: FileText, label: "Blog", path: routes.articleShelf },
-    { icon: Tv, label: "Anime", path: routes.animeShelf },
+    { icon: FileText, label: "Articles", path: routes.articleShelf },
     { icon: BookOpen, label: "Books", path: routes.bookShelf },
+    { icon: Tv, label: "Anime", path: routes.animeShelf },
 ];
 
 /**
@@ -27,7 +27,7 @@ export function MobileDock() {
     };
 
     return (
-        <div className="md:hidden fixed bottom-2 left-1/2 -translate-x-1/2 z-[100] w-[90%] max-w-[400px]">
+        <div className="md:hidden fixed bottom-0 left-1/2 -translate-x-1/2 z-[100] w-full max-w-[420px] px-2 pb-2">
             <div className="glass-apple dark:bg-black/80 backdrop-blur-2xl border border-white/20 dark:border-white/10 rounded-3xl shadow-2xl px-6 py-3 flex items-center justify-between">
                 {navItems.map((item) => {
                     const isActive = pathname === item.path;

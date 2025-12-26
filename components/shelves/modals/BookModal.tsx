@@ -25,19 +25,11 @@ interface BookModalProps {
 /**
  * Book Modal Component - animated full-screen modal for book details.
  * Features backdrop blur, spring animations, responsive layout switching between
- * mobile (bottom sheet) and desktop (centered modal), and composed sidebar/content layout.
+ * mobile (single scrollable view) and desktop (sidebar + content).
  *
  * @component
  * @param {BookModalProps} props - Component props
  * @returns {JSX.Element} Rendered modal with book details
- *
- * @example
- * ```tsx
- * <BookModal
- *   item={bookData}
- *   onClose={() => setShowModal(false)}
- * />
- * ```
  */
 export function BookModal({ item, onClose }: BookModalProps) {
     return (
@@ -55,14 +47,9 @@ export function BookModal({ item, onClose }: BookModalProps) {
                 animate={{ y: 0, opacity: 1 }}
                 exit={{ y: "100%", opacity: 0 }}
                 transition={{ type: "spring", damping: 30, stiffness: 300, mass: 0.8 }}
-                className="bg-[#fafafa] dark:bg-[#09090b] w-[92%] md:w-full max-w-5xl h-[80vh] md:h-auto md:max-h-[85vh] rounded-[24px] md:rounded-[32px] shadow-2xl overflow-hidden relative z-10 border border-white/20 dark:border-white/10 flex flex-col md:flex-row mx-4 md:mx-0"
+                className="bg-[#fafafa] dark:bg-[#09090b] w-[92%] md:w-full max-w-5xl max-h-[85vh] rounded-[24px] md:rounded-[32px] shadow-2xl relative z-10 border border-white/20 dark:border-white/10 flex flex-col md:flex-row overflow-hidden"
             >
-                {/* Mobile Handle */}
-                <div className="md:hidden w-full flex flex-col items-center pt-3 pb-2 sticky top-0 bg-[#fafafa] dark:bg-[#09090b] z-30 border-b border-gray-100 dark:border-white/5">
-                    <div className="w-12 h-1.5 bg-gray-300 dark:bg-gray-700 rounded-full mb-2" />
-                </div>
-
-                {/* Close Button */}
+                {/* Close Button - Fixed */}
                 <button
                     onClick={onClose}
                     className="absolute top-4 right-4 md:top-6 md:right-6 p-2 rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/20 transition-all z-30 backdrop-blur-sm group"
@@ -73,8 +60,19 @@ export function BookModal({ item, onClose }: BookModalProps) {
                     />
                 </button>
 
-                <BookSidebar item={item} />
-                <BookContent item={item} />
+                {/* Mobile: Single scrollable view with everything */}
+                <div className="md:hidden flex-1 overflow-y-auto">
+                    <div className="p-4 pt-10">
+                        <BookSidebar item={item} />
+                        <BookContent item={item} />
+                    </div>
+                </div>
+
+                {/* Desktop: Side-by-side layout */}
+                <div className="hidden md:flex md:flex-row flex-1 overflow-hidden">
+                    <BookSidebar item={item} />
+                    <BookContent item={item} />
+                </div>
             </motion.div>
         </div>
     );

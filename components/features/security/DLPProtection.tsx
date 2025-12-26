@@ -172,8 +172,15 @@ export function DLPProtection() {
             return false;
         };
 
-        // 2. Disable Copy/Cut/Paste
+        // 2. Disable Copy/Cut/Paste - but allow in input fields
         const handleCopyCutPaste = (e: ClipboardEvent) => {
+            const target = e.target as HTMLElement;
+            const isEditable =
+                target.tagName === "INPUT" ||
+                target.tagName === "TEXTAREA" ||
+                target.isContentEditable;
+            if (isEditable) return; // Allow in input fields
+
             addNotification("Copy/Paste actions are blocked.", <Copy size={16} />);
             e.preventDefault();
             if (e.clipboardData) {
@@ -204,12 +211,17 @@ export function DLPProtection() {
             );
         };
 
-        // 3.5 Handle Selection on Mouse Up
-        const handleMouseUp = () => {
+        // 3.5 Handle Selection on Mouse Up - but allow in input fields
+        const handleMouseUp = (e: MouseEvent) => {
+            const target = e.target as HTMLElement;
+            const isEditable =
+                target.tagName === "INPUT" ||
+                target.tagName === "TEXTAREA" ||
+                target.isContentEditable;
+            if (isEditable) return; // Allow selection in input fields
+
             const selection = window.getSelection();
             if (selection && selection.toString().length > 0) {
-                // selection.removeAllRanges(); // Optional: Clear it immediately?
-                // User said "show them blocked action". Clearing it reinforces "blocked".
                 selection.removeAllRanges();
                 addNotification("Text selection is restricted.", <ShieldAlert size={16} />);
             }
@@ -229,9 +241,23 @@ export function DLPProtection() {
                 return;
             }
 
-            // Block generic shortcuts with specific messages
+            // Block generic shortcuts with specific messages - but allow in input fields
+            const target = e.target as HTMLElement;
+            const isEditable =
+                target.tagName === "INPUT" ||
+                target.tagName === "TEXTAREA" ||
+                target.isContentEditable;
+
             if (e.ctrlKey || e.metaKey) {
-                if (e.key === "a") {
+                // Allow Ctrl+A, Ctrl+C, Ctrl+V, Ctrl+X in editable fields
+                if (
+                    isEditable &&
+                    (e.key === "a" || e.key === "c" || e.key === "v" || e.key === "x")
+                ) {
+                    return; // Allow normal behavior in input fields
+                }
+
+                if (e.key === "a" && !isEditable) {
                     addNotification(
                         "Select All is disabled to prevent bulk data extraction.",
                         <ShieldAlert size={16} />

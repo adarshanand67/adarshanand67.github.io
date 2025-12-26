@@ -14,7 +14,7 @@ export function MusicToggleButton() {
     return (
         <button
             onClick={toggleMusicPlayer}
-            className="fixed bottom-8 right-8 z-[101] w-14 h-14 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md border border-black/10 dark:border-white/10 rounded-full flex items-center justify-center shadow-lg hover:scale-110 active:scale-95 transition-all duration-300 group"
+            className="hidden md:flex fixed bottom-8 right-8 z-[101] w-14 h-14 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md border border-black/10 dark:border-white/10 rounded-full items-center justify-center shadow-lg hover:scale-110 active:scale-95 transition-all duration-300 group"
             title="Open Music Player"
         >
             <div className={`relative ${isPlaying ? "animate-pulse" : ""}`}>
