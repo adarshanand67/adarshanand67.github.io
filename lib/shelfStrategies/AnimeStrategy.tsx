@@ -299,10 +299,10 @@ export class AnimeCardStrategy implements ShelfItemStrategy<AnimeItem> {
         if (!items || !Array.isArray(items)) return [];
 
         try {
-            let filtered = [...items];
+            // Always filter to only show watched (Completed) anime
+            let filtered = items.filter((item) => item?.status === WatchStatus.Completed);
 
-            // If there's a search query, search across ALL anime
-            // If no search query, only show completed/watched anime
+            // Apply search query filter
             if (query) {
                 const lowerQuery = query.toLowerCase();
                 filtered = filtered.filter(
@@ -311,9 +311,6 @@ export class AnimeCardStrategy implements ShelfItemStrategy<AnimeItem> {
                         item?.description?.toLowerCase().includes(lowerQuery) ||
                         item?.tags?.some((tag: string) => tag?.toLowerCase().includes(lowerQuery))
                 );
-            } else {
-                // No search query - only show completed anime
-                filtered = filtered.filter((item) => item?.status === WatchStatus.Completed);
             }
 
             // Then apply tag filter

@@ -60,20 +60,20 @@ export function Controls({
 
                 <button
                     onClick={onTogglePlay}
-                    className="w-10 h-10 flex items-center justify-center hover:scale-105 active:scale-95 transition-all duration-300 group bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 rounded-full"
+                    className="w-10 h-10 flex items-center justify-center hover:scale-105 active:scale-95 transition-all duration-300 group bg-black dark:bg-white rounded-full shadow-md"
                     title={isPlaying ? "Pause" : "Play"}
                 >
                     {isPlaying ? (
                         <Pause
                             size={20}
-                            className="text-black dark:text-gray-400"
+                            className="text-white dark:text-black"
                             fill="currentColor"
                             strokeWidth={0}
                         />
                     ) : (
                         <Play
                             size={20}
-                            className="text-black dark:text-gray-400 ml-0.5"
+                            className="text-white dark:text-black ml-0.5"
                             fill="currentColor"
                             strokeWidth={0}
                         />

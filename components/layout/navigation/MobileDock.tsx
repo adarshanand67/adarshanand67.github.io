@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, FileText, Tv, BookOpen, Music } from "lucide-react";
+import { Home, FileText, Tv, BookOpen, Music, Gamepad2 } from "lucide-react";
 import { routes } from "@/lib/constants";
 
 import { motion } from "framer-motion";
@@ -12,6 +12,7 @@ const navItems = [
     { icon: FileText, label: "Articles", path: routes.articleShelf },
     { icon: BookOpen, label: "Books", path: routes.bookShelf },
     { icon: Tv, label: "Anime", path: routes.animeShelf },
+    { icon: Gamepad2, label: "Hobbies", path: routes.hobbyShelf },
 ];
 
 /**
@@ -25,7 +26,7 @@ export function MobileDock() {
 
     return (
         <div className="md:hidden fixed bottom-0 left-1/2 -translate-x-1/2 z-[100] w-full max-w-[420px]">
-            <div className="glass-apple dark:bg-black/80 backdrop-blur-2xl border-t border-white/20 dark:border-white/10 rounded-t-[32px] shadow-2xl px-6 py-4 flex items-center justify-between">
+            <div className="bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800 rounded-t-[32px] shadow-xl px-6 py-4 flex items-center justify-between">
                 {navItems.map((item) => {
                     const isActive = pathname === item.path;
                     return (
