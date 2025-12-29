@@ -63,6 +63,7 @@ const nextConfig = {
     ignoreBuildErrors: false,
   },
   output: isProd ? "export" : undefined,
+  transpilePackages: ["next-image-export-optimizer"],
 };
 
 // Bundle analyzer
