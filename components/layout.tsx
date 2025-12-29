@@ -282,7 +282,6 @@ function getTechIcon(name: string) {
     "Boldon James": Bookmark,
     "Full-Disk Encryption": Copy,
     "Hashicorp Vault": Keyboard,
-    OpenSSL: Keyboard,
     "Post-Quantum Cryptography": Keyboard,
     libFuzzer: Activity,
     RESTler: Activity,
@@ -773,23 +772,23 @@ function CommandMenuItem({ item, isSelected, onSelect }: any) {
   return (
     <button
       onClick={() => onSelect(item.action)}
-      className={`w-full flex items-center justify-between px-3 py-3 rounded-xl text-sm transition-all duration-200 group ${isSelected ? "bg-black text-white dark:bg-white dark:text-black shadow-lg shadow-black/5 scale-[1.01]" : "text-gray-600 dark:text-gray-300 hover:bg-black/5 dark:hover:bg-white/10"}`}
+      className={`w-full flex items-center justify-between px-3 py-3 rounded-xl text-sm transition-all duration-200 group ${isSelected ? "bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 font-medium" : "text-gray-600 dark:text-gray-400 hover:bg-black/5 dark:hover:bg-white/10"}`}
     >
       <div className="flex items-center gap-4 flex-1">
         <div
-          className={`p-2 rounded-lg transition-colors ${isSelected ? "bg-white/20 dark:bg-black/10 text-white dark:text-black" : "bg-black/5 dark:bg-white/5 text-gray-500 dark:text-gray-400 group-hover:text-black dark:group-hover:text-white"}`}
+          className={`p-2 rounded-lg transition-colors ${isSelected ? "bg-white dark:bg-black/20 text-zinc-900 dark:text-zinc-100 shadow-sm" : "bg-black/5 dark:bg-white/5 text-gray-500 dark:text-gray-400 group-hover:text-black dark:group-hover:text-white"}`}
         >
           <item.icon size={18} />
         </div>
         <div className="flex flex-col items-start gap-0.5">
           <span
-            className={`font-semibold tracking-tight ${isSelected ? "text-white dark:text-black" : "text-gray-900 dark:text-white"}`}
+            className={`font-semibold tracking-tight ${isSelected ? "text-zinc-900 dark:text-zinc-100" : "text-gray-900 dark:text-white"}`}
           >
             {item.label}
           </span>
           {item.description && (
             <span
-              className={`text-xs ${isSelected ? "text-white/80 dark:text-black/70" : "text-gray-500 dark:text-gray-400"}`}
+              className={`text-xs ${isSelected ? "text-zinc-500 dark:text-zinc-400" : "text-gray-500 dark:text-gray-400"}`}
             >
               {item.description}
             </span>
@@ -1402,8 +1401,8 @@ export const ViewToggle = ({
     <button
       onClick={() => setViewMode("profile")}
       className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all ${viewMode === "profile"
-          ? "bg-zinc-200 dark:bg-zinc-800 text-zinc-900 dark:text-white shadow-sm"
-          : "text-zinc-500 dark:text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200"
+        ? "bg-zinc-200 dark:bg-zinc-800 text-zinc-900 dark:text-white shadow-sm"
+        : "text-zinc-500 dark:text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200"
         }`}
     >
       <User size={14} /> <span>Profile</span>
@@ -1411,8 +1410,8 @@ export const ViewToggle = ({
     <button
       onClick={() => setViewMode("terminal")}
       className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all ${viewMode === "terminal"
-          ? "bg-zinc-200 dark:bg-zinc-800 text-zinc-900 dark:text-white shadow-sm"
-          : "text-zinc-500 dark:text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200"
+        ? "bg-zinc-200 dark:bg-zinc-800 text-zinc-900 dark:text-white shadow-sm"
+        : "text-zinc-500 dark:text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200"
         }`}
     >
       <TerminalIcon size={14} /> <span>Terminal</span>

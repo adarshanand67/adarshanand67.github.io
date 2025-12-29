@@ -181,7 +181,7 @@ export function DLPProtection() {
         setIsBlur(true);
         setTimeout(() => setIsBlur(false), 2000);
         if (typeof navigator !== "undefined" && navigator.clipboard)
-          navigator.clipboard.writeText("").catch(() => {});
+          navigator.clipboard.writeText("").catch(() => { });
         addNotification(
           "Screen capture attempt detected and blocked.",
           <Camera size={16} />,
@@ -546,16 +546,16 @@ export function MusicPlayer() {
             <div className="flex items-center justify-between px-2">
               <button
                 onClick={toggleShuffle}
-                className={`p-1.5 transition-all ${isShuffle ? "text-zinc-900 dark:text-zinc-100" : "text-zinc-400 dark:text-zinc-500"}`}
+                className={`p-1.5 transition-all text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 ${isShuffle ? "text-green-500 dark:text-green-400 bg-green-50 dark:bg-green-400/10 rounded-full" : ""}`}
               >
-                <Shuffle size={16} />
+                <Shuffle size={18} />
               </button>
               <div className="flex items-center gap-6">
                 <button
                   onClick={prevTrack}
-                  className="text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100"
+                  className="text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 transition-colors"
                 >
-                  <SkipBack size={20} fill="currentColor" />
+                  <SkipBack size={24} fill="currentColor" />
                 </button>
                 <button
                   onClick={() => setIsPlaying(!isPlaying)}
@@ -577,18 +577,18 @@ export function MusicPlayer() {
                 </button>
                 <button
                   onClick={nextTrack}
-                  className="text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100"
+                  className="text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 transition-colors"
                 >
-                  <SkipForward size={20} fill="currentColor" />
+                  <SkipForward size={24} fill="currentColor" />
                 </button>
               </div>
               <button
                 onClick={toggleRepeat}
-                className={`p-1.5 transition-all relative ${isRepeat ? "text-zinc-900 dark:text-zinc-100" : "text-zinc-400 dark:text-zinc-500"}`}
+                className={`p-1.5 transition-all relative text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 ${isRepeat ? "text-green-500 dark:text-green-400 bg-green-50 dark:bg-green-400/10 rounded-full" : ""}`}
               >
-                <Repeat size={16} />
+                <Repeat size={18} />
                 {isRepeat && (
-                  <span className="absolute -top-1 -right-1 text-[8px] bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 w-3 h-3 rounded-full flex items-center justify-center">
+                  <span className="absolute -top-1 -right-1 text-[8px] bg-green-500 text-white w-3 h-3 rounded-full flex items-center justify-center font-bold">
                     1
                   </span>
                 )}
