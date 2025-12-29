@@ -6,7 +6,7 @@ import { ClientLayout } from "@/components/layout/ClientLayout";
 import { DLPProvider } from "@/components/layout/security/DLPProvider";
 import { siteConfig } from "@/lib/config";
 import { generatePersonSchema, generateWebSiteSchema } from "@/lib/seo/schemas";
-import { RegisterSW } from "@/components/pwa/RegisterSW";
+import { RegisterSW } from "@/components/pwa";
 import { GlobalErrorBoundary } from "@/components/error";
 
 const assistant = Assistant({

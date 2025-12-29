@@ -1,7 +1,14 @@
+/**
+ * @fileoverview PWA (Progressive Web App) components.
+ */
+
 "use client";
 
 import { useEffect } from "react";
 
+/**
+ * RegisterSW - Registers the service worker for PWA functionality.
+ */
 export function RegisterSW() {
     useEffect(() => {
         if ("serviceWorker" in navigator && window.location.hostname !== "localhost") {
