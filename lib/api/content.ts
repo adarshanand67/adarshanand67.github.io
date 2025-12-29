@@ -6,7 +6,7 @@
 import { profileData, experiencesData, papersData, booksData, anime, hobbyData } from "@/data";
 import { AnimeItem, AnimeType, WatchStatus } from "@/types/definitions";
 import { getBlogs } from "./blogs";
-import { logError, AppError } from "@/lib/utils/errorHandling";
+import { logError, AppError } from "@/lib/utils";
 
 /** Fetches profile data with error handling. */
 export const getProfile = async () => {

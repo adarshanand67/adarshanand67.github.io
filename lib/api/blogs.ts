@@ -3,7 +3,7 @@
 import { promises as fs } from "fs";
 import path from "path";
 import { parseFrontmatter } from "./markdown";
-import { logError, AppError, safeAsync } from "@/lib/utils/errorHandling";
+import { logError, AppError, safeAsync } from "@/lib/utils";
 
 /** Fetches all blog posts from the data/blogs directory. */
 export async function getBlogs() {

@@ -5,7 +5,7 @@ import { StructuredData } from "@/components/seo";
 import { ClientLayout } from "@/components/layout/ClientLayout";
 import { DLPProvider } from "@/components/layout/security";
 import { siteConfig } from "@/lib/config";
-import { generatePersonSchema, generateWebSiteSchema } from "@/lib/seo/schemas";
+import { generatePersonSchema, generateWebSiteSchema } from "@/lib/seo";
 
 
 const assistant = Assistant({

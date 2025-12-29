@@ -1,6 +1,6 @@
 /** Markdown parser - extracts frontmatter from markdown files. */
 
-import { logError } from "@/lib/utils/errorHandling";
+import { logError } from "@/lib/utils";
 
 /** Parses frontmatter from markdown content. */
 export const parseFrontmatter = (content: string) => {

@@ -6,7 +6,7 @@ import { useStore } from "@/lib/store/useStore";
 import { Book } from "@/types/definitions";
 import { ShelfItemStrategy } from "./types";
 
-import { getBookGradient } from "@/lib/utils/color";
+import { getBookGradient } from "@/lib/utils";
 
 export class BookListStrategy implements ShelfItemStrategy<Book> {
     renderItem(book: Book, index: number): ReactNode {

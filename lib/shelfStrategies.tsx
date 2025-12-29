@@ -9,7 +9,7 @@ import { BlogListStrategy } from "./shelfStrategies/BlogStrategy";
 import { HobbyListStrategy } from "./shelfStrategies/HobbyStrategy";
 import { ArticleListStrategy } from "./shelfStrategies/ArticleStrategy";
 
-import { AppError } from "./utils/errorHandling";
+import { AppError } from "./utils";
 
 export * from "./shelfStrategies/types";
 export * from "./shelfStrategies/BookStrategy";

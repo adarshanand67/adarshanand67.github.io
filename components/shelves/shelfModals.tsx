@@ -7,13 +7,13 @@
 import { useEffect } from "react";
 import Image from "next/image";
 import {
-    X, ExternalLink, Dumbbell, Tv, Trophy, Bike, Mountain, Dices, Plane, Coffee,
+    X, ExternalLink, Dumbbell, Tv, Trophy, Bike, Mountain, Dices, Plane, Coffee, Tea
     Users, Mic, Calendar, Star, Film, Play, Check, BookOpen, Quote
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { PillTag } from "@/components/ui";
 import { WatchStatus, Book } from "@/types/definitions";
-import { getBookGradient } from "@/lib/utils/color";
+import { getBookGradient } from "@/lib/utils";
 
 // ============================================================================
 // Anime Modal Components

@@ -1,3 +1,7 @@
+/**
+ * @fileoverview Consolidated hooks module
+ */
+
 import { useState, useEffect } from "react";
 
 export function useMounted() {
