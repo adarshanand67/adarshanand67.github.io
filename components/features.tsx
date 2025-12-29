@@ -559,18 +559,18 @@ export function MusicPlayer() {
                 </button>
                 <button
                   onClick={() => setIsPlaying(!isPlaying)}
-                  className="w-12 h-12 flex items-center justify-center bg-zinc-900 dark:bg-zinc-100 rounded-full shadow-lg"
+                  className="w-14 h-14 flex items-center justify-center bg-zinc-100/50 dark:bg-zinc-800/50 border border-zinc-200 dark:border-zinc-700 rounded-full shadow-xl backdrop-blur-md hover:scale-105 active:scale-95 transition-all group/play"
                 >
                   {isPlaying ? (
                     <Pause
-                      size={24}
-                      className="text-white dark:text-zinc-900"
+                      size={28}
+                      className="text-zinc-900 dark:text-zinc-100"
                       fill="currentColor"
                     />
                   ) : (
                     <Play
-                      size={24}
-                      className="text-white dark:text-zinc-900 ml-1"
+                      size={28}
+                      className="text-zinc-900 dark:text-zinc-100 ml-1"
                       fill="currentColor"
                     />
                   )}

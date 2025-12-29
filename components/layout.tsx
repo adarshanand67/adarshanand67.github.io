@@ -1453,6 +1453,7 @@ export function Hero({ profile }: { profile: Profile }) {
                         fill
                         className="object-cover"
                         priority
+                        unoptimized
                       />
                     </div>
                   </TiltWrapper>
