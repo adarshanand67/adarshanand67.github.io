@@ -6,7 +6,7 @@ import { ClientLayout } from "@/components/layout/ClientLayout";
 import { DLPProvider } from "@/components/layout/security";
 import { siteConfig } from "@/lib/config";
 import { generatePersonSchema, generateWebSiteSchema } from "@/lib/seo/schemas";
-import { GlobalErrorBoundary } from "@/components/error";
+
 
 const assistant = Assistant({
     variable: "--font-assistant",
@@ -89,11 +89,9 @@ export default function RootLayout({
             >
                 <StructuredData data={generatePersonSchema()} />
                 <StructuredData data={generateWebSiteSchema()} />
-                <GlobalErrorBoundary>
-                    <ClientLayout>
-                        <DLPProvider>{children}</DLPProvider>
-                    </ClientLayout>
-                </GlobalErrorBoundary>
+                <ClientLayout>
+                    <DLPProvider>{children}</DLPProvider>
+                </ClientLayout>
             </body>
         </html>
     );

@@ -1,7 +1,6 @@
 import { getExperiences, getProfile } from "@/lib/api";
 import dynamic from "next/dynamic";
 import { Hero } from "@/components/layout";
-import { ErrorBoundary } from "@/components/features/errorBoundary";
 
 const Experience = dynamic(() => import("@/components/layout").then((mod) => mod.Experience), {
     loading: () => (
@@ -25,28 +24,24 @@ export default async function Home() {
     return (
         <main className="min-h-screen">
             <Hero profile={profile} />
-            {}
+            { }
             <div className="section max-w-6xl mx-auto px-6 md:px-12 mb-8 space-y-8">
                 <div className="grid grid-cols-1 gap-8">
                     {/* Experience Section */}
-                    <ErrorBoundary>
-                        <div className="group relative h-full">
-                            <div className="absolute -inset-1 bg-gradient-to-r from-foreground/5 to-foreground/5 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition duration-500"></div>
-                            <div className="relative h-full bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm rounded-xl p-4 border border-gray-200 dark:border-gray-800 hover:border-foreground/20 transition-colors duration-300">
-                                <Experience items={experiences} />
-                            </div>
+                    <div className="group relative h-full">
+                        <div className="absolute -inset-1 bg-gradient-to-r from-foreground/5 to-foreground/5 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                        <div className="relative h-full bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm rounded-xl p-4 border border-gray-200 dark:border-gray-800 hover:border-foreground/20 transition-colors duration-300">
+                            <Experience items={experiences} />
                         </div>
-                    </ErrorBoundary>
+                    </div>
 
                     {/* Tech Stack Section */}
-                    <ErrorBoundary>
-                        <div className="group relative h-full">
-                            <div className="absolute -inset-1 bg-gradient-to-r from-foreground/5 to-foreground/5 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition duration-500"></div>
-                            <div className="relative h-full bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm rounded-xl p-4 border border-gray-200 dark:border-gray-800 hover:border-foreground/20 transition-colors duration-300">
-                                <TechStack />
-                            </div>
+                    <div className="group relative h-full">
+                        <div className="absolute -inset-1 bg-gradient-to-r from-foreground/5 to-foreground/5 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                        <div className="relative h-full bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm rounded-xl p-4 border border-gray-200 dark:border-gray-800 hover:border-foreground/20 transition-colors duration-300">
+                            <TechStack />
                         </div>
-                    </ErrorBoundary>
+                    </div>
                 </div>
             </div>
         </main>
