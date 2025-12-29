@@ -88,10 +88,10 @@ export const HobbiesModal = () => {
             const Component = isExternal ? "a" : Link;
             const linkProps = isExternal
               ? {
-                href: hobby.link,
-                target: "_blank",
-                rel: "noopener noreferrer",
-              }
+                  href: hobby.link,
+                  target: "_blank",
+                  rel: "noopener noreferrer",
+                }
               : { href: hobby.link };
 
             return (

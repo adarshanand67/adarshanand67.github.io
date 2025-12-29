@@ -6,7 +6,7 @@ import {
   papersData,
   booksData,
   anime,
-  hobbyData
+  hobbyData,
 } from "@/data";
 import { AnimeItem, AnimeType, WatchStatus } from "@/types/definitions";
 import { logError, AppError, safeAsync } from "@/lib/utils";
