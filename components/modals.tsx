@@ -1,3 +1,7 @@
+/**
+ * @fileoverview Modal components for overlays and dialogs.
+ */
+
 "use client";
 
 import { useEffect, useRef } from "react";
@@ -34,6 +38,9 @@ const iconMap: Record<string, React.ElementType> = {
     Mic,
 };
 
+/**
+ * HobbiesModal - Modal dialog displaying user hobbies and interests.
+ */
 export const HobbiesModal = () => {
     const { showHobbiesModal, toggleHobbiesModal } = useStore();
     const modalRef = useRef<HTMLDivElement>(null);

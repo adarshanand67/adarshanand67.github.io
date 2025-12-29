@@ -6,7 +6,7 @@ import {
 } from "@/components/layout";
 import { MusicPlayer, MusicToggleButton } from "@/components/features/musicPlayer";
 import { PWARegistration } from "@/components/features/serviceWorker";
-import { HobbiesModal } from "@/components/modals/hobbiesModal";
+import { HobbiesModal } from "@/components/modals";
 import { ShortcutGuide } from "@/components/features/ShortcutGuide";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { DLPProtection } from "@/components/features/security/DLPProtection";
