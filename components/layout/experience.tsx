@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { MapPin } from "lucide-react";
-import { SectionHeader, SpotlightCard } from "@/components/layout/ui";
+import { SectionHeader, SpotlightCard } from "@/components/layout/layoutUI";
 import { useStore } from "@/lib/store/useStore";
 import { linkifyTech } from "@/lib/techLinks";
 import { getAssetPath } from "@/lib/utils";

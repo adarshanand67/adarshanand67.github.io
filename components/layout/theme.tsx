@@ -1,8 +1,12 @@
+/**
+ * @fileoverview Theme provider and toggle components.
+ */
+
 "use client";
 
 import React, { useEffect } from "react";
 import { useTheme } from "next-themes";
-import { Moon, Sun } from "lucide-react";
+import { Moon, Sun, Github, Linkedin, Mail } from "lucide-react";
 import type { ThemeProviderProps } from "next-themes";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { useStore } from "@/lib/store/useStore";
@@ -50,7 +54,6 @@ function createClientIcon(Icon: React.ComponentType<{ className?: string }>) {
     };
 }
 
-import { Github, Linkedin, Mail } from "lucide-react";
 export const ClientLinkedin = createClientIcon(Linkedin);
 export const ClientGithub = createClientIcon(Github);
 export const ClientMail = createClientIcon(Mail);

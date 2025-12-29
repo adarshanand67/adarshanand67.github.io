@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Check, Copy, ExternalLink } from "lucide-react";
-import { SectionHeader } from "@/components/layout/ui";
+import { SectionHeader } from "@/components/layout/layoutUI";
 import { useStore } from "@/lib/store/useStore";
 import { siteConfig } from "@/lib/config";
 

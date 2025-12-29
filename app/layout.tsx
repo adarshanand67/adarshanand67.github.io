@@ -3,7 +3,7 @@ import { Assistant, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { StructuredData } from "@/components/seo";
 import { ClientLayout } from "@/components/layout/ClientLayout";
-import { DLPProvider } from "@/components/layout/security/DLPProvider";
+import { DLPProvider } from "@/components/layout/security";
 import { siteConfig } from "@/lib/config";
 import { generatePersonSchema, generateWebSiteSchema } from "@/lib/seo/schemas";
 import { GlobalErrorBoundary } from "@/components/error";

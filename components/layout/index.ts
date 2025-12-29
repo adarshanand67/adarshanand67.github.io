@@ -8,7 +8,8 @@ export { ContactSection } from "./contact";
 export { Terminal, TerminalPreloader } from "./terminal";
 export { Navbar, Footer, MobileDock, CommandMenu } from "./navbar";
 
-// Re-export from submodules that are already lean or needed
-export * from "./effects";
+// Consolidated sub-module exports
+export { GlobalEffect } from "./effects";
 export { ThemeProvider, ThemeToggle, ClientLinkedin, ClientGithub, ClientMail } from "./theme";
-export { SectionHeader, SpotlightCard, SystemStatus } from "./ui";
+export { SectionHeader, SpotlightCard, SystemStatus } from "./layoutUI";
+export { DLPProvider } from "./security";

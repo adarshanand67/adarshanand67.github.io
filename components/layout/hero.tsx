@@ -6,7 +6,7 @@ import Link from "next/link";
 import { ReactNode } from "react";
 import { User, Terminal as TerminalIcon, ExternalLink } from "lucide-react";
 import { TiltWrapper } from "@/components/ui/TiltWrapper";
-import { SystemStatus } from "@/components/layout/ui";
+import { SystemStatus } from "@/components/layout/layoutUI";
 import { siteConfig } from "@/lib/config";
 import { Terminal } from "@/components/layout/terminal";
 import { Profile } from "@/types/definitions";

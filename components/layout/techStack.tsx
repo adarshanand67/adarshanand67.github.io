@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { useTheme } from "next-themes";
-import { SectionHeader, SpotlightCard } from "@/components/layout/ui";
+import { SectionHeader, SpotlightCard } from "@/components/layout/layoutUI";
 import { useStore } from "@/lib/store/useStore";
 import { skillCategories } from "@/lib/constants";
 import { techLinks } from "@/lib/techLinks";

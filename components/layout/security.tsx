@@ -1,3 +1,7 @@
+/**
+ * @fileoverview Security components - DLP Provider for content protection.
+ */
+
 "use client";
 
 import React, { useEffect, useState } from "react";
@@ -31,10 +35,6 @@ export const DLPProvider: React.FC<DLPProviderProps> = ({ children }) => {
                 return false;
             }
 
-            // Prevent Ctrl+Shift+I, Ctrl+Shift+C, Ctrl+Shift+J (DevTools)
-            // Prevent Ctrl+U (View Source)
-            // Prevent Ctrl+S (Save Page)
-            // Prevent Ctrl+P (Print - handled by CSS too)
             const ctrlOrMeta = e.ctrlKey || e.metaKey;
             const shift = e.shiftKey;
 
@@ -66,12 +66,11 @@ export const DLPProvider: React.FC<DLPProviderProps> = ({ children }) => {
             return false;
         };
 
-        // 4. Focus loss detection (Screen capture deterrent) - DISABLED
-        const handleBlur = () => {}; // setIsBlurred(true);
+        // 4. Focus loss detection - DISABLED
+        const handleBlur = () => { };
         const handleFocus = () => setIsBlurred(false);
 
         const handleVisibilityChange = () => {
-            // Disabled blur on tab switch
             setIsBlurred(false);
         };
 
@@ -84,7 +83,6 @@ export const DLPProvider: React.FC<DLPProviderProps> = ({ children }) => {
         document.addEventListener("visibilitychange", handleVisibilityChange);
 
         return () => {
-            // Clean up
             document.removeEventListener("contextmenu", handleContextMenu);
             document.removeEventListener("keydown", handleKeyDown);
             document.removeEventListener("dragstart", handleDragStart);
@@ -103,7 +101,6 @@ export const DLPProvider: React.FC<DLPProviderProps> = ({ children }) => {
                 {children}
             </div>
 
-            {/* Overlay shown when blurred to indicate protection */}
             {isBlurred && (
                 <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-background/60 backdrop-blur-sm pointer-events-none">
                     <div className="px-8 py-4 rounded-2xl bg-foreground text-background border border-foreground/10 shadow-2xl font-black uppercase tracking-widest text-xs animate-pulse">
