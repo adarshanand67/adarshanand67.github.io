@@ -7,8 +7,7 @@
 import { useEffect } from "react";
 import Image from "next/image";
 import {
-    X, ExternalLink, Dumbbell, Tv, Trophy, Bike, Mountain, Dices, Plane, Coffee, Tea
-    Users, Mic, Calendar, Star, Film, Play, Check, BookOpen, Quote
+    X, ExternalLink, Dumbbell, Tv, Trophy, Bike, Mountain, Dices, Plane, Coffee, Users, Mic, Calendar, Star, Film, Play, Check, BookOpen, Quote
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { PillTag } from "@/components/ui";
