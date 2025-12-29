@@ -57,6 +57,7 @@ export interface Blog {
 export enum AnimeType {
   Anime = "Anime",
   Movie = "Movie",
+  WebSeries = "Web Series",
 }
 export enum WatchStatus {
   Completed = "Completed",

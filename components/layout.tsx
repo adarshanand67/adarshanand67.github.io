@@ -1401,21 +1401,19 @@ export const ViewToggle = ({
   <div className="hidden md:flex bg-zinc-100 dark:bg-zinc-900 backdrop-blur-md p-1 rounded-xl border border-zinc-200 dark:border-zinc-800 ml-auto pointer-events-auto shadow-sm gap-1">
     <button
       onClick={() => setViewMode("profile")}
-      className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all ${
-        viewMode === "profile"
+      className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all ${viewMode === "profile"
           ? "bg-zinc-200 dark:bg-zinc-800 text-zinc-900 dark:text-white shadow-sm"
           : "text-zinc-500 dark:text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200"
-      }`}
+        }`}
     >
       <User size={14} /> <span>Profile</span>
     </button>
     <button
       onClick={() => setViewMode("terminal")}
-      className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all ${
-        viewMode === "terminal"
+      className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all ${viewMode === "terminal"
           ? "bg-zinc-200 dark:bg-zinc-800 text-zinc-900 dark:text-white shadow-sm"
           : "text-zinc-500 dark:text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200"
-      }`}
+        }`}
     >
       <TerminalIcon size={14} /> <span>Terminal</span>
     </button>
@@ -1684,16 +1682,33 @@ export function TechStack() {
                       </h3>
                       <div className="flex flex-wrap gap-2">
                         {skills.map((skill) => {
+                          const url = techLinks[skill];
+                          let domain = "";
+                          try {
+                            if (url) domain = new URL(url).hostname;
+                          } catch (e) { console.error(e); }
+
+                          const faviconUrl = domain ? `https://www.google.com/s2/favicons?domain=${domain}&sz=32` : null;
                           const Icon = getTechIcon(skill);
+
                           return (
                             <Link
                               key={skill}
-                              href={techLinks[skill] || "#"}
+                              href={url || "#"}
                               target="_blank"
-                              className="flex items-center gap-2 px-3 py-1.5 bg-foreground/5 border border-foreground/10 rounded-full text-xs font-bold hover:bg-foreground/10 transition-all"
+                              className="flex items-center gap-2 px-3 py-1.5 bg-foreground/5 border border-foreground/10 rounded-full text-xs font-bold hover:bg-foreground/10 transition-all group"
                             >
-                              {Icon && (
-                                <Icon size={12} className="opacity-50" />
+                              {faviconUrl ? (
+                                <Image
+                                  src={faviconUrl}
+                                  alt={skill}
+                                  width={14}
+                                  height={14}
+                                  className="opacity-70 group-hover:opacity-100 transition-opacity grayscale group-hover:grayscale-0"
+                                  unoptimized
+                                />
+                              ) : (
+                                Icon && <Icon size={14} className="opacity-50" />
                               )}
                               {skill}
                             </Link>
