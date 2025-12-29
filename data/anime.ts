@@ -516,8 +516,8 @@ export const anime = [
     {
         title: "Fullmetal Alchemist Brotherhood",
         type: AnimeType.Anime,
-        status: WatchStatus.Planning,
-        seasons: "S1",
+        status: WatchStatus.Completed,
+        seasons: "S1 (64 episodes)",
         image: "https://cdn.myanimelist.net/images/anime/1223/96541l.jpg",
         description:
             "A masterclass in law of equivalent exchange, proving that chemistry is just magic with more consequences.",
@@ -981,8 +981,8 @@ export const anime = [
     {
         title: "The Promised Neverland",
         type: AnimeType.Anime,
-        status: WatchStatus.Planning,
-        seasons: "S1",
+        status: WatchStatus.Completed,
+        seasons: "S1-2",
         image: "https://cdn.myanimelist.net/images/anime/1125/96929l.jpg",
         description:
             "A dark thriller about orphans realizing they're free-range livestock and attempting a prison break against a mother they once loved.",

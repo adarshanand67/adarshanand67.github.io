@@ -87,3 +87,29 @@ export function generateOrganizationSchema(org: {
         },
     };
 }
+
+
+export function generateEducationalOrganizationSchema(edu: {
+    name: string;
+    degree: string;
+    fieldOfStudy: string;
+    startDate: string;
+    endDate: string;
+}) {
+    return {
+        "@context": "https://schema.org",
+        "@type": "EducationalOrganization",
+        name: edu.name,
+        alumni: {
+            "@type": "Person",
+            name: siteConfig.author.name,
+            alumniOf: edu.name,
+            degree: edu.degree,
+            fieldOfStudy: edu.fieldOfStudy, 
+            startDate: edu.startDate,
+            endDate: edu.endDate,
+        },
+    };
+}
+
+

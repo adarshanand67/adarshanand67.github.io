@@ -1,20 +1,14 @@
-// Re-export from modular layouts
-export { Hero } from "./hero/Hero";
-export { Experience } from "./experience/Experience";
-export { TechStack } from "./techstack/TechStack";
-export { ShelvesSection } from "./shelves/ShelvesSection";
-export { RecentSection } from "./recent/RecentSection";
-export { ContactSection } from "./contact/ContactSection";
+// Consolidated layout exports
+export { Hero } from "./hero";
+export { Experience } from "./experience";
+export { TechStack } from "./techStack";
+export { ShelvesSection } from "./shelves";
+export { RecentSection } from "./recent";
+export { ContactSection } from "./contact";
+export { Terminal, TerminalPreloader } from "./terminal";
+export { Navbar, Footer, MobileDock, CommandMenu } from "./navbar";
 
-// Re-export from submodules
-export * from "./navigation";
+// Re-export from submodules that are already lean or needed
 export * from "./effects";
-
-// Re-export from terminal submodule
-export { Terminal } from "./terminal";
-
-// Re-export from theme submodule
 export { ThemeProvider, ThemeToggle, ClientLinkedin, ClientGithub, ClientMail } from "./theme";
-
-// Re-export from ui submodule
-export { SectionHeader, SpotlightCard } from "./ui";
+export { SectionHeader, SpotlightCard, SystemStatus } from "./ui";
