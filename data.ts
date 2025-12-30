@@ -1324,6 +1324,24 @@ export const anime = [
     ],
   },
   {
+    title: "Kaguya-sama: Love Is War",
+    type: AnimeType.Anime,
+    status: WatchStatus.Completed,
+    seasons: "S1-4",
+    recommended: true,
+    image: "https://cdn.myanimelist.net/images/anime/1295/106551l.jpg",
+    description:
+      "High school geniuses Kaguya Shinomiya and Miyuki Shirogane try to make the other confess their love first.",
+    tags: ["Comedy", "Romance", "Psychological"],
+    year: "2019",
+    rating: "8.9/10",
+    keyLearnings: [
+      "Love is war, and the one who falls in love first loses.",
+      "True vulnerability requires immense courage.",
+      "Masks we wear to protect ourselves eventually become barriers to connection.",
+    ],
+  },
+  {
     title: "Naruto",
     type: AnimeType.Anime,
     status: WatchStatus.Planning,
