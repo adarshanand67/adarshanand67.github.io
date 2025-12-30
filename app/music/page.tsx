@@ -139,6 +139,7 @@ export default function MusicPage() {
   };
 
   // Close floating widget when this page loads, re-open when leaving
+  /*
   useEffect(() => {
     try {
       // Explicitly close the mini player
@@ -156,6 +157,7 @@ export default function MusicPage() {
       console.error("Error managing music player visibility:", error);
     }
   }, []);
+  */
 
   // Keyboard shortcuts
   useEffect(() => {
