@@ -377,7 +377,7 @@ export class BlogCollectionStrategy implements CollectionItemStrategy<Blog> {
             {blog.date}
           </span>
           <Link
-            href={`/articleshelf/${blog.slug}`}
+            href={`/articles/${blog.slug}`}
             className="group/link inline-flex items-center gap-1.5 text-foreground/80 hover:text-foreground font-bold hover:underline"
           >
             <span>{blog.title}</span>

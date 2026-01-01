@@ -13,15 +13,18 @@ const COLLECTION_MAPPING = {
 type CollectionSlug = keyof typeof COLLECTION_MAPPING;
 
 export async function generateStaticParams() {
-  return Object.keys(COLLECTION_MAPPING).map((collection) => ({
-    collection: collection,
-  }));
+  return [
+    { collection: "articles" },
+    { collection: "books" },
+    { collection: "anime" },
+    { collection: "hobbies" },
+  ];
 }
 
 export default async function CollectionPage({
   params,
 }: {
-  params: { collection: string };
+  params: Promise<{ collection: string }>;
 }) {
   const { collection } = await params;
   const collectionData = COLLECTION_MAPPING[collection as CollectionSlug];

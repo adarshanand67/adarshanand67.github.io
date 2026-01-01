@@ -739,6 +739,23 @@ export const anime = [
         ],
     },
     {
+        title: "Assassination Classroom",
+        type: AnimeType.Anime,
+        status: WatchStatus.Completed,
+        seasons: "S1-2",
+        image: "https://cdn.myanimelist.net/images/anime/5/75639l.jpg",
+        description:
+            "A powerful creature claims that within a year he will destroy Earth, but offers mankind a chance by becoming a homeroom teacher where he teaches his students about how to kill him.",
+        tags: ["Action", "Comedy", "School"],
+        year: "2015",
+        rating: "8.1/10",
+        keyLearnings: [
+            "A good teacher helps you find your own answer.",
+            "Failure is just another step towards success.",
+            "Use what you have, even your weaknesses, as a weapon.",
+        ],
+    },
+    {
         title: "The Eminence in Shadow",
         type: AnimeType.Anime,
         status: WatchStatus.Planning,

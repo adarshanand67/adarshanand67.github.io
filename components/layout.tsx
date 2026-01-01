@@ -1468,7 +1468,7 @@ export function Hero({ profile }: { profile: Profile }) {
                       />
                     </div>
                     <SystemStatus />
-                    <blockquote className="text-lg md:text-xl font-medium text-foreground/80 mt-6 pl-6 border-l-2 border-foreground/10 italic">
+                    <blockquote className="text-xl md:text-2xl font-medium text-foreground/90 mt-6 pl-6 border-l-2 border-foreground/10 italic">
                       {profile.bio.paragraphs[0]}
                     </blockquote>
                   </div>
@@ -1582,15 +1582,15 @@ export function Experience({ items }: { items: any[] }) {
                     <div className="flex-1">
                       <div className="flex justify-between items-start">
                         <h3 className="text-lg font-black">{exp.company}</h3>
-                        <span className="text-xs font-bold opacity-40">
+                        <span className="text-xs font-bold opacity-70">
                           {exp.duration}
                         </span>
                       </div>
-                      <p className="text-sm font-bold text-foreground/70">
+                      <p className="text-base font-bold text-foreground/90">
                         {exp.role}
                       </p>
-                      <div className="flex items-center gap-1 text-[10px] opacity-40 mt-1">
-                        <MapPin size={10} />
+                      <div className="flex items-center gap-1 text-xs opacity-70 mt-1">
+                        <MapPin size={12} />
                         <span>{exp.location}</span>
                       </div>
                     </div>
@@ -1708,12 +1708,12 @@ export function TechStack() {
                                   alt={skill}
                                   width={14}
                                   height={14}
-                                  className="opacity-70 group-hover:opacity-100 transition-opacity grayscale group-hover:grayscale-0"
+                                  className="opacity-100 transition-opacity"
                                   unoptimized
                                 />
                               ) : (
                                 Icon && (
-                                  <Icon size={14} className="opacity-50" />
+                                  <Icon size={14} className="opacity-100" />
                                 )
                               )}
                               {skill}
@@ -1737,69 +1737,7 @@ export function TechStack() {
   );
 }
 
-// ============================================================================
-// Shelves Section
-// ============================================================================
 
-export function ShelvesSection() {
-  const { expandedSections, toggleSectionExpanded } = useStore();
-  const isExpanded = expandedSections["shelves"] ?? false;
-  const shelfIcons: Record<string, any> = {
-    blogs: Feather,
-    articles: FileText,
-    books: Book,
-    anime: MonitorPlay,
-    hobby: Palette,
-  };
-  return (
-    <div className="max-w-6xl mx-auto px-4 md:px-6 mb-8">
-      <div
-        className="glass rounded-[2rem] p-6 md:p-8 border border-white/10 cursor-pointer"
-        onClick={() => toggleSectionExpanded("shelves")}
-      >
-        <h2 className="text-2xl md:text-3xl font-black flex items-center gap-3 tracking-tight">
-          <div className="h-8 w-1 rounded-full bg-foreground" /> Directories
-          <ChevronDown
-            size={22}
-            className={`transition-transform duration-500 ${isExpanded ? "rotate-180" : "-rotate-90 opacity-40"}`}
-          />
-        </h2>
-        <div className="flex items-center gap-2 opacity-40 text-sm font-bold ml-4 mt-2">
-          <span>$</span>ls -F ~
-          <span className="animate-pulse w-2 h-4 bg-foreground" />
-        </div>
-        <AnimatePresence>
-          {isExpanded && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-8 overflow-hidden"
-            >
-              {["blogs", "articles", "books", "anime", "hobby"].map((key) => (
-                <Link
-                  key={key}
-                  href={directoryMap[key]}
-                  className="flex items-center gap-5 p-5 rounded-2xl bg-foreground/5 border border-foreground/10 hover:bg-foreground/10 transition-all"
-                >
-                  <div className="p-4 rounded-xl bg-background border border-foreground/10">
-                    {React.createElement(shelfIcons[key], { size: 22 })}
-                  </div>
-                  <div>
-                    <div className="font-black text-lg">{key}/</div>
-                    <div className="text-[10px] font-bold opacity-40 uppercase tracking-widest">
-                      {shelfConfigs[key].description}
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-    </div>
-  );
-}
 
 // ============================================================================
 // Recent Content Section
