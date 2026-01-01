@@ -2,6 +2,23 @@ import { AnimeType, WatchStatus } from "@/types/definitions";
 
 export const anime = [
     {
+        title: "Kaiju No. 8",
+        type: AnimeType.Anime,
+        status: WatchStatus.Completed,
+        seasons: "S1",
+        image: "https://cdn.myanimelist.net/images/anime/1144/136701l.jpg",
+        description:
+            "Kafka Hibino, a 32-year-old sweeper, chases his childhood dream of joining the Defense Force after gaining the power to turn into a Kaiju.",
+        tags: ["Action", "Sci-Fi", "Shounen"],
+        year: "2024",
+        rating: "8.5/10",
+        keyLearnings: [
+            "It's never too late to chase your dreams, even if you feel left behind.",
+            "True strength comes from protecting those who cannot protect themselves.",
+            "Your past failures do not define your future potential.",
+        ],
+    },
+    {
         title: "Pokémon",
         type: AnimeType.Anime,
         status: WatchStatus.Completed,

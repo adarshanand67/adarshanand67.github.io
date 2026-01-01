@@ -6,6 +6,7 @@ import { ClientLayout } from "@/components/layout";
 import { siteConfig } from "@/lib/config";
 import { generatePersonSchema, generateWebSiteSchema } from "@/lib/seo";
 import { getProfile, getBlogs, getProjects, getExperiences } from "@/lib/api";
+import { Providers } from "@/components/providers";
 
 const assistant = Assistant({
   variable: "--font-assistant",
@@ -94,16 +95,18 @@ export default async function RootLayout({
         className={`${assistant.variable} ${jetbrains.variable} antialiased`}
         suppressHydrationWarning
       >
-        <StructuredData data={generatePersonSchema()} />
-        <StructuredData data={generateWebSiteSchema()} />
-        <ClientLayout
-          profile={profile}
-          recentPosts={recentPosts}
-          projects={projects}
-          experience={experience}
-        >
-          {children}
-        </ClientLayout>
+        <Providers>
+          <StructuredData data={generatePersonSchema()} />
+          <StructuredData data={generateWebSiteSchema()} />
+          <ClientLayout
+            profile={profile}
+            recentPosts={recentPosts}
+            projects={projects}
+            experience={experience}
+          >
+            {children}
+          </ClientLayout>
+        </Providers>
       </body>
     </html>
   );
