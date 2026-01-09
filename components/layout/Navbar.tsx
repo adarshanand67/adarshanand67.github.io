@@ -146,14 +146,14 @@ export function Navbar() {
 
     return (
         <>
-            <div className="h-20" />
+            <div className="hidden md:block h-20" />
             <div className="fixed top-0 left-0 right-0 z-[70] h-0.5 bg-transparent pointer-events-none">
                 <div
                     className="h-full bg-slate-900 dark:bg-slate-200 transition-all duration-300 shadow-sm"
                     style={{ width: `${scrollProgress}%` }}
                 />
             </div>
-            <nav className="fixed top-0 left-0 right-0 z-[60] transition-all duration-300">
+            <nav className="hidden md:block fixed top-0 left-0 right-0 z-[60] transition-all duration-300">
                 <div
                     className={`mx-auto px-4 transition-all duration-500 ${isScrolled ? "py-3" : "py-4"}`}
                 >

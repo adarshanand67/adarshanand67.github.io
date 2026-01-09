@@ -212,7 +212,39 @@ export function CollectionHeader({
 // Modals
 // ============================================================================
 
+function AnimeButtons({ item }: { item: any }) {
+  return (
+    <div className="w-full space-y-3 relative z-10">
+      {item.status === WatchStatus.Completed && (
+        <div className="w-full flex items-center justify-center gap-2 py-2.5 bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-full text-xs font-bold shadow-sm">
+          <Check size={18} strokeWidth={3} />
+          <span>Completed</span>
+        </div>
+      )}
+      {item.recommended && (
+        <div className="w-full flex items-center justify-center gap-2 py-2.5 bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-full text-xs font-bold shadow-sm">
+          <Star size={18} fill="currentColor" />
+          <span>Highly Recommended</span>
+        </div>
+      )}
+      <a
+        href={`https://www.youtube.com/results?search_query=${encodeURIComponent(item.title + " anime official trailer")}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="w-full flex items-center justify-center gap-2 py-2.5 bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-full text-xs font-bold shadow-sm group"
+      >
+        <Play
+          size={16}
+          className="fill-current group-hover:scale-110 transition-transform"
+        />
+        Watch Trailer
+      </a>
+    </div>
+  );
+}
+
 function AnimeSidebar({ item }: { item: any }) {
+
   return (
     <div className="w-full md:w-[350px] bg-foreground/[0.02] p-6 md:p-8 flex flex-col items-center justify-start border-b md:border-b-0 md:border-r border-foreground/10 relative overflow-hidden shrink-0">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-foreground/[0.02] pointer-events-none" />
@@ -244,31 +276,8 @@ function AnimeSidebar({ item }: { item: any }) {
           <Tv className="text-gray-400" size={56} />
         </div>
       )}
-      <div className="w-full space-y-3 relative z-10">
-        {item.status === WatchStatus.Completed && (
-          <div className="w-full flex items-center justify-center gap-2 py-2.5 bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-full text-xs font-bold shadow-sm">
-            <Check size={18} strokeWidth={3} />
-            <span>Completed</span>
-          </div>
-        )}
-        {item.recommended && (
-          <div className="w-full flex items-center justify-center gap-2 py-2.5 bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-full text-xs font-bold shadow-sm">
-            <Star size={18} fill="currentColor" />
-            <span>Highly Recommended</span>
-          </div>
-        )}
-        <a
-          href={`https://www.youtube.com/results?search_query=${encodeURIComponent(item.title + " anime official trailer")}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-full flex items-center justify-center gap-2 py-2.5 bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-full text-xs font-bold shadow-sm"
-        >
-          <Play
-            size={16}
-            className="fill-current group-hover:scale-110 transition-transform"
-          />
-          Watch Trailer
-        </a>
+      <div className="hidden md:block w-full">
+        <AnimeButtons item={item} />
       </div>
     </div>
   );
@@ -348,6 +357,9 @@ function AnimeContent({
             </div>
           </div>
         )}
+        <div className="md:hidden mt-4">
+          <AnimeButtons item={item} />
+        </div>
       </div>
     </div>
   );

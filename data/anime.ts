@@ -1,7 +1,7 @@
 import { WatchStatus } from "@/types/definitions";
 
 export const anime = [
-    {
+{
         title: "Pokémon",
         status: WatchStatus.Completed,
         seasons: "S1-20+",
@@ -15,12 +15,13 @@ export const anime = [
             "Pikachu, I choose you!",
             "Gotta catch 'em all!",
         ],
+        recommended: false,
     },
-    {
+{
         title: "Dragon Ball Z",
         status: WatchStatus.Completed,
         seasons: "S1-9 / Dragon Ball Super - S1",
-        image: "https://cdn.myanimelist.net/images/anime/10/20355l.jpg",
+        image: "https://cdn.myanimelist.net/images/anime/1277/142022.jpg",
         description: "Goku and his friends defend the Earth against villains from outer space.",
         tags: ["Action", "Adventure"],
         year: "1989",
@@ -30,8 +31,9 @@ export const anime = [
             "Push past your limits.",
             "Redemption is possible for anyone.",
         ],
+        recommended: false,
     },
-    {
+{
         title: "Death Note",
         status: WatchStatus.Completed,
         seasons: "S1",
@@ -45,8 +47,9 @@ export const anime = [
             "I am Justice!",
             "Anonymity is a weapon.",
         ],
+        recommended: false,
     },
-    {
+{
         title: "One Punch Man",
         status: WatchStatus.Completed,
         seasons: "S1-3",
@@ -60,8 +63,9 @@ export const anime = [
             "100 pushups, 100 situps, 100 squats, and a 10km run!",
             "True heroism often goes unrecognized.",
         ],
+        recommended: false,
     },
-    {
+{
         title: "Haikyuu!!",
         status: WatchStatus.Completed,
         seasons: "S1-4 + Dumpster Battle",
@@ -77,7 +81,7 @@ export const anime = [
             "Connect.",
         ],
     },
-    {
+{
         title: "Code Geass: Lelouch of the Rebellion",
         status: WatchStatus.Completed,
         seasons: "S1-2",
@@ -93,7 +97,7 @@ export const anime = [
             "A life lived without a mask is impossible.",
         ],
     },
-    {
+{
         title: "Cowboy Bebop",
         status: WatchStatus.Completed,
         seasons: "S1",
@@ -107,8 +111,9 @@ export const anime = [
             "See you space cowboy...",
             "Whatever happens, happens.",
         ],
+        recommended: false,
     },
-    {
+{
         title: "Steins;Gate",
         status: WatchStatus.Completed,
         seasons: "S1 + Steins;Gate 0",
@@ -124,7 +129,7 @@ export const anime = [
             "Cherish the present.",
         ],
     },
-    {
+{
         title: "Mob Psycho 100",
         status: WatchStatus.Completed,
         seasons: "S1-3",
@@ -140,7 +145,7 @@ export const anime = [
             "It's okay to run away.",
         ],
     },
-    {
+{
         title: "Jujutsu Kaisen",
         status: WatchStatus.Completed,
         seasons: "S1-2 + Jujutsu Kaisen 0",
@@ -154,8 +159,9 @@ export const anime = [
             "Love is the most twisted curse of all.",
             "I won't stop.",
         ],
+        recommended: false,
     },
-    {
+{
         title: "Blue Lock",
         status: WatchStatus.Completed,
         seasons: "S1-2",
@@ -171,7 +177,7 @@ export const anime = [
             "Excellence happens when you force your talent to evolve.",
         ],
     },
-    {
+{
         title: "Solo Leveling",
         status: WatchStatus.Completed,
         seasons: "S1-2 (manhwa comics - 3,4)",
@@ -187,7 +193,7 @@ export const anime = [
             "The system uses you, but you must learn to use the system.",
         ],
     },
-    {
+{
         title: "Demon Slayer",
         status: WatchStatus.Completed,
         seasons: "S1-5",
@@ -201,8 +207,9 @@ export const anime = [
             "Set your heart ablaze.",
             "Mastery of the basics leads to ultimate strength.",
         ],
+        recommended: false,
     },
-    {
+{
         title: "Tokyo Ghoul",
         status: WatchStatus.Completed,
         seasons: "S1-4",
@@ -216,8 +223,9 @@ export const anime = [
             "What's 1000 minus 7?",
             "Tragedy is the beginning of a transformation.",
         ],
+        recommended: false,
     },
-    {
+{
         title: "Aoashi",
         status: WatchStatus.Completed,
         seasons: "S1",
@@ -231,8 +239,9 @@ export const anime = [
             "Control the field.",
             "Think.",
         ],
+        recommended: false,
     },
-    {
+{
         title: "Chainsaw Man",
         status: WatchStatus.Completed,
         seasons: "S1-2",
@@ -246,8 +255,9 @@ export const anime = [
             "Everyone's chasing some big dream.",
             "Fear is power.",
         ],
+        recommended: false,
     },
-    {
+{
         title: "Erased",
         status: WatchStatus.Completed,
         seasons: "S1 (12 ep)",
@@ -261,8 +271,9 @@ export const anime = [
             "The town without me.",
             "Believing in someone is the strongest power.",
         ],
+        recommended: false,
     },
-    {
+{
         title: "Dr. Stone",
         status: WatchStatus.Completed,
         seasons: "S1-4",
@@ -278,7 +289,7 @@ export const anime = [
             "Passing the torch of knowledge.",
         ],
     },
-    {
+{
         title: "Vinland Saga",
         status: WatchStatus.Completed,
         seasons: "S1-2",
@@ -292,8 +303,9 @@ export const anime = [
             "I have no enemies.",
             "A true warrior doesn't need a sword.",
         ],
+        recommended: false,
     },
-    {
+{
         title: "Hajime no Ippo",
         status: WatchStatus.Completed,
         seasons: "S1-3",
@@ -307,8 +319,9 @@ export const anime = [
             "The answer is at the end of every punch.",
             "Courage is standing up when your legs are shaking.",
         ],
+        recommended: false,
     },
-    {
+{
         title: "Kuroko's Basketball",
         status: WatchStatus.Completed,
         seasons: "S1-3",
@@ -322,8 +335,9 @@ export const anime = [
             "I am a shadow.",
             "Trust in your teammates.",
         ],
+        recommended: false,
     },
-    {
+{
         title: "Great Teacher Onizuka",
         status: WatchStatus.Completed,
         seasons: "S1",
@@ -337,8 +351,9 @@ export const anime = [
             "Life is more than just grades.",
             "Sometimes you have to break down walls.",
         ],
+        recommended: false,
     },
-    {
+{
         title: "Frieren: Beyond Journey's End",
         status: WatchStatus.Completed,
         seasons: "S1",
@@ -354,7 +369,7 @@ export const anime = [
             "Understanding humanity is a quest.",
         ],
     },
-    {
+{
         title: "Berserk",
         status: WatchStatus.Completed,
         seasons: "S1-2",
@@ -368,8 +383,9 @@ export const anime = [
             "Ambition unchecked by morality is destructive.",
             "Trauma is a long shadow.",
         ],
+        recommended: false,
     },
-    {
+{
         title: "Kaguya-sama: Love Is War",
         status: WatchStatus.Completed,
         seasons: "S1-4",
@@ -385,7 +401,7 @@ export const anime = [
             "Masks eventually become barriers.",
         ],
     },
-    {
+{
         title: "The Promised Neverland",
         status: WatchStatus.Completed,
         seasons: "S1,2",
@@ -399,8 +415,9 @@ export const anime = [
             "Strategic thinking can overcome superior strength.",
             "Family is those you fight for.",
         ],
+        recommended: false,
     },
-    {
+{
         title: "Fullmetal Alchemist",
         status: WatchStatus.Completed,
         seasons: "S1 (64 ep)",
@@ -414,8 +431,9 @@ export const anime = [
             "A heart of steel protects a soul of gold.",
             "Equivalent Exchange.",
         ],
+        recommended: false,
     },
-    {
+{
         title: "Monster",
         status: WatchStatus.Completed,
         seasons: "S1 (74 ep)",
@@ -429,8 +447,9 @@ export const anime = [
             "The true monster is often the one within.",
             "Doing the right thing can have terrible consequences.",
         ],
+        recommended: false,
     },
-    {
+{
         title: "Assassination Classroom",
         status: WatchStatus.Completed,
         seasons: "S1-2",
@@ -444,8 +463,9 @@ export const anime = [
             "Failure is just another step towards success.",
             "Use what you have as a weapon.",
         ],
+        recommended: false,
     },
-    {
+{
         title: "Kaiju No. 8",
         status: WatchStatus.Completed,
         seasons: "S1-2",
@@ -459,8 +479,9 @@ export const anime = [
             "True strength comes from protecting others.",
             "Your past failures do not define you.",
         ],
+        recommended: false,
     },
-    {
+{
         title: "Fruits Basket",
         status: WatchStatus.Completed,
         seasons: "S1-3",
@@ -474,10 +495,11 @@ export const anime = [
             "We are all protecting something.",
             "The snow melts and becomes spring.",
         ],
+        recommended: false,
     },
-    {
+{
         title: "Attack on Titan",
-        status: WatchStatus.Planning,
+        status: WatchStatus.Completed,
         seasons: "S1-4",
         image: "https://cdn.myanimelist.net/images/anime/10/47347l.jpg",
         description: "Humanity fights for survival against giant man-eating Titans.",
@@ -489,8 +511,9 @@ export const anime = [
             "Walls are temporary solutions.",
             "Fight.",
         ],
+        recommended: false,
     },
-    {
+{
         title: "Hell's Paradise",
         status: WatchStatus.Completed,
         seasons: "S1",
@@ -504,8 +527,9 @@ export const anime = [
             "Strength without purpose is meaningless.",
             "Immortality often costs humanity.",
         ],
+        recommended: false,
     },
-    {
+{
         title: "Neon Genesis Evangelion",
         status: WatchStatus.Completed,
         seasons: "S1",
@@ -519,8 +543,9 @@ export const anime = [
             "Sometimes you must face your fears.",
             "The hedgehog's dilemma.",
         ],
+        recommended: false,
     },
-    {
+{
         title: "Odd Taxi",
         status: WatchStatus.Completed,
         seasons: "S1",
@@ -534,8 +559,9 @@ export const anime = [
             "Social media fame is an illusion.",
             "The mundane can hide the extraordinary.",
         ],
+        recommended: false,
     },
-    {
+{
         title: "Golden Boy",
         status: WatchStatus.Completed,
         seasons: "S1",
@@ -549,8 +575,9 @@ export const anime = [
             "Humility and hard work open doors.",
             "Every job teaches you something to learn, study, study, study.",
         ],
+        recommended: false,
     },
-    {
+{
         title: "Ping Pong the Animation",
         status: WatchStatus.Completed,
         seasons: "S1",
@@ -564,8 +591,9 @@ export const anime = [
             "The hero appears!",
             "Your relationship with your passion defines success.",
         ],
+        recommended: false,
     },
-    {
+{
         title: "My Dress-Up Darling",
         status: WatchStatus.Completed,
         seasons: "S1,2",
@@ -579,8 +607,9 @@ export const anime = [
             "True connection comes from acceptance.",
             "Craftsmanship is admirable.",
         ],
+        recommended: false,
     },
-    {
+{
         title: "Samurai Champloo",
         status: WatchStatus.Completed,
         seasons: "S1",
@@ -594,8 +623,9 @@ export const anime = [
             "Different styles can coexist.",
             "Hip-hop and samurai blend well.",
         ],
+        recommended: false,
     },
-    {
+{
         title: "Dororo",
         status: WatchStatus.Completed,
         seasons: "S1",
@@ -609,546 +639,738 @@ export const anime = [
             "Revenge can consume you.",
             "Compassion in darkness.",
         ],
+        recommended: false,
     },
-    {
+{
         title: "The Eminence in Shadow",
         status: WatchStatus.Planning,
         seasons: "S1-2",
         tags: ["Action", "Comedy", "Fantasy"],
+        description: "A boy who dreams of being a mastermind operating in the shadows is reincarnated in a fantasy world where his delusions might just be reality.",
+        year: "2022",
+        rating: "8.5/10",
+        keyLearnings: [
+            "Sometimes the role we play becomes who we are.",
+            "Hidden power is the most satisfying kind.",
+            "Navigating the line between delusion and reality requires immense confidence.",
+        ],
+        recommended: false,
     },
-    {
+{
         title: "Hunter x Hunter",
         status: WatchStatus.Planning,
         seasons: "S1 (148 ep)",
         tags: ["Action", "Adventure", "Fantasy"],
+        description: "A deconstruction of the shounen genre with existential dread.",
+        year: "2011",
+        rating: "9.0/10",
+        keyLearnings: [
+            "Enjoy the little detours.",
+            "Nen is weaponized willpower.",
+            "Never underestimate a child with a fishing rod.",
+        ],
+        recommended: false,
     },
-    {
+{
         title: "JoJo's Bizarre Adventure",
         status: WatchStatus.Planning,
         seasons: "S1-5",
         tags: ["Action", "Adventure", "Supernatural"],
+        recommended: false,
     },
-    {
+{
         title: "My Hero Academia",
         status: WatchStatus.Planning,
         seasons: "S1-8",
         tags: ["Action", "School", "Super Power"],
+        recommended: false,
     },
-    {
+{
         title: "Bleach",
         status: WatchStatus.Planning,
         seasons: "S1-16 + Thousand-Year Blood War",
         tags: ["Action", "Adventure", "Supernatural"],
+        recommended: false,
     },
-    {
+{
         title: "Fairy Tail",
         status: WatchStatus.Planning,
         seasons: "S1-9",
         tags: ["Action", "Adventure", "Fantasy"],
+        recommended: false,
     },
-    {
+{
         title: "Summertime Rendering",
         status: WatchStatus.Planning,
         seasons: "S1",
         tags: ["Mystery", "Supernatural", "Suspense"],
+        recommended: false,
     },
-    {
+{
         title: "Devilman Crybaby",
         status: WatchStatus.Planning,
         seasons: "S1",
         tags: ["Action", "Horror", "Supernatural"],
+        recommended: false,
     },
-    {
+{
         title: "Sword Art Online",
         status: WatchStatus.Planning,
         seasons: "S1-2 + Alicization + War of Underworld",
         tags: ["Action", "Adventure", "Fantasy"],
+        recommended: false,
     },
-    {
+{
         title: "Black Clover",
         status: WatchStatus.Planning,
         seasons: "S1-4 + Sword of the Wizard King",
         tags: ["Action", "Comedy", "Fantasy"],
+        recommended: false,
     },
-    {
+{
         title: "Made in Abyss",
         status: WatchStatus.Planning,
         seasons: "S1-2",
         tags: ["Adventure", "Drama", "Fantasy"],
+        recommended: false,
     },
-    {
+{
         title: "The 100 Girlfriends Who Really, Really, Really, Really, Really Love You",
         status: WatchStatus.Planning,
         seasons: "S1",
         tags: ["Comedy", "Romance", "Harem"],
+        recommended: false,
     },
-    {
+{
         title: "Slam Dunk",
         status: WatchStatus.Planning,
         seasons: "S1",
         tags: ["Sports", "Drama", "School"],
+        recommended: false,
     },
-    {
+{
         title: "91 Days",
         status: WatchStatus.Planning,
         seasons: "S1",
         tags: ["Action", "Drama", "Historical"],
+        recommended: false,
     },
-    {
+{
         title: "Terror in Resonance",
         status: WatchStatus.Planning,
         seasons: "S1",
         tags: ["Mystery", "Psychological", "Thriller"],
+        recommended: false,
     },
-    {
+{
         title: "Ergo Proxy",
         status: WatchStatus.Planning,
         seasons: "S1",
         tags: ["Mystery", "Psychological", "Sci-Fi"],
+        recommended: false,
     },
-    {
+{
         title: "Spy x Family",
         status: WatchStatus.Planning,
         seasons: "S1-3",
         tags: ["Action", "Comedy", "Slice of Life"],
+        recommended: false,
     },
-    {
+{
         title: "The Seven Deadly Sins",
         status: WatchStatus.Planning,
         seasons: "S1-5",
         tags: ["Action", "Adventure", "Fantasy"],
+        recommended: false,
     },
-    {
+{
         title: "To Your Eternity",
         status: WatchStatus.Planning,
         seasons: "S1-2",
         tags: ["Adventure", "Drama", "Supernatural"],
+        recommended: false,
     },
-    {
+{
         title: "Gurren Lagann",
         status: WatchStatus.Planning,
         seasons: "S1",
         tags: ["Action", "Adventure", "Mecha"],
+        recommended: false,
     },
-    {
+{
         title: "Parasyte: The Maxim",
         status: WatchStatus.Planning,
         seasons: "S1",
         tags: ["Action", "Horror", "Sci-Fi"],
+        recommended: false,
     },
-    {
+{
         title: "Fate/Zero",
         status: WatchStatus.Planning,
         seasons: "S1",
         tags: ["Action", "Fantasy", "Supernatural"],
+        recommended: false,
     },
-    {
+{
         title: "Violet Evergarden",
         status: WatchStatus.Planning,
         seasons: "S1",
         tags: ["Drama", "Fantasy", "Slice of Life"],
+        recommended: false,
     },
-    {
+{
         title: "Your Lie in April",
         status: WatchStatus.Planning,
         seasons: "S1",
         tags: ["Drama", "Music", "Romance"],
+        recommended: false,
     },
-    {
+{
         title: "Hyouka",
         status: WatchStatus.Planning,
         seasons: "S1",
         tags: ["Mystery", "School", "Slice of Life"],
+        recommended: false,
     },
-    {
+{
         title: "Prison School",
         status: WatchStatus.Planning,
         seasons: "S1",
         tags: ["Comedy", "Ecchi", "School"],
+        recommended: false,
     },
-    {
+{
         title: "Grand Blue",
         status: WatchStatus.Planning,
         seasons: "S1-2",
         tags: ["Comedy", "Slice of Life"],
+        recommended: false,
     },
-    {
+{
         title: "March Comes in Like a Lion",
         status: WatchStatus.Planning,
         seasons: "S1-2",
         tags: ["Drama", "Slice of Life"],
+        recommended: false,
     },
-    {
+{
         title: "Ghost in the Shell: Stand Alone Complex",
         status: WatchStatus.Planning,
         seasons: "S1-2",
         tags: ["Action", "Mecha", "Sci-Fi"],
+        recommended: false,
     },
-    {
+{
         title: "Charlotte",
         status: WatchStatus.Planning,
         seasons: "S1",
         tags: ["Drama", "School", "Super Power"],
+        recommended: false,
     },
-    {
+{
         title: "Rascal Does Not Dream of Bunny Girl Senpai",
         status: WatchStatus.Planning,
         seasons: "S1",
         tags: ["Comedy", "Romance", "Supernatural"],
+        recommended: false,
     },
-    {
+{
         title: "Gintama",
         status: WatchStatus.Planning,
         seasons: "S1-9",
         tags: ["Action", "Comedy", "Sci-Fi"],
+        description: "Gintoki Sakata is a freelance samurai in an Edo period where aliens have taken over.",
+        year: "2006",
+        rating: "8.9/10",
+        recommended: false,
     },
-    {
+{
         title: "Blood Blockade Battlefront",
         status: WatchStatus.Planning,
         seasons: "S1",
         tags: ["Action", "Comedy", "Supernatural"],
+        recommended: false,
     },
-    {
+{
         title: "Blue Eye Samurai",
         status: WatchStatus.Planning,
         seasons: "S1",
         tags: ["Action", "Adventure", "Historical"],
+        recommended: false,
     },
-    {
+{
         title: "Lycoris Recoil",
         status: WatchStatus.Planning,
         seasons: "S1",
         tags: ["Action", "Slice of Life"],
+        recommended: false,
     },
-    {
+{
         title: "Death Parade",
         status: WatchStatus.Planning,
         seasons: "S1",
         tags: ["Drama", "Mystery", "Psychological"],
+        recommended: false,
     },
-    {
+{
         title: "Re:Zero",
         status: WatchStatus.Planning,
         seasons: "S1-3",
         tags: ["Drama", "Fantasy", "Psychological"],
+        recommended: false,
     },
-    {
+{
         title: "Dandadan",
         status: WatchStatus.Planning,
         seasons: "S1-2",
         tags: ["Action", "Comedy", "Supernatural"],
+        recommended: false,
     },
-    {
+{
         title: "Danganronpa",
         status: WatchStatus.Planning,
         seasons: "S1",
         tags: ["Horror", "Mystery", "Psychological"],
+        recommended: false,
     },
-    {
+{
         title: "Mushoku Tensei: Jobless Reincarnation",
         status: WatchStatus.Planning,
         seasons: "S1-2",
         tags: ["Adventure", "Drama", "Fantasy"],
+        recommended: false,
     },
-    {
+{
         title: "Cyberpunk: Edgerunners",
         status: WatchStatus.Planning,
         seasons: "S1",
         tags: ["Action", "Sci-Fi"],
+        recommended: false,
     },
-    {
+{
         title: "Clannad: After Story",
         status: WatchStatus.Planning,
         seasons: "S1-2",
         tags: ["Drama", "Romance", "Slice of Life"],
+        recommended: false,
     },
-    {
+{
         title: "School Days",
         status: WatchStatus.Planning,
         seasons: "S1",
         tags: ["Drama", "Romance"],
+        recommended: false,
     },
-    {
+{
         title: "Oshi no Ko",
         status: WatchStatus.Planning,
         seasons: "S1-2",
         tags: ["Drama", "Supernatural"],
+        recommended: false,
     },
-    {
+{
         title: "86 (Eighty-Six)",
         status: WatchStatus.Planning,
         seasons: "S1-2",
         tags: ["Action", "Drama", "Mecha"],
+        recommended: false,
     },
-    {
+{
         title: "Bocchi the Rock!",
         status: WatchStatus.Planning,
         seasons: "S1",
         tags: ["Comedy", "Slice of Life"],
+        recommended: false,
     },
-    {
+{
         title: "Chihayafuru",
         status: WatchStatus.Planning,
         seasons: "S1-3",
         tags: ["Drama", "Sports", "Slice of Life"],
+        recommended: false,
     },
-    {
+{
         title: "Psycho-Pass",
         status: WatchStatus.Planning,
         seasons: "S1-3",
         tags: ["Action", "Sci-Fi", "Psychological"],
+        recommended: false,
     },
-    {
+{
         title: "Natsume's Book of Friends",
         status: WatchStatus.Planning,
         seasons: "S1-7",
         tags: ["Drama", "Slice of Life", "Supernatural"],
+        recommended: false,
     },
-    {
+{
         title: "Bakemonogatari",
         status: WatchStatus.Planning,
         seasons: "S1-3",
         tags: ["Mystery", "Romance", "Supernatural"],
+        recommended: false,
     },
-    {
+{
         title: "Mushishi",
         status: WatchStatus.Planning,
         seasons: "S1-2",
         tags: ["Adventure", "Mystery", "Supernatural"],
+        recommended: false,
     },
-    {
+{
         title: "Yu Yu Hakusho",
         status: WatchStatus.Planning,
         seasons: "S1",
         tags: ["Action", "Comedy", "Supernatural"],
+        recommended: false,
     },
-    {
+{
         title: "Rurouni Kenshin",
         status: WatchStatus.Planning,
         seasons: "S1",
         tags: ["Action", "Adventure", "Historical"],
+        recommended: false,
     },
-    {
+{
         title: "Inuyasha",
         status: WatchStatus.Planning,
         seasons: "S1-2",
         tags: ["Action", "Adventure", "Fantasy"],
+        recommended: false,
     },
-    {
+{
         title: "Nana",
         status: WatchStatus.Planning,
         seasons: "S1",
         tags: ["Drama", "Music", "Romance"],
+        recommended: false,
     },
-    {
+{
         title: "Beck: Mongolian Chop Squad",
         status: WatchStatus.Planning,
         seasons: "S1",
         tags: ["Comedy", "Drama", "Music"],
+        recommended: false,
     },
-    {
+{
         title: "Black Lagoon",
         status: WatchStatus.Planning,
         seasons: "S1-3",
         tags: ["Action"],
+        recommended: false,
     },
-    {
+{
         title: "Trigun",
         status: WatchStatus.Planning,
         seasons: "S1",
         tags: ["Action", "Comedy", "Sci-Fi"],
+        recommended: false,
     },
-    {
+{
         title: "Hellsing Ultimate",
         status: WatchStatus.Planning,
         seasons: "S1",
         tags: ["Action", "Horror", "Supernatural"],
+        recommended: false,
     },
-    {
+{
         title: "Darker than Black",
         status: WatchStatus.Planning,
         seasons: "S1-2",
         tags: ["Action", "Mystery", "Sci-Fi"],
+        recommended: false,
     },
-    {
+{
         title: "Durarara!!",
         status: WatchStatus.Planning,
         seasons: "S1-4",
         tags: ["Action", "Mystery", "Supernatural"],
+        recommended: false,
     },
-    {
+{
         title: "Noragami",
         status: WatchStatus.Planning,
         seasons: "S1-2",
         tags: ["Action", "Adventure", "Urban Fantasy"],
+        recommended: false,
     },
-    {
+{
         title: "Soul Eater",
         status: WatchStatus.Planning,
         seasons: "S1",
         tags: ["Action", "Comedy", "Fantasy"],
+        recommended: false,
     },
-    {
+{
         title: "Akame ga Kill!",
         status: WatchStatus.Planning,
         seasons: "S1",
         tags: ["Action", "Adventure", "Fantasy"],
+        recommended: false,
     },
-    {
+{
         title: "Pluto",
         status: WatchStatus.Planning,
         seasons: "S1",
         tags: ["Action", "Mystery", "Sci-Fi"],
+        recommended: false,
     },
-    {
+{
         title: "Blue Box",
         status: WatchStatus.Planning,
         seasons: "S1-2",
         tags: ["Romance", "School", "Sports"],
+        recommended: false,
     },
-    {
+{
         title: "No Game No Life",
         status: WatchStatus.Planning,
         seasons: "S1",
         tags: ["Adventure", "Comedy", "Fantasy"],
+        recommended: false,
     },
-    {
+{
         title: "KonoSuba",
         status: WatchStatus.Planning,
         seasons: "S1-3",
         tags: ["Adventure", "Comedy", "Fantasy"],
+        recommended: false,
     },
-    {
+{
         title: "Toradora!",
         status: WatchStatus.Planning,
         seasons: "S1",
         tags: ["Comedy", "Romance", "Slice of Life"],
+        recommended: false,
     },
-    {
+{
         title: "Angel Beats!",
         status: WatchStatus.Planning,
         seasons: "S1",
         tags: ["Action", "Comedy", "Drama"],
+        recommended: false,
     },
-    {
+{
         title: "Baccano!",
         status: WatchStatus.Planning,
         seasons: "S1",
         tags: ["Action", "Comedy", "Historical"],
+        recommended: false,
     },
-    {
+{
         title: "Another",
         status: WatchStatus.Planning,
         seasons: "S1",
         tags: ["Horror", "Mystery", "Thriller"],
+        recommended: false,
     },
-    {
+{
         title: "Mirai Nikki",
         status: WatchStatus.Planning,
         seasons: "S1",
         tags: ["Action", "Mystery", "Supernatural"],
+        recommended: false,
     },
-    {
+{
         title: "Wind Breaker",
         status: WatchStatus.Planning,
         seasons: "S1-2",
         tags: ["Action", "School"],
+        recommended: false,
     },
-    {
+{
         title: "Link Click",
         status: WatchStatus.Planning,
         seasons: "S1",
         tags: ["Drama", "Mystery", "Supernatural"],
+        recommended: false,
     },
-    {
+{
         title: "Gate",
         status: WatchStatus.Planning,
         seasons: "S1",
         tags: ["Action", "Adventure", "Fantasy"],
+        recommended: false,
     },
-    {
+{
         title: "Gangsta.",
         status: WatchStatus.Planning,
         seasons: "S1",
         tags: ["Action", "Drama"],
+        recommended: false,
     },
-    {
+{
         title: "Orb: On the Movements of the Earth",
         status: WatchStatus.Planning,
         seasons: "S1-2",
         tags: ["Drama", "Historical"],
+        recommended: false,
     },
-    {
+{
         title: "One Piece",
         status: WatchStatus.Planning,
         seasons: "20+ seasons (ongoing)",
         tags: ["Action", "Adventure", "Fantasy"],
-    },
+        recommended: false,
+    }
 ];
 
 export const movies = [
-    {
+{
         title: "I Want to Eat Your Pancreas",
         status: WatchStatus.Completed,
         image: "https://cdn.myanimelist.net/images/anime/1768/93291l.jpg",
         keyLearnings: ["Living each day with no regrets."],
+        seasons: "Movie",
+        description: "An emotional story about a high school boy who discovers his classmate has a terminal illness.",
+        tags: ["Drama", "Romance"],
+        year: "2018",
+        rating: "8.6/10",
+        recommended: false,
     },
-    {
+{
         title: "Grave of the Fireflies",
         status: WatchStatus.Completed,
         image: "https://cdn.myanimelist.net/images/anime/1485/141208l.jpg",
         keyLearnings: ["War has no winners, only victims."],
+        seasons: "Movie",
+        description: "Two siblings struggle to survive in Japan during the final months of World War II.",
+        tags: ["Drama", "War"],
+        year: "1988",
+        rating: "8.5/10",
+        recommended: false,
     },
-    {
+{
         title: "Spirited Away",
         status: WatchStatus.Completed,
         image: "https://cdn.myanimelist.net/images/anime/6/79597l.jpg",
         keyLearnings: ["Courage can break any curse."],
+        seasons: "Movie",
+        description: "A young girl wanders into a world ruled by gods, witches, and spirits.",
+        tags: ["Fantasy", "Adventure"],
+        year: "2001",
+        rating: "8.8/10",
+        recommended: false,
     },
-    {
+{
         title: "Your Name",
         status: WatchStatus.Completed,
         image: "https://cdn.myanimelist.net/images/anime/5/87048l.jpg",
         keyLearnings: ["The thread of fate connects hearts."],
+        seasons: "Movie",
+        description: "Two teenagers share a profound connection after discovering they are swapping bodies.",
+        tags: ["Romance", "Supernatural"],
+        year: "2016",
+        rating: "8.9/10",
+        recommended: false,
     },
-    {
+{
         title: "A Silent Voice",
         status: WatchStatus.Completed,
         image: "https://cdn.myanimelist.net/images/anime/1122/96435l.jpg",
         keyLearnings: ["Redemption starts with listening."],
+        seasons: "Movie",
+        description: "A young man seeks redemption for bullying a deaf girl in elementary school.",
+        tags: ["Drama"],
+        year: "2016",
+        rating: "8.9/10",
+        recommended: false,
     },
-    {
+{
         title: "Howl's Moving Castle",
         status: WatchStatus.Completed,
         image: "https://cdn.myanimelist.net/images/anime/1470/138723l.jpg",
         keyLearnings: ["Inner beauty shines brighter than any spell."],
+        seasons: "Movie",
+        description: "A young woman cursed with an old body steps into the moving castle of an elusive wizard.",
+        tags: ["Fantasy", "Romance", "Adventure"],
+        year: "2004",
+        rating: "8.7/10",
+        recommended: false,
     },
-    {
+{
         title: "5 Centimeters Per Second",
         status: WatchStatus.Planning,
+        seasons: "Movie",
+        description: "A story of two people, Tono Takaki and Shinohara Akari, who were close friends but gradually grow farther and farther apart.",
+        tags: ["Romance", "Drama", "Slice of Life"],
+        year: "2007",
+        rating: "8.6/10",
+        keyLearnings: [
+            "Time and distance can test the strongest bonds.",
+            "Moving on is a painful but necessary part of growth.",
+            "A thousand text messages can't bridge a gap of one centimeter in the heart.",
+        ],
+        recommended: false,
     },
-    {
+{
         title: "Princess Mononoke",
         status: WatchStatus.Planning,
+        seasons: "Movie",
+        description: "On a journey to find the cure for a Tatarigami's curse, Ashitaka finds himself in the middle of a war between the forest gods and Tatara, a mining colony.",
+        tags: ["Action", "Adventure", "Fantasy"],
+        year: "1997",
+        rating: "8.8/10",
+        keyLearnings: [
+            "We must find a way to coexist with nature, not conquer it.",
+            "Hatred only breeds more hatred.",
+            "To see with eyes unclouded by hate.",
+        ],
+        recommended: false,
     },
-    {
+{
         title: "Suzume",
         status: WatchStatus.Planning,
+        seasons: "Movie",
+        description: "A modern action-adventure road story where a 17-year-old girl named Suzume helps a mysterious young man close doors from the other side that are releasing disasters all over Japan.",
+        tags: ["Adventure", "Fantasy"],
+        year: "2022",
+        rating: "8.5/10",
+        keyLearnings: [
+            "Closing the doors to the past allows us to step into the future.",
+            "Kindness found in strangers can save the world.",
+            "Grief is a journey, not a destination.",
+        ],
+        recommended: false,
     },
-    {
+{
         title: "Weathering With You",
         status: WatchStatus.Planning,
+        seasons: "Movie",
+        description: "A high-school boy who has run away to Tokyo befriends a girl who appears to be able to manipulate the weather.",
+        tags: ["Romance", "Fantasy", "Slice of Life"],
+        year: "2019",
+        rating: "8.6/10",
+        keyLearnings: [
+            "Sometimes, personal happiness is worth defying the world for.",
+            "The weather reflects our hearts.",
+            "Connection with another person can change your destiny.",
+        ],
+        recommended: false,
     },
-    {
+{
         title: "The Girl Who Leapt Through Time",
         status: WatchStatus.Planning,
+        seasons: "Movie",
+        description: "A high-school girl named Makoto acquires the power to travel back in time, and decides to use it for her own personal benefits.",
+        tags: ["Sci-Fi", "Romance", "Drama"],
+        year: "2006",
+        rating: "8.5/10",
+        keyLearnings: [
+            "Time waits for no one.",
+            "Running from your problems only makes them harder to face.",
+            "Cherish the present, for you can never truly relive it.",
+        ],
+        recommended: false,
     },
-    {
+{
         title: "That Time I Got Reincarnated as a Slime: The Movie - Scarlet Bond",
         status: WatchStatus.Planning,
+        recommended: false,
     },
-    {
+{
         title: "100 Meters",
         status: WatchStatus.Planning,
-    },
+        recommended: false,
+    }
 ];
