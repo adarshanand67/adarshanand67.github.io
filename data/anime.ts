@@ -567,6 +567,134 @@ export const anime = [
             "Navigating the line between delusion and reality requires immense confidence.",
         ],
     },
+    {
+        title: "Hell's Paradise",
+        status: WatchStatus.Completed,
+        seasons: "S1",
+        image: "https://cdn.myanimelist.net/images/anime/1075/131925l.jpg",
+        description:
+            "Criminals and executioners are sent to a mysterious island to find the elixir of life.",
+        tags: ["Action", "Fantasy", "Historical"],
+        year: "2023",
+        rating: "8.2/10",
+        keyLearnings: [
+            "Redemption is possible even for those condemned to death.",
+            "Strength without purpose is meaningless.",
+            "The pursuit of immortality often leads to the loss of what makes us human.",
+        ],
+    },
+    {
+        title: "Neon Genesis Evangelion",
+        status: WatchStatus.Completed,
+        seasons: "S1",
+        image: "https://cdn.myanimelist.net/images/anime/1314/108941l.jpg",
+        description:
+            "Teenagers pilot giant bio-machines to fight mysterious entities known as Angels.",
+        tags: ["Sci-Fi", "Thriller", "Psychological"],
+        year: "1995",
+        rating: "8.5/10",
+        keyLearnings: [
+            "Human connection is both our greatest strength and deepest fear.",
+            "Get in the robot, Shinji. Sometimes you must face your fears to protect others.",
+            "The hedgehog's dilemma: we hurt each other when we get too close, yet we need connection to survive.",
+        ],
+    },
+    {
+        title: "Odd Taxi",
+        status: WatchStatus.Completed,
+        seasons: "S1",
+        image: "https://cdn.myanimelist.net/images/anime/1981/113348l.jpg",
+        description:
+            "A walrus taxi driver gets caught up in a mystery involving a missing girl.",
+        tags: ["Mystery", "Thriller", "Slice of Life"],
+        year: "2021",
+        rating: "8.7/10",
+        keyLearnings: [
+            "Everyone has secrets, and they're all connected in unexpected ways.",
+            "Social media fame is a dangerous illusion.",
+            "The mundane can hide the extraordinary.",
+        ],
+    },
+    {
+        title: "Golden Boy",
+        status: WatchStatus.Completed,
+        seasons: "S1",
+        image: "https://cdn.myanimelist.net/images/anime/13/50361l.jpg",
+        description:
+            "A wandering student takes on various odd jobs while pursuing knowledge and women.",
+        tags: ["Comedy", "Slice of Life"],
+        year: "1995",
+        rating: "8.0/10",
+        keyLearnings: [
+            "Learning comes from experience, not just books.",
+            "Humility and hard work open unexpected doors.",
+            "Every job teaches you something valuable.",
+        ],
+    },
+    {
+        title: "Ping Pong the Animation",
+        status: WatchStatus.Completed,
+        seasons: "S1",
+        image: "https://cdn.myanimelist.net/images/anime/1586/146565l.jpg",
+        description:
+            "Two friends with different attitudes toward ping pong navigate high school competition.",
+        tags: ["Drama", "Sports", "Psychological"],
+        year: "2014",
+        rating: "8.6/10",
+        keyLearnings: [
+            "Talent without passion is wasted potential.",
+            "The hero appears! Finding joy in competition is what matters most.",
+            "Your relationship with your passion defines your success.",
+        ],
+    },
+    {
+        title: "My Dress-Up Darling",
+        status: WatchStatus.Completed,
+        seasons: "S1,2",
+        image: "https://cdn.myanimelist.net/images/anime/1179/119897l.jpg",
+        description:
+            "A skilled doll-maker helps a popular girl create cosplay costumes.",
+        tags: ["Romance", "Slice of Life", "Comedy"],
+        year: "2022",
+        rating: "8.2/10",
+        keyLearnings: [
+            "Passion for your hobbies should never be hidden.",
+            "True connection comes from accepting each other's interests.",
+            "Craftsmanship and dedication are universally admirable.",
+        ],
+    },
+    {
+        title: "Samurai Champloo",
+        status: WatchStatus.Completed,
+        seasons: "S1",
+        image: "https://cdn.myanimelist.net/images/anime/1543/146153l.jpg",
+        description:
+            "Two samurai and a girl search for a mysterious samurai who smells of sunflowers.",
+        tags: ["Action", "Adventure", "Historical"],
+        year: "2004",
+        rating: "8.5/10",
+        keyLearnings: [
+            "The journey matters more than the destination.",
+            "Different fighting styles can coexist and complement each other.",
+            "Hip-hop and samurai culture blend surprisingly well.",
+        ],
+    },
+    {
+        title: "Dororo",
+        status: WatchStatus.Completed,
+        seasons: "S1",
+        image: "https://cdn.myanimelist.net/images/anime/1180/95018l.jpg",
+        description:
+            "A young man reclaims his body parts from demons that stole them at birth.",
+        tags: ["Action", "Adventure", "Historical", "Supernatural"],
+        year: "2019",
+        rating: "8.3/10",
+        keyLearnings: [
+            "Humanity is defined by more than just a physical body.",
+            "Revenge can consume you if you let it.",
+            "Compassion can exist even in the darkest circumstances.",
+        ],
+    },
 ];
 
 export const movies = [
