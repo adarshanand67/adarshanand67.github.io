@@ -449,7 +449,7 @@ export const anime = [
         title: "Kaiju No. 8",
         status: WatchStatus.Completed,
         seasons: "S1-2",
-        image: "/images/anime/kaiju8.jpg",
+        image: "https://cdn.myanimelist.net/images/anime/1370/140362.jpg",
         description: "Kafka Hibino chases his childhood dream of joining the Defense Force.",
         tags: ["Action", "Sci-Fi"],
         year: "2024",
