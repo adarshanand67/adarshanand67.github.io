@@ -671,8 +671,9 @@ export const anime = [
   },
   {
     title: "The Eminence in Shadow",
-    status: WatchStatus.Planning,
+    status: WatchStatus.Completed,
     seasons: "S1-2",
+    image: "https://cdn.myanimelist.net/images/anime/1091/128729l.jpg",
     tags: ["Action", "Comedy", "Fantasy"],
     description:
       "A boy who dreams of being a mastermind operating in the shadows is reincarnated in a fantasy world where his delusions might just be reality.",
