@@ -50,7 +50,7 @@ export function DLPProtection() {
 
   const isMainWebsite =
     typeof window !== "undefined" &&
-    window.location.hostname === "adarshanand67.github.io";
+    window.location.hostname === "adarshanand.dev";
   const shouldDisableDLP = !isMainWebsite;
 
   const { isPlaying, setIsPlaying } = useStore();
