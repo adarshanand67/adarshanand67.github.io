@@ -732,14 +732,14 @@ export const anime = [
   },
   {
     title: "Summertime Rendering",
-    status: WatchStatus.Planning,
+    status: WatchStatus.Completed,
     seasons: "S1",
     tags: ["Mystery", "Supernatural", "Suspense"],
     recommended: false,
   },
   {
     title: "Devilman Crybaby",
-    status: WatchStatus.Planning,
+    status: WatchStatus.Completed,
     seasons: "S1",
     tags: ["Action", "Horror", "Supernatural"],
     recommended: false,
@@ -782,14 +782,14 @@ export const anime = [
   },
   {
     title: "91 Days",
-    status: WatchStatus.Planning,
+    status: WatchStatus.Completed,
     seasons: "S1",
     tags: ["Action", "Drama", "Historical"],
     recommended: false,
   },
   {
     title: "Terror in Resonance",
-    status: WatchStatus.Planning,
+    status: WatchStatus.Completed,
     seasons: "S1",
     tags: ["Mystery", "Psychological", "Thriller"],
     recommended: false,
@@ -833,21 +833,21 @@ export const anime = [
   },
   {
     title: "Gurren Lagann",
-    status: WatchStatus.Planning,
+    status: WatchStatus.Completed,
     seasons: "S1",
     tags: ["Action", "Adventure", "Mecha"],
     recommended: false,
   },
   {
     title: "Parasyte: The Maxim",
-    status: WatchStatus.Planning,
+    status: WatchStatus.Completed,
     seasons: "S1",
     tags: ["Action", "Horror", "Sci-Fi"],
     recommended: false,
   },
   {
     title: "Fate/Zero",
-    status: WatchStatus.Planning,
+    status: WatchStatus.Completed,
     seasons: "S1",
     tags: ["Action", "Fantasy", "Supernatural"],
     recommended: false,
@@ -886,28 +886,28 @@ export const anime = [
   },
   {
     title: "Hyouka",
-    status: WatchStatus.Planning,
+    status: WatchStatus.Completed,
     seasons: "S1",
     tags: ["Mystery", "School", "Slice of Life"],
     recommended: false,
   },
   {
     title: "Prison School",
-    status: WatchStatus.Planning,
+    status: WatchStatus.Completed,
     seasons: "S1",
     tags: ["Comedy", "Ecchi", "School"],
     recommended: false,
   },
   {
     title: "Grand Blue",
-    status: WatchStatus.Planning,
+    status: WatchStatus.Completed,
     seasons: "S1-2",
     tags: ["Comedy", "Slice of Life"],
     recommended: false,
   },
   {
     title: "March Comes in Like a Lion",
-    status: WatchStatus.Planning,
+    status: WatchStatus.Completed,
     seasons: "S1-2",
     tags: ["Drama", "Slice of Life"],
     recommended: false,
@@ -921,14 +921,14 @@ export const anime = [
   },
   {
     title: "Charlotte",
-    status: WatchStatus.Planning,
+    status: WatchStatus.Completed,
     seasons: "S1",
     tags: ["Drama", "School", "Super Power"],
     recommended: false,
   },
   {
     title: "Rascal Does Not Dream of Bunny Girl Senpai",
-    status: WatchStatus.Planning,
+    status: WatchStatus.Completed,
     seasons: "S1",
     tags: ["Comedy", "Romance", "Supernatural"],
     recommended: false,
@@ -960,28 +960,28 @@ export const anime = [
   },
   {
     title: "Lycoris Recoil",
-    status: WatchStatus.Planning,
+    status: WatchStatus.Completed,
     seasons: "S1",
     tags: ["Action", "Slice of Life"],
     recommended: false,
   },
   {
     title: "Death Parade",
-    status: WatchStatus.Planning,
+    status: WatchStatus.Completed,
     seasons: "S1",
     tags: ["Drama", "Mystery", "Psychological"],
     recommended: false,
   },
   {
     title: "Re:Zero",
-    status: WatchStatus.Planning,
+    status: WatchStatus.Completed,
     seasons: "S1-3",
     tags: ["Drama", "Fantasy", "Psychological"],
     recommended: false,
   },
   {
     title: "Dandadan",
-    status: WatchStatus.Planning,
+    status: WatchStatus.Completed,
     seasons: "S1-2",
     tags: ["Action", "Comedy", "Supernatural"],
     recommended: false,
@@ -995,14 +995,14 @@ export const anime = [
   },
   {
     title: "Mushoku Tensei: Jobless Reincarnation",
-    status: WatchStatus.Planning,
+    status: WatchStatus.Completed,
     seasons: "S1-2",
     tags: ["Adventure", "Drama", "Fantasy"],
     recommended: false,
   },
   {
     title: "Cyberpunk: Edgerunners",
-    status: WatchStatus.Planning,
+    status: WatchStatus.Completed,
     seasons: "S1",
     tags: ["Action", "Sci-Fi"],
     recommended: false,
@@ -1050,7 +1050,7 @@ export const anime = [
   },
   {
     title: "Bocchi the Rock!",
-    status: WatchStatus.Planning,
+    status: WatchStatus.Completed,
     seasons: "S1",
     tags: ["Comedy", "Slice of Life"],
     recommended: false,
@@ -1127,7 +1127,7 @@ export const anime = [
   },
   {
     title: "Black Lagoon",
-    status: WatchStatus.Planning,
+    status: WatchStatus.Completed,
     seasons: "S1-3",
     tags: ["Action"],
     recommended: false,
@@ -1141,7 +1141,7 @@ export const anime = [
   },
   {
     title: "Hellsing Ultimate",
-    status: WatchStatus.Planning,
+    status: WatchStatus.Completed,
     seasons: "S1",
     tags: ["Action", "Horror", "Supernatural"],
     recommended: false,
@@ -1176,7 +1176,7 @@ export const anime = [
   },
   {
     title: "Akame ga Kill!",
-    status: WatchStatus.Planning,
+    status: WatchStatus.Completed,
     seasons: "S1",
     tags: ["Action", "Adventure", "Fantasy"],
     recommended: false,
@@ -1206,7 +1206,7 @@ export const anime = [
   },
   {
     title: "No Game No Life",
-    status: WatchStatus.Planning,
+    status: WatchStatus.Completed,
     seasons: "S1",
     tags: ["Adventure", "Comedy", "Fantasy"],
     recommended: false,
@@ -1227,14 +1227,14 @@ export const anime = [
   },
   {
     title: "Angel Beats!",
-    status: WatchStatus.Planning,
+    status: WatchStatus.Completed,
     seasons: "S1",
     tags: ["Action", "Comedy", "Drama"],
     recommended: false,
   },
   {
     title: "Baccano!",
-    status: WatchStatus.Planning,
+    status: WatchStatus.Completed,
     seasons: "S1",
     tags: ["Action", "Comedy", "Historical"],
     recommended: false,
@@ -1255,7 +1255,7 @@ export const anime = [
   },
   {
     title: "Wind Breaker",
-    status: WatchStatus.Planning,
+    status: WatchStatus.Completed,
     seasons: "S1-2",
     tags: ["Action", "School"],
     recommended: false,
@@ -1306,7 +1306,7 @@ export const anime = [
   },
   {
     title: "Tomorrow's Joe",
-    status: WatchStatus.Planning,
+    status: WatchStatus.Completed,
     seasons: "S1-2",
     image: "https://cdn.myanimelist.net/images/anime/1387/134249l.jpg",
     description: "Joe Yabuki, a street brawler discovered in the slums, rises through the boxing world.",
@@ -1317,7 +1317,7 @@ export const anime = [
   },
   {
     title: "Banana Fish",
-    status: WatchStatus.Planning,
+    status: WatchStatus.Completed,
     seasons: "S1",
     image: "https://cdn.myanimelist.net/images/anime/1190/93472l.jpg",
     description: "Gang leader Ash Lynx investigates a mysterious drug called Banana Fish in 1980s New York.",
@@ -1328,7 +1328,7 @@ export const anime = [
   },
   {
     title: "Horimiya",
-    status: WatchStatus.Planning,
+    status: WatchStatus.Completed,
     seasons: "S1-2",
     image: "https://cdn.myanimelist.net/images/anime/1695/111486l.jpg",
     description: "Popular girl Hori and quiet outcast Miyamura discover each other's hidden sides.",
@@ -1339,7 +1339,7 @@ export const anime = [
   },
   {
     title: "The Apothecary Diaries",
-    status: WatchStatus.Planning,
+    status: WatchStatus.Completed,
     seasons: "S1-2",
     image: "https://cdn.myanimelist.net/images/anime/1708/138033l.jpg",
     description: "A young apothecary serves in the imperial court and solves medical mysteries using her pharmacological knowledge.",
@@ -1382,7 +1382,7 @@ export const anime = [
   },
   {
     title: "Blue Period",
-    status: WatchStatus.Planning,
+    status: WatchStatus.Completed,
     seasons: "S1",
     image: "https://cdn.myanimelist.net/images/anime/1757/116931l.jpg",
     description: "A high-achieving student discovers a passion for art and pursues Tokyo University of the Arts.",
@@ -1393,7 +1393,7 @@ export const anime = [
   },
   {
     title: "FLCL",
-    status: WatchStatus.Planning,
+    status: WatchStatus.Completed,
     seasons: "S1",
     image: "https://cdn.myanimelist.net/images/anime/7/77356l.jpg",
     description: "A boy's mundane life is upended when a Vespa-riding woman hits him with her guitar.",
@@ -1404,7 +1404,7 @@ export const anime = [
   },
   {
     title: "Midori Days",
-    status: WatchStatus.Planning,
+    status: WatchStatus.Completed,
     seasons: "S1",
     image: "https://cdn.myanimelist.net/images/anime/1641/107219l.jpg",
     description: "A delinquent wakes up to find a girl has replaced his right hand.",
@@ -1431,7 +1431,7 @@ export const anime = [
   },
   {
     title: "Barakamon",
-    status: WatchStatus.Planning,
+    status: WatchStatus.Completed,
     seasons: "S1",
     image: "https://cdn.myanimelist.net/images/anime/6/58037l.jpg",
     description: "A calligrapher moves to a rural island after punching a critic and rediscovers his artistic voice.",
@@ -1442,7 +1442,7 @@ export const anime = [
   },
   {
     title: "Ranking of Kings",
-    status: WatchStatus.Planning,
+    status: WatchStatus.Completed,
     seasons: "S1",
     image: "https://cdn.myanimelist.net/images/anime/1347/117616l.jpg",
     description: "A deaf, powerless prince strives to become the world's greatest king.",
@@ -1453,7 +1453,7 @@ export const anime = [
   },
   {
     title: "Heavenly Delusions",
-    status: WatchStatus.Planning,
+    status: WatchStatus.Completed,
     seasons: "S1",
     image: "https://cdn.myanimelist.net/images/anime/1121/133132l.jpg",
     description: "Two storylines interweave — children in a facility dream of the outside while two teens wander post-apocalyptic Japan.",
@@ -1464,7 +1464,7 @@ export const anime = [
   },
   {
     title: "The Way of the Househusband",
-    status: WatchStatus.Planning,
+    status: WatchStatus.Completed,
     seasons: "S1-2",
     image: "https://cdn.myanimelist.net/images/anime/1535/117726l.jpg",
     description: "A legendary yakuza retires to become a stay-at-home husband.",
@@ -1475,7 +1475,7 @@ export const anime = [
   },
   {
     title: "ALL OUT!!",
-    status: WatchStatus.Planning,
+    status: WatchStatus.Completed,
     seasons: "S1",
     image: "https://cdn.myanimelist.net/images/anime/4/78649l.jpg",
     description: "A short, aggressive student finds his calling in rugby.",
@@ -1486,7 +1486,7 @@ export const anime = [
   },
   {
     title: "BEASTARS",
-    status: WatchStatus.Planning,
+    status: WatchStatus.Completed,
     seasons: "S1-3",
     image: "https://cdn.myanimelist.net/images/anime/1938/102796l.jpg",
     description: "In a world of anthropomorphic animals, a wolf struggles with his predatory nature in a herbivore-majority school.",
@@ -1497,7 +1497,7 @@ export const anime = [
   },
   {
     title: "Sonny Boy",
-    status: WatchStatus.Planning,
+    status: WatchStatus.Completed,
     seasons: "S1",
     image: "https://cdn.myanimelist.net/images/anime/1509/117149l.jpg",
     description: "A school drifts into a void dimension and the students develop supernatural powers.",
@@ -1508,7 +1508,7 @@ export const anime = [
   },
   {
     title: "Kill la Kill",
-    status: WatchStatus.Planning,
+    status: WatchStatus.Completed,
     seasons: "S1",
     image: "https://cdn.myanimelist.net/images/anime/3/85468l.jpg",
     description: "A student searches for her father's killer at an academy ruled by an iron-fisted student council president.",
@@ -1519,7 +1519,7 @@ export const anime = [
   },
   {
     title: "Komi Can't Communicate",
-    status: WatchStatus.Planning,
+    status: WatchStatus.Completed,
     seasons: "S1-2",
     image: "https://cdn.myanimelist.net/images/anime/1899/117237l.jpg",
     description: "A beautiful but socially anxious girl tries to make 100 friends with the help of her understanding classmate.",
@@ -1530,7 +1530,7 @@ export const anime = [
   },
   {
     title: "Delicious in Dungeon",
-    status: WatchStatus.Planning,
+    status: WatchStatus.Completed,
     seasons: "S1",
     image: "https://cdn.myanimelist.net/images/anime/1711/142478l.jpg",
     description: "An adventurer explores a dungeon and survives by cooking the monsters they defeat.",
@@ -1541,7 +1541,7 @@ export const anime = [
   },
   {
     title: "Uncle from Another World",
-    status: WatchStatus.Planning,
+    status: WatchStatus.Completed,
     seasons: "S1",
     image: "https://cdn.myanimelist.net/images/anime/1743/125204l.jpg",
     description: "A man's uncle wakes from a 17-year coma and reveals he spent the time as a hero in another world.",
@@ -1552,7 +1552,7 @@ export const anime = [
   },
   {
     title: "Fire Force",
-    status: WatchStatus.Planning,
+    status: WatchStatus.Completed,
     seasons: "S1-3",
     image: "https://cdn.myanimelist.net/images/anime/1664/103275l.jpg",
     description: "Special firefighters battle humans who spontaneously combust into demonic Infernals.",
@@ -1563,7 +1563,7 @@ export const anime = [
   },
   {
     title: "Gachiakuta",
-    status: WatchStatus.Planning,
+    status: WatchStatus.Completed,
     seasons: "S1",
     image: "https://cdn.myanimelist.net/images/anime/1584/143719l.jpg",
     description: "A boy falsely accused of murder is thrown into a garbage world beneath the city.",
@@ -1574,7 +1574,7 @@ export const anime = [
   },
   {
     title: "Trigun Stampede",
-    status: WatchStatus.Planning,
+    status: WatchStatus.Completed,
     seasons: "S1-2",
     image: "https://cdn.myanimelist.net/images/anime/1233/129144l.jpg",
     description: "Vash the Stampede, the legendary outlaw with a $$60 billion bounty, roams a desert planet.",
@@ -1585,7 +1585,7 @@ export const anime = [
   },
   {
     title: "A Sign of Affection",
-    status: WatchStatus.Planning,
+    status: WatchStatus.Completed,
     seasons: "S1",
     image: "https://cdn.myanimelist.net/images/anime/1478/140828l.jpg",
     description: "A deaf college student finds an unexpected connection with a multilingual traveler.",
@@ -1596,7 +1596,7 @@ export const anime = [
   },
   {
     title: "Tomodachi Game",
-    status: WatchStatus.Planning,
+    status: WatchStatus.Completed,
     seasons: "S1",
     image: "https://cdn.myanimelist.net/images/anime/1247/121345l.jpg",
     description: "Friends are forced into a series of psychological games to pay off a mysterious debt.",
@@ -2006,7 +2006,7 @@ export const movies = [
   },
   {
     title: "Suzume",
-    status: WatchStatus.Planning,
+    status: WatchStatus.Completed,
     seasons: "Movie",
     description:
       "A modern action-adventure road story where a 17-year-old girl named Suzume helps a mysterious young man close doors from the other side that are releasing disasters all over Japan.",
@@ -2022,7 +2022,7 @@ export const movies = [
   },
   {
     title: "Weathering With You",
-    status: WatchStatus.Planning,
+    status: WatchStatus.Completed,
     seasons: "Movie",
     description:
       "A high-school boy who has run away to Tokyo befriends a girl who appears to be able to manipulate the weather.",
@@ -2054,7 +2054,7 @@ export const movies = [
   },
   {
     title: "That Time I Got Reincarnated as a Slime: The Movie - Scarlet Bond",
-    status: WatchStatus.Planning,
+    status: WatchStatus.Completed,
     recommended: false,
   },
   {
