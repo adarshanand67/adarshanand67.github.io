@@ -16,7 +16,7 @@ import { useTheme } from "next-themes";
 import { MapPin, ChevronDown, ChevronRight } from "lucide-react";
 
 import { useStore } from "@/lib/store";
-import { Profile, BlogPost, Project } from "@/types/definitions";
+import { Profile, Blog, Project } from "@/types/definitions";
 import { siteConfig, featuresConfig, isFeatureEnabled } from "@/lib/config";
 import {
   introLines,
@@ -77,6 +77,7 @@ import { Navbar, Footer, SectionHeader } from "@/components/layout";
 import {
   Hero,
   ExperienceSection,
+  ProjectsSection,
   TechStackSection,
 } from "@/components/sections";
 import { SpotlightCard } from "@/components/ui";
@@ -106,7 +107,7 @@ export function ClientLayout({
   children: React.ReactNode;
   profile: Profile;
   experience: any[]; // Using any[] for now to match strictness later or import Experience type
-  recentPosts: BlogPost[];
+  recentPosts: Blog[];
   projects: Project[];
 }) {
   const { isMounted, setIsMounted, heroViewMode } = useStore();
@@ -163,9 +164,11 @@ export function ClientLayout({
                 <ExperienceSection items={experience} />
               )}
 
-              <TechStackSection />
+              {isFeatureEnabled("enableProjects") && (
+                <ProjectsSection items={projects} />
+              )}
 
-              {/* Sections removed as requested */}
+              <TechStackSection />
             </div>
           </>
         ) : (

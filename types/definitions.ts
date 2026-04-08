@@ -49,6 +49,17 @@ export interface Paper {
   title: string;
   url: string;
 }
+
+export interface Project {
+  name: string;
+  description: string | null;
+  url: string;
+  stars: number;
+  forks: number;
+  language: string | null;
+  topics: string[];
+  updatedAt: string;
+}
 export interface Blog {
   date: string;
   title: string;
