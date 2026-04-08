@@ -9,7 +9,8 @@ import {
   movies,
   hobbyData,
 } from "@/data";
-import { AnimeItem, WatchStatus } from "@/types/definitions";
+import { AnimeItem, Project, WatchStatus } from "@/types/definitions";
+import { siteConfig } from "@/lib/config";
 import { logError, AppError, safeAsync } from "@/lib/utils";
 
 // ============================================================================
@@ -172,7 +173,34 @@ export const getBooks = async () => {
   return booksData;
 };
 
-export const getProjects = async () => [];
+export const getProjects = async (): Promise<Project[]> => {
+  try {
+    const res = await fetch(
+      `https://api.github.com/users/${siteConfig.author.github}/repos?sort=updated&per_page=12&type=public`,
+      {
+        headers: { Accept: "application/vnd.github.v3+json" },
+        next: { revalidate: 3600 },
+      },
+    );
+    if (!res.ok) return [];
+    const data = await res.json();
+    return (data as any[])
+      .filter((r) => !r.fork && r.name !== siteConfig.author.github)
+      .slice(0, 8)
+      .map((r) => ({
+        name: r.name,
+        description: r.description ?? null,
+        url: r.html_url,
+        stars: r.stargazers_count,
+        forks: r.forks_count,
+        language: r.language ?? null,
+        topics: r.topics ?? [],
+        updatedAt: r.updated_at,
+      }));
+  } catch {
+    return [];
+  }
+};
 
 export const getHobby = async () => {
   if (!hobbyData || !Array.isArray(hobbyData))
