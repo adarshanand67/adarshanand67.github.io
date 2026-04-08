@@ -733,6 +733,7 @@ export const anime = [
   {
     title: "Summertime Rendering",
     status: WatchStatus.Completed,
+    image: "https://cdn.myanimelist.net/images/anime/1120/120796l.jpg",
     seasons: "S1",
     tags: ["Mystery", "Supernatural", "Suspense"],
     recommended: false,
@@ -740,6 +741,7 @@ export const anime = [
   {
     title: "Devilman Crybaby",
     status: WatchStatus.Completed,
+    image: "https://cdn.myanimelist.net/images/anime/2/89973l.jpg",
     seasons: "S1",
     tags: ["Action", "Horror", "Supernatural"],
     recommended: false,
@@ -783,6 +785,7 @@ export const anime = [
   {
     title: "91 Days",
     status: WatchStatus.Completed,
+    image: "https://cdn.myanimelist.net/images/anime/13/80515l.jpg",
     seasons: "S1",
     tags: ["Action", "Drama", "Historical"],
     recommended: false,
@@ -790,6 +793,7 @@ export const anime = [
   {
     title: "Terror in Resonance",
     status: WatchStatus.Completed,
+    image: "https://cdn.myanimelist.net/images/anime/1417/117422l.jpg",
     seasons: "S1",
     tags: ["Mystery", "Psychological", "Thriller"],
     recommended: false,
@@ -834,6 +838,7 @@ export const anime = [
   {
     title: "Gurren Lagann",
     status: WatchStatus.Completed,
+    image: "https://cdn.myanimelist.net/images/anime/4/5123l.jpg",
     seasons: "S1",
     tags: ["Action", "Adventure", "Mecha"],
     recommended: false,
@@ -841,6 +846,7 @@ export const anime = [
   {
     title: "Parasyte: The Maxim",
     status: WatchStatus.Completed,
+    image: "https://cdn.myanimelist.net/images/anime/3/73178l.jpg",
     seasons: "S1",
     tags: ["Action", "Horror", "Sci-Fi"],
     recommended: false,
@@ -848,6 +854,7 @@ export const anime = [
   {
     title: "Fate/Zero",
     status: WatchStatus.Completed,
+    image: "https://cdn.myanimelist.net/images/anime/1887/117644l.jpg",
     seasons: "S1",
     tags: ["Action", "Fantasy", "Supernatural"],
     recommended: false,
@@ -887,6 +894,7 @@ export const anime = [
   {
     title: "Hyouka",
     status: WatchStatus.Completed,
+    image: "https://cdn.myanimelist.net/images/anime/13/50521l.jpg",
     seasons: "S1",
     tags: ["Mystery", "School", "Slice of Life"],
     recommended: false,
@@ -894,6 +902,7 @@ export const anime = [
   {
     title: "Prison School",
     status: WatchStatus.Completed,
+    image: "https://cdn.myanimelist.net/images/anime/1286/112161l.jpg",
     seasons: "S1",
     tags: ["Comedy", "Ecchi", "School"],
     recommended: false,
@@ -901,6 +910,7 @@ export const anime = [
   {
     title: "Grand Blue",
     status: WatchStatus.Completed,
+    image: "https://cdn.myanimelist.net/images/anime/1302/94882l.jpg",
     seasons: "S1-2",
     tags: ["Comedy", "Slice of Life"],
     recommended: false,
@@ -908,6 +918,7 @@ export const anime = [
   {
     title: "March Comes in Like a Lion",
     status: WatchStatus.Completed,
+    image: "https://cdn.myanimelist.net/images/anime/3/82899l.jpg",
     seasons: "S1-2",
     tags: ["Drama", "Slice of Life"],
     recommended: false,
@@ -922,6 +933,7 @@ export const anime = [
   {
     title: "Charlotte",
     status: WatchStatus.Completed,
+    image: "https://cdn.myanimelist.net/images/anime/1826/147276l.jpg",
     seasons: "S1",
     tags: ["Drama", "School", "Super Power"],
     recommended: false,
@@ -929,6 +941,7 @@ export const anime = [
   {
     title: "Rascal Does Not Dream of Bunny Girl Senpai",
     status: WatchStatus.Completed,
+    image: "https://cdn.myanimelist.net/images/anime/1301/93586l.jpg",
     seasons: "S1",
     tags: ["Comedy", "Romance", "Supernatural"],
     recommended: false,
@@ -961,6 +974,7 @@ export const anime = [
   {
     title: "Lycoris Recoil",
     status: WatchStatus.Completed,
+    image: "https://cdn.myanimelist.net/images/anime/1261/127311l.jpg",
     seasons: "S1",
     tags: ["Action", "Slice of Life"],
     recommended: false,
@@ -968,6 +982,7 @@ export const anime = [
   {
     title: "Death Parade",
     status: WatchStatus.Completed,
+    image: "https://cdn.myanimelist.net/images/anime/5/71553l.jpg",
     seasons: "S1",
     tags: ["Drama", "Mystery", "Psychological"],
     recommended: false,
@@ -975,6 +990,7 @@ export const anime = [
   {
     title: "Re:Zero",
     status: WatchStatus.Completed,
+    image: "https://cdn.myanimelist.net/images/anime/1540/155824l.jpg",
     seasons: "S1-3",
     tags: ["Drama", "Fantasy", "Psychological"],
     recommended: false,
@@ -982,6 +998,7 @@ export const anime = [
   {
     title: "Dandadan",
     status: WatchStatus.Completed,
+    image: "https://cdn.myanimelist.net/images/anime/1584/143719l.jpg",
     seasons: "S1-2",
     tags: ["Action", "Comedy", "Supernatural"],
     recommended: false,
@@ -996,6 +1013,7 @@ export const anime = [
   {
     title: "Mushoku Tensei: Jobless Reincarnation",
     status: WatchStatus.Completed,
+    image: "https://cdn.myanimelist.net/images/anime/1530/117776l.jpg",
     seasons: "S1-2",
     tags: ["Adventure", "Drama", "Fantasy"],
     recommended: false,
@@ -1003,6 +1021,7 @@ export const anime = [
   {
     title: "Cyberpunk: Edgerunners",
     status: WatchStatus.Completed,
+    image: "https://cdn.myanimelist.net/images/anime/1818/126435l.jpg",
     seasons: "S1",
     tags: ["Action", "Sci-Fi"],
     recommended: false,
@@ -1051,6 +1070,7 @@ export const anime = [
   {
     title: "Bocchi the Rock!",
     status: WatchStatus.Completed,
+    image: "https://cdn.myanimelist.net/images/anime/1448/127956l.jpg",
     seasons: "S1",
     tags: ["Comedy", "Slice of Life"],
     recommended: false,
@@ -1128,6 +1148,7 @@ export const anime = [
   {
     title: "Black Lagoon",
     status: WatchStatus.Completed,
+    image: "https://cdn.myanimelist.net/images/anime/1906/121592l.jpg",
     seasons: "S1-3",
     tags: ["Action"],
     recommended: false,
@@ -1142,6 +1163,7 @@ export const anime = [
   {
     title: "Hellsing Ultimate",
     status: WatchStatus.Completed,
+    image: "https://cdn.myanimelist.net/images/anime/1012/143965l.jpg",
     seasons: "S1",
     tags: ["Action", "Horror", "Supernatural"],
     recommended: false,
@@ -1177,6 +1199,7 @@ export const anime = [
   {
     title: "Akame ga Kill!",
     status: WatchStatus.Completed,
+    image: "https://cdn.myanimelist.net/images/anime/1429/95946l.jpg",
     seasons: "S1",
     tags: ["Action", "Adventure", "Fantasy"],
     recommended: false,
@@ -1207,6 +1230,7 @@ export const anime = [
   {
     title: "No Game No Life",
     status: WatchStatus.Completed,
+    image: "https://cdn.myanimelist.net/images/anime/1074/111944l.jpg",
     seasons: "S1",
     tags: ["Adventure", "Comedy", "Fantasy"],
     recommended: false,
@@ -1228,6 +1252,7 @@ export const anime = [
   {
     title: "Angel Beats!",
     status: WatchStatus.Completed,
+    image: "https://cdn.myanimelist.net/images/anime/1244/111115l.jpg",
     seasons: "S1",
     tags: ["Action", "Comedy", "Drama"],
     recommended: false,
@@ -1235,6 +1260,7 @@ export const anime = [
   {
     title: "Baccano!",
     status: WatchStatus.Completed,
+    image: "https://cdn.myanimelist.net/images/anime/3/14547l.jpg",
     seasons: "S1",
     tags: ["Action", "Comedy", "Historical"],
     recommended: false,
@@ -1256,6 +1282,7 @@ export const anime = [
   {
     title: "Wind Breaker",
     status: WatchStatus.Completed,
+    image: "https://cdn.myanimelist.net/images/anime/1438/141816l.jpg",
     seasons: "S1-2",
     tags: ["Action", "School"],
     recommended: false,
@@ -2007,6 +2034,7 @@ export const movies = [
   {
     title: "Suzume",
     status: WatchStatus.Completed,
+    image: "https://cdn.myanimelist.net/images/anime/1598/128450l.jpg",
     seasons: "Movie",
     description:
       "A modern action-adventure road story where a 17-year-old girl named Suzume helps a mysterious young man close doors from the other side that are releasing disasters all over Japan.",
@@ -2023,6 +2051,7 @@ export const movies = [
   {
     title: "Weathering With You",
     status: WatchStatus.Completed,
+    image: "https://cdn.myanimelist.net/images/anime/1880/101146l.jpg",
     seasons: "Movie",
     description:
       "A high-school boy who has run away to Tokyo befriends a girl who appears to be able to manipulate the weather.",
@@ -2055,6 +2084,7 @@ export const movies = [
   {
     title: "That Time I Got Reincarnated as a Slime: The Movie - Scarlet Bond",
     status: WatchStatus.Completed,
+    image: "https://cdn.myanimelist.net/images/anime/1745/128238l.jpg",
     recommended: false,
   },
   {
