@@ -38,8 +38,6 @@ export default function MusicPage() {
     currentTime,
     duration,
     requestSeek,
-    showMusicPlayer,
-    toggleMusicPlayer,
   } = useStore();
 
   // Validate tracks array
@@ -137,27 +135,6 @@ export default function MusicPage() {
   const toggleMaximize = () => {
     setIsMaximized(!isMaximized);
   };
-
-  // Close floating widget when this page loads, re-open when leaving
-  /*
-  useEffect(() => {
-    try {
-      // Explicitly close the mini player
-      if (showMusicPlayer) {
-        toggleMusicPlayer();
-      }
-
-      // Re-open widget when component unmounts (user navigates away)
-      return () => {
-        if (!showMusicPlayer) {
-          toggleMusicPlayer();
-        }
-      };
-    } catch (error) {
-      console.error("Error managing music player visibility:", error);
-    }
-  }, []);
-  */
 
   // Keyboard shortcuts
   useEffect(() => {

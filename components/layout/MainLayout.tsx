@@ -78,8 +78,6 @@ import {
   Hero,
   ExperienceSection,
   TechStackSection,
-  RecentSection,
-  ContactSection,
 } from "@/components/sections";
 import { SpotlightCard } from "@/components/ui";
 
