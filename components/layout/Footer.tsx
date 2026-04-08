@@ -25,6 +25,13 @@ export function Footer() {
           </Link>
           <div className="w-px h-6 bg-foreground/10" />
           <NavLinks />
+          <div className="w-px h-6 bg-foreground/10" />
+          <Link href="/now" className="text-foreground/40 hover:text-foreground transition-colors text-xs font-black uppercase tracking-widest">
+            Now
+          </Link>
+          <Link href="/uses" className="text-foreground/40 hover:text-foreground transition-colors text-xs font-black uppercase tracking-widest">
+            Uses
+          </Link>
         </div>
         <p className="text-gray-500 font-medium text-center text-[10px] opacity-60 pb-8 tracking-widest uppercase">
           ©{new Date().getFullYear()} All Rights Reserved

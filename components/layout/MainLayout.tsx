@@ -1,34 +1,12 @@
 "use client";
 
-import React, {
-  useState,
-  useEffect,
-  useCallback,
-  useMemo,
-  useRef,
-} from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import React, { useEffect } from "react";
+import { usePathname } from "next/navigation";
 import dynamic from "next/dynamic";
-import { motion, AnimatePresence } from "framer-motion";
-import { useTheme } from "next-themes";
-import { MapPin, ChevronDown, ChevronRight } from "lucide-react";
 
 import { useStore } from "@/lib/store";
 import { Profile, Blog, Project } from "@/types/definitions";
-import { siteConfig, featuresConfig, isFeatureEnabled } from "@/lib/config";
-import {
-  introLines,
-  NAV_ITEMS,
-  routes,
-  skillCategories,
-  tracks,
-  contactInfo,
-  techLinks,
-} from "@/lib/constants";
-import { getAssetPath, parseAnsi, linkifyTech } from "@/lib/utils";
-import { getTechIcon } from "@/lib/icons";
+import { isFeatureEnabled } from "@/lib/config";
 
 // Dynamic Imports
 const CommandMenu = dynamic(
@@ -73,29 +51,13 @@ const MusicPlayer = dynamic(
 );
 
 // Component Imports
-import { Navbar, Footer, SectionHeader } from "@/components/layout";
+import { Navbar, Footer } from "@/components/layout";
 import {
   Hero,
   ExperienceSection,
   ProjectsSection,
   TechStackSection,
 } from "@/components/sections";
-import { SpotlightCard } from "@/components/ui";
-
-// Mock Files & Commands (Keep these or move to a data file if they grow)
-/* ... (MockFS and Commands logic can be moved to lib/terminal/ if desired later) ... */
-import {
-  mockFiles,
-  directoryStructure,
-  commands,
-  directories,
-} from "@/lib/terminal/data"; // Assuming we might move this, but for now we'll keep it simple or inline if it's small.
-// actually let's keep the terminal hooks here for now or extract them if urged.
-// Given the massive refactor, let's keep the Hooks specific to Layout inline if they are not used elsewhere, OR better, let's just keep the necessary imports and logic.
-
-// ... (Rest of the logic from original layout.tsx, but simplified)
-
-// We need to re-implement `ClientLayout` effectively.
 
 export function ClientLayout({
   children,
@@ -106,35 +68,17 @@ export function ClientLayout({
 }: {
   children: React.ReactNode;
   profile: Profile;
-  experience: any[]; // Using any[] for now to match strictness later or import Experience type
+  experience: any[];
   recentPosts: Blog[];
   projects: Project[];
 }) {
-  const { isMounted, setIsMounted, heroViewMode } = useStore();
+  const { isMounted, setIsMounted } = useStore();
   const pathname = usePathname();
   const isHome = pathname === "/";
-  const { setTheme } = useTheme();
 
   useEffect(() => {
     setIsMounted(true);
-    // Theme initialization
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme) {
-      setTheme(savedTheme);
-    } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      setTheme("dark");
-    }
-  }, [setIsMounted, setTheme]);
-
-  // Command Menu Event Listener
-  useEffect(() => {
-    const handleOpenCommandMenu = () => {
-      document.dispatchEvent(
-        new KeyboardEvent("keydown", { key: "k", metaKey: true }),
-      );
-    };
-    // ... logic ...
-  }, []);
+  }, [setIsMounted]);
 
   if (!isMounted) return null;
 
@@ -172,7 +116,7 @@ export function ClientLayout({
             </div>
           </>
         ) : (
-          <div className="pt-8 pb-20 animation-delay-200 animate-in fade-in slide-in-from-bottom-4 duration-700">
+          <div className="pt-8 pb-20 animate-in fade-in slide-in-from-bottom-4 duration-700">
             {children}
           </div>
         )}

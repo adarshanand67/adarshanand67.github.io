@@ -27,7 +27,9 @@ function useTerminal() {
     if (!isIntroDone) {
       const allIntroLines = introLines();
       let currentLine = 0;
+      let cancelled = false;
       const typeNextLine = () => {
+        if (cancelled) return;
         if (currentLine < allIntroLines.length) {
           setLines((prev: string[]) => [...prev, allIntroLines[currentLine]!]);
           currentLine++;
@@ -37,6 +39,9 @@ function useTerminal() {
         }
       };
       typeNextLine();
+      return () => {
+        cancelled = true;
+      };
     }
   }, [isIntroDone, setLines, setIsIntroDone]);
 
@@ -280,14 +285,14 @@ function TerminalContent({
               <span className="text-cyan-500 font-bold">~</span>
               <span className="text-foreground">{line.substring(2)}</span>
             </div>
-          ) : (
+          ) : line.includes("\x1b[") ? (
             <div
-              className={`${line.includes("Error") ? "text-red-400" : "opacity-90"}`}
-              dangerouslySetInnerHTML={
-                line.includes("\x1b[") ? { __html: parseAnsi(line) } : undefined
-              }
-            >
-              {!line.includes("\x1b[") && line}
+              className={line.includes("Error") ? "text-red-400" : "opacity-90"}
+              dangerouslySetInnerHTML={{ __html: parseAnsi(line) }}
+            />
+          ) : (
+            <div className={line.includes("Error") ? "text-red-400" : "opacity-90"}>
+              {line}
             </div>
           )}
         </div>
