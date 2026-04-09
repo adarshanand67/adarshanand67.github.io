@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     title: "Adarsh Anand - SDE @Trellix",
     description:
       "Software Development Engineer @Trellix focusing on data security and C++.",
-    images: ["/ogImage.png"],
+    images: ["/images/ogImage.png"],
   },
   robots: {
     index: true,

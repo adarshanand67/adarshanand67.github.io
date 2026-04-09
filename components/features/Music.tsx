@@ -45,6 +45,7 @@ function useAudio() {
     if (!audioRef.current) return;
     if (isPlaying) audioRef.current.play().catch(() => setIsPlaying(false));
     else audioRef.current.pause();
+    return () => { audioRef.current?.pause(); };
   }, [isPlaying, setIsPlaying, currentTrackIndex]);
 
   useEffect(() => {
