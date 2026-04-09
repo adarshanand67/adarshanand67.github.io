@@ -3,7 +3,6 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
-import { motion, AnimatePresence } from "framer-motion";
 import {
   Search,
   ArrowRight,
@@ -30,9 +29,10 @@ import {
 
 import { routes, NAV_ITEMS } from "@/lib/constants";
 import { siteConfig } from "@/lib/config";
+import type { Blog } from "@/types/definitions";
 
 // Hooks
-export function useCommandMenu() {
+export function useCommandMenu(blogs: Blog[] = []) {
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState("");
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -120,37 +120,31 @@ export function useCommandMenu() {
             icon: ExternalLink,
             label: "Copy Page URL",
             description: "Copy current page URL",
-            action: () => {
-              navigator.clipboard.writeText(window.location.href);
-            },
+            action: () => navigator.clipboard.writeText(window.location.href),
           },
           {
             icon: Github,
             label: "Copy GitHub URL",
             description: "Copy GitHub profile link",
-            action: () => {
+            action: () =>
               navigator.clipboard.writeText(
                 `https://${siteConfig.contact.github}`,
-              );
-            },
+              ),
           },
           {
             icon: Linkedin,
             label: "Copy LinkedIn URL",
             description: "Copy LinkedIn profile link",
-            action: () => {
+            action: () =>
               navigator.clipboard.writeText(
                 `https://${siteConfig.contact.linkedin}`,
-              );
-            },
+              ),
           },
           {
             icon: Copy,
             label: "Copy Page Title",
             description: "Copy current page title",
-            action: () => {
-              navigator.clipboard.writeText(document.title);
-            },
+            action: () => navigator.clipboard.writeText(document.title),
           },
           {
             icon: TerminalIcon,
@@ -211,8 +205,21 @@ export function useCommandMenu() {
           },
         ],
       },
+      ...(blogs.length > 0
+        ? [
+            {
+              group: "Articles",
+              items: blogs.map((b) => ({
+                icon: FileText,
+                label: b.title,
+                description: b.date,
+                action: () => router.push(`/articles/${b.slug}`),
+              })),
+            },
+          ]
+        : []),
     ],
-    [router, setTheme],
+    [router, setTheme, blogs],
   );
 
   const filteredItems = useMemo(
@@ -359,7 +366,7 @@ function CommandMenuItems({
   );
 }
 
-export function CommandMenu() {
+export function CommandMenu({ blogs = [] }: { blogs?: Blog[] }) {
   const {
     open,
     setOpen,
@@ -369,25 +376,16 @@ export function CommandMenu() {
     runCommand,
     commandGroups,
     filteredItems,
-  } = useCommandMenu();
+  } = useCommandMenu(blogs);
   return (
-    <AnimatePresence>
+    <>
       {open && (
         <div className="fixed inset-0 z-[9999] flex items-start justify-center pt-[15vh] px-4 pointer-events-none">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/40 dark:bg-black/60 backdrop-blur-sm pointer-events-auto"
+          <div
+            className="fixed inset-0 bg-black/40 dark:bg-black/60 backdrop-blur-sm pointer-events-auto animate-fade-in"
             onClick={() => setOpen(false)}
           />
-          <motion.div
-            initial={{ opacity: 0, scale: 0.98, y: -10 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.98, y: -10 }}
-            transition={{ type: "spring", damping: 30, stiffness: 400 }}
-            className="w-full max-w-[640px] bg-white/80 dark:bg-[#121212]/80 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20 dark:border-white/10 overflow-hidden pointer-events-auto ring-1 ring-black/5"
-          >
+          <div className="w-full max-w-[640px] bg-white/80 dark:bg-[#121212]/80 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20 dark:border-white/10 overflow-hidden pointer-events-auto ring-1 ring-black/5 animate-scale-in">
             <CommandMenuInput value={search} onChange={setSearch} />
             <div className="max-h-[60vh] overflow-y-auto py-3 px-2 custom-scrollbar">
               <CommandMenuItems
@@ -417,9 +415,9 @@ export function CommandMenu() {
                 <CommandIcon size={12} className="opacity-70" />K
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       )}
-    </AnimatePresence>
+    </>
   );
 }

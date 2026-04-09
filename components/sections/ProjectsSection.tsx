@@ -2,7 +2,6 @@
 
 import React from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
 import { Star, GitFork, ExternalLink, Code2 } from "lucide-react";
 import { useStore } from "@/lib/store";
 import { SectionHeader } from "@/components/layout";
@@ -46,14 +45,8 @@ export function ProjectsSection({ items }: { items: Project[] }) {
           </Link>
         }
       />
-      <AnimatePresence>
-        {isExpanded && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-1 overflow-hidden"
-          >
+      <div className={`grid transition-[grid-template-rows] duration-300 ${isExpanded ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-1 overflow-hidden">
             {items.map((project, i) => (
               <Link
                 key={project.name}
@@ -120,9 +113,8 @@ export function ProjectsSection({ items }: { items: Project[] }) {
                 </div>
               </Link>
             ))}
-          </motion.div>
-        )}
-      </AnimatePresence>
+        </div>
+      </div>
     </div>
   );
 }

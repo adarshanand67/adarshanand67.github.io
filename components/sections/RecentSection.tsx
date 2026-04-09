@@ -2,7 +2,6 @@
 
 import React from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { useStore } from "@/lib/store";
 
@@ -40,14 +39,8 @@ export function RecentSection({
         {command}
         <span className="animate-pulse w-2 h-4 bg-foreground/20" />
       </div>
-      <AnimatePresence>
-        {isExpanded && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            className="mt-4 overflow-hidden"
-          >
+      <div className={`grid transition-[grid-template-rows] duration-300 ${isExpanded ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
+        <div className="mt-4 overflow-hidden">
             <div className="space-y-4 glass p-6 rounded-2xl border border-white/10">
               {items.map((item, i) => (
                 <div key={i} className="pl-4 border-l-2 border-foreground/10">
@@ -69,9 +62,8 @@ export function RecentSection({
             >
               → {linkText}
             </Link>
-          </motion.div>
-        )}
-      </AnimatePresence>
+        </div>
+      </div>
     </section>
   );
 }

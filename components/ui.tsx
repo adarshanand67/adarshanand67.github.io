@@ -4,7 +4,6 @@ import * as React from "react";
 import { useState, useRef, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { ChevronRight, Home, Shuffle } from "lucide-react";
-import { motion, useSpring, useScroll, useTransform } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { useStore } from "@/lib/store";
 
@@ -101,17 +100,25 @@ export function PillTag({
 // ============================================================================
 
 export function ScrollProgress() {
-  const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001,
-  });
+  const barRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const update = () => {
+      const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+      if (barRef.current) {
+        const p = scrollHeight > clientHeight ? scrollTop / (scrollHeight - clientHeight) : 0;
+        barRef.current.style.transform = `scaleX(${p})`;
+      }
+    };
+    window.addEventListener("scroll", update, { passive: true });
+    return () => window.removeEventListener("scroll", update);
+  }, []);
 
   return (
-    <motion.div
+    <div
+      ref={barRef}
       className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-gray-300 via-gray-400 to-gray-500 dark:from-zinc-700 dark:via-zinc-600 dark:to-zinc-800 z-[10001] origin-left"
-      style={{ scaleX }}
+      style={{ transform: "scaleX(0)" }}
     />
   );
 }
@@ -176,65 +183,6 @@ export const SectionSkeleton = () => (
   </div>
 );
 
-// ============================================================================
-// TiltWrapper Component
-// ============================================================================
-
-interface TiltWrapperProps {
-  children: React.ReactNode;
-  className?: string;
-  intensity?: number;
-}
-
-export const TiltWrapper: React.FC<TiltWrapperProps> = ({
-  children,
-  className = "",
-  intensity = 15,
-}) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  const x = useSpring(0, { stiffness: 400, damping: 30 });
-  const y = useSpring(0, { stiffness: 400, damping: 30 });
-
-  const rotateX = useTransform(y, [-0.5, 0.5], [intensity, -intensity]);
-  const rotateY = useTransform(x, [-0.5, 0.5], [-intensity, intensity]);
-
-  const handleMouseMove = useCallback(
-    (e: React.MouseEvent<HTMLDivElement>) => {
-      if (!containerRef.current) return;
-      const rect = containerRef.current.getBoundingClientRect();
-
-      const relativeX = (e.clientX - rect.left) / rect.width - 0.5;
-      const relativeY = (e.clientY - rect.top) / rect.height - 0.5;
-
-      x.set(relativeX);
-      y.set(relativeY);
-    },
-    [x, y],
-  );
-
-  const handleMouseLeave = useCallback(() => {
-    x.set(0);
-    y.set(0);
-  }, [x, y]);
-
-  return (
-    <motion.div
-      ref={containerRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      style={{
-        perspective: 1000,
-        rotateX,
-        rotateY,
-        transformStyle: "preserve-3d",
-      }}
-      className={`relative ${className}`}
-    >
-      <div style={{ transform: "translateZ(20px)" }}>{children}</div>
-    </motion.div>
-  );
-};
 
 // ============================================================================
 // RandomizerButton Component

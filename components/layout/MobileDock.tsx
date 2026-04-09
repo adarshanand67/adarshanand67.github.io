@@ -3,7 +3,6 @@
 import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion } from "framer-motion";
 import { Home, FileText, BookOpen, Tv, Gamepad2, Music } from "lucide-react";
 import { routes } from "@/lib/constants";
 
@@ -40,10 +39,7 @@ export function MobileDock() {
                 {<item.icon size={20} />}
               </div>
               {isActive && (
-                <motion.div
-                  layoutId="dock-dot"
-                  className="absolute -bottom-1 w-1 h-1 bg-foreground rounded-full"
-                />
+                <span className="absolute -bottom-1 w-1 h-1 bg-foreground rounded-full" />
               )}
             </Link>
           );
@@ -58,10 +54,7 @@ export function MobileDock() {
             <Music size={20} />
           </div>
           {pathname === routes.music && (
-            <motion.div
-              layoutId="dock-dot"
-              className="absolute -bottom-1 w-1 h-1 bg-foreground rounded-full"
-            />
+            <span className="absolute -bottom-1 w-1 h-1 bg-foreground rounded-full" />
           )}
         </Link>
       </div>

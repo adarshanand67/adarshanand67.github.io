@@ -1,7 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import React, { useRef, useCallback } from "react";
 
 export function TiltWrapper({
   children,
@@ -13,44 +12,32 @@ export function TiltWrapper({
   className?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
 
-  const mouseX = useSpring(x, { stiffness: 150, damping: 20 });
-  const mouseY = useSpring(y, { stiffness: 150, damping: 20 });
+  const handleMouseMove = useCallback(
+    (e: React.MouseEvent<HTMLDivElement>) => {
+      if (!ref.current) return;
+      const rect = ref.current.getBoundingClientRect();
+      const rx = ((e.clientY - rect.top) / rect.height - 0.5) * -intensity * 2;
+      const ry = ((e.clientX - rect.left) / rect.width - 0.5) * intensity * 2;
+      ref.current.style.transform = `perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+    },
+    [intensity],
+  );
 
-  const rotateX = useTransform(mouseY, [-0.5, 0.5], [intensity, -intensity]);
-  const rotateY = useTransform(mouseX, [-0.5, 0.5], [-intensity, intensity]);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleMouseLeave = useCallback(() => {
     if (!ref.current) return;
-    const rect = ref.current.getBoundingClientRect();
-    const width = rect.width;
-    const height = rect.height;
-    const mouseXFromCenter = e.clientX - rect.left - width / 2;
-    const mouseYFromCenter = e.clientY - rect.top - height / 2;
-    x.set(mouseXFromCenter / width);
-    y.set(mouseYFromCenter / height);
-  };
-
-  const handleMouseLeave = () => {
-    x.set(0);
-    y.set(0);
-  };
+    ref.current.style.transform = "";
+  }, []);
 
   return (
-    <motion.div
+    <div
       ref={ref}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      style={{
-        rotateX,
-        rotateY,
-        transformStyle: "preserve-3d",
-      }}
+      style={{ transformStyle: "preserve-3d", transition: "transform 0.3s ease" }}
       className={className}
     >
-      {children}
-    </motion.div>
+      <div style={{ transform: "translateZ(20px)" }}>{children}</div>
+    </div>
   );
 }

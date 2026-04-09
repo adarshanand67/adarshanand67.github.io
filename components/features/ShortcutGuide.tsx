@@ -8,7 +8,6 @@ import {
   CornerDownLeft,
   X,
 } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
 
 export function ShortcutGuide() {
   const [open, setOpen] = useState(false);
@@ -41,15 +40,10 @@ export function ShortcutGuide() {
     { keys: [<CornerDownLeft key="enter" size={12} />], label: "Select Item" },
   ];
   return (
-    <AnimatePresence>
+    <>
       {open && (
         <div className="fixed inset-0 z-[10000] flex items-center justify-center p-4 bg-black/40 backdrop-blur-md">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9 }}
-            className="w-full max-w-md bg-white dark:bg-zinc-900 rounded-2xl shadow-2xl border border-gray-200 dark:border-white/10 p-6 relative"
-          >
+          <div className="w-full max-w-md bg-white dark:bg-zinc-900 rounded-2xl shadow-2xl border border-gray-200 dark:border-white/10 p-6 relative animate-scale-in">
             <button
               onClick={() => setOpen(false)}
               className="absolute top-4 right-4 p-2 hover:bg-gray-100 dark:hover:bg-white/5 rounded-full"
@@ -91,9 +85,9 @@ export function ShortcutGuide() {
                 Press ESC to close
               </p>
             </div>
-          </motion.div>
+          </div>
         </div>
       )}
-    </AnimatePresence>
+    </>
   );
 }

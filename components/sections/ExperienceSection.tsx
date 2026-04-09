@@ -2,7 +2,6 @@
 
 import React from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
 import { MapPin } from "lucide-react";
 import { useStore } from "@/lib/store";
 import { SpotlightCard } from "@/components/ui";
@@ -23,14 +22,8 @@ export function ExperienceSection({ items }: { items: any[] }) {
         isExpanded={isExpanded}
         onToggle={() => toggleSectionExpanded("experience")}
       />
-      <AnimatePresence>
-        {isExpanded && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            className="grid grid-cols-1 gap-4 pt-1 overflow-hidden"
-          >
+      <div className={`grid transition-[grid-template-rows] duration-300 ${isExpanded ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
+        <div className="grid grid-cols-1 gap-4 pt-1 overflow-hidden">
             {items.map((exp, i) => (
               <div
                 key={i}
@@ -93,9 +86,8 @@ export function ExperienceSection({ items }: { items: any[] }) {
                 </div>
               </div>
             ))}
-          </motion.div>
-        )}
-      </AnimatePresence>
+        </div>
+      </div>
     </div>
   );
 }

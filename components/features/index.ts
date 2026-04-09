@@ -1,3 +1,4 @@
+export * from "./BlogContent";
 export * from "./DLPProtection";
 export * from "./Music";
 export * from "./ReadingProgress";

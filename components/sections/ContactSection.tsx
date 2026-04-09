@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { Check, Copy } from "lucide-react";
 import { useStore } from "@/lib/store";
 import { SectionHeader } from "@/components/layout";
@@ -21,14 +20,8 @@ export function ContactSection() {
         isExpanded={isExpanded}
         onToggle={() => toggleSectionExpanded("contact")}
       />
-      <AnimatePresence>
-        {isExpanded && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            className="overflow-hidden"
-          >
+      <div className={`grid transition-[grid-template-rows] duration-300 ${isExpanded ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
+        <div className="overflow-hidden">
             <div className="glass mt-4 p-6 md:p-8 rounded-2xl border border-white/10 relative overflow-hidden group">
               <div className="absolute top-0 right-0 p-32 bg-foreground/5 blur-3xl rounded-full group-hover:bg-foreground/10 transition-colors duration-700" />
               <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -103,9 +96,8 @@ export function ContactSection() {
                 </div>
               </div>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+        </div>
+      </div>
     </div>
   );
 }

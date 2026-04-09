@@ -2,7 +2,6 @@
 
 import React from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
 import { useStore } from "@/lib/store";
 import { SectionHeader } from "@/components/layout";
 import { skillCategories, techLinks } from "@/lib/constants";
@@ -19,14 +18,8 @@ export function TechStackSection() {
         isExpanded={isExpanded}
         onToggle={() => toggleSectionExpanded("techstack")}
       />
-      <AnimatePresence>
-        {isExpanded && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            className="overflow-hidden"
-          >
+      <div className={`grid transition-[grid-template-rows] duration-300 ${isExpanded ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
+        <div className="overflow-hidden">
             <div className="grid grid-cols-1 gap-2 mt-2">
               {Object.entries(skillCategories).map(([cat, skills]) => (
                 <div
@@ -61,9 +54,8 @@ export function TechStackSection() {
                 </div>
               ))}
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+        </div>
+      </div>
     </div>
   );
 }

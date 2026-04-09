@@ -3,7 +3,6 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
 import {
   Linkedin,
   Mail,
@@ -63,15 +62,9 @@ export function Hero({ profile }: { profile: Profile }) {
       }}
     >
       <div className="relative z-10 flex flex-col items-center">
-        <AnimatePresence mode="wait">
+        <div className="relative w-full">
           {heroViewMode === "profile" ? (
-            <motion.div
-              key="profile"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              className="w-full"
-            >
+            <div className="w-full animate-fade-in">
               <div className="glass rounded-[2rem] p-6 md:p-10 border border-white/10 relative overflow-hidden group/container shadow-xl">
                 <div className="flex flex-col md:flex-row gap-10 items-center md:items-start text-center md:text-left relative z-10">
                   <TiltWrapper intensity={15}>
@@ -144,15 +137,9 @@ export function Hero({ profile }: { profile: Profile }) {
                   ))}
                 </div>
               </div>
-            </motion.div>
+            </div>
           ) : (
-            <motion.div
-              key="terminal"
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              className="w-full"
-            >
+            <div className="w-full animate-scale-in">
               <div className="absolute top-6 right-8 z-20">
                 <ViewToggle
                   viewMode={heroViewMode}
@@ -160,9 +147,9 @@ export function Hero({ profile }: { profile: Profile }) {
                 />
               </div>
               <Terminal />
-            </motion.div>
+            </div>
           )}
-        </AnimatePresence>
+        </div>
       </div>
     </section>
   );

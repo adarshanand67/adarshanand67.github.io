@@ -94,7 +94,7 @@ export function ClientLayout({
       <ScrollProgress />
       <Navbar />
 
-      {isFeatureEnabled("enableCommandMenu") && <CommandMenu />}
+      {isFeatureEnabled("enableCommandMenu") && <CommandMenu blogs={recentPosts} />}
       {isFeatureEnabled("enableTerminal") && <TerminalPreloader />}
       <MobileDock />
       <ShortcutGuide />

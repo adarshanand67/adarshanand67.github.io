@@ -9,7 +9,6 @@ import React, {
 } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
 import {
   Search,
   X,
@@ -36,6 +35,7 @@ import {
   ChevronDown,
   CornerDownLeft,
 } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import { useStore } from "@/lib/store";
 import { CollectionType, WatchStatus, Book } from "@/types/definitions";
 import { CollectionConfig } from "@/lib/config";
@@ -399,21 +399,11 @@ export function AnimeModal({
 
   return (
     <div className="fixed inset-0 z-[1001] flex items-center justify-center p-4">
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        className="fixed inset-0 bg-black/80 backdrop-blur-md"
+      <div
+        className="fixed inset-0 bg-black/80 backdrop-blur-md animate-fade-in"
         onClick={onClose}
       />
-      <motion.div
-        layoutId={`anime-${item.title}`}
-        initial={{ y: "100%", opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        exit={{ y: "100%", opacity: 0 }}
-        transition={{ type: "spring", damping: 30, stiffness: 300, mass: 0.8 }}
-        className="bg-white/80 dark:bg-[#09090b]/80 backdrop-blur-3xl w-[92%] md:w-full max-w-5xl max-h-[85vh] rounded-[24px] md:rounded-[32px] shadow-2xl relative z-10 border border-white/20 dark:border-white/10 flex flex-col md:flex-row overflow-hidden"
-      >
+      <div className="bg-white/80 dark:bg-[#09090b]/80 backdrop-blur-3xl w-[92%] md:w-full max-w-5xl max-h-[85vh] rounded-[24px] md:rounded-[32px] shadow-2xl relative z-10 border border-white/20 dark:border-white/10 flex flex-col md:flex-row overflow-hidden animate-scale-in">
         {/* Full Modal Blurred Background Image */}
         {item.image && (
           <div className="absolute inset-0 z-0">
@@ -447,7 +437,7 @@ export function AnimeModal({
           <AnimeSidebar item={item} />
           <AnimeContent item={item} onTagClick={onTagClick} />
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 }
@@ -625,21 +615,11 @@ export function BookModal({
 
   return (
     <div className="fixed inset-0 z-[1001] flex items-center justify-center p-4">
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        className="fixed inset-0 bg-black/80 backdrop-blur-md"
+      <div
+        className="fixed inset-0 bg-black/80 backdrop-blur-md animate-fade-in"
         onClick={onClose}
       />
-      <motion.div
-        layoutId={`book-${item.title}`}
-        initial={{ y: "100%", opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        exit={{ y: "100%", opacity: 0 }}
-        transition={{ type: "spring", damping: 30, stiffness: 300, mass: 0.8 }}
-        className="bg-[#fafafa] dark:bg-[#09090b] w-[92%] md:w-full max-w-5xl max-h-[85vh] rounded-[24px] md:rounded-[32px] shadow-2xl relative z-10 border border-white/20 dark:border-white/10 flex flex-col md:flex-row overflow-hidden"
-      >
+      <div className="bg-[#fafafa] dark:bg-[#09090b] w-[92%] md:w-full max-w-5xl max-h-[85vh] rounded-[24px] md:rounded-[32px] shadow-2xl relative z-10 border border-white/20 dark:border-white/10 flex flex-col md:flex-row overflow-hidden animate-scale-in">
         <button
           onClick={onClose}
           className="absolute top-4 right-4 md:top-6 md:right-6 p-2 rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/20 transition-all z-30 backdrop-blur-sm group"
@@ -659,7 +639,7 @@ export function BookModal({
           <BookSidebar item={item} />
           <BookContent item={item} onTagClick={onTagClick} />
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 }
@@ -690,17 +670,11 @@ export function HobbyModal({
 
   return (
     <div className="fixed inset-0 z-[1001] flex items-center justify-center p-4">
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        className="fixed inset-0 bg-black/60 backdrop-blur-md"
+      <div
+        className="fixed inset-0 bg-black/60 backdrop-blur-md animate-fade-in"
         onClick={onClose}
       />
-      <motion.div
-        layoutId={`hobby-${item.name || "unknown"}`}
-        className="bg-white dark:bg-zinc-900 w-full max-w-xl rounded-3xl shadow-2xl overflow-hidden relative z-10 border border-gray-200 dark:border-white/10"
-      >
+      <div className="bg-white dark:bg-zinc-900 w-full max-w-xl rounded-3xl shadow-2xl overflow-hidden relative z-10 border border-gray-200 dark:border-white/10 animate-scale-in">
         <button
           onClick={onClose}
           className="absolute top-6 right-6 p-2 rounded-full hover:bg-gray-100 dark:hover:bg-white/10 transition-colors z-20"
@@ -734,7 +708,7 @@ export function HobbyModal({
             </a>
           )}
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 }
@@ -891,16 +865,12 @@ export function UniversalCollection({
             : "No items available in this collection."}
         </div>
       ) : (
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
+        <div className="animate-fade-in">
           {strategy.renderList(filteredItems as any[])}
-        </motion.div>
+        </div>
       )}
 
-      <AnimatePresence>
+      <>
         {store.hobbySelectedItem && (
           <HobbyModal
             item={store.hobbySelectedItem}
@@ -927,7 +897,7 @@ export function UniversalCollection({
             }}
           />
         )}
-      </AnimatePresence>
+      </>
     </div>
   );
 }
