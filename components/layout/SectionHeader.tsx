@@ -14,10 +14,15 @@ export function SectionHeader({
   onToggle?: () => void;
   rightElement?: React.ReactNode;
 }) {
+  const interactive = !!onToggle;
   return (
     <div
-      className="flex items-center justify-between mb-6 group cursor-pointer select-none"
+      role={interactive ? "button" : undefined}
+      tabIndex={interactive ? 0 : undefined}
+      aria-expanded={interactive ? isExpanded : undefined}
       onClick={onToggle}
+      onKeyDown={interactive ? (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); onToggle!(); } } : undefined}
+      className={`flex items-center justify-between mb-6 group select-none ${interactive ? "cursor-pointer" : ""}`}
     >
       <div className="flex items-center gap-3">
         <div
