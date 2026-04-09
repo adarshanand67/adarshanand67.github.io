@@ -22,23 +22,26 @@ export function RecentSection({
   const id = `recent-${title.toLowerCase().replace(/\s+/g, "-")}`;
   const isExpanded = expandedSections[id] ?? false;
   return (
-    <section
-      className="font-mono max-w-6xl mx-auto px-4 md:px-12 mb-8 cursor-pointer"
-      onClick={() => toggleSectionExpanded(id)}
-    >
-      <h2 className="text-xl font-black flex items-center gap-2 opacity-90">
-        <span className="opacity-20">##</span>
-        {title}
-        <ChevronDown
-          size={20}
-          className={`transition-transform ${isExpanded ? "rotate-0" : "-rotate-90 opacity-30"}`}
-        />
-      </h2>
-      <div className="flex items-center gap-2 opacity-40 text-xs mt-1">
-        <span>$</span>
-        {command}
-        <span className="animate-pulse w-2 h-4 bg-foreground/20" />
-      </div>
+    <section className="font-mono max-w-6xl mx-auto px-4 md:px-12 mb-8">
+      <button
+        onClick={() => toggleSectionExpanded(id)}
+        aria-expanded={isExpanded}
+        className="w-full text-left cursor-pointer"
+      >
+        <h2 className="text-xl font-black flex items-center gap-2 opacity-90">
+          <span className="opacity-20">##</span>
+          {title}
+          <ChevronDown
+            size={20}
+            className={`transition-transform ${isExpanded ? "rotate-0" : "-rotate-90 opacity-30"}`}
+          />
+        </h2>
+        <div className="flex items-center gap-2 opacity-40 text-xs mt-1">
+          <span>$</span>
+          {command}
+          <span className="animate-pulse w-2 h-4 bg-foreground/20" />
+        </div>
+      </button>
       <div className={`grid transition-[grid-template-rows] duration-300 ${isExpanded ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
         <div className="mt-4 overflow-hidden">
             <div className="space-y-4 glass p-6 rounded-2xl border border-white/10">
