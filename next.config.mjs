@@ -4,11 +4,6 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath: "",
-  assetPrefix: "",
-  typescript: {
-    ignoreBuildErrors: true,
-  },
   output: "export",
   compress: true,
   poweredByHeader: false,

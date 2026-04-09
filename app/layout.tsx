@@ -93,7 +93,10 @@ export default async function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <meta name="theme-color" content="#000000" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://api.github.com" />
+        <link rel="dns-prefetch" href="https://cdn.myanimelist.net" />
         <link rel="alternate" type="application/rss+xml" title="Adarsh Anand — Blog" href="/rss.xml" />
         <link rel="manifest" href="/manifest.json" />
       </head>

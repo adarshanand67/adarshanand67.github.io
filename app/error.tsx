@@ -8,7 +8,7 @@ export default function Error({
   reset: () => void;
 }) {
   useEffect(() => {
-    console.error("[Error Boundary]", error);
+    if (process.env.NODE_ENV === "development") console.error("[Error Boundary]", error);
   }, [error]);
   return (
     <div className="min-h-screen flex items-center justify-center p-4">

@@ -69,7 +69,7 @@ export default function MusicPage() {
 
   // Validate current track object
   if (!currentTrack || typeof currentTrack !== "object") {
-    console.error("Invalid track at index:", safeTrackIndex);
+    if (process.env.NODE_ENV === "development") console.error("Invalid track at index:", safeTrackIndex);
     return (
       <div className="min-h-screen flex items-center justify-center bg-white dark:bg-black">
         <div className="text-center p-8">
