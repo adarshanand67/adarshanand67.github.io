@@ -61,10 +61,6 @@ export const tracks: Track[] = [
   },
 ];
 
-// Legacy exports for backward compatibility
-export const playlist = tracks.map((t) => t.src);
-export const trackNames = tracks.map((t) => t.title);
-export const trackImages = tracks.map((t) => t.image);
 
 export const skillCategories = {
   [SkillCategoryName.Languages]: [

@@ -103,7 +103,7 @@ export function ClientLayout({
       <MobileDock />
       <ShortcutGuide />
 
-      <main className="relative z-10 min-h-screen flex flex-col">
+      <main id="main-content" className="relative z-10 min-h-screen flex flex-col">
         {isHome ? (
           <>
             <Hero profile={profile} />

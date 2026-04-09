@@ -76,23 +76,29 @@ function GitHubSection({ github }: { github: string }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`https://api.github.com/users/${github}`)
+    const controller = new AbortController();
+    const signal = controller.signal;
+    const timeout = setTimeout(() => controller.abort(), 8000);
+
+    fetch(`https://api.github.com/users/${github}`, { signal })
       .then((r) => r.json())
       .then((data) => {
+        if (signal.aborted) return;
         setGh({
           repos: data.public_repos ?? 0,
           followers: data.followers ?? 0,
           following: data.following ?? 0,
-          stars: 0, // Fetch separately
+          stars: 0,
           contributions: null,
         });
-        // Fetch total stars across repos
         return fetch(
           `https://api.github.com/users/${github}/repos?per_page=100&type=public`,
+          { signal },
         );
       })
-      .then((r) => r.json())
+      .then((r) => r?.json())
       .then((repos: any[]) => {
+        if (!repos || signal.aborted) return;
         const stars = repos.reduce(
           (acc, r) => acc + (r.stargazers_count ?? 0),
           0,
@@ -100,7 +106,15 @@ function GitHubSection({ github }: { github: string }) {
         setGh((prev) => prev && { ...prev, stars });
       })
       .catch(() => {})
-      .finally(() => setLoading(false));
+      .finally(() => {
+        clearTimeout(timeout);
+        setLoading(false);
+      });
+
+    return () => {
+      controller.abort();
+      clearTimeout(timeout);
+    };
   }, [github]);
 
   const ghCards = loading

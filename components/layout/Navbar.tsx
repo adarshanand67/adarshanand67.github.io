@@ -141,7 +141,7 @@ export function Navbar() {
         );
       setIsScrolled(currentScroll > 20);
     };
-    window.addEventListener("scroll", updateScroll);
+    window.addEventListener("scroll", updateScroll, { passive: true });
     updateScroll();
     return () => window.removeEventListener("scroll", updateScroll);
   }, [setIsMounted]);

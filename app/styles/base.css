@@ -69,12 +69,39 @@ body::before {
   background: var(--primary);
 }
 
-/* Remove common outlines */
+/* Remove outlines in favour of focus-visible */
 input:focus,
 textarea:focus,
 select:focus {
-  outline: none !important;
-  box-shadow: none !important;
+  outline: none;
+  box-shadow: none;
+}
+
+/* Keyboard focus ring for accessibility */
+:focus-visible {
+  outline: 2px solid var(--foreground);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Skip-to-content link (screen reader / keyboard users) */
+.skip-to-content {
+  position: fixed;
+  top: -100%;
+  left: 1rem;
+  z-index: 99999;
+  padding: 0.5rem 1rem;
+  background: var(--background);
+  color: var(--foreground);
+  border: 2px solid var(--foreground);
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: top 0.1s;
+}
+.skip-to-content:focus {
+  top: 1rem;
 }
 
 /* Smooth transitions for theme changes */

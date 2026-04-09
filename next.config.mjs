@@ -13,7 +13,7 @@ const nextConfig = {
   compress: true,
   poweredByHeader: false,
   experimental: {
-    optimizePackageImports: ["lucide-react", "react-syntax-highlighter"],
+    optimizePackageImports: ["lucide-react"],
   },
 };
 

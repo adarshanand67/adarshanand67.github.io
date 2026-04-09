@@ -11,16 +11,9 @@ self.addEventListener("install", (event) => {
   // skipWaiting to force new SW to take control immediately
   self.skipWaiting();
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      // Add all one by one to avoid failure if one fails
-      // or cache.addAll(urlsToCache)
-      // We'll try addAll but catch errors gracefully for individual files if needed?
-      // No, for "load all assets" we want strict caching.
-      console.log("Precaching " + urlsToCache.length + " files");
-      return cache.addAll(urlsToCache).catch((err) => {
-        console.error("Precache failed:", err);
-      });
-    }),
+    caches.open(CACHE_NAME).then((cache) =>
+      cache.addAll(urlsToCache).catch(() => {})
+    ),
   );
 });
 
@@ -29,10 +22,7 @@ self.addEventListener("activate", (event) => {
     caches.keys().then((cacheNames) => {
       return Promise.all(
         cacheNames.map((cacheName) => {
-          if (cacheName !== CACHE_NAME) {
-            console.log("Deleting old cache:", cacheName);
-            return caches.delete(cacheName);
-          }
+          if (cacheName !== CACHE_NAME) return caches.delete(cacheName);
         }),
       );
     }),

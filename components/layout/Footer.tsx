@@ -39,6 +39,7 @@ export function Footer() {
           <a
             href="/rss.xml"
             title="RSS Feed"
+            aria-label="Subscribe to RSS feed"
             className="text-foreground/30 hover:text-foreground transition-colors"
           >
             <Rss size={14} />

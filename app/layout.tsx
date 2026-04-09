@@ -71,7 +71,11 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#000000",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#000000" },
+  ],
+  colorScheme: "light dark",
 };
 
 export default async function RootLayout({
@@ -98,6 +102,7 @@ export default async function RootLayout({
         suppressHydrationWarning
       >
         <Providers>
+          <a href="#main-content" className="skip-to-content">Skip to content</a>
           <StructuredData data={generatePersonSchema()} />
           <StructuredData data={generateWebSiteSchema()} />
           <ClientLayout
