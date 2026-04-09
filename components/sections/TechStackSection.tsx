@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import dynamic from "next/dynamic";
 import { motion, AnimatePresence } from "framer-motion";
 import { useStore } from "@/lib/store";
@@ -87,16 +86,6 @@ export function TechStackSection() {
                       <div className="flex flex-wrap gap-2">
                         {skills.map((skill) => {
                           const url = techLinks[skill];
-                          let domain = "";
-                          try {
-                            if (url) domain = new URL(url).hostname;
-                          } catch (e) {
-                            console.error(e);
-                          }
-
-                          const faviconUrl = domain
-                            ? `https://www.google.com/s2/favicons?domain=${domain}&sz=32`
-                            : null;
                           const Icon = getTechIcon(skill);
 
                           return (
@@ -106,19 +95,8 @@ export function TechStackSection() {
                               target="_blank"
                               className="flex items-center gap-2 px-3 py-1.5 bg-foreground/5 border border-foreground/10 rounded-full text-xs font-bold hover:bg-foreground/10 transition-all group"
                             >
-                              {faviconUrl ? (
-                                <Image
-                                  src={faviconUrl}
-                                  alt={skill}
-                                  width={14}
-                                  height={14}
-                                  className="opacity-100 transition-opacity"
-                                  unoptimized
-                                />
-                              ) : (
-                                Icon && (
-                                  <Icon size={14} className="opacity-100" />
-                                )
+                              {Icon && (
+                                <Icon size={13} className="opacity-60 group-hover:opacity-100 transition-opacity shrink-0" />
                               )}
                               {skill}
                             </Link>

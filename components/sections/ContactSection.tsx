@@ -35,8 +35,8 @@ export function ContactSection() {
                 <div>
                   <h3 className="text-xl font-black mb-4">Get in touch</h3>
                   <p className="text-sm opacity-60 leading-relaxed mb-6">
-                    I&apos;m always open to discussing new projects, creative
-                    ideas, or opportunities to be part of your visions.
+                    Open to discussing interesting problems, collaborations,
+                    and good ideas. Coffee works too.
                   </p>
                   <div className="space-y-2">
                     {contactInfo.map((info, i) => (
@@ -74,12 +74,12 @@ export function ContactSection() {
                         <span className="text-purple-400">const</span> message ={" "}
                         {"{"}
                         {"\n"}
-                        {"  "}status:{" "}
+                        {"  "}role:{" "}
                         <span className="text-green-400">
-                          &quot;Open to work&quot;
+                          &quot;SDE @ Trellix&quot;
                         </span>
                         ,{"\n"}
-                        {"  "}availability:{" "}
+                        {"  "}openToCollabs:{" "}
                         <span className="text-orange-400">true</span>,{"\n"}
                         {"  "}coffee:{" "}
                         <span className="text-orange-400">true</span>

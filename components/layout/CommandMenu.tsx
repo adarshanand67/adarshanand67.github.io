@@ -24,6 +24,8 @@ import {
   Moon,
   Laptop,
   Command as CommandIcon,
+  Clock,
+  Wrench,
 } from "lucide-react";
 
 import { routes, NAV_ITEMS } from "@/lib/constants";
@@ -70,12 +72,26 @@ export function useCommandMenu() {
     Hobbies: GamepadIcon,
   };
 
-  const navItemsFormatted = NAV_ITEMS.map((item) => ({
-    icon: iconMap[item.label] || Home,
-    label: item.label,
-    description: descriptionMap[item.label] || "Navigate to page",
-    action: () => router.push(item.path),
-  }));
+  const navItemsFormatted = [
+    ...NAV_ITEMS.map((item) => ({
+      icon: iconMap[item.label] || Home,
+      label: item.label,
+      description: descriptionMap[item.label] || "Navigate to page",
+      action: () => router.push(item.path),
+    })),
+    {
+      icon: Clock,
+      label: "Now",
+      description: "What I'm working on right now",
+      action: () => router.push("/now"),
+    },
+    {
+      icon: Wrench,
+      label: "Uses",
+      description: "Hardware, software, and tools I use",
+      action: () => router.push("/uses"),
+    },
+  ];
 
   const runCommand = useCallback((command: () => unknown) => {
     setOpen(false);

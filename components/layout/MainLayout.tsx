@@ -56,7 +56,9 @@ import {
   Hero,
   ExperienceSection,
   ProjectsSection,
+  RecentSection,
   TechStackSection,
+  ContactSection,
 } from "@/components/sections";
 
 export function ClientLayout({
@@ -112,7 +114,18 @@ export function ClientLayout({
                 <ProjectsSection items={projects} />
               )}
 
+              {recentPosts.length > 0 && (
+                <RecentSection
+                  title="Recent Posts"
+                  command='find ~/blog -name "*.md" | head -3'
+                  items={recentPosts.map((p) => ({ title: p.title, date: p.date, url: `/articles/${p.slug}` }))}
+                  linkText="All articles →"
+                  linkUrl="/articles"
+                />
+              )}
+
               <TechStackSection />
+              <ContactSection />
             </div>
           </>
         ) : (

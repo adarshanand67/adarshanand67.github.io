@@ -112,6 +112,7 @@ export function MusicToggleButton() {
 
 function TrackInfo({ index, onClose }: { index: number; onClose: () => void }) {
   const track = tracks[index];
+  const [imgError, setImgError] = useState(false);
   if (!track)
     return (
       <div className="flex gap-4 items-center animate-pulse">
@@ -121,13 +122,20 @@ function TrackInfo({ index, onClose }: { index: number; onClose: () => void }) {
   return (
     <div className="flex gap-4 items-center">
       <div className="relative w-20 h-20 shrink-0 rounded-[1.5rem] overflow-hidden shadow-2xl border border-zinc-200 dark:border-zinc-800 group-hover:scale-105 transition-all duration-700">
+        {!imgError ? (
         <Image
           src={track.image || "/icon.png"}
           alt={track.title}
           fill
           className="object-cover"
           unoptimized
+          onError={() => setImgError(true)}
         />
+        ) : (
+          <div className="w-full h-full bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center">
+            <Music size={28} className="text-zinc-400" />
+          </div>
+        )}
       </div>
       <div className="flex flex-col min-w-0 flex-1">
         <span className="text-xl font-black line-clamp-1 text-zinc-900 dark:text-zinc-100 leading-tight tracking-tighter">
