@@ -30,6 +30,7 @@ import {
 
 import { routes, NAV_ITEMS } from "@/lib/constants";
 import { siteConfig } from "@/lib/config";
+import { useStore } from "@/lib/store";
 import type { Blog } from "@/types/definitions";
 
 // Hooks
@@ -39,6 +40,7 @@ export function useCommandMenu(blogs: Blog[] = []) {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const router = useRouter();
   const { setTheme } = useTheme();
+  const { toggleMusicPlayer, isExpanded, setIsExpanded } = useStore();
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -153,19 +155,13 @@ export function useCommandMenu(blogs: Blog[] = []) {
             icon: TerminalIcon,
             label: "Open Terminal",
             description: "Toggle terminal view",
-            action: () =>
-              document
-                .querySelector<HTMLElement>("[data-terminal-toggle]")
-                ?.click(),
+            action: () => setIsExpanded(!isExpanded),
           },
           {
             icon: Music,
             label: "Toggle Music",
             description: "Play/pause music player",
-            action: () =>
-              document
-                .querySelector<HTMLElement>("[data-music-toggle]")
-                ?.click(),
+            action: () => toggleMusicPlayer(),
           },
           {
             icon: ArrowUp,
@@ -222,7 +218,7 @@ export function useCommandMenu(blogs: Blog[] = []) {
           ]
         : []),
     ],
-    [router, setTheme, blogs],
+    [router, setTheme, blogs, isExpanded, setIsExpanded, toggleMusicPlayer],
   );
 
   const filteredItems = useMemo(

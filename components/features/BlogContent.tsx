@@ -1,6 +1,29 @@
 import { highlightCode } from "@/lib/highlighter";
 import Markdown from "markdown-to-jsx";
+import React from "react";
 import { CopyButton } from "./CopyButton";
+import { slugify } from "@/lib/headings";
+
+function nodeToText(node: React.ReactNode): string {
+  if (typeof node === "string") return node;
+  if (typeof node === "number") return String(node);
+  if (Array.isArray(node)) return node.map(nodeToText).join("");
+  if (React.isValidElement(node))
+    return nodeToText((node.props as { children?: React.ReactNode }).children);
+  return "";
+}
+
+function HeadingWithId({ as: Tag, children, ...props }: { as: "h1" | "h2" | "h3"; children?: React.ReactNode; [k: string]: unknown }) {
+  return <Tag id={slugify(nodeToText(children))} {...(props as object)}>{children}</Tag>;
+}
+
+const mdOptions = {
+  overrides: {
+    h1: { component: HeadingWithId, props: { as: "h1" } },
+    h2: { component: HeadingWithId, props: { as: "h2" } },
+    h3: { component: HeadingWithId, props: { as: "h3" } },
+  },
+};
 
 interface Segment {
   type: "text" | "code";
@@ -55,7 +78,7 @@ export async function BlogContent({ content }: { content: string }) {
           );
         }
         return (
-          <Markdown key={i}>
+          <Markdown key={i} options={mdOptions}>
             {seg.content}
           </Markdown>
         );

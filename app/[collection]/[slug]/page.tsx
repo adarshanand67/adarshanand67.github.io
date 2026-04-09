@@ -3,7 +3,8 @@ import Link from "next/link";
 import { ArrowLeft, Clock } from "lucide-react";
 import type { Metadata } from "next";
 import { getPost, getBlogs } from "@/lib/api";
-import { ReadingProgress, BlogContent, ShareButtons } from "@/components/features";
+import { ReadingProgress, BlogContent, ShareButtons, TableOfContents } from "@/components/features";
+import { parseHeadings } from "@/lib/headings";
 import { StructuredData } from "@/components/seo";
 import { generateBlogPostSchema } from "@/lib/seo";
 import { siteConfig } from "@/lib/config";
@@ -57,6 +58,7 @@ export default async function GenericCollectionItem({
   if (!content || !meta) notFound();
 
   const mins = readingTime(content);
+  const headings = parseHeadings(content);
 
   return (
     <div className="max-w-3xl mx-auto px-4 mt-8 mb-20">
@@ -81,6 +83,7 @@ export default async function GenericCollectionItem({
         </span>
       </div>
 
+      <TableOfContents headings={headings} />
       <BlogContent content={content} />
       <ShareButtons
         url={`${siteConfig.url}/articles/${slug}`}

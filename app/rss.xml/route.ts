@@ -1,8 +1,11 @@
 import { getBlogs } from "@/lib/api";
+
 export const dynamic = "force-static";
+
 export async function GET() {
-  const blogs = await getBlogs();
+  const articles = await getBlogs();
   const baseUrl = "https://adarshanand.dev";
+
   const rss = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
@@ -12,7 +15,7 @@ export async function GET() {
     <language>en-us</language>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
     <atom:link href="${baseUrl}/rss.xml" rel="self" type="application/rss+xml"/>
-    ${blogs
+    ${articles
       .map(
         (post) => `
     <item>
@@ -26,6 +29,7 @@ export async function GET() {
       .join("")}
   </channel>
 </rss>`;
+
   return new Response(rss, {
     headers: {
       "Content-Type": "application/xml",

@@ -7,4 +7,5 @@ export * from "./ShareButtons";
 export * from "./ShortcutGuide";
 export * from "./SystemStatus";
 export * from "./TiltWrapper";
+export * from "./TableOfContents";
 export * from "./ThemeToggle";
