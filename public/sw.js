@@ -34,8 +34,9 @@ self.addEventListener("fetch", (event) => {
   const request = event.request;
   const url = new URL(request.url);
 
-  // Ignore non-http requests (like extensions)
+  // Ignore non-http requests (like extensions) and non-GET requests
   if (!url.protocol.startsWith("http")) return;
+  if (request.method !== "GET") return;
 
   // For navigation requests (HTML pages), Network First for freshness, fallback to Cache
   // Actually, for a static site, we might want Stale-While-Revalidate or Cache First?

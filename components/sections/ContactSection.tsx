@@ -32,18 +32,24 @@ export function ContactSection() {
                     and good ideas. Coffee works too.
                   </p>
                   <div className="space-y-2">
-                    {contactInfo.map((info, i) => (
+                    {contactInfo.map((info, i) => {
+                      const handleCopy = () => {
+                        const val = info.split(": ")[1];
+                        if (val) {
+                          navigator.clipboard.writeText(val);
+                          setCopied(true);
+                          setTimeout(() => setCopied(false), 2000);
+                        }
+                      };
+                      return (
                       <div
                         key={i}
+                        role="button"
+                        tabIndex={0}
+                        aria-label={`Copy ${info}`}
                         className="text-xs font-mono opacity-50 hover:opacity-100 transition-opacity cursor-pointer flex items-center gap-2"
-                        onClick={() => {
-                          const val = info.split(": ")[1];
-                          if (val) {
-                            navigator.clipboard.writeText(val);
-                            setCopied(true);
-                            setTimeout(() => setCopied(false), 2000);
-                          }
-                        }}
+                        onClick={handleCopy}
+                        onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); handleCopy(); } }}
                       >
                         <span className="text-foreground/30">
                           {info.split(": ")[0]}:
@@ -57,7 +63,8 @@ export function ContactSection() {
                           </span>
                         )}
                       </div>
-                    ))}
+                      );
+                    })}
                   </div>
                 </div>
                 <div className="flex flex-col justify-center">
