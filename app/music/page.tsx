@@ -18,7 +18,6 @@ import Link from "next/link";
 import { tracks } from "@/lib/constants";
 import { useStore } from "@/lib/store";
 import { cn } from "@/lib/utils";
-import { Slider } from "@/components/ui";
 import { useState, useEffect } from "react";
 
 export default function MusicPage() {
@@ -349,16 +348,23 @@ export default function MusicPage() {
             </div>
 
             {/* Progress Slider */}
-            <div className="mb-6 group w-full">
-              <Slider
-                value={[progress]}
-                min={0}
-                max={100}
-                step={0.1}
-                onValueChange={handleSeek}
-                className="cursor-pointer py-4"
-              />
-              <div className="flex justify-between text-xs text-gray-500 dark:text-gray-400 mt-[-6px] font-medium font-mono">
+            <div className="mb-6 w-full">
+              <div className="relative h-1.5 w-full bg-gray-200 dark:bg-gray-800 rounded-full cursor-pointer">
+                <div
+                  className="absolute top-0 left-0 h-full bg-gray-900 dark:bg-white rounded-full pointer-events-none"
+                  style={{ width: `${progress}%` }}
+                />
+                <input
+                  type="range"
+                  min={0}
+                  max={100}
+                  step={0.1}
+                  value={progress}
+                  onChange={(e) => handleSeek([parseFloat(e.target.value)])}
+                  className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                />
+              </div>
+              <div className="flex justify-between text-xs text-gray-500 dark:text-gray-400 mt-2 font-medium font-mono">
                 <span>{formatTime(currentTime)}</span>
                 <span>{formatTime(duration)}</span>
               </div>
@@ -442,14 +448,21 @@ export default function MusicPage() {
             {/* Volume Slider - iOS Style */}
             <div className="flex items-center gap-4 px-2 mb-8">
               <Volume2 className="w-5 h-5 text-gray-400 dark:text-gray-500" />
-              <Slider
-                value={[volume * 100]}
-                min={0}
-                max={100}
-                step={1}
-                onValueChange={(val) => handleVolumeChange([val[0] / 100])}
-                className="cursor-pointer"
-              />
+              <div className="flex-1 relative h-1.5 bg-gray-200 dark:bg-gray-800 rounded-full cursor-pointer">
+                <div
+                  className="absolute top-0 left-0 h-full bg-gray-400 dark:bg-gray-500 rounded-full pointer-events-none"
+                  style={{ width: `${volume * 100}%` }}
+                />
+                <input
+                  type="range"
+                  min={0}
+                  max={100}
+                  step={1}
+                  value={volume * 100}
+                  onChange={(e) => handleVolumeChange([parseFloat(e.target.value) / 100])}
+                  className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                />
+              </div>
             </div>
           </div>
         </div>
