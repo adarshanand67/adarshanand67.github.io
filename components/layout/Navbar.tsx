@@ -155,7 +155,7 @@ export function Navbar() {
           style={{ width: `${scrollProgress}%` }}
         />
       </div>
-      <nav className="hidden md:block fixed top-0 left-0 right-0 z-[60] transition-all duration-300">
+      <nav aria-label="Main navigation" className="hidden md:block fixed top-0 left-0 right-0 z-[60] transition-all duration-300">
         <div
           className={`mx-auto px-4 transition-all duration-500 ${isScrolled ? "py-3" : "py-4"}`}
         >
@@ -173,6 +173,8 @@ export function Navbar() {
               <div className="md:hidden flex items-center gap-2">
                 <NavActions isMounted={isMounted} />
                 <button
+                  aria-label={isNavbarActive ? "Close menu" : "Open menu"}
+                  aria-expanded={isNavbarActive}
                   className="p-2 rounded-xl hover:bg-gray-100 dark:hover:bg-white/10 active:scale-95"
                   onClick={() => setIsNavbarActive(!isNavbarActive)}
                 >
