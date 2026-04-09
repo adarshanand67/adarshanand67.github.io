@@ -91,6 +91,12 @@ export function useCommandMenu(blogs: Blog[] = []) {
       description: "Hardware, software, and tools I use",
       action: () => router.push("/uses"),
     },
+    {
+      icon: CommandIcon,
+      label: "Stats",
+      description: "GitHub repos, books read, anime watched",
+      action: () => router.push("/stats"),
+    },
   ];
 
   const runCommand = useCallback((command: () => unknown) => {

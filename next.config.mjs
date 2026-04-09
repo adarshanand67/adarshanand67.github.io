@@ -1,3 +1,4 @@
+/** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   images: {
@@ -9,6 +10,11 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   output: "export",
+  compress: true,
+  poweredByHeader: false,
+  experimental: {
+    optimizePackageImports: ["lucide-react", "react-syntax-highlighter"],
+  },
 };
 
 export default nextConfig;

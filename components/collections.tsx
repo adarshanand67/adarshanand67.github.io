@@ -35,7 +35,6 @@ import {
   ChevronDown,
   CornerDownLeft,
 } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
 import { useStore } from "@/lib/store";
 import { CollectionType, WatchStatus, Book } from "@/types/definitions";
 import { CollectionConfig } from "@/lib/config";

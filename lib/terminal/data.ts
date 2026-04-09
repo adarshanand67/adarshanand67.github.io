@@ -298,15 +298,45 @@ export const commands: Record<
         `  ${grn("banner")}               ASCII art`,
         `  ${grn("man")}         <cmd>    command manual`,
         ``,
+        `${cyn("── Text Utils ─────────────────────────────")}`,
+        `  ${grn("grep")}        <pat>    search file contents`,
+        `  ${grn("wc")}          <file>   word/line count`,
+        `  ${grn("head")}        <file>   first N lines`,
+        `  ${grn("tail")}        <file>   last N lines`,
+        `  ${grn("rev")}         <text>   reverse text`,
+        `  ${grn("base64")}      [-d]     encode / decode`,
+        `  ${grn("rot13")}       <text>   ROT13 cipher`,
+        `  ${grn("calc")}        <expr>   calculator  e.g. 2**32`,
+        ``,
+        `${cyn("── System ─────────────────────────────────")}`,
+        `  ${grn("top")} / ${grn("htop")}        process monitor`,
+        `  ${grn("ps")}          [aux]    process list`,
+        `  ${grn("df")}                   disk usage`,
+        `  ${grn("free")}                 memory usage`,
+        `  ${grn("env")}                  environment variables`,
+        `  ${grn("which")}       <cmd>    find command path`,
+        `  ${grn("alias")}                show aliases`,
+        ``,
+        `${cyn("── Dev Tools ──────────────────────────────")}`,
+        `  ${grn("git")}         [sub]    git [log|status|diff|push]`,
+        `  ${grn("docker")}      [sub]    docker [ps|images]`,
+        `  ${grn("npm")}         [sub]    npm [install|run]`,
+        `  ${grn("brew")}        [sub]    brew [install|list|update]`,
+        `  ${grn("python")} / ${grn("node")}     REPL stubs`,
+        ``,
         `${cyn("── Fun ────────────────────────────────────")}`,
         `  ${grn("theme")}       [mode]   dark / light / system`,
         `  ${grn("fortune")}              random quote`,
+        `  ${grn("cowsay")}      <text>   🐄 wisdom`,
+        `  ${grn("weather")}     [city]   live weather data`,
         `  ${grn("ping")}        [host]   ping a host`,
+        `  ${grn("sl")}                   🚂 steam locomotive`,
+        `  ${grn("lolcat")}      <text>   rainbow text`,
         `  ${grn("sudo")}        <cmd>    try to be root`,
         `  ${grn("todo")}        <sub>    todo list manager`,
         `  ${grn("hack")}                 hack the mainframe`,
         `  ${grn("matrix")}               follow the white rabbit`,
-        `  ${grn("curl")}        wttr.in  weather forecast`,
+        `  ${grn("vim")} / ${grn("nano")} / ${grn("emacs")}  editors (sort of)`,
       ]);
     },
   },
@@ -842,5 +872,752 @@ export const commands: Record<
 
   whoami_alias: {
     execute: (args, ctx) => commands.whoami!.execute(args, ctx),
+  },
+
+  // ── Git (Easter Egg) ───────────────────────────────────────────────────────
+  git: {
+    execute: (args, { setLines }) => {
+      const sub = args[0]?.toLowerCase();
+      if (sub === "log") {
+        setLines((l: string[]) => [
+          ...l,
+          bld("commit 94ab2d9") + gry(" (HEAD -> main, origin/main)"),
+          `Author: Adarsh Anand <adarshan20302@gmail.com>`,
+          `Date:   ${new Date().toDateString()}`,
+          ``,
+          `    feat: syntax highlighting, blog SEO, 50+ terminal commands`,
+          ``,
+          bld("commit 5673df0"),
+          `    perf: reduce bundle, remove unused deps, audio optimization`,
+          ``,
+          bld("commit 94da75c"),
+          `    fix+feat: fix terminal crash, add /now, /uses, blog posts`,
+          ``,
+          bld("commit 3fcbb0f"),
+          `    feat: add GitHub projects section (closes #1)`,
+          gry(`...and many more. Type 'repo' to see the full history.`),
+        ]);
+      } else if (sub === "status") {
+        setLines((l: string[]) => [
+          ...l,
+          `On branch ${grn("main")}`,
+          `Your branch is up to date with ${grn("'origin/main'")}.`,
+          ``,
+          `nothing to commit, working tree clean`,
+        ]);
+      } else if (sub === "diff") {
+        setLines((l: string[]) => [
+          ...l,
+          gry("No local changes — everything is committed."),
+        ]);
+      } else if (sub === "branch") {
+        setLines((l: string[]) => [...l, `* ${grn("main")}`]);
+      } else if (sub === "clone") {
+        const repo = args[1] ?? "repo";
+        setLines((l: string[]) => [
+          ...l,
+          `Cloning into '${repo}'...`,
+          `remote: Enumerating objects: 42, done.`,
+          `remote: Counting objects: 100% (42/42), done.`,
+          `Receiving objects: 100% (42/42), ${grn("done")}.`,
+        ]);
+      } else if (sub === "push") {
+        setLines((l: string[]) => [
+          ...l,
+          `Enumerating objects: 3, done.`,
+          `Writing objects: 100% (3/3), 1.23 KiB | 1.23 MiB/s, done.`,
+          `To github.com/adarshanand67/personal-website`,
+          `   94ab2d9..${Math.random().toString(16).slice(2, 9)}  main -> main`,
+        ]);
+      } else {
+        setLines((l: string[]) => [
+          ...l,
+          gry("usage: git [log|status|diff|branch|clone|push]"),
+        ]);
+      }
+    },
+  },
+
+  // ── Process / System Monitor ───────────────────────────────────────────────
+  top: {
+    execute: (_, { setLines }) => {
+      setLines((l: string[]) => [
+        ...l,
+        `${bld("Processes:")} 312 total  ${grn("3")} running  309 sleeping`,
+        `${bld("CPU usage:")} ${grn("2.5%")} user  1.2% sys  ${grn("96.3%")} idle`,
+        `${bld("MemRegions:")} 142K total, 5.5G resident, 0B private, 2.1G shared`,
+        `${bld("PhysMem:")}   3.2G used (${grn("1.9G")} wired, 1.3G app), 12.8G unused`,
+        ``,
+        `${gry("PID")}    ${gry("COMMAND")}                 ${gry("%CPU")}  ${gry("MEM")}`,
+        `${grn("1")}      kernel_task              0.5   3.1G`,
+        `${grn("284")}    WindowServer             0.8   312M`,
+        `${grn("1042")}   node (next-server)       1.2   148M`,
+        `${grn("1143")}   Google Chrome            2.1   812M`,
+        `${grn("2048")}   Code (VSCode)            0.9   430M`,
+        `${grn("3891")}   Terminal                 0.1    28M`,
+        gry("Press q to quit (this is a simulation)"),
+      ]);
+    },
+  },
+
+  htop: {
+    execute: (args, ctx) => commands.top!.execute(args, ctx),
+  },
+
+  ps: {
+    execute: (args, { setLines }) => {
+      const isAux = args.includes("aux") || args.includes("-aux");
+      setLines((l: string[]) => [
+        ...l,
+        `${gry("PID")}    ${gry("TTY")}    ${gry("STAT")} ${gry("TIME")}  ${gry("COMMAND")}`,
+        `  1      ??     Ss    0:01  /sbin/launchd`,
+        `  284    ??     S     1:23  /System/Library/PrivateFrameworks/SkyLight`,
+        `  1042   s001   Ss    0:00  -zsh`,
+        `  1143   s001   R+    0:00  ps ${args.join(" ")}`,
+        ...(isAux
+          ? [
+              `  2048   ??     S     5:12  /Applications/Code.app/Contents/MacOS/Electron`,
+              `  3891   ??     S     0:33  /Applications/Terminal.app/Contents/MacOS/Terminal`,
+              `  4200   ??     S     2:01  /Applications/Safari.app/Contents/MacOS/Safari`,
+            ]
+          : []),
+      ]);
+    },
+  },
+
+  df: {
+    execute: (args, { setLines }) => {
+      setLines((l: string[]) => [
+        ...l,
+        `${gry("Filesystem")}       ${gry("Size")}  ${gry("Used")} ${gry("Avail")} ${gry("Capacity")}  ${gry("Mounted on")}`,
+        `/dev/disk3s1s1    228G   23G   180G      12%     /`,
+        `devfs             210K  210K     0B     100%     /dev`,
+        `/dev/disk3s6      228G    3G   180G       2%     /System/Volumes/VM`,
+        `/dev/disk3s2      228G  3.5G   180G       2%     /System/Volumes/Preboot`,
+        gry("Disk: 228GB total  ·  23GB used  ·  180GB available"),
+      ]);
+    },
+  },
+
+  free: {
+    execute: (args, { setLines }) => {
+      setLines((l: string[]) => [
+        ...l,
+        `              total        used        free    available`,
+        `Mem:          ${grn("16384")}        3226       13158       13158`,
+        `Swap:          2048           0        2048        2048`,
+        gry("All values in MiB"),
+      ]);
+    },
+  },
+
+  // ── Text Utilities ─────────────────────────────────────────────────────────
+  grep: {
+    execute: (args, { setLines }) => {
+      const pattern = args[0];
+      const filename = args[1];
+      if (!pattern) {
+        setLines((l: string[]) => [...l, red("Usage: grep <pattern> [file]")]);
+        return;
+      }
+      const searchIn = filename
+        ? [filename]
+        : Object.keys(mockFiles);
+      const results: string[] = [];
+      for (const name of searchIn) {
+        const content = mockFiles[name];
+        if (!content) continue;
+        const lines = content.split("\n");
+        for (const line of lines) {
+          if (line.toLowerCase().includes(pattern.toLowerCase())) {
+            const highlighted = line.replace(
+              new RegExp(pattern, "gi"),
+              (m) => grn(m),
+            );
+            results.push(`${cyn(name)}: ${highlighted}`);
+          }
+        }
+      }
+      if (results.length === 0) {
+        setLines((l: string[]) => [
+          ...l,
+          gry(`grep: no matches for '${pattern}'`),
+        ]);
+      } else {
+        setLines((l: string[]) => [
+          ...l,
+          ...results,
+          gry(`${results.length} match${results.length !== 1 ? "es" : ""}`),
+        ]);
+      }
+    },
+  },
+
+  wc: {
+    execute: (args, { setLines }) => {
+      const filename = args[0];
+      if (!filename) {
+        setLines((l: string[]) => [...l, red("Usage: wc <file>")]);
+        return;
+      }
+      const content =
+        mockFiles[filename] ??
+        mockFiles[filename + ".md"] ??
+        mockFiles[filename + ".txt"];
+      if (!content) {
+        setLines((l: string[]) => [
+          ...l,
+          red(`wc: ${filename}: No such file`),
+        ]);
+        return;
+      }
+      const lines = content.split("\n").length;
+      const words = content.trim().split(/\s+/).length;
+      const chars = content.length;
+      setLines((l: string[]) => [
+        ...l,
+        `  ${grn(String(lines))} lines  ${grn(String(words))} words  ${grn(String(chars))} chars  ${filename}`,
+      ]);
+    },
+  },
+
+  head: {
+    execute: (args, { setLines }) => {
+      const nFlag = args.indexOf("-n");
+      const n = nFlag >= 0 ? parseInt(args[nFlag + 1] ?? "10") : 10;
+      const filename = args.find((a) => !a.startsWith("-") && !/^\d+$/.test(a));
+      if (!filename) {
+        setLines((l: string[]) => [...l, red("Usage: head [-n N] <file>")]);
+        return;
+      }
+      const content =
+        mockFiles[filename] ?? mockFiles[filename + ".md"] ?? mockFiles[filename + ".txt"];
+      if (!content) {
+        setLines((l: string[]) => [...l, red(`head: ${filename}: No such file`)]);
+        return;
+      }
+      setLines((l: string[]) => [
+        ...l,
+        ...content.split("\n").slice(0, n),
+      ]);
+    },
+  },
+
+  tail: {
+    execute: (args, { setLines }) => {
+      const nFlag = args.indexOf("-n");
+      const n = nFlag >= 0 ? parseInt(args[nFlag + 1] ?? "10") : 10;
+      const filename = args.find((a) => !a.startsWith("-") && !/^\d+$/.test(a));
+      if (!filename) {
+        setLines((l: string[]) => [...l, red("Usage: tail [-n N] <file>")]);
+        return;
+      }
+      const content =
+        mockFiles[filename] ?? mockFiles[filename + ".md"] ?? mockFiles[filename + ".txt"];
+      if (!content) {
+        setLines((l: string[]) => [...l, red(`tail: ${filename}: No such file`)]);
+        return;
+      }
+      const lines = content.split("\n");
+      setLines((l: string[]) => [...l, ...lines.slice(-n)]);
+    },
+  },
+
+  rev: {
+    execute: (args, { setLines }) => {
+      const text = args.join(" ");
+      if (!text) {
+        setLines((l: string[]) => [...l, red("Usage: rev <text>")]);
+        return;
+      }
+      setLines((l: string[]) => [...l, text.split("").reverse().join("")]);
+    },
+  },
+
+  base64: {
+    execute: (args, { setLines }) => {
+      const decode = args.includes("-d") || args.includes("--decode");
+      const text = args.filter((a) => !a.startsWith("-")).join(" ");
+      if (!text) {
+        setLines((l: string[]) => [
+          ...l,
+          red("Usage: base64 [-d] <text>"),
+        ]);
+        return;
+      }
+      try {
+        const result = decode
+          ? atob(text)
+          : btoa(text);
+        setLines((l: string[]) => [...l, grn(result)]);
+      } catch {
+        setLines((l: string[]) => [...l, red("base64: invalid input")]);
+      }
+    },
+  },
+
+  rot13: {
+    execute: (args, { setLines }) => {
+      const text = args.join(" ");
+      if (!text) {
+        setLines((l: string[]) => [...l, red("Usage: rot13 <text>")]);
+        return;
+      }
+      const result = text.replace(/[a-zA-Z]/g, (c) => {
+        const base = c < "a" ? 65 : 97;
+        return String.fromCharCode(((c.charCodeAt(0) - base + 13) % 26) + base);
+      });
+      setLines((l: string[]) => [...l, grn(result)]);
+    },
+  },
+
+  // ── Calculator ─────────────────────────────────────────────────────────────
+  calc: {
+    execute: (args, { setLines }) => {
+      const expr = args.join(" ").replace(/[^0-9+\-*/().\s%]/g, "");
+      if (!expr.trim()) {
+        setLines((l: string[]) => [...l, red("Usage: calc <expression>  e.g. calc 2+2")]);
+        return;
+      }
+      try {
+        // eslint-disable-next-line no-eval
+        const result = Function(`"use strict"; return (${expr})`)();
+        setLines((l: string[]) => [...l, `${gry(expr + " =")} ${grn(String(result))}`]);
+      } catch {
+        setLines((l: string[]) => [...l, red(`calc: invalid expression: ${expr}`)]);
+      }
+    },
+  },
+
+  bc: {
+    execute: (args, ctx) => commands.calc!.execute(args, ctx),
+  },
+
+  // ── Cowsay ─────────────────────────────────────────────────────────────────
+  cowsay: {
+    execute: (args, { setLines }) => {
+      const text = args.join(" ") || "Moo!";
+      const pad = text.length + 2;
+      const top = " " + "_".repeat(pad);
+      const bot = " " + "-".repeat(pad);
+      setLines((l: string[]) => [
+        ...l,
+        grn(top),
+        grn(`< ${text} >`),
+        grn(bot),
+        grn(`        \\   ^__^`),
+        grn(`         \\  (oo)\\_______`),
+        grn(`            (__)\\       )\\/\\`),
+        grn(`                ||----w |`),
+        grn(`                ||     ||`),
+      ]);
+    },
+  },
+
+  // ── Environment ────────────────────────────────────────────────────────────
+  env: {
+    execute: (_, { setLines }) => {
+      setLines((l: string[]) => [
+        ...l,
+        `${cyn("USER")}=adarsh`,
+        `${cyn("HOME")}=/home/adarsh`,
+        `${cyn("SHELL")}=/bin/zsh`,
+        `${cyn("TERM")}=portfolio-terminal-1.0`,
+        `${cyn("PATH")}=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin`,
+        `${cyn("EDITOR")}=vim`,
+        `${cyn("LANG")}=en_US.UTF-8`,
+        `${cyn("NODE_ENV")}=production`,
+        `${cyn("NEXT_PUBLIC_BASE_PATH")}=`,
+      ]);
+    },
+  },
+
+  which: {
+    execute: (args, { setLines }) => {
+      const cmd = args[0];
+      if (!cmd) {
+        setLines((l: string[]) => [...l, red("Usage: which <command>")]);
+        return;
+      }
+      if (commands[cmd]) {
+        setLines((l: string[]) => [...l, grn(`/usr/local/bin/${cmd}`)]);
+      } else {
+        setLines((l: string[]) => [...l, red(`which: ${cmd}: not found`)]);
+      }
+    },
+  },
+
+  type: {
+    execute: (args, { setLines }) => {
+      const cmd = args[0];
+      if (!cmd) {
+        setLines((l: string[]) => [...l, red("Usage: type <command>")]);
+        return;
+      }
+      if (commands[cmd]) {
+        setLines((l: string[]) => [
+          ...l,
+          `${grn(cmd)} is a shell builtin`,
+        ]);
+      } else {
+        setLines((l: string[]) => [
+          ...l,
+          red(`${cmd}: not found`),
+        ]);
+      }
+    },
+  },
+
+  alias: {
+    execute: (_, { setLines }) => {
+      setLines((l: string[]) => [
+        ...l,
+        bld("Defined aliases"),
+        `  ${cyn("goto")}     → cd`,
+        `  ${cyn("navigate")} → cd`,
+        `  ${cyn("htop")}     → top`,
+        `  ${cyn("bc")}       → calc`,
+        `  ${cyn("q")}        → exit`,
+        `  ${cyn("quit")}     → exit`,
+      ]);
+    },
+  },
+
+  // ── Weather (client-side fetch) ────────────────────────────────────────────
+  weather: {
+    execute: async (args, { setLines }) => {
+      const city = args.join("+") || "Bengaluru";
+      setLines((l: string[]) => [...l, gry(`Fetching weather for ${city}...`)]);
+      try {
+        const res = await fetch(
+          `https://wttr.in/${encodeURIComponent(city)}?format=j1`,
+          { signal: AbortSignal.timeout(5000) },
+        );
+        const data = await res.json();
+        const cur = data.current_condition?.[0];
+        if (!cur) throw new Error("no data");
+        const temp = cur.temp_C;
+        const feels = cur.FeelsLikeC;
+        const desc = cur.weatherDesc?.[0]?.value ?? "Unknown";
+        const humidity = cur.humidity;
+        const wind = cur.windspeedKmph;
+        setLines((l: string[]) => [
+          ...l,
+          `${yel("Weather")} — ${bld(city.replace(/\+/g, " "))}`,
+          `  ${cyn("Condition")}  ${desc}`,
+          `  ${cyn("Temp")}       ${grn(temp + "°C")} (feels ${grn(feels + "°C")})`,
+          `  ${cyn("Humidity")}   ${grn(humidity + "%")}`,
+          `  ${cyn("Wind")}       ${grn(wind + " km/h")}`,
+        ]);
+      } catch {
+        setLines((l: string[]) => [
+          ...l,
+          red("weather: could not fetch data (offline?)"),
+          gry("Try: curl wttr.in/Bengaluru"),
+        ]);
+      }
+    },
+  },
+
+  // ── Network (Easter Eggs) ──────────────────────────────────────────────────
+  ifconfig: {
+    execute: (_, { setLines }) => {
+      setLines((l: string[]) => [
+        ...l,
+        `${grn("lo0")}: flags=8049<UP,LOOPBACK,RUNNING,MULTICAST> mtu 16384`,
+        `     inet ${grn("127.0.0.1")} netmask 0xff000000`,
+        ``,
+        `${grn("en0")}: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500`,
+        `     inet ${grn("192.168.1.42")} netmask 0xffffff00 broadcast 192.168.1.255`,
+        `     ether aa:bb:cc:dd:ee:ff`,
+        `     status: active`,
+      ]);
+    },
+  },
+
+  ssh: {
+    execute: (args, { setLines }) => {
+      const host = args[0] ?? "server";
+      setLines((l: string[]) => [
+        ...l,
+        `ssh: connect to host ${host} port 22: Connection refused`,
+        gry("(This is a static portfolio — no SSH server running)"),
+      ]);
+    },
+  },
+
+  // ── Editors (Easter Eggs) ──────────────────────────────────────────────────
+  vim: {
+    execute: (args, { setLines }) => {
+      setLines((l: string[]) => [
+        ...l,
+        mag("VIM - Vi IMproved 9.1"),
+        gry(""),
+        gry("  ~"),
+        gry("  ~"),
+        gry("  ~  Stuck? :q! to quit."),
+        gry("  ~"),
+        gry('  "' + (args[0] ?? "newfile") + '" [New File]'),
+      ]);
+    },
+  },
+
+  nano: {
+    execute: (args, { setLines }) => {
+      setLines((l: string[]) => [
+        ...l,
+        mag(`GNU nano 7.2  ${args[0] ?? "newfile"}`),
+        ``,
+        `  (empty file — nano doesn't work here)`,
+        ``,
+        gry("^X Exit  ^O Save  ^W Find"),
+      ]);
+    },
+  },
+
+  emacs: {
+    execute: (_, { setLines }) => {
+      setLines((l: string[]) => [
+        ...l,
+        mag("Welcome to GNU Emacs"),
+        gry("C-x C-c  to quit  (just kidding, this is a terminal)"),
+      ]);
+    },
+  },
+
+  // ── Package Managers (Easter Eggs) ─────────────────────────────────────────
+  brew: {
+    execute: (args, { setLines }) => {
+      const sub = args[0];
+      if (sub === "install" && args[1]) {
+        setLines((l: string[]) => [
+          ...l,
+          `==> Fetching ${grn(args[1])}`,
+          `==> Downloading https://formulae.brew.sh/api/formula/${args[1]}.json`,
+          `Already downloaded: ${gry("/Users/adarsh/Library/Caches/Homebrew/" + args[1])}`,
+          `==> Installing ${grn(args[1])}`,
+          `  /usr/local/Cellar/${args[1]}: ${Math.floor(Math.random() * 200 + 50)} files, ${Math.floor(Math.random() * 10 + 1)}.${Math.floor(Math.random() * 9)}MB`,
+        ]);
+      } else if (sub === "list") {
+        setLines((l: string[]) => [
+          ...l,
+          `bat  curl  git  jq  node  nvim  ripgrep  tmux  wget  zsh`,
+          gry("295 packages installed"),
+        ]);
+      } else if (sub === "update") {
+        setLines((l: string[]) => [
+          ...l,
+          `Updated 2 taps (homebrew/core, homebrew/cask).`,
+          `==> New Formulae`,
+          `  mojo  uv  claude-code`,
+          `==> Updated Formulae`,
+          `  node  python  rust`,
+        ]);
+      } else {
+        setLines((l: string[]) => [
+          ...l,
+          `${grn("brew")} [install|list|update] <formula>`,
+        ]);
+      }
+    },
+  },
+
+  npm: {
+    execute: (args, { setLines }) => {
+      const sub = args[0];
+      if (sub === "install" || sub === "i") {
+        const pkg = args[1] ?? "dependencies";
+        setLines((l: string[]) => [
+          ...l,
+          `npm warn deprecated old-package@0.1.0: Use new-package instead`,
+          ``,
+          `added ${Math.floor(Math.random() * 100 + 10)} packages in ${(Math.random() * 5 + 1).toFixed(1)}s`,
+          ``,
+          grn(`${Math.floor(Math.random() * 3)} packages are looking for funding`),
+          gry("run 'npm fund' for details"),
+        ]);
+      } else if (sub === "run") {
+        setLines((l: string[]) => [
+          ...l,
+          grn(`> personal-website@1.0.1 ${args[1] ?? "start"}`),
+          `> next ${args[1] ?? "dev"}`,
+          gry("(simulated — run this in a real terminal)"),
+        ]);
+      } else {
+        setLines((l: string[]) => [...l, gry("npm [install|run] <args>")]);
+      }
+    },
+  },
+
+  // ── Docker (Easter Egg) ────────────────────────────────────────────────────
+  docker: {
+    execute: (args, { setLines }) => {
+      const sub = args[0];
+      if (sub === "ps") {
+        setLines((l: string[]) => [
+          ...l,
+          `${gry("CONTAINER ID")}   ${gry("IMAGE")}          ${gry("STATUS")}       ${gry("PORTS")}    ${gry("NAMES")}`,
+          `a3f2b1c9d0e1   next:latest    Up 2 hours   :3000->3000/tcp   portfolio`,
+          `b4g3c2d1e0f1   redis:alpine   Up 2 hours   6379/tcp          cache`,
+        ]);
+      } else if (sub === "images") {
+        setLines((l: string[]) => [
+          ...l,
+          `${gry("REPOSITORY")}    ${gry("TAG")}     ${gry("SIZE")}`,
+          `next          latest  312MB`,
+          `redis         alpine   28MB`,
+          `ubuntu        22.04   77.8MB`,
+        ]);
+      } else {
+        setLines((l: string[]) => [...l, gry("docker [ps|images] — (simulation)")]);
+      }
+    },
+  },
+
+  // ── REPL Easter Eggs ───────────────────────────────────────────────────────
+  python: {
+    execute: (args, { setLines }) => {
+      if (args[0] === "-c" && args[1]) {
+        const code = args.slice(1).join(" ");
+        if (code.includes("print(")) {
+          const content = code.match(/print\(["']([^"']+)["']\)/)?.[1] ?? "Hello, World!";
+          setLines((l: string[]) => [...l, content]);
+        } else {
+          setLines((l: string[]) => [...l, gry(">>> " + code), gry("SyntaxError: invalid syntax")]);
+        }
+      } else {
+        setLines((l: string[]) => [
+          ...l,
+          `Python 3.13.0 (main) [Clang 16.0.0 (Apple)] on darwin`,
+          `Type "help", "copyright", "credits" or "license" for more info.`,
+          gry(">>> (not a real REPL — use python3 in your terminal)"),
+        ]);
+      }
+    },
+  },
+
+  python3: {
+    execute: (args, ctx) => commands.python!.execute(args, ctx),
+  },
+
+  node: {
+    execute: (_, { setLines }) => {
+      setLines((l: string[]) => [
+        ...l,
+        `Welcome to Node.js v23.6.0.`,
+        `Type ".exit" to quit.`,
+        gry("> (not a real REPL — use node in your terminal)"),
+      ]);
+    },
+  },
+
+  // ── Fun Extras ─────────────────────────────────────────────────────────────
+  sl: {
+    execute: (_, { setLines }) => {
+      const frames = [
+        `      ====        ________                ___________`,
+        `  _D _|  |_______/        \\__I_I_____===__|___________|`,
+        `   |(_)---  |  H\\________/ |   |        =|___ ___|`,
+        `   /     |  |   H  |  |    |   |         ||_| |_||`,
+        `  |      |  |   H  |__--------------------| [___] |`,
+        `  | ________|___H__/__|_____/[][]~\\_______|`,
+        `  |/ |   |-----------I_____I [][] []  D   |=======|__`,
+      ];
+      setLines((l: string[]) => [
+        ...l,
+        ...frames.map((f) => grn(f)),
+        ``,
+        gry("Choo choo! 🚂  (You meant 'ls', didn't you?)"),
+      ]);
+    },
+  },
+
+  yes: {
+    execute: (args, { setLines }) => {
+      const text = args.join(" ") || "y";
+      setLines((l: string[]) => [
+        ...l,
+        ...(Array(12).fill(text)),
+        gry("(yes would run forever — showing 12 lines)"),
+      ]);
+    },
+  },
+
+  sleep: {
+    execute: (args, { setLines }) => {
+      const n = parseInt(args[0] ?? "1");
+      if (isNaN(n) || n < 0) {
+        setLines((l: string[]) => [...l, red("sleep: invalid interval")]);
+        return;
+      }
+      setLines((l: string[]) => [
+        ...l,
+        gry(`Sleeping for ${n} second${n !== 1 ? "s" : ""}...`),
+      ]);
+      setTimeout(() => {
+        setLines((l: string[]) => [...l, grn("Done.")]);
+      }, Math.min(n * 1000, 5000));
+    },
+  },
+
+  jobs: {
+    execute: (_, { setLines }) => {
+      setLines((l: string[]) => [...l, gry("[1]  Running  portfolio --serve")]);
+    },
+  },
+
+  kill: {
+    execute: (args, { setLines }) => {
+      const pid = args[0];
+      if (!pid) {
+        setLines((l: string[]) => [...l, red("Usage: kill <pid>")]);
+        return;
+      }
+      if (pid === "1") {
+        setLines((l: string[]) => [...l, red("kill: (1) Operation not permitted")]);
+      } else {
+        setLines((l: string[]) => [
+          ...l,
+          gry(`Sending SIGTERM to process ${pid}`),
+          gry(`(process not found — this is a simulation)`),
+        ]);
+      }
+    },
+  },
+
+  // ── Misc ───────────────────────────────────────────────────────────────────
+  time: {
+    execute: (args, { setLines }) => {
+      const cmd = args[0];
+      if (!cmd || !commands[cmd]) {
+        setLines((l: string[]) => [
+          ...l,
+          red("Usage: time <command>"),
+        ]);
+        return;
+      }
+      const start = performance.now();
+      commands[cmd]!.execute(args.slice(1), { setLines });
+      const elapsed = ((performance.now() - start) / 1000).toFixed(4);
+      setLines((l: string[]) => [
+        ...l,
+        ``,
+        `real    ${grn("0m" + elapsed + "s")}`,
+        `user    0m0.001s`,
+        `sys     0m0.000s`,
+      ]);
+    },
+  },
+
+  lolcat: {
+    execute: (args, { setLines }) => {
+      const text = args.join(" ") || "Hello, World!";
+      const colors = [red, grn, yel, mag, cyn];
+      const rainbow = text
+        .split("")
+        .map((c, i) => colors[i % colors.length]!(c))
+        .join("");
+      setLines((l: string[]) => [...l, rainbow]);
+    },
   },
 };
