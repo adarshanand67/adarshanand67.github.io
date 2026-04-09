@@ -11,6 +11,7 @@ import {
   MonitorPlay,
   Book,
   Gamepad2 as GamepadIcon,
+  BarChart2,
   Copy,
   ExternalLink,
   Github,
@@ -62,6 +63,7 @@ export function useCommandMenu(blogs: Blog[] = []) {
     Books: "Explore reading list",
     Anime: "View anime watchlist",
     Hobbies: "Discover hobbies & interests",
+    Stats: "GitHub repos, books read, anime watched",
   };
 
   const iconMap: Record<string, any> = {
@@ -70,6 +72,7 @@ export function useCommandMenu(blogs: Blog[] = []) {
     Books: Book,
     Anime: MonitorPlay,
     Hobbies: GamepadIcon,
+    Stats: BarChart2,
   };
 
   const navItemsFormatted = [
@@ -90,12 +93,6 @@ export function useCommandMenu(blogs: Blog[] = []) {
       label: "Uses",
       description: "Hardware, software, and tools I use",
       action: () => router.push("/uses"),
-    },
-    {
-      icon: CommandIcon,
-      label: "Stats",
-      description: "GitHub repos, books read, anime watched",
-      action: () => router.push("/stats"),
     },
   ];
 

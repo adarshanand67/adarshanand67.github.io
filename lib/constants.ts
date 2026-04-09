@@ -185,6 +185,10 @@ export const routes = {
   anime: "/anime",
   hobbies: "/hobbies",
   music: "/music",
+  stats: "/stats",
+  experience: "/experience",
+  now: "/now",
+  uses: "/uses",
 } as const;
 
 export const NAV_ITEMS = [
@@ -193,6 +197,7 @@ export const NAV_ITEMS = [
   { label: "Books", path: routes.books },
   { label: "Anime", path: routes.anime },
   { label: "Hobbies", path: routes.hobbies },
+  { label: "Stats", path: routes.stats },
 ] as const;
 
 export const directoryMap: Record<string, string> = {
@@ -208,6 +213,10 @@ export const directoryMap: Record<string, string> = {
   animes: routes.anime,
   hobby: routes.hobbies,
   hobbies: routes.hobbies,
+  stats: routes.stats,
+  experience: routes.experience,
+  now: routes.now,
+  uses: routes.uses,
   home: routes.home,
   ".": routes.home,
 };

@@ -1,5 +1,14 @@
+import type { Metadata } from "next";
 import { getExperiences } from "@/lib/api";
 import { linkifyTech } from "@/lib/utils";
+
+export const metadata: Metadata = {
+  title: "Experience",
+  description: "Work history — Software Development Engineer at Trellix and previous roles.",
+};
+
+export const dynamic = "force-static";
+
 export default async function Experience() {
   const experiences = await getExperiences();
   return (

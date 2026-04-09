@@ -94,6 +94,7 @@ export function MusicToggleButton() {
   return (
     <button
       onClick={toggleMusicPlayer}
+      aria-label={isPlaying ? "Music player (playing)" : "Open music player"}
       className="hidden md:flex fixed bottom-8 right-6 md:right-8 z-[101] w-14 h-14 bg-white dark:bg-zinc-800 backdrop-blur-md border border-black/10 dark:border-white/10 rounded-full items-center justify-center shadow-xl hover:scale-110 active:scale-95 transition-all duration-300 group"
     >
       <div className={`relative ${isPlaying ? "animate-pulse" : ""}`}>
@@ -156,6 +157,7 @@ function TrackInfo({ index, onClose }: { index: number; onClose: () => void }) {
         </Link>
         <button
           onClick={onClose}
+          aria-label="Close music player"
           className="p-1.5 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-full transition-all shrink-0 hover:scale-110 active:scale-90 group/close"
         >
           <ChevronDown
@@ -270,6 +272,7 @@ export function MusicPlayer() {
             <div className="flex items-center justify-between px-2">
               <button
                 onClick={toggleShuffle}
+                aria-label={isShuffle ? "Shuffle on" : "Shuffle off"}
                 className={`p-1.5 transition-all text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 ${isShuffle ? "text-green-500 dark:text-green-400 bg-green-50 dark:bg-green-400/10 rounded-full" : ""}`}
               >
                 <Shuffle size={18} />
@@ -277,12 +280,14 @@ export function MusicPlayer() {
               <div className="flex items-center gap-6">
                 <button
                   onClick={prevTrack}
+                  aria-label="Previous track"
                   className="text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 transition-colors"
                 >
                   <SkipBack size={24} fill="currentColor" />
                 </button>
                 <button
                   onClick={() => setIsPlaying(!isPlaying)}
+                  aria-label={isPlaying ? "Pause" : "Play"}
                   className="w-14 h-14 flex items-center justify-center bg-zinc-100/50 dark:bg-zinc-800/50 border border-zinc-200 dark:border-zinc-700 rounded-full shadow-xl backdrop-blur-md hover:scale-105 active:scale-95 transition-all group/play"
                 >
                   {isPlaying ? (
@@ -301,6 +306,7 @@ export function MusicPlayer() {
                 </button>
                 <button
                   onClick={nextTrack}
+                  aria-label="Next track"
                   className="text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 transition-colors"
                 >
                   <SkipForward size={24} fill="currentColor" />
@@ -308,6 +314,7 @@ export function MusicPlayer() {
               </div>
               <button
                 onClick={toggleRepeat}
+                aria-label={isRepeat ? "Repeat on" : "Repeat off"}
                 className={`p-1.5 transition-all relative text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 ${isRepeat ? "text-green-500 dark:text-green-400 bg-green-50 dark:bg-green-400/10 rounded-full" : ""}`}
               >
                 <Repeat size={18} />
@@ -321,6 +328,7 @@ export function MusicPlayer() {
             <div className="flex items-center gap-3 px-1 group/volume">
               <button
                 onClick={toggleMute}
+                aria-label={isMuted || volume === 0 ? "Unmute" : "Mute"}
                 className="text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100"
               >
                 {isMuted || volume === 0 ? (

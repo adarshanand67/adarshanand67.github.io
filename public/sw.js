@@ -1,5 +1,4 @@
-const CACHE_NAME =
-  "portfolio-v2-precache-" + new Date().toISOString().slice(0, 10);
+const CACHE_NAME = "portfolio-v2-precache-__CACHE_VERSION__";
 
 // This will be populated by the build script
 // const __PRECACHE_MANIFEST__ = [...];

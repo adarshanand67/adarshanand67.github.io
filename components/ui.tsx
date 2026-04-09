@@ -3,7 +3,7 @@
 import * as React from "react";
 import { useState, useRef, useEffect, useCallback } from "react";
 import Link from "next/link";
-import { ChevronRight, Home, Shuffle } from "lucide-react";
+import { ChevronRight, Home, Shuffle, ArrowUp } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useStore } from "@/lib/store";
 
@@ -410,6 +410,32 @@ export function Visualizer({ audioRef, isPlaying }: VisualizerProps) {
       height={40}
       className="w-full h-full opacity-50"
     />
+  );
+}
+
+// ============================================================================
+// BackToTop Component
+// ============================================================================
+
+export function BackToTop() {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setVisible(window.scrollY > 300);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  if (!visible) return null;
+
+  return (
+    <button
+      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      aria-label="Back to top"
+      className="fixed bottom-6 right-6 z-50 p-3 rounded-full bg-foreground/10 hover:bg-foreground/20 border border-foreground/10 hover:border-foreground/20 text-foreground/60 hover:text-foreground backdrop-blur-sm shadow-lg transition-all duration-300 hover:-translate-y-1 animate-fade-in"
+    >
+      <ArrowUp size={18} />
+    </button>
   );
 }
 

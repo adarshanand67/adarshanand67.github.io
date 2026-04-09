@@ -45,6 +45,10 @@ const ScrollProgress = dynamic(
   () => import("@/components/ui").then((mod) => mod.ScrollProgress),
   { ssr: false },
 );
+const BackToTop = dynamic(
+  () => import("@/components/ui").then((mod) => mod.BackToTop),
+  { ssr: false },
+);
 const MusicPlayer = dynamic(
   () => import("@/components/features").then((mod) => mod.MusicPlayer),
   { ssr: false },
@@ -134,6 +138,8 @@ export function ClientLayout({
       </main>
 
       <Footer />
+
+      {isFeatureEnabled("enableBackToTop") && <BackToTop />}
 
       {isFeatureEnabled("enableMusicPlayer") && (
         <>

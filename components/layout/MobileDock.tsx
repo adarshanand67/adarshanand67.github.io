@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, FileText, BookOpen, Tv, Gamepad2, Music } from "lucide-react";
+import { Home, FileText, BookOpen, Tv, Gamepad2, Music, BarChart2 } from "lucide-react";
 import { routes } from "@/lib/constants";
 
 import { NAV_ITEMS } from "@/lib/constants";
@@ -16,6 +16,7 @@ export function MobileDock() {
     Books: BookOpen,
     Anime: Tv,
     Hobbies: Gamepad2,
+    Stats: BarChart2,
   };
 
   const navItems = NAV_ITEMS.map((item) => ({

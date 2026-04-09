@@ -3,7 +3,9 @@ import Link from "next/link";
 import { ArrowLeft, Clock } from "lucide-react";
 import type { Metadata } from "next";
 import { getPost, getBlogs } from "@/lib/api";
-import { ReadingProgress, BlogContent } from "@/components/features";
+import { ReadingProgress, BlogContent, ShareButtons } from "@/components/features";
+import { StructuredData } from "@/components/seo";
+import { generateBlogPostSchema } from "@/lib/seo";
 import { siteConfig } from "@/lib/config";
 
 export async function generateStaticParams() {
@@ -58,6 +60,7 @@ export default async function GenericCollectionItem({
 
   return (
     <div className="max-w-3xl mx-auto px-4 mt-8 mb-20">
+      <StructuredData data={generateBlogPostSchema({ title: meta.title, date: meta.date, excerpt: meta.excerpt ?? "", slug })} />
       <ReadingProgress />
 
       <Link
@@ -79,6 +82,10 @@ export default async function GenericCollectionItem({
       </div>
 
       <BlogContent content={content} />
+      <ShareButtons
+        url={`${siteConfig.url}/articles/${slug}`}
+        title={meta.title}
+      />
     </div>
   );
 }

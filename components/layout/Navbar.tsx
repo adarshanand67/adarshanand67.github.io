@@ -9,6 +9,7 @@ import {
   FileText,
   MonitorPlay,
   Gamepad2,
+  BarChart2,
   X,
   Menu,
 } from "lucide-react";
@@ -57,6 +58,7 @@ export function NavLinks({
     Books: Book,
     Anime: MonitorPlay,
     Hobbies: Gamepad2,
+    Stats: BarChart2,
   };
 
   const links = NAV_ITEMS.filter((item) => item.label !== "Home").map(

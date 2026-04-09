@@ -41,23 +41,19 @@ console.log(`Generated manifest with ${manifest.length} files.`);
 if (fs.existsSync(SW_PATH)) {
   let swContent = fs.readFileSync(SW_PATH, "utf8");
 
-  // Replace the placeholder or inject variable
+  // Compute a short content hash from the manifest so the cache name only
+  // changes when actual output files change (not every calendar day).
   const manifestString = JSON.stringify(manifest);
-  // We prefer injecting it at the top
+  const cacheVersion = crypto
+    .createHash("sha256")
+    .update(manifestString)
+    .digest("hex")
+    .slice(0, 10);
+
+  swContent = swContent.replace("__CACHE_VERSION__", cacheVersion);
+
   const injection = `const __PRECACHE_MANIFEST__ = ${manifestString};\n`;
-
-  // If we had a placeholder token, we'd replace it.
-  // Since we plan to update sw.js to use this variable, we can prepend it?
-  // But sw.js is already built/copy to out/sw.js.
-  // Better to READ source sw.js, PREPEND, and WRITE to out/sw.js
-
-  // Actually, let's just REPLACE the urlsToCache in place if possible,
-  // or better yet, our source `public/sw.js` will have:
-  // const urlsToCache = self.__PRECACHE_MANIFEST__ || [];
-  // And we prepend the variable definition.
-
-  const finalContent = injection + swContent;
-  fs.writeFileSync(SW_PATH, finalContent);
+  fs.writeFileSync(SW_PATH, injection + swContent);
   console.log("Service Worker updated with precache manifest.");
 } else {
   console.log("sw.js not found in out directory.");

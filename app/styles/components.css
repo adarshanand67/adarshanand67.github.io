@@ -49,3 +49,37 @@
     padding-bottom: 1rem;
   }
 }
+
+/* ============================================================
+   Shiki dual-theme syntax highlighting
+   ============================================================ */
+
+.shiki-wrapper pre {
+  margin: 0;
+  padding: 1.25rem 1.5rem;
+  overflow-x: auto;
+  background: transparent !important;
+}
+
+.shiki-wrapper pre code {
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  font-size: inherit;
+}
+
+/* Light theme (default) */
+.shiki-wrapper .shiki {
+  background-color: var(--shiki-light-bg) !important;
+}
+.shiki-wrapper .shiki span {
+  color: var(--shiki-light);
+}
+
+/* Dark theme */
+.dark .shiki-wrapper .shiki {
+  background-color: var(--shiki-dark-bg) !important;
+}
+.dark .shiki-wrapper .shiki span {
+  color: var(--shiki-dark);
+}

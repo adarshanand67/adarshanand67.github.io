@@ -99,8 +99,8 @@ const sections = [
         detail: "CSS-first config, no tailwind.config.js. Custom design tokens in CSS variables.",
       },
       {
-        name: "Framer Motion",
-        detail: "Page transitions and section animations.",
+        name: "CSS animations",
+        detail: "Custom keyframe animations defined in globals.css — no runtime animation library.",
       },
       {
         name: "Zustand",

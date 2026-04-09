@@ -90,6 +90,8 @@ export default async function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <meta name="theme-color" content="#000000" />
+        <link rel="alternate" type="application/rss+xml" title="Adarsh Anand — Blog" href="/rss.xml" />
+        <link rel="manifest" href="/manifest.json" />
       </head>
       <body
         className={`${assistant.variable} ${jetbrains.variable} antialiased`}
