@@ -320,7 +320,7 @@ function useVisualizer(
           analyserRef.current.connect(ctx.destination);
         }
       } catch (e) {
-        console.error("Audio source creation failed:", e);
+        if (process.env.NODE_ENV === "development") console.error("Audio source creation failed:", e);
       }
     }
 

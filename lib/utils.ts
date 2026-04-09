@@ -149,13 +149,6 @@ export async function retryWithBackoff<T>(
 }
 
 export function linkifyTech(text: string): string {
-  const { techLinks } = require("@/lib/constants"); // Dynamically require to avoid circular dependency if constants imports utils.
-  // Actually, constants imports config. Utils imports constants.
-  // Let's rely on standard import at top if possible, but constants might be importing utils?
-  // Let's check imports in utils.ts. It imports basePath from constants.
-  // Constants imports siteConfig from config.
-  // It seems safe to import techLinks from constants in utils.ts.
-
   let result = text;
   const sortedTechs = Object.keys(techLinks).sort(
     (a, b) => b.length - a.length,

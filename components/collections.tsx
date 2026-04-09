@@ -754,7 +754,7 @@ export function UniversalCollection({
       if (!isValidConfig) return null;
       return CollectionStrategyFactory.getStrategy(config.type);
     } catch (error) {
-      console.error("Failed to get collection strategy:", error);
+      if (process.env.NODE_ENV === "development") console.error("Failed to get collection strategy:", error);
       return null;
     }
   }, [config?.type, isValidConfig]);
@@ -800,7 +800,7 @@ export function UniversalCollection({
         }
       }
     } catch (error) {
-      console.error("Error picking random item:", error);
+      if (process.env.NODE_ENV === "development") console.error("Error picking random item:", error);
     }
   };
 

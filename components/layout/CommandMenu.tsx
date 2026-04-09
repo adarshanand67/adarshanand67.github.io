@@ -276,6 +276,7 @@ function CommandMenuInput({ value, onChange }: any) {
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder="Search for anything..."
+        aria-label="Search commands"
         className="w-full bg-transparent border-none outline-none text-base text-gray-900 dark:text-white placeholder:text-gray-400"
         autoFocus
       />

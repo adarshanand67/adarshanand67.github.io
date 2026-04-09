@@ -108,7 +108,7 @@ export const parseAnsi = (text: string) => {
       })
       .filter(Boolean);
   } catch (error) {
-    console.warn("Error parsing ANSI:", error);
+    if (process.env.NODE_ENV === "development") console.warn("Error parsing ANSI:", error);
     return text;
   }
 };
