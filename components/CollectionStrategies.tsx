@@ -329,6 +329,7 @@ export class PaperCollectionStrategy implements CollectionItemStrategy<Paper> {
         <Link
           href={paper.url}
           target="_blank"
+          rel="noopener noreferrer"
           className="group/link inline-flex items-center gap-2 text-foreground/80 hover:text-foreground font-bold hover:underline"
         >
           <span>{paper.title}</span>

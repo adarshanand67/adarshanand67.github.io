@@ -40,6 +40,7 @@ export function TechStackSection() {
                             key={skill}
                             href={url || "#"}
                             target="_blank"
+                            rel="noopener noreferrer"
                             className="flex items-center gap-2 px-3 py-1.5 bg-foreground/5 border border-foreground/10 rounded-full text-xs font-bold hover:bg-foreground/10 transition-all group"
                           >
                             {Icon && (

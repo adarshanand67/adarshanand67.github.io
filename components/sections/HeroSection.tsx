@@ -121,6 +121,7 @@ export function Hero({ profile }: { profile: Profile }) {
                       key={i}
                       href={social.href}
                       target="_blank"
+                      rel="noopener noreferrer"
                       className="p-4 rounded-3xl bg-foreground/5 hover:bg-foreground/10 border border-foreground/10 transition-all group"
                     >
                       <div className="flex items-center gap-4">
