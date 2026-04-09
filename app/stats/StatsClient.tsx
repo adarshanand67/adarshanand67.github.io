@@ -97,7 +97,7 @@ function GitHubSection({ github }: { github: string }) {
         );
       })
       .then((r) => r?.json())
-      .then((repos: any[]) => {
+      .then((repos: { stargazers_count?: number }[]) => {
         if (!repos || signal.aborted) return;
         const stars = repos.reduce(
           (acc, r) => acc + (r.stargazers_count ?? 0),

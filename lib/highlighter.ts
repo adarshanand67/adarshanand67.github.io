@@ -19,7 +19,8 @@ export async function getHighlighter() {
 }
 
 export async function highlightCode(code: string, lang: string): Promise<string> {
-  const safeLang = SUPPORTED_LANGS.includes(lang as any) ? lang : "text";
+  type SupportedLang = (typeof SUPPORTED_LANGS)[number];
+  const safeLang = (SUPPORTED_LANGS as readonly string[]).includes(lang) ? (lang as SupportedLang) : "text";
   const h = await getHighlighter();
   return h.codeToHtml(code, {
     lang: safeLang,
