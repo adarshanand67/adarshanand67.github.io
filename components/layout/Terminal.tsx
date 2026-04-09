@@ -272,6 +272,9 @@ function TerminalContent({
   return (
     <div
       ref={containerRef}
+      role="log"
+      aria-live="polite"
+      aria-label="Terminal output"
       className="p-6 text-gray-800 dark:text-gray-200 h-[400px] overflow-y-auto overflow-x-auto scrollbar-thin scrollbar-thumb-gray-400 dark:scrollbar-thumb-gray-700 scrollbar-track-transparent font-mono text-sm"
     >
       {lines.map((line: string, i: number) => (
@@ -308,6 +311,7 @@ function TerminalContent({
             onBlur={onBlur}
             onChange={onChange}
             onKeyDown={handleKeyDown}
+            aria-label={passwordMode ? "Terminal password input" : "Terminal command input"}
             className="bg-transparent border-none outline-none text-foreground flex-grow font-bold focus:ring-0 p-0 ml-1"
             autoFocus
             spellCheck={false}

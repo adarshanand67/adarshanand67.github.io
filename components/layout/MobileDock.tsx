@@ -24,7 +24,7 @@ export function MobileDock() {
     icon: iconMap[item.label] || Home, // Fallback icon
   }));
   return (
-    <div className="md:hidden fixed bottom-0 left-0 right-0 z-[100] w-full">
+    <nav aria-label="Mobile navigation" className="md:hidden fixed bottom-0 left-0 right-0 z-[100] w-full">
       <div className="bg-white/80 dark:bg-black/80 backdrop-blur-xl border-t border-gray-200 dark:border-gray-800 px-6 py-4 flex items-center justify-between">
         {navItems.map((item) => {
           const isActive = pathname === item.path;
@@ -32,6 +32,8 @@ export function MobileDock() {
             <Link
               key={item.label}
               href={item.path}
+              aria-label={item.label}
+              aria-current={isActive ? "page" : undefined}
               className="relative flex flex-col items-center gap-1 group"
             >
               <div
@@ -47,6 +49,8 @@ export function MobileDock() {
         })}
         <Link
           href={routes.music}
+          aria-label="Music"
+          aria-current={pathname === routes.music ? "page" : undefined}
           className="relative flex flex-col items-center gap-1 group"
         >
           <div
@@ -59,6 +63,6 @@ export function MobileDock() {
           )}
         </Link>
       </div>
-    </div>
+    </nav>
   );
 }
