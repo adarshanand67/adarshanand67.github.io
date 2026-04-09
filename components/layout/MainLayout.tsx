@@ -74,15 +74,13 @@ export function ClientLayout({
   recentPosts: Blog[];
   projects: Project[];
 }) {
-  const { isMounted, setIsMounted } = useStore();
+  const { setIsMounted } = useStore();
   const pathname = usePathname();
   const isHome = pathname === "/";
 
   useEffect(() => {
     setIsMounted(true);
   }, [setIsMounted]);
-
-  if (!isMounted) return null;
 
   return (
     <div className="min-h-screen bg-background text-foreground transition-colors duration-300 selection:bg-foreground/20 selection:text-foreground">

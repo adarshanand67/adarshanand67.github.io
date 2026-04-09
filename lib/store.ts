@@ -51,11 +51,6 @@ export interface MusicState {
   nextTrack: () => void;
   prevTrack: () => void;
   setCurrentTrack: (index: number) => void;
-  currentTime: number;
-  duration: number;
-  seekTime: number | null;
-  setProgress: (currentTime: number, duration: number) => void;
-  requestSeek: (time: number | null) => void;
 }
 
 export interface BackToTopState {
@@ -199,11 +194,6 @@ const createMusicSlice: StateCreator<AppState, [], [], MusicState> = (set) => ({
     })),
   setCurrentTrack: (index) =>
     set({ currentTrackIndex: index, isPlaying: true }),
-  currentTime: 0,
-  duration: 0,
-  seekTime: null,
-  setProgress: (currentTime, duration) => set({ currentTime, duration }),
-  requestSeek: (time) => set({ seekTime: time }),
 });
 
 const createUISlice: StateCreator<

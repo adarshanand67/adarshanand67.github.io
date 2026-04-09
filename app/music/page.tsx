@@ -17,6 +17,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { tracks } from "@/lib/constants";
 import { useStore } from "@/lib/store";
+import { useAudioStore } from "@/lib/audioStore";
 import { cn } from "@/lib/utils";
 import { useState, useEffect } from "react";
 
@@ -34,10 +35,8 @@ export default function MusicPage() {
     toggleRepeat,
     volume,
     setVolume,
-    currentTime,
-    duration,
-    requestSeek,
   } = useStore();
+  const { currentTime, duration, requestSeek } = useAudioStore();
 
   // Validate tracks array
   if (!tracks || !Array.isArray(tracks) || tracks.length === 0) {

@@ -18,6 +18,7 @@ import {
   VolumeX,
 } from "lucide-react";
 import { useStore } from "@/lib/store";
+import { useAudioStore } from "@/lib/audioStore";
 import { tracks } from "@/lib/constants";
 
 // ... (Copy Music related components: useAudio, MusicToggleButton, TrackInfo, ProgressBar, MusicPlayer)
@@ -31,10 +32,8 @@ function useAudio() {
     currentTrackIndex,
     nextTrack,
     isRepeat,
-    setProgress,
-    seekTime,
-    requestSeek,
   } = useStore();
+  const { setProgress, seekTime, requestSeek } = useAudioStore();
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isDraggingTime, setIsDraggingTime] = useState(false);
 
@@ -75,7 +74,7 @@ function useAudio() {
     setProgress(time, audioRef.current.duration || 0);
   };
 
-  const { currentTime, duration } = useStore();
+  const { currentTime, duration } = useAudioStore();
   return {
     audioRef,
     currentTime,
