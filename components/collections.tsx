@@ -419,6 +419,7 @@ export function AnimeModal({
 
         <button
           onClick={onClose}
+          aria-label="Close"
           className="absolute top-4 right-4 md:top-6 md:right-6 p-2 rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/20 transition-all z-30 backdrop-blur-sm group"
         >
           <X
@@ -621,6 +622,7 @@ export function BookModal({
       <div className="bg-[#fafafa] dark:bg-[#09090b] w-[92%] md:w-full max-w-5xl max-h-[85vh] rounded-[24px] md:rounded-[32px] shadow-2xl relative z-10 border border-white/20 dark:border-white/10 flex flex-col md:flex-row overflow-hidden animate-scale-in">
         <button
           onClick={onClose}
+          aria-label="Close"
           className="absolute top-4 right-4 md:top-6 md:right-6 p-2 rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/20 transition-all z-30 backdrop-blur-sm group"
         >
           <X
@@ -676,6 +678,7 @@ export function HobbyModal({
       <div className="bg-white dark:bg-zinc-900 w-full max-w-xl rounded-3xl shadow-2xl overflow-hidden relative z-10 border border-gray-200 dark:border-white/10 animate-scale-in">
         <button
           onClick={onClose}
+          aria-label="Close"
           className="absolute top-6 right-6 p-2 rounded-full hover:bg-gray-100 dark:hover:bg-white/10 transition-colors z-20"
         >
           <X size={20} />
