@@ -42,16 +42,17 @@ export function ShortcutGuide() {
   return (
     <>
       {open && (
-        <div className="fixed inset-0 z-[10000] flex items-center justify-center p-4 bg-black/40 backdrop-blur-md">
-          <div className="w-full max-w-md bg-white dark:bg-zinc-900 rounded-2xl shadow-2xl border border-gray-200 dark:border-white/10 p-6 relative animate-scale-in">
+        <div role="presentation" className="fixed inset-0 z-[10000] flex items-center justify-center p-4 bg-black/40 backdrop-blur-md" onClick={() => setOpen(false)}>
+          <div role="dialog" aria-modal="true" aria-labelledby="shortcuts-title" className="w-full max-w-md bg-white dark:bg-zinc-900 rounded-2xl shadow-2xl border border-gray-200 dark:border-white/10 p-6 relative animate-scale-in" onClick={(e) => e.stopPropagation()}>
             <button
               onClick={() => setOpen(false)}
+              aria-label="Close keyboard shortcuts"
               className="absolute top-4 right-4 p-2 hover:bg-gray-100 dark:hover:bg-white/5 rounded-full"
             >
               <X size={16} className="text-gray-400" />
             </button>
             <div className="mb-6">
-              <h2 className="text-xl font-bold dark:text-white mb-1">
+              <h2 id="shortcuts-title" className="text-xl font-bold dark:text-white mb-1">
                 Keyboard Shortcuts
               </h2>
               <p className="text-sm text-gray-500">
@@ -69,12 +70,12 @@ export function ShortcutGuide() {
                   </span>
                   <div className="flex gap-1.5">
                     {s.keys.map((k, ki) => (
-                      <span
+                      <kbd
                         key={ki}
                         className="min-w-[24px] h-6 flex items-center justify-center px-1.5 rounded border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 text-[10px] font-mono font-bold text-gray-500 dark:text-gray-400"
                       >
                         {k}
-                      </span>
+                      </kbd>
                     ))}
                   </div>
                 </div>

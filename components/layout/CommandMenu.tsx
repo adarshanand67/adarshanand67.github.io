@@ -382,10 +382,11 @@ export function CommandMenu({ blogs = [] }: { blogs?: Blog[] }) {
       {open && (
         <div className="fixed inset-0 z-[9999] flex items-start justify-center pt-[15vh] px-4 pointer-events-none">
           <div
+            role="presentation"
             className="fixed inset-0 bg-black/40 dark:bg-black/60 backdrop-blur-sm pointer-events-auto animate-fade-in"
             onClick={() => setOpen(false)}
           />
-          <div className="w-full max-w-[640px] bg-white/80 dark:bg-[#121212]/80 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20 dark:border-white/10 overflow-hidden pointer-events-auto ring-1 ring-black/5 animate-scale-in">
+          <div role="dialog" aria-modal="true" aria-label="Command menu" className="w-full max-w-[640px] bg-white/80 dark:bg-[#121212]/80 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20 dark:border-white/10 overflow-hidden pointer-events-auto ring-1 ring-black/5 animate-scale-in">
             <CommandMenuInput value={search} onChange={setSearch} />
             <div className="max-h-[60vh] overflow-y-auto py-3 px-2 custom-scrollbar">
               <CommandMenuItems

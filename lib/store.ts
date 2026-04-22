@@ -253,7 +253,7 @@ const createUtilitySlice: StateCreator<AppState, [], [], TodoState> = (
     set((state) => ({
       todos: [
         ...state.todos,
-        { id: Math.random().toString(36).substr(2, 9), text, completed: false },
+        { id: Math.random().toString(36).substring(2, 11), text, completed: false },
       ],
     })),
   toggleTodo: (id) =>

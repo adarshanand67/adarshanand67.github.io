@@ -204,6 +204,7 @@ function ProgressBar({
           onChange={(e) => onSeek(parseFloat(e.target.value))}
           onMouseDown={() => onDragStateChange(true)}
           onMouseUp={() => onDragStateChange(false)}
+          aria-label="Seek"
           className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-30"
         />
       </div>
@@ -350,6 +351,7 @@ export function MusicPlayer() {
                   step="0.01"
                   value={volume}
                   onChange={(e) => setVolume(parseFloat(e.target.value))}
+                  aria-label="Volume"
                   className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
                 />
               </div>

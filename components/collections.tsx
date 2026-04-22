@@ -213,6 +213,7 @@ export function CollectionHeader({
           value={currentSearchValue}
           onChange={(e) => onSearchChange && onSearchChange(e.target.value)}
           placeholder={searchPlaceholder || "Search..."}
+          aria-label={`Search ${title}`}
           className="w-full bg-white dark:bg-black/20 border border-gray-200 dark:border-white/10 rounded-2xl py-2.5 pl-12 pr-4 text-base focus:outline-none focus:ring-2 focus:ring-foreground/20 focus:border-foreground/30 transition-all shadow-sm group-hover:shadow-md"
         />
       </div>
@@ -399,10 +400,11 @@ export function AnimeModal({
   return (
     <div className="fixed inset-0 z-[1001] flex items-center justify-center p-4">
       <div
+        role="presentation"
         className="fixed inset-0 bg-black/80 backdrop-blur-md animate-fade-in"
         onClick={onClose}
       />
-      <div className="bg-white/80 dark:bg-[#09090b]/80 backdrop-blur-3xl w-[92%] md:w-full max-w-5xl max-h-[85vh] rounded-[24px] md:rounded-[32px] shadow-2xl relative z-10 border border-white/20 dark:border-white/10 flex flex-col md:flex-row overflow-hidden animate-scale-in">
+      <div role="dialog" aria-modal="true" aria-label={item.title} className="bg-white/80 dark:bg-[#09090b]/80 backdrop-blur-3xl w-[92%] md:w-full max-w-5xl max-h-[85vh] rounded-[24px] md:rounded-[32px] shadow-2xl relative z-10 border border-white/20 dark:border-white/10 flex flex-col md:flex-row overflow-hidden animate-scale-in">
         {/* Full Modal Blurred Background Image */}
         {item.image && (
           <div className="absolute inset-0 z-0">
@@ -616,10 +618,11 @@ export function BookModal({
   return (
     <div className="fixed inset-0 z-[1001] flex items-center justify-center p-4">
       <div
+        role="presentation"
         className="fixed inset-0 bg-black/80 backdrop-blur-md animate-fade-in"
         onClick={onClose}
       />
-      <div className="bg-[#fafafa] dark:bg-[#09090b] w-[92%] md:w-full max-w-5xl max-h-[85vh] rounded-[24px] md:rounded-[32px] shadow-2xl relative z-10 border border-white/20 dark:border-white/10 flex flex-col md:flex-row overflow-hidden animate-scale-in">
+      <div role="dialog" aria-modal="true" aria-label={item.title} className="bg-[#fafafa] dark:bg-[#09090b] w-[92%] md:w-full max-w-5xl max-h-[85vh] rounded-[24px] md:rounded-[32px] shadow-2xl relative z-10 border border-white/20 dark:border-white/10 flex flex-col md:flex-row overflow-hidden animate-scale-in">
         <button
           onClick={onClose}
           aria-label="Close"
@@ -672,10 +675,11 @@ export function HobbyModal({
   return (
     <div className="fixed inset-0 z-[1001] flex items-center justify-center p-4">
       <div
+        role="presentation"
         className="fixed inset-0 bg-black/60 backdrop-blur-md animate-fade-in"
         onClick={onClose}
       />
-      <div className="bg-white dark:bg-zinc-900 w-full max-w-xl rounded-3xl shadow-2xl overflow-hidden relative z-10 border border-gray-200 dark:border-white/10 animate-scale-in">
+      <div role="dialog" aria-modal="true" aria-label={item.name} className="bg-white dark:bg-zinc-900 w-full max-w-xl rounded-3xl shadow-2xl overflow-hidden relative z-10 border border-gray-200 dark:border-white/10 animate-scale-in">
         <button
           onClick={onClose}
           aria-label="Close"

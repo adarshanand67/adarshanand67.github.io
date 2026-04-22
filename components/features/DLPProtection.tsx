@@ -215,6 +215,8 @@ export function DLPProtection() {
         document.head.appendChild(s);
       }
     };
+    const existing = document.getElementById("dlp-style");
+    if (existing) existing.remove();
     const style = document.createElement("style");
     style.id = "dlp-style";
     style.innerHTML = `body { -webkit-touch-callout: none; scrollbar-width: none; } ::-webkit-scrollbar { display: none; } ${isBlur ? "body { overflow: hidden !important; }" : ""}`;

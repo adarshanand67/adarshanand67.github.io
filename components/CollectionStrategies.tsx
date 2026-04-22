@@ -65,7 +65,11 @@ export class AnimeCollectionStrategy
       <div
         id={`collection-item-${anime.title}`}
         key={index}
+        role="button"
+        tabIndex={0}
+        aria-label={`View details for ${anime.title}`}
         onClick={() => useStore.getState().setAnimeSelectedItem(anime)}
+        onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); useStore.getState().setAnimeSelectedItem(anime); } }}
         className="group flex flex-col gap-3 cursor-pointer relative"
       >
         <div className="relative aspect-[2/3] rounded-2xl overflow-hidden bg-gray-100 dark:bg-gray-800 shadow-sm group-hover:shadow-xl transition-all duration-500 group-hover:-translate-y-2">
@@ -234,7 +238,11 @@ export class BookCollectionStrategy implements CollectionItemStrategy<Book> {
       <div
         id={`collection-item-${book.title}`}
         key={index}
+        role="button"
+        tabIndex={0}
+        aria-label={`View details for ${book.title}`}
         onClick={() => useStore.getState().setBookSelectedItem(book)}
+        onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); useStore.getState().setBookSelectedItem(book); } }}
         className="group flex flex-col gap-4 cursor-pointer"
       >
         <div className="relative block w-full aspect-[2/3] perspective-1000">
@@ -445,11 +453,12 @@ export class HobbyCollectionStrategy implements CollectionItemStrategy<Hobby> {
   }
   renderItem(hobby: Hobby, index: number): ReactNode {
     return (
-      <div
+      <button
         id={`collection-item-${hobby.name}`}
         key={index}
         onClick={() => useStore.getState().setHobbySelectedItem(hobby)}
-        className="group p-5 glass rounded-2xl border border-gray-100 dark:border-white/5 hover:border-foreground/30 transition-all duration-500 cursor-pointer overflow-hidden relative flex flex-col items-center text-center"
+        aria-label={hobby.name}
+        className="group p-5 glass rounded-2xl border border-gray-100 dark:border-white/5 hover:border-foreground/30 transition-all duration-500 cursor-pointer overflow-hidden relative flex flex-col items-center text-center w-full"
       >
         <div className="relative z-10 flex flex-col items-center">
           <div className="mb-3 transform group-hover:scale-110 group-hover:-rotate-12 transition-transform duration-500 w-fit">
@@ -462,7 +471,7 @@ export class HobbyCollectionStrategy implements CollectionItemStrategy<Hobby> {
             {hobby.description}
           </p>
         </div>
-      </div>
+      </button>
     );
   }
   renderList(items: Hobby[]): ReactNode {

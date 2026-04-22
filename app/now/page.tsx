@@ -48,6 +48,20 @@ export default function NowPage() {
               This website — adding sections, fixing bugs, writing. Treating it
               as a living document rather than a static resume.
             </p>
+            <p>
+              A{" "}
+              <a href="/books" className="text-foreground underline underline-offset-2 hover:opacity-70 transition-opacity">
+                book tracker
+              </a>{" "}
+              to keep track of what I've read and want to read. Built with Next.js and Tailwind CSS.
+            </p>
+            <p>
+              A{" "}
+              <a href="/anime" className="text-foreground underline underline-offset-2 hover:opacity-70 transition-opacity">
+                anime tracker
+              </a>{" "}
+              for the same reason. Built with Next.js and Tailwind CSS.
+            </p>
           </div>
         </section>
 

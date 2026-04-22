@@ -267,7 +267,7 @@ export default function MusicPage() {
         <span className="font-semibold text-sm tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-400 mt-2 md:mt-0">
           NOW PLAYING
         </span>
-        <button className="absolute right-4 p-2 -mr-2 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-white/10 rounded-full transition-colors pt-6 md:pt-2">
+        <button aria-label="More options" className="absolute right-4 p-2 -mr-2 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-white/10 rounded-full transition-colors pt-6 md:pt-2">
           <MoreVertical className="w-6 h-6" />
         </button>
       </div>
@@ -336,7 +336,7 @@ export default function MusicPage() {
                   {currentTrack?.artist}
                 </p>
               </div>
-              <button className="p-3 bg-gray-100 dark:bg-white/10 rounded-full text-gray-400 hover:text-pink-500 hover:bg-pink-50 dark:hover:bg-pink-900/20 active:scale-95 transition-all">
+              <button aria-label="Like track" className="p-3 bg-gray-100 dark:bg-white/10 rounded-full text-gray-400 hover:text-pink-500 hover:bg-pink-50 dark:hover:bg-pink-900/20 active:scale-95 transition-all">
                 <Heart
                   className={cn(
                     "transition-all",
@@ -360,6 +360,7 @@ export default function MusicPage() {
                   step={0.1}
                   value={progress}
                   onChange={(e) => handleSeek([parseFloat(e.target.value)])}
+                  aria-label="Seek"
                   className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
                 />
               </div>
@@ -373,6 +374,8 @@ export default function MusicPage() {
             <div className="flex items-center justify-between mb-8 px-2">
               <button
                 onClick={toggleShuffle}
+                aria-label={isShuffle ? "Disable shuffle" : "Enable shuffle"}
+                aria-pressed={isShuffle}
                 className={cn(
                   "p-2 transition-colors",
                   isShuffle
@@ -385,6 +388,7 @@ export default function MusicPage() {
 
               <button
                 onClick={prevTrack}
+                aria-label="Previous track"
                 className="text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-transform active:scale-90"
               >
                 <SkipBack
@@ -397,6 +401,7 @@ export default function MusicPage() {
 
               <button
                 onClick={handlePlayPause}
+                aria-label={isPlaying ? "Pause" : "Play"}
                 className={cn(
                   "bg-gray-100 dark:bg-white text-black rounded-full flex items-center justify-center hover:scale-105 active:scale-95 transition-all shadow-xl dark:shadow-[0_0_30px_rgba(255,255,255,0.2)]",
                   isMaximized ? "w-20 h-20" : "w-16 h-16",
@@ -421,6 +426,7 @@ export default function MusicPage() {
 
               <button
                 onClick={nextTrack}
+                aria-label="Next track"
                 className="text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-transform active:scale-90"
               >
                 <SkipForward
@@ -433,6 +439,8 @@ export default function MusicPage() {
 
               <button
                 onClick={toggleRepeat}
+                aria-label={isRepeat ? "Disable repeat" : "Enable repeat"}
+                aria-pressed={isRepeat}
                 className={cn(
                   "p-2 transition-colors",
                   isRepeat
@@ -459,6 +467,7 @@ export default function MusicPage() {
                   step={1}
                   value={volume * 100}
                   onChange={(e) => handleVolumeChange([parseFloat(e.target.value) / 100])}
+                  aria-label="Volume"
                   className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
                 />
               </div>
@@ -488,11 +497,13 @@ export default function MusicPage() {
             {tracks.map((track, index) => {
               const isCurrent = currentTrackIndex === index;
               return (
-                <div
+                <button
                   key={track.src}
                   onClick={() => setCurrentTrack(index)}
+                  aria-label={`Play ${track.title} by ${track.artist}`}
+                  aria-current={isCurrent ? "true" : undefined}
                   className={cn(
-                    "flex items-center gap-4 p-3 rounded-xl transition-all cursor-pointer group",
+                    "w-full flex items-center gap-4 p-3 rounded-xl transition-all cursor-pointer group text-left",
                     isCurrent
                       ? "bg-white dark:bg-white/10 shadow-sm"
                       : "hover:bg-white/50 dark:hover:bg-white/5 active:scale-[0.98]",
@@ -540,7 +551,7 @@ export default function MusicPage() {
                   >
                     <Play className="w-5 h-5 fill-current text-gray-400 dark:text-gray-500" />
                   </div>
-                </div>
+                </button>
               );
             })}
           </div>

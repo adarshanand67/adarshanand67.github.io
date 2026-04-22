@@ -62,22 +62,25 @@ export const HobbiesModal = () => {
 
   return (
     <div
+      role="presentation"
       className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-in fade-in duration-200"
       onClick={toggleHobbiesModal}
     >
       <div
         ref={modalRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="hobbies-modal-title"
         onClick={(e) => e.stopPropagation()}
         className="w-full max-w-2xl glass rounded-2xl shadow-2xl border border-white/10 p-6 max-h-[80vh] overflow-y-auto"
       >
         <div className="flex items-center justify-between mb-8 sticky top-0 glass backdrop-blur-xl py-4 z-10 border-b border-foreground/10">
-          <h2 className="text-2xl font-black flex items-center gap-2">
+          <h2 id="hobbies-modal-title" className="text-2xl font-black flex items-center gap-2">
             <span className="text-foreground/20">~/</span> Hobbies
           </h2>
           <button
-            onClick={() => {
-              toggleHobbiesModal();
-            }}
+            onClick={toggleHobbiesModal}
+            aria-label="Close hobbies"
             className="p-2 rounded-full hover:bg-white/10 transition-colors"
           >
             <X className="w-5 h-5 text-gray-500" />
