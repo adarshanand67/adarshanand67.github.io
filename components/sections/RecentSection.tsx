@@ -2,71 +2,27 @@
 
 import React from "react";
 import Link from "next/link";
-import { ChevronDown } from "lucide-react";
-import { useStore } from "@/lib/store";
 
-export function RecentSection({
-  title,
-  command,
-  items,
-  linkText,
-  linkUrl,
-}: {
-  title: string;
-  command: string;
-  items: any[];
-  linkText: string;
-  linkUrl: string;
-}) {
-  const { expandedSections, toggleSectionExpanded } = useStore();
-  const id = `recent-${title.toLowerCase().replace(/\s+/g, "-")}`;
-  const isExpanded = expandedSections[id] ?? false;
+export function RecentSection({ title, items, linkText, linkUrl }: { title: string; command?: string; items: { title: string; date: string; url: string }[]; linkText: string; linkUrl: string }) {
   return (
-    <section className="font-mono max-w-6xl mx-auto px-4 md:px-12 mb-8">
-      <button
-        onClick={() => toggleSectionExpanded(id)}
-        aria-expanded={isExpanded}
-        className="w-full text-left cursor-pointer"
-      >
-        <h2 className="text-xl font-black flex items-center gap-2 opacity-90">
-          <span className="opacity-20">##</span>
-          {title}
-          <ChevronDown
-            size={20}
-            className={`transition-transform ${isExpanded ? "rotate-0" : "-rotate-90 opacity-30"}`}
-          />
-        </h2>
-        <div className="flex items-center gap-2 opacity-40 text-xs mt-1">
-          <span>$</span>
-          {command}
-          <span className="animate-pulse w-2 h-4 bg-foreground/20" />
-        </div>
-      </button>
-      <div className={`grid transition-[grid-template-rows] duration-300 ${isExpanded ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
-        <div className="mt-4 overflow-hidden">
-            <div className="space-y-4 glass p-6 rounded-2xl border border-white/10">
-              {items.map((item, i) => (
-                <div key={i} className="pl-4 border-l-2 border-foreground/10">
-                  <span className="text-[10px] font-black opacity-30 uppercase tracking-widest block mb-1">
-                    {item.date}
-                  </span>
-                  <Link
-                    href={item.url}
-                    className="text-sm font-bold hover:underline decoration-foreground/20 underline-offset-4"
-                  >
-                    {item.title}
-                  </Link>
-                </div>
-              ))}
-            </div>
-            <Link
-              href={linkUrl}
-              className="mt-4 text-xs font-bold opacity-40 hover:opacity-100 transition-opacity block"
-            >
-              → {linkText}
+    <section className="font-mono max-w-6xl mx-auto px-4 md:px-12 mb-6">
+      <h2 className="text-base font-black flex items-center gap-2 opacity-90 mb-3">
+        <span className="opacity-20">##</span>
+        {title}
+      </h2>
+      <div className="glass p-5 rounded-2xl border border-white/10 space-y-3">
+        {items.map((item, i) => (
+          <div key={i} className="pl-3 border-l-2 border-foreground/10">
+            <span className="text-[10px] font-black opacity-30 uppercase tracking-widest block mb-0.5">{item.date}</span>
+            <Link href={item.url} className="text-sm font-bold hover:underline decoration-foreground/20 underline-offset-4">
+              {item.title}
             </Link>
-        </div>
+          </div>
+        ))}
       </div>
+      <Link href={linkUrl} className="mt-3 text-xs font-bold opacity-40 hover:opacity-100 transition-opacity block">
+        → {linkText}
+      </Link>
     </section>
   );
 }

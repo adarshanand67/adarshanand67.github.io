@@ -2,35 +2,14 @@ import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { basePath, techLinks } from "@/lib/constants";
 
-// ============================================================================
-// Class Name Utilities
-// ============================================================================
-
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
 export function getAssetPath(path: string): string {
-  if (path.startsWith(basePath)) {
-    return path;
-  }
+  if (path.startsWith(basePath)) return path;
   return `${basePath}${path}`;
 }
-
-// ============================================================================
-// Color Utilities
-// ============================================================================
-
-const bookPatterns = [
-  "bg-red-900",
-  "bg-blue-900",
-  "bg-green-900",
-  "bg-amber-900",
-  "bg-slate-800",
-  "bg-purple-900",
-  "bg-indigo-900",
-  "bg-rose-900",
-];
 
 const bookGradients = [
   "from-red-900 to-red-950",
@@ -43,38 +22,25 @@ const bookGradients = [
   "from-rose-900 to-rose-950",
 ];
 
-export const getBookStyle = (title: string) => {
-  let hash = 0;
-  for (let i = 0; i < title.length; i++)
-    hash = title.charCodeAt(i) + ((hash << 5) - hash);
-  return bookPatterns[Math.abs(hash) % bookPatterns.length];
-};
+function titleHash(title: string) {
+  let h = 0;
+  for (let i = 0; i < title.length; i++) h = title.charCodeAt(i) + ((h << 5) - h);
+  return Math.abs(h);
+}
 
-export const getBookGradient = (title: string) => {
-  let hash = 0;
-  for (let i = 0; i < title.length; i++)
-    hash = title.charCodeAt(i) + ((hash << 5) - hash);
-  return bookGradients[Math.abs(hash) % bookGradients.length];
-};
+export const getBookStyle = (title: string) =>
+  ["bg-red-900","bg-blue-900","bg-green-900","bg-amber-900","bg-slate-800","bg-purple-900","bg-indigo-900","bg-rose-900"][titleHash(title) % 8];
 
-// ============================================================================
-
-// ============================================================================
+export const getBookGradient = (title: string) => bookGradients[titleHash(title) % bookGradients.length];
 
 export class AppError extends Error {
-  constructor(
-    message: string,
-    public code?: string,
-    public statusCode?: number,
-  ) {
+  constructor(message: string, public code?: string, public statusCode?: number) {
     super(message);
     this.name = "AppError";
   }
 }
 
-export async function safeAsync<T>(
-  promise: Promise<T>,
-): Promise<[T | null, Error | null]> {
+export async function safeAsync<T>(promise: Promise<T>): Promise<[T | null, Error | null]> {
   try {
     return [await promise, null];
   } catch (error) {
@@ -82,36 +48,7 @@ export async function safeAsync<T>(
   }
 }
 
-export function safeSync<T>(fn: () => T): [T | null, Error | null] {
-  try {
-    return [fn(), null];
-  } catch (error) {
-    return [null, error instanceof Error ? error : new Error(String(error))];
-  }
-}
-
-export function assertNotNull<T>(
-  value: T | null | undefined,
-  fieldName: string,
-): T {
-  if (value === null || value === undefined) {
-    throw new AppError(
-      `${fieldName} is required but was ${value}`,
-      "NULL_VALUE",
-    );
-  }
-  return value;
-}
-
-export function safeAccess<T>(accessor: () => T, fallback: T): T {
-  try {
-    return accessor() ?? fallback;
-  } catch {
-    return fallback;
-  }
-}
-
-export function logError(error: Error, context?: Record<string, any>): void {
+export function logError(error: Error, context?: Record<string, unknown>): void {
   if (process.env.NODE_ENV === "development") {
     console.error("Error:", error);
     if (context) console.error("Context:", context);
@@ -120,48 +57,20 @@ export function logError(error: Error, context?: Record<string, any>): void {
   }
 }
 
-export function getErrorMessage(
-  error: unknown,
-  fallback = "An error occurred",
-): string {
-  if (error instanceof AppError) return error.message;
+export function getErrorMessage(error: unknown, fallback = "An error occurred"): string {
   if (error instanceof Error) return error.message;
   if (typeof error === "string") return error;
   return fallback;
 }
 
-export async function retryWithBackoff<T>(
-  fn: () => Promise<T>,
-  maxRetries = 3,
-  delayMs = 1000,
-): Promise<T> {
-  let lastError: Error | null = null;
-  for (let i = 0; i < maxRetries; i++) {
-    const [result, error] = await safeAsync(fn());
-    if (!error) return result as T;
-    lastError = error;
-    if (i < maxRetries - 1)
-      await new Promise((resolve) =>
-        setTimeout(resolve, delayMs * Math.pow(2, i)),
-      );
-  }
-  throw lastError || new Error("Max retries exceeded");
-}
-
 export function linkifyTech(text: string): string {
   let result = text;
-  const sortedTechs = Object.keys(techLinks).sort(
-    (a, b) => b.length - a.length,
-  );
+  const sortedTechs = Object.keys(techLinks).sort((a, b) => b.length - a.length);
   for (const tech of sortedTechs) {
     const url = techLinks[tech];
-    const escapedTech = tech.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-    const regex = new RegExp(
-      `(?<!<a[^>]*>)\\b(${escapedTech})\\b(?![^<]*<\\/a>)`,
-      "gi",
-    );
+    const escaped = tech.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     result = result.replace(
-      regex,
+      new RegExp(`(?<!<a[^>]*>)\\b(${escaped})\\b(?![^<]*<\\/a>)`, "gi"),
       `<a href="${url}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 font-bold text-neutral-900 dark:!text-white underline decoration-neutral-900/30 dark:decoration-white/50 hover:decoration-neutral-900 dark:hover:decoration-white hover:decoration-2 underline-offset-2 transition-all group/link text-xs">${tech}<span class="inline-block transform transition-transform group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="opacity-70 group-hover/link:opacity-100 text-neutral-900 dark:text-white"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></span></a>`,
     );
   }
@@ -170,30 +79,12 @@ export function linkifyTech(text: string): string {
 
 export function parseAnsi(text: string) {
   if (!text) return text;
-
-  // ANSI code to Tailwind color map
   const colors: Record<string, string> = {
-    "30": "text-black dark:text-gray-900",
-    "31": "text-red-500",
-    "32": "text-green-500",
-    "33": "text-yellow-500",
-    "34": "text-blue-500",
-    "35": "text-purple-500",
-    "36": "text-cyan-500",
-    "37": "text-white dark:text-gray-100",
-    "90": "text-gray-500", // bright black
-    "1": "font-bold",
+    "30": "text-black dark:text-gray-900", "31": "text-red-500", "32": "text-green-500",
+    "33": "text-yellow-500", "34": "text-blue-500", "35": "text-purple-500",
+    "36": "text-cyan-500", "37": "text-white dark:text-gray-100", "90": "text-gray-500", "1": "font-bold",
   };
-
-  let html = text
-    // Handle specific color codes
-    .replace(/\x1b\[(\d+)m/g, (match, code) => {
-      if (code === "0") return "</span>";
-      if (colors[code]) return `<span class="${colors[code]}">`;
-      return "";
-    })
-    // Remove any remaining unsupported ANSI codes
+  return text
+    .replace(/\x1b\[(\d+)m/g, (_, code) => code === "0" ? "</span>" : colors[code] ? `<span class="${colors[code]}">` : "")
     .replace(/\x1b\[.*?m/g, "");
-
-  return html;
 }

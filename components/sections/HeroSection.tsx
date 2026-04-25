@@ -3,156 +3,79 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import {
-  Linkedin,
-  Mail,
-  Github,
-  User,
-  Terminal as TerminalIcon,
-} from "lucide-react";
+import { Linkedin, Mail, Github, User, Terminal as TerminalIcon } from "lucide-react";
 import { useStore } from "@/lib/store";
 import { siteConfig } from "@/lib/config";
 import { Profile } from "@/types/definitions";
 import { Terminal } from "@/components/layout";
 import { TiltWrapper, SystemStatus } from "@/components/features";
 
-export const ViewToggle = ({
-  viewMode,
-  setViewMode,
-}: {
-  viewMode: "profile" | "terminal";
-  setViewMode: (mode: "profile" | "terminal") => void;
-}) => (
-  <div className="hidden md:flex bg-zinc-100 dark:bg-zinc-900 backdrop-blur-md p-1 rounded-xl border border-zinc-200 dark:border-zinc-800 ml-auto pointer-events-auto shadow-sm gap-1">
-    <button
-      onClick={() => setViewMode("profile")}
-      className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all ${
-        viewMode === "profile"
-          ? "bg-zinc-200 dark:bg-zinc-800 text-zinc-900 dark:text-white shadow-sm"
-          : "text-zinc-500 dark:text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200"
-      }`}
-    >
-      <User size={14} /> <span>Profile</span>
-    </button>
-    <button
-      onClick={() => setViewMode("terminal")}
-      className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all ${
-        viewMode === "terminal"
-          ? "bg-zinc-200 dark:bg-zinc-800 text-zinc-900 dark:text-white shadow-sm"
-          : "text-zinc-500 dark:text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200"
-      }`}
-    >
-      <TerminalIcon size={14} /> <span>Terminal</span>
-    </button>
+const SOCIALS = [
+  { label: "LinkedIn", name: "Connect", icon: Linkedin, href: () => `https://${siteConfig.contact.linkedin}` },
+  { label: "Email", name: "Say Hello", icon: Mail, href: () => `mailto:${siteConfig.contact.email}` },
+  { label: "GitHub", name: "Codebase", icon: Github, href: () => `https://${siteConfig.contact.github}` },
+];
+
+export const ViewToggle = ({ viewMode, setViewMode }: { viewMode: "profile" | "terminal"; setViewMode: (mode: "profile" | "terminal") => void }) => (
+  <div className="hidden md:flex bg-zinc-100 dark:bg-zinc-900 p-1 rounded-xl border border-zinc-200 dark:border-zinc-800 ml-auto gap-1">
+    {(["profile", "terminal"] as const).map((mode) => (
+      <button
+        key={mode}
+        onClick={() => setViewMode(mode)}
+        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all capitalize ${viewMode === mode ? "bg-zinc-200 dark:bg-zinc-800 text-zinc-900 dark:text-white shadow-sm" : "text-zinc-500 dark:text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200"}`}
+      >
+        {mode === "profile" ? <User size={13} /> : <TerminalIcon size={13} />}
+        {mode}
+      </button>
+    ))}
   </div>
 );
 
 export function Hero({ profile }: { profile: Profile }) {
   const { heroViewMode, setHeroViewMode } = useStore();
   return (
-    <section
-      id="hero"
-      className="section max-w-6xl mx-auto px-4 md:px-6 py-6 md:py-10 relative overflow-visible"
-      onMouseMove={(e: React.MouseEvent<HTMLElement>) => {
-        const rect = e.currentTarget.getBoundingClientRect();
-        const x = ((e.clientX - rect.left) / rect.width) * 100;
-        const y = ((e.clientY - rect.top) / rect.height) * 100;
-        e.currentTarget.style.setProperty("--mouse-x", `${x}%`);
-        e.currentTarget.style.setProperty("--mouse-y", `${y}%`);
-      }}
-    >
-      <div className="relative z-10 flex flex-col items-center">
-        <div className="relative w-full">
-          {heroViewMode === "profile" ? (
-            <div className="w-full animate-fade-in">
-              <div className="glass rounded-[2rem] p-6 md:p-10 border border-white/10 relative overflow-hidden group/container shadow-xl">
-                <div className="flex flex-col md:flex-row gap-10 items-center md:items-start text-center md:text-left relative z-10">
-                  <TiltWrapper intensity={15}>
-                    <div className="relative w-32 h-32 md:w-52 md:h-52 rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden border-2 border-foreground/10 shadow-2xl">
-                      <Image
-                        src={profile.avatar || ""}
-                        alt={profile.name}
-                        fill
-                        sizes="(max-width: 768px) 128px, 208px"
-                        className="object-cover"
-                        priority
-                        unoptimized
-                      />
-                    </div>
-                  </TiltWrapper>
-                  <div className="flex-1">
-                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-4">
-                      <h1 className="text-4xl md:text-6xl font-black tracking-tighter uppercase">
-                        {profile.name}
-                      </h1>
-                      <ViewToggle
-                        viewMode={heroViewMode}
-                        setViewMode={setHeroViewMode}
-                      />
-                    </div>
-                    <SystemStatus />
-                    <blockquote className="text-xl md:text-2xl font-medium text-foreground/90 mt-6 pl-6 border-l-2 border-foreground/10 italic">
-                      {profile.bio.paragraphs[0]}
-                    </blockquote>
-                  </div>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-10">
-                  {[
-                    {
-                      label: "LinkedIn",
-                      name: "Connect",
-                      href: `https://${siteConfig.contact.linkedin}`,
-                      icon: Linkedin,
-                    },
-                    {
-                      label: "Email",
-                      name: "Say Hello",
-                      href: `mailto:${siteConfig.contact.email}`,
-                      icon: Mail,
-                    },
-                    {
-                      label: "GitHub",
-                      name: "Codebase",
-                      href: `https://${siteConfig.contact.github}`,
-                      icon: Github,
-                    },
-                  ].map((social, i) => (
-                    <Link
-                      key={i}
-                      href={social.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-4 rounded-3xl bg-foreground/5 hover:bg-foreground/10 border border-foreground/10 transition-all group"
-                    >
-                      <div className="flex items-center gap-4">
-                        <div className="w-10 h-10 bg-background rounded-2xl flex items-center justify-center border border-foreground/10">
-                          <social.icon size={20} />
-                        </div>
-                        <div className="text-left">
-                          <p className="text-[10px] font-black uppercase tracking-widest opacity-40">
-                            {social.label}
-                          </p>
-                          <h3 className="text-sm font-bold">{social.name}</h3>
-                        </div>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
+    <section id="hero" className="max-w-6xl mx-auto px-4 md:px-6 py-5 md:py-8">
+      {heroViewMode === "profile" ? (
+        <div className="glass rounded-2xl p-5 md:p-8 border border-white/10 animate-fade-in">
+          <div className="flex flex-col md:flex-row gap-7 items-center md:items-start text-center md:text-left">
+            <TiltWrapper intensity={12}>
+              <div className="relative w-28 h-28 md:w-44 md:h-44 rounded-3xl overflow-hidden border-2 border-foreground/10 shadow-lg">
+                <Image src={profile.avatar || ""} alt={profile.name} fill sizes="(max-width: 768px) 112px, 176px" className="object-cover" priority unoptimized />
               </div>
-            </div>
-          ) : (
-            <div className="w-full animate-scale-in">
-              <div className="absolute top-6 right-8 z-20">
-                <ViewToggle
-                  viewMode={heroViewMode}
-                  setViewMode={setHeroViewMode}
-                />
+            </TiltWrapper>
+            <div className="flex-1">
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-3">
+                <h1 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tighter uppercase">{profile.name}</h1>
+                <ViewToggle viewMode={heroViewMode} setViewMode={setHeroViewMode} />
               </div>
-              <Terminal />
+              <SystemStatus />
+              <blockquote className="text-base md:text-lg font-medium text-foreground/80 mt-4 pl-4 border-l-2 border-foreground/10 italic">
+                {profile.bio.paragraphs[0]}
+              </blockquote>
             </div>
-          )}
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mt-6">
+            {SOCIALS.map((s) => (
+              <Link key={s.label} href={s.href()} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-3 rounded-2xl bg-foreground/5 hover:bg-foreground/10 border border-foreground/10 transition-all">
+                <div className="w-9 h-9 bg-background rounded-xl flex items-center justify-center border border-foreground/10 shrink-0">
+                  <s.icon size={17} />
+                </div>
+                <div className="text-left">
+                  <p className="text-[10px] font-black uppercase tracking-widest opacity-40">{s.label}</p>
+                  <p className="text-sm font-bold">{s.name}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
-      </div>
+      ) : (
+        <div className="relative animate-scale-in">
+          <div className="absolute top-4 right-6 z-20">
+            <ViewToggle viewMode={heroViewMode} setViewMode={setHeroViewMode} />
+          </div>
+          <Terminal />
+        </div>
+      )}
     </section>
   );
 }

@@ -87,12 +87,7 @@ export function ClientLayout({
   }, [setIsMounted]);
 
   return (
-    <div className="min-h-screen bg-background text-foreground transition-colors duration-300 selection:bg-foreground/20 selection:text-foreground">
-      {/* Background Effects */}
-      <div className="fixed inset-0 z-0 pointer-events-none">
-        <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-primary/5 blur-[120px] mix-blend-screen animate-pulse" />
-        <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] rounded-full bg-blue-500/5 blur-[100px] mix-blend-screen animate-pulse delay-1000" />
-      </div>
+    <div className="min-h-screen bg-background text-foreground selection:bg-foreground/20 selection:text-foreground">
 
       <DLPProtection />
       <ScrollProgress />
@@ -103,11 +98,11 @@ export function ClientLayout({
       <MobileDock />
       <ShortcutGuide />
 
-      <main id="main-content" className="relative z-10 min-h-screen flex flex-col">
+      <main id="main-content" className="min-h-screen flex flex-col">
         {isHome ? (
           <>
             <Hero profile={profile} />
-            <div className="space-y-4 pb-20">
+            <div className="space-y-2 pb-16">
               {isFeatureEnabled("enableExperience") && (
                 <ExperienceSection items={experience} />
               )}
@@ -131,7 +126,7 @@ export function ClientLayout({
             </div>
           </>
         ) : (
-          <div className="pt-8 pb-20 animate-in fade-in slide-in-from-bottom-4 duration-700">
+          <div className="pt-6 pb-16">
             {children}
           </div>
         )}

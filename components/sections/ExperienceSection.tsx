@@ -6,8 +6,7 @@ import { MapPin } from "lucide-react";
 import { useStore } from "@/lib/store";
 import { SpotlightCard } from "@/components/ui";
 import { SectionHeader } from "@/components/layout";
-import { getAssetPath } from "@/lib/utils";
-import { linkifyTech } from "@/lib/utils";
+import { getAssetPath, linkifyTech } from "@/lib/utils";
 
 export function ExperienceSection({ items }: { items: any[] }) {
   const { expandedSections, toggleSectionExpanded } = useStore();
@@ -39,6 +38,7 @@ export function ExperienceSection({ items }: { items: any[] }) {
                           width={48}
                           height={48}
                           className="w-full h-full object-contain"
+                          loading="lazy"
                           unoptimized
                         />
                       </div>
