@@ -739,6 +739,13 @@ export const anime = [
     recommended: false,
   },
   {
+    title: "Overflow",
+    status: WatchStatus.Completed,
+    seasons: "S1",
+    tags: ["Romance", "Slice of Life"],
+    recommended: false,
+  },
+  {
     title: "Devilman Crybaby",
     status: WatchStatus.Completed,
     image: "https://cdn.myanimelist.net/images/anime/2/89973l.jpg",

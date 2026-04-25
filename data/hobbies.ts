@@ -26,6 +26,12 @@ export const hobbyData = [
     link: "https://substack.com/@adarshanand67?utm_source=user-menu",
   },
   {
+    name: "Badminton",
+    description: "Early morning smashes and quick reflexes on the court.",
+    icon: HobbyIcon.Trophy,
+    link: "https://www.youtube.com/results?search_query=best+badminton+tips",
+  },
+  {
     name: "Table Tennis",
     description: "Lightning-fast rallies and high-speed precision.",
     icon: HobbyIcon.Trophy,

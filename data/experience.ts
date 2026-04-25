@@ -10,8 +10,10 @@ export const experiencesData = [
     description: "Data Loss Prevention, Windows || Endpoint Security",
     highlights: [
       "Developing native registry management modules for Chrome/Edge to ensure injection-free web protection.",
-      "Integrating classification support (Boldon James) into endpoint solutions to enhance data security policies.",
+      "Integrating classification support (Boldon James) and Seclore IRM into endpoint solutions to enhance data security policies and persistent file protection.",
       "Designing and orchestrating CppUnit test automation frameworks to improve code quality and regression testing coverage.",
+      "Automated PR workflows using GitHub Actions, reducing manual review overhead for the DLP Windows repository.",
+      "Removed obsolete dependencies from the build system, saving 6 GB (~25% of total codebase size) and accelerating CI build times.",
     ],
   },
   {

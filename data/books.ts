@@ -367,4 +367,115 @@ export const booksData: Book[] = [
       "https://www.amazon.com/You-Are-Badass-Doubting-Greatness/dp/0762447699",
     tags: ["Self-Improvement"],
   },
+  {
+    title: "The Psychology of Money",
+    author: "Morgan Housel",
+    description:
+      "Timeless lessons on wealth, greed, and happiness through 19 short stories about how people think about money.",
+    keyTakeaways: [
+      "Getting wealthy and staying wealthy require two different skill sets.",
+      "Compounding is the most powerful force in finance — and patience is its prerequisite.",
+      "Your personal history shapes your financial decisions more than any textbook.",
+    ],
+    amazonLink:
+      "https://www.amazon.com/Psychology-Money-Timeless-lessons-happiness/dp/0857197681",
+    tags: ["Finance", "Psychology"],
+  },
+  {
+    title: "Storyworthy",
+    author: "Matthew Dicks",
+    description:
+      "A master storyteller's guide to finding, crafting, and performing stories that engage, teach, and change lives.",
+    keyTakeaways: [
+      "Every great story is about a five-second moment of change.",
+      "Find the story in your everyday life — it is always there.",
+      "The best storytellers are the most vulnerable ones.",
+    ],
+    amazonLink:
+      "https://www.amazon.com/Storyworthy-Engage-Persuade-through-Storytelling/dp/1608685489",
+    tags: ["Communication", "Self-Improvement"],
+  },
+  {
+    title: "A Swim in a Pond in the Rain",
+    author: "George Saunders",
+    description:
+      "Four Russian masters — Chekhov, Turgenev, Tolstoy, Gogol — dissected as a master class on writing, reading, and life.",
+    keyTakeaways: [
+      "Fiction works by creating and then resolving expectations.",
+      "Good writing is ruthless in its honesty about human nature.",
+      "To write well, you must first become a more attentive reader.",
+    ],
+    amazonLink:
+      "https://www.amazon.com/Swim-Pond-Rain-Reading-Writing/dp/0593311892",
+    tags: ["Writing", "Philosophy"],
+  },
+  {
+    title: "The One Thing",
+    author: "Gary Keller",
+    description:
+      "The surprisingly simple truth behind extraordinary results — focus narrows down to a single most important task.",
+    keyTakeaways: [
+      "What is the one thing I can do such that by doing it everything else becomes easier or unnecessary?",
+      "Multitasking is a lie — sequential focus is how mastery is built.",
+      "Success is built sequentially, one thing at a time.",
+    ],
+    amazonLink:
+      "https://www.amazon.com/ONE-Thing-Surprisingly-Extraordinary-Results/dp/1885167776",
+    tags: ["Productivity", "Self-Improvement"],
+  },
+  {
+    title: "Grit",
+    author: "Angela Duckworth",
+    description:
+      "The power of passion and perseverance — why talent alone is not enough and how grit predicts success.",
+    keyTakeaways: [
+      "Grit = passion + perseverance sustained over the long run.",
+      "Talent counts once; effort counts twice in the formula for achievement.",
+      "Interest must be followed by practice, purpose, and hope.",
+    ],
+    amazonLink:
+      "https://www.amazon.com/Grit-Passion-Perseverance-Angela-Duckworth/dp/1501111108",
+    tags: ["Psychology", "Self-Improvement"],
+  },
+  {
+    title: "Ikigai",
+    author: "Héctor García & Francesc Miralles",
+    description:
+      "The Japanese concept of a reason for being — finding the intersection of what you love, what you're good at, what the world needs, and what you can be paid for.",
+    keyTakeaways: [
+      "Your ikigai lies at the intersection of passion, mission, vocation, and profession.",
+      "Flow — total absorption in an activity — is the daily experience of ikigai.",
+      "Small joys and a sense of purpose are more sustaining than grand achievements.",
+    ],
+    amazonLink:
+      "https://www.amazon.com/Ikigai-Japanese-Secret-Long-Happy/dp/0143130722",
+    tags: ["Philosophy", "Self-Improvement"],
+  },
+  {
+    title: "Men Are from Mars, Women Are from Venus",
+    author: "John Gray",
+    description:
+      "A practical guide for improving communication and relationships by understanding the fundamental differences between men and women.",
+    keyTakeaways: [
+      "Men and women handle stress differently — men retreat to their cave, women need to talk.",
+      "Most relationship conflict comes from misreading the other person's needs.",
+      "Giving the kind of support the other person actually wants, not what you'd want, is the key.",
+    ],
+    amazonLink:
+      "https://www.amazon.com/Men-Mars-Women-Venus-Understanding/dp/0060574216",
+    tags: ["Relationships", "Psychology"],
+  },
+  {
+    title: "Dive Into Design Patterns",
+    author: "Alexander Shvets",
+    description:
+      "A comprehensive visual guide to the 22 classic Gang of Four design patterns with real-world examples.",
+    keyTakeaways: [
+      "Design patterns are solutions to recurring problems, not copy-paste code.",
+      "Favor composition over inheritance to keep systems flexible.",
+      "Program to interfaces, not implementations.",
+    ],
+    amazonLink: "https://www.amazon.com/Design-Patterns-Object-Oriented-Addison-Wesley-Professional-ebook/dp/B000SEIBB8",
+    tags: ["Technology", "System Design"],
+  },
 ];
