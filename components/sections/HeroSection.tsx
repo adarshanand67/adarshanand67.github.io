@@ -40,7 +40,10 @@ export function Hero({ profile }: { profile: Profile }) {
           <div className="flex flex-col md:flex-row gap-7 items-center md:items-start text-center md:text-left">
             <TiltWrapper intensity={12}>
               <div className="relative w-28 h-28 md:w-44 md:h-44 rounded-3xl overflow-hidden border-2 border-foreground/10 shadow-lg">
-                <Image src={profile.avatar || ""} alt={profile.name} fill sizes="(max-width: 768px) 112px, 176px" className="object-cover" priority unoptimized />
+                <picture>
+                  <source srcSet="/images/dp.webp" type="image/webp" />
+                  <Image src={profile.avatar || ""} alt={profile.name} fill sizes="(max-width: 768px) 112px, 176px" className="object-cover" priority unoptimized />
+                </picture>
               </div>
             </TiltWrapper>
             <div className="flex-1">

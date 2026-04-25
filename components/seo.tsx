@@ -1,13 +1,8 @@
-import Script from "next/script";
-
-interface StructuredDataProps {
-  data: object;
-}
-
-export function StructuredData({ data }: StructuredDataProps) {
+export function StructuredData({ data }: { data: object }) {
   return (
-    <Script id="structured-data" type="application/ld+json">
-      {JSON.stringify(data)}
-    </Script>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    />
   );
 }

@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "postbuild": "node scripts/generate-sw.js",
+    "postbuild": "node --experimental-strip-types scripts/generate-sw.ts",
     "analyze": "ANALYZE=true next build",
     "format": "prettier --write ."
   },
@@ -32,5 +32,6 @@
     "prettier": "^3.7.4",
     "tailwindcss": "^4",
     "typescript": "^5"
-  }
+  },
+  "type": "module"
 }
