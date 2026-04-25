@@ -91,10 +91,14 @@ function useAudio() {
 }
 
 export function MusicToggleButton() {
-  const { toggleMusicPlayer, isPlaying } = useStore();
+  const { toggleMusicPlayer, isPlaying, showMusicPlayer, setIsPlaying } = useStore();
+  const handleClick = () => {
+    if (!showMusicPlayer && !isPlaying) setIsPlaying(true);
+    toggleMusicPlayer();
+  };
   return (
     <button
-      onClick={toggleMusicPlayer}
+      onClick={handleClick}
       aria-label={isPlaying ? "Music player (playing)" : "Open music player"}
       className="hidden md:flex fixed bottom-8 right-6 md:right-8 z-[101] w-14 h-14 bg-white dark:bg-zinc-800 backdrop-blur-md border border-black/10 dark:border-white/10 rounded-full items-center justify-center shadow-xl hover:scale-110 active:scale-95 transition-all duration-300 group"
     >
