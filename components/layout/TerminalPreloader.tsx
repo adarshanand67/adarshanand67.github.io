@@ -8,7 +8,7 @@ export function TerminalPreloader() {
   const { isIntroDone, setLines, setIsIntroDone } = useStore();
   useEffect(() => {
     if (!isIntroDone) {
-      setLines(introLines());
+      setLines([...introLines]);
       setIsIntroDone(true);
     }
   }, [isIntroDone, setLines, setIsIntroDone]);

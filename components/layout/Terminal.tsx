@@ -25,7 +25,7 @@ function useTerminal() {
 
   useEffect(() => {
     if (!isIntroDone) {
-      const allIntroLines = introLines();
+      const allIntroLines = introLines;
       let currentLine = 0;
       let cancelled = false;
       const typeNextLine = () => {

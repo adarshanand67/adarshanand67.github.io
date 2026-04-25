@@ -382,7 +382,7 @@ export const commands: Record<
   // ── Portfolio ──────────────────────────────────────────────────────────────
   neofetch: {
     execute: (_, { setLines }) => {
-      setLines((l: string[]) => [...l, ...systemStats()]);
+      setLines((l: string[]) => [...l, ...systemStats]);
     },
   },
 

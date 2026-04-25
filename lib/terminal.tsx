@@ -363,7 +363,7 @@ export const neofetch: Command = createCommand(
   "neofetch",
   "Display system information",
   (_, { setLines }) => {
-    addLines(setLines, [...systemStats()] as string[]);
+    addLines(setLines, [...systemStats] as string[]);
   },
   { category: "utility" },
 );
